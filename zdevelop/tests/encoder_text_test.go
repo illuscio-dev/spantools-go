@@ -1,0 +1,35 @@
+package tests
+
+import (
+	"bou.ke/monkey"
+	"bytes"
+	"github.com/stretchr/testify/assert"
+	"golang.org/x/xerrors"
+	"io"
+	"reflect"
+	"spantools/mimetype"
+	"testing"
+)
+
+func TestPanickedReader(test *testing.T) {
+	assert := assert.New(test)
+	engine := createEngine(test)
+
+	mockReadFrom := func(buffer *bytes.Buffer, reader io.Reader) (int64, error) {
+		return 0, xerrors.New("mock reader error")
+	}
+
+	defer monkey.UnpatchAll()
+	monkey.PatchInstanceMethod(
+		reflect.TypeOf(&bytes.Buffer{}),
+		"ReadFrom",
+		mockReadFrom,
+	)
+
+	var receiver *string
+
+	buffer := &bytes.Buffer{}
+
+	err := engine.Decode(mimetype.TEXT, receiver, buffer)
+	assert.EqualError(err, "decode err: mock reader error")
+}
