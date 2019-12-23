@@ -20,11 +20,11 @@ func TestJsonListRoundTrip(test *testing.T) {
 	engine := createEngine(test)
 
 	data := []*Name{
-		&Name{
+		{
 			First: "Harry",
 			Last:  "Potter",
 		},
-		&Name{
+		{
 			First: "Ron",
 			Last:  "Weasley",
 		},

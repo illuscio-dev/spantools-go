@@ -9,13 +9,12 @@ type valueSetter interface {
 	Set(key string, value string)
 }
 
-
 // Paging parameters for request.
 type PagingReq struct {
 	// How far to offset the page.
 	Offset int
 	// Maximum item count to return.
-	Limit  int
+	Limit int
 }
 
 // Dumps paging information to request URL params.
@@ -106,7 +105,7 @@ func PagingRespFromHeaders(
 		return nil, err
 	}
 
-	pagingResp = &PagingResp{PagingReq: pagingReq,}
+	pagingResp = &PagingResp{PagingReq: pagingReq}
 
 	// These fields may not always have valid values. For this reason, we are going
 	// to use -1 as a default to flag that the value was not present in the params.

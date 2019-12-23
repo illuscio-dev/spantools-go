@@ -34,6 +34,8 @@ var defaultJSONExtensions = []*JsonExtensionOpts{
 	},
 }
 
+// Json handle extension for sending and receiving binary blob data (ie raw file data)
+// in a json field.
 type jsonExtBinData struct{}
 
 func (ext *jsonExtBinData) ConvertExt(value interface{}) interface{} {
@@ -115,7 +117,7 @@ func (ext *jsonExtBsonRaw) UpdateExt(dest interface{}, value interface{}) {
 	panic(xerrors.New("Decoding to BSON raw field not supported"))
 }
 
-// default JSON handler.
+// default JSON encoder for SpanEngine.
 type jsonEncoder struct{}
 
 func (encoder *jsonEncoder) Encode(

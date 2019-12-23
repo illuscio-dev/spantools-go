@@ -7,6 +7,7 @@ import (
 	"io"
 )
 
+// Handled encoding to / decoding from text/plain
 type textEncoder struct{}
 
 func (handler *textEncoder) Encode(

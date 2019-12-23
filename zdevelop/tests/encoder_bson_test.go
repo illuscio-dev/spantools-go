@@ -20,15 +20,15 @@ func TestBSONListRoundTrip(test *testing.T) {
 	engine := createEngine(test)
 
 	data := []Name{
-		Name{
+		{
 			First: "Harry",
 			Last:  "Potter",
 		},
-		Name{
+		{
 			First: "Hermione",
 			Last:  "Granger",
 		},
-		Name{
+		{
 			First: "Ron",
 			Last:  "Weasley",
 		},
@@ -57,15 +57,15 @@ func TestBSONListRoundTripPointers(test *testing.T) {
 	engine := createEngine(test)
 
 	data := []*Name{
-		&Name{
+		{
 			First: "Harry",
 			Last:  "Potter",
 		},
-		&Name{
+		{
 			First: "Hermione",
 			Last:  "Granger",
 		},
-		&Name{
+		{
 			First: "Ron",
 			Last:  "Weasley",
 		},
@@ -221,7 +221,7 @@ func TestBSONListMustBePointer(test *testing.T) {
 	engine := createEngine(test)
 
 	data := []*Name{
-		&Name{
+		{
 			First: "Harry",
 			Last:  "Potter",
 		},
@@ -259,7 +259,7 @@ func TestBSONListDecodeErrorWithElement(test *testing.T) {
 	engine := createEngine(test)
 
 	data := []*Name{
-		&Name{
+		{
 			First: "Harry",
 			Last:  "Potter",
 		},

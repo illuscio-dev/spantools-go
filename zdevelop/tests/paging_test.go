@@ -14,7 +14,7 @@ func TestPagingReqRoundTrip(test *testing.T) {
 		Offset: 10,
 		Limit:  50,
 	}
-	
+
 	reqTest := http.Request{
 		Header: make(http.Header),
 	}
@@ -31,7 +31,7 @@ func TestPagingRespRoundTrip(test *testing.T) {
 	assert := assert.New(test)
 
 	pagingResp := &models.PagingResp{
-		PagingReq:   &models.PagingReq{
+		PagingReq: &models.PagingReq{
 			Offset: 10,
 			Limit:  50,
 		},

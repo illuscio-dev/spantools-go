@@ -13,12 +13,15 @@ import (
 	"spantools/spantypes"
 )
 
-// The string and bytes representation we are going to use to represent the delimiter
-// for a bson list.
+// BSON does not generically support top-level lists. When multiple documents are being
+// sent in a single payload, the unicode SYMBOL FOR RECORD SEPARATOR is used.
+// (http://fileformat.info/info/unicode/char/241e/index.htm)
 const BsonListSepString = "\u241E"
 
+// Byte representation of BsonListSepString.
 var BsonListSepBytes = []byte(BsonListSepString)
 
+// split function used to separate the bson records.
 func splitBsonFunc(data []byte, atEOF bool) (advance int, token []byte, err error) {
 
 	// Return nothing if at end of file and no data passed
@@ -41,10 +44,13 @@ func splitBsonFunc(data []byte, atEOF bool) (advance int, token []byte, err erro
 
 // BSON
 
-// BsonCodecOpts holds info for bson codec to register
+// Holds options for registering new BSON codecs with SpanEngine.
 type BsonCodecOpts struct {
+	// Type this codec handles encoding / decoding to.
 	ValueType reflect.Type
-	Codec     bsoncodec.ValueCodec
+
+	// Codec to register for this type.
+	Codec bsoncodec.ValueCodec
 }
 
 var defaultBsonCodecs = []*BsonCodecOpts{
@@ -59,6 +65,7 @@ var defaultBsonCodecs = []*BsonCodecOpts{
 }
 
 // CODECS
+
 // bsonCodecUUID Handles encoding and decoding of UUID to and from bson.
 type bsonCodecUUID struct{}
 
@@ -145,6 +152,7 @@ func (encoder *bsonEncoder) encodeSingle(
 	return err
 }
 
+// Used to encode multiple bson objects to s single payload.
 func (encoder *bsonEncoder) encodeMany(
 	spanEngine *SpanEngine, writer io.Writer, content *reflect.Value,
 ) error {
@@ -176,10 +184,12 @@ func (encoder *bsonEncoder) encodeMany(
 	return nil
 }
 
+// Detects whether content to encode is a sequence (array or slice)
 func (encoder *bsonEncoder) isSequence(value *reflect.Value) bool {
 	return value.Kind() == reflect.Slice || value.Kind() == reflect.Array
 }
 
+// Encodes bson content
 func (encoder *bsonEncoder) Encode(
 	engine ContentEngine, writer io.Writer, content interface{},
 ) error {
@@ -197,6 +207,7 @@ func (encoder *bsonEncoder) Encode(
 	}
 }
 
+// Decodes a single bson document
 func (encoder *bsonEncoder) decodeSingle(
 	spanEngine *SpanEngine, reader io.Reader, contentReceiver interface{},
 ) error {
@@ -210,6 +221,7 @@ func (encoder *bsonEncoder) decodeSingle(
 	)
 }
 
+// Decodes multiple bson elements.
 func (encoder *bsonEncoder) decodeMany(
 	spanEngine *SpanEngine, reader io.Reader, contentReceiver interface{},
 ) error {
@@ -224,6 +236,7 @@ func (encoder *bsonEncoder) decodeMany(
 	docScanner := bufio.NewScanner(reader)
 	docScanner.Split(splitBsonFunc)
 
+	// Iterate through documents.
 	for docScanner.Scan() {
 		docBuff := bytes.NewBuffer(docScanner.Bytes())
 		newElement := reflect.New(elementType)
@@ -239,6 +252,7 @@ func (encoder *bsonEncoder) decodeMany(
 	return nil
 }
 
+// Decode bson content
 func (encoder *bsonEncoder) Decode(
 	engine ContentEngine, reader io.Reader, contentReceiver interface{},
 ) error {
@@ -246,6 +260,7 @@ func (encoder *bsonEncoder) Decode(
 	// Check if the value is a slice or an array.
 	receiverValue := reflect.Indirect(reflect.ValueOf(contentReceiver))
 
+	// If the receiver is a slice or array, we need to decode multiple documents.
 	if encoder.isSequence(&receiverValue) {
 		return encoder.decodeMany(spanEngine, reader, contentReceiver)
 	} else {

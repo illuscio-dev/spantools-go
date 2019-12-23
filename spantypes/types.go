@@ -1,3 +1,4 @@
+// Named types for encoding / decoding extensions.
 package spantypes
 
 // BinData is used to hold raw binary blob information for structs that need to support

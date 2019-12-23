@@ -11,23 +11,45 @@ import (
 )
 import "github.com/ugorji/go/codec"
 
+// Type helpers
 type encoderMapping map[mimetype.MimeType]Encoder
 type decoderMapping map[mimetype.MimeType]Decoder
 
-// ContentEngine is the interface for objects that hold multiple content encoders and
-// decoders, so that arbitrary content types can be handled through a common interface.
+/*
+ContentEngine details the contract for a content encoding engine. The goal of the
+content engine is to allow a common decoding and encoding methodology for any
+supported mimetype, allowing easy support for client-requested payload encodings, and
+a shared interface for different types of services to add support for various
+encoding types.
+*/
 type ContentEngine interface {
+	// Registers an encoder for a given mimetype.
 	SetEncoder(mimeType mimetype.MimeType, encoder Encoder)
+
+	// Registers a decoder for a given mimetype.
 	SetDecoder(mimeType mimetype.MimeType, decoder Decoder)
+
+	// Returns true if the engine has a registered encoder for the mimetype.
 	HandlesEncode(mimeType mimetype.MimeType) bool
+
+	// Returns true if the engine has a registered decoder for the mimetype.
 	HandlesDecode(mimeType mimetype.MimeType) bool
+
+	// Returns true if the engine has a registered encoder AND decoder for the mimetype.
 	Handles(mimeType mimetype.MimeType) bool
+
+	// Whether the engine will attempt to encode / decode unknown mimetypes.
 	SniffType() bool
+
+	// Decode mimeType content from reader using the decoder for mimeType. Decoded content is
+	// stored in contentReceiver.
 	Decode(
 		mimeType mimetype.MimeType,
 		contentReceiver interface{},
 		reader io.Reader,
 	) error
+
+	// Encode content as mimetype using registered mimeType to writer.
 	Encode(
 		mimeType mimetype.MimeType,
 		content interface{},
@@ -35,9 +57,75 @@ type ContentEngine interface {
 	) error
 }
 
-// SpanEngine is the default implementation of the ContentEngine interface.
-// Implementation is done through an Interface so that the Engine can be extended
-// through type wrapping.
+/*
+SpanEngine is the default implementation of the ContentEngine interface.
+Implementation is done through an Interface so that the Engine can be extended
+through type wrapping.
+
+Instantiation
+
+Use NewContentEngine() to create a new SpanEngine.
+
+Default Mimetypes
+
+• plain/text
+
+• application/json
+
+• application/bson
+
+Object encoders/decoders have been selected to be extensible, and SpanEngine exposes
+functions to let you add custom type handlers to each.
+
+Default JSON Extensions
+
+SpanEngine uses the codec library to encode/decode json
+(https://godoc.org/github.com/ugorji/go/codec), which allows the definition of
+extensions. SpanEngine ships with the following types handled:
+
+• UUIDs from "github.com/satori/go.uuid"
+
+• Binary blob data represented as []byte or *[]bytes are represented as a hex string.
+To signal that this conversion should take place, you must use the named type
+BinData in the "spantypes" package of this module.
+
+• BSON primitive.Binary data will be decoded as a string for 0x3 subtype (UUID) and a
+hex string for 0x0 subtype (arbitrary binary data). Other subtypes are not currently
+supported and will panic.
+
+• BSON raw is converted to a map and THEN encoded to a json object.
+
+Additional json extensions can be registered through the AddJsonExtensions() by passing
+a slice of JsonExtensionOpts objects.
+
+Default BSON Codecs
+
+SpanEngine handles the encoding and decoding of Bson data through the official bson
+driver (https://godoc.org/go.mongodb.org/mongo-driver).
+
+See information on defining a bson codec
+here: https://godoc.org/go.mongodb.org/mongo-driver/bson/bsoncodec
+
+The following type extensions ship with SpanEngine:
+
+• primitive.Binary of subtype 0x3 can be decoded to / encoded from UUID objects from
+"github.com/satori/go.uuid".
+
+• primitive.Binary of subtype 0x0 can be decoded to / encoded from the BinData named
+type of []byte in the "spantypes" module.
+
+Type Sniffing
+
+If created with "sniffMimeType" set to true, when decoding SpanEngine will attempt
+to use each decoder until one does not return an error or panic. Because decoders are
+internally stored in a map, the order of these attempts is not guaranteed to be
+consistent.
+
+Panics
+
+If an encoder or decoder panics during execution, that panic is caught and returned as
+an error.
+*/
 type SpanEngine struct {
 	// MimeType:Encoder mapping
 	encoders encoderMapping
@@ -56,10 +144,12 @@ type SpanEngine struct {
 	bsonCodecs []*BsonCodecOpts
 }
 
+// Register an encoder for a given mimeType
 func (engine *SpanEngine) SetEncoder(mimeType mimetype.MimeType, encoder Encoder) {
 	engine.encoders[mimeType] = encoder
 }
 
+// Register a decoder for a given mimeType
 func (engine *SpanEngine) SetDecoder(mimeType mimetype.MimeType, decoder Decoder) {
 	// Set the encoder.
 	engine.decoders[mimeType] = decoder
@@ -75,21 +165,25 @@ func (engine *SpanEngine) SetDecoder(mimeType mimetype.MimeType, decoder Decoder
 	}
 }
 
+// Whether SpanEngine will attempt to decode UNKNOWN content.
 func (engine *SpanEngine) SniffType() bool {
 	return engine.sniffMimeType
 }
 
+// Whether the SpanEngine has a registered encoder for mimeType.
 func (engine *SpanEngine) HandlesEncode(mimeType mimetype.MimeType) bool {
 	_, ok := engine.encoders[mimeType]
 	return ok
 }
 
+// Whether the SpanEngine has a registered decoder for mimeType.
 func (engine *SpanEngine) HandlesDecode(mimeType mimetype.MimeType) bool {
 	// Register the decoder.
 	_, ok := engine.decoders[mimeType]
 	return ok
 }
 
+// Whether the SpanEngine has a registered decoder AND encoder for mimeType.
 func (engine *SpanEngine) Handles(mimeType mimetype.MimeType) bool {
 	return engine.HandlesEncode(mimeType) && engine.HandlesDecode(mimeType)
 }
@@ -125,7 +219,7 @@ func (engine *SpanEngine) safeDecode(
 	return err
 }
 
-// attempts to decode content with all registered decoders until one succeeds or all
+// Attempts to decode content with all registered decoders until one succeeds or all
 // fail.
 func (engine *SpanEngine) sniffContent(
 	mimeType mimetype.MimeType,

@@ -3,58 +3,42 @@ package errors_api
 import (
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/xerrors"
-	"runtime/debug"
 	"spantools/encoders"
 	"spantools/mimetype"
 	"strconv"
 	"strings"
 )
 
-// Returns a new span error to be returned by the route handler or panicked.
-func NewSpanError(
-	errorType *SpanErrorType,
-	message string,
-	errorData map[string]interface{},
-	source error,
-) *SpanError {
-	spanError := SpanError{
-		ErrorType:   errorType,
-		Message:     message,
-		ID:          uuid.NewV4(),
-		ErrorData:   errorData,
-		sourceErr:   source,
-		sourceStack: debug.Stack(),
-		frame:       xerrors.Caller(0),
+// Returns a span error type definition. Each definition should only need to be declared
+// once in a shared library for any given ecosystem, ensuring consistent error codes and
+// names for the error type across all services / libraries of a given language.
+func NewSpanErrorType(
+	name string,
+	apiCode int,
+	httpCode int,
+) *SpanErrorType {
+	spanError := &SpanErrorType{
+		name:     name,
+		apiCode:  apiCode,
+		httpCode: httpCode,
 	}
-	return &spanError
-}
-
-// Creates a new error that is immediately passed to a panic. Expected to be recovered
-// by the SpanError middleware. Allows for errors_api to be generated from anywhere
-// inside the route handle without need to explicitly pass them up a chain of nested
-// function returns.
-func PanicSpanError(
-	errorType *SpanErrorType,
-	message string,
-	errorData map[string]interface{},
-	source error,
-) {
-	spanError := NewSpanError(errorType, message, errorData, source)
-	panic(spanError)
+	return spanError
 }
 
 type headerFetcher interface {
 	Get(key string) string
 }
 
-// ErrorFromHeaders generates error object from headers of HTTP response. If a spanError
-// object can be  made from the header data, a pointer to it is returned. If a spanError
-// code is detected in the headers, but the header data is malformed and cannot be
-// loaded, then hasError is returned as True, and a description of the parsing issue is
-// returned in err.
-//
-// If the headers do not contain an error and hasError will be False, spanError will
-// be returned as a nil pointer, and err will specify that no error was found.
+/*
+ErrorFromHeaders generates error object from headers of HTTP response. If a spanError
+object can be  made from the header data, a pointer to it is returned. If a spanError
+code is detected in the headers, but the header data is malformed and cannot be
+loaded, then hasError is returned as True, and a description of the parsing issue is
+returned in err.
+
+If the headers do not contain an error and hasError will be False, spanError will
+be returned as a nil pointer, and err will specify that no error was found.
+*/
 func ErrorFromHeaders(
 	headers headerFetcher,
 	dataEngine encoders.ContentEngine,
@@ -106,8 +90,8 @@ func ErrorFromHeaders(
 		}
 	}
 
-	spanError = NewSpanError(
-		errorType, errorMessage, errorData, nil,
+	spanError = errorType.New(
+		errorMessage, errorData, nil,
 	)
 	spanError.ID = errorID
 
