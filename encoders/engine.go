@@ -114,6 +114,11 @@ The following type extensions ship with SpanEngine:
 • primitive.Binary of subtype 0x0 can be decoded to / encoded from the BinData named
 type of []byte in the "spantypes" module.
 
+Default Text/Plain Returns
+
+When encoding to plaintext, format.Sprint is used on the passed object, so any type
+can be sent and represented as text.
+
 Type Sniffing
 
 If created with "sniffMimeType" set to true, when decoding SpanEngine will attempt

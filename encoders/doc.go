@@ -2,8 +2,8 @@
 /*
 Spantool's goal is to make a single interface specification for any given content type,
 so that content can be determined and decoded dynamically based on message headers or
-mimetype sniffing so mimetype-specific methods do not have to be explicitly called by
-the developer when decoding content.
+mimetype sniffing, removing the need to explicitly call mimetype-specific methods when
+decoding content.
 
 Specific objectives
 
@@ -16,9 +16,12 @@ a shared library and gotten for free by an entire ecosystem.
 
 3. Content encoding and decoding support should be independent of service pattern. IE,
 adding support for understanding yaml should upgrade both REST server and http client
-libraries.
+libraries on a rebuild.
 
 4. Developers can easily extend all of their services to support a new content type
 by creating their own encoders.
+
+5. All default encoders shipped with spantools can be easily extendable to handle
+custom types.
 */
 package encoders

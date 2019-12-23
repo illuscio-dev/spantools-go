@@ -7,13 +7,14 @@ import (
 	"io"
 )
 
+// TODO: Add ability to register custom formatting functions for named types.
+
 // Handled encoding to / decoding from text/plain
 type textEncoder struct{}
 
 func (handler *textEncoder) Encode(
 	engine ContentEngine, writer io.Writer, content interface{},
 ) error {
-
 	contentString := fmt.Sprint(content)
 	_, err := io.WriteString(writer, contentString)
 
