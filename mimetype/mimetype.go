@@ -1,3 +1,4 @@
+// Enumeration-like type for content mimetypes.
 package mimetype
 
 import (

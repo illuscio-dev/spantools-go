@@ -29,4 +29,6 @@ install-dev:
 .PHONY: doc
 doc:
 	docmodule-go
-	open ./zdocs/build/index.html
+	python setup.py build_sphinx -E
+	sleep 1
+	open ./zdocs/build/html/index.html
