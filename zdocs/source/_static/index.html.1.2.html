@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>mimetype - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:6161/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:6161/pkg/">GoDoc</a></div>
+<a href="index.html.1.2.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package mimetype
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "spantools/mimetype"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="index.html.1.2.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="index.html.1.2.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Enumeration-like type for content mimetypes.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="index.html.1.2.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="index.html.1.2.html#MimeType">type MimeType</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html.1.2.html#FromHeader">func FromHeader(headers headerFetcher) MimeType</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html.1.2.html#FromString">func FromString(incoming string) MimeType</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/spantools/mimetype/mimetype.go">mimetype.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="JSON">JSON</span> = <a href="index.html.1.2.html#MimeType">MimeType</a>(&#34;application/json&#34;)
+    <span id="BSON">BSON</span> = <a href="index.html.1.2.html#MimeType">MimeType</a>(&#34;application/bson&#34;)
+    <span id="YAML">YAML</span> = <a href="index.html.1.2.html#MimeType">MimeType</a>(&#34;application/yaml&#34;)
+    <span id="TEXT">TEXT</span> = <a href="index.html.1.2.html#MimeType">MimeType</a>(&#34;text/plain&#34;)
+    <span class="comment">// UNKNOWN is used when the incoming string is blank</span>
+    <span id="UNKNOWN">UNKNOWN</span> = <a href="index.html.1.2.html#MimeType">MimeType</a>(&#34;&#34;)
+)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="MimeType">type <a href="http://localhost:6161/src/spantools/mimetype/mimetype.go?s=266:286#L4">MimeType</a>
+				<a class="permalink" href="index.html.1.2.html#MimeType">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MimeType is used to enumerate the default representation for content encoding types.
+Non default MimeTypes can be used by wrapping a custom string:
+</p>
+<pre>MimeType(&#34;text/csv&#34;)
+</pre>
+
+			<pre>type MimeType <a href="http://localhost:6161/pkg/builtin/#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FromHeader">func <a href="http://localhost:6161/src/spantools/mimetype/mimetype.go?s=874:921#L26">FromHeader</a>
+					<a class="permalink" href="index.html.1.2.html#FromHeader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FromHeader(headers headerFetcher) <a href="index.html.1.2.html#MimeType">MimeType</a></pre>
+				<p>
+Extract content type from a message / request header.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FromString">func <a href="http://localhost:6161/src/spantools/mimetype/mimetype.go?s=1259:1300#L45">FromString</a>
+					<a class="permalink" href="index.html.1.2.html#FromString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FromString(incoming <a href="http://localhost:6161/pkg/builtin/#string">string</a>) <a href="index.html.1.2.html#MimeType">MimeType</a></pre>
+				<p>
+Convert MimeType from a string. Ignores case. If the MimeType is a default type,
+multiple formats are respected. For instance, all of the following will yield
+&#34;mimetype.JSON&#34;:
+</p>
+<p>
+• &#34;application/json&#34;&ldquo;
+</p>
+<p>
+• &#34;application/JSON&#34;
+</p>
+<p>
+• &#34;application/x-json&#34;
+</p>
+<p>
+• &#34;json&#34;
+</p>
+<p>
+• &#34;x-json&#34;
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
