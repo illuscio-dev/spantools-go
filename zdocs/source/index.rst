@@ -726,11 +726,22 @@ Output: ::
     being added. Side-stepping it may cause panics when dumping a database document
     directly to json.
 
-Errors Quickstart
-=================
+API Errors
+==========
+
+APIError and exceptions that inherit from it are designed to be raised by spanserver
+during the processing of a request, then transmitted back for handling.
+
+API exceptions are found in this toolbox for libraries which wish to consume these
+errors without installing spanserver and all of its dependencies.
+
+These errors can be found in the ``spantools.errors_api`` package.
 
 Paging Models
 =============
+
+Paging models are designed to help spanserver / spanclient communicate about paging
+information, and can be found in the ``spantools.models``
 
 
 API documentation
