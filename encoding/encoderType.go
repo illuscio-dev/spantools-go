@@ -1,4 +1,4 @@
-package encoders
+package encoding
 
 import (
 	"io"
@@ -8,7 +8,7 @@ import (
 type Encoder interface {
 	// To be implemented by content encoder. Implementation is expected to write content
 	// to writer. The content engine which is calling Encode is made available through
-	// engine, allowing encoders to access engine-level settings.
+	// engine, allowing encoding to access engine-level settings.
 	Encode(engine ContentEngine, writer io.Writer, content interface{}) error
 }
 
@@ -18,5 +18,5 @@ type Decoder interface {
 	// from reader and unmarshal it into contentReceiver. The content engine which is
 	// calling Decode is made available through engine, allowing decoders to access
 	// engine-level settings.
-	Decode(handler ContentEngine, reader io.Reader, contentReceiver interface{}) error
+	Decode(engine ContentEngine, reader io.Reader, contentReceiver interface{}) error
 }

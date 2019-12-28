@@ -9,7 +9,7 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/encoders"
+	"spantools/encoding"
 	"spantools/mimetype"
 	"testing"
 )
@@ -22,19 +22,19 @@ type Name struct {
 type PanickyEncoder struct{}
 
 func (encoder *PanickyEncoder) Encode(
-	handler encoders.ContentEngine, writer io.Writer, content interface{},
+	handler encoding.ContentEngine, writer io.Writer, content interface{},
 ) error {
 	panic(xerrors.New("encode panicked"))
 }
 
 func (encoder *PanickyEncoder) Decode(
-	handler encoders.ContentEngine, reader io.Reader, contentReceiver interface{},
+	handler encoding.ContentEngine, reader io.Reader, contentReceiver interface{},
 ) error {
 	panic(xerrors.New("decode panicked"))
 }
 
-func createEngine(test *testing.T) encoders.ContentEngine {
-	engine, err := encoders.NewContentEngine(true)
+func createEngine(test *testing.T) encoding.ContentEngine {
+	engine, err := encoding.NewContentEngine(true)
 	if err != nil {
 		test.Error(err)
 	}
@@ -42,22 +42,24 @@ func createEngine(test *testing.T) encoders.ContentEngine {
 }
 
 func TestCreateEngineDefault(test *testing.T) {
-	engine, err := encoders.NewContentEngine(false)
+	assert := assert.New(test)
 
-	assert.Nil(test, err)
-	assert.NotNil(test, engine)
+	engine, err := encoding.NewContentEngine(false)
 
-	_ = engine.(encoders.ContentEngine)
-	_ = engine.(*encoders.SpanEngine)
+	assert.Nil(err)
+	assert.NotNil(engine)
+
+	assert.NotNil(engine.JsonHandle())
+	assert.NotNil(engine.BsonRegistry())
 
 	// Test that all the defaults registered appropriately.
-	assert.Equal(test, true, engine.Handles(mimetype.JSON))
-	assert.Equal(test, true, engine.Handles(mimetype.BSON))
-	assert.Equal(test, true, engine.Handles(mimetype.TEXT))
+	assert.Equal(true, engine.Handles(mimetype.JSON))
+	assert.Equal(true, engine.Handles(mimetype.BSON))
+	assert.Equal(true, engine.Handles(mimetype.TEXT))
 
-	assert.Equal(test, false, engine.Handles(mimetype.MimeType("text/csv")))
+	assert.Equal(false, engine.Handles(mimetype.MimeType("text/csv")))
 
-	assert.Equal(test, false, engine.SniffType())
+	assert.Equal(false, engine.SniffType())
 }
 
 // Generic function for round-tripping a basic name object for a given mimeType
@@ -112,7 +114,7 @@ func TestBSONToUnknownRoundTrip(test *testing.T) {
 }
 
 func TestTextRoundTrip(test *testing.T) {
-	engine, err := encoders.NewContentEngine(false)
+	engine, err := encoding.NewContentEngine(false)
 	if err != nil {
 		test.Error(test)
 	}
@@ -135,7 +137,7 @@ func TestTextRoundTrip(test *testing.T) {
 }
 
 func TestTextRoundUnknown(test *testing.T) {
-	engine, err := encoders.NewContentEngine(true)
+	engine, err := encoding.NewContentEngine(true)
 	if err != nil {
 		test.Error(test)
 	}
@@ -208,7 +210,7 @@ func TestDecoderPanicsError(test *testing.T) {
 }
 
 func TestNoSniffError(test *testing.T) {
-	engine, err := encoders.NewContentEngine(false)
+	engine, err := encoding.NewContentEngine(false)
 	if err != nil {
 		test.Error(err)
 	}
@@ -300,7 +302,7 @@ func TestErrorAddindJsonHandle(test *testing.T) {
 		mockSetInterfaceExt,
 	)
 
-	_, err := encoders.NewContentEngine(false)
+	_, err := encoding.NewContentEngine(false)
 	assert.EqualError(
 		test,
 		err,
@@ -329,7 +331,7 @@ func TestErrorAddingBsonCodec(test *testing.T) {
 		mockSetInterfaceExt,
 	)
 
-	_, err := encoders.NewContentEngine(false)
+	_, err := encoding.NewContentEngine(false)
 	assert.EqualError(
 		test,
 		err,
@@ -382,4 +384,57 @@ func TestClosesReader(test *testing.T) {
 
 	assert.True(closer.Closed)
 	assert.Equal(name, loaded)
+}
+
+// Custom Engine and encoder we are going to use in the next test
+type CustomEngine struct {
+	*encoding.SpanEngine
+	AppName string
+}
+
+type CustomTextEncoder struct{}
+
+func (encoder CustomTextEncoder) Encode(
+	engine encoding.ContentEngine, writer io.Writer, content interface{},
+) error {
+	// Make a type assert to convert the engine interface passed in to the encoder
+	// to our engine type.
+	ourEngine := engine.(*CustomEngine)
+
+	// This Encoder is only going to accept strings, so we're going to assert the
+	// type here.
+	contentString := content.(string)
+	contentString = ourEngine.AppName + " says: '" + contentString + "'."
+
+	_, err := writer.Write([]byte(contentString))
+	if err != nil {
+		return xerrors.Errorf("error writing text to payload: %w", err)
+	}
+	return nil
+}
+
+func TestExtendEngine(test *testing.T) {
+
+	engine, err := encoding.NewContentEngine(false)
+	if err != nil {
+		panic(err)
+	}
+
+	ourEngine := &CustomEngine{
+		SpanEngine: engine,
+		AppName:    "MyAwesomeApp",
+	}
+	ourEngine.SetPassedEngine(ourEngine)
+
+	ourEngine.SetEncoder(mimetype.TEXT, &CustomTextEncoder{})
+
+	buffer := new(bytes.Buffer)
+	err = ourEngine.Encode(mimetype.TEXT, "some message", buffer)
+	if err != nil {
+		panic(err)
+	}
+
+	assert.Equal(
+		test, "MyAwesomeApp says: 'some message'.", buffer.String(),
+	)
 }

@@ -10,7 +10,7 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/encoders"
+	"spantools/encoding"
 	"spantools/mimetype"
 	"spantools/spantypes"
 	"testing"
@@ -304,7 +304,7 @@ func TestBSONListEncodeErrorWritingSeparator(test *testing.T) {
 	buffer := &bytes.Buffer{}
 
 	mockBufferWrite := func(buff *bytes.Buffer, data []byte) (int, error) {
-		if string(data) == encoders.BsonListSepString {
+		if string(data) == encoding.BsonListSepString {
 			return 0, xerrors.New("mock error")
 		} else {
 			return len(data), nil

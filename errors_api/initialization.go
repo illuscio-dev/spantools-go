@@ -3,7 +3,7 @@ package errors_api
 import (
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/xerrors"
-	"spantools/encoders"
+	"spantools/encoding"
 	"spantools/mimetype"
 	"strconv"
 	"strings"
@@ -41,7 +41,7 @@ be returned as a nil pointer, and err will specify that no error was found.
 */
 func ErrorFromHeaders(
 	headers headerFetcher,
-	dataEngine encoders.ContentEngine,
+	dataEngine encoding.ContentEngine,
 	errorTypeCodeIndex map[int]*SpanErrorType,
 ) (spanError *SpanError, hasError bool, err error) {
 

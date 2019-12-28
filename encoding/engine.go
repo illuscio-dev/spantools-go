@@ -1,4 +1,4 @@
-package encoders
+package encoding
 
 import (
 	"bytes"
@@ -41,8 +41,8 @@ type ContentEngine interface {
 	// Whether the engine will attempt to encode / decode unknown mimetypes.
 	SniffType() bool
 
-	// Decode mimeType content from reader using the decoder for mimeType. Decoded content is
-	// stored in contentReceiver.
+	// Decode mimeType content from reader using the decoder for mimeType. Decoded
+	// content is stored in contentReceiver.
 	Decode(
 		mimeType mimetype.MimeType,
 		contentReceiver interface{},
@@ -74,7 +74,7 @@ Default Mimetypes
 
 • application/bson
 
-Object encoders/decoders have been selected to be extensible, and SpanEngine exposes
+Object encoding/decoders have been selected to be extensible, and SpanEngine exposes
 functions to let you add custom type handlers to each.
 
 Default JSON Extensions
@@ -147,6 +147,13 @@ type SpanEngine struct {
 	bsonRegistry *bsoncodec.Registry
 	// BSON codecs
 	bsonCodecs []*BsonCodecOpts
+	// Engine to pass to Encoder.Encoder() and Decoder.Decode() methods.
+	passedEngine ContentEngine
+}
+
+// Change the engine passed into Encoder.Encode() and decoder.Decode()
+func (engine *SpanEngine) SetPassedEngine(newEngine ContentEngine) {
+	engine.passedEngine = newEngine
 }
 
 // Register an encoder for a given mimeType
@@ -193,6 +200,16 @@ func (engine *SpanEngine) Handles(mimeType mimetype.MimeType) bool {
 	return engine.HandlesEncode(mimeType) && engine.HandlesDecode(mimeType)
 }
 
+// Select what engine to pass into the encoder / decoder in case we are extending
+// the engine type.
+func (engine *SpanEngine) getEngine() ContentEngine {
+	if engine.passedEngine != nil {
+		return engine.passedEngine
+	} else {
+		return engine
+	}
+}
+
 // Uses a decoder while catching panics to return as errors
 func (engine *SpanEngine) safeEncode(
 	encoder Encoder, writer io.Writer, content interface{},
@@ -204,7 +221,8 @@ func (engine *SpanEngine) safeEncode(
 		}
 	}()
 
-	err = encoder.Encode(engine, writer, content)
+	passEngine := engine.getEngine()
+	err = encoder.Encode(passEngine, writer, content)
 	return err
 }
 
@@ -219,7 +237,8 @@ func (engine *SpanEngine) safeDecode(
 		}
 	}()
 
-	err = decoder.Decode(engine, reader, contentReceiver)
+	passEngine := engine.getEngine()
+	err = decoder.Decode(passEngine, reader, contentReceiver)
 
 	return err
 }
@@ -350,7 +369,16 @@ func (engine *SpanEngine) Encode(
 	return nil
 }
 
-// Adds JSON extensions to handle
+func (engine *SpanEngine) JsonHandle() *codec.JsonHandle {
+	return engine.jsonHandle
+}
+
+// Returns the internal bsoncodec.BsonRegistry used by the bson encoder/decoder.
+func (engine *SpanEngine) BsonRegistry() *bsoncodec.Registry {
+	return engine.bsonRegistry
+}
+
+// Adds JSON extensions to handle.
 func (engine *SpanEngine) AddJsonExtensions(extensions []*JsonExtensionOpts) error {
 	for _, extOpts := range extensions {
 		err := engine.jsonHandle.SetInterfaceExt(
@@ -365,6 +393,7 @@ func (engine *SpanEngine) AddJsonExtensions(extensions []*JsonExtensionOpts) err
 	return nil
 }
 
+// Adds BSON codecs to engine for use when encoding/decoding bson data.
 func (engine *SpanEngine) AddBsonCodecs(codecs []*BsonCodecOpts) error {
 	// Store these codecs for later in case more are added by the end user and we need
 	// to declare a new engine.
@@ -397,7 +426,7 @@ func (engine *SpanEngine) AddBsonCodecs(codecs []*BsonCodecOpts) error {
 	return nil
 }
 
-func NewContentEngine(allowSniff bool) (ContentEngine, error) {
+func NewContentEngine(allowSniff bool) (*SpanEngine, error) {
 	// Create the json handle.
 	jsonHandle := &codec.JsonHandle{}
 
@@ -410,7 +439,7 @@ func NewContentEngine(allowSniff bool) (ContentEngine, error) {
 		bsonRegistry:  nil,
 	}
 
-	// Add the encoders.
+	// Add the encoding.
 	engine.SetEncoder(mimetype.JSON, &jsonEncoder{})
 	engine.SetEncoder(mimetype.BSON, &bsonEncoder{})
 	engine.SetEncoder(mimetype.TEXT, &textEncoder{})
@@ -432,7 +461,5 @@ func NewContentEngine(allowSniff bool) (ContentEngine, error) {
 		return nil, err
 	}
 
-	// Return the engine.
-	engineReturn := ContentEngine(engine)
-	return engineReturn, nil
+	return engine, nil
 }

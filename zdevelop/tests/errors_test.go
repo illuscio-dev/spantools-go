@@ -6,7 +6,7 @@ import (
 	"golang.org/x/xerrors"
 	"net/http"
 	"reflect"
-	"spantools/encoders"
+	"spantools/encoding"
 	"spantools/errors_api"
 	"testing"
 )
@@ -39,7 +39,7 @@ func verifyError(test *testing.T, spanErr *errors_api.SpanError) {
 // tests where we need to dump to or pull from headers.
 func setupHeadersTest(
 	test *testing.T,
-) (*errors_api.SpanError, *http.Request, encoders.ContentEngine) {
+) (*errors_api.SpanError, *http.Request, encoding.ContentEngine) {
 	testReq := http.Request{
 		Header: make(http.Header),
 	}
@@ -202,13 +202,13 @@ func (ext *jsonExtBadType) UpdateExt(dest interface{}, value interface{}) {
 // Tests that
 func TestErrorDumpingData(test *testing.T) {
 	spanErr, testReq, engine := setupHeadersTest(test)
-	spanEngine := engine.(*encoders.SpanEngine)
+	spanEngine := engine.(*encoding.SpanEngine)
 
-	badTypeOpts := encoders.JsonExtensionOpts{
+	badTypeOpts := encoding.JsonExtensionOpts{
 		ValueType:    reflect.TypeOf(badType("")),
 		ExtInterface: &jsonExtBadType{},
 	}
-	err := spanEngine.AddJsonExtensions([]*encoders.JsonExtensionOpts{&badTypeOpts})
+	err := spanEngine.AddJsonExtensions([]*encoding.JsonExtensionOpts{&badTypeOpts})
 	if err != nil {
 		test.Error(err)
 	}

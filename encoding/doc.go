@@ -19,9 +19,9 @@ adding support for understanding yaml should upgrade both REST server and http c
 libraries on a rebuild.
 
 4. Developers can easily extend all of their services to support a new content type
-by creating their own encoders.
+by creating their own encoding.
 
-5. All default encoders shipped with spantools can be easily extendable to handle
+5. All default encoding shipped with spantools can be easily extendable to handle
 custom types.
 */
-package encoders
+package encoding

@@ -6,7 +6,7 @@ import (
 	"github.com/satori/go.uuid"
 	"golang.org/x/xerrors"
 	"runtime/debug"
-	"spantools/encoders"
+	"spantools/encoding"
 	"spantools/mimetype"
 	"strconv"
 )
@@ -168,7 +168,7 @@ func (spanError *SpanError) LogMessage() string {
 // Writes error to an object which implements a Set(key string, value string) method
 // like http.Request or http.Response.
 func (spanError *SpanError) ToHeader(
-	setter headerSetter, dataEngine encoders.ContentEngine,
+	setter headerSetter, dataEngine encoding.ContentEngine,
 ) error {
 	setter.Set("error-name", spanError.name)
 	setter.Set("error-code", strconv.Itoa(spanError.apiCode))
