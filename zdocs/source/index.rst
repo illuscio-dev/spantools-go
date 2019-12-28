@@ -507,6 +507,12 @@ Output: ::
       json object. Included to enable the direct return of a Bson document from a mongo
       database.
 
+.. note::
+
+    Named types can implement json.Marshaler, json.TextMarshaler, or codec.Selfer for
+    marshaling and their unmarshaling counterparts to handle encoding and decoding.
+    ``spantypes.BinData`` is handled in this manner.
+
 .. warning::
 
     **Bson Types: Encode-Only**
@@ -698,6 +704,11 @@ Output: ::
 
     • Binary blob data represented as ``spantypes.BinData`` are converted to/from
       `primitive.Binary`_ subtype 0x0.
+
+.. note::
+
+    Named types can implement bsoncodec.ValueMarshaler and bsoncodec.ValueUnmarshaler
+    to handle encoding and decoding. ``spantypes.BinData`` is handled in this manner.
 
 .. note::
 

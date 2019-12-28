@@ -1,7 +1,6 @@
 package encoding
 
 import (
-	"encoding/hex"
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"github.com/ugorji/go/codec"
@@ -28,35 +27,6 @@ var defaultJSONExtensions = []*JsonExtensionOpts{
 		ValueType:    reflect.TypeOf(primitive.Binary{}),
 		ExtInterface: &jsonExtBsonBinary{},
 	},
-	{
-		ValueType:    reflect.TypeOf(make(spantypes.BinData, 0)),
-		ExtInterface: &jsonExtBinData{},
-	},
-}
-
-// Json handle extension for sending and receiving binary blob data (ie raw file data)
-// in a json field.
-type jsonExtBinData struct{}
-
-func (ext *jsonExtBinData) ConvertExt(value interface{}) interface{} {
-	valueBin := value.(spantypes.BinData)
-	hexValue := hex.EncodeToString(valueBin)
-
-	return hexValue
-}
-
-func (ext *jsonExtBinData) UpdateExt(dest interface{}, value interface{}) {
-	destVal := dest.(*spantypes.BinData)
-	sourceVal := value.(string)
-
-	binData, err := hex.DecodeString(sourceVal)
-	if err != nil {
-		panic(
-			xerrors.Errorf("could not decode hex: %w", err),
-		)
-	}
-
-	*destVal = binData
 }
 
 // Converts BSON binary fields to json. Currently supports Binary blobs and UUIDs.

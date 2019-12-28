@@ -208,6 +208,35 @@ func TestNonHexDecodeError(test *testing.T) {
 	)
 }
 
+func TestNonHexEncodeErrorLen(test *testing.T) {
+	engine := createEngine(test)
+
+	buffer := bytes.Buffer{}
+	_, err := io.WriteString(&buffer, "Test Data.")
+	if err != nil {
+		test.Error(err)
+	}
+
+	binData := spantypes.BinData(buffer.Bytes())
+	data := map[string]interface{}{"Data": binData}
+
+	mockHexEncode := func(dst []byte, src []byte) int { return 1 }
+
+	monkey.Patch(
+		hex.Encode,
+		mockHexEncode,
+	)
+	defer monkey.UnpatchAll()
+
+	contentBuffer := new(bytes.Buffer)
+	err = engine.Encode(mimetype.JSON, data, contentBuffer)
+	assert.EqualError(
+		test,
+		err,
+		"encode err: json encode error: error encoding BinData to hex",
+	)
+}
+
 func TestBsonUUIDError(test *testing.T) {
 	assert := assert.New(test)
 	engine := createEngine(test)

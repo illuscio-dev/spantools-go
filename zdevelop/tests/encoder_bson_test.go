@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/x/bsonx/bsoncore"
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
@@ -151,31 +152,88 @@ func TestUUIDToBSON(test *testing.T) {
 	assert.Equal(test, data.Data, loaded.Data)
 }
 
-func TestBinBlobToBSON(test *testing.T) {
-	engine := createEngine(test)
+type BinReceiver struct {
+	Data spantypes.BinData
+}
 
-	type Receiver struct {
-		Data spantypes.BinData
-	}
-
-	buffer := bytes.Buffer{}
-	_, err := io.WriteString(&buffer, "Test Data.")
+func setupBinData(
+	test *testing.T, engine encoding.ContentEngine,
+) (dumpedObject *BinReceiver, contentBuffer *bytes.Buffer) {
+	buffer := new(bytes.Buffer)
+	_, err := io.WriteString(buffer, "Test Data.")
 	if err != nil {
 		test.Error(err)
 	}
 
 	binData := buffer.Bytes()
-	data := Receiver{Data: spantypes.BinData(binData)}
+	data := &BinReceiver{Data: spantypes.BinData(binData)}
 
-	buffer = bytes.Buffer{}
-	engine.Encode(mimetype.BSON, &data, &buffer)
+	buffer = new(bytes.Buffer)
+	err = engine.Encode(mimetype.BSON, &data, buffer)
+	if err != nil {
+		test.Error(err)
+	}
 
 	test.Logf("Dumped: %s", buffer.String())
+	return data, buffer
+}
 
-	loaded := Receiver{}
-	engine.Decode(mimetype.BSON, &loaded, &buffer)
+func TestBinBlobToBSON(test *testing.T) {
+	engine := createEngine(test)
 
-	assert.Equal(test, data.Data, loaded.Data)
+	dumpedObj, contentBuffer := setupBinData(test, engine)
+
+	loaded := BinReceiver{}
+	err := engine.Decode(mimetype.BSON, &loaded, contentBuffer)
+	if err != nil {
+		test.Error(err)
+	}
+
+	assert.Equal(test, dumpedObj.Data, loaded.Data)
+}
+
+func TestUnmarshalToBinDataUnknownError(test *testing.T) {
+	engine := createEngine(test)
+
+	_, contentBuffer := setupBinData(test, engine)
+
+	mockReadBinary := func(src []byte) (subtype byte, bin []byte, rem []byte, ok bool) {
+		return 0x0, make([]byte, 0), make([]byte, 0), false
+	}
+
+	monkey.Patch(
+		bsoncore.ReadBinary,
+		mockReadBinary,
+	)
+
+	loaded := new(BinReceiver)
+	err := engine.Decode(mimetype.BSON, loaded, contentBuffer)
+	assert.EqualError(
+		test, err, "decode err: unknown error decoding spantools.BinData",
+	)
+}
+
+func TestUnmarshalToBinDataWrongSubtype(test *testing.T) {
+	engine := createEngine(test)
+
+	_, contentBuffer := setupBinData(test, engine)
+
+	mockReadBinary := func(src []byte) (subtype byte, bin []byte, rem []byte, ok bool) {
+		return 0x5, make([]byte, 0), make([]byte, 0), true
+	}
+
+	monkey.Patch(
+		bsoncore.ReadBinary,
+		mockReadBinary,
+	)
+
+	loaded := new(BinReceiver)
+	err := engine.Decode(mimetype.BSON, loaded, contentBuffer)
+	assert.EqualError(
+		test,
+		err,
+		"decode err: spantools.BinData field is not bson subtype 0x0",
+	)
 }
 
 func TestErrorDecodingUUID(test *testing.T) {

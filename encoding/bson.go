@@ -10,7 +10,6 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/spantypes"
 )
 
 // BSON does not generically support top-level lists. When multiple documents are being
@@ -58,10 +57,6 @@ var defaultBsonCodecs = []*BsonCodecOpts{
 		ValueType: reflect.TypeOf(uuid.UUID{}),
 		Codec:     bsonCodecUUID{},
 	},
-	{
-		ValueType: reflect.TypeOf(make(spantypes.BinData, 0)),
-		Codec:     bsonCodecBinData{},
-	},
 }
 
 // CODECS
@@ -95,35 +90,6 @@ func (codec bsonCodecUUID) DecodeValue(
 	}
 
 	value.Set(reflect.ValueOf(uuidVal))
-
-	return nil
-}
-
-// BinaryBlob load/dump
-type bsonCodecBinData struct{}
-
-// Encodes blob value to bson.
-func (codec bsonCodecBinData) EncodeValue(
-	encodeCTX bsoncodec.EncodeContext,
-	valueWriter bsonrw.ValueWriter,
-	value reflect.Value,
-) error {
-	valueBin, _ := value.Interface().(spantypes.BinData)
-	_ = valueWriter.WriteBinaryWithSubtype(valueBin, 0x0)
-
-	return nil
-}
-
-// Decodes blob value value from bson.
-func (codec bsonCodecBinData) DecodeValue(
-	decodeCTX bsoncodec.DecodeContext,
-	valueReader bsonrw.ValueReader,
-	value reflect.Value,
-) error {
-	bytesBlob, _, _ := valueReader.ReadBinary()
-	bytesValue := spantypes.BinData(bytesBlob)
-
-	value.Set(reflect.ValueOf(bytesValue))
 
 	return nil
 }
