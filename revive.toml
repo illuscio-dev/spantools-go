@@ -156,7 +156,7 @@ warningCode = 1
 
 # This rule warns when variable or package naming conventions are not followed.
 [rule.var-naming]
-    arguments = [[],["HTTP", "ID", "JSON"]]
+    arguments = [["HTTP", "ID", "JSON", "API"],[]]
 
 # This rule proposes simplifications of variable declarations.
 [rule.var-declaration]

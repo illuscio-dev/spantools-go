@@ -31,7 +31,7 @@ func verifyError(test *testing.T, spanErr *spanerrors.SpanError) {
 	assert := assert.New(test)
 
 	assert.Equal(spanerrors.ResponseValidationError, spanErr.SpanErrorType)
-	assert.NotEqual(uuid.Nil, spanErr.ID)
+	assert.NotEqual(uuid.Nil, spanErr.Id)
 	assert.Equal("test message", spanErr.Message)
 	assert.Equal(map[string]interface{}{"key": "value"}, spanErr.ErrorData)
 	assert.Error(xerrors.New("some source error"), spanErr.Unwrap())
@@ -55,8 +55,8 @@ func TestNewSpanError(test *testing.T) {
 	verifyError(test, spanErr)
 
 	assert.Equal("ResponseValidationError", spanErr.Name())
-	assert.Equal(1005, spanErr.APICode())
-	assert.Equal(400, spanErr.HTTPCode())
+	assert.Equal(1005, spanErr.ApiCode())
+	assert.Equal(400, spanErr.HttpCode())
 
 	assert.True(spanErr.IsType(spanerrors.ResponseValidationError))
 	assert.False(spanErr.IsType(spanerrors.RequestValidationError))
@@ -77,8 +77,8 @@ func TestPanicSpanError(test *testing.T) {
 
 			verifyError(test, spanErr)
 			assert.Equal("ResponseValidationError", spanErr.Name())
-			assert.Equal(1005, spanErr.APICode())
-			assert.Equal(400, spanErr.HTTPCode())
+			assert.Equal(1005, spanErr.ApiCode())
+			assert.Equal(400, spanErr.HttpCode())
 
 			assert.True(spanErr.IsType(spanerrors.ResponseValidationError))
 			assert.False(spanErr.IsType(spanerrors.RequestValidationError))
@@ -102,9 +102,9 @@ func TestPanicSpanError(test *testing.T) {
 func TestWithHttpCodeType(test *testing.T) {
 	assert := assert.New(test)
 
-	assert.Equal(spanerrors.ServerError.HTTPCode(), -1)
-	spanErrType := spanerrors.ServerError.WithHTTPCode(500)
-	assert.Equal(spanErrType.HTTPCode(), 500)
+	assert.Equal(spanerrors.ServerError.HttpCode(), -1)
+	spanErrType := spanerrors.ServerError.WithHttpCode(500)
+	assert.Equal(spanErrType.HttpCode(), 500)
 
 	spanErr := spanErrType.New("some message", nil, nil)
 
@@ -185,7 +185,7 @@ func TestFromHeaders(test *testing.T) {
 
 	assert.True(hasErr)
 	assert.Equal(spanErr.Error(), errLoaded.Error())
-	assert.Equal(spanErr.ID, errLoaded.ID)
+	assert.Equal(spanErr.Id, errLoaded.Id)
 	assert.Equal(spanErr.ErrorData, errLoaded.ErrorData)
 }
 
@@ -291,7 +291,7 @@ func TestErrorBadID(test *testing.T) {
 
 	assert.Nil(spanErr)
 	assert.True(hasErr)
-	assert.EqualError(err, "error ID is not valid UUID")
+	assert.EqualError(err, "error Id is not valid UUID")
 }
 
 func TestErrorBadData(test *testing.T) {
@@ -351,7 +351,7 @@ func TestCustomErrorFromHeader(test *testing.T) {
 	for key, value := range spanerrors.ErrorTypeCodeIndex {
 		CustomErrorIndex[key] = value
 	}
-	CustomErrorIndex[CustomErrorType.APICode()] = CustomErrorType
+	CustomErrorIndex[CustomErrorType.ApiCode()] = CustomErrorType
 
 	testReq.Header.Set("error-code", "2001")
 	testReq.Header.Set("error-id", uuid.NewV4().String())

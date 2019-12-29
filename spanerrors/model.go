@@ -20,7 +20,7 @@ type headerSetter interface {
 Used to define a type of error that a service can return. Think of to define a TYPE of
 error that CAN be returned by your ecosystem, but
 
-Each SpanErrorType for a given ecosystem should have a unique Name and APICode.
+Each SpanErrorType for a given ecosystem should have a unique Name and ApiCode.
 
 Codes 1000-1999 are reserved for Spanreeds default error definitions.
 
@@ -49,7 +49,7 @@ func (errorType *SpanErrorType) New(
 	spanError := SpanError{
 		SpanErrorType: errorType,
 		Message:       message,
-		ID:            uuid.NewV4(),
+		Id:            uuid.NewV4(),
 		ErrorData:     errorData,
 		sourceErr:     source,
 		sourceStack:   debug.Stack(),
@@ -79,18 +79,18 @@ func (errorType *SpanErrorType) Name() string {
 }
 
 // Unique number to identify the error type in the API ecosystem.
-func (errorType *SpanErrorType) APICode() int {
+func (errorType *SpanErrorType) ApiCode() int {
 	return errorType.apiCode
 }
 
 // HTTP code that should be returned when this error type is returned. Set to -1
 // if the http error is determined dynamically.
-func (errorType *SpanErrorType) HTTPCode() int {
+func (errorType *SpanErrorType) HttpCode() int {
 	return errorType.httpCode
 }
 
 // Returns a copy of the error type with the given http code replaced.
-func (errorType *SpanErrorType) WithHTTPCode(newHTTPCode int) *SpanErrorType {
+func (errorType *SpanErrorType) WithHttpCode(newHTTPCode int) *SpanErrorType {
 	return &SpanErrorType{
 		name:     errorType.name,
 		apiCode:  errorType.apiCode,
@@ -114,7 +114,7 @@ type SpanError struct {
 	Message string
 
 	// An id for the error being returned.
-	ID uuid.UUID
+	Id uuid.UUID
 
 	// A string / any mapping of data related to the error.
 	ErrorData map[string]interface{}
@@ -173,7 +173,7 @@ func (spanError *SpanError) ToHeader(
 	setter.Set("error-name", spanError.name)
 	setter.Set("error-code", strconv.Itoa(spanError.apiCode))
 	setter.Set("error-message", spanError.Message)
-	setter.Set("error-id", spanError.ID.String())
+	setter.Set("error-id", spanError.Id.String())
 
 	if spanError.ErrorData != nil {
 		dataBytes := bytes.Buffer{}

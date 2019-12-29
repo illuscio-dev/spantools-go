@@ -60,7 +60,7 @@ func TestBsonUUIDToJson(test *testing.T) {
 		ID uuid.UUID
 	}
 
-	data := bson.M{"ID": bsonUUID}
+	data := bson.M{"Id": bsonUUID}
 
 	buffer := bytes.Buffer{}
 	err := engine.Encode(mimetype.JSON, &data, &buffer)

@@ -76,7 +76,7 @@ func ErrorFromHeaders(
 	if err != nil {
 		return nil,
 			true,
-			xerrors.New("error ID is not valid UUID")
+			xerrors.New("error Id is not valid UUID")
 	}
 
 	errorData := make(map[string]interface{})
@@ -93,7 +93,7 @@ func ErrorFromHeaders(
 	spanError = errorType.New(
 		errorMessage, errorData, nil,
 	)
-	spanError.ID = errorID
+	spanError.Id = errorID
 
 	return spanError, true, nil
 }

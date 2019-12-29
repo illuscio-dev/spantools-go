@@ -70,5 +70,5 @@ func makeDefaultErrorCodeIndex() map[int]*SpanErrorType {
 	return index
 }
 
-// APICode:*ErrorType indexing of default errors.
+// ApiCode:*ErrorType indexing of default errors.
 var ErrorTypeCodeIndex = makeDefaultErrorCodeIndex()

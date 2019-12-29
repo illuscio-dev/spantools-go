@@ -246,7 +246,7 @@ func TestErrorDecodingUUID(test *testing.T) {
 		ID uuid.UUID
 	}
 
-	data := map[string]string{"ID": "not an ID"}
+	data := map[string]string{"Id": "not an Id"}
 
 	err := engine.Encode(mimetype.BSON, data, buffer)
 	if err != nil {
