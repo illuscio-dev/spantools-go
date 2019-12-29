@@ -57,7 +57,7 @@ func TestBsonUUIDToJson(test *testing.T) {
 	bsonUUID := primitive.Binary{Subtype: 0x3, Data: uuidValue.Bytes()}
 
 	type Receiver struct {
-		ID uuid.UUID
+		Id uuid.UUID
 	}
 
 	data := bson.M{"Id": bsonUUID}
@@ -76,7 +76,7 @@ func TestBsonUUIDToJson(test *testing.T) {
 		test.Error(err)
 	}
 
-	assert.Equal(test, uuidValue, loaded.ID)
+	assert.Equal(test, uuidValue, loaded.Id)
 }
 
 func TestBinBlobToJson(test *testing.T) {
