@@ -1,5 +1,7 @@
 package tests
 
+//revive:disable:import-shadowing
+
 import (
 	"bou.ke/monkey"
 	"bytes"

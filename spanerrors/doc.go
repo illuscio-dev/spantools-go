@@ -14,4 +14,4 @@ Default SpanErrorType Variables
 
 Several pointers to SpanErrorType definitions are included in this package.
 */
-package errors_api
+package spanerrors

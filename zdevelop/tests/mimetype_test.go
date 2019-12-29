@@ -1,5 +1,7 @@
 package tests
 
+//revive:disable:import-shadowing
+
 import (
 	"github.com/stretchr/testify/assert"
 	"net/http"

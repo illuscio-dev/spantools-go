@@ -1,4 +1,4 @@
-package errors_api
+package spanerrors
 
 import (
 	"bytes"
@@ -79,22 +79,22 @@ func (errorType *SpanErrorType) Name() string {
 }
 
 // Unique number to identify the error type in the API ecosystem.
-func (errorType *SpanErrorType) ApiCode() int {
+func (errorType *SpanErrorType) APICode() int {
 	return errorType.apiCode
 }
 
 // HTTP code that should be returned when this error type is returned. Set to -1
 // if the http error is determined dynamically.
-func (errorType *SpanErrorType) HttpCode() int {
+func (errorType *SpanErrorType) HTTPCode() int {
 	return errorType.httpCode
 }
 
 // Returns a copy of the error type with the given http code replaced.
-func (errorType *SpanErrorType) WithHttpCode(newHttpCode int) *SpanErrorType {
+func (errorType *SpanErrorType) WithHTTPCode(newHTTPCode int) *SpanErrorType {
 	return &SpanErrorType{
 		name:     errorType.name,
 		apiCode:  errorType.apiCode,
-		httpCode: newHttpCode,
+		httpCode: newHTTPCode,
 	}
 }
 

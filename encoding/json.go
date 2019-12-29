@@ -1,7 +1,6 @@
 package encoding
 
 import (
-	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"github.com/ugorji/go/codec"
 	"go.mongodb.org/mongo-driver/bson"
@@ -13,16 +12,16 @@ import (
 	"spantools/spantypes"
 )
 
-// JsonExtensionOpts holds options For Json Handle extension to add to the handle on
+// JSONExtensionOpts holds options For Json Handle extension to add to the handle on
 // server setup.
-type JsonExtensionOpts struct {
+type JSONExtensionOpts struct {
 	ValueType    reflect.Type
 	ExtInterface codec.InterfaceExt
 }
 
-// defaultJSONExtensions holds all the JsonExtensionOpts to add to the JsonHandle on
+// defaultJSONExtensions holds all the JSONExtensionOpts to add to the JSONHandle on
 // server setup
-var defaultJSONExtensions = []*JsonExtensionOpts{
+var defaultJSONExtensions = []*JSONExtensionOpts{
 	{
 		ValueType:    reflect.TypeOf(primitive.Binary{}),
 		ExtInterface: &jsonExtBsonBinary{},
@@ -65,12 +64,12 @@ type jsonExtBsonRaw struct {
 
 func (ext *jsonExtBsonRaw) ConvertExt(value interface{}) interface{} {
 	valueRaw := value.(bson.Raw)
-	fmt.Println("valueRaw:", valueRaw)
 
-	unmarshalled := make(map[string]interface{})
+	unmarshaled := make(map[string]interface{})
+
 	if len(valueRaw) > 0 {
 		err := bson.UnmarshalWithRegistry(
-			ext.bsonRegistry, valueRaw, &unmarshalled,
+			ext.bsonRegistry, valueRaw, &unmarshaled,
 		)
 		if err != nil {
 			panic(xerrors.Errorf(
@@ -79,11 +78,10 @@ func (ext *jsonExtBsonRaw) ConvertExt(value interface{}) interface{} {
 		}
 	}
 
-	return unmarshalled
+	return unmarshaled
 }
 
 func (ext *jsonExtBsonRaw) UpdateExt(dest interface{}, value interface{}) {
-	fmt.Println("TEST")
 	panic(xerrors.New("Decoding to BSON raw field not supported"))
 }
 

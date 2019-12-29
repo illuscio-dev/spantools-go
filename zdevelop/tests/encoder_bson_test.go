@@ -1,5 +1,7 @@
 package tests
 
+//revive:disable:import-shadowing
+
 import (
 	"bou.ke/monkey"
 	"bytes"
@@ -364,10 +366,9 @@ func TestBSONListEncodeErrorWritingSeparator(test *testing.T) {
 	mockBufferWrite := func(buff *bytes.Buffer, data []byte) (int, error) {
 		if string(data) == encoding.BsonListSepString {
 			return 0, xerrors.New("mock error")
-		} else {
-			return len(data), nil
 		}
 
+		return len(data), nil
 	}
 
 	defer monkey.UnpatchAll()

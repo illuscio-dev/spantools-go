@@ -1,5 +1,7 @@
 package tests
 
+//revive:disable:import-shadowing
+
 import (
 	"bou.ke/monkey"
 	"bytes"
@@ -49,8 +51,8 @@ func TestCreateEngineDefault(test *testing.T) {
 	assert.Nil(err)
 	assert.NotNil(engine)
 
-	assert.NotNil(engine.JsonHandle())
-	assert.NotNil(engine.BsonRegistry())
+	assert.NotNil(engine.JSONHandle())
+	assert.NotNil(engine.BSONRegistry())
 
 	// Test that all the defaults registered appropriately.
 	assert.Equal(true, engine.Handles(mimetype.JSON))
@@ -319,9 +321,8 @@ func TestErrorAddingBsonCodec(test *testing.T) {
 	) error {
 		if rt == reflect.TypeOf(bson.Raw{}) {
 			return xerrors.New("mock error")
-		} else {
-			return nil
 		}
+		return nil
 	}
 
 	defer monkey.UnpatchAll()

@@ -1,5 +1,7 @@
 package tests
 
+//revive:disable:import-shadowing
+
 import (
 	uuid "github.com/satori/go.uuid"
 	"github.com/stretchr/testify/assert"
@@ -7,15 +9,15 @@ import (
 	"net/http"
 	"reflect"
 	"spantools/encoding"
-	"spantools/errors_api"
+	"spantools/spanerrors"
 	"testing"
 )
 
 // Creates a consistent test error for multiple tests
-func createTestError() *errors_api.SpanError {
+func createTestError() *spanerrors.SpanError {
 	sourceErr := xerrors.New("some source error")
 
-	spanErr := errors_api.ResponseValidationError.New(
+	spanErr := spanerrors.ResponseValidationError.New(
 		"test message",
 		map[string]interface{}{"key": "value"},
 		sourceErr,
@@ -25,10 +27,10 @@ func createTestError() *errors_api.SpanError {
 
 // Helper function to verify the error created by createTestError() in multiple
 // tests.
-func verifyError(test *testing.T, spanErr *errors_api.SpanError) {
+func verifyError(test *testing.T, spanErr *spanerrors.SpanError) {
 	assert := assert.New(test)
 
-	assert.Equal(errors_api.ResponseValidationError, spanErr.SpanErrorType)
+	assert.Equal(spanerrors.ResponseValidationError, spanErr.SpanErrorType)
 	assert.NotEqual(uuid.Nil, spanErr.ID)
 	assert.Equal("test message", spanErr.Message)
 	assert.Equal(map[string]interface{}{"key": "value"}, spanErr.ErrorData)
@@ -39,7 +41,7 @@ func verifyError(test *testing.T, spanErr *errors_api.SpanError) {
 // tests where we need to dump to or pull from headers.
 func setupHeadersTest(
 	test *testing.T,
-) (*errors_api.SpanError, *http.Request, encoding.ContentEngine) {
+) (*spanerrors.SpanError, *http.Request, encoding.ContentEngine) {
 	testReq := http.Request{
 		Header: make(http.Header),
 	}
@@ -53,11 +55,11 @@ func TestNewSpanError(test *testing.T) {
 	verifyError(test, spanErr)
 
 	assert.Equal("ResponseValidationError", spanErr.Name())
-	assert.Equal(1005, spanErr.ApiCode())
-	assert.Equal(400, spanErr.HttpCode())
+	assert.Equal(1005, spanErr.APICode())
+	assert.Equal(400, spanErr.HTTPCode())
 
-	assert.True(spanErr.IsType(errors_api.ResponseValidationError))
-	assert.False(spanErr.IsType(errors_api.RequestValidationError))
+	assert.True(spanErr.IsType(spanerrors.ResponseValidationError))
+	assert.False(spanErr.IsType(spanerrors.RequestValidationError))
 }
 
 func TestPanicSpanError(test *testing.T) {
@@ -71,15 +73,15 @@ func TestPanicSpanError(test *testing.T) {
 	func() {
 		defer func() {
 			recovered := recover()
-			spanErr := recovered.(*errors_api.SpanError)
+			spanErr := recovered.(*spanerrors.SpanError)
 
 			verifyError(test, spanErr)
 			assert.Equal("ResponseValidationError", spanErr.Name())
-			assert.Equal(1005, spanErr.ApiCode())
-			assert.Equal(400, spanErr.HttpCode())
+			assert.Equal(1005, spanErr.APICode())
+			assert.Equal(400, spanErr.HTTPCode())
 
-			assert.True(spanErr.IsType(errors_api.ResponseValidationError))
-			assert.False(spanErr.IsType(errors_api.RequestValidationError))
+			assert.True(spanErr.IsType(spanerrors.ResponseValidationError))
+			assert.False(spanErr.IsType(spanerrors.RequestValidationError))
 
 			panicked = true
 		}()
@@ -87,7 +89,7 @@ func TestPanicSpanError(test *testing.T) {
 		sourceErr := xerrors.New("some source error")
 
 		// This should cause a panic.
-		errors_api.ResponseValidationError.Panic(
+		spanerrors.ResponseValidationError.Panic(
 			"test message",
 			map[string]interface{}{"key": "value"},
 			sourceErr,
@@ -100,14 +102,14 @@ func TestPanicSpanError(test *testing.T) {
 func TestWithHttpCodeType(test *testing.T) {
 	assert := assert.New(test)
 
-	assert.Equal(errors_api.ServerError.HttpCode(), -1)
-	spanErrType := errors_api.ServerError.WithHttpCode(500)
-	assert.Equal(spanErrType.HttpCode(), 500)
+	assert.Equal(spanerrors.ServerError.HTTPCode(), -1)
+	spanErrType := spanerrors.ServerError.WithHTTPCode(500)
+	assert.Equal(spanErrType.HTTPCode(), 500)
 
 	spanErr := spanErrType.New("some message", nil, nil)
 
-	assert.True(spanErr.IsType(errors_api.ServerError))
-	assert.False(spanErr.IsType(errors_api.RequestValidationError))
+	assert.True(spanErr.IsType(spanerrors.ServerError))
+	assert.False(spanErr.IsType(spanerrors.RequestValidationError))
 }
 
 func TestSpanErrorMessage(test *testing.T) {
@@ -121,7 +123,7 @@ func TestSpanErrorMessage(test *testing.T) {
 func TestSpanLogMessage(test *testing.T) {
 	sourceErr := xerrors.New("some source error")
 
-	spanErr := errors_api.ResponseValidationError.New(
+	spanErr := spanerrors.ResponseValidationError.New(
 		"test message",
 		nil,
 		sourceErr,
@@ -174,8 +176,8 @@ func TestFromHeaders(test *testing.T) {
 		test.Error(err)
 	}
 
-	errLoaded, hasErr, err := errors_api.ErrorFromHeaders(
-		testReq.Header, engine, errors_api.ErrorTypeCodeIndex,
+	errLoaded, hasErr, err := spanerrors.ErrorFromHeaders(
+		testReq.Header, engine, spanerrors.ErrorTypeCodeIndex,
 	)
 	if err != nil {
 		test.Error(err)
@@ -204,11 +206,11 @@ func TestErrorDumpingData(test *testing.T) {
 	spanErr, testReq, engine := setupHeadersTest(test)
 	spanEngine := engine.(*encoding.SpanEngine)
 
-	badTypeOpts := encoding.JsonExtensionOpts{
+	badTypeOpts := encoding.JSONExtensionOpts{
 		ValueType:    reflect.TypeOf(badType("")),
 		ExtInterface: &jsonExtBadType{},
 	}
-	err := spanEngine.AddJsonExtensions([]*encoding.JsonExtensionOpts{&badTypeOpts})
+	err := spanEngine.AddJSONExtensions([]*encoding.JSONExtensionOpts{&badTypeOpts})
 	if err != nil {
 		test.Error(err)
 	}
@@ -228,8 +230,8 @@ func TestNoErrorInHeaders(test *testing.T) {
 		Header: make(http.Header),
 	}
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
-		testReq.Header, engine, errors_api.ErrorTypeCodeIndex,
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
+		testReq.Header, engine, spanerrors.ErrorTypeCodeIndex,
 	)
 
 	assert.Nil(spanErr)
@@ -246,8 +248,8 @@ func TestErrorCodeNotInt(test *testing.T) {
 	}
 	testReq.Header.Set("error-code", "not an int")
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
-		testReq.Header, engine, errors_api.ErrorTypeCodeIndex,
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
+		testReq.Header, engine, spanerrors.ErrorTypeCodeIndex,
 	)
 
 	assert.Nil(spanErr)
@@ -264,8 +266,8 @@ func TestErrorCodeNoKnown(test *testing.T) {
 	}
 	testReq.Header.Set("error-code", "9999")
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
-		testReq.Header, engine, errors_api.ErrorTypeCodeIndex,
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
+		testReq.Header, engine, spanerrors.ErrorTypeCodeIndex,
 	)
 
 	assert.Nil(spanErr)
@@ -283,8 +285,8 @@ func TestErrorBadID(test *testing.T) {
 	testReq.Header.Set("error-code", "1005")
 	testReq.Header.Set("error-id", "not a uuid")
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
-		testReq.Header, engine, errors_api.ErrorTypeCodeIndex,
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
+		testReq.Header, engine, spanerrors.ErrorTypeCodeIndex,
 	)
 
 	assert.Nil(spanErr)
@@ -303,8 +305,8 @@ func TestErrorBadData(test *testing.T) {
 	testReq.Header.Set("error-id", uuid.NewV4().String())
 	testReq.Header.Set("error-data", "not valid json object")
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
-		testReq.Header, engine, errors_api.ErrorTypeCodeIndex,
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
+		testReq.Header, engine, spanerrors.ErrorTypeCodeIndex,
 	)
 
 	assert.Nil(spanErr)
@@ -322,7 +324,7 @@ func TestErrorNoIndex(test *testing.T) {
 	testReq.Header.Set("error-code", "1005")
 	testReq.Header.Set("error-id", uuid.NewV4().String())
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
 		testReq.Header, engine, nil,
 	)
 
@@ -339,22 +341,22 @@ func TestCustomErrorFromHeader(test *testing.T) {
 		Header: make(http.Header),
 	}
 
-	CustomErrorType := errors_api.NewSpanErrorType(
+	CustomErrorType := spanerrors.NewSpanErrorType(
 		"CustomError",
 		2001,
 		400,
 	)
 
-	CustomErrorIndex := make(map[int]*errors_api.SpanErrorType)
-	for key, value := range errors_api.ErrorTypeCodeIndex {
+	CustomErrorIndex := make(map[int]*spanerrors.SpanErrorType)
+	for key, value := range spanerrors.ErrorTypeCodeIndex {
 		CustomErrorIndex[key] = value
 	}
-	CustomErrorIndex[CustomErrorType.ApiCode()] = CustomErrorType
+	CustomErrorIndex[CustomErrorType.APICode()] = CustomErrorType
 
 	testReq.Header.Set("error-code", "2001")
 	testReq.Header.Set("error-id", uuid.NewV4().String())
 
-	spanErr, hasErr, err := errors_api.ErrorFromHeaders(
+	spanErr, hasErr, err := spanerrors.ErrorFromHeaders(
 		testReq.Header, engine, CustomErrorIndex,
 	)
 

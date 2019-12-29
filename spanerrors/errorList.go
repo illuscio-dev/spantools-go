@@ -1,4 +1,4 @@
-package errors_api
+package spanerrors
 
 // Base Error. Used when generic error is returned by route handler.
 var APIError = NewSpanErrorType(
@@ -70,5 +70,5 @@ func makeDefaultErrorCodeIndex() map[int]*SpanErrorType {
 	return index
 }
 
-// ApiCode:*ErrorType indexing of default errors.
+// APICode:*ErrorType indexing of default errors.
 var ErrorTypeCodeIndex = makeDefaultErrorCodeIndex()

@@ -95,8 +95,8 @@ supported and will panic.
 
 • BSON raw is converted to a map and THEN encoded to a json object.
 
-Additional json extensions can be registered through the AddJsonExtensions() by passing
-a slice of JsonExtensionOpts objects.
+Additional json extensions can be registered through the AddJSONExtensions() by passing
+a slice of JSONExtensionOpts objects.
 
 Default BSON Codecs
 
@@ -202,12 +202,14 @@ func (engine *SpanEngine) Handles(mimeType mimetype.MimeType) bool {
 
 // Select what engine to pass into the encoder / decoder in case we are extending
 // the engine type.
-func (engine *SpanEngine) getEngine() ContentEngine {
+func (engine *SpanEngine) getEngine() (passEngine ContentEngine) {
 	if engine.passedEngine != nil {
-		return engine.passedEngine
+		passEngine = engine.passedEngine
 	} else {
-		return engine
+		passEngine = engine
 	}
+
+	return passEngine
 }
 
 // Uses a decoder while catching panics to return as errors
@@ -369,17 +371,17 @@ func (engine *SpanEngine) Encode(
 	return nil
 }
 
-func (engine *SpanEngine) JsonHandle() *codec.JsonHandle {
+func (engine *SpanEngine) JSONHandle() *codec.JsonHandle {
 	return engine.jsonHandle
 }
 
-// Returns the internal bsoncodec.BsonRegistry used by the bson encoder/decoder.
-func (engine *SpanEngine) BsonRegistry() *bsoncodec.Registry {
+// Returns the internal bsoncodec.BSONRegistry used by the bson encoder/decoder.
+func (engine *SpanEngine) BSONRegistry() *bsoncodec.Registry {
 	return engine.bsonRegistry
 }
 
 // Adds JSON extensions to handle.
-func (engine *SpanEngine) AddJsonExtensions(extensions []*JsonExtensionOpts) error {
+func (engine *SpanEngine) AddJSONExtensions(extensions []*JSONExtensionOpts) error {
 	for _, extOpts := range extensions {
 		err := engine.jsonHandle.SetInterfaceExt(
 			extOpts.ValueType, 1, extOpts.ExtInterface,
@@ -394,7 +396,7 @@ func (engine *SpanEngine) AddJsonExtensions(extensions []*JsonExtensionOpts) err
 }
 
 // Adds BSON codecs to engine for use when encoding/decoding bson data.
-func (engine *SpanEngine) AddBsonCodecs(codecs []*BsonCodecOpts) error {
+func (engine *SpanEngine) AddBSONCodecs(codecs []*BsonCodecOpts) error {
 	// Store these codecs for later in case more are added by the end user and we need
 	// to declare a new engine.
 	engine.bsonCodecs = append(engine.bsonCodecs, codecs...)
@@ -450,13 +452,13 @@ func NewContentEngine(allowSniff bool) (*SpanEngine, error) {
 	engine.SetDecoder(mimetype.TEXT, &textEncoder{})
 
 	// Add the default json extensions to the engine.
-	if err := engine.AddJsonExtensions(defaultJSONExtensions); err != nil {
+	if err := engine.AddJSONExtensions(defaultJSONExtensions); err != nil {
 		err = xerrors.Errorf("error adding default json extensions: %w", err)
 		return nil, err
 	}
 
 	// Add the default bson codecs to the engine.
-	if err := engine.AddBsonCodecs(defaultBsonCodecs); err != nil {
+	if err := engine.AddBSONCodecs(defaultBsonCodecs); err != nil {
 		err = xerrors.Errorf("error adding default bson codecs: %w", err)
 		return nil, err
 	}

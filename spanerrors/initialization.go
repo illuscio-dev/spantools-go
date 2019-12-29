@@ -1,4 +1,4 @@
-package errors_api
+package spanerrors
 
 import (
 	uuid "github.com/satori/go.uuid"

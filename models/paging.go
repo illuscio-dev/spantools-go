@@ -53,7 +53,6 @@ func (pagingResp *PagingResp) ToHeaders(headers valueSetter) {
 	if pagingResp.Next != "" {
 		headers.Set("paging-next", pagingResp.Next)
 	}
-
 }
 
 type valueFetcher interface {

@@ -1,5 +1,7 @@
 package tests
 
+//revive:disable:import-shadowing
+
 import (
 	assert "github.com/stretchr/testify/assert"
 	"net/http"
@@ -24,7 +26,6 @@ func TestPagingReqRoundTrip(test *testing.T) {
 
 	assert.Nil(err)
 	assert.Equal(pagingReq, loaded)
-
 }
 
 func TestPagingRespRoundTrip(test *testing.T) {
@@ -51,7 +52,6 @@ func TestPagingRespRoundTrip(test *testing.T) {
 
 	assert.Nil(err)
 	assert.Equal(pagingResp, loaded)
-
 }
 
 func TestPagingReqDumpNoLimit(test *testing.T) {
@@ -70,7 +70,6 @@ func TestPagingReqDumpNoLimit(test *testing.T) {
 
 	assert.Equal(reqTest.Header.Get("paging-offset"), "10")
 	assert.Equal(reqTest.Header.Get("paging-limit"), "")
-
 }
 
 func TestPagingRespOmitNotSets(test *testing.T) {
@@ -91,7 +90,6 @@ func TestPagingRespOmitNotSets(test *testing.T) {
 	assert.Equal(reqTest.Header.Get("paging-current-page"), "0")
 	assert.Equal(reqTest.Header.Get("paging-next"), "")
 	assert.Equal(reqTest.Header.Get("paging-previous"), "")
-
 }
 
 func TestPagingReqLoadLimitDefault(test *testing.T) {
@@ -112,7 +110,6 @@ func TestPagingReqLoadLimitDefault(test *testing.T) {
 
 	assert.Nil(err)
 	assert.Equal(50, loaded.Limit)
-
 }
 
 func TestPagingNotIntOffset(test *testing.T) {
@@ -126,7 +123,6 @@ func TestPagingNotIntOffset(test *testing.T) {
 	_, err := models.PagingReqFromParams(reqTest.Header, 50)
 
 	assert.EqualError(err, "paging-offset is not int")
-
 }
 
 func TestPagingNotIntLimit(test *testing.T) {
@@ -140,7 +136,6 @@ func TestPagingNotIntLimit(test *testing.T) {
 	_, err := models.PagingReqFromParams(reqTest.Header, 50)
 
 	assert.EqualError(err, "paging-limit is not int")
-
 }
 
 func TestPagingTotalItems(test *testing.T) {
@@ -154,7 +149,6 @@ func TestPagingTotalItems(test *testing.T) {
 	_, err := models.PagingRespFromHeaders(reqTest.Header, 50)
 
 	assert.EqualError(err, "paging-total-items is not int")
-
 }
 
 func TestPagingTotalPages(test *testing.T) {
@@ -168,7 +162,6 @@ func TestPagingTotalPages(test *testing.T) {
 	_, err := models.PagingRespFromHeaders(reqTest.Header, 50)
 
 	assert.EqualError(err, "paging-total-pages is not int")
-
 }
 
 func TestPagingCurrentPage(test *testing.T) {
@@ -182,7 +175,6 @@ func TestPagingCurrentPage(test *testing.T) {
 	_, err := models.PagingRespFromHeaders(reqTest.Header, 50)
 
 	assert.EqualError(err, "paging-current-page is not int")
-
 }
 
 func TestPagingLimitRespError(test *testing.T) {
@@ -196,5 +188,4 @@ func TestPagingLimitRespError(test *testing.T) {
 	_, err := models.PagingRespFromHeaders(reqTest.Header, 50)
 
 	assert.EqualError(err, "paging-limit is not int")
-
 }

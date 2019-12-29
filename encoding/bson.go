@@ -12,12 +12,13 @@ import (
 	"reflect"
 )
 
-// BSON does not generically support top-level lists. When multiple documents are being
-// sent in a single payload, the unicode SYMBOL FOR RECORD SEPARATOR is used.
+// BsonListSepString is a delimiter for top-level bson lists, which bson does not not
+// normally support. When multiple documents are being sent in a single payload, the
+// unicode SYMBOL FOR RECORD SEPARATOR is used.
 // (http://fileformat.info/info/unicode/char/241e/index.htm)
 const BsonListSepString = "\u241E"
 
-// Byte representation of BsonListSepString.
+// BsonListSepBytes is a byte representation of BsonListSepString.
 var BsonListSepBytes = []byte(BsonListSepString)
 
 // split function used to separate the bson records.
@@ -38,12 +39,12 @@ func splitBsonFunc(data []byte, atEOF bool) (advance int, token []byte, err erro
 		return len(data), data, nil
 	}
 
-	return
+	return advance, token, err
 }
 
 // BSON
 
-// Holds options for registering new BSON codecs with SpanEngine.
+// BsonCodecOpts holds options for registering new BSON codecs with SpanEngine.
 type BsonCodecOpts struct {
 	// Type this codec handles encoding / decoding to.
 	ValueType reflect.Type
@@ -158,7 +159,7 @@ func (encoder *bsonEncoder) isSequence(value *reflect.Value) bool {
 // Encodes bson content
 func (encoder *bsonEncoder) Encode(
 	engine ContentEngine, writer io.Writer, content interface{},
-) error {
+) (err error) {
 	spanEngine := engine.(*SpanEngine)
 
 	// Check if the value is a slice or an array.
@@ -167,10 +168,12 @@ func (encoder *bsonEncoder) Encode(
 	_, isRaw := content.(*bson.Raw)
 
 	if encoder.isSequence(&contentValue) && !isRaw {
-		return encoder.encodeMany(spanEngine, writer, &contentValue)
+		err = encoder.encodeMany(spanEngine, writer, &contentValue)
 	} else {
-		return encoder.encodeSingle(spanEngine, writer, content)
+		err = encoder.encodeSingle(spanEngine, writer, content)
 	}
+
+	return err
 }
 
 // Decodes a single bson document
@@ -221,15 +224,17 @@ func (encoder *bsonEncoder) decodeMany(
 // Decode bson content
 func (encoder *bsonEncoder) Decode(
 	engine ContentEngine, reader io.Reader, contentReceiver interface{},
-) error {
+) (err error) {
 	spanEngine := engine.(*SpanEngine)
 	// Check if the value is a slice or an array.
 	receiverValue := reflect.Indirect(reflect.ValueOf(contentReceiver))
 
 	// If the receiver is a slice or array, we need to decode multiple documents.
 	if encoder.isSequence(&receiverValue) {
-		return encoder.decodeMany(spanEngine, reader, contentReceiver)
+		err = encoder.decodeMany(spanEngine, reader, contentReceiver)
 	} else {
-		return encoder.decodeSingle(spanEngine, reader, contentReceiver)
+		err = encoder.decodeSingle(spanEngine, reader, contentReceiver)
 	}
+
+	return err
 }

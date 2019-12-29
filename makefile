@@ -1,12 +1,17 @@
 .PHONY: test
 test:
-	-go test -covermode=count -coverprofile=zdevelop/tests/_reports/coverage.out -coverpkg=./... ./...
+	-go test -v -failfast -covermode=count -coverprofile=zdevelop/tests/_reports/coverage.out -coverpkg=./... ./...
 	-go tool cover -html=zdevelop/tests/_reports/coverage.out
 	open ./zdevelop/tests/zreports/coverage.html
 
+.PHONY: lint
+lint:
+	-revive -config revive.toml ./...
+
 .PHONY: format
 format:
-	-gofmt -s -w .
+	-gofmt -s -w ./
+	-gofmt -s -w ./zdevelop/tests
 
 .PHONY: venv
 venv:
