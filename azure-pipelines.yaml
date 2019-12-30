@@ -36,7 +36,7 @@ jobs:
       sshPassphrase: hVtoa8xbRv4-bVfMUsTr
       sshKeySecureFile: ci_cd.private
 
-  - script: echo '[url "$(GIT_AUTH)"]' >> ~/.gitconfig
+  - script: echo $(GIT_AUTH) >> ~/.gitconfig
     displayName: 'Update .gitconfig 1'
 
   - script: echo '	insteadOf = https://github.com/' >> ~/.gitconfig
