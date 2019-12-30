@@ -42,6 +42,9 @@ jobs:
   - script: echo '	insteadOf = https://github.com/' >> ~/.gitconfig
     displayName: 'Update .gitconfig 2'
 
+  - script: cat ~/.gitconfig
+    displayName: 'Debug git'
+
   - script: go get -u github.com/illuscio-dev/docmodule-go
     displayName: 'Download GoModule'
 
