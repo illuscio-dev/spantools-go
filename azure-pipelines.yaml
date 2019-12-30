@@ -37,11 +37,7 @@ jobs:
       sshKeySecureFile: ci_cd.private
 
   - script: |
-      git config --global http.extraheader "PRIVATE-TOKEN: $(GIT_PW)"
-    displayName: 'Add token to git config'
-
-  - script: |
-      git config --global url."git@github.com:".insteadOf "https://github.com/"
+      git config --global url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
     displayName: 'Update .gitconfig 2'
 
   - script: cat ~/.gitconfig
