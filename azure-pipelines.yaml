@@ -15,7 +15,7 @@ pr:
 
 jobs:
 
-- job: 'CI/CD'
+- job: 'CI_CD'
 
   pool:
     vmImage: 'ubuntu-16.04'
