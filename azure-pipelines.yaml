@@ -4,11 +4,11 @@ trigger:
   batch: true
   branches:
     include:
-      - master
       - dev
     exclude:
       - build_*
       - v*
+      - master
 
 pr:
   - dev
@@ -16,6 +16,20 @@ pr:
 jobs:
 
   - job: 'CI/CD'
-      - script: go get -u golang.org/x/tools/cmd/godoc &&
-          go get -u github.com/illuscio-dev/docmodule-go
-        displayName: ''
+      pool:
+        vmImage: 'ubuntu-16.04'
+
+      steps:
+        - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.7'
+              architecture: 'x64'
+
+        - script: go get -u golang.org/x/tools/cmd/godoc
+          displayName: 'Download GoDoc'
+
+        - script: go get -u github.com/illuscio-dev/docmodule-go
+          displayName: 'Download GoModule'
+
+        - script: revive -config revive.toml ./...
+          displayNamee: 'Lint'
