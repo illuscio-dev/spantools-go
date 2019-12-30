@@ -33,4 +33,4 @@ jobs:
     displayName: 'Download GoModule'
 
   - script: revive -config revive.toml ./...
-    displayNamee: 'Lint'
+    displayName: 'Lint'
