@@ -15,21 +15,22 @@ pr:
 
 jobs:
 
-  - job: 'CI/CD'
-      pool:
-        vmImage: 'ubuntu-16.04'
+- job: 'CI/CD'
 
-      steps:
-        - task: UsePythonVersion@0
-            inputs:
-              versionSpec: '3.7'
-              architecture: 'x64'
+    pool:
+      vmImage: 'ubuntu-16.04'
 
-        - script: go get -u golang.org/x/tools/cmd/godoc
-          displayName: 'Download GoDoc'
+    steps:
+      - task: UsePythonVersion@0
+          inputs:
+            versionSpec: '3.7'
+            architecture: 'x64'
 
-        - script: go get -u github.com/illuscio-dev/docmodule-go
-          displayName: 'Download GoModule'
+      - script: go get -u golang.org/x/tools/cmd/godoc
+        displayName: 'Download GoDoc'
 
-        - script: revive -config revive.toml ./...
-          displayNamee: 'Lint'
+      - script: go get -u github.com/illuscio-dev/docmodule-go
+        displayName: 'Download GoModule'
+
+      - script: revive -config revive.toml ./...
+        displayNamee: 'Lint'
