@@ -36,10 +36,12 @@ jobs:
       sshPassphrase: hVtoa8xbRv4-bVfMUsTr
       sshKeySecureFile: ci_cd.private
 
-  - script: echo $(GIT_AUTH) >> ~/.gitconfig
-    displayName: 'Update .gitconfig 1'
+  - script: |
+      git config --global http.extraheader "PRIVATE-TOKEN: $(GIT_PW)"
+    displayName: 'Add token to git config'
 
-  - script: echo '	insteadOf = https://github.com/' >> ~/.gitconfig
+  - script: |
+      git config --global url."git@github.com:".insteadOf "https://github.com/"
     displayName: 'Update .gitconfig 2'
 
   - script: cat ~/.gitconfig
