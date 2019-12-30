@@ -1,0 +1,21 @@
+name: build_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+      - dev
+    exclude:
+      - build_*
+      - v*
+
+pr:
+  - dev
+
+jobs:
+
+  - job: 'CI/CD'
+      - script: go get -u golang.org/x/tools/cmd/godoc &&
+          go get -u github.com/illuscio-dev/docmodule-go
+        displayName: ''

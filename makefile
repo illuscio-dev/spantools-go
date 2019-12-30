@@ -1,8 +1,35 @@
 .PHONY: test
 test:
-	-go test -v -failfast -covermode=count -coverprofile=zdevelop/tests/_reports/coverage.out -coverpkg=./... ./...
-	-go tool cover -html=zdevelop/tests/_reports/coverage.out
-	open ./zdevelop/tests/zreports/coverage.html
+	# Set up variables.
+	$(eval STD_OUT_LOG := ./zdevelop/tests/_reports/test_stdout.txt)
+	$(eval STD_ERR_LOG := ./zdevelop/tests/_reports/test_stderr.txt)
+	$(eval COVERAGE_LOG := ./zdevelop/tests/_reports/coverage.out)
+	$(eval TEST_REPORT := ./zdevelop/tests/_reports/test_report.html)
+	$(eval COVERAGE_REPORT := ./zdevelop/tests/_reports/coverage.html)
+	# Clear the output files.
+	echo > $(STD_OUT_LOG)
+	echo > $(STD_ERR_LOG)
+	# Run tests. I honestly don't quite understand the piping bullshit that has to
+	# happen here so we can send both stdout and stderr to tee separately (so we can
+	# both save and display them, but the internet says this is the solution and it
+	# works.
+	-(\
+		go test \
+			-v \
+			-failfast \
+			-covermode=count \
+			-coverprofile=$(COVERAGE_LOG) \
+			-coverpkg=./... \
+			./... \
+        | tee "$(STD_OUT_LOG)" \
+    ) 3>&1 1>&2 2>&3 \
+        | tee "$(STD_ERR_LOG)"
+    # Build Reports
+	-go tool cover -html=$(COVERAGE_LOG)
+	-go-test-html "$(STD_OUT_LOG)" "$(STD_ERR_LOG)" "$(TEST_REPORT)"
+	# Open Reports
+	-open "$(COVERAGE_REPORT)"
+	-open "$(TEST_REPORT)"
 
 .PHONY: lint
 lint:
@@ -31,6 +58,21 @@ install-dev:
 	pip install --upgrade pip
 	pip install -r requirements.txt
 
+# Installs command line tools into global GOPATH.
+.PHONY: install-globals
+install-globals:
+	$(eval CURRENT_DIR := $(shell pwd))
+	cd ~/
+	# Creates html report of tests.
+	-go get -u github.com/ains/go-test-html
+	# Creates API doc server.
+	-go get -u golang.org/x/tools/cmd/godoc
+	# Downloads module APIs from API server.
+	-go get -u github.com/illuscio-dev/docmodule-go
+	# swap back to the current directory.
+	cd $(current_dir)
+
+# Creates docs.
 .PHONY: doc
 doc:
 	docmodule-go
