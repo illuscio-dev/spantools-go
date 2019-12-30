@@ -26,11 +26,14 @@ jobs:
       versionSpec: '3.7'
       architecture: 'x64'
 
-  - script: echo '[url "ssh://git@github.com/"]' >> ~/.gitconfig
-    displayName: 'Update .gitconfig 1'
-
-  - script: echo '	insteadOf = https://github.com/' >> ~/.gitconfig
-    displayName: 'Update .gitconfig 2'
+  # Install SSH key
+  # Install an SSH key prior to a build or deployment
+  - task: InstallSSHKey@0
+    inputs:
+      knownHostsEntry: github.com,192.30.255.112 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5Jc2GunYYi8dONqNaZtc2Yc5BZ6Qhw2GmXg8X0iiP4ufyQ9dPHzteSmTjOCSDZNXu2b369fMgDUOAGNuAedEfxO9K1leWxoJlh3+a4iojWMQWSiLsfjsnlfFNLOG88k/0JFoTU/jYFhm0qK0aa7eWoGEMhpPlm758Denop71ME3/v42blYMv4Hg62hvYsKyVatp/285tPW9AtFbZMRt8GwNZ4yW3svL0y7mi0/VHZRie9UnnrUEYwP32EHwhpmXKA/bP40x9jbM/M3KMjMzbO8Oha+fnY+1M/+pMplEH6j7MiRa+xwwh6KG7vdYarHfpWqBYznSxIzvvMeNjKcOCP williampeake@Williams-MBP-2
+      sshPassphrase: hVtoa8xbRv4-bVfMUsTr
+      sshKeySecureFile: ci_cd.private
 
   - script: go get -u golang.org/x/tools/cmd/godoc
     displayName: 'Download GoDoc'
