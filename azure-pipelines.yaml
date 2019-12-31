@@ -44,11 +44,11 @@ jobs:
 
   - script: go get -u github.com/illuscio-dev/docmodule-go
     displayName: 'Download GoModule'
-    workingDirectory: ~/
+    workingDirectory: $HOME
 
   - script: go get -u golang.org/x/tools/cmd/godoc
     displayName: 'Download GoDoc'
-    workingDirectory: ~/
+    workingDirectory: $HOME
 
   - script: revive -config revive.toml ./...
     displayName: 'Lint'
