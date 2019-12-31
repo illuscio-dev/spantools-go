@@ -26,7 +26,6 @@ jobs:
       versionSpec: '3.7'
       architecture: 'x64'
 
-
   # Install SSH key
   # Install an SSH key prior to a build or deployment
   - task: InstallSSHKey@0
