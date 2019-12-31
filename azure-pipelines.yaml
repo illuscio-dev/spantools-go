@@ -42,13 +42,19 @@ jobs:
   - script: cat ~/.gitconfig
     displayName: 'Debug git.'
 
+  - script: go version
+    displayName: 'Print go version.'
+
+  - script: go env
+    displayName: 'Print go env.'
+
   - script: go get -u github.com/illuscio-dev/docmodule-go
     displayName: 'Download GoModule'
-    workingDirectory: $HOME
+    workingDirectory: /home
 
   - script: go get -u golang.org/x/tools/cmd/godoc
     displayName: 'Download GoDoc'
-    workingDirectory: $HOME
+    workingDirectory: /home
 
   - script: revive -config revive.toml ./...
     displayName: 'Lint'
