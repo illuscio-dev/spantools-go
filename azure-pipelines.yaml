@@ -37,16 +37,18 @@ jobs:
 
   - script: |
       git config --global url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
-    displayName: 'Update .gitconfig 2'
+    displayName: 'Registering git repo access.'
 
   - script: cat ~/.gitconfig
-    displayName: 'Debug git'
+    displayName: 'Debug git.'
 
   - script: go get -u github.com/illuscio-dev/docmodule-go
     displayName: 'Download GoModule'
+    workingDirectory: ~/
 
   - script: go get -u golang.org/x/tools/cmd/godoc
     displayName: 'Download GoDoc'
+    workingDirectory: ~/
 
   - script: revive -config revive.toml ./...
     displayName: 'Lint'
