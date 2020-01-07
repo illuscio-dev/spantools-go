@@ -9,7 +9,7 @@ variables:
   # Go installation path, we want to use go 1.13
   GOROOT: '/usr/local/go1.13'
   # Go binaries path
-  GOBIN:  '$(GOROOT)/bin'
+  GOBIN:  '/home/gobin'
 
 trigger:
   batch: true
