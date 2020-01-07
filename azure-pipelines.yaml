@@ -60,16 +60,6 @@ jobs:
       git config --global --add url."ssh://git@github.com/".insteadOf "https://github.com/"
     displayName: 'Registering git repo access.'
 
-  - script: |
-      echo 'machine github.com login $(GIT_USER) password $(GIT_PW)' >> $HOME/.netrc
-    displayName: 'Adding Github login.'
-
-  - script: cat ~/.netrc
-    displayName: 'Debug net rc.'
-
-  - script: cat ~/.gitconfig
-    displayName: 'Debug git config.'
-
   - script: go version
     displayName: 'Print go version.'
 
@@ -82,6 +72,10 @@ jobs:
 
   - script: go get -u golang.org/x/tools/cmd/godoc
     displayName: 'Download GoDoc'
+    workingDirectory: /home
+
+  - script: go get -u github.com/mgechev/revive
+    displayName: 'Download Revive'
     workingDirectory: /home
 
   - script: go get -v -t -d ./...
