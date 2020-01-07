@@ -106,3 +106,4 @@ jobs:
     inputs:
       testRunner: JUnit
       testResultsFiles: $(modulePath)/report.xml
+      failTaskOnFailedTests: true
