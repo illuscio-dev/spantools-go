@@ -57,11 +57,7 @@ jobs:
       sshKeySecureFile: ci_cd.private
 
   - script: |
-      git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
-    displayName: 'Registering git repo access.'
-
-  - script: |
-      git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com@github.com/"
+      git config --global --add url."ssh://git@github.com/".insteadOf "https://github.com/"
     displayName: 'Registering git repo access.'
 
   - script: |
