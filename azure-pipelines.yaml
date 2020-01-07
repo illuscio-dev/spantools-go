@@ -32,11 +32,10 @@ jobs:
     vmImage: 'ubuntu-16.04'
 
   steps:
-  # Setup go environment
-  - template: zdevelop/azure_templates/setup_go.yml
-
   # Setup python environment
   - template: zdevelop/azure_templates/setup_python.yml
+  # Setup go environment
+  - template: zdevelop/azure_templates/setup_go.yml
 
   # Run job
   - script: revive -config revive.toml ./...
