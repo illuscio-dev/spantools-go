@@ -4,7 +4,7 @@ variables:
   # Go binaries path
   GOBIN:  '$(GOPATH)/bin'
   # Go installation path, we want to use go 1.13
-  GOROOT: '/usr/local/go1.13.5'
+  GOROOT: '/usr/local/go1.13'
   # Go workspace path
   GOPATH: '$(system.defaultWorkingDirectory)/gopath'
   # Path to the module's code
