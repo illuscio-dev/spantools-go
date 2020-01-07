@@ -174,7 +174,3 @@ warningCode = 1
 # to do. This rule warns when a sync.WaitGroup expected as a by-value parameter in a
 # function or method.
 [rule.waitgroup-by-value]
-
-
-
-
