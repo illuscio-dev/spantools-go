@@ -118,7 +118,7 @@ jobs:
     displayName: 'check for version conflict'
     inputs:
       scriptSource: filePath
-      scriptPath: 'zdevelop/azure_scripts/get_release_version.py'
+      scriptPath: '$(modulePath)/zdevelop/azure_scripts/get_release_version.py'
       failOnStderr: true
 
   - script: echo $(RELEASE_VERSION)
