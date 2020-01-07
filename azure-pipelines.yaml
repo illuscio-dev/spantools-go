@@ -13,6 +13,8 @@ variables:
 
 trigger:
   batch: true
+  # We are going to only be doing builds for the 'dev' branch. Master will be updated
+  # from dev on successful builds rather than being updated directly.
   branches:
     include:
       - dev
@@ -43,27 +45,9 @@ jobs:
   - script: revive -config revive.toml ./...
     displayName: 'Lint'
 
-  - script: |
-      mkdir ./reports
-      set -o pipefail
-      go test \
-      -v \
-      -covermode=count \
-      -coverpkg=./... \
-      -coverprofile=coverage.out \
-      ./... \
-      -minimum-coverage=$(minimumCoverage) \
-      | tee ./reports/testResults.txt
-    displayName: 'Run Tests'
+  # Release the module on github.
+  - template: zdevelop/azure_templates/go_run_tests.yml
 
-  - script: cat ./reports/testResults.txt | go-junit-report > ./reports/tests_junit.xml
-    condition: succeededOrFailed()
-    displayName: 'Convert test report to junit'
-
-  - task: PublishTestResults@2
-    condition: succeededOrFailed()
-    inputs:
-      testRunner: JUnit
-      testResultsFiles: /reports/tests_junit.xml
-      failTaskOnFailedTests: true
+  # Release the module on github.
+  - template: zdevelop/azure_templates/go_release_module.yml
 
