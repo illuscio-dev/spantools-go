@@ -56,10 +56,6 @@ jobs:
       sshPassphrase: hVtoa8xbRv4-bVfMUsTr
       sshKeySecureFile: ci_cd.private
 
-  # - script: |
-  #     git config --global url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
-  #   displayName: 'Registering git repo access.'
-
   - script: |
       git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
     displayName: 'Registering git repo access.'
@@ -73,7 +69,10 @@ jobs:
     displayName: 'Adding Github login.'
 
   - script: cat ~/.netrc
-    displayName: 'Debug git.'
+    displayName: 'Debug net rc.'
+
+  - script: cat ~/.gitconfig
+    displayName: 'Debug git config.'
 
   - script: go version
     displayName: 'Print go version.'
