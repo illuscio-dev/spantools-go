@@ -7,8 +7,6 @@ variables:
   GOROOT: '/usr/local/go1.13'
   # Go workspace path
   GOPATH: '$(system.defaultWorkingDirectory)/gopath'
-  # Path to the module's code
-  modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)'
 
 trigger:
   batch: true
@@ -35,10 +33,8 @@ jobs:
   - script: |
       mkdir -p '$(GOBIN)'
       mkdir -p '$(GOPATH)/pkg'
-      mkdir -p '$(modulePath)'
       shopt -s extglob
       shopt -s dotglob
-      mv !(gopath) '$(modulePath)'
       echo '##vso[task.prependpath]$(GOBIN)'
       echo '##vso[task.prependpath]$(GOROOT)/bin'
     displayName: 'Set up the Go workspace'
@@ -67,11 +63,11 @@ jobs:
     displayName: 'Print go env.'
 
   - script: go get -u github.com/illuscio-dev/docmodule-go
-    displayName: 'Download DocModule (for creating docs)'
+    displayName: 'Download DocModule (for creating docs).'
     workingDirectory: /home
 
   - script: go get -u golang.org/x/tools/cmd/godoc
-    displayName: 'Download GoDoc (for creating docs)'
+    displayName: 'Download GoDoc (for creating docs).'
     workingDirectory: /home
 
   - script: go get -u github.com/mgechev/revive
@@ -79,9 +75,7 @@ jobs:
     workingDirectory: /home
 
   - script: go get -v -t -d ./...
-    workingDirectory: '$(modulePath)'
-    displayName: 'go get dependencies'
+    displayName: 'go get dependencies.'
 
   - script: revive -config revive.toml ./...
-    workingDirectory: '$(modulePath)'
-    displayName: 'Lint'
+    displayName: 'Lint.'
