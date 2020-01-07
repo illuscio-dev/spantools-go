@@ -2,7 +2,8 @@ name: build_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 variables:
   # PIPELINE CONFIGURATION
-  minimumCoverage: 0.85
+  minimumCoverage: 1.1
+  pythonVersion: '3.7'
 
   # NOT FOR CONFIGURATION
   # Go binaries path
@@ -46,9 +47,10 @@ jobs:
       echo '##vso[task.prependpath]$(GOBIN)'
       echo '##vso[task.prependpath]$(GOROOT)/bin'
     displayName: 'Set up the Go workspace'
+
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7'
+      versionSpec: $(pythonVersion)
       architecture: 'x64'
 
   # Install SSH key
@@ -87,6 +89,7 @@ jobs:
     displayName: 'Lint.'
 
   - script: |
+      set -o pipefail
       go test \
       -v \
       -covermode=count \
@@ -99,10 +102,12 @@ jobs:
     displayName: 'Run Tests.'
 
   - script: cat testResults.txt | go-junit-report > report.xml
+    condition: succeededOrFailed()
     workingDirectory: '$(modulePath)'
-    displayName: 'Run Tests.'
+    displayName: 'Convert test report to junit.'
 
   - task: PublishTestResults@2
+    condition: succeededOrFailed()
     inputs:
       testRunner: JUnit
       testResultsFiles: $(modulePath)/report.xml
