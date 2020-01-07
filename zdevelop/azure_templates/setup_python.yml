@@ -24,8 +24,8 @@ steps:
 
 - script: |
     mkdir -p ~/.config/pip
-    mv $(pipConf.secureFilePath)/pip.conf ~/.config/pip/pip.conf
-    mv $(pypirc.secureFilePath)/.pypirc ~/.pypirc
+    mv $(pipConf.secureFilePath) ~/.config/pip/pip.conf
+    mv $(pypirc.secureFilePath) ~/.pypirc
   displayName: 'move pip credentials'
 
 - script: |
