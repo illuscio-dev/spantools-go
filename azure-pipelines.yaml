@@ -65,9 +65,7 @@ jobs:
       testResultsFiles: /reports/tests_junit.xml
       failTaskOnFailedTests: true
 
-  - script: |
-      set -o pipefail
-      python3 zdevelop/azure_scripts/get_release_version.py | echo -e
+  - script: python3 zdevelop/azure_scripts/get_release_version.py
     displayName: 'get release version'
 
   - script: echo $(RELEASE_VERSION)
