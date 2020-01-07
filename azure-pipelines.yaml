@@ -4,7 +4,7 @@ variables:
   # Go binaries path
   GOBIN:  '$(GOPATH)/bin'
   # Go installation path, we want to use go 1.13
-  GOROOT: '/usr/local/go1.13'
+  GOROOT: '/usr/local/go1.13.5'
   # Go workspace path
   GOPATH: '$(system.defaultWorkingDirectory)/gopath'
   # Path to the module's code
@@ -56,9 +56,13 @@ jobs:
       sshPassphrase: hVtoa8xbRv4-bVfMUsTr
       sshKeySecureFile: ci_cd.private
 
+  # - script: |
+  #     git config --global url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
+  #   displayName: 'Registering git repo access.'
+
   - script: |
-      git config --global url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
-    displayName: 'Registering git repo access.'
+      echo 'machine github.com login $(GIT_USER) password $(GIT_PW)' >> $HOME/.netrc
+    displayName: 'Adding Github login.'
 
   - script: cat ~/.gitconfig
     displayName: 'Debug git.'
