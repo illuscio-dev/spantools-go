@@ -9,19 +9,6 @@ steps:
     echo '##vso[task.prependpath]$(GOROOT)/bin'
   displayName: 'Set up the Go workspace'
 
-# Install SSH key
-# Install an SSH key prior to a build or deployment
-- task: InstallSSHKey@0
-  inputs:
-    knownHostsEntry: github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
-    sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDrTwn50yyQO2HpBZKvTU5hPKGPEa/XUfOpaUGFKInrFhj5zhqA/y3fAPHtp8r3+GJ/Wapu1/iS7mALApK3QbF41t6vL3sLM+k8qBPLckNsEmaLcb+Q+KOGGjbdODZ8M6PR+2PG+ckoPfRi5D0Mdu669AUqJvkmKWbHPZAHi8SS4ibQjTivoq8fPJmHJyuoCWBSaWGFctdf/JegrBTtWE1GrY6Mnf3X/BU5CYbaBSockgyzy64Pu1KjXzWpInXgnb+WhKcY7icihX/TosDJHHACKpS/cAYQ3jH/WcIkXtqz71RZMtoV3A3mfFgsq9yPpde25jRVjBM7KxpmU79iXZ8q6JA2jDJIcHFHXhNQytqSHo10KAb8cWuM2uFoMLNk9UNM3Gyd1KBFzicqbo/yoXYoY7fZhBGjnhqI2XqG3qNQsz7njvUcFltYpsHGtCDeBL0AiLjmiaWJ01/Nl2qvTWKguzVDFe1FHCOKAPaNeTynnCeygNS4njReeBQhredKq2am3x2RotIkwe8V8HGfWY15sSrHeBlTI68V+rHTPegOTJZaf6ETiTaO3vf4+o3d+It4Y829dUcOFCfO40Ojzej5Ep1MbS7oH3NxtErkuwQVJZwhA4tn6pMPn0l+PsX7M2dZvDtPE/YUERU3lpA5BqLC+CJPJjsz6u9f6IHXtifeYQ== cicd@illuscio.com
-    sshPassphrase: hVtoa8xbRv4-bVfMUsTr
-    sshKeySecureFile: ci_cd.private
-
-- script: |
-    git config --global --add url."ssh://git@github.com/".insteadOf "https://github.com/"
-  displayName: 'Registering git repo access.'
-
 - script: go version
   displayName: 'Print go version'
 
