@@ -62,15 +62,13 @@ jobs:
     condition: succeededOrFailed()
     inputs:
       testRunner: JUnit
-      testResultsFiles: $(modulePath)/reports/tests_junit.xml
+      testResultsFiles: /reports/tests_junit.xml
       failTaskOnFailedTests: true
 
-  - task: PythonScript@0
+  - script: |
+      set -o pipefail
+      python3 zdevelop/azure_scripts/get_release_version.py | echo -e
     displayName: 'get release version'
-    inputs:
-      scriptSource: filePath
-      scriptPath: zdevelop/azure_scripts/get_release_version.py
-      failOnStderr: true
 
   - script: echo $(RELEASE_VERSION)
     displayName: 'debug release version'
