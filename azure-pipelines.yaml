@@ -70,3 +70,8 @@ jobs:
 
   - script: echo $(RELEASE_VERSION)
     displayName: 'debug release version'
+
+  - script: |
+      git tag -a v$(RELEASE_VERSION) -m "azure pipelines build $(Build.BuildNumber)"
+      git push --tags
+    displayName: 'publish tagged version'
