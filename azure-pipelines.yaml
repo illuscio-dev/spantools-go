@@ -61,6 +61,14 @@ jobs:
   #   displayName: 'Registering git repo access.'
 
   - script: |
+      git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com/"
+    displayName: 'Registering git repo access.'
+
+  - script: |
+      git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github@github.com/"
+    displayName: 'Registering git repo access.'
+
+  - script: |
       echo 'machine github.com login $(GIT_USER) password $(GIT_PW)' >> $HOME/.netrc
     displayName: 'Adding Github login.'
 
