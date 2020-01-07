@@ -93,7 +93,7 @@ jobs:
       -coverpkg=./... \
       -coverprofile=coverage.out \
       ./... \
-      -minimum-coverage=$minimumCoverage \
+      -minimum-coverage=$(minimumCoverage) \
       | tee testResults.txt
     workingDirectory: '$(modulePath)'
     displayName: 'Run Tests.'
