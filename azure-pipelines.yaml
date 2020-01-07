@@ -65,7 +65,7 @@ jobs:
     displayName: 'Registering git repo access.'
 
   - script: |
-      git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github@github.com/"
+      git config --global --add url."https://$(GIT_USER):$(GIT_PW)@github.com/".insteadOf "https://github.com@github.com/"
     displayName: 'Registering git repo access.'
 
   - script: |
