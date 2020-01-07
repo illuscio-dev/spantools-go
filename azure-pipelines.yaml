@@ -83,4 +83,5 @@ jobs:
     displayName: 'go get dependencies'
 
   - script: revive -config revive.toml ./...
+    workingDirectory: '$(modulePath)'
     displayName: 'Lint'
