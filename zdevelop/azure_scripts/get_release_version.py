@@ -59,6 +59,9 @@ def get_latest_git_tagged_patch_version(
         except version.InvalidVersion:
             continue
 
+        if version_parsed.release is None:
+            continue
+
         major_parsed = version_parsed.release[0]
         minor_parsed = version_parsed.release[1]
 
