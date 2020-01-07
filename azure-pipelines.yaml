@@ -93,9 +93,12 @@ jobs:
       -coverpkg=./... \
       -coverprofile=coverage.out \
       ./... \
-      --minimum-coverage=$minimumCoverage \
-      2>&1 \
-      | go-junit-report > report.xml
+      -minimum-coverage=$minimumCoverage \
+      | tee testResults.txt
+    workingDirectory: '$(modulePath)'
+    displayName: 'Run Tests.'
+
+  - script: cat testResults.txt | go-junit-report > report.xml
     workingDirectory: '$(modulePath)'
     displayName: 'Run Tests.'
 
