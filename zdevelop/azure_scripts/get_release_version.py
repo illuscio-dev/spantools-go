@@ -96,9 +96,7 @@ def main():
         parser.write(f)
 
     # Set the variable through azure's logging variable mechanism
-    sys.stdout.write(
-        f"##vso[task.setvariable variable=RELEASE_VERSION]{version_release}"
-    )
+    print(f"##vso[task.setvariable variable=RELEASE_VERSION]{version_release}")
 
 
 if __name__ == '__main__':
