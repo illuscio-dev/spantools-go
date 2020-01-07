@@ -9,11 +9,12 @@ steps:
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
 
 - script: |
+    git checkout -b tempBuildBranch
     git commit -am "added release version"
     git pull origin master
-    git merge -s ours master
-    git checkout master
-    git merge dev
+    git merge -s ours origin/master
+    git checkout origin/master
+    git merge tempBuildBranch
     git push
   displayName: 'merge into master'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
