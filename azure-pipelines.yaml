@@ -40,7 +40,7 @@ jobs:
   - template: $(modulePath)/zdevelop/azure_templates/setup_go.yml
 
   # Setup python environment
-  - template: $(modulePath)/zdevelop/azure_templates/setup_python.yml
+  - template: ${{variables['modulePath']}}/zdevelop/azure_templates/setup_python.yml
 
   # Run job
   - script: revive -config revive.toml ./...
