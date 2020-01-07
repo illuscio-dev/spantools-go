@@ -1,6 +1,7 @@
 package tests
 
-//revive:disable:import-shadowing
+//revive:disable:import-shadowing reason: Disabled for assert := assert.New(), which is
+// the preferred method of using multiple asserts in a test.
 
 import (
 	"bou.ke/monkey"

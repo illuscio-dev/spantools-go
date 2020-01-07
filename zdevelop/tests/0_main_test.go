@@ -7,7 +7,11 @@ import (
 import "fmt"
 import "os"
 
-//revive:disable:import-shadowing
+//revive:disable:import-shadowing reason: Disabled for assert := assert.New(), which is
+// the preferred method of using multiple asserts in a test.
+
+//revive:disable:deep-exit reason: We should call exit in TestMain, but revive is not
+// aware of that convention
 
 // This function handled running of all the tests.
 func TestMain(m *testing.M) {
@@ -29,7 +33,7 @@ func TestMain(m *testing.M) {
 	if testResults == 0 && testing.CoverMode() != "" {
 		coverageResult := testing.Coverage()
 		if coverageResult < *minCoverageFlag {
-			fmt.Println(
+			_, _ = fmt.Println(
 				"Tests passed but coverageResult of '", coverageResult, "' does " +
 					"not meet minimum requirement of '", *minCoverageFlag, "'",
 			)

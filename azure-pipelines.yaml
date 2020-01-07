@@ -70,16 +70,11 @@ jobs:
   - script: go env
     displayName: 'Print go env.'
 
-  - script: go get -u github.com/illuscio-dev/docmodule-go
-    displayName: 'Download DocModule (for creating docs).'
-    workingDirectory: /home
-
-  - script: go get -u golang.org/x/tools/cmd/godoc
-    displayName: 'Download GoDoc (for creating docs).'
-    workingDirectory: /home
-
-  - script: go get -u github.com/mgechev/revive
-    displayName: 'Download Revive (for linting)'
+  - script: |
+      go get -u github.com/illuscio-dev/docmodule-go
+      go get -u golang.org/x/tools/cmd/godoc
+      go get -u github.com/mgechev/revive
+    displayName: 'Go get CLI tools.'
     workingDirectory: /home
 
   - script: go get -v -t -d ./...
