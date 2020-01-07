@@ -1,6 +1,10 @@
 name: build_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 variables:
+  # PIPELINE CONFIGURATION
+  minimumCoverage: 0.85
+
+  # NOT FOR CONFIGURATION
   # Go binaries path
   GOBIN:  '$(GOPATH)/bin'
   # Go installation path, we want to use go 1.13
@@ -86,6 +90,13 @@ jobs:
     workingDirectory: '$(modulePath)'
     displayName: 'Lint.'
 
-  - script: go test ./...
+  - script: |
+      go test \
+      -v \
+      -covermode=count \
+      -coverpkg=./... \
+      -coverprofile=coverage.out \
+      ./... \
+      --minimum-coverage=$minimumCoverage
     workingDirectory: '$(modulePath)'
     displayName: 'Run Tests.'

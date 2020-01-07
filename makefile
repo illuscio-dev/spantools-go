@@ -19,8 +19,9 @@ test:
 			-failfast \
 			-covermode=count \
 			-coverprofile=$(COVERAGE_LOG) \
-			-coverpkg=./... \
+            -coverpkg=./... \
 			./... \
+			--minimum-coverage=0.85 \
         | tee "$(STD_OUT_LOG)" \
     ) 3>&1 1>&2 2>&3 \
         | tee "$(STD_ERR_LOG)"
@@ -28,7 +29,6 @@ test:
 	-go tool cover -html=$(COVERAGE_LOG)
 	-go-test-html "$(STD_OUT_LOG)" "$(STD_ERR_LOG)" "$(TEST_REPORT)"
 	# Open Reports
-	-open "$(COVERAGE_REPORT)"
 	-open "$(TEST_REPORT)"
 
 .PHONY: lint
