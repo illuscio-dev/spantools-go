@@ -13,14 +13,14 @@ import "os"
 //revive:disable:deep-exit reason: We should call exit in TestMain, but revive is not
 // aware of that convention
 
-// This function handled running of all the tests.
+// This function handles running of all the tests.
 func TestMain(m *testing.M) {
 	// call flag.Parse() here if TestMain uses flags
 	minCoverageFlag := flag.Float64(
 		"minimum-coverage",
 		 // Default to 85% coverage requirement.
 		0.85,
-		"minimum coverage for passing tests from 0.0 (none) - 1.0 (all lines.)",
+		"minimum coverage for passing tests from 0.0 (none) - 1.0 (all lines)",
 	)
 
 	flag.Parse()
@@ -44,3 +44,5 @@ func TestMain(m *testing.M) {
 	// Return with exit code.
 	os.Exit(testResults)
 }
+
+//revive:enable	:deep-exit
