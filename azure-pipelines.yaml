@@ -33,7 +33,7 @@ jobs:
 
   steps:
   # Setup go environment
-  - template: zdevelop/azure_templates/setup_python.yml
+  - template: zdevelop/azure_templates/setup_go.yml
 
   # Setup python environment
   - template: zdevelop/azure_templates/setup_python.yml
