@@ -64,7 +64,7 @@ jobs:
       echo 'machine github.com login $(GIT_USER) password $(GIT_PW)' >> $HOME/.netrc
     displayName: 'Adding Github login.'
 
-  - script: cat ~/.gitconfig
+  - script: cat ~/.netrc
     displayName: 'Debug git.'
 
   - script: go version
