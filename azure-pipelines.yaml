@@ -6,10 +6,10 @@ variables:
   pythonVersion: '3.7'
 
   # NOT FOR CONFIGURATION
-  # Go binaries path
-  GOBIN:  '$(GOPATH)/bin'
   # Go installation path, we want to use go 1.13
   GOROOT: '/usr/local/go1.13'
+  # Go binaries path
+  GOBIN:  '$(GOROOT)/bin'
 
 trigger:
   batch: true
