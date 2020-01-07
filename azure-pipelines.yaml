@@ -7,6 +7,8 @@ variables:
   GOROOT: '/usr/local/go1.13'
   # Go workspace path
   GOPATH: '$(system.defaultWorkingDirectory)/gopath'
+  # Path to the module's code
+  modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)'
 
 trigger:
   batch: true
@@ -33,8 +35,10 @@ jobs:
   - script: |
       mkdir -p '$(GOBIN)'
       mkdir -p '$(GOPATH)/pkg'
+      mkdir -p '$(modulePath)'
       shopt -s extglob
       shopt -s dotglob
+      mv !(gopath) '$(modulePath)'
       echo '##vso[task.prependpath]$(GOBIN)'
       echo '##vso[task.prependpath]$(GOROOT)/bin'
     displayName: 'Set up the Go workspace'
@@ -75,7 +79,13 @@ jobs:
     workingDirectory: /home
 
   - script: go get -v -t -d ./...
+    workingDirectory: '$(modulePath)'
     displayName: 'go get dependencies.'
 
   - script: revive -config revive.toml ./...
+    workingDirectory: '$(modulePath)'
     displayName: 'Lint.'
+
+  - script: go test ./...
+    workingDirectory: '$(modulePath)'
+    displayName: 'Run Tests.'
