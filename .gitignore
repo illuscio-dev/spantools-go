@@ -38,3 +38,4 @@ sdist/
 var/
 .installed.cfg
 .idea/
+reports/

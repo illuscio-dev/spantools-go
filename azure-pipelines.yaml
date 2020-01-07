@@ -2,7 +2,7 @@ name: build_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
 variables:
   # PIPELINE CONFIGURATION
-  minimumCoverage: 1.1
+  minimumCoverage: 0.85
   pythonVersion: '3.7'
 
   # NOT FOR CONFIGURATION
@@ -67,28 +67,29 @@ jobs:
     displayName: 'Registering git repo access.'
 
   - script: go version
-    displayName: 'Print go version.'
+    displayName: 'Print go version'
 
   - script: go env
-    displayName: 'Print go env.'
+    displayName: 'Print go env'
 
   - script: |
       go get -u github.com/illuscio-dev/docmodule-go
       go get -u golang.org/x/tools/cmd/godoc
       go get -u github.com/mgechev/revive
       go get -u github.com/jstemmer/go-junit-report
-    displayName: 'Go get CLI tools.'
+    displayName: 'Go get CLI tools'
     workingDirectory: /home
 
   - script: go get -v -t -d ./...
     workingDirectory: '$(modulePath)'
-    displayName: 'go get dependencies.'
+    displayName: 'Go get dependencies'
 
   - script: revive -config revive.toml ./...
     workingDirectory: '$(modulePath)'
-    displayName: 'Lint.'
+    displayName: 'Lint'
 
   - script: |
+      mkdir ./reports
       set -o pipefail
       go test \
       -v \
@@ -97,18 +98,18 @@ jobs:
       -coverprofile=coverage.out \
       ./... \
       -minimum-coverage=$(minimumCoverage) \
-      | tee testResults.txt
+      | tee ./reports/testResults.txt
     workingDirectory: '$(modulePath)'
-    displayName: 'Run Tests.'
+    displayName: 'Run Tests'
 
-  - script: cat testResults.txt | go-junit-report > report.xml
+  - script: cat ./reports/testResults.txt | go-junit-report > ./reports/tests_junit.xml
     condition: succeededOrFailed()
     workingDirectory: '$(modulePath)'
-    displayName: 'Convert test report to junit.'
+    displayName: 'Convert test report to junit'
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
       testRunner: JUnit
-      testResultsFiles: $(modulePath)/report.xml
+      testResultsFiles: $(modulePath)/reports/tests_junit.xml
       failTaskOnFailedTests: true
