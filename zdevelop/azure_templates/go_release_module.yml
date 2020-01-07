@@ -13,7 +13,8 @@ steps:
     git commit -am "added release version"
     git pull origin master
     git merge -s ours origin/master
-    git checkout origin/master
+    git checkout master
+    git pull
     git merge tempBuildBranch
     git push
   displayName: 'merge into master'

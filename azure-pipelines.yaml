@@ -50,4 +50,3 @@ jobs:
 
   # Release the module on github.
   - template: zdevelop/azure_templates/go_release_module.yml
-
