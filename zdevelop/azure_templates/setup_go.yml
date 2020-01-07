@@ -40,5 +40,4 @@ steps:
   workingDirectory: /home
 
 - script: go get -v -t -d ./...
-  workingDirectory: '$(modulePath)'
   displayName: 'Go get dependencies'

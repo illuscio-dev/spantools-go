@@ -6,16 +6,16 @@ steps:
     versionSpec: $(pythonVersion)
     architecture: 'x64'
 
-  # Download Secure File
-  # Download a secure file to a temporary location on the build or release agent
+# Download Secure File
+# Download a secure file to a temporary location on the build or release agent
 - task: DownloadSecureFile@1
   name: pipConf
   inputs:
     secureFile: pip.conf
   displayName: 'download pip.conf'
 
-  # Download Secure File
-  # Download a secure file to a temporary location on the build or release agent
+# Download Secure File
+# Download a secure file to a temporary location on the build or release agent
 - task: DownloadSecureFile@1
   name: pypirc
   inputs:

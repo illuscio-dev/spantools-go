@@ -10,10 +10,6 @@ variables:
   GOBIN:  '$(GOPATH)/bin'
   # Go installation path, we want to use go 1.13
   GOROOT: '/usr/local/go1.13'
-  # Go workspace path
-  GOPATH: '$(system.defaultWorkingDirectory)/gopath'
-  # Path to the module's code
-  modulePath: '$(GOPATH)/src/github.com/$(build.repository.name)'
 
 trigger:
   batch: true
@@ -37,14 +33,13 @@ jobs:
 
   steps:
   # Setup go environment
-  - template: ${{variables['modulePath']}}/zdevelop/azure_templates/setup_python.yml
+  - template: zdevelop/azure_templates/setup_python.yml
 
   # Setup python environment
-  - template: ${{variables['modulePath']}}/zdevelop/azure_templates/setup_python.yml
+  - template: zdevelop/azure_templates/setup_python.yml
 
   # Run job
   - script: revive -config revive.toml ./...
-    workingDirectory: '$(modulePath)'
     displayName: 'Lint'
 
   - script: |
@@ -58,12 +53,10 @@ jobs:
       ./... \
       -minimum-coverage=$(minimumCoverage) \
       | tee ./reports/testResults.txt
-    workingDirectory: '$(modulePath)'
     displayName: 'Run Tests'
 
   - script: cat ./reports/testResults.txt | go-junit-report > ./reports/tests_junit.xml
     condition: succeededOrFailed()
-    workingDirectory: '$(modulePath)'
     displayName: 'Convert test report to junit'
 
   - task: PublishTestResults@2
@@ -77,7 +70,7 @@ jobs:
     displayName: 'get release version'
     inputs:
       scriptSource: filePath
-      scriptPath: '$(modulePath)/zdevelop/azure_scripts/get_release_version.py'
+      scriptPath: zdevelop/azure_scripts/get_release_version.py
       failOnStderr: true
 
   - script: echo $(RELEASE_VERSION)
