@@ -74,7 +74,8 @@ jobs:
     displayName: 'debug release version'
 
   - script: |
-      git fetch master
+      git commit -am "added release version"
+      git pull origin master
       git merge -s ours master
       git checkout master
       git merge dev
