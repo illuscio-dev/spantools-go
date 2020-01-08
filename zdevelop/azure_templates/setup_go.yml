@@ -4,7 +4,7 @@ steps:
 - script: |
     wget "$(goVersionLink)" --output-document "$(Agent.BuildDirectory)/goDownload.tar.gz"
     tar -C '$(Agent.BuildDirectory)' -xzf "$(Agent.BuildDirectory)/goDownload.tar.gz"
-  displayName: 'Install Go 1.13.5'
+  displayName: 'Install go version.'
 
 - script: |
     mkdir -p '$(GOBIN)'
