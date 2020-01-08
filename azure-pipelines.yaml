@@ -22,6 +22,9 @@ trigger:
 pr:
   - dev
 
+variables:
+  - template: variables.yml@templates
+
 jobs:
   # Release the module on github.
   - template: go_module_main.yml@templates
