@@ -1,15 +1,8 @@
 steps:
 
-- script: python3 zdevelop/azure_scripts/get_release_version.py
-  displayName: 'get release version'
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
-
-- script: echo $(RELEASE_VERSION)
-  displayName: 'debug release version'
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
-
 - script: |
     git checkout -b tempBuildBranch
+    git add zdocs/source/_static
     git commit -am "added release version"
     git pull origin master
     git merge -s ours origin/master

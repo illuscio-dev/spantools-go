@@ -48,5 +48,16 @@ jobs:
   # Release the module on github.
   - template: zdevelop/azure_templates/go_run_tests.yml
 
+  # Get the release version
+  - script: python3 zdevelop/azure_scripts/get_release_version.py
+    displayName: 'get release version'
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
+
+  # Build API documentation. We just need to build the source static html files here
+  # and readthedocs will take care of the rest.
+  - script: docmodule-go
+    displayName: 'Build docs'
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
+
   # Release the module on github.
   - template: zdevelop/azure_templates/go_release_module.yml

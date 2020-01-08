@@ -1,4 +1,13 @@
-__version__ = "0.0.1"
+import configparser
+import pathlib
+
+config_path = pathlib.Path(__file__).parent.parent.parent / "setup.cfg"
+config = configparser.ConfigParser()
+config.read(str(config_path))
+
+__version__ = config.get("version", "release")
+if not __version__:
+    __version__ = config.get("version", "target")
 
 # -*- coding: utf-8 -*-
 #
