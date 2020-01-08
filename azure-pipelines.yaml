@@ -24,4 +24,4 @@ pr:
 
 jobs:
   # Release the module on github.
-  - template: zdevelop/azure_templates/go_module_main.yml
+  - template: go_module_main.yml@templates
