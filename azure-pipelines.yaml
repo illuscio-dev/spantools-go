@@ -7,19 +7,6 @@ resources:
       name: illuscio-dev/azure-pipelines-templates
       endpoint: Github_Read
 
-
-variables:
-  # PIPELINE CONFIGURATION
-  minimumCoverage: 0.85
-  pythonVersion: '3.7'
-  goVersionLink: https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
-
-  # NOT FOR CONFIGURATION
-  # Go installation path, we want to use go 1.13
-  GOROOT: '$(Agent.BuildDirectory)/go'
-  # Go binaries path
-  GOBIN:  '$(Agent.BuildDirectory)/gobin'
-
 trigger:
   batch: true
   # We are going to only be doing builds for the 'dev' branch. Master will be updated
@@ -36,47 +23,5 @@ pr:
   - dev
 
 jobs:
-
-- job: 'CI_CD'
-
-  pool:
-    vmImage: 'ubuntu-16.04'
-
-  steps:
-  # Setup python environment
-  - template: git_setup.yml@templates
-
-  # Setup python environment
-  - template: python_setup.yml@templates
-    parameters:
-      pythonVersion: $(pythonVersion)
-
-  # Setup go environment
-  - template: go_setup.yml@templates
-    parameters:
-      goVersionLink: $(goVersionLink)
-
-  # Run job
-  - script: revive -config revive.toml ./...
-    displayName: 'Lint'
-
   # Release the module on github.
-  - template: go_run_tests.yml@templates
-
-  # Get the release version
-  - script: python3 zdevelop/azure_scripts/get_release_version.py
-    displayName: 'get release version'
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
-
-  - script: 'wget --help'
-    displayName: 'Debug wget help'
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
-
-  # Build API documentation. We just need to build the source static html files here
-  # and readthedocs will take care of the rest.
-  - script: docmodule-go
-    displayName: 'Build docs'
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
-
-  # Release the module on github.
-  - template: zdevelop/azure_templates/go_release_module.yml
+  - template: zdevelop/azure_templates/go_module_main.yml
