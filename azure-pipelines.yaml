@@ -4,6 +4,7 @@ variables:
   # PIPELINE CONFIGURATION
   minimumCoverage: 0.85
   pythonVersion: '3.7'
+  goVersionLink: https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
 
   # NOT FOR CONFIGURATION
   # Go installation path, we want to use go 1.13
