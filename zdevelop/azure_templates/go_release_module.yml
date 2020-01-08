@@ -4,13 +4,24 @@ steps:
     git checkout -b tempBuildBranch
     git add zdocs/source/_static
     git commit -am "added release version"
-    git pull origin master
+  displayName: 'commit changes to temp branch'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+
+- script: |
     git merge -s ours origin/master
+  displayName: 'force merge ours'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+
+- script: |
     git checkout master
     git pull
     git merge tempBuildBranch
-    git push
   displayName: 'merge into master'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+
+- script: |
+    git push
+  displayName: 'push master'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
 
 - script: |
