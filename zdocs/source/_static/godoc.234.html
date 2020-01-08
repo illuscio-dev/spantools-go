@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>openpgp - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.234.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package openpgp
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/openpgp"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.234.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.234.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.234.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package openpgp implements high level operations on OpenPGP messages.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.234.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.234.html#ArmoredDetachSign">func ArmoredDetachSign(w io.Writer, signer *Entity, message io.Reader, config *packet.Config) (err error)</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#ArmoredDetachSignText">func ArmoredDetachSignText(w io.Writer, signer *Entity, message io.Reader, config *packet.Config) error</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#DetachSign">func DetachSign(w io.Writer, signer *Entity, message io.Reader, config *packet.Config) error</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#DetachSignText">func DetachSignText(w io.Writer, signer *Entity, message io.Reader, config *packet.Config) error</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#Encrypt">func Encrypt(ciphertext io.Writer, to []*Entity, signed *Entity, hints *FileHints, config *packet.Config) (plaintext io.WriteCloser, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#NewCanonicalTextHash">func NewCanonicalTextHash(h hash.Hash) hash.Hash</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#Sign">func Sign(output io.Writer, signed *Entity, hints *FileHints, config *packet.Config) (input io.WriteCloser, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.234.html#SymmetricallyEncrypt">func SymmetricallyEncrypt(ciphertext io.Writer, passphrase []byte, hints *FileHints, config *packet.Config) (plaintext io.WriteCloser, err error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.234.html#Entity">type Entity</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#CheckArmoredDetachedSignature">func CheckArmoredDetachedSignature(keyring KeyRing, signed, signature io.Reader) (signer *Entity, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#CheckDetachedSignature">func CheckDetachedSignature(keyring KeyRing, signed, signature io.Reader) (signer *Entity, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#NewEntity">func NewEntity(name, comment, email string, config *packet.Config) (*Entity, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#ReadEntity">func ReadEntity(packets *packet.Reader) (*Entity, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#Entity.Serialize">func (e *Entity) Serialize(w io.Writer) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#Entity.SerializePrivate">func (e *Entity) SerializePrivate(w io.Writer, config *packet.Config) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#Entity.SignIdentity">func (e *Entity) SignIdentity(identity string, signer *Entity, config *packet.Config) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.234.html#EntityList">type EntityList</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#ReadArmoredKeyRing">func ReadArmoredKeyRing(r io.Reader) (EntityList, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#ReadKeyRing">func ReadKeyRing(r io.Reader) (el EntityList, err error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#EntityList.DecryptionKeys">func (el EntityList) DecryptionKeys() (keys []Key)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#EntityList.KeysById">func (el EntityList) KeysById(id uint64) (keys []Key)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#EntityList.KeysByIdUsage">func (el EntityList) KeysByIdUsage(id uint64, requiredUsage byte) (keys []Key)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.234.html#FileHints">type FileHints</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.234.html#Identity">type Identity</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.234.html#Key">type Key</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.234.html#KeyRing">type KeyRing</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.234.html#MessageDetails">type MessageDetails</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.234.html#ReadMessage">func ReadMessage(r io.Reader, keyring KeyRing, prompt PromptFunction, config *packet.Config) (md *MessageDetails, err error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.234.html#PromptFunction">type PromptFunction</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.234.html#Subkey">type Subkey</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/canonical_text.go">canonical_text.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go">keys.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/read.go">read.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go">write.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+PrivateKeyType is the armor type for a PGP private key.
+</p>
+
+				<pre>var <span id="PrivateKeyType">PrivateKeyType</span> = &#34;PGP PRIVATE KEY BLOCK&#34;</pre>
+			
+				<p>
+PublicKeyType is the armor type for a PGP public key.
+</p>
+
+				<pre>var <span id="PublicKeyType">PublicKeyType</span> = &#34;PGP PUBLIC KEY BLOCK&#34;</pre>
+			
+				<p>
+SignatureType is the armor type for a PGP signature.
+</p>
+
+				<pre>var <span id="SignatureType">SignatureType</span> = &#34;PGP SIGNATURE&#34;</pre>
+			
+		
+		
+			
+			
+			<h2 id="ArmoredDetachSign">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=940:1045#L20">ArmoredDetachSign</a>
+				<a class="permalink" href="godoc.234.html#ArmoredDetachSign">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ArmoredDetachSign(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, signer *<a href="godoc.234.html#Entity">Entity</a>, message <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+ArmoredDetachSign signs message with the private key from signer (which
+must already have been decrypted) and writes an armored signature to w.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ArmoredDetachSignText">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=1782:1885#L36">ArmoredDetachSignText</a>
+				<a class="permalink" href="godoc.234.html#ArmoredDetachSignText">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ArmoredDetachSignText(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, signer *<a href="godoc.234.html#Entity">Entity</a>, message <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+ArmoredDetachSignText signs message (after canonicalising the line endings)
+with the private key from signer (which must already have been decrypted)
+and writes an armored signature to w.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DetachSign">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=570:662#L13">DetachSign</a>
+				<a class="permalink" href="godoc.234.html#DetachSign">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DetachSign(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, signer *<a href="godoc.234.html#Entity">Entity</a>, message <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+DetachSign signs message with the private key from signer (which must
+already have been decrypted) and writes the signature to w.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DetachSignText">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=1363:1459#L28">DetachSignText</a>
+				<a class="permalink" href="godoc.234.html#DetachSignText">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DetachSignText(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, signer *<a href="godoc.234.html#Entity">Entity</a>, message <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+DetachSignText signs message (after canonicalising the line endings) with
+the private key from signer (which must already have been decrypted) and
+writes the signature to w.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Encrypt">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=8235:8378#L250">Encrypt</a>
+				<a class="permalink" href="godoc.234.html#Encrypt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Encrypt(ciphertext <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, to []*<a href="godoc.234.html#Entity">Entity</a>, signed *<a href="godoc.234.html#Entity">Entity</a>, hints *<a href="godoc.234.html#FileHints">FileHints</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (plaintext <a href="godoc.585.html">io</a>.<a href="godoc.585.html#WriteCloser">WriteCloser</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Encrypt encrypts a message to a number of recipients and, optionally, signs
+it. hints contains optional information, that is also encrypted, that aids
+the recipients in processing the message. The resulting WriteCloser must
+be closed after the contents of the file have been written.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewCanonicalTextHash">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/canonical_text.go?s=331:379#L1">NewCanonicalTextHash</a>
+				<a class="permalink" href="godoc.234.html#NewCanonicalTextHash">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewCanonicalTextHash(h <a href="godoc.568.html">hash</a>.<a href="godoc.568.html#Hash">Hash</a>) <a href="godoc.568.html">hash</a>.<a href="godoc.568.html#Hash">Hash</a></pre>
+			<p>
+NewCanonicalTextHash reformats text written to it into the canonical
+form and then applies the hash h.  See RFC 4880, section 5.2.1.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Sign">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=11235:11353#L335">Sign</a>
+				<a class="permalink" href="godoc.234.html#Sign">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Sign(output <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, signed *<a href="godoc.234.html#Entity">Entity</a>, hints *<a href="godoc.234.html#FileHints">FileHints</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (input <a href="godoc.585.html">io</a>.<a href="godoc.585.html#WriteCloser">WriteCloser</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Sign signs a message. The resulting WriteCloser must be closed after the
+contents of the file have been written.  hints contains optional information
+that aids the recipients in processing the message.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SymmetricallyEncrypt">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=3902:4047#L99">SymmetricallyEncrypt</a>
+				<a class="permalink" href="godoc.234.html#SymmetricallyEncrypt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SymmetricallyEncrypt(ciphertext <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, passphrase []<a href="godoc.4.html#byte">byte</a>, hints *<a href="godoc.234.html#FileHints">FileHints</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (plaintext <a href="godoc.585.html">io</a>.<a href="godoc.585.html#WriteCloser">WriteCloser</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+SymmetricallyEncrypt acts like gpg -c: it encrypts a file with a passphrase.
+The resulting WriteCloser must be closed after the contents of the file have
+been written.
+If config is nil, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Entity">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=753:955#L16">Entity</a>
+				<a class="permalink" href="godoc.234.html#Entity">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Entity represents the components of an OpenPGP key: a primary public key
+(which must be a signing key), one or more identities claimed by that key,
+and zero or more subkeys, which may be encryption keys.
+</p>
+
+			<pre>type Entity struct {
+<span id="Entity.PrimaryKey"></span>    PrimaryKey  *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#PublicKey">PublicKey</a>
+<span id="Entity.PrivateKey"></span>    PrivateKey  *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#PrivateKey">PrivateKey</a>
+<span id="Entity.Identities"></span>    Identities  map[<a href="godoc.4.html#string">string</a>]*<a href="godoc.234.html#Identity">Identity</a> <span class="comment">// indexed by Identity.Name</span>
+<span id="Entity.Revocations"></span>    Revocations []*<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Signature">Signature</a>
+<span id="Entity.Subkeys"></span>    Subkeys     []<a href="godoc.234.html#Subkey">Subkey</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="CheckArmoredDetachedSignature">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/read.go?s=13336:13444#L425">CheckArmoredDetachedSignature</a>
+					<a class="permalink" href="godoc.234.html#CheckArmoredDetachedSignature">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func CheckArmoredDetachedSignature(keyring <a href="godoc.234.html#KeyRing">KeyRing</a>, signed, signature <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) (signer *<a href="godoc.234.html#Entity">Entity</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CheckArmoredDetachedSignature performs the same actions as
+CheckDetachedSignature but expects the signature to be armored.
+</p>
+
+				
+				
+			
+				
+				<h3 id="CheckDetachedSignature">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/read.go?s=11701:11802#L353">CheckDetachedSignature</a>
+					<a class="permalink" href="godoc.234.html#CheckDetachedSignature">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func CheckDetachedSignature(keyring <a href="godoc.234.html#KeyRing">KeyRing</a>, signed, signature <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) (signer *<a href="godoc.234.html#Entity">Entity</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CheckDetachedSignature takes a signed file and a detached signature and
+returns the signer if the signature is valid. If the signer isn&#39;t known,
+ErrUnknownIssuer is returned.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewEntity">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=13980:14063#L496">NewEntity</a>
+					<a class="permalink" href="godoc.234.html#NewEntity">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEntity(name, comment, email <a href="godoc.4.html#string">string</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (*<a href="godoc.234.html#Entity">Entity</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+NewEntity returns an Entity that contains a fresh RSA/RSA keypair with a
+single identity composed of the given full name, comment and email, any of
+which may be empty but must not contain any of &#34;()&lt;&gt;\x00&#34;.
+If config is nil, sensible defaults will be used.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ReadEntity">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=9026:9082#L304">ReadEntity</a>
+					<a class="permalink" href="godoc.234.html#ReadEntity">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadEntity(packets *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Reader">Reader</a>) (*<a href="godoc.234.html#Entity">Entity</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ReadEntity reads an entity (public key, identities, subkeys etc) from the
+given Reader.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Entity.Serialize">func (*Entity) <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=17710:17755#L620">Serialize</a>
+					<a class="permalink" href="godoc.234.html#Entity.Serialize">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.234.html#Entity">Entity</a>) Serialize(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Serialize writes the public part of the given Entity to w, including
+signatures from other entities. No private key material will be output.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Entity.SerializePrivate">func (*Entity) <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=16825:16906#L582">SerializePrivate</a>
+					<a class="permalink" href="godoc.234.html#Entity.SerializePrivate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.234.html#Entity">Entity</a>) SerializePrivate(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+SerializePrivate serializes an Entity, including private key material, but
+excluding signatures from other entities, to the given Writer.
+Identities and subkeys are re-signed in case they changed since NewEntry.
+If config is nil, sensible defaults will be used.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Entity.SignIdentity">func (*Entity) <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=18613:18704#L659">SignIdentity</a>
+					<a class="permalink" href="godoc.234.html#Entity.SignIdentity">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.234.html#Entity">Entity</a>) SignIdentity(identity <a href="godoc.4.html#string">string</a>, signer *<a href="godoc.234.html#Entity">Entity</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+SignIdentity adds a signature to e, from signer, attesting that identity is
+associated with e. The provided identity must already be an element of
+e.Identities and the private key of signer must have been decrypted if
+necessary.
+If config is nil, sensible defaults will be used.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EntityList">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=4881:4906#L149">EntityList</a>
+				<a class="permalink" href="godoc.234.html#EntityList">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An EntityList contains one or more Entities.
+</p>
+
+			<pre>type EntityList []*<a href="godoc.234.html#Entity">Entity</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadArmoredKeyRing">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=7102:7158#L226">ReadArmoredKeyRing</a>
+					<a class="permalink" href="godoc.234.html#ReadArmoredKeyRing">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadArmoredKeyRing(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) (<a href="godoc.234.html#EntityList">EntityList</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ReadArmoredKeyRing reads one or more public/private keys from an armor keyring file.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ReadKeyRing">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=7662:7718#L243">ReadKeyRing</a>
+					<a class="permalink" href="godoc.234.html#ReadKeyRing">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadKeyRing(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) (el <a href="godoc.234.html#EntityList">EntityList</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ReadKeyRing reads one or more public/private keys. Unsupported keys are
+ignored as long as at least a single valid key is found.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="EntityList.DecryptionKeys">func (EntityList) <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=6662:6712#L214">DecryptionKeys</a>
+					<a class="permalink" href="godoc.234.html#EntityList.DecryptionKeys">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (el <a href="godoc.234.html#EntityList">EntityList</a>) DecryptionKeys() (keys []<a href="godoc.234.html#Key">Key</a>)</pre>
+				<p>
+DecryptionKeys returns all private keys that are valid for decryption.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="EntityList.KeysById">func (EntityList) <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=4972:5025#L152">KeysById</a>
+					<a class="permalink" href="godoc.234.html#EntityList.KeysById">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (el <a href="godoc.234.html#EntityList">EntityList</a>) KeysById(id <a href="godoc.4.html#uint64">uint64</a>) (keys []<a href="godoc.234.html#Key">Key</a>)</pre>
+				<p>
+KeysById returns the set of keys that have the given key id.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="EntityList.KeysByIdUsage">func (EntityList) <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=5813:5891#L179">KeysByIdUsage</a>
+					<a class="permalink" href="godoc.234.html#EntityList.KeysByIdUsage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (el <a href="godoc.234.html#EntityList">EntityList</a>) KeysByIdUsage(id <a href="godoc.4.html#uint64">uint64</a>, requiredUsage <a href="godoc.4.html#byte">byte</a>) (keys []<a href="godoc.234.html#Key">Key</a>)</pre>
+				<p>
+KeysByIdAndUsage returns the set of keys with the given id that also meet
+the key usage given by requiredUsage.  The requiredUsage is expressed as
+the bitwise-OR of packet.KeyFlag* values.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FileHints">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/write.go?s=3164:3670#L83">FileHints</a>
+				<a class="permalink" href="godoc.234.html#FileHints">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+FileHints contains metadata about encrypted files. This metadata is, itself,
+encrypted.
+</p>
+
+			<pre>type FileHints struct {
+<span id="FileHints.IsBinary"></span>    <span class="comment">// IsBinary can be set to hint that the contents are binary data.</span>
+    IsBinary <a href="godoc.4.html#bool">bool</a>
+<span id="FileHints.FileName"></span>    <span class="comment">// FileName hints at the name of the file that should be written. It&#39;s</span>
+    <span class="comment">// truncated to 255 bytes if longer. It may be empty to suggest that the</span>
+    <span class="comment">// file should not be written to disk. It may be equal to &#34;_CONSOLE&#34; to</span>
+    <span class="comment">// suggest the data should not be written to disk.</span>
+    FileName <a href="godoc.4.html#string">string</a>
+<span id="FileHints.ModTime"></span>    <span class="comment">// ModTime contains the modification time of the file, or the zero time if not applicable.</span>
+    ModTime <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Identity">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=1083:1300#L26">Identity</a>
+				<a class="permalink" href="godoc.234.html#Identity">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Identity represents an identity claimed by an Entity and zero or more
+assertions by other entities about that claim.
+</p>
+
+			<pre>type Identity struct {
+<span id="Identity.Name"></span>    Name          <a href="godoc.4.html#string">string</a> <span class="comment">// by convention, has the form &#34;Full Name (comment) &lt;email@example.com&gt;&#34;</span>
+<span id="Identity.UserId"></span>    UserId        *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#UserId">UserId</a>
+<span id="Identity.SelfSignature"></span>    SelfSignature *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Signature">Signature</a>
+<span id="Identity.Signatures"></span>    Signatures    []*<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Signature">Signature</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Key">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=1622:1764#L43">Key</a>
+				<a class="permalink" href="godoc.234.html#Key">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Key identifies a specific public key in an Entity. This is either the
+Entity&#39;s primary key or a subkey.
+</p>
+
+			<pre>type Key struct {
+<span id="Key.Entity"></span>    Entity        *<a href="godoc.234.html#Entity">Entity</a>
+<span id="Key.PublicKey"></span>    PublicKey     *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#PublicKey">PublicKey</a>
+<span id="Key.PrivateKey"></span>    PrivateKey    *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#PrivateKey">PrivateKey</a>
+<span id="Key.SelfSignature"></span>    SelfSignature *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Signature">Signature</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="KeyRing">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=1823:2300#L51">KeyRing</a>
+				<a class="permalink" href="godoc.234.html#KeyRing">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A KeyRing provides access to public and private keys.
+</p>
+
+			<pre>type KeyRing interface {
+    <span class="comment">// KeysById returns the set of keys that have the given key id.</span>
+    KeysById(id <a href="godoc.4.html#uint64">uint64</a>) []<a href="godoc.234.html#Key">Key</a>
+    <span class="comment">// KeysByIdAndUsage returns the set of keys with the given id</span>
+    <span class="comment">// that also meet the key usage given by requiredUsage.</span>
+    <span class="comment">// The requiredUsage is expressed as the bitwise-OR of</span>
+    <span class="comment">// packet.KeyFlag* values.</span>
+    KeysByIdUsage(id <a href="godoc.4.html#uint64">uint64</a>, requiredUsage <a href="godoc.4.html#byte">byte</a>) []<a href="godoc.234.html#Key">Key</a>
+    <span class="comment">// DecryptionKeys returns all private keys that are valid for</span>
+    <span class="comment">// decryption.</span>
+    DecryptionKeys() []<a href="godoc.234.html#Key">Key</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MessageDetails">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/read.go?s=1021:2714#L29">MessageDetails</a>
+				<a class="permalink" href="godoc.234.html#MessageDetails">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MessageDetails contains the result of parsing an OpenPGP encrypted and/or
+signed message.
+</p>
+
+			<pre>type MessageDetails struct {
+<span id="MessageDetails.IsEncrypted"></span>    IsEncrypted              <a href="godoc.4.html#bool">bool</a>                <span class="comment">// true if the message was encrypted.</span>
+<span id="MessageDetails.EncryptedToKeyIds"></span>    EncryptedToKeyIds        []<a href="godoc.4.html#uint64">uint64</a>            <span class="comment">// the list of recipient key ids.</span>
+<span id="MessageDetails.IsSymmetricallyEncrypted"></span>    IsSymmetricallyEncrypted <a href="godoc.4.html#bool">bool</a>                <span class="comment">// true if a passphrase could have decrypted the message.</span>
+<span id="MessageDetails.DecryptedWith"></span>    DecryptedWith            <a href="godoc.234.html#Key">Key</a>                 <span class="comment">// the private key used to decrypt the message, if any.</span>
+<span id="MessageDetails.IsSigned"></span>    IsSigned                 <a href="godoc.4.html#bool">bool</a>                <span class="comment">// true if the message is signed.</span>
+<span id="MessageDetails.SignedByKeyId"></span>    SignedByKeyId            <a href="godoc.4.html#uint64">uint64</a>              <span class="comment">// the key id of the signer, if any.</span>
+<span id="MessageDetails.SignedBy"></span>    SignedBy                 *<a href="godoc.234.html#Key">Key</a>                <span class="comment">// the key of the signer, if available.</span>
+<span id="MessageDetails.LiteralData"></span>    LiteralData              *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#LiteralData">LiteralData</a> <span class="comment">// the metadata of the contents</span>
+<span id="MessageDetails.UnverifiedBody"></span>    UnverifiedBody           <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>           <span class="comment">// the contents of the message.</span>
+
+    <span class="comment">// If IsSigned is true and SignedBy is non-zero then the signature will</span>
+    <span class="comment">// be verified as UnverifiedBody is read. The signature cannot be</span>
+    <span class="comment">// checked until the whole of UnverifiedBody is read so UnverifiedBody</span>
+    <span class="comment">// must be consumed until EOF before the data can be trusted. Even if a</span>
+    <span class="comment">// message isn&#39;t signed (or the signer is unknown) the data may contain</span>
+    <span class="comment">// an authentication code that is only checked once UnverifiedBody has</span>
+    <span class="comment">// been consumed. Once EOF has been seen, the following fields are</span>
+    <span class="comment">// valid. (An authentication code failure is reported as a</span>
+<span id="MessageDetails.SignatureError"></span>    <span class="comment">// SignatureError error when reading from UnverifiedBody.)</span>
+    SignatureError <a href="godoc.4.html#error">error</a>               <span class="comment">// nil if the signature is good.</span>
+<span id="MessageDetails.Signature"></span>    Signature      *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Signature">Signature</a>   <span class="comment">// the signature packet itself, if v4 (default)</span>
+<span id="MessageDetails.SignatureV3"></span>    SignatureV3    *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#SignatureV3">SignatureV3</a> <span class="comment">// the signature packet if it is a v2 or v3 signature</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadMessage">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/read.go?s=3752:3876#L76">ReadMessage</a>
+					<a class="permalink" href="godoc.234.html#ReadMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadMessage(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, keyring <a href="godoc.234.html#KeyRing">KeyRing</a>, prompt <a href="godoc.234.html#PromptFunction">PromptFunction</a>, config *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Config">Config</a>) (md *<a href="godoc.234.html#MessageDetails">MessageDetails</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ReadMessage parses an OpenPGP message that may be signed and/or encrypted.
+The given KeyRing should contain both public keys (for signature
+verification) and, possibly encrypted, private keys for decrypting.
+If config is nil, sensible defaults will be used.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="PromptFunction">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/read.go?s=3197:3265#L63">PromptFunction</a>
+				<a class="permalink" href="godoc.234.html#PromptFunction">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A PromptFunction is used as a callback by functions that may need to decrypt
+a private key, or prompt for a passphrase. It is called with a list of
+acceptable, encrypted private keys and a boolean that indicates whether a
+passphrase is usable. It should either decrypt a private key or return a
+passphrase to try. If the decrypted private key or given passphrase isn&#39;t
+correct, the function will be called again, forever. Any error returned will
+be passed up.
+</p>
+
+			<pre>type PromptFunction func(keys []<a href="godoc.234.html#Key">Key</a>, symmetric <a href="godoc.4.html#bool">bool</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Subkey">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/keys.go?s=1395:1508#L35">Subkey</a>
+				<a class="permalink" href="godoc.234.html#Subkey">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Subkey is an additional public key in an Entity. Subkeys can be used for
+encryption.
+</p>
+
+			<pre>type Subkey struct {
+<span id="Subkey.PublicKey"></span>    PublicKey  *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#PublicKey">PublicKey</a>
+<span id="Subkey.PrivateKey"></span>    PrivateKey *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#PrivateKey">PrivateKey</a>
+<span id="Subkey.Sig"></span>    Sig        *<a href="godoc.240.html">packet</a>.<a href="godoc.240.html#Signature">Signature</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.208.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.235.html">armor</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package armor implements OpenPGP ASCII Armor, see RFC 4880.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.236.html">clearsign</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package clearsign generates and processes OpenPGP, clear-signed data.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.238.html">elgamal</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package elgamal implements ElGamal encryption, suitable for OpenPGP, as specified in &#34;A Public-Key Cryptosystem and a Signature Scheme Based on Discrete Logarithms,&#34; IEEE Transactions on Information Theory, v.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.239.html">errors</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package errors contains common error types for the OpenPGP packages.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.240.html">packet</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package packet implements parsing and serialization of OpenPGP packets, as specified in RFC 4880.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.241.html">s2k</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package s2k implements the various OpenPGP string-to-key transforms as specified in RFC 4800 section 3.7.1.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

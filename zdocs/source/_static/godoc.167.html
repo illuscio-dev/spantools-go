@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>documentation_examples - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.167.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package documentation_examples
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/examples/documentation_examples"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.167.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.167.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.167.html#ChangeStreamExamples">func ChangeStreamExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#CommitWithRetry">func CommitWithRetry(sctx mongo.SessionContext) error</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#DeleteExamples">func DeleteExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#InsertExamples">func InsertExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#ProjectionExamples">func ProjectionExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#QueryArrayEmbeddedDocumentsExamples">func QueryArrayEmbeddedDocumentsExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#QueryArraysExamples">func QueryArraysExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#QueryEmbeddedDocumentsExamples">func QueryEmbeddedDocumentsExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#QueryNullMissingFieldsExamples">func QueryNullMissingFieldsExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#QueryToplevelFieldsExamples">func QueryToplevelFieldsExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#RunTransactionWithRetry">func RunTransactionWithRetry(sctx mongo.SessionContext, txnFn func(mongo.SessionContext) error) error</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#TransactionsExamples">func TransactionsExamples(ctx context.Context, client *mongo.Client) error</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#UpdateEmployeeInfo">func UpdateEmployeeInfo(ctx context.Context, client *mongo.Client) error</a></dd>
+			
+				
+				<dd><a href="godoc.167.html#UpdateExamples">func UpdateExamples(t *testing.T, db *mongo.Database)</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go">examples.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="ChangeStreamExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=36400:36459#L1931">ChangeStreamExamples</a>
+				<a class="permalink" href="godoc.167.html#ChangeStreamExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ChangeStreamExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+ChangeStreamExamples contains examples of changestream operations.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CommitWithRetry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=32728:32781#L1807">CommitWithRetry</a>
+				<a class="permalink" href="godoc.167.html#CommitWithRetry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CommitWithRetry(sctx <a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#SessionContext">SessionContext</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+CommitWithRetry is an example function demonstrating transaction commit with retry logic.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DeleteExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=28457:28510#L1614">DeleteExamples</a>
+				<a class="permalink" href="godoc.167.html#DeleteExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DeleteExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+DeleteExamples contains examples of delete operations.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="InsertExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=1333:1386#L39">InsertExamples</a>
+				<a class="permalink" href="godoc.167.html#InsertExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InsertExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+InsertExamples contains examples for insert operations.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ProjectionExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=16099:16156#L950">ProjectionExamples</a>
+				<a class="permalink" href="godoc.167.html#ProjectionExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ProjectionExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+ProjectionExamples contains examples for specifying projections in find operations.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="QueryArrayEmbeddedDocumentsExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=11261:11335#L643">QueryArrayEmbeddedDocumentsExamples</a>
+				<a class="permalink" href="godoc.167.html#QueryArrayEmbeddedDocumentsExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func QueryArrayEmbeddedDocumentsExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+QueryArrayEmbeddedDocumentsExamples contains examples for querying fields with arrays and embedded documents.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="QueryArraysExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=8205:8263#L457">QueryArraysExamples</a>
+				<a class="permalink" href="godoc.167.html#QueryArraysExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func QueryArraysExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+QueryArraysExamples contains examples for querying array fields.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="QueryEmbeddedDocumentsExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=5678:5747#L296">QueryEmbeddedDocumentsExamples</a>
+				<a class="permalink" href="godoc.167.html#QueryEmbeddedDocumentsExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func QueryEmbeddedDocumentsExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+QueryEmbeddedDocumentsExamples contains examples for querying embedded document fields.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="QueryNullMissingFieldsExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=14848:14917#L872">QueryNullMissingFieldsExamples</a>
+				<a class="permalink" href="godoc.167.html#QueryNullMissingFieldsExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func QueryNullMissingFieldsExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+QueryNullMissingFieldsExamples contains examples for querying fields that are null or missing.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="QueryToplevelFieldsExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=2901:2967#L128">QueryToplevelFieldsExamples</a>
+				<a class="permalink" href="godoc.167.html#QueryToplevelFieldsExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func QueryToplevelFieldsExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+QueryToplevelFieldsExamples contains examples for querying top-level fields.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RunTransactionWithRetry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=32029:32130#L1784">RunTransactionWithRetry</a>
+				<a class="permalink" href="godoc.167.html#RunTransactionWithRetry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RunTransactionWithRetry(sctx <a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#SessionContext">SessionContext</a>, txnFn func(<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#SessionContext">SessionContext</a>) <a href="godoc.4.html#error">error</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+RunTransactionWithRetry is an example function demonstrating transaction retry logic.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="TransactionsExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=33363:33437#L1832">TransactionsExamples</a>
+				<a class="permalink" href="godoc.167.html#TransactionsExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TransactionsExamples(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, client *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Client">Client</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+TransactionsExamples contains examples for transaction operations.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateEmployeeInfo">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=30470:30542#L1733">UpdateEmployeeInfo</a>
+				<a class="permalink" href="godoc.167.html#UpdateEmployeeInfo">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UpdateEmployeeInfo(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, client *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Client">Client</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+UpdateEmployeeInfo is an example function demonstrating transactions.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateExamples">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/examples/documentation_examples/examples.go?s=23377:23430#L1334">UpdateExamples</a>
+				<a class="permalink" href="godoc.167.html#UpdateExamples">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UpdateExamples(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, db *<a href="godoc.168.html">mongo</a>.<a href="godoc.168.html#Database">Database</a>)</pre>
+			<p>
+UpdateExamples contains examples of update operations.
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

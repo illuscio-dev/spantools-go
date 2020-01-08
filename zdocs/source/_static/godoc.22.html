@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>httputil - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.22.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package httputil
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "net/http/httputil"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.22.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.22.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.22.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package httputil provides HTTP utility functions, complementing the
+more common ones in the net/http package.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.22.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.22.html#DumpRequest">func DumpRequest(req *http.Request, body bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.22.html#DumpRequestOut">func DumpRequestOut(req *http.Request, body bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.22.html#DumpResponse">func DumpResponse(resp *http.Response, body bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.22.html#NewChunkedReader">func NewChunkedReader(r io.Reader) io.Reader</a></dd>
+			
+				
+				<dd><a href="godoc.22.html#NewChunkedWriter">func NewChunkedWriter(w io.Writer) io.WriteCloser</a></dd>
+			
+			
+				
+				<dd><a href="godoc.22.html#BufferPool">type BufferPool</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.22.html#ClientConn">type ClientConn</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#NewClientConn">func NewClientConn(c net.Conn, r *bufio.Reader) *ClientConn</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#NewProxyClientConn">func NewProxyClientConn(c net.Conn, r *bufio.Reader) *ClientConn</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ClientConn.Close">func (cc *ClientConn) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ClientConn.Do">func (cc *ClientConn) Do(req *http.Request) (*http.Response, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ClientConn.Hijack">func (cc *ClientConn) Hijack() (c net.Conn, r *bufio.Reader)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ClientConn.Pending">func (cc *ClientConn) Pending() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ClientConn.Read">func (cc *ClientConn) Read(req *http.Request) (resp *http.Response, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ClientConn.Write">func (cc *ClientConn) Write(req *http.Request) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.22.html#ReverseProxy">type ReverseProxy</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#NewSingleHostReverseProxy">func NewSingleHostReverseProxy(target *url.URL) *ReverseProxy</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ReverseProxy.ServeHTTP">func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.22.html#ServerConn">type ServerConn</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#NewServerConn">func NewServerConn(c net.Conn, r *bufio.Reader) *ServerConn</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ServerConn.Close">func (sc *ServerConn) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ServerConn.Hijack">func (sc *ServerConn) Hijack() (net.Conn, *bufio.Reader)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ServerConn.Pending">func (sc *ServerConn) Pending() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ServerConn.Read">func (sc *ServerConn) Read() (*http.Request, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.22.html#ServerConn.Write">func (sc *ServerConn) Write(req *http.Request, resp *http.Response) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.22.html#example_DumpRequest">DumpRequest</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.22.html#example_DumpRequestOut">DumpRequestOut</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.22.html#example_DumpResponse">DumpResponse</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.22.html#example_ReverseProxy">ReverseProxy</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/net/http/httputil/dump.go">dump.go</a>
+			
+				<a href="http://localhost:6161/src/net/http/httputil/httputil.go">httputil.go</a>
+			
+				<a href="http://localhost:6161/src/net/http/httputil/persist.go">persist.go</a>
+			
+				<a href="http://localhost:6161/src/net/http/httputil/reverseproxy.go">reverseproxy.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// Deprecated: No longer used.</span>
+    <span id="ErrPersistEOF">ErrPersistEOF</span> = &amp;<a href="godoc.16.html">http</a>.<a href="godoc.16.html#ProtocolError">ProtocolError</a>{<a href="godoc.16.html#ProtocolError.ErrorString">ErrorString</a>: &#34;persistent connection closed&#34;}
+
+    <span class="comment">// Deprecated: No longer used.</span>
+    <span id="ErrClosed">ErrClosed</span> = &amp;<a href="godoc.16.html">http</a>.<a href="godoc.16.html#ProtocolError">ProtocolError</a>{<a href="godoc.16.html#ProtocolError.ErrorString">ErrorString</a>: &#34;connection closed by user&#34;}
+
+    <span class="comment">// Deprecated: No longer used.</span>
+    <span id="ErrPipeline">ErrPipeline</span> = &amp;<a href="godoc.16.html">http</a>.<a href="godoc.16.html#ProtocolError">ProtocolError</a>{<a href="godoc.16.html#ProtocolError.ErrorString">ErrorString</a>: &#34;pipeline error&#34;}
+)</pre>
+			
+				<p>
+ErrLineTooLong is returned when reading malformed chunked data
+with lines that are too long.
+</p>
+
+				<pre>var <span id="ErrLineTooLong">ErrLineTooLong</span> = <a href="godoc.531.html">internal</a>.<a href="godoc.531.html#ErrLineTooLong">ErrLineTooLong</a></pre>
+			
+		
+		
+			
+			
+			<h2 id="DumpRequest">func <a href="http://localhost:6161/src/net/http/httputil/dump.go?s=5638:5700#L181">DumpRequest</a>
+				<a class="permalink" href="godoc.22.html#DumpRequest">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DumpRequest(req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>, body <a href="godoc.4.html#bool">bool</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+DumpRequest returns the given request in its HTTP/1.x wire
+representation. It should only be used by servers to debug client
+requests. The returned representation is an approximation only;
+some details of the initial request are lost while parsing it into
+an http.Request. In particular, the order and case of header field
+names are lost. The order of values in multi-valued headers is kept
+intact. HTTP/2 requests are dumped in HTTP/1.x form, not in their
+original binary representations.
+</p>
+<p>
+If body is true, DumpRequest also returns the body. To do so, it
+consumes req.Body and then replaces it with a new io.ReadCloser
+that yields the same bytes. If DumpRequest returns an error,
+the state of req is undefined.
+</p>
+<p>
+The documentation for http.Request.Write details which fields
+of req are included in the dump.
+</p>
+
+			<div id="example_DumpRequest" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    dump, err := httputil.DumpRequest(r, true)
+    if err != nil {
+        http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+        return
+    }
+
+    fmt.Fprintf(w, &#34;%q&#34;, dump)
+}))
+defer ts.Close()
+
+const body = &#34;Go is a general-purpose language designed with systems programming in mind.&#34;
+req, err := http.NewRequest(&#34;POST&#34;, ts.URL, strings.NewReader(body))
+if err != nil {
+    log.Fatal(err)
+}
+req.Host = &#34;www.example.org&#34;
+resp, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+defer resp.Body.Close()
+
+b, err := ioutil.ReadAll(resp.Body)
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf(&#34;%s&#34;, b)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">&#34;POST / HTTP/1.1\r\nHost: www.example.org\r\nAccept-Encoding: gzip\r\nContent-Length: 75\r\nUser-Agent: Go-http-client/1.1\r\n\r\nGo is a general-purpose language designed with systems programming in mind.&#34;
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="DumpRequestOut">func <a href="http://localhost:6161/src/net/http/httputil/dump.go?s=1848:1913#L56">DumpRequestOut</a>
+				<a class="permalink" href="godoc.22.html#DumpRequestOut">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DumpRequestOut(req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>, body <a href="godoc.4.html#bool">bool</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+DumpRequestOut is like DumpRequest but for outgoing client requests. It
+includes any headers that the standard http.Transport adds, such as
+User-Agent.
+</p>
+
+			<div id="example_DumpRequestOut" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">const body = &#34;Go is a general-purpose language designed with systems programming in mind.&#34;
+req, err := http.NewRequest(&#34;PUT&#34;, &#34;http://www.example.org&#34;, strings.NewReader(body))
+if err != nil {
+    log.Fatal(err)
+}
+
+dump, err := httputil.DumpRequestOut(req, true)
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf(&#34;%q&#34;, dump)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">&#34;PUT / HTTP/1.1\r\nHost: www.example.org\r\nUser-Agent: Go-http-client/1.1\r\nContent-Length: 75\r\nAccept-Encoding: gzip\r\n\r\nGo is a general-purpose language designed with systems programming in mind.&#34;
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="DumpResponse">func <a href="http://localhost:6161/src/net/http/httputil/dump.go?s=8166:8231#L271">DumpResponse</a>
+				<a class="permalink" href="godoc.22.html#DumpResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DumpResponse(resp *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Response">Response</a>, body <a href="godoc.4.html#bool">bool</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+DumpResponse is like DumpRequest but dumps a response.
+</p>
+
+			<div id="example_DumpResponse" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">const body = &#34;Go is a general-purpose language designed with systems programming in mind.&#34;
+ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set(&#34;Date&#34;, &#34;Wed, 19 Jul 1972 19:00:00 GMT&#34;)
+    fmt.Fprintln(w, body)
+}))
+defer ts.Close()
+
+resp, err := http.Get(ts.URL)
+if err != nil {
+    log.Fatal(err)
+}
+defer resp.Body.Close()
+
+dump, err := httputil.DumpResponse(resp, true)
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf(&#34;%q&#34;, dump)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">&#34;HTTP/1.1 200 OK\r\nContent-Length: 76\r\nContent-Type: text/plain; charset=utf-8\r\nDate: Wed, 19 Jul 1972 19:00:00 GMT\r\n\r\nGo is a general-purpose language designed with systems programming in mind.\n&#34;
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="NewChunkedReader">func <a href="http://localhost:6161/src/net/http/httputil/httputil.go?s=688:732#L10">NewChunkedReader</a>
+				<a class="permalink" href="godoc.22.html#NewChunkedReader">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewChunkedReader(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a></pre>
+			<p>
+NewChunkedReader returns a new chunkedReader that translates the data read from r
+out of HTTP &#34;chunked&#34; format before returning it.
+The chunkedReader returns io.EOF when the final 0-length chunk is read.
+</p>
+<p>
+NewChunkedReader is not needed by normal applications. The http package
+automatically decodes chunking when reading response bodies.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewChunkedWriter">func <a href="http://localhost:6161/src/net/http/httputil/httputil.go?s=1431:1480#L25">NewChunkedWriter</a>
+				<a class="permalink" href="godoc.22.html#NewChunkedWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewChunkedWriter(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) <a href="godoc.585.html">io</a>.<a href="godoc.585.html#WriteCloser">WriteCloser</a></pre>
+			<p>
+NewChunkedWriter returns a new chunkedWriter that translates writes into HTTP
+&#34;chunked&#34; format before writing them to w. Closing the returned chunkedWriter
+sends the final 0-length chunk that marks the end of the stream but does
+not send the final CRLF that appears after trailers; trailers and the last
+CRLF must be written separately.
+</p>
+<p>
+NewChunkedWriter is not needed by normal applications. The http
+package adds chunking automatically if handlers don&#39;t set a
+Content-Length header. Using NewChunkedWriter inside a handler
+would result in double chunking or chunking with a Content-Length
+length, both of which are wrong.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BufferPool">type <a href="http://localhost:6161/src/net/http/httputil/reverseproxy.go?s=2617:2673#L73">BufferPool</a>
+				<a class="permalink" href="godoc.22.html#BufferPool">&#xb6;</a>
+				
+				<span title="Added in Go 1.6">1.6</span>
+			</h2>
+			<p>
+A BufferPool is an interface for getting and returning temporary
+byte slices for use by io.CopyBuffer.
+</p>
+
+			<pre>type BufferPool interface {
+    Get() []<a href="godoc.4.html#byte">byte</a>
+    Put([]<a href="godoc.4.html#byte">byte</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ClientConn">type <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=5973:6341#L220">ClientConn</a>
+				<a class="permalink" href="godoc.22.html#ClientConn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ClientConn is an artifact of Go&#39;s early HTTP implementation.
+It is low-level, old, and unused by Go&#39;s current HTTP stack.
+We should have deleted it before Go 1.
+</p>
+<p>
+Deprecated: Use Client or Transport in package net/http instead.
+</p>
+
+			<pre>type ClientConn struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewClientConn">func <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=6591:6650#L238">NewClientConn</a>
+					<a class="permalink" href="godoc.22.html#NewClientConn">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewClientConn(c <a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, r *<a href="godoc.577.html">bufio</a>.<a href="godoc.577.html#Reader">Reader</a>) *<a href="godoc.22.html#ClientConn">ClientConn</a></pre>
+				<p>
+NewClientConn is an artifact of Go&#39;s early HTTP implementation.
+It is low-level, old, and unused by Go&#39;s current HTTP stack.
+We should have deleted it before Go 1.
+</p>
+<p>
+Deprecated: Use the Client or Transport in package net/http instead.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewProxyClientConn">func <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=7083:7147#L255">NewProxyClientConn</a>
+					<a class="permalink" href="godoc.22.html#NewProxyClientConn">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewProxyClientConn(c <a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, r *<a href="godoc.577.html">bufio</a>.<a href="godoc.577.html#Reader">Reader</a>) *<a href="godoc.22.html#ClientConn">ClientConn</a></pre>
+				<p>
+NewProxyClientConn is an artifact of Go&#39;s early HTTP implementation.
+It is low-level, old, and unused by Go&#39;s current HTTP stack.
+We should have deleted it before Go 1.
+</p>
+<p>
+Deprecated: Use the Client or Transport in package net/http instead.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ClientConn.Close">func (*ClientConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=7765:7800#L276">Close</a>
+					<a class="permalink" href="godoc.22.html#ClientConn.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.22.html#ClientConn">ClientConn</a>) Close() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Close calls Hijack and then also closes the underlying connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientConn.Do">func (*ClientConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=11094:11161#L415">Do</a>
+					<a class="permalink" href="godoc.22.html#ClientConn.Do">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.22.html#ClientConn">ClientConn</a>) Do(req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>) (*<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Response">Response</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Do is convenience method that writes a request and reads a response.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientConn.Hijack">func (*ClientConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=7541:7601#L265">Hijack</a>
+					<a class="permalink" href="godoc.22.html#ClientConn.Hijack">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.22.html#ClientConn">ClientConn</a>) Hijack() (c <a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, r *<a href="godoc.577.html">bufio</a>.<a href="godoc.577.html#Reader">Reader</a>)</pre>
+				<p>
+Hijack detaches the ClientConn and returns the underlying connection as well
+as the read-side bufio which may have some left over data. Hijack may be
+called before the user or Read have signaled the end of the keep-alive
+logic. The user should not call Hijack while Read or Write is in progress.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientConn.Pending">func (*ClientConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=9367:9402#L343">Pending</a>
+					<a class="permalink" href="godoc.22.html#ClientConn.Pending">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.22.html#ClientConn">ClientConn</a>) Pending() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Pending returns the number of unanswered requests
+that have been sent on the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientConn.Read">func (*ClientConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=9747:9825#L353">Read</a>
+					<a class="permalink" href="godoc.22.html#ClientConn.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.22.html#ClientConn">ClientConn</a>) Read(req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>) (resp *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Response">Response</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Read reads the next response from the wire. A valid response might be
+returned together with an ErrPersistEOF, which means that the remote
+requested that this be the last request serviced. Read can be called
+concurrently with Write, but not with another Read.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientConn.Write">func (*ClientConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=8267:8319#L289">Write</a>
+					<a class="permalink" href="godoc.22.html#ClientConn.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.22.html#ClientConn">ClientConn</a>) Write(req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Write writes a request. An ErrPersistEOF error is returned if the connection
+has been closed in an HTTP keep-alive sense. If req.Close equals true, the
+keep-alive connection is logically closed after this request and the opposing
+server is informed. An ErrUnexpectedEOF indicates the remote closed the
+underlying TCP connection, which is usually considered as graceful close.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ReverseProxy">type <a href="http://localhost:6161/src/net/http/httputil/reverseproxy.go?s=490:2506#L17">ReverseProxy</a>
+				<a class="permalink" href="godoc.22.html#ReverseProxy">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ReverseProxy is an HTTP Handler that takes an incoming request and
+sends it to another server, proxying the response back to the
+client.
+</p>
+
+			<pre>type ReverseProxy struct {
+<span id="ReverseProxy.Director"></span>    <span class="comment">// Director must be a function which modifies</span>
+    <span class="comment">// the request into a new request to be sent</span>
+    <span class="comment">// using Transport. Its response is then copied</span>
+    <span class="comment">// back to the original client unmodified.</span>
+    <span class="comment">// Director must not access the provided Request</span>
+    <span class="comment">// after returning.</span>
+    Director func(*<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>)
+
+    <span class="comment">// The transport used to perform proxy requests.</span>
+    <span class="comment">// If nil, http.DefaultTransport is used.</span>
+<span id="ReverseProxy.Transport"></span>    Transport <a href="godoc.16.html">http</a>.<a href="godoc.16.html#RoundTripper">RoundTripper</a>
+
+<span id="ReverseProxy.FlushInterval"></span>    <span class="comment">// FlushInterval specifies the flush interval</span>
+    <span class="comment">// to flush to the client while copying the</span>
+    <span class="comment">// response body.</span>
+    <span class="comment">// If zero, no periodic flushing is done.</span>
+    <span class="comment">// A negative value means to flush immediately</span>
+    <span class="comment">// after each write to the client.</span>
+    <span class="comment">// The FlushInterval is ignored when ReverseProxy</span>
+    <span class="comment">// recognizes a response as a streaming response;</span>
+    <span class="comment">// for such responses, writes are flushed to the client</span>
+    <span class="comment">// immediately.</span>
+    FlushInterval <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+
+<span id="ReverseProxy.ErrorLog"></span>    <span class="comment">// ErrorLog specifies an optional logger for errors</span>
+    <span class="comment">// that occur when attempting to proxy the request.</span>
+    <span class="comment">// If nil, logging is done via the log package&#39;s standard logger.</span>
+    ErrorLog *<a href="godoc.587.html">log</a>.<a href="godoc.587.html#Logger">Logger</a> <span class="comment">// Go 1.4</span>
+
+<span id="ReverseProxy.BufferPool"></span>    <span class="comment">// BufferPool optionally specifies a buffer pool to</span>
+    <span class="comment">// get byte slices for use by io.CopyBuffer when</span>
+    <span class="comment">// copying HTTP response bodies.</span>
+    BufferPool <a href="godoc.22.html#BufferPool">BufferPool</a> <span class="comment">// Go 1.6</span>
+
+<span id="ReverseProxy.ModifyResponse"></span>    <span class="comment">// ModifyResponse is an optional function that modifies the</span>
+    <span class="comment">// Response from the backend. It is called if the backend</span>
+    <span class="comment">// returns a response at all, with any HTTP status code.</span>
+    <span class="comment">// If the backend is unreachable, the optional ErrorHandler is</span>
+    <span class="comment">// called without any call to ModifyResponse.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If ModifyResponse returns an error, ErrorHandler is called</span>
+    <span class="comment">// with its error value. If ErrorHandler is nil, its default</span>
+    <span class="comment">// implementation is used.</span>
+    ModifyResponse func(*<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Response">Response</a>) <a href="godoc.4.html#error">error</a> <span class="comment">// Go 1.8</span>
+
+<span id="ReverseProxy.ErrorHandler"></span>    <span class="comment">// ErrorHandler is an optional function that handles errors</span>
+    <span class="comment">// reaching the backend or errors from ModifyResponse.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If nil, the default is to log the provided error and return</span>
+    <span class="comment">// a 502 Status Bad Gateway response.</span>
+    ErrorHandler func(<a href="godoc.16.html">http</a>.<a href="godoc.16.html#ResponseWriter">ResponseWriter</a>, *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>, <a href="godoc.4.html#error">error</a>) <span class="comment">// Go 1.11</span>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_ReverseProxy" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">backendServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, &#34;this call was relayed by the reverse proxy&#34;)
+}))
+defer backendServer.Close()
+
+rpURL, err := url.Parse(backendServer.URL)
+if err != nil {
+    log.Fatal(err)
+}
+frontendProxy := httptest.NewServer(httputil.NewSingleHostReverseProxy(rpURL))
+defer frontendProxy.Close()
+
+resp, err := http.Get(frontendProxy.URL)
+if err != nil {
+    log.Fatal(err)
+}
+
+b, err := ioutil.ReadAll(resp.Body)
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf(&#34;%s&#34;, b)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">this call was relayed by the reverse proxy
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+				
+				<h3 id="NewSingleHostReverseProxy">func <a href="http://localhost:6161/src/net/http/httputil/reverseproxy.go?s=3318:3379#L97">NewSingleHostReverseProxy</a>
+					<a class="permalink" href="godoc.22.html#NewSingleHostReverseProxy">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewSingleHostReverseProxy(target *<a href="godoc.30.html">url</a>.<a href="godoc.30.html#URL">URL</a>) *<a href="godoc.22.html#ReverseProxy">ReverseProxy</a></pre>
+				<p>
+NewSingleHostReverseProxy returns a new ReverseProxy that routes
+URLs to the scheme, host, and base path provided in target. If the
+target&#39;s path is &#34;/base&#34; and the incoming request was for &#34;/dir&#34;,
+the target request will be for /base/dir.
+NewSingleHostReverseProxy does not rewrite the Host header.
+To rewrite Host headers, use ReverseProxy directly with a custom
+Director policy.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ReverseProxy.ServeHTTP">func (*ReverseProxy) <a href="http://localhost:6161/src/net/http/httputil/reverseproxy.go?s=5504:5579#L167">ServeHTTP</a>
+					<a class="permalink" href="godoc.22.html#ReverseProxy.ServeHTTP">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.22.html#ReverseProxy">ReverseProxy</a>) ServeHTTP(rw <a href="godoc.16.html">http</a>.<a href="godoc.16.html#ResponseWriter">ResponseWriter</a>, req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ServerConn">type <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=1010:1327#L27">ServerConn</a>
+				<a class="permalink" href="godoc.22.html#ServerConn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ServerConn is an artifact of Go&#39;s early HTTP implementation.
+It is low-level, old, and unused by Go&#39;s current HTTP stack.
+We should have deleted it before Go 1.
+</p>
+<p>
+Deprecated: Use the Server in package net/http instead.
+</p>
+
+			<pre>type ServerConn struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewServerConn">func <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=1564:1623#L44">NewServerConn</a>
+					<a class="permalink" href="godoc.22.html#NewServerConn">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewServerConn(c <a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, r *<a href="godoc.577.html">bufio</a>.<a href="godoc.577.html#Reader">Reader</a>) *<a href="godoc.22.html#ServerConn">ServerConn</a></pre>
+				<p>
+NewServerConn is an artifact of Go&#39;s early HTTP implementation.
+It is low-level, old, and unused by Go&#39;s current HTTP stack.
+We should have deleted it before Go 1.
+</p>
+<p>
+Deprecated: Use the Server in package net/http instead.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ServerConn.Close">func (*ServerConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=2265:2300#L66">Close</a>
+					<a class="permalink" href="godoc.22.html#ServerConn.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.22.html#ServerConn">ServerConn</a>) Close() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Close calls Hijack and then also closes the underlying connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerConn.Hijack">func (*ServerConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=2038:2094#L55">Hijack</a>
+					<a class="permalink" href="godoc.22.html#ServerConn.Hijack">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.22.html#ServerConn">ServerConn</a>) Hijack() (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, *<a href="godoc.577.html">bufio</a>.<a href="godoc.577.html#Reader">Reader</a>)</pre>
+				<p>
+Hijack detaches the ServerConn and returns the underlying connection as well
+as the read-side bufio which may have some left over data. Hijack may be
+called before Read has signaled the end of the keep-alive logic. The user
+should not call Hijack while Read or Write is in progress.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerConn.Pending">func (*ServerConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=4387:4422#L156">Pending</a>
+					<a class="permalink" href="godoc.22.html#ServerConn.Pending">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.22.html#ServerConn">ServerConn</a>) Pending() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Pending returns the number of unanswered requests
+that have been received on the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerConn.Read">func (*ServerConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=2635:2686#L78">Read</a>
+					<a class="permalink" href="godoc.22.html#ServerConn.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.22.html#ServerConn">ServerConn</a>) Read() (*<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Read returns the next request on the wire. An ErrPersistEOF is returned if
+it is gracefully determined that there are no more requests (e.g. after the
+first request on an HTTP/1.0 connection, or after a Connection:close on a
+HTTP/1.1 connection).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerConn.Write">func (*ServerConn) <a href="http://localhost:6161/src/net/http/httputil/persist.go?s=4734:4807#L165">Write</a>
+					<a class="permalink" href="godoc.22.html#ServerConn.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.22.html#ServerConn">ServerConn</a>) Write(req *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Request">Request</a>, resp *<a href="godoc.16.html">http</a>.<a href="godoc.16.html#Response">Response</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Write writes resp in response to req. To close the connection gracefully, set the
+Response.Close field to true. Write should be considered operational until
+it returns an error, regardless of any errors returned on the Read side.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

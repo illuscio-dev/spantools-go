@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>coff - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.86.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package coff
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/akavel/rsrc/coff"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.86.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.86.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.86.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.86.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.86.html#Auxiliary">type Auxiliary</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#Coff">type Coff</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.86.html#NewRDATA">func NewRDATA() *Coff</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.86.html#NewRSRC">func NewRSRC() *Coff</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.86.html#Coff.AddData">func (coff *Coff) AddData(symbol string, data Sizer)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.86.html#Coff.AddResource">func (coff *Coff) AddResource(kind uint32, id uint16, data Sizer)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.86.html#Coff.Arch">func (coff *Coff) Arch(arch string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.86.html#Coff.Freeze">func (coff *Coff) Freeze()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.86.html#DataEntry">type DataEntry</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#Dir">type Dir</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#DirEntries">type DirEntries</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#DirEntry">type DirEntry</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#Dirs">type Dirs</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#RelocationEntry">type RelocationEntry</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#Sizer">type Sizer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#StringsHeader">type StringsHeader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.86.html#Symbol">type Symbol</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go">coff.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="MASK_SUBDIRECTORY">MASK_SUBDIRECTORY</span> = 1 &lt;&lt; 31
+
+    <span id="RT_ICON">RT_ICON</span>       = 3
+    <span id="RT_GROUP_ICON">RT_GROUP_ICON</span> = 3 + 11
+    <span id="RT_MANIFEST">RT_MANIFEST</span>   = 24
+)</pre>
+			
+				<p>
+<a href="http://www.delorie.com/djgpp/doc/coff/symtab.html">http://www.delorie.com/djgpp/doc/coff/symtab.html</a>
+</p>
+
+				<pre>const (
+    <span id="DT_PTR">DT_PTR</span>  = 1
+    <span id="T_UCHAR">T_UCHAR</span> = 12
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span id="STRING_RSRC">STRING_RSRC</span>  = [8]<a href="godoc.4.html#byte">byte</a>{&#39;.&#39;, &#39;r&#39;, &#39;s&#39;, &#39;r&#39;, &#39;c&#39;, 0, 0, 0}
+    <span id="STRING_RDATA">STRING_RDATA</span> = [8]<a href="godoc.4.html#byte">byte</a>{&#39;.&#39;, &#39;r&#39;, &#39;d&#39;, &#39;a&#39;, &#39;t&#39;, &#39;a&#39;, 0, 0}
+
+    <span id="LANG_ENTRY">LANG_ENTRY</span> = <a href="godoc.86.html#DirEntry">DirEntry</a>{<a href="godoc.86.html#DirEntry.NameOrId">NameOrId</a>: 0x0409} <span class="comment">//FIXME: language; what value should be here?</span>
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Auxiliary">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=1259:1282#L47">Auxiliary</a>
+				<a class="permalink" href="godoc.86.html#Auxiliary">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Auxiliary [18]<a href="godoc.4.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Coff">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=2036:2230#L88">Coff</a>
+				<a class="permalink" href="godoc.86.html#Coff">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Coff struct {
+    <a href="godoc.459.html">pe</a>.<a href="godoc.459.html#FileHeader">FileHeader</a>
+    <a href="godoc.459.html">pe</a>.<a href="godoc.459.html#SectionHeader32">SectionHeader32</a>
+
+    *<a href="godoc.86.html#Dir">Dir</a>
+<span id="Coff.DataEntries"></span>    DataEntries []<a href="godoc.86.html#DataEntry">DataEntry</a>
+<span id="Coff.Data"></span>    Data        []<a href="godoc.86.html#Sizer">Sizer</a>
+
+<span id="Coff.Relocations"></span>    Relocations []<a href="godoc.86.html#RelocationEntry">RelocationEntry</a>
+<span id="Coff.Symbols"></span>    Symbols     []<a href="godoc.86.html#Symbol">Symbol</a>
+    <a href="godoc.86.html#StringsHeader">StringsHeader</a>
+<span id="Coff.Strings"></span>    Strings []<a href="godoc.86.html#Sizer">Sizer</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewRDATA">func <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=2232:2253#L102">NewRDATA</a>
+					<a class="permalink" href="godoc.86.html#NewRDATA">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRDATA() *<a href="godoc.86.html#Coff">Coff</a></pre>
+				
+				
+				
+			
+				
+				<h3 id="NewRSRC">func <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=5176:5196#L191">NewRSRC</a>
+					<a class="permalink" href="godoc.86.html#NewRSRC">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRSRC() *<a href="godoc.86.html#Coff">Coff</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="Coff.AddData">func (*Coff) <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=4252:4304#L163">AddData</a>
+					<a class="permalink" href="godoc.86.html#Coff.AddData">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (coff *<a href="godoc.86.html#Coff">Coff</a>) AddData(symbol <a href="godoc.4.html#string">string</a>, data <a href="godoc.86.html#Sizer">Sizer</a>)</pre>
+				<p>
+NOTE: only usable for Coff created using NewRDATA
+NOTE: symbol names must be probably &gt;8 characters long
+NOTE: symbol names should not contain embedded zeroes
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Coff.AddResource">func (*Coff) <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=6412:6477#L232">AddResource</a>
+					<a class="permalink" href="godoc.86.html#Coff.AddResource">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (coff *<a href="godoc.86.html#Coff">Coff</a>) AddResource(kind <a href="godoc.4.html#uint32">uint32</a>, id <a href="godoc.4.html#uint16">uint16</a>, data <a href="godoc.86.html#Sizer">Sizer</a>)</pre>
+				<p>
+NOTE: function assumes that &#39;id&#39; is increasing on each entry
+NOTE: only usable for Coff created using NewRSRC
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Coff.Arch">func (*Coff) <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=3495:3536#L144">Arch</a>
+					<a class="permalink" href="godoc.86.html#Coff.Arch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (coff *<a href="godoc.86.html#Coff">Coff</a>) Arch(arch <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+NOTE: must be called immediately after NewRSRC, before any other
+functions.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Coff.Freeze">func (*Coff) <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=8487:8513#L286">Freeze</a>
+					<a class="permalink" href="godoc.86.html#Coff.Freeze">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (coff *<a href="godoc.86.html#Coff">Coff</a>) Freeze()</pre>
+				<p>
+Freeze fills in some important offsets in resulting file.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DataEntry">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=560:752#L26">DataEntry</a>
+				<a class="permalink" href="godoc.86.html#DataEntry">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type DataEntry struct {
+<span id="DataEntry.OffsetToData"></span>    OffsetToData <a href="godoc.4.html#uint32">uint32</a>
+<span id="DataEntry.Size1"></span>    Size1        <a href="godoc.4.html#uint32">uint32</a>
+<span id="DataEntry.CodePage"></span>    CodePage     <a href="godoc.4.html#uint32">uint32</a> <span class="comment">//FIXME: what value here? for now just using 0</span>
+<span id="DataEntry.Reserved"></span>    Reserved     <a href="godoc.4.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Dir">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=159:405#L7">Dir</a>
+				<a class="permalink" href="godoc.86.html#Dir">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Dir struct {
+<span id="Dir.Characteristics"></span>    Characteristics      <a href="godoc.4.html#uint32">uint32</a>
+<span id="Dir.TimeDateStamp"></span>    TimeDateStamp        <a href="godoc.4.html#uint32">uint32</a>
+<span id="Dir.MajorVersion"></span>    MajorVersion         <a href="godoc.4.html#uint16">uint16</a>
+<span id="Dir.MinorVersion"></span>    MinorVersion         <a href="godoc.4.html#uint16">uint16</a>
+<span id="Dir.NumberOfNamedEntries"></span>    NumberOfNamedEntries <a href="godoc.4.html#uint16">uint16</a>
+<span id="Dir.NumberOfIdEntries"></span>    NumberOfIdEntries    <a href="godoc.4.html#uint16">uint16</a>
+    <a href="godoc.86.html#DirEntries">DirEntries</a>
+    <a href="godoc.86.html#Dirs">Dirs</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DirEntries">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=407:433#L18">DirEntries</a>
+				<a class="permalink" href="godoc.86.html#DirEntries">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type DirEntries []<a href="godoc.86.html#DirEntry">DirEntry</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DirEntry">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=451:558#L21">DirEntry</a>
+				<a class="permalink" href="godoc.86.html#DirEntry">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type DirEntry struct {
+<span id="DirEntry.NameOrId"></span>    NameOrId     <a href="godoc.4.html#uint32">uint32</a>
+<span id="DirEntry.OffsetToData"></span>    OffsetToData <a href="godoc.4.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Dirs">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=434:449#L19">Dirs</a>
+				<a class="permalink" href="godoc.86.html#Dirs">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Dirs []<a href="godoc.86.html#Dir">Dir</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RelocationEntry">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=754:988#L33">RelocationEntry</a>
+				<a class="permalink" href="godoc.86.html#RelocationEntry">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type RelocationEntry struct {
+<span id="RelocationEntry.RVA"></span>    RVA         <a href="godoc.4.html#uint32">uint32</a> <span class="comment">// &#34;offset within the Section&#39;s raw data where the address starts.&#34;</span>
+<span id="RelocationEntry.SymbolIndex"></span>    SymbolIndex <a href="godoc.4.html#uint32">uint32</a> <span class="comment">// &#34;(zero based) index in the Symbol table to which the reference refers.&#34;</span>
+<span id="RelocationEntry.Type"></span>    Type        <a href="godoc.4.html#uint16">uint16</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Sizer">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=1929:2034#L84">Sizer</a>
+				<a class="permalink" href="godoc.86.html#Sizer">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Sizer interface {
+    Size() <a href="godoc.4.html#int64">int64</a> <span class="comment">//NOTE: must not exceed limits of uint32, or behavior is undefined</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StringsHeader">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=1473:1517#L59">StringsHeader</a>
+				<a class="permalink" href="godoc.86.html#StringsHeader">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type StringsHeader struct {
+<span id="StringsHeader.Length"></span>    Length <a href="godoc.4.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Symbol">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/coff/coff.go?s=1284:1471#L49">Symbol</a>
+				<a class="permalink" href="godoc.86.html#Symbol">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Symbol struct {
+<span id="Symbol.Name"></span>    Name           [8]<a href="godoc.4.html#byte">byte</a>
+<span id="Symbol.Value"></span>    Value          <a href="godoc.4.html#uint32">uint32</a>
+<span id="Symbol.SectionNumber"></span>    SectionNumber  <a href="godoc.4.html#uint16">uint16</a>
+<span id="Symbol.Type"></span>    Type           <a href="godoc.4.html#uint16">uint16</a>
+<span id="Symbol.StorageClass"></span>    StorageClass   <a href="godoc.4.html#uint8">uint8</a>
+<span id="Symbol.AuxiliaryCount"></span>    AuxiliaryCount <a href="godoc.4.html#uint8">uint8</a>
+<span id="Symbol.Auxiliaries"></span>    Auxiliaries    []<a href="godoc.86.html#Auxiliary">Auxiliary</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

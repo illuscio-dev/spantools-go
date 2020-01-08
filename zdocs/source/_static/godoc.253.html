@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>agent - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.253.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package agent
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/ssh/agent"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.253.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.253.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package agent implements the ssh-agent protocol, and provides both
+a client and a server. The client can talk to a standard ssh-agent
+that uses UNIX sockets, and one could implement an alternative
+ssh-agent process using the sample server.
+</p>
+<p>
+References:
+</p>
+<pre>[PROTOCOL.agent]: <a href="https://tools.ietf.org/html/draft-miller-ssh-agent-00">https://tools.ietf.org/html/draft-miller-ssh-agent-00</a>
+</pre>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.253.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.253.html#ForwardToAgent">func ForwardToAgent(client *ssh.Client, keyring Agent) error</a></dd>
+			
+				
+				<dd><a href="godoc.253.html#ForwardToRemote">func ForwardToRemote(client *ssh.Client, addr string) error</a></dd>
+			
+				
+				<dd><a href="godoc.253.html#RequestAgentForwarding">func RequestAgentForwarding(session *ssh.Session) error</a></dd>
+			
+				
+				<dd><a href="godoc.253.html#ServeAgent">func ServeAgent(agent Agent, c io.ReadWriter) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.253.html#AddedKey">type AddedKey</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.253.html#Agent">type Agent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.253.html#NewKeyring">func NewKeyring() Agent</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.253.html#ConstraintExtension">type ConstraintExtension</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.253.html#ExtendedAgent">type ExtendedAgent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.253.html#NewClient">func NewClient(rw io.ReadWriter) ExtendedAgent</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.253.html#Key">type Key</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.253.html#Key.Marshal">func (k *Key) Marshal() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.253.html#Key.String">func (k *Key) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.253.html#Key.Type">func (k *Key) Type() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.253.html#Key.Verify">func (k *Key) Verify(data []byte, sig *ssh.Signature) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.253.html#SignatureFlags">type SignatureFlags</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go">client.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/forward.go">forward.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/keyring.go">keyring.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/server.go">server.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrExtensionUnsupported indicates that an extension defined in
+[PROTOCOL.agent] section 4.7 is unsupported by the agent. Specifically this
+error indicates that the agent returned a standard SSH_AGENT_FAILURE message
+as the result of a SSH_AGENTC_EXTENSION request. Note that the protocol
+specification (and therefore this error) does not distinguish between a
+specific extension being unsupported and extensions being unsupported entirely.
+</p>
+
+				<pre>var <span id="ErrExtensionUnsupported">ErrExtensionUnsupported</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;agent: extension unsupported&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="ForwardToAgent">func <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/forward.go?s=721:781#L21">ForwardToAgent</a>
+				<a class="permalink" href="godoc.253.html#ForwardToAgent">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ForwardToAgent(client *<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Client">Client</a>, keyring <a href="godoc.253.html#Agent">Agent</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+ForwardToAgent routes authentication requests to the given keyring.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ForwardToRemote">func <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/forward.go?s=1336:1395#L47">ForwardToRemote</a>
+				<a class="permalink" href="godoc.253.html#ForwardToRemote">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ForwardToRemote(client *<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Client">Client</a>, addr <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+ForwardToRemote routes authentication requests to the ssh-agent
+process serving on the given unix socket.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RequestAgentForwarding">func <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/forward.go?s=409:464#L9">RequestAgentForwarding</a>
+				<a class="permalink" href="godoc.253.html#RequestAgentForwarding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RequestAgentForwarding(session *<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Session">Session</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+RequestAgentForwarding sets up agent forwarding for the session.
+ForwardToAgent or ForwardToRemote should be called to route
+the authentication requests.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ServeAgent">func <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/server.go?s=12760:12811#L525">ServeAgent</a>
+				<a class="permalink" href="godoc.253.html#ServeAgent">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ServeAgent(agent <a href="godoc.253.html#Agent">Agent</a>, c <a href="godoc.585.html">io</a>.<a href="godoc.585.html#ReadWriter">ReadWriter</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+ServeAgent serves the agent protocol on the given connection. It
+returns when an I/O error occurs.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="AddedKey">type <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=3521:4271#L94">AddedKey</a>
+				<a class="permalink" href="godoc.253.html#AddedKey">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+AddedKey describes an SSH key to be added to an Agent.
+</p>
+
+			<pre>type AddedKey struct {
+<span id="AddedKey.PrivateKey"></span>    <span class="comment">// PrivateKey must be a *rsa.PrivateKey, *dsa.PrivateKey or</span>
+    <span class="comment">// *ecdsa.PrivateKey, which will be inserted into the agent.</span>
+    PrivateKey interface{}
+<span id="AddedKey.Certificate"></span>    <span class="comment">// Certificate, if not nil, is communicated to the agent and will be</span>
+    <span class="comment">// stored with the key.</span>
+    Certificate *<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Certificate">Certificate</a>
+<span id="AddedKey.Comment"></span>    <span class="comment">// Comment is an optional, free-form string.</span>
+    Comment <a href="godoc.4.html#string">string</a>
+<span id="AddedKey.LifetimeSecs"></span>    <span class="comment">// LifetimeSecs, if not zero, is the number of seconds that the</span>
+    <span class="comment">// agent will store the key for.</span>
+    LifetimeSecs <a href="godoc.4.html#uint32">uint32</a>
+<span id="AddedKey.ConfirmBeforeUse"></span>    <span class="comment">// ConfirmBeforeUse, if true, requests that the agent confirm with the</span>
+    <span class="comment">// user before each use of this key.</span>
+    ConfirmBeforeUse <a href="godoc.4.html#bool">bool</a>
+<span id="AddedKey.ConstraintExtensions"></span>    <span class="comment">// ConstraintExtensions are the experimental or private-use constraints</span>
+    <span class="comment">// defined by users.</span>
+    ConstraintExtensions []<a href="godoc.253.html#ConstraintExtension">ConstraintExtension</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Agent">type <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=1195:1965#L35">Agent</a>
+				<a class="permalink" href="godoc.253.html#Agent">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Agent represents the capabilities of an ssh-agent.
+</p>
+
+			<pre>type Agent interface {
+    <span class="comment">// List returns the identities known to the agent.</span>
+    List() ([]*<a href="godoc.253.html#Key">Key</a>, <a href="godoc.4.html#error">error</a>)
+
+    <span class="comment">// Sign has the agent sign the data using a protocol 2 key as defined</span>
+    <span class="comment">// in [PROTOCOL.agent] section 2.6.2.</span>
+    Sign(key <a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#PublicKey">PublicKey</a>, data []<a href="godoc.4.html#byte">byte</a>) (*<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Signature">Signature</a>, <a href="godoc.4.html#error">error</a>)
+
+    <span class="comment">// Add adds a private key to the agent.</span>
+    Add(key <a href="godoc.253.html#AddedKey">AddedKey</a>) <a href="godoc.4.html#error">error</a>
+
+    <span class="comment">// Remove removes all identities with the given public key.</span>
+    Remove(key <a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#PublicKey">PublicKey</a>) <a href="godoc.4.html#error">error</a>
+
+    <span class="comment">// RemoveAll removes all identities.</span>
+    RemoveAll() <a href="godoc.4.html#error">error</a>
+
+    <span class="comment">// Lock locks the agent. Sign and Remove will fail, and List will empty an empty list.</span>
+    Lock(passphrase []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a>
+
+    <span class="comment">// Unlock undoes the effect of Lock</span>
+    Unlock(passphrase []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a>
+
+    <span class="comment">// Signers returns signers for all the known keys.</span>
+    Signers() ([]<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Signer">Signer</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewKeyring">func <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/keyring.go?s=626:649#L27">NewKeyring</a>
+					<a class="permalink" href="godoc.253.html#NewKeyring">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewKeyring() <a href="godoc.253.html#Agent">Agent</a></pre>
+				<p>
+NewKeyring returns an Agent that holds keys in memory.  It is safe
+for concurrent use by multiple goroutines.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ConstraintExtension">type <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=3118:3461#L83">ConstraintExtension</a>
+				<a class="permalink" href="godoc.253.html#ConstraintExtension">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ConstraintExtension describes an optional constraint defined by users.
+</p>
+
+			<pre>type ConstraintExtension struct {
+<span id="ConstraintExtension.ExtensionName"></span>    <span class="comment">// ExtensionName consist of a UTF-8 string suffixed by the</span>
+    <span class="comment">// implementation domain following the naming scheme defined</span>
+    <span class="comment">// in Section 4.2 of [RFC4251], e.g.  &#34;foo@example.com&#34;.</span>
+    ExtensionName <a href="godoc.4.html#string">string</a>
+<span id="ConstraintExtension.ExtensionDetails"></span>    <span class="comment">// ExtensionDetails contains the actual content of the extended</span>
+    <span class="comment">// constraint.</span>
+    ExtensionDetails []<a href="godoc.4.html#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ExtendedAgent">type <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=1967:3042#L62">ExtendedAgent</a>
+				<a class="permalink" href="godoc.253.html#ExtendedAgent">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ExtendedAgent interface {
+    <a href="godoc.253.html#Agent">Agent</a>
+
+    <span class="comment">// SignWithFlags signs like Sign, but allows for additional flags to be sent/received</span>
+    SignWithFlags(key <a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#PublicKey">PublicKey</a>, data []<a href="godoc.4.html#byte">byte</a>, flags <a href="godoc.253.html#SignatureFlags">SignatureFlags</a>) (*<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Signature">Signature</a>, <a href="godoc.4.html#error">error</a>)
+
+    <span class="comment">// Extension processes a custom extension request. Standard-compliant agents are not</span>
+    <span class="comment">// required to support any extensions, but this method allows agents to implement</span>
+    <span class="comment">// vendor-specific methods or add experimental features. See [PROTOCOL.agent] section 4.7.</span>
+    <span class="comment">// If agent extensions are unsupported entirely this method MUST return an</span>
+    <span class="comment">// ErrExtensionUnsupported error. Similarly, if just the specific extensionType in</span>
+    <span class="comment">// the request is unsupported by the agent then ErrExtensionUnsupported MUST be</span>
+    <span class="comment">// returned.</span>
+    <span class="comment">//</span>
+    <span class="comment">// In the case of success, since [PROTOCOL.agent] section 4.7 specifies that the contents</span>
+    <span class="comment">// of the response are unspecified (including the type of the message), the complete</span>
+    <span class="comment">// response will be returned as a []byte slice, including the &#34;type&#34; byte of the message.</span>
+    Extension(extensionType <a href="godoc.4.html#string">string</a>, contents []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewClient">func <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=9000:9046#L302">NewClient</a>
+					<a class="permalink" href="godoc.253.html#NewClient">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewClient(rw <a href="godoc.585.html">io</a>.<a href="godoc.585.html#ReadWriter">ReadWriter</a>) <a href="godoc.253.html#ExtendedAgent">ExtendedAgent</a></pre>
+				<p>
+NewClient returns an Agent that talks to an ssh-agent process over
+the given connection.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Key">type <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=7261:7328#L223">Key</a>
+				<a class="permalink" href="godoc.253.html#Key">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Key represents a protocol 2 public key as defined in
+[PROTOCOL.agent], section 2.5.2.
+</p>
+
+			<pre>type Key struct {
+<span id="Key.Format"></span>    Format  <a href="godoc.4.html#string">string</a>
+<span id="Key.Blob"></span>    Blob    []<a href="godoc.4.html#byte">byte</a>
+<span id="Key.Comment"></span>    Comment <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Key.Marshal">func (*Key) <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=7879:7909#L251">Marshal</a>
+					<a class="permalink" href="godoc.253.html#Key.Marshal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (k *<a href="godoc.253.html#Key">Key</a>) Marshal() []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Marshal returns key blob to satisfy the ssh.PublicKey interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Key.String">func (*Key) <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=7556:7585#L235">String</a>
+					<a class="permalink" href="godoc.253.html#Key.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (k *<a href="godoc.253.html#Key">Key</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String returns the storage form of an agent key with the format, base64
+encoded serialized key, and the comment if it is not empty.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Key.Type">func (*Key) <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=7761:7788#L246">Type</a>
+					<a class="permalink" href="godoc.253.html#Key.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (k *<a href="godoc.253.html#Key">Key</a>) Type() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Type returns the public key type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Key.Verify">func (*Key) <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=7979:8038#L256">Verify</a>
+					<a class="permalink" href="godoc.253.html#Key.Verify">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (k *<a href="godoc.253.html#Key">Key</a>) Verify(data []<a href="godoc.4.html#byte">byte</a>, sig *<a href="godoc.252.html">ssh</a>.<a href="godoc.252.html#Signature">Signature</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Verify satisfies the ssh.PublicKey interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SignatureFlags">type <a href="http://localhost:6161/src/golang.org/x/crypto/ssh/agent/client.go?s=936:962#L25">SignatureFlags</a>
+				<a class="permalink" href="godoc.253.html#SignatureFlags">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SignatureFlags represent additional flags that can be passed to the signature
+requests an defined in [PROTOCOL.agent] section 4.5.1.
+</p>
+
+			<pre>type SignatureFlags <a href="godoc.4.html#uint32">uint32</a></pre>
+
+			
+				<p>
+SignatureFlag values as defined in [PROTOCOL.agent] section 5.3.
+</p>
+
+				<pre>const (
+    <span id="SignatureFlagReserved">SignatureFlagReserved</span> <a href="godoc.253.html#SignatureFlags">SignatureFlags</a> = 1 &lt;&lt; <a href="godoc.4.html#iota">iota</a>
+    <span id="SignatureFlagRsaSha256">SignatureFlagRsaSha256</span>
+    <span id="SignatureFlagRsaSha512">SignatureFlagRsaSha512</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

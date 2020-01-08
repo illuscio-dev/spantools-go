@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>search - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.365.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package search
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/search"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.365.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.365.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package search provides language-specific search and string matching.
+</p>
+<p>
+Natural language matching can be intricate. For example, Danish will insist
+&#34;Århus&#34; and &#34;Aarhus&#34; are the same name and Turkish will match I to ı (note
+the lack of a dot) in a case-insensitive match. This package handles such
+language-specific details.
+</p>
+<p>
+Text passed to any of the calls in this message does not need to be
+normalized.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.365.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.365.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.365.html#IndexOption">type IndexOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.365.html#Matcher">type Matcher</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#New">func New(t language.Tag, opts ...Option) *Matcher</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Matcher.Compile">func (m *Matcher) Compile(b []byte) *Pattern</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Matcher.CompileString">func (m *Matcher) CompileString(s string) *Pattern</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Matcher.Equal">func (m *Matcher) Equal(a, b []byte) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Matcher.EqualString">func (m *Matcher) EqualString(a, b string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Matcher.Index">func (m *Matcher) Index(b, pat []byte, opts ...IndexOption) (start, end int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Matcher.IndexString">func (m *Matcher) IndexString(s, pat string, opts ...IndexOption) (start, end int)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.365.html#Option">type Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.365.html#Pattern">type Pattern</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Pattern.Index">func (p *Pattern) Index(b []byte, opts ...IndexOption) (start, end int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Pattern.IndexString">func (p *Pattern) IndexString(s string, opts ...IndexOption) (start, end int)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/search/index.go">index.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/search/pattern.go">pattern.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/search/search.go">search.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/search/tables.go">tables.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+CLDRVersion is the CLDR version from which the tables in this package are derived.
+</p>
+
+				<pre>const <span id="CLDRVersion">CLDRVersion</span> = &#34;23&#34;</pre>
+			
+				<p>
+UnicodeVersion is the Unicode version from which the tables in this package are derived.
+</p>
+
+				<pre>const <span id="UnicodeVersion">UnicodeVersion</span> = &#34;6.2.0&#34;</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// Supported lists the languages for which search differs from its parent.</span>
+    <span id="Supported">Supported</span> <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Coverage">Coverage</a>
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="IndexOption">type <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=2709:2730#L86">IndexOption</a>
+				<a class="permalink" href="godoc.365.html#IndexOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An IndexOption specifies how the Index methods of Pattern or Matcher should
+match the input.
+</p>
+
+			<pre>type IndexOption <a href="godoc.4.html#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// Anchor restricts the search to the start (or end for Backwards) of the</span>
+    <span class="comment">// text.</span>
+    <span id="Anchor">Anchor</span> <a href="godoc.365.html#IndexOption">IndexOption</a> = 1 &lt;&lt; <a href="godoc.4.html#iota">iota</a>
+
+    <span class="comment">// Backwards starts the search from the end of the text.</span>
+    <span id="Backwards">Backwards</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Matcher">type <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=2481:2608#L77">Matcher</a>
+				<a class="permalink" href="godoc.365.html#Matcher">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Matcher implements language-specific string matching.
+</p>
+
+			<pre>type Matcher struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="New">func <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=2250:2299#L66">New</a>
+					<a class="permalink" href="godoc.365.html#New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func New(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, opts ...<a href="godoc.365.html#Option">Option</a>) *<a href="godoc.365.html#Matcher">Matcher</a></pre>
+				<p>
+New returns a new Matcher for the given language and options.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Matcher.Compile">func (*Matcher) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=4006:4050#L126">Compile</a>
+					<a class="permalink" href="godoc.365.html#Matcher.Compile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.365.html#Matcher">Matcher</a>) Compile(b []<a href="godoc.4.html#byte">byte</a>) *<a href="godoc.365.html#Pattern">Pattern</a></pre>
+				<p>
+Compile compiles and returns a pattern that can be used for faster searching.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Matcher.CompileString">func (*Matcher) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=4299:4349#L138">CompileString</a>
+					<a class="permalink" href="godoc.365.html#Matcher.CompileString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.365.html#Matcher">Matcher</a>) CompileString(s <a href="godoc.4.html#string">string</a>) *<a href="godoc.365.html#Pattern">Pattern</a></pre>
+				<p>
+CompileString compiles and returns a pattern that can be used for faster
+searching.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Matcher.Equal">func (*Matcher) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=3654:3695#L114">Equal</a>
+					<a class="permalink" href="godoc.365.html#Matcher.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.365.html#Matcher">Matcher</a>) Equal(a, b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Equal reports whether a and b are equivalent.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Matcher.EqualString">func (*Matcher) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=3811:3858#L120">EqualString</a>
+					<a class="permalink" href="godoc.365.html#Matcher.EqualString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.365.html#Matcher">Matcher</a>) EqualString(a, b <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+EqualString reports whether a and b are equivalent.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Matcher.Index">func (*Matcher) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=3085:3161#L101">Index</a>
+					<a class="permalink" href="godoc.365.html#Matcher.Index">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.365.html#Matcher">Matcher</a>) Index(b, pat []<a href="godoc.4.html#byte">byte</a>, opts ...<a href="godoc.365.html#IndexOption">IndexOption</a>) (start, end <a href="godoc.4.html#int">int</a>)</pre>
+				<p>
+Index reports the start and end position of the first occurrence of pat in b
+or -1, -1 if pat is not present.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Matcher.IndexString">func (*Matcher) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=3397:3479#L108">IndexString</a>
+					<a class="permalink" href="godoc.365.html#Matcher.IndexString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.365.html#Matcher">Matcher</a>) IndexString(s, pat <a href="godoc.4.html#string">string</a>, opts ...<a href="godoc.365.html#IndexOption">IndexOption</a>) (start, end <a href="godoc.4.html#int">int</a>)</pre>
+				<p>
+IndexString reports the start and end position of the first occurrence of pat
+in s or -1, -1 if pat is not present.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=881:907#L16">Option</a>
+				<a class="permalink" href="godoc.365.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Option configures a Matcher.
+</p>
+
+			<pre>type Option func(*<a href="godoc.365.html#Matcher">Matcher</a>)</pre>
+
+			
+
+			
+				
+				<pre>var (
+    <span class="comment">// WholeWord restricts matches to complete words. The default is to match at</span>
+    <span class="comment">// the character level.</span>
+    <span id="WholeWord">WholeWord</span> <a href="godoc.365.html#Option">Option</a> = <a href="godoc.4.html#nil">nil</a>
+
+    <span class="comment">// Exact requires that two strings are their exact equivalent. For example</span>
+    <span class="comment">// å would not match aa in Danish. It overrides any of the ignore options.</span>
+    <span id="Exact">Exact</span> <a href="godoc.365.html#Option">Option</a> = <a href="godoc.4.html#nil">nil</a>
+
+    <span class="comment">// Loose causes case, diacritics and width to be ignored.</span>
+    <span id="Loose">Loose</span> <a href="godoc.365.html#Option">Option</a> = loose
+
+    <span class="comment">// IgnoreCase enables case-insensitive search.</span>
+    <span id="IgnoreCase">IgnoreCase</span> <a href="godoc.365.html#Option">Option</a> = ignoreCase
+
+    <span class="comment">// IgnoreDiacritics causes diacritics to be ignored (&#34;ö&#34; == &#34;o&#34;).</span>
+    <span id="IgnoreDiacritics">IgnoreDiacritics</span> <a href="godoc.365.html#Option">Option</a> = ignoreDiacritics
+
+    <span class="comment">// IgnoreWidth equates narrow with wide variants.</span>
+    <span id="IgnoreWidth">IgnoreWidth</span> <a href="godoc.365.html#Option">Option</a> = ignoreWidth
+)</pre>
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Pattern">type <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=4587:4642#L149">Pattern</a>
+				<a class="permalink" href="godoc.365.html#Pattern">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Pattern is a compiled search string. It is safe for concurrent use.
+</p>
+
+			<pre>type Pattern struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Pattern.Index">func (*Pattern) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=4986:5057#L161">Index</a>
+					<a class="permalink" href="godoc.365.html#Pattern.Index">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.365.html#Pattern">Pattern</a>) Index(b []<a href="godoc.4.html#byte">byte</a>, opts ...<a href="godoc.365.html#IndexOption">IndexOption</a>) (start, end <a href="godoc.4.html#int">int</a>)</pre>
+				<p>
+Index reports the start and end position of the first occurrence of p in b
+or -1, -1 if p is not present.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Pattern.IndexString">func (*Pattern) <a href="http://localhost:6161/src/golang.org/x/text/search/search.go?s=5712:5789#L191">IndexString</a>
+					<a class="permalink" href="godoc.365.html#Pattern.IndexString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.365.html#Pattern">Pattern</a>) IndexString(s <a href="godoc.4.html#string">string</a>, opts ...<a href="godoc.365.html#IndexOption">IndexOption</a>) (start, end <a href="godoc.4.html#int">int</a>)</pre>
+				<p>
+IndexString reports the start and end position of the first occurrence of p
+in s or -1, -1 if p is not present.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

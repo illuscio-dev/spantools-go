@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>catmsg - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.539.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package catmsg
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/internal/catmsg"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.539.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.539.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package catmsg contains support types for package x/text/message/catalog.
+</p>
+<p>
+This package contains the low-level implementations of Message used by the
+catalog package and provides primitives for other packages to implement their
+own. For instance, the plural package provides functionality for selecting
+translation strings based on the plural category of substitution arguments.
+</p>
+<h3 id="hdr-Encoding_and_Decoding">Encoding and Decoding</h3>
+<p>
+Catalogs store Messages encoded as a single string. Compiling a message into
+a string both results in compacter representation and speeds up evaluation.
+</p>
+<p>
+A Message must implement a Compile method to convert its arbitrary
+representation to a string. The Compile method takes an Encoder which
+facilitates serializing the message. Encoders also provide more context of
+the messages&#39;s creation (such as for which language the message is intended),
+which may not be known at the time of the creation of the message.
+</p>
+<p>
+Each message type must also have an accompanying decoder registered to decode
+the message. This decoder takes a Decoder argument which provides the
+counterparts for the decoding.
+</p>
+<h3 id="hdr-Renderers">Renderers</h3>
+<p>
+A Decoder must be initialized with a Renderer implementation. These
+implementations must be provided by packages that use Catalogs, typically
+formatting packages such as x/text/message. A typical user will not need to
+worry about this type; it is only relevant to packages that do string
+formatting and want to use the catalog package to handle localized strings.
+</p>
+<p>
+A package that uses catalogs for selecting strings receives selection results
+as sequence of substrings passed to the Renderer. The following snippet shows
+how to express the above example using the message package.
+</p>
+<pre>message.Set(language.English, &#34;You are %d minute(s) late.&#34;,
+    catalog.Var(&#34;minutes&#34;, plural.Select(1, &#34;one&#34;, &#34;minute&#34;)),
+    catalog.String(&#34;You are %[1]d ${minutes} late.&#34;))
+
+p := message.NewPrinter(language.English)
+p.Printf(&#34;You are %d minute(s) late.&#34;, 5) // always 5 minutes late.
+</pre>
+<p>
+To evaluate the Printf, package message wraps the arguments in a Renderer
+that is passed to the catalog for message decoding. The call sequence that
+results from evaluating the above message, assuming the person is rather
+tardy, is:
+</p>
+<pre>Render(&#34;You are %[1]d &#34;)
+Arg(1)
+Render(&#34;minutes&#34;)
+Render(&#34; late.&#34;)
+</pre>
+<p>
+The calls to Arg is caused by the plural.Select execution, which evaluates
+the argument to determine whether the singular or plural message form should
+be selected. The calls to Render reports the partial results to the message
+package for further evaluation.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.539.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.539.html#Compile">func Compile(tag language.Tag, macros Dictionary, m Message) (data string, err error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.539.html#Decoder">type Decoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#NewDecoder">func NewDecoder(tag language.Tag, r Renderer, macros Dictionary) *Decoder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.Arg">func (d *Decoder) Arg(i int) interface{}</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.DecodeString">func (d *Decoder) DecodeString() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.DecodeUint">func (d *Decoder) DecodeUint() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.Done">func (d *Decoder) Done() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.Execute">func (d *Decoder) Execute(msg string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.ExecuteMessage">func (d *Decoder) ExecuteMessage() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.ExecuteSubstitution">func (d *Decoder) ExecuteSubstitution()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.Language">func (d *Decoder) Language() language.Tag</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.Render">func (d *Decoder) Render(s string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Decoder.SkipMessage">func (d *Decoder) SkipMessage()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.539.html#Dictionary">type Dictionary</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.539.html#Encoder">type Encoder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Encoder.EncodeMessage">func (e *Encoder) EncodeMessage(m Message) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Encoder.EncodeMessageType">func (e *Encoder) EncodeMessageType(h Handle)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Encoder.EncodeString">func (e *Encoder) EncodeString(s string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Encoder.EncodeSubstitution">func (e *Encoder) EncodeSubstitution(name string, arguments ...int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Encoder.EncodeUint">func (e *Encoder) EncodeUint(x uint64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Encoder.Language">func (e *Encoder) Language() language.Tag</a></dd>
+				
+			
+				
+				<dd><a href="godoc.539.html#FirstOf">type FirstOf</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#FirstOf.Compile">func (s FirstOf) Compile(e *Encoder) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.539.html#Handle">type Handle</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Register">func Register(name string, handler Handler) Handle</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.539.html#Handler">type Handler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.539.html#Message">type Message</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.539.html#Raw">type Raw</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Raw.Compile">func (r Raw) Compile(e *Encoder) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.539.html#Renderer">type Renderer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.539.html#String">type String</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#String.Compile">func (s String) Compile(e *Encoder) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.539.html#Var">type Var</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.539.html#Var.Compile">func (v *Var) Compile(e *Encoder) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go">catmsg.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go">codec.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/varint.go">varint.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// ErrIncomplete indicates a compiled message does not define translations</span>
+    <span class="comment">// for all possible argument values. If this message is returned, evaluating</span>
+    <span class="comment">// a message may result in the ErrNoMatch error.</span>
+    <span id="ErrIncomplete">ErrIncomplete</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;catmsg: incomplete message; may not give result for all inputs&#34;)
+
+    <span class="comment">// ErrNoMatch indicates no translation message matched the given input</span>
+    <span class="comment">// parameters when evaluating a message.</span>
+    <span id="ErrNoMatch">ErrNoMatch</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;catmsg: no translation for inputs&#34;)
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="Compile">func <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=7210:7295#L193">Compile</a>
+				<a class="permalink" href="godoc.539.html#Compile">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Compile(tag <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, macros <a href="godoc.539.html#Dictionary">Dictionary</a>, m <a href="godoc.539.html#Message">Message</a>) (data <a href="godoc.4.html#string">string</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Compile converts a Message to a data string that can be stored in a Catalog.
+The resulting string can subsequently be decoded by passing to the Execute
+method of a Decoder.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Decoder">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=5982:6154#L217">Decoder</a>
+				<a class="permalink" href="godoc.539.html#Decoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Decoder deserializes and evaluates messages that are encoded by an encoder.
+</p>
+
+			<pre>type Decoder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDecoder">func <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=6324:6397#L233">NewDecoder</a>
+					<a class="permalink" href="godoc.539.html#NewDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDecoder(tag <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, r <a href="godoc.539.html#Renderer">Renderer</a>, macros <a href="godoc.539.html#Dictionary">Dictionary</a>) *<a href="godoc.539.html#Decoder">Decoder</a></pre>
+				<p>
+NewDecoder returns a new Decoder.
+</p>
+<p>
+Decoders are designed to be reused for multiple invocations of Execute.
+Only one goroutine may call Execute concurrently.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Decoder.Arg">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=7244:7284#L264">Arg</a>
+					<a class="permalink" href="godoc.539.html#Decoder.Arg">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) Arg(i <a href="godoc.4.html#int">int</a>) interface{}</pre>
+				<p>
+Arg implements Renderer.
+</p>
+<p>
+During evaluation of macros, the argument positions may be mapped to
+arguments that differ from the original call.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.DecodeString">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=7777:7816#L287">DecodeString</a>
+					<a class="permalink" href="godoc.539.html#Decoder.DecodeString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) DecodeString() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+DecodeString decodes a string that was encoded with EncodeString and advances
+the position.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.DecodeUint">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=7528:7565#L276">DecodeUint</a>
+					<a class="permalink" href="godoc.539.html#Decoder.DecodeUint">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) DecodeUint() <a href="godoc.4.html#uint64">uint64</a></pre>
+				<p>
+DecodeUint decodes a number that was encoded with EncodeUint and advances the
+position.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Done">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=6946:6975#L255">Done</a>
+					<a class="permalink" href="godoc.539.html#Decoder.Done">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) Done() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Done reports whether there are more bytes to process in this message.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Execute">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=8152:8195#L304">Execute</a>
+					<a class="permalink" href="godoc.539.html#Decoder.Execute">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) Execute(msg <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Execute decodes and evaluates msg.
+</p>
+<p>
+Only one goroutine may call execute.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.ExecuteMessage">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=9693:9732#L364">ExecuteMessage</a>
+					<a class="permalink" href="godoc.539.html#Decoder.ExecuteMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) ExecuteMessage() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+ExecuteMessage decodes and executes the message at the current position.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.ExecuteSubstitution">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=9928:9967#L372">ExecuteSubstitution</a>
+					<a class="permalink" href="godoc.539.html#Decoder.ExecuteSubstitution">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) ExecuteSubstitution()</pre>
+				<p>
+ExecuteSubstitution executes the message corresponding to the substitution
+as encoded by EncodeSubstitution.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Language">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=6813:6854#L252">Language</a>
+					<a class="permalink" href="godoc.539.html#Decoder.Language">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) Language() <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a></pre>
+				<p>
+Language returns the language in which the message is being rendered.
+</p>
+<p>
+The destination language may be a child language of the language used for
+encoding. For instance, a decoding language of &#34;pt-PT&#34;&#34; is consistent with an
+encoding language of &#34;pt&#34;.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Render">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=7036:7070#L258">Render</a>
+					<a class="permalink" href="godoc.539.html#Decoder.Render">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) Render(s <a href="godoc.4.html#string">string</a>)</pre>
+				<p>
+Render implements Renderer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.SkipMessage">func (*Decoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=7987:8018#L296">SkipMessage</a>
+					<a class="permalink" href="godoc.539.html#Decoder.SkipMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.539.html#Decoder">Decoder</a>) SkipMessage()</pre>
+				<p>
+SkipMessage skips the message at the current location and advances the
+position.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Dictionary">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=818:1146#L18">Dictionary</a>
+				<a class="permalink" href="godoc.539.html#Dictionary">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Dictionary specifies a source of messages, including variables or macros.
+</p>
+
+			<pre>type Dictionary interface {
+    <span class="comment">// Lookup returns the message for the given key. It returns false for ok if</span>
+    <span class="comment">// such a message could not be found.</span>
+    Lookup(key <a href="godoc.4.html#string">string</a>) (data <a href="godoc.4.html#string">string</a>, ok <a href="godoc.4.html#bool">bool</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Encoder">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=1196:1761#L28">Encoder</a>
+				<a class="permalink" href="godoc.539.html#Encoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Encoder serializes a Message to a string.
+</p>
+
+			<pre>type Encoder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Encoder.EncodeMessage">func (*Encoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=2769:2817#L91">EncodeMessage</a>
+					<a class="permalink" href="godoc.539.html#Encoder.EncodeMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.539.html#Encoder">Encoder</a>) EncodeMessage(m <a href="godoc.539.html#Message">Message</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+EncodeMessage serializes the given message inline at the current position.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.EncodeMessageType">func (*Encoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=2515:2560#L82">EncodeMessageType</a>
+					<a class="permalink" href="godoc.539.html#Encoder.EncodeMessageType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.539.html#Encoder">Encoder</a>) EncodeMessageType(h <a href="godoc.539.html#Handle">Handle</a>)</pre>
+				<p>
+EncodeMessageType marks the current message to be of type h.
+</p>
+<p>
+It must be the first call of a Message&#39;s Compile method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.EncodeString">func (*Encoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=2266:2306#L73">EncodeString</a>
+					<a class="permalink" href="godoc.539.html#Encoder.EncodeString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.539.html#Encoder">Encoder</a>) EncodeString(s <a href="godoc.4.html#string">string</a>)</pre>
+				<p>
+EncodeString encodes s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.EncodeSubstitution">func (*Encoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=5227:5294#L190">EncodeSubstitution</a>
+					<a class="permalink" href="godoc.539.html#Encoder.EncodeSubstitution">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.539.html#Encoder">Encoder</a>) EncodeSubstitution(name <a href="godoc.4.html#string">string</a>, arguments ...<a href="godoc.4.html#int">int</a>)</pre>
+				<p>
+EncodeSubstitution inserts a resolved reference to a variable or macro.
+</p>
+<p>
+This call must be matched with a call to ExecuteSubstitution at decoding
+time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.EncodeUint">func (*Encoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=2085:2123#L65">EncodeUint</a>
+					<a class="permalink" href="godoc.539.html#Encoder.EncodeUint">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.539.html#Encoder">Encoder</a>) EncodeUint(x <a href="godoc.4.html#uint64">uint64</a>)</pre>
+				<p>
+EncodeUint encodes x.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.Language">func (*Encoder) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=1911:1952#L56">Language</a>
+					<a class="permalink" href="godoc.539.html#Encoder.Language">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.539.html#Encoder">Encoder</a>) Language() <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a></pre>
+				<p>
+Language reports the language for which the encoded message will be stored
+in the Catalog.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FirstOf">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=8452:8474#L224">FirstOf</a>
+				<a class="permalink" href="godoc.539.html#FirstOf">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+FirstOf is a message type that prints the first message in the sequence that
+resolves to a match for the given substitution arguments.
+</p>
+
+			<pre>type FirstOf []<a href="godoc.539.html#Message">Message</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FirstOf.Compile">func (FirstOf) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=8507:8549#L227">Compile</a>
+					<a class="permalink" href="godoc.539.html#FirstOf.Compile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s <a href="godoc.539.html#FirstOf">FirstOf</a>) Compile(e *<a href="godoc.539.html#Encoder">Encoder</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Compile implements Message.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Handle">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=3030:3045#L65">Handle</a>
+				<a class="permalink" href="godoc.539.html#Handle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Handle refers to a registered message type.
+</p>
+
+			<pre>type Handle <a href="godoc.4.html#int">int</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Register">func <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=3728:3778#L78">Register</a>
+					<a class="permalink" href="godoc.539.html#Register">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Register(name <a href="godoc.4.html#string">string</a>, handler <a href="godoc.539.html#Handler">Handler</a>) <a href="godoc.539.html#Handle">Handle</a></pre>
+				<p>
+Register records the existence of a message type and returns a Handle that
+can be used in the Encoder&#39;s EncodeMessageType method to create such
+messages. The prefix of the name should be the package path followed by
+an optional disambiguating string.
+Register will panic if a handle for the same name was already registered.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Handler">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=3352:3386#L71">Handler</a>
+				<a class="permalink" href="godoc.539.html#Handler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Handler decodes and evaluates data compiled by a Message and sends the
+result to the Decoder. The output may depend on the value of the substitution
+arguments, accessible by the Decoder&#39;s Arg method. The Handler returns false
+if there is no translation for the given substitution arguments.
+</p>
+
+			<pre>type Handler func(d *<a href="godoc.539.html#Decoder">Decoder</a>) <a href="godoc.4.html#bool">bool</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Message">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=6039:7026#L169">Message</a>
+				<a class="permalink" href="godoc.539.html#Message">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Message holds a collection of translations for the same phrase that may
+vary based on the values of substitution arguments.
+</p>
+
+			<pre>type Message interface {
+    <span class="comment">// Compile encodes the format string(s) of the message as a string for later</span>
+    <span class="comment">// evaluation.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The first call Compile makes on the encoder must be EncodeMessageType.</span>
+    <span class="comment">// The handle passed to this call may either be a handle returned by</span>
+    <span class="comment">// Register to encode a single custom message, or HandleFirst followed by</span>
+    <span class="comment">// a sequence of calls to EncodeMessage.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Compile must return ErrIncomplete if it is possible for evaluation to</span>
+    <span class="comment">// not match any translation for a given set of formatting parameters.</span>
+    <span class="comment">// For example, selecting a translation based on plural form may not yield</span>
+    <span class="comment">// a match if the form &#34;Other&#34; is not one of the selectors.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Compile may return any other application-specific error. For backwards</span>
+    <span class="comment">// compatibility with package like fmt, which often do not do sanity</span>
+    <span class="comment">// checking of format strings ahead of time, Compile should still make an</span>
+    <span class="comment">// effort to have some sensible fallback in case of an error.</span>
+    Compile(e *<a href="godoc.539.html#Encoder">Encoder</a>) <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Raw">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=9850:9865#L271">Raw</a>
+				<a class="permalink" href="godoc.539.html#Raw">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Raw is a message consisting of a single format string that is passed as is
+to the Renderer.
+</p>
+<p>
+Note that a Renderer may still do its own variable substitution.
+</p>
+
+			<pre>type Raw <a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Raw.Compile">func (Raw) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=9898:9942#L274">Compile</a>
+					<a class="permalink" href="godoc.539.html#Raw.Compile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.539.html#Raw">Raw</a>) Compile(e *<a href="godoc.539.html#Encoder">Encoder</a>) (err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Compile implements Message.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Renderer">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/codec.go?s=269:737#L5">Renderer</a>
+				<a class="permalink" href="godoc.539.html#Renderer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Renderer renders a Message.
+</p>
+
+			<pre>type Renderer interface {
+    <span class="comment">// Render renders the given string. The given string may be interpreted as a</span>
+    <span class="comment">// format string, such as the one used by the fmt package or a template.</span>
+    Render(s <a href="godoc.4.html#string">string</a>)
+
+    <span class="comment">// Arg returns the i-th argument passed to format a message. This method</span>
+    <span class="comment">// should return nil if there is no such argument. Messages need access to</span>
+    <span class="comment">// arguments to allow selecting a message based on linguistic features of</span>
+    <span class="comment">// those arguments.</span>
+    Arg(i <a href="godoc.4.html#int">int</a>) interface{}
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="String">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=11230:11248#L307">String</a>
+				<a class="permalink" href="godoc.539.html#String">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+String is a message consisting of a single format string which contains
+placeholders that may be substituted with variables.
+</p>
+<p>
+Variable substitutions are marked with placeholders and a variable name of
+the form ${name}. Any other substitutions such as Go templates or
+printf-style substitutions are left to be done by the Renderer.
+</p>
+<p>
+When evaluation a string interpolation, a Renderer will receive separate
+calls for each placeholder and interstitial string. For example, for the
+message: &#34;%[1]v ${invites} %[2]v to ${their} party.&#34; The sequence of calls
+is:
+</p>
+<pre>d.Render(&#34;%[1]v &#34;)
+d.Arg(1)
+d.Render(resultOfInvites)
+d.Render(&#34; %[2]v to &#34;)
+d.Arg(2)
+d.Render(resultOfTheir)
+d.Render(&#34; party.&#34;)
+</pre>
+<p>
+where the messages for &#34;invites&#34; and &#34;their&#34; both use a plural.Select
+referring to the first argument.
+</p>
+<p>
+Strings may also invoke macros. Macros are essentially variables that can be
+reused. Macros may, for instance, be used to make selections between
+different conjugations of a verb. See the catalog package description for an
+overview of macros.
+</p>
+
+			<pre>type String <a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="String.Compile">func (String) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=11341:11388#L311">Compile</a>
+					<a class="permalink" href="godoc.539.html#String.Compile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s <a href="godoc.539.html#String">String</a>) Compile(e *<a href="godoc.539.html#Encoder">Encoder</a>) (err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Compile implements Message. It parses the placeholder formats and returns
+any error.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Var">type <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=9165:9217#L247">Var</a>
+				<a class="permalink" href="godoc.539.html#Var">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Var defines a message that can be substituted for a placeholder of the same
+name. If an expression does not result in a string after evaluation, Name is
+used as the substitution. For example:
+</p>
+<pre>Var{
+  Name:    &#34;minutes&#34;,
+  Message: plural.Select(1, &#34;one&#34;, &#34;minute&#34;),
+}
+</pre>
+<p>
+will resolve to minute for singular and minutes for plural forms.
+</p>
+
+			<pre>type Var struct {
+<span id="Var.Name"></span>    Name    <a href="godoc.4.html#string">string</a>
+<span id="Var.Message"></span>    Message <a href="godoc.539.html#Message">Message</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Var.Compile">func (*Var) <a href="http://localhost:6161/src/golang.org/x/text/internal/catmsg/catmsg.go?s=9412:9451#L258">Compile</a>
+					<a class="permalink" href="godoc.539.html#Var.Compile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v *<a href="godoc.539.html#Var">Var</a>) Compile(e *<a href="godoc.539.html#Encoder">Encoder</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Compile implements Message.
+</p>
+<p>
+Note that this method merely registers a variable; it does not create an
+encoded message.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

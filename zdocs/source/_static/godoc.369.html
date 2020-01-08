@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>transform - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.369.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package transform
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/transform"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.369.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.369.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.369.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package transform provides reader and writer wrappers that transform the
+bytes passing through as well as various transformations. Example
+transformations provided by other packages include normalization and
+conversion between character sets.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.369.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.369.html#Append">func Append(t Transformer, dst, src []byte) (result []byte, n int, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.369.html#Bytes">func Bytes(t Transformer, b []byte) (result []byte, n int, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.369.html#String">func String(t Transformer, s string) (result string, n int, err error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.369.html#NopResetter">type NopResetter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#NopResetter.Reset">func (NopResetter) Reset()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.369.html#Reader">type Reader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#NewReader">func NewReader(r io.Reader, t Transformer) *Reader</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#Reader.Read">func (r *Reader) Read(p []byte) (int, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.369.html#SpanningTransformer">type SpanningTransformer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.369.html#Transformer">type Transformer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#Chain">func Chain(t ...Transformer) Transformer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#RemoveFunc">func RemoveFunc(f func(r rune) bool) Transformer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.369.html#Writer">type Writer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#NewWriter">func NewWriter(w io.Writer, t Transformer) *Writer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#Writer.Close">func (w *Writer) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.369.html#Writer.Write">func (w *Writer) Write(data []byte) (n int, err error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.369.html#example_RemoveFunc">RemoveFunc</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go">transform.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// ErrShortDst means that the destination buffer was too short to</span>
+    <span class="comment">// receive all of the transformed bytes.</span>
+    <span id="ErrShortDst">ErrShortDst</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;transform: short destination buffer&#34;)
+
+    <span class="comment">// ErrShortSrc means that the source buffer has insufficient data to</span>
+    <span class="comment">// complete the transformation.</span>
+    <span id="ErrShortSrc">ErrShortSrc</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;transform: short source buffer&#34;)
+
+    <span class="comment">// ErrEndOfSpan means that the input and output (the transformed input)</span>
+    <span class="comment">// are not identical.</span>
+    <span id="ErrEndOfSpan">ErrEndOfSpan</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;transform: input and output are not identical&#34;)
+)</pre>
+			
+				
+				<pre>var (
+    <span class="comment">// Discard is a Transformer for which all Transform calls succeed</span>
+    <span class="comment">// by consuming all bytes and writing nothing.</span>
+    <span id="Discard">Discard</span> <a href="godoc.369.html#Transformer">Transformer</a> = discard{}
+
+    <span class="comment">// Nop is a SpanningTransformer that copies src to dst.</span>
+    <span id="Nop">Nop</span> <a href="godoc.369.html#SpanningTransformer">SpanningTransformer</a> = nop{}
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="Append">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=21474:21551#L669">Append</a>
+				<a class="permalink" href="godoc.369.html#Append">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Append(t <a href="godoc.369.html#Transformer">Transformer</a>, dst, src []<a href="godoc.4.html#byte">byte</a>) (result []<a href="godoc.4.html#byte">byte</a>, n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Append appends the result of converting src[:n] using t to dst, where
+n &lt;= len(src), If err == nil, n will be len(src). It calls Reset on t.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Bytes">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=21204:21273#L663">Bytes</a>
+				<a class="permalink" href="godoc.369.html#Bytes">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Bytes(t <a href="godoc.369.html#Transformer">Transformer</a>, b []<a href="godoc.4.html#byte">byte</a>) (result []<a href="godoc.4.html#byte">byte</a>, n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Bytes returns a new byte slice with the result of converting b[:n] using t,
+where n &lt;= len(b). If err == nil, n will be len(b). It calls Reset on t.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="String">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=17597:17667#L558">String</a>
+				<a class="permalink" href="godoc.369.html#String">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func String(t <a href="godoc.369.html#Transformer">Transformer</a>, s <a href="godoc.4.html#string">string</a>) (result <a href="godoc.4.html#string">string</a>, n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+String returns a string with the result of converting s[:n] using t, where
+n &lt;= len(s). If err == nil, n will be len(s). It calls Reset on t.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="NopResetter">type <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=4631:4656#L94">NopResetter</a>
+				<a class="permalink" href="godoc.369.html#NopResetter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+NopResetter can be embedded by implementations of Transformer to add a nop
+Reset method.
+</p>
+
+			<pre>type NopResetter struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="NopResetter.Reset">func (NopResetter) <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=4725:4751#L97">Reset</a>
+					<a class="permalink" href="godoc.369.html#NopResetter.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.369.html#NopResetter">NopResetter</a>) Reset()</pre>
+				<p>
+Reset implements the Reset method of the Transformer interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Reader">type <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=4822:5304#L100">Reader</a>
+				<a class="permalink" href="godoc.369.html#Reader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Reader wraps another io.Reader by transforming the bytes read.
+</p>
+
+			<pre>type Reader struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewReader">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=5444:5494#L124">NewReader</a>
+					<a class="permalink" href="godoc.369.html#NewReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewReader(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, t <a href="godoc.369.html#Transformer">Transformer</a>) *<a href="godoc.369.html#Reader">Reader</a></pre>
+				<p>
+NewReader returns a new Reader that wraps r by transforming the bytes read
+via t. It calls Reset on t.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Reader.Read">func (*Reader) <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=5669:5713#L135">Read</a>
+					<a class="permalink" href="godoc.369.html#Reader.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.369.html#Reader">Reader</a>) Read(p []<a href="godoc.4.html#byte">byte</a>) (<a href="godoc.4.html#int">int</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Read implements the io.Reader interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SpanningTransformer">type <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=2882:4534#L59">SpanningTransformer</a>
+				<a class="permalink" href="godoc.369.html#SpanningTransformer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SpanningTransformer extends the Transformer interface with a Span method
+that determines how much of the input already conforms to the Transformer.
+</p>
+
+			<pre>type SpanningTransformer interface {
+    <a href="godoc.369.html#Transformer">Transformer</a>
+
+    <span class="comment">// Span returns a position in src such that transforming src[:n] results in</span>
+    <span class="comment">// identical output src[:n] for these bytes. It does not necessarily return</span>
+    <span class="comment">// the largest such n. The atEOF argument tells whether src represents the</span>
+    <span class="comment">// last bytes of the input.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Callers should always account for the n bytes consumed before</span>
+    <span class="comment">// considering the error err.</span>
+    <span class="comment">//</span>
+    <span class="comment">// A nil error means that all input bytes are known to be identical to the</span>
+    <span class="comment">// output produced by the Transformer. A nil error can be be returned</span>
+    <span class="comment">// regardless of whether atEOF is true. If err is nil, then then n must</span>
+    <span class="comment">// equal len(src); the converse is not necessarily true.</span>
+    <span class="comment">//</span>
+    <span class="comment">// ErrEndOfSpan means that the Transformer output may differ from the</span>
+    <span class="comment">// input after n bytes. Note that n may be len(src), meaning that the output</span>
+    <span class="comment">// would contain additional bytes after otherwise identical output.</span>
+    <span class="comment">// ErrShortSrc means that src had insufficient data to determine whether the</span>
+    <span class="comment">// remaining bytes would change. Other than the error conditions listed</span>
+    <span class="comment">// here, implementations are free to report other errors that arise.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Calling Span can modify the Transformer state as a side effect. In</span>
+    <span class="comment">// effect, it does the transformation just as calling Transform would, only</span>
+    <span class="comment">// without copying to a destination buffer and only up to a point it can</span>
+    <span class="comment">// determine the input and output bytes are the same. This is obviously more</span>
+    <span class="comment">// limited than calling Transform, but can be more efficient in terms of</span>
+    <span class="comment">// copying and allocating buffers. Calls to Span and Transform may be</span>
+    <span class="comment">// interleaved.</span>
+    Span(src []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Transformer">type <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=1514:2726#L31">Transformer</a>
+				<a class="permalink" href="godoc.369.html#Transformer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Transformer transforms bytes.
+</p>
+
+			<pre>type Transformer interface {
+    <span class="comment">// Transform writes to dst the transformed bytes read from src, and</span>
+    <span class="comment">// returns the number of dst bytes written and src bytes read. The</span>
+    <span class="comment">// atEOF argument tells whether src represents the last bytes of the</span>
+    <span class="comment">// input.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Callers should always process the nDst bytes produced and account</span>
+    <span class="comment">// for the nSrc bytes consumed before considering the error err.</span>
+    <span class="comment">//</span>
+    <span class="comment">// A nil error means that all of the transformed bytes (whether freshly</span>
+    <span class="comment">// transformed from src or left over from previous Transform calls)</span>
+    <span class="comment">// were written to dst. A nil error can be returned regardless of</span>
+    <span class="comment">// whether atEOF is true. If err is nil then nSrc must equal len(src);</span>
+    <span class="comment">// the converse is not necessarily true.</span>
+    <span class="comment">//</span>
+    <span class="comment">// ErrShortDst means that dst was too short to receive all of the</span>
+    <span class="comment">// transformed bytes. ErrShortSrc means that src had insufficient data</span>
+    <span class="comment">// to complete the transformation. If both conditions apply, then</span>
+    <span class="comment">// either error may be returned. Other than the error conditions listed</span>
+    <span class="comment">// here, implementations are free to report other errors that arise.</span>
+    Transform(dst, src []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (nDst, nSrc <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)
+
+    <span class="comment">// Reset resets the state and allows a Transformer to be reused.</span>
+    Reset()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Chain">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=12055:12095#L368">Chain</a>
+					<a class="permalink" href="godoc.369.html#Chain">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Chain(t ...<a href="godoc.369.html#Transformer">Transformer</a>) <a href="godoc.369.html#Transformer">Transformer</a></pre>
+				<p>
+Chain returns a Transformer that applies t in sequence.
+</p>
+
+				
+				
+			
+				
+				<h3 id="RemoveFunc">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=16003:16051#L487">RemoveFunc</a>
+					<a class="permalink" href="godoc.369.html#RemoveFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func RemoveFunc(f func(r <a href="godoc.4.html#rune">rune</a>) <a href="godoc.4.html#bool">bool</a>) <a href="godoc.369.html#Transformer">Transformer</a></pre>
+				<p>
+Deprecated: use runes.Remove instead.
+</p>
+
+				<div id="example_RemoveFunc" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">input := []byte(`tschüß; до свидания`)
+
+b := make([]byte, len(input))
+
+t := transform.RemoveFunc(unicode.IsSpace)
+n, _, _ := t.Transform(b, input, true)
+fmt.Println(string(b[:n]))
+
+t = transform.RemoveFunc(func(r rune) bool {
+    return !unicode.Is(unicode.Latin, r)
+})
+n, _, _ = t.Transform(b, input, true)
+fmt.Println(string(b[:n]))
+
+n, _, _ = t.Transform(b, norm.NFD.Bytes(input), true)
+fmt.Println(string(b[:n]))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">tschüß;досвидания
+tschüß
+tschuß
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Writer">type <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=7665:7816#L199">Writer</a>
+				<a class="permalink" href="godoc.369.html#Writer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Writer wraps another io.Writer by transforming the bytes read.
+The user needs to call Close to flush unwritten bytes that may
+be buffered.
+</p>
+
+			<pre>type Writer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewWriter">func <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=7930:7980#L211">NewWriter</a>
+					<a class="permalink" href="godoc.369.html#NewWriter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewWriter(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, t <a href="godoc.369.html#Transformer">Transformer</a>) *<a href="godoc.369.html#Writer">Writer</a></pre>
+				<p>
+NewWriter returns a new Writer that wraps w by transforming the bytes written
+via t. It calls Reset on t.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Writer.Close">func (*Writer) <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=9983:10013#L286">Close</a>
+					<a class="permalink" href="godoc.369.html#Writer.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (w *<a href="godoc.369.html#Writer">Writer</a>) Close() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Close implements the io.Closer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Writer.Write">func (*Writer) <a href="http://localhost:6161/src/golang.org/x/text/transform/transform.go?s=8317:8371#L224">Write</a>
+					<a class="permalink" href="godoc.369.html#Writer.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (w *<a href="godoc.369.html#Writer">Writer</a>) Write(data []<a href="godoc.4.html#byte">byte</a>) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Write implements the io.Writer interface. If there are not enough
+bytes available to complete a Transform, the bytes will be buffered
+for the next write. Call Close to convert the remaining bytes.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

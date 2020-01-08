@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>bsonoptions - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.154.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package bsonoptions
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/bson/bsonoptions"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.154.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.154.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.154.html#MapCodecOptions">type MapCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#MapCodec">func MapCodec() *MapCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#MergeMapCodecOptions">func MergeMapCodecOptions(opts ...*MapCodecOptions) *MapCodecOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#MapCodecOptions.SetDecodeZerosMap">func (t *MapCodecOptions) SetDecodeZerosMap(b bool) *MapCodecOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#StringCodecOptions">type StringCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#MergeStringCodecOptions">func MergeStringCodecOptions(opts ...*StringCodecOptions) *StringCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StringCodec">func StringCodec() *StringCodecOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StringCodecOptions.SetDecodeObjectIDAsHex">func (t *StringCodecOptions) SetDecodeObjectIDAsHex(b bool) *StringCodecOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#StructCodecOptions">type StructCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#MergeStructCodecOptions">func MergeStructCodecOptions(opts ...*StructCodecOptions) *StructCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StructCodec">func StructCodec() *StructCodecOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StructCodecOptions.SetAllowUnexportedFields">func (t *StructCodecOptions) SetAllowUnexportedFields(b bool) *StructCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StructCodecOptions.SetDecodeDeepZeroInline">func (t *StructCodecOptions) SetDecodeDeepZeroInline(b bool) *StructCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StructCodecOptions.SetDecodeZeroStruct">func (t *StructCodecOptions) SetDecodeZeroStruct(b bool) *StructCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#StructCodecOptions.SetEncodeOmitDefaultStruct">func (t *StructCodecOptions) SetEncodeOmitDefaultStruct(b bool) *StructCodecOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#TimeCodecOptions">type TimeCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#MergeTimeCodecOptions">func MergeTimeCodecOptions(opts ...*TimeCodecOptions) *TimeCodecOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#TimeCodec">func TimeCodec() *TimeCodecOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#TimeCodecOptions.SetUseLocalTimeZone">func (t *TimeCodecOptions) SetUseLocalTimeZone(b bool) *TimeCodecOptions</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/map_codec_options.go">map_codec_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/string_codec_options.go">string_codec_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go">struct_codec_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/time_codec_options.go">time_codec_options.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="MapCodecOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/map_codec_options.go?s=373:511#L1">MapCodecOptions</a>
+				<a class="permalink" href="godoc.154.html#MapCodecOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MapCodecOptions represents all possible options for map encoding and decoding.
+</p>
+
+			<pre>type MapCodecOptions struct {
+<span id="MapCodecOptions.DecodeZerosMap"></span>    DecodeZerosMap *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if the map should be zeroed before decoding into it. Defaults to false.</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MapCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/map_codec_options.go?s=556:588#L5">MapCodec</a>
+					<a class="permalink" href="godoc.154.html#MapCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MapCodec() *<a href="godoc.154.html#MapCodecOptions">MapCodecOptions</a></pre>
+				<p>
+MapCodec creates a new *MapCodecOptions
+</p>
+
+				
+				
+			
+				
+				<h3 id="MergeMapCodecOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/map_codec_options.go?s=950:1018#L16">MergeMapCodecOptions</a>
+					<a class="permalink" href="godoc.154.html#MergeMapCodecOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MergeMapCodecOptions(opts ...*<a href="godoc.154.html#MapCodecOptions">MapCodecOptions</a>) *<a href="godoc.154.html#MapCodecOptions">MapCodecOptions</a></pre>
+				<p>
+MergeMapCodecOptions combines the given *MapCodecOptions into a single *MapCodecOptions in a last one wins fashion.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MapCodecOptions.SetDecodeZerosMap">func (*MapCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/map_codec_options.go?s=724:792#L10">SetDecodeZerosMap</a>
+					<a class="permalink" href="godoc.154.html#MapCodecOptions.SetDecodeZerosMap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#MapCodecOptions">MapCodecOptions</a>) SetDecodeZerosMap(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#MapCodecOptions">MapCodecOptions</a></pre>
+				<p>
+SetDecodeZerosMap specifies if the map should be zeroed before decoding into it. Defaults to false.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StringCodecOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/string_codec_options.go?s=413:552#L2">StringCodecOptions</a>
+				<a class="permalink" href="godoc.154.html#StringCodecOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StringCodecOptions represents all possible options for string encoding and decoding.
+</p>
+
+			<pre>type StringCodecOptions struct {
+<span id="StringCodecOptions.DecodeObjectIDAsHex"></span>    DecodeObjectIDAsHex *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if we should decode ObjectID as the hex value. Defaults to true.</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MergeStringCodecOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/string_codec_options.go?s=1113:1190#L19">MergeStringCodecOptions</a>
+					<a class="permalink" href="godoc.154.html#MergeStringCodecOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MergeStringCodecOptions(opts ...*<a href="godoc.154.html#StringCodecOptions">StringCodecOptions</a>) *<a href="godoc.154.html#StringCodecOptions">StringCodecOptions</a></pre>
+				<p>
+MergeStringCodecOptions combines the given *StringCodecOptions into a single *StringCodecOptions in a last one wins fashion.
+</p>
+
+				
+				
+			
+				
+				<h3 id="StringCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/string_codec_options.go?s=603:641#L7">StringCodec</a>
+					<a class="permalink" href="godoc.154.html#StringCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func StringCodec() *<a href="godoc.154.html#StringCodecOptions">StringCodecOptions</a></pre>
+				<p>
+StringCodec creates a new *StringCodecOptions
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="StringCodecOptions.SetDecodeObjectIDAsHex">func (*StringCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/string_codec_options.go?s=862:941#L13">SetDecodeObjectIDAsHex</a>
+					<a class="permalink" href="godoc.154.html#StringCodecOptions.SetDecodeObjectIDAsHex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#StringCodecOptions">StringCodecOptions</a>) SetDecodeObjectIDAsHex(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#StringCodecOptions">StringCodecOptions</a></pre>
+				<p>
+SetDecodeObjectIDAsHex specifies if object IDs should be decoded as their hex representation. If false, a string made
+from the raw object ID bytes will be used. Defaults to true.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StructCodecOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=379:906#L1">StructCodecOptions</a>
+				<a class="permalink" href="godoc.154.html#StructCodecOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StructCodecOptions represents all possible options for struct encoding and decoding.
+</p>
+
+			<pre>type StructCodecOptions struct {
+<span id="StructCodecOptions.DecodeZeroStruct"></span>    DecodeZeroStruct        *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if structs should be zeroed before decoding into them. Defaults to false.</span>
+<span id="StructCodecOptions.DecodeDeepZeroInline"></span>    DecodeDeepZeroInline    *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if structs should be recursively zeroed when a inline value is decoded. Defaults to false.</span>
+<span id="StructCodecOptions.EncodeOmitDefaultStruct"></span>    EncodeOmitDefaultStruct *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if default structs should be considered empty by omitempty. Defaults to false.</span>
+<span id="StructCodecOptions.AllowUnexportedFields"></span>    AllowUnexportedFields   *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if unexported fields should be marshaled/unmarshaled. Defaults to false.</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MergeStructCodecOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=2174:2251#L38">MergeStructCodecOptions</a>
+					<a class="permalink" href="godoc.154.html#MergeStructCodecOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MergeStructCodecOptions(opts ...*<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a>) *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a></pre>
+				<p>
+MergeStructCodecOptions combines the given *StructCodecOptions into a single *StructCodecOptions in a last one wins fashion.
+</p>
+
+				
+				
+			
+				
+				<h3 id="StructCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=957:995#L8">StructCodec</a>
+					<a class="permalink" href="godoc.154.html#StructCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func StructCodec() *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a></pre>
+				<p>
+StructCodec creates a new *StructCodecOptions
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="StructCodecOptions.SetAllowUnexportedFields">func (*StructCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=1919:2000#L32">SetAllowUnexportedFields</a>
+					<a class="permalink" href="godoc.154.html#StructCodecOptions.SetAllowUnexportedFields">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a>) SetAllowUnexportedFields(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a></pre>
+				<p>
+SetAllowUnexportedFields specifies if unexported fields should be marshaled/unmarshaled. Defaults to false.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StructCodecOptions.SetDecodeDeepZeroInline">func (*StructCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=1366:1446#L19">SetDecodeDeepZeroInline</a>
+					<a class="permalink" href="godoc.154.html#StructCodecOptions.SetDecodeDeepZeroInline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a>) SetDecodeDeepZeroInline(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a></pre>
+				<p>
+SetDecodeDeepZeroInline specifies if structs should be zeroed before decoding into them. Defaults to false.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StructCodecOptions.SetDecodeZeroStruct">func (*StructCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=1138:1214#L13">SetDecodeZeroStruct</a>
+					<a class="permalink" href="godoc.154.html#StructCodecOptions.SetDecodeZeroStruct">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a>) SetDecodeZeroStruct(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a></pre>
+				<p>
+SetDecodeZeroStruct specifies if structs should be zeroed before decoding into them. Defaults to false.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StructCodecOptions.SetEncodeOmitDefaultStruct">func (*StructCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/struct_codec_options.go?s=1677:1760#L26">SetEncodeOmitDefaultStruct</a>
+					<a class="permalink" href="godoc.154.html#StructCodecOptions.SetEncodeOmitDefaultStruct">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a>) SetEncodeOmitDefaultStruct(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#StructCodecOptions">StructCodecOptions</a></pre>
+				<p>
+SetEncodeOmitDefaultStruct specifies if default structs should be considered empty by omitempty. A default struct has all
+its values set to their default value. Defaults to false.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TimeCodecOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/time_codec_options.go?s=380:514#L1">TimeCodecOptions</a>
+				<a class="permalink" href="godoc.154.html#TimeCodecOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TimeCodecOptions represents all possible options for time.Time encoding and decoding.
+</p>
+
+			<pre>type TimeCodecOptions struct {
+<span id="TimeCodecOptions.UseLocalTimeZone"></span>    UseLocalTimeZone *<a href="godoc.4.html#bool">bool</a> <span class="comment">// Specifies if we should decode into the local time zone. Defaults to false.</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MergeTimeCodecOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/time_codec_options.go?s=962:1033#L16">MergeTimeCodecOptions</a>
+					<a class="permalink" href="godoc.154.html#MergeTimeCodecOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MergeTimeCodecOptions(opts ...*<a href="godoc.154.html#TimeCodecOptions">TimeCodecOptions</a>) *<a href="godoc.154.html#TimeCodecOptions">TimeCodecOptions</a></pre>
+				<p>
+MergeTimeCodecOptions combines the given *TimeCodecOptions into a single *TimeCodecOptions in a last one wins fashion.
+</p>
+
+				
+				
+			
+				
+				<h3 id="TimeCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/time_codec_options.go?s=561:595#L5">TimeCodec</a>
+					<a class="permalink" href="godoc.154.html#TimeCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func TimeCodec() *<a href="godoc.154.html#TimeCodecOptions">TimeCodecOptions</a></pre>
+				<p>
+TimeCodec creates a new *TimeCodecOptions
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="TimeCodecOptions.SetUseLocalTimeZone">func (*TimeCodecOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonoptions/time_codec_options.go?s=727:799#L10">SetUseLocalTimeZone</a>
+					<a class="permalink" href="godoc.154.html#TimeCodecOptions.SetUseLocalTimeZone">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.154.html#TimeCodecOptions">TimeCodecOptions</a>) SetUseLocalTimeZone(b <a href="godoc.4.html#bool">bool</a>) *<a href="godoc.154.html#TimeCodecOptions">TimeCodecOptions</a></pre>
+				<p>
+SetUseLocalTimeZone specifies if we should decode into the local time zone. Defaults to false.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

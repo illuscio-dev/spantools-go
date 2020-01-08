@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>modfile - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.264.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package modfile
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/modfile"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.264.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.264.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.264.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.264.html#AutoQuote">func AutoQuote(s string) string</a></dd>
+			
+				
+				<dd><a href="godoc.264.html#Format">func Format(f *FileSyntax) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.264.html#IsDirectoryPath">func IsDirectoryPath(ns string) bool</a></dd>
+			
+				
+				<dd><a href="godoc.264.html#ModulePath">func ModulePath(mod []byte) string</a></dd>
+			
+				
+				<dd><a href="godoc.264.html#MustQuote">func MustQuote(s string) bool</a></dd>
+			
+			
+				
+				<dd><a href="godoc.264.html#Comment">type Comment</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#CommentBlock">type CommentBlock</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#CommentBlock.Span">func (x *CommentBlock) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Comments">type Comments</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#Comments.Comment">func (c *Comments) Comment() *Comments</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#Error.Error">func (e *Error) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#Error.Unwrap">func (e *Error) Unwrap() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Exclude">type Exclude</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#Expr">type Expr</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#File">type File</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#Parse">func Parse(file string, data []byte, fix VersionFixer) (*File, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#ParseLax">func ParseLax(file string, data []byte, fix VersionFixer) (*File, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddComment">func (f *File) AddComment(text string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddExclude">func (f *File) AddExclude(path, vers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddGoStmt">func (f *File) AddGoStmt(version string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddModuleStmt">func (f *File) AddModuleStmt(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddNewRequire">func (f *File) AddNewRequire(path, vers string, indirect bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddReplace">func (f *File) AddReplace(oldPath, oldVers, newPath, newVers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.AddRequire">func (f *File) AddRequire(path, vers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.Cleanup">func (f *File) Cleanup()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.DropExclude">func (f *File) DropExclude(path, vers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.DropReplace">func (f *File) DropReplace(oldPath, oldVers string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.DropRequire">func (f *File) DropRequire(path string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.Format">func (f *File) Format() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.SetRequire">func (f *File) SetRequire(req []*Require)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#File.SortBlocks">func (f *File) SortBlocks()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#FileSyntax">type FileSyntax</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#FileSyntax.Cleanup">func (x *FileSyntax) Cleanup()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#FileSyntax.Span">func (x *FileSyntax) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Go">type Go</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#LParen">type LParen</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#LParen.Span">func (x *LParen) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Line">type Line</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#Line.Span">func (x *Line) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#LineBlock">type LineBlock</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#LineBlock.Span">func (x *LineBlock) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Module">type Module</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#Position">type Position</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#RParen">type RParen</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.264.html#RParen.Span">func (x *RParen) Span() (start, end Position)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.264.html#Replace">type Replace</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#Require">type Require</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.264.html#VersionFixer">type VersionFixer</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/mod/modfile/print.go">print.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go">read.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go">rule.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var <span id="GoVersionRE">GoVersionRE</span> = <a href="godoc.533.html">lazyregexp</a>.<a href="godoc.533.html#New">New</a>(`^([1-9][0-9]*)\.(0|[1-9][0-9]*)$`)</pre>
+			
+		
+		
+			
+			
+			<h2 id="AutoQuote">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=11012:11043#L370">AutoQuote</a>
+				<a class="permalink" href="godoc.264.html#AutoQuote">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AutoQuote(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+			<p>
+AutoQuote returns s or, if quoting is required for s to appear in a go.mod,
+the quotation of s.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Format">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/print.go?s=319:352#L6">Format</a>
+				<a class="permalink" href="godoc.264.html#Format">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Format(f *<a href="godoc.264.html#FileSyntax">FileSyntax</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+Format returns a go.mod file as a byte slice, formatted in standard style.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsDirectoryPath">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=10118:10154#L349">IsDirectoryPath</a>
+				<a class="permalink" href="godoc.264.html#IsDirectoryPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsDirectoryPath(ns <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+IsDirectoryPath reports whether the given path should be interpreted
+as a directory path. Just like on the go command line, relative paths
+and rooted paths are directory paths; the rest are module paths.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ModulePath">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=21754:21788#L867">ModulePath</a>
+				<a class="permalink" href="godoc.264.html#ModulePath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ModulePath(mod []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#string">string</a></pre>
+			<p>
+ModulePath returns the module path from the gomod file text.
+If it cannot find a module path, it returns an empty string.
+It is tolerant of unrelated problems in the go.mod file.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MustQuote">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=10680:10709#L359">MustQuote</a>
+				<a class="permalink" href="godoc.264.html#MustQuote">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MustQuote(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+MustQuote reports whether s must be quoted in order to appear as
+a single token in a go.mod line.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Comment">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=1377:1518#L43">Comment</a>
+				<a class="permalink" href="godoc.264.html#Comment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Comment represents a single // comment.
+</p>
+
+			<pre>type Comment struct {
+<span id="Comment.Start"></span>    Start  <a href="godoc.264.html#Position">Position</a>
+<span id="Comment.Token"></span>    Token  <a href="godoc.4.html#string">string</a> <span class="comment">// without trailing newline</span>
+<span id="Comment.Suffix"></span>    Suffix <a href="godoc.4.html#bool">bool</a>   <span class="comment">// an end of line (not whole line) comment</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CommentBlock">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=6560:6614#L249">CommentBlock</a>
+				<a class="permalink" href="godoc.264.html#CommentBlock">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A CommentBlock represents a top-level block of comments separate
+from any rule.
+</p>
+
+			<pre>type CommentBlock struct {
+    <a href="godoc.264.html#Comments">Comments</a>
+<span id="CommentBlock.Start"></span>    Start <a href="godoc.264.html#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CommentBlock.Span">func (*CommentBlock) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=6616:6667#L254">Span</a>
+					<a class="permalink" href="godoc.264.html#CommentBlock.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#CommentBlock">CommentBlock</a>) Span() (start, end <a href="godoc.264.html#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Comments">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=1585:1853#L50">Comments</a>
+				<a class="permalink" href="godoc.264.html#Comments">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Comments collects the comments associated with an expression.
+</p>
+
+			<pre>type Comments struct {
+<span id="Comments.Before"></span>    Before []<a href="godoc.264.html#Comment">Comment</a> <span class="comment">// whole-line comments before this expression</span>
+<span id="Comments.Suffix"></span>    Suffix []<a href="godoc.264.html#Comment">Comment</a> <span class="comment">// end-of-line comments after this expression</span>
+
+    <span class="comment">// For top-level expressions only, After lists whole-line</span>
+    <span class="comment">// comments following the expression.</span>
+<span id="Comments.After"></span>    After []<a href="godoc.264.html#Comment">Comment</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Comments.Comment">func (*Comments) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=2083:2121#L63">Comment</a>
+					<a class="permalink" href="godoc.264.html#Comments.Comment">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.264.html#Comments">Comments</a>) Comment() *<a href="godoc.264.html#Comments">Comments</a></pre>
+				<p>
+Comment returns the receiver. This isn&#39;t useful by itself, but
+a Comments struct is embedded into all the expression
+implementation types, and this gives each of those a Comment
+method to satisfy the Expr interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=11642:11710#L394">Error</a>
+				<a class="permalink" href="godoc.264.html#Error">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Error struct {
+<span id="Error.Verb"></span>    Verb    <a href="godoc.4.html#string">string</a>
+<span id="Error.ModPath"></span>    ModPath <a href="godoc.4.html#string">string</a>
+<span id="Error.Err"></span>    Err     <a href="godoc.4.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (*Error) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=11712:11742#L400">Error</a>
+					<a class="permalink" href="godoc.264.html#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.264.html#Error">Error</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Error.Unwrap">func (*Error) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=11807:11837#L404">Unwrap</a>
+					<a class="permalink" href="godoc.264.html#Error.Unwrap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.264.html#Error">Error</a>) Unwrap() <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Exclude">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=921:981#L42">Exclude</a>
+				<a class="permalink" href="godoc.264.html#Exclude">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Exclude is a single exclude statement.
+</p>
+
+			<pre>type Exclude struct {
+<span id="Exclude.Mod"></span>    Mod    <a href="godoc.265.html">module</a>.<a href="godoc.265.html#Version">Version</a>
+<span id="Exclude.Syntax"></span>    Syntax *<a href="godoc.264.html#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Expr">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=967:1330#L31">Expr</a>
+				<a class="permalink" href="godoc.264.html#Expr">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Expr represents an input element.
+</p>
+
+			<pre>type Expr interface {
+    <span class="comment">// Span returns the start and end position of the expression,</span>
+    <span class="comment">// excluding leading or trailing comments.</span>
+    Span() (start, end <a href="godoc.264.html#Position">Position</a>)
+
+    <span class="comment">// Comment returns the comments attached to the expression.</span>
+    <span class="comment">// This method would normally be named &#39;Comments&#39; but that</span>
+    <span class="comment">// would interfere with embedding a type of the same name.</span>
+    Comment() *<a href="godoc.264.html#Comments">Comments</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=401:532#L12">File</a>
+				<a class="permalink" href="godoc.264.html#File">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A File is the parsed, interpreted form of a go.mod file.
+</p>
+
+			<pre>type File struct {
+<span id="File.Module"></span>    Module  *<a href="godoc.264.html#Module">Module</a>
+<span id="File.Go"></span>    Go      *<a href="godoc.264.html#Go">Go</a>
+<span id="File.Require"></span>    Require []*<a href="godoc.264.html#Require">Require</a>
+<span id="File.Exclude"></span>    Exclude []*<a href="godoc.264.html#Exclude">Exclude</a>
+<span id="File.Replace"></span>    Replace []*<a href="godoc.264.html#Replace">Replace</a>
+
+<span id="File.Syntax"></span>    Syntax *<a href="godoc.264.html#FileSyntax">FileSyntax</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Parse">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=1948:2017#L89">Parse</a>
+					<a class="permalink" href="godoc.264.html#Parse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Parse(file <a href="godoc.4.html#string">string</a>, data []<a href="godoc.4.html#byte">byte</a>, fix <a href="godoc.264.html#VersionFixer">VersionFixer</a>) (*<a href="godoc.264.html#File">File</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Parse parses the data, reported in errors as being from file,
+into a File struct. It applies fix, if non-nil, to canonicalize all module versions found.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ParseLax">func <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=2468:2540#L100">ParseLax</a>
+					<a class="permalink" href="godoc.264.html#ParseLax">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseLax(file <a href="godoc.4.html#string">string</a>, data []<a href="godoc.4.html#byte">byte</a>, fix <a href="godoc.264.html#VersionFixer">VersionFixer</a>) (*<a href="godoc.264.html#File">File</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ParseLax is like Parse but ignores unknown statements.
+It is used when parsing go.mod files other than the main module,
+under the theory that most statement types we add in the future will
+only apply in the main module, like exclude and replace,
+and so we get better gradual deployments if old go commands
+simply ignore those statements when found in go.mod files
+in dependencies.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="File.AddComment">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=1485:1523#L70">AddComment</a>
+					<a class="permalink" href="godoc.264.html#File.AddComment">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddComment(text <a href="godoc.4.html#string">string</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddExclude">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=16342:16392#L611">AddExclude</a>
+					<a class="permalink" href="godoc.264.html#File.AddExclude">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddExclude(path, vers <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddGoStmt">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=13528:13574#L493">AddGoStmt</a>
+					<a class="permalink" href="godoc.264.html#File.AddGoStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddGoStmt(version <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddModuleStmt">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=1112:1159#L54">AddModuleStmt</a>
+					<a class="permalink" href="godoc.264.html#File.AddModuleStmt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddModuleStmt(path <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddNewRequire">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=14384:14446#L534">AddNewRequire</a>
+					<a class="permalink" href="godoc.264.html#File.AddNewRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddNewRequire(path, vers <a href="godoc.4.html#string">string</a>, indirect <a href="godoc.4.html#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddReplace">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=16943:17017#L636">AddReplace</a>
+					<a class="permalink" href="godoc.264.html#File.AddReplace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddReplace(oldPath, oldVers, newPath, newVers <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.AddRequire">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=13993:14043#L513">AddRequire</a>
+					<a class="permalink" href="godoc.264.html#File.AddRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) AddRequire(path, vers <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.Cleanup">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=13105:13129#L462">Cleanup</a>
+					<a class="permalink" href="godoc.264.html#File.Cleanup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) Cleanup()</pre>
+				<p>
+Cleanup cleans up the file f after any edit operations.
+To avoid quadratic behavior, modifications like DropRequire
+clear the entry but do not remove it from the slice.
+Cleanup cleans out all the cleared entries.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.DropExclude">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=16734:16785#L626">DropExclude</a>
+					<a class="permalink" href="godoc.264.html#File.DropExclude">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) DropExclude(path, vers <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropReplace">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=17951:18008#L673">DropReplace</a>
+					<a class="permalink" href="godoc.264.html#File.DropReplace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) DropReplace(oldPath, oldVers <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.DropRequire">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=16164:16209#L601">DropRequire</a>
+					<a class="permalink" href="godoc.264.html#File.DropRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) DropRequire(path <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.Format">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=12805:12844#L454">Format</a>
+					<a class="permalink" href="godoc.264.html#File.Format">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) Format() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.SetRequire">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=14646:14687#L540">SetRequire</a>
+					<a class="permalink" href="godoc.264.html#File.SetRequire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) SetRequire(req []*<a href="godoc.264.html#Require">Require</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.SortBlocks">func (*File) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=18172:18199#L683">SortBlocks</a>
+					<a class="permalink" href="godoc.264.html#File.SortBlocks">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.264.html#File">File</a>) SortBlocks()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FileSyntax">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=2187:2262#L68">FileSyntax</a>
+				<a class="permalink" href="godoc.264.html#FileSyntax">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A FileSyntax represents an entire go.mod file.
+</p>
+
+			<pre>type FileSyntax struct {
+<span id="FileSyntax.Name"></span>    Name <a href="godoc.4.html#string">string</a> <span class="comment">// file path</span>
+    <a href="godoc.264.html#Comments">Comments</a>
+<span id="FileSyntax.Stmt"></span>    Stmt []<a href="godoc.264.html#Expr">Expr</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FileSyntax.Cleanup">func (*FileSyntax) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=5482:5512#L198">Cleanup</a>
+					<a class="permalink" href="godoc.264.html#FileSyntax.Cleanup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#FileSyntax">FileSyntax</a>) Cleanup()</pre>
+				<p>
+Cleanup cleans up the file syntax x after any edit operations.
+To avoid quadratic behavior, removeLine marks the line as dead
+by setting line.Token = nil but does not remove it from the slice
+in which it appears. After edits have all been indicated,
+calling Cleanup cleans out the dead lines.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="FileSyntax.Span">func (*FileSyntax) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=2264:2313#L74">Span</a>
+					<a class="permalink" href="godoc.264.html#FileSyntax.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#FileSyntax">FileSyntax</a>) Span() (start, end <a href="godoc.264.html#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Go">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=661:720#L29">Go</a>
+				<a class="permalink" href="godoc.264.html#Go">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Go is the go statement.
+</p>
+
+			<pre>type Go struct {
+<span id="Go.Version"></span>    Version <a href="godoc.4.html#string">string</a> <span class="comment">// &#34;1.23&#34;</span>
+<span id="Go.Syntax"></span>    Syntax  *<a href="godoc.264.html#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LParen">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=7320:7366#L293">LParen</a>
+				<a class="permalink" href="godoc.264.html#LParen">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An LParen represents the beginning of a parenthesized line block.
+It is a place to store suffix comments.
+</p>
+
+			<pre>type LParen struct {
+    <a href="godoc.264.html#Comments">Comments</a>
+<span id="LParen.Pos"></span>    Pos <a href="godoc.264.html#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LParen.Span">func (*LParen) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=7368:7413#L298">Span</a>
+					<a class="permalink" href="godoc.264.html#LParen.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#LParen">LParen</a>) Span() (start, end <a href="godoc.264.html#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Line">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=6736:6834#L259">Line</a>
+				<a class="permalink" href="godoc.264.html#Line">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Line is a single line of tokens.
+</p>
+
+			<pre>type Line struct {
+    <a href="godoc.264.html#Comments">Comments</a>
+<span id="Line.Start"></span>    Start   <a href="godoc.264.html#Position">Position</a>
+<span id="Line.Token"></span>    Token   []<a href="godoc.4.html#string">string</a>
+<span id="Line.InBlock"></span>    InBlock <a href="godoc.4.html#bool">bool</a>
+<span id="Line.End"></span>    End     <a href="godoc.264.html#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Line.Span">func (*Line) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=6836:6879#L267">Span</a>
+					<a class="permalink" href="godoc.264.html#Line.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#Line">Line</a>) Span() (start, end <a href="godoc.264.html#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LineBlock">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=6998:7113#L278">LineBlock</a>
+				<a class="permalink" href="godoc.264.html#LineBlock">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A LineBlock is a factored block of lines, like
+</p>
+<pre>require (
+	&#34;x&#34;
+	&#34;y&#34;
+)
+</pre>
+
+			<pre>type LineBlock struct {
+    <a href="godoc.264.html#Comments">Comments</a>
+<span id="LineBlock.Start"></span>    Start  <a href="godoc.264.html#Position">Position</a>
+<span id="LineBlock.LParen"></span>    LParen <a href="godoc.264.html#LParen">LParen</a>
+<span id="LineBlock.Token"></span>    Token  []<a href="godoc.4.html#string">string</a>
+<span id="LineBlock.Line"></span>    Line   []*<a href="godoc.264.html#Line">Line</a>
+<span id="LineBlock.RParen"></span>    RParen <a href="godoc.264.html#RParen">RParen</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="LineBlock.Span">func (*LineBlock) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=7115:7163#L287">Span</a>
+					<a class="permalink" href="godoc.264.html#LineBlock.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#LineBlock">LineBlock</a>) Span() (start, end <a href="godoc.264.html#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Module">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=571:630#L23">Module</a>
+				<a class="permalink" href="godoc.264.html#Module">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Module is the module statement.
+</p>
+
+			<pre>type Module struct {
+<span id="Module.Mod"></span>    Mod    <a href="godoc.265.html">module</a>.<a href="godoc.265.html#Version">Version</a>
+<span id="Module.Syntax"></span>    Syntax *<a href="godoc.264.html#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Position">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=462:626#L12">Position</a>
+				<a class="permalink" href="godoc.264.html#Position">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Position describes an arbitrary source position in a file, including the
+file, line, column, and byte offset.
+</p>
+
+			<pre>type Position struct {
+<span id="Position.Line"></span>    Line     <a href="godoc.4.html#int">int</a> <span class="comment">// line in input (starting at 1)</span>
+<span id="Position.LineRune"></span>    LineRune <a href="godoc.4.html#int">int</a> <span class="comment">// rune in line (starting at 1)</span>
+<span id="Position.Byte"></span>    Byte     <a href="godoc.4.html#int">int</a> <span class="comment">// byte in input (starting at 0)</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RParen">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=7568:7614#L304">RParen</a>
+				<a class="permalink" href="godoc.264.html#RParen">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An RParen represents the end of a parenthesized line block.
+It is a place to store whole-line (before) comments.
+</p>
+
+			<pre>type RParen struct {
+    <a href="godoc.264.html#Comments">Comments</a>
+<span id="RParen.Pos"></span>    Pos <a href="godoc.264.html#Position">Position</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RParen.Span">func (*RParen) <a href="http://localhost:6161/src/golang.org/x/mod/modfile/read.go?s=7616:7661#L309">Span</a>
+					<a class="permalink" href="godoc.264.html#RParen.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.264.html#RParen">RParen</a>) Span() (start, end <a href="godoc.264.html#Position">Position</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Replace">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=1027:1110#L48">Replace</a>
+				<a class="permalink" href="godoc.264.html#Replace">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Replace is a single replace statement.
+</p>
+
+			<pre>type Replace struct {
+<span id="Replace.Old"></span>    Old    <a href="godoc.265.html">module</a>.<a href="godoc.265.html#Version">Version</a>
+<span id="Replace.New"></span>    New    <a href="godoc.265.html">module</a>.<a href="godoc.265.html#Version">Version</a>
+<span id="Replace.Syntax"></span>    Syntax *<a href="godoc.264.html#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Require">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=766:874#L35">Require</a>
+				<a class="permalink" href="godoc.264.html#Require">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Require is a single require statement.
+</p>
+
+			<pre>type Require struct {
+<span id="Require.Mod"></span>    Mod      <a href="godoc.265.html">module</a>.<a href="godoc.265.html#Version">Version</a>
+<span id="Require.Indirect"></span>    Indirect <a href="godoc.4.html#bool">bool</a> <span class="comment">// has &#34;// indirect&#34; comment</span>
+<span id="Require.Syntax"></span>    Syntax   *<a href="godoc.264.html#Line">Line</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="VersionFixer">type <a href="http://localhost:6161/src/golang.org/x/mod/modfile/rule.go?s=1727:1787#L85">VersionFixer</a>
+				<a class="permalink" href="godoc.264.html#VersionFixer">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type VersionFixer func(path, version <a href="godoc.4.html#string">string</a>) (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

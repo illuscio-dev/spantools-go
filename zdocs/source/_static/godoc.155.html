@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>bsonrw - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.155.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package bsonrw
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/bson/bsonrw"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.155.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.155.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.155.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package bsonrw contains abstractions for reading and writing
+BSON and BSON like types from sources.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.155.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.155.html#CopyDocument">func CopyDocument(dst ValueWriter, src ValueReader) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.155.html#ArrayReader">type ArrayReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ArrayWriter">type ArrayWriter</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#BSONValueReaderPool">type BSONValueReaderPool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewBSONValueReaderPool">func NewBSONValueReaderPool() *BSONValueReaderPool</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#BSONValueReaderPool.Get">func (bvrp *BSONValueReaderPool) Get(src []byte) ValueReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#BSONValueReaderPool.Put">func (bvrp *BSONValueReaderPool) Put(vr ValueReader) (ok bool)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#BSONValueWriterPool">type BSONValueWriterPool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewBSONValueWriterPool">func NewBSONValueWriterPool() *BSONValueWriterPool</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#BSONValueWriterPool.Get">func (bvwp *BSONValueWriterPool) Get(w io.Writer) ValueWriter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#BSONValueWriterPool.GetAtModeElement">func (bvwp *BSONValueWriterPool) GetAtModeElement(w io.Writer) ValueWriterFlusher</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#BSONValueWriterPool.Put">func (bvwp *BSONValueWriterPool) Put(vw ValueWriter) (ok bool)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#BytesReader">type BytesReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#BytesWriter">type BytesWriter</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#Copier">type Copier</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewCopier">func NewCopier() Copier</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.AppendDocumentBytes">func (c Copier) AppendDocumentBytes(dst []byte, src ValueReader) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.AppendValueBytes">func (c Copier) AppendValueBytes(dst []byte, src ValueReader) (bsontype.Type, []byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyBytesToDocumentWriter">func (c Copier) CopyBytesToDocumentWriter(dst DocumentWriter, src []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyDocument">func (c Copier) CopyDocument(dst ValueWriter, src ValueReader) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyDocumentFromBytes">func (c Copier) CopyDocumentFromBytes(dst ValueWriter, src []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyDocumentToBytes">func (c Copier) CopyDocumentToBytes(src ValueReader) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyValue">func (c Copier) CopyValue(dst ValueWriter, src ValueReader) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyValueFromBytes">func (c Copier) CopyValueFromBytes(dst ValueWriter, t bsontype.Type, src []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Copier.CopyValueToBytes">func (c Copier) CopyValueToBytes(src ValueReader) (bsontype.Type, []byte, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#DocumentReader">type DocumentReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#DocumentWriter">type DocumentWriter</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ExtJSONValueReaderPool">type ExtJSONValueReaderPool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewExtJSONValueReaderPool">func NewExtJSONValueReaderPool() *ExtJSONValueReaderPool</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ExtJSONValueReaderPool.Get">func (bvrp *ExtJSONValueReaderPool) Get(r io.Reader, canonical bool) (ValueReader, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ExtJSONValueReaderPool.Put">func (bvrp *ExtJSONValueReaderPool) Put(vr ValueReader) (ok bool)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ExtJSONValueWriterPool">type ExtJSONValueWriterPool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewExtJSONValueWriterPool">func NewExtJSONValueWriterPool() *ExtJSONValueWriterPool</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ExtJSONValueWriterPool.Get">func (bvwp *ExtJSONValueWriterPool) Get(w io.Writer, canonical, escapeHTML bool) ValueWriter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ExtJSONValueWriterPool.Put">func (bvwp *ExtJSONValueWriterPool) Put(vw ValueWriter) (ok bool)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#SliceWriter">type SliceWriter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#SliceWriter.Write">func (sw *SliceWriter) Write(p []byte) (int, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#TransitionError">type TransitionError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#TransitionError.Error">func (te TransitionError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueReader">type ValueReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewBSONDocumentReader">func NewBSONDocumentReader(b []byte) ValueReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewBSONValueReader">func NewBSONValueReader(t bsontype.Type, val []byte) ValueReader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewExtJSONValueReader">func NewExtJSONValueReader(r io.Reader, canonical bool) (ValueReader, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueWriter">type ValueWriter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewBSONValueWriter">func NewBSONValueWriter(w io.Writer) (ValueWriter, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewExtJSONValueWriter">func NewExtJSONValueWriter(w io.Writer, canonical, escapeHTML bool) (ValueWriter, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueWriterFlusher">type ValueWriterFlusher</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go">copier.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_parser.go">extjson_parser.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_reader.go">extjson_reader.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_tables.go">extjson_tables.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_wrappers.go">extjson_wrappers.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_writer.go">extjson_writer.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/json_scanner.go">json_scanner.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/mode.go">mode.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/reader.go">reader.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go">value_reader.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go">value_writer.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go">writer.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrEOA is the error returned when the end of a BSON array has been reached.
+</p>
+
+				<pre>var <span id="ErrEOA">ErrEOA</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;end of array&#34;)</pre>
+			
+				<p>
+ErrEOD is the error returned when the end of a BSON document has been reached.
+</p>
+
+				<pre>var <span id="ErrEOD">ErrEOD</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;end of document&#34;)</pre>
+			
+				<p>
+ErrInvalidJSON indicates the JSON input is invalid
+</p>
+
+				<pre>var <span id="ErrInvalidJSON">ErrInvalidJSON</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;invalid JSON input&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="CopyDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=797:854#L19">CopyDocument</a>
+				<a class="permalink" href="godoc.155.html#CopyDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CopyDocument(dst <a href="godoc.155.html#ValueWriter">ValueWriter</a>, src <a href="godoc.155.html#ValueReader">ValueReader</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+CopyDocument handles copying a document from src to dst.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ArrayReader">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/reader.go?s=476:540#L6">ArrayReader</a>
+				<a class="permalink" href="godoc.155.html#ArrayReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ArrayReader is implemented by types that allow reading values from a BSON
+array.
+</p>
+
+			<pre>type ArrayReader interface {
+    ReadValue() (<a href="godoc.155.html#ValueReader">ValueReader</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ArrayWriter">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=561:656#L7">ArrayWriter</a>
+				<a class="permalink" href="godoc.155.html#ArrayWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ArrayWriter is the interface used to create a BSON or BSON adjacent array.
+Callers must ensure they call WriteArrayEnd when they have finished creating
+the array.
+</p>
+
+			<pre>type ArrayWriter interface {
+    WriteArrayElement() (<a href="godoc.155.html#ValueWriter">ValueWriter</a>, <a href="godoc.4.html#error">error</a>)
+    WriteArrayEnd() <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="BSONValueReaderPool">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go?s=659:710#L22">BSONValueReaderPool</a>
+				<a class="permalink" href="godoc.155.html#BSONValueReaderPool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BSONValueReaderPool is a pool for ValueReaders that read BSON.
+</p>
+
+			<pre>type BSONValueReaderPool struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBSONValueReaderPool">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go?s=778:828#L27">NewBSONValueReaderPool</a>
+					<a class="permalink" href="godoc.155.html#NewBSONValueReaderPool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBSONValueReaderPool() *<a href="godoc.155.html#BSONValueReaderPool">BSONValueReaderPool</a></pre>
+				<p>
+NewBSONValueReaderPool instantiates a new BSONValueReaderPool.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="BSONValueReaderPool.Get">func (*BSONValueReaderPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go?s=1036:1096#L38">Get</a>
+					<a class="permalink" href="godoc.155.html#BSONValueReaderPool.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvrp *<a href="godoc.155.html#BSONValueReaderPool">BSONValueReaderPool</a>) Get(src []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.155.html#ValueReader">ValueReader</a></pre>
+				<p>
+Get retrieves a ValueReader from the pool and uses src as the underlying BSON.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BSONValueReaderPool.Put">func (*BSONValueReaderPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go?s=1314:1376#L46">Put</a>
+					<a class="permalink" href="godoc.155.html#BSONValueReaderPool.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvrp *<a href="godoc.155.html#BSONValueReaderPool">BSONValueReaderPool</a>) Put(vr <a href="godoc.155.html#ValueReader">ValueReader</a>) (ok <a href="godoc.4.html#bool">bool</a>)</pre>
+				<p>
+Put inserts a ValueReader into the pool. If the ValueReader is not a BSON ValueReader nothing
+is inserted into the pool and ok will be false.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BSONValueWriterPool">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go?s=669:720#L21">BSONValueWriterPool</a>
+				<a class="permalink" href="godoc.155.html#BSONValueWriterPool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BSONValueWriterPool is a pool for BSON ValueWriters.
+</p>
+
+			<pre>type BSONValueWriterPool struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBSONValueWriterPool">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go?s=813:863#L26">NewBSONValueWriterPool</a>
+					<a class="permalink" href="godoc.155.html#NewBSONValueWriterPool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBSONValueWriterPool() *<a href="godoc.155.html#BSONValueWriterPool">BSONValueWriterPool</a></pre>
+				<p>
+NewBSONValueWriterPool creates a new pool for ValueWriter instances that write to BSON.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="BSONValueWriterPool.Get">func (*BSONValueWriterPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go?s=1082:1143#L37">Get</a>
+					<a class="permalink" href="godoc.155.html#BSONValueWriterPool.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvwp *<a href="godoc.155.html#BSONValueWriterPool">BSONValueWriterPool</a>) Get(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) <a href="godoc.155.html#ValueWriter">ValueWriter</a></pre>
+				<p>
+Get retrieves a BSON ValueWriter from the pool and resets it to use w as the destination.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BSONValueWriterPool.GetAtModeElement">func (*BSONValueWriterPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go?s=1429:1510#L50">GetAtModeElement</a>
+					<a class="permalink" href="godoc.155.html#BSONValueWriterPool.GetAtModeElement">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvwp *<a href="godoc.155.html#BSONValueWriterPool">BSONValueWriterPool</a>) GetAtModeElement(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) <a href="godoc.155.html#ValueWriterFlusher">ValueWriterFlusher</a></pre>
+				<p>
+GetAtModeElement retrieves a ValueWriterFlusher from the pool and resets it to use w as the destination.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BSONValueWriterPool.Put">func (*BSONValueWriterPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go?s=1711:1773#L58">Put</a>
+					<a class="permalink" href="godoc.155.html#BSONValueWriterPool.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvwp *<a href="godoc.155.html#BSONValueWriterPool">BSONValueWriterPool</a>) Put(vw <a href="godoc.155.html#ValueWriter">ValueWriter</a>) (ok <a href="godoc.4.html#bool">bool</a>)</pre>
+				<p>
+Put inserts a ValueWriter into the pool. If the ValueWriter is not a BSON ValueWriter, nothing
+happens and ok will be false.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BytesReader">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/reader.go?s=2064:2153#L51">BytesReader</a>
+				<a class="permalink" href="godoc.155.html#BytesReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BytesReader is a generic interface used to read BSON bytes from a
+ValueReader. This imterface is meant to be a superset of ValueReader, so that
+types that implement ValueReader may also implement this interface.
+</p>
+<p>
+The bytes of the value will be appended to dst.
+</p>
+
+			<pre>type BytesReader interface {
+    ReadValueBytes(dst []<a href="godoc.4.html#byte">byte</a>) (<a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>, []<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="BytesWriter">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=2300:2380#L57">BytesWriter</a>
+				<a class="permalink" href="godoc.155.html#BytesWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BytesWriter is the interface used to write BSON bytes to a ValueWriter.
+This interface is meant to be a superset of ValueWriter, so that types that
+implement ValueWriter may also implement this interface.
+</p>
+
+			<pre>type BytesWriter interface {
+    WriteValueBytes(t <a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>, b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Copier">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=549:569#L10">Copier</a>
+				<a class="permalink" href="godoc.155.html#Copier">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Copier is a type that allows copying between ValueReaders, ValueWriters, and
+[]byte values.
+</p>
+
+			<pre>type Copier struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCopier">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=691:714#L14">NewCopier</a>
+					<a class="permalink" href="godoc.155.html#NewCopier">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCopier() <a href="godoc.155.html#Copier">Copier</a></pre>
+				<p>
+NewCopier creates a new copier with the given registry. If a nil registry is provided
+a default registry is used.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Copier.AppendDocumentBytes">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=3248:3328#L110">AppendDocumentBytes</a>
+					<a class="permalink" href="godoc.155.html#Copier.AppendDocumentBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) AppendDocumentBytes(dst []<a href="godoc.4.html#byte">byte</a>, src <a href="godoc.155.html#ValueReader">ValueReader</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+AppendDocumentBytes functions the same as CopyDocumentToBytes, but will
+append the result to dst.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.AppendValueBytes">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=4256:4348#L149">AppendValueBytes</a>
+					<a class="permalink" href="godoc.155.html#Copier.AppendValueBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) AppendValueBytes(dst []<a href="godoc.4.html#byte">byte</a>, src <a href="godoc.155.html#ValueReader">ValueReader</a>) (<a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>, []<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+AppendValueBytes functions the same as CopyValueToBytes, but will append the
+result to dst.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyBytesToDocumentWriter">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=1687:1766#L56">CopyBytesToDocumentWriter</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyBytesToDocumentWriter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyBytesToDocumentWriter(dst <a href="godoc.155.html#DocumentWriter">DocumentWriter</a>, src []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+CopyBytesToDocumentWriter copies the values from a BSON document represented as a []byte to a
+DocumentWriter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyDocument">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=970:1038#L24">CopyDocument</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyDocument">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyDocument(dst <a href="godoc.155.html#ValueWriter">ValueWriter</a>, src <a href="godoc.155.html#ValueReader">ValueReader</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+CopyDocument handles copying one document from the src to the dst.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyDocumentFromBytes">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=1319:1391#L40">CopyDocumentFromBytes</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyDocumentFromBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyDocumentFromBytes(dst <a href="godoc.155.html#ValueWriter">ValueWriter</a>, src []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+CopyDocumentFromBytes copies the values from a BSON document represented as a
+[]byte to a ValueWriter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyDocumentToBytes">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=3030:3098#L104">CopyDocumentToBytes</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyDocumentToBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyDocumentToBytes(src <a href="godoc.155.html#ValueReader">ValueReader</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CopyDocumentToBytes copies an entire document from the ValueReader and
+returns it as bytes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyValue">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=4727:4792#L171">CopyValue</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyValue(dst <a href="godoc.155.html#ValueWriter">ValueWriter</a>, src <a href="godoc.155.html#ValueReader">ValueReader</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+CopyValue will copy a single value from src to dst.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyValueFromBytes">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=3646:3732#L127">CopyValueFromBytes</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyValueFromBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyValueFromBytes(dst <a href="godoc.155.html#ValueWriter">ValueWriter</a>, t <a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>, src []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+CopyValueFromBytes will write the value represtend by t and src to dst.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Copier.CopyValueToBytes">func (Copier) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/copier.go?s=4035:4115#L143">CopyValueToBytes</a>
+					<a class="permalink" href="godoc.155.html#Copier.CopyValueToBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.155.html#Copier">Copier</a>) CopyValueToBytes(src <a href="godoc.155.html#ValueReader">ValueReader</a>) (<a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>, []<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CopyValueToBytes copies a value from src and returns it as a bsontype.Type and a
+[]byte.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DocumentReader">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/reader.go?s=637:714#L12">DocumentReader</a>
+				<a class="permalink" href="godoc.155.html#DocumentReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DocumentReader is implemented by types that allow reading elements from a
+BSON document.
+</p>
+
+			<pre>type DocumentReader interface {
+    ReadElement() (<a href="godoc.4.html#string">string</a>, <a href="godoc.155.html#ValueReader">ValueReader</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DocumentWriter">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=842:952#L15">DocumentWriter</a>
+				<a class="permalink" href="godoc.155.html#DocumentWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DocumentWriter is the interface used to create a BSON or BSON adjacent
+document. Callers must ensure they call WriteDocumentEnd when they have
+finished creating the document.
+</p>
+
+			<pre>type DocumentWriter interface {
+    WriteDocumentElement(<a href="godoc.4.html#string">string</a>) (<a href="godoc.155.html#ValueWriter">ValueWriter</a>, <a href="godoc.4.html#error">error</a>)
+    WriteDocumentEnd() <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ExtJSONValueReaderPool">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_reader.go?s=483:537#L9">ExtJSONValueReaderPool</a>
+				<a class="permalink" href="godoc.155.html#ExtJSONValueReaderPool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ExtJSONValueReaderPool is a pool for ValueReaders that read ExtJSON.
+</p>
+
+			<pre>type ExtJSONValueReaderPool struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewExtJSONValueReaderPool">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_reader.go?s=611:667#L14">NewExtJSONValueReaderPool</a>
+					<a class="permalink" href="godoc.155.html#NewExtJSONValueReaderPool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewExtJSONValueReaderPool() *<a href="godoc.155.html#ExtJSONValueReaderPool">ExtJSONValueReaderPool</a></pre>
+				<p>
+NewExtJSONValueReaderPool instantiates a new ExtJSONValueReaderPool.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ExtJSONValueReaderPool.Get">func (*ExtJSONValueReaderPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_reader.go?s=888:977#L25">Get</a>
+					<a class="permalink" href="godoc.155.html#ExtJSONValueReaderPool.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvrp *<a href="godoc.155.html#ExtJSONValueReaderPool">ExtJSONValueReaderPool</a>) Get(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, canonical <a href="godoc.4.html#bool">bool</a>) (<a href="godoc.155.html#ValueReader">ValueReader</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Get retrieves a ValueReader from the pool and uses src as the underlying ExtJSON.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ExtJSONValueReaderPool.Put">func (*ExtJSONValueReaderPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_reader.go?s=1210:1275#L32">Put</a>
+					<a class="permalink" href="godoc.155.html#ExtJSONValueReaderPool.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvrp *<a href="godoc.155.html#ExtJSONValueReaderPool">ExtJSONValueReaderPool</a>) Put(vr <a href="godoc.155.html#ValueReader">ValueReader</a>) (ok <a href="godoc.4.html#bool">bool</a>)</pre>
+				<p>
+Put inserts a ValueReader into the pool. If the ValueReader is not a ExtJSON ValueReader nothing
+is inserted into the pool and ok will be false.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ExtJSONValueWriterPool">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_writer.go?s=610:664#L21">ExtJSONValueWriterPool</a>
+				<a class="permalink" href="godoc.155.html#ExtJSONValueWriterPool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ExtJSONValueWriterPool is a pool for ExtJSON ValueWriters.
+</p>
+
+			<pre>type ExtJSONValueWriterPool struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewExtJSONValueWriterPool">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_writer.go?s=763:819#L26">NewExtJSONValueWriterPool</a>
+					<a class="permalink" href="godoc.155.html#NewExtJSONValueWriterPool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewExtJSONValueWriterPool() *<a href="godoc.155.html#ExtJSONValueWriterPool">ExtJSONValueWriterPool</a></pre>
+				<p>
+NewExtJSONValueWriterPool creates a new pool for ValueWriter instances that write to ExtJSON.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ExtJSONValueWriterPool.Get">func (*ExtJSONValueWriterPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_writer.go?s=1051:1143#L37">Get</a>
+					<a class="permalink" href="godoc.155.html#ExtJSONValueWriterPool.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvwp *<a href="godoc.155.html#ExtJSONValueWriterPool">ExtJSONValueWriterPool</a>) Get(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, canonical, escapeHTML <a href="godoc.4.html#bool">bool</a>) <a href="godoc.155.html#ValueWriter">ValueWriter</a></pre>
+				<p>
+Get retrieves a ExtJSON ValueWriter from the pool and resets it to use w as the destination.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ExtJSONValueWriterPool.Put">func (*ExtJSONValueWriterPool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_writer.go?s=1485:1550#L51">Put</a>
+					<a class="permalink" href="godoc.155.html#ExtJSONValueWriterPool.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bvwp *<a href="godoc.155.html#ExtJSONValueWriterPool">ExtJSONValueWriterPool</a>) Put(vw <a href="godoc.155.html#ValueWriter">ValueWriter</a>) (ok <a href="godoc.4.html#bool">bool</a>)</pre>
+				<p>
+Put inserts a ValueWriter into the pool. If the ValueWriter is not a ExtJSON ValueWriter, nothing
+happens and ok will be false.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SliceWriter">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=2462:2485#L62">SliceWriter</a>
+				<a class="permalink" href="godoc.155.html#SliceWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SliceWriter allows a pointer to a slice of bytes to be used as an io.Writer.
+</p>
+
+			<pre>type SliceWriter []<a href="godoc.4.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SliceWriter.Write">func (*SliceWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=2487:2538#L64">Write</a>
+					<a class="permalink" href="godoc.155.html#SliceWriter.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sw *<a href="godoc.155.html#SliceWriter">SliceWriter</a>) Write(p []<a href="godoc.4.html#byte">byte</a>) (<a href="godoc.4.html#int">int</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TransitionError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/mode.go?s=1350:1495#L69">TransitionError</a>
+				<a class="permalink" href="godoc.155.html#TransitionError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TransitionError is an error returned when an invalid progressing a
+ValueReader or ValueWriter state machine occurs.
+If read is false, the error is for writing
+</p>
+
+			<pre>type TransitionError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TransitionError.Error">func (TransitionError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/mode.go?s=1497:1537#L78">Error</a>
+					<a class="permalink" href="godoc.155.html#TransitionError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (te <a href="godoc.155.html#TransitionError">TransitionError</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueReader">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/reader.go?s=943:1787#L19">ValueReader</a>
+				<a class="permalink" href="godoc.155.html#ValueReader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueReader is a generic interface used to read values from BSON. This type
+is implemented by several types with different underlying representations of
+BSON, such as a bson.Document, raw BSON bytes, or extended JSON.
+</p>
+
+			<pre>type ValueReader interface {
+    Type() <a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>
+    Skip() <a href="godoc.4.html#error">error</a>
+
+    ReadArray() (<a href="godoc.155.html#ArrayReader">ArrayReader</a>, <a href="godoc.4.html#error">error</a>)
+    ReadBinary() (b []<a href="godoc.4.html#byte">byte</a>, btype <a href="godoc.4.html#byte">byte</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadBoolean() (<a href="godoc.4.html#bool">bool</a>, <a href="godoc.4.html#error">error</a>)
+    ReadDocument() (<a href="godoc.155.html#DocumentReader">DocumentReader</a>, <a href="godoc.4.html#error">error</a>)
+    ReadCodeWithScope() (code <a href="godoc.4.html#string">string</a>, dr <a href="godoc.155.html#DocumentReader">DocumentReader</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadDBPointer() (ns <a href="godoc.4.html#string">string</a>, oid <a href="godoc.160.html">primitive</a>.<a href="godoc.160.html#ObjectID">ObjectID</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadDateTime() (<a href="godoc.4.html#int64">int64</a>, <a href="godoc.4.html#error">error</a>)
+    ReadDecimal128() (<a href="godoc.160.html">primitive</a>.<a href="godoc.160.html#Decimal128">Decimal128</a>, <a href="godoc.4.html#error">error</a>)
+    ReadDouble() (<a href="godoc.4.html#float64">float64</a>, <a href="godoc.4.html#error">error</a>)
+    ReadInt32() (<a href="godoc.4.html#int32">int32</a>, <a href="godoc.4.html#error">error</a>)
+    ReadInt64() (<a href="godoc.4.html#int64">int64</a>, <a href="godoc.4.html#error">error</a>)
+    ReadJavascript() (code <a href="godoc.4.html#string">string</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadMaxKey() <a href="godoc.4.html#error">error</a>
+    ReadMinKey() <a href="godoc.4.html#error">error</a>
+    ReadNull() <a href="godoc.4.html#error">error</a>
+    ReadObjectID() (<a href="godoc.160.html">primitive</a>.<a href="godoc.160.html#ObjectID">ObjectID</a>, <a href="godoc.4.html#error">error</a>)
+    ReadRegex() (pattern, options <a href="godoc.4.html#string">string</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadString() (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)
+    ReadSymbol() (symbol <a href="godoc.4.html#string">string</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadTimestamp() (t, i <a href="godoc.4.html#uint32">uint32</a>, err <a href="godoc.4.html#error">error</a>)
+    ReadUndefined() <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBSONDocumentReader">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go?s=2471:2519#L85">NewBSONDocumentReader</a>
+					<a class="permalink" href="godoc.155.html#NewBSONDocumentReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBSONDocumentReader(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.155.html#ValueReader">ValueReader</a></pre>
+				<p>
+NewBSONDocumentReader returns a ValueReader using b for the underlying BSON
+representation. Parameter b must be a BSON Document.
+</p>
+<p>
+TODO(skriptble): There&#39;s a lack of symmetry between the reader and writer, since the reader takes
+a []byte while the writer takes an io.Writer. We should have two versions of each, one that takes
+a []byte and one that takes an io.Reader or io.Writer. The []byte version will need to return a
+thing that can return the finished []byte since it might be reallocated when appended to.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewBSONValueReader">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_reader.go?s=2735:2799#L91">NewBSONValueReader</a>
+					<a class="permalink" href="godoc.155.html#NewBSONValueReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBSONValueReader(t <a href="godoc.157.html">bsontype</a>.<a href="godoc.157.html#Type">Type</a>, val []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.155.html#ValueReader">ValueReader</a></pre>
+				<p>
+NewBSONValueReader returns a ValueReader that starts in the Value mode instead of in top
+level document mode. This enables the creation of a ValueReader for a single BSON value.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewExtJSONValueReader">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_reader.go?s=1794:1870#L60">NewExtJSONValueReader</a>
+					<a class="permalink" href="godoc.155.html#NewExtJSONValueReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewExtJSONValueReader(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>, canonical <a href="godoc.4.html#bool">bool</a>) (<a href="godoc.155.html#ValueReader">ValueReader</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+NewExtJSONValueReader creates a new ValueReader from a given io.Reader
+It will interpret the JSON of r as canonical or relaxed according to the
+given canonical flag
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ValueWriter">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=1122:1904#L23">ValueWriter</a>
+				<a class="permalink" href="godoc.155.html#ValueWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueWriter is the interface used to write BSON values. Implementations of
+this interface handle creating BSON or BSON adjacent representations of the
+values.
+</p>
+
+			<pre>type ValueWriter interface {
+    WriteArray() (<a href="godoc.155.html#ArrayWriter">ArrayWriter</a>, <a href="godoc.4.html#error">error</a>)
+    WriteBinary(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a>
+    WriteBinaryWithSubtype(b []<a href="godoc.4.html#byte">byte</a>, btype <a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a>
+    WriteBoolean(<a href="godoc.4.html#bool">bool</a>) <a href="godoc.4.html#error">error</a>
+    WriteCodeWithScope(code <a href="godoc.4.html#string">string</a>) (<a href="godoc.155.html#DocumentWriter">DocumentWriter</a>, <a href="godoc.4.html#error">error</a>)
+    WriteDBPointer(ns <a href="godoc.4.html#string">string</a>, oid <a href="godoc.160.html">primitive</a>.<a href="godoc.160.html#ObjectID">ObjectID</a>) <a href="godoc.4.html#error">error</a>
+    WriteDateTime(dt <a href="godoc.4.html#int64">int64</a>) <a href="godoc.4.html#error">error</a>
+    WriteDecimal128(<a href="godoc.160.html">primitive</a>.<a href="godoc.160.html#Decimal128">Decimal128</a>) <a href="godoc.4.html#error">error</a>
+    WriteDouble(<a href="godoc.4.html#float64">float64</a>) <a href="godoc.4.html#error">error</a>
+    WriteInt32(<a href="godoc.4.html#int32">int32</a>) <a href="godoc.4.html#error">error</a>
+    WriteInt64(<a href="godoc.4.html#int64">int64</a>) <a href="godoc.4.html#error">error</a>
+    WriteJavascript(code <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+    WriteMaxKey() <a href="godoc.4.html#error">error</a>
+    WriteMinKey() <a href="godoc.4.html#error">error</a>
+    WriteNull() <a href="godoc.4.html#error">error</a>
+    WriteObjectID(<a href="godoc.160.html">primitive</a>.<a href="godoc.160.html#ObjectID">ObjectID</a>) <a href="godoc.4.html#error">error</a>
+    WriteRegex(pattern, options <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+    WriteString(<a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+    WriteDocument() (<a href="godoc.155.html#DocumentWriter">DocumentWriter</a>, <a href="godoc.4.html#error">error</a>)
+    WriteSymbol(symbol <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+    WriteTimestamp(t, i <a href="godoc.4.html#uint32">uint32</a>) <a href="godoc.4.html#error">error</a>
+    WriteUndefined() <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBSONValueWriter">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/value_writer.go?s=4211:4268#L185">NewBSONValueWriter</a>
+					<a class="permalink" href="godoc.155.html#NewBSONValueWriter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBSONValueWriter(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) (<a href="godoc.155.html#ValueWriter">ValueWriter</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+NewBSONValueWriter creates a ValueWriter that writes BSON to w.
+</p>
+<p>
+This ValueWriter will only write entire documents to the io.Writer and it
+will buffer the document as it is built.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewExtJSONValueWriter">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/extjson_writer.go?s=1985:2073#L81">NewExtJSONValueWriter</a>
+					<a class="permalink" href="godoc.155.html#NewExtJSONValueWriter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewExtJSONValueWriter(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, canonical, escapeHTML <a href="godoc.4.html#bool">bool</a>) (<a href="godoc.155.html#ValueWriter">ValueWriter</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+NewExtJSONValueWriter creates a ValueWriter that writes Extended JSON to w.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ValueWriterFlusher">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/writer.go?s=2019:2084#L49">ValueWriterFlusher</a>
+				<a class="permalink" href="godoc.155.html#ValueWriterFlusher">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueWriterFlusher is a superset of ValueWriter that exposes functionality to flush to the underlying buffer.
+</p>
+
+			<pre>type ValueWriterFlusher interface {
+    <a href="godoc.155.html#ValueWriter">ValueWriter</a>
+    Flush() <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.152.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.156.html">bsonrwtest</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

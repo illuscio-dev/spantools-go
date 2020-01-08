@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>precis - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.368.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package precis
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/secure/precis"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.368.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.368.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package precis contains types and functions for the preparation,
+enforcement, and comparison of internationalized strings (&#34;PRECIS&#34;) as
+defined in RFC 8264. It also contains several pre-defined profiles for
+passwords, nicknames, and usernames as defined in RFC 8265 and RFC 8266.
+</p>
+<p>
+BE ADVISED: This package is under construction and the API may change in
+backwards incompatible ways and without notice.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.368.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.368.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#AdditionalMapping">func AdditionalMapping(t ...func() transform.Transformer) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Disallow">func Disallow(set runes.Set) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#FoldCase">func FoldCase(opts ...cases.Option) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#LowerCase">func LowerCase(opts ...cases.Option) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Norm">func Norm(f norm.Form) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.368.html#Profile">type Profile</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#NewFreeform">func NewFreeform(opts ...Option) *Profile</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#NewIdentifier">func NewIdentifier(opts ...Option) *Profile</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.Allowed">func (p *Profile) Allowed() runes.Set</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.Append">func (p *Profile) Append(dst, src []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.AppendCompareKey">func (p *Profile) AppendCompareKey(dst, src []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.Bytes">func (p *Profile) Bytes(b []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.Compare">func (p *Profile) Compare(a, b string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.CompareKey">func (p *Profile) CompareKey(s string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.NewTransformer">func (p *Profile) NewTransformer() *Transformer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Profile.String">func (p *Profile) String(s string) (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.368.html#Transformer">type Transformer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Transformer.Bytes">func (t Transformer) Bytes(b []byte) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Transformer.Reset">func (t Transformer) Reset()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Transformer.String">func (t Transformer) String(s string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.368.html#Transformer.Transform">func (t Transformer) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/class.go">class.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/context.go">context.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/nickname.go">nickname.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go">options.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go">profile.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profiles.go">profiles.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/tables10.0.0.go">tables10.0.0.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/transformer.go">transformer.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/secure/precis/trieval.go">trieval.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+UnicodeVersion is the Unicode version from which the tables in this package are derived.
+</p>
+
+				<pre>const <span id="UnicodeVersion">UnicodeVersion</span> = &#34;10.0.0&#34;</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go?s=405:431#L6">Option</a>
+				<a class="permalink" href="godoc.368.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Option is used to define the behavior and rules of a Profile.
+</p>
+
+			<pre>type Option func(*options)</pre>
+
+			
+
+			
+				
+				<pre>var (
+    <span class="comment">// The IgnoreCase option causes the profile to perform a case insensitive</span>
+    <span class="comment">// comparison during the PRECIS comparison step.</span>
+    <span id="IgnoreCase">IgnoreCase</span> <a href="godoc.368.html#Option">Option</a> = ignoreCase
+
+    <span class="comment">// The FoldWidth option causes the profile to map non-canonical wide and</span>
+    <span class="comment">// narrow variants to their decomposition mapping. This is useful for</span>
+    <span class="comment">// profiles that are based on the identifier class which would otherwise</span>
+    <span class="comment">// disallow such characters.</span>
+    <span id="FoldWidth">FoldWidth</span> <a href="godoc.368.html#Option">Option</a> = foldWidth
+
+    <span class="comment">// The DisallowEmpty option causes the enforcement step to return an error if</span>
+    <span class="comment">// the resulting string would be empty.</span>
+    <span id="DisallowEmpty">DisallowEmpty</span> <a href="godoc.368.html#Option">Option</a> = disallowEmpty
+
+    <span class="comment">// The BidiRule option causes the Bidi Rule defined in RFC 5893 to be</span>
+    <span class="comment">// applied.</span>
+    <span id="BidiRule">BidiRule</span> <a href="godoc.368.html#Option">Option</a> = bidiRule
+)</pre>
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="AdditionalMapping">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go?s=2673:2737#L94">AdditionalMapping</a>
+					<a class="permalink" href="godoc.368.html#AdditionalMapping">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func AdditionalMapping(t ...func() <a href="godoc.369.html">transform</a>.<a href="godoc.369.html#Transformer">Transformer</a>) <a href="godoc.368.html#Option">Option</a></pre>
+				<p>
+The AdditionalMapping option defines the additional mapping rule for the
+Profile by applying Transformer&#39;s in sequence.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Disallow">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go?s=4100:4135#L143">Disallow</a>
+					<a class="permalink" href="godoc.368.html#Disallow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Disallow(set <a href="godoc.364.html">runes</a>.<a href="godoc.364.html#Set">Set</a>) <a href="godoc.368.html#Option">Option</a></pre>
+				<p>
+The Disallow option further restricts a Profile&#39;s allowed characters beyond
+what is disallowed by the underlying string class.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FoldCase">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go?s=3374:3416#L119">FoldCase</a>
+					<a class="permalink" href="godoc.368.html#FoldCase">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FoldCase(opts ...<a href="godoc.328.html">cases</a>.<a href="godoc.328.html#Option">Option</a>) <a href="godoc.368.html#Option">Option</a></pre>
+				<p>
+The FoldCase option defines a Profile&#39;s case mapping rule. Options can be
+provided to determine the type of case folding used.
+</p>
+
+				
+				
+			
+				
+				<h3 id="LowerCase">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go?s=3640:3683#L128">LowerCase</a>
+					<a class="permalink" href="godoc.368.html#LowerCase">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func LowerCase(opts ...<a href="godoc.328.html">cases</a>.<a href="godoc.328.html#Option">Option</a>) <a href="godoc.368.html#Option">Option</a></pre>
+				<p>
+The LowerCase option defines a Profile&#39;s case mapping rule. Options can be
+provided to determine the type of case folding used.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Norm">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/options.go?s=3163:3192#L111">Norm</a>
+					<a class="permalink" href="godoc.368.html#Norm">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Norm(f <a href="godoc.374.html">norm</a>.<a href="godoc.374.html#Form">Form</a>) <a href="godoc.368.html#Option">Option</a></pre>
+				<p>
+The Norm option defines a Profile&#39;s normalization rule. Defaults to NFC.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Profile">type <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=631:677#L18">Profile</a>
+				<a class="permalink" href="godoc.368.html#Profile">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Profile represents a set of rules for normalizing and validating strings in
+the PRECIS framework.
+</p>
+
+			<pre>type Profile struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+				
+				<pre>var (
+    <span class="comment">// Implements the Nickname profile specified in RFC 8266.</span>
+    <span id="Nickname">Nickname</span> *<a href="godoc.368.html#Profile">Profile</a> = nickname
+
+    <span class="comment">// Implements the UsernameCaseMapped profile specified in RFC 8265.</span>
+    <span id="UsernameCaseMapped">UsernameCaseMapped</span> *<a href="godoc.368.html#Profile">Profile</a> = usernameCaseMap
+
+    <span class="comment">// Implements the UsernameCasePreserved profile specified in RFC 8265.</span>
+    <span id="UsernameCasePreserved">UsernameCasePreserved</span> *<a href="godoc.368.html#Profile">Profile</a> = usernameNoCaseMap
+
+    <span class="comment">// Implements the OpaqueString profile defined in RFC 8265 for passwords and</span>
+    <span class="comment">// other secure labels.</span>
+    <span id="OpaqueString">OpaqueString</span> *<a href="godoc.368.html#Profile">Profile</a> = opaquestring
+)</pre>
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFreeform">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=1327:1368#L38">NewFreeform</a>
+					<a class="permalink" href="godoc.368.html#NewFreeform">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFreeform(opts ...<a href="godoc.368.html#Option">Option</a>) *<a href="godoc.368.html#Profile">Profile</a></pre>
+				<p>
+NewFreeform creates a new PRECIS profile based on the Freeform string class.
+Profiles created from this class are suitable for use where expressiveness is
+prioritized over safety like passwords, and display-elements such as
+nicknames in a chat room.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewIdentifier">func <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=943:986#L27">NewIdentifier</a>
+					<a class="permalink" href="godoc.368.html#NewIdentifier">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewIdentifier(opts ...<a href="godoc.368.html#Option">Option</a>) *<a href="godoc.368.html#Profile">Profile</a></pre>
+				<p>
+NewIdentifier creates a new PRECIS profile based on the Identifier string
+class. Profiles created from this class are suitable for use where safety is
+prioritized over expressiveness like network identifiers, user accounts, chat
+rooms, and file names.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Profile.Allowed">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=8207:8244#L305">Allowed</a>
+					<a class="permalink" href="godoc.368.html#Profile.Allowed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) Allowed() <a href="godoc.364.html">runes</a>.<a href="godoc.364.html#Set">Set</a></pre>
+				<p>
+Allowed returns a runes.Set containing every rune that is a member of the
+underlying profile&#39;s string class and not disallowed by any profile specific
+rules.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.Append">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=5974:6031#L221">Append</a>
+					<a class="permalink" href="godoc.368.html#Profile.Append">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) Append(dst, src []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Append appends the result of applying p to src writing the result to dst.
+It returns an error if the input string is invalid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.AppendCompareKey">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=6843:6910#L253">AppendCompareKey</a>
+					<a class="permalink" href="godoc.368.html#Profile.AppendCompareKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) AppendCompareKey(dst, src []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+AppendCompareKey appends the result of applying p to src (including any
+optional rules to make strings comparable or useful in a map key such as
+applying lowercasing) writing the result to dst. It returns an error if the
+input string is invalid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.Bytes">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=6496:6545#L245">Bytes</a>
+					<a class="permalink" href="godoc.368.html#Profile.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) Bytes(b []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Bytes returns a new byte slice with the result of applying the profile to b.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.Compare">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=7753:7796#L285">Compare</a>
+					<a class="permalink" href="godoc.368.html#Profile.Compare">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) Compare(a, b <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Compare enforces both strings, and then compares them for bit-string identity
+(byte-for-byte equality). If either string cannot be enforced, the comparison
+is false.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.CompareKey">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=7484:7538#L278">CompareKey</a>
+					<a class="permalink" href="godoc.368.html#Profile.CompareKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) CompareKey(s <a href="godoc.4.html#string">string</a>) (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CompareKey returns a string that can be used for comparison, hashing, or
+collation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.NewTransformer">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=1595:1642#L47">NewTransformer</a>
+					<a class="permalink" href="godoc.368.html#Profile.NewTransformer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) NewTransformer() *<a href="godoc.368.html#Transformer">Transformer</a></pre>
+				<p>
+NewTransformer creates a new transform.Transformer that performs the PRECIS
+preparation and enforcement steps on the given UTF-8 encoded bytes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Profile.String">func (*Profile) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/profile.go?s=7303:7353#L272">String</a>
+					<a class="permalink" href="godoc.368.html#Profile.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.368.html#Profile">Profile</a>) String(s <a href="godoc.4.html#string">string</a>) (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+String returns a string with the result of applying the profile to s.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Transformer">type <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/transformer.go?s=277:329#L1">Transformer</a>
+				<a class="permalink" href="godoc.368.html#Transformer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Transformer implements the transform.Transformer interface.
+</p>
+
+			<pre>type Transformer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Transformer.Bytes">func (Transformer) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/transformer.go?s=697:740#L13">Bytes</a>
+					<a class="permalink" href="godoc.368.html#Transformer.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t <a href="godoc.368.html#Transformer">Transformer</a>) Bytes(b []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Bytes returns a new byte slice with the result of applying t to b.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Transformer.Reset">func (Transformer) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/transformer.go?s=388:416#L5">Reset</a>
+					<a class="permalink" href="godoc.368.html#Transformer.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t <a href="godoc.368.html#Transformer">Transformer</a>) Reset()</pre>
+				<p>
+Reset implements the transform.Transformer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Transformer.String">func (Transformer) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/transformer.go?s=852:896#L19">String</a>
+					<a class="permalink" href="godoc.368.html#Transformer.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t <a href="godoc.368.html#Transformer">Transformer</a>) String(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String returns a string with the result of applying t to s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Transformer.Transform">func (Transformer) <a href="http://localhost:6161/src/golang.org/x/text/secure/precis/transformer.go?s=495:582#L8">Transform</a>
+					<a class="permalink" href="godoc.368.html#Transformer.Transform">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t <a href="godoc.368.html#Transformer">Transformer</a>) Transform(dst, src []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (nDst, nSrc <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Transform implements the transform.Transformer interface.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

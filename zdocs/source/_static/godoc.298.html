@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>nettest - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.298.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package nettest
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/net/nettest"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.298.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.298.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package nettest provides utilities for network testing.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.298.html#LocalPath">func LocalPath() (string, error)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#LoopbackInterface">func LoopbackInterface() (*net.Interface, error)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#MulticastSource">func MulticastSource(network string, ifi *net.Interface) (net.IP, error)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#NewLocalListener">func NewLocalListener(network string) (net.Listener, error)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#NewLocalPacketListener">func NewLocalPacketListener(network string) (net.PacketConn, error)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#RoutedInterface">func RoutedInterface(network string, flags net.Flags) (*net.Interface, error)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#SupportsIPv4">func SupportsIPv4() bool</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#SupportsIPv6">func SupportsIPv6() bool</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#SupportsRawSocket">func SupportsRawSocket() bool</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#TestConn">func TestConn(t *testing.T, mp MakePipe)</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#TestableAddress">func TestableAddress(network, address string) bool</a></dd>
+			
+				
+				<dd><a href="godoc.298.html#TestableNetwork">func TestableNetwork(network string) bool</a></dd>
+			
+			
+				
+				<dd><a href="godoc.298.html#MakePipe">type MakePipe</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/net/nettest/conntest.go">conntest.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go">nettest.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest_unix.go">nettest_unix.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="LocalPath">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=5799:5831#L220">LocalPath</a>
+				<a class="permalink" href="godoc.298.html#LocalPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func LocalPath() (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+LocalPath returns a local path that can be used for Unix-domain
+protocol testing.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="LoopbackInterface">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=6639:6687#L253">LoopbackInterface</a>
+				<a class="permalink" href="godoc.298.html#LoopbackInterface">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func LoopbackInterface() (*<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Interface">Interface</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+LoopbackInterface returns an available logical network interface
+for loopback test.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MulticastSource">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=6153:6225#L235">MulticastSource</a>
+				<a class="permalink" href="godoc.298.html#MulticastSource">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MulticastSource(network <a href="godoc.4.html#string">string</a>, ifi *<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Interface">Interface</a>) (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#IP">IP</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+MulticastSource returns a unicast IP address on ifi when ifi is an
+IP multicast-capable network interface.
+</p>
+<p>
+The provided network must be &#34;ip&#34;, &#34;ip4&#34; or &#34;ip6&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewLocalListener">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=4152:4211#L156">NewLocalListener</a>
+				<a class="permalink" href="godoc.298.html#NewLocalListener">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewLocalListener(network <a href="godoc.4.html#string">string</a>) (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Listener">Listener</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+NewLocalListener returns a listener which listens to a loopback IP
+address or local file system path.
+</p>
+<p>
+The provided network must be &#34;tcp&#34;, &#34;tcp4&#34;, &#34;tcp6&#34;, &#34;unix&#34; or
+&#34;unixpacket&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewLocalPacketListener">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=5015:5082#L189">NewLocalPacketListener</a>
+				<a class="permalink" href="godoc.298.html#NewLocalPacketListener">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewLocalPacketListener(network <a href="godoc.4.html#string">string</a>) (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#PacketConn">PacketConn</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+NewLocalPacketListener returns a packet listener which listens to a
+loopback IP address or local file system path.
+</p>
+<p>
+The provided network must be &#34;udp&#34;, &#34;udp4&#34;, &#34;udp6&#34; or &#34;unixgram&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RoutedInterface">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=7094:7171#L270">RoutedInterface</a>
+				<a class="permalink" href="godoc.298.html#RoutedInterface">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RoutedInterface(network <a href="godoc.4.html#string">string</a>, flags <a href="godoc.14.html">net</a>.<a href="godoc.14.html#Flags">Flags</a>) (*<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Interface">Interface</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+RoutedInterface returns a network interface that can route IP
+traffic and satisfies flags.
+</p>
+<p>
+The provided network must be &#34;ip&#34;, &#34;ip4&#34; or &#34;ip6&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SupportsIPv4">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=1568:1592#L58">SupportsIPv4</a>
+				<a class="permalink" href="godoc.298.html#SupportsIPv4">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SupportsIPv4() <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+SupportsIPv4 reports whether the platform supports IPv4 networking
+functionality.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SupportsIPv6">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=1732:1756#L65">SupportsIPv6</a>
+				<a class="permalink" href="godoc.298.html#SupportsIPv6">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SupportsIPv6() <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+SupportsIPv6 reports whether the platform supports IPv6 networking
+functionality.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SupportsRawSocket">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=1901:1930#L72">SupportsRawSocket</a>
+				<a class="permalink" href="godoc.298.html#SupportsRawSocket">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SupportsRawSocket() <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+SupportsRawSocket reports whether the current session is available
+to use raw sockets.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="TestConn">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/conntest.go?s=975:1015#L21">TestConn</a>
+				<a class="permalink" href="godoc.298.html#TestConn">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TestConn(t *<a href="godoc.57.html">testing</a>.<a href="godoc.57.html#T">T</a>, mp <a href="godoc.298.html#MakePipe">MakePipe</a>)</pre>
+			<p>
+TestConn tests that a net.Conn implementation properly satisfies the interface.
+The tests should not produce any false positives, but may experience
+false negatives. Thus, some issues may only be detected when the test is
+run multiple times. For maximal effectiveness, run the tests under the
+race detector.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="TestableAddress">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=3676:3726#L140">TestableAddress</a>
+				<a class="permalink" href="godoc.298.html#TestableAddress">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TestableAddress(network, address <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+TestableAddress reports whether address of network is testable on
+the current platform configuration.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="TestableNetwork">func <a href="http://localhost:6161/src/golang.org/x/net/nettest/nettest.go?s=2153:2194#L81">TestableNetwork</a>
+				<a class="permalink" href="godoc.298.html#TestableNetwork">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TestableNetwork(network <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+			<p>
+TestableNetwork reports whether network is testable on the current
+platform configuration.
+</p>
+<p>
+See func Dial of the standard library for the supported networks.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="MakePipe">type <a href="http://localhost:6161/src/golang.org/x/net/nettest/conntest.go?s=588:650#L14">MakePipe</a>
+				<a class="permalink" href="godoc.298.html#MakePipe">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MakePipe creates a connection between two endpoints and returns the pair
+as c1 and c2, such that anything written to c1 is read by c2 and vice-versa.
+The stop function closes all resources, including c1, c2, and the underlying
+net.Listener (if there is one), and should not be nil.
+</p>
+
+			<pre>type MakePipe func() (c1, c2 <a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, stop func(), err <a href="godoc.4.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

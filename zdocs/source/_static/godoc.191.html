@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>drivergen - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.191.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package drivergen
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/drivergen"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.191.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.191.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.191.html#Initialize">func Initialize() error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.191.html#Builtin">type Builtin</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Builtin.Documentation">func (b Builtin) Documentation() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Builtin.ExecuteName">func (b Builtin) ExecuteName() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Builtin.ReferenceName">func (b Builtin) ReferenceName() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Builtin.SetterName">func (b Builtin) SetterName() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Builtin.Type">func (b Builtin) Type() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.191.html#BuiltinResponseType">type BuiltinResponseType</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.191.html#Command">type Command</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.191.html#LegacyOperation">type LegacyOperation</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.191.html#Operation">type Operation</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#ParseFile">func ParseFile(filename, packagename string) (Operation, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.CommandMethod">func (op Operation) CommandMethod() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.ConstructorFields">func (op Operation) ConstructorFields() []string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.ConstructorParameters">func (op Operation) ConstructorParameters() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.EscapeDocumentation">func (Operation) EscapeDocumentation(doc string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.Generate">func (op Operation) Generate(w io.Writer) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.PackageName">func (op Operation) PackageName() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.ResultType">func (op Operation) ResultType() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.ShortName">func (op Operation) ShortName() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Operation.Title">func (op Operation) Title(name string) string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.191.html#Properties">type Properties</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Properties.Builtins">func (p Properties) Builtins() []Builtin</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Properties.BuiltinsMap">func (p Properties) BuiltinsMap() map[Builtin]bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Properties.ExecuteBuiltins">func (p Properties) ExecuteBuiltins() []Builtin</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Properties.IsEnabled">func (p Properties) IsEnabled(builtin string) Builtin</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Properties.LegacyOperationKind">func (p Properties) LegacyOperationKind() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.191.html#RequestField">type RequestField</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#RequestField.Command">func (rf RequestField) Command(name, accessor string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#RequestField.DeclarationType">func (rf RequestField) DeclarationType() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#RequestField.ParameterType">func (rf RequestField) ParameterType() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#RequestField.PointerType">func (rf RequestField) PointerType() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.191.html#Response">type Response</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Response.BuildMethod">func (r Response) BuildMethod() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#Response.ShortName">func (r Response) ShortName() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.191.html#ResponseField">type ResponseField</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.191.html#ResponseField.DeclarationType">func (rf ResponseField) DeclarationType() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.191.html#Retryable">type Retryable</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.191.html#RetryableMode">type RetryableMode</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.191.html#RetryableType">type RetryableType</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go">drivergen.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/templates.go">templates.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Initialize">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/templates.go?s=1420:1443#L31">Initialize</a>
+				<a class="permalink" href="godoc.191.html#Initialize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Initialize() <a href="godoc.4.html#error">error</a></pre>
+			<p>
+Initialize sets up drivergen for use. It must be called or all of the templates will be nil.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Builtin">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=10496:10515#L371">Builtin</a>
+				<a class="permalink" href="godoc.191.html#Builtin">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Builtin represent types that are built into the IDL.
+</p>
+
+			<pre>type Builtin <a href="godoc.4.html#string">string</a></pre>
+
+			
+				<p>
+These constants are the built in types.
+</p>
+
+				<pre>const (
+    <span id="Collection">Collection</span>     <a href="godoc.191.html#Builtin">Builtin</a> = &#34;collection&#34;
+    <span id="ReadPreference">ReadPreference</span> <a href="godoc.191.html#Builtin">Builtin</a> = &#34;read preference&#34;
+    <span id="ReadConcern">ReadConcern</span>    <a href="godoc.191.html#Builtin">Builtin</a> = &#34;read concern&#34;
+    <span id="WriteConcern">WriteConcern</span>   <a href="godoc.191.html#Builtin">Builtin</a> = &#34;write concern&#34;
+    <span id="CommandMonitor">CommandMonitor</span> <a href="godoc.191.html#Builtin">Builtin</a> = &#34;command monitor&#34;
+    <span id="ClientSession">ClientSession</span>  <a href="godoc.191.html#Builtin">Builtin</a> = &#34;client session&#34;
+    <span id="ClusterClock">ClusterClock</span>   <a href="godoc.191.html#Builtin">Builtin</a> = &#34;cluster clock&#34;
+    <span id="Selector">Selector</span>       <a href="godoc.191.html#Builtin">Builtin</a> = &#34;selector&#34;
+    <span id="Database">Database</span>       <a href="godoc.191.html#Builtin">Builtin</a> = &#34;database&#34;
+    <span id="Deployment">Deployment</span>     <a href="godoc.191.html#Builtin">Builtin</a> = &#34;deployment&#34;
+    <span id="Crypt">Crypt</span>          <a href="godoc.191.html#Builtin">Builtin</a> = &#34;crypt&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Builtin.Documentation">func (Builtin) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=13697:13736#L508">Documentation</a>
+					<a class="permalink" href="godoc.191.html#Builtin.Documentation">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b <a href="godoc.191.html#Builtin">Builtin</a>) Documentation() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Documentation returns the GoDoc documentation for this built-in.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builtin.ExecuteName">func (Builtin) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=11101:11138#L389">ExecuteName</a>
+					<a class="permalink" href="godoc.191.html#Builtin.ExecuteName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b <a href="godoc.191.html#Builtin">Builtin</a>) ExecuteName() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ExecuteName provides the name used when setting this built-in on a driver.Operation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builtin.ReferenceName">func (Builtin) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=11796:11835#L418">ReferenceName</a>
+					<a class="permalink" href="godoc.191.html#Builtin.ReferenceName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b <a href="godoc.191.html#Builtin">Builtin</a>) ReferenceName() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ReferenceName returns the short name used to refer to this built in. It is used as the field name
+in the struct and as the variable name for the setter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builtin.SetterName">func (Builtin) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=12443:12479#L448">SetterName</a>
+					<a class="permalink" href="godoc.191.html#Builtin.SetterName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b <a href="godoc.191.html#Builtin">Builtin</a>) SetterName() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+SetterName returns the name to be used when creating a setter for this built-in.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builtin.Type">func (Builtin) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=13057:13087#L478">Type</a>
+					<a class="permalink" href="godoc.191.html#Builtin.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b <a href="godoc.191.html#Builtin">Builtin</a>) Type() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Type returns the Go type for this built-in.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BuiltinResponseType">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=17794:17825#L661">BuiltinResponseType</a>
+				<a class="permalink" href="godoc.191.html#BuiltinResponseType">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BuiltinResponseType is the type used to define built in response types.
+</p>
+
+			<pre>type BuiltinResponseType <a href="godoc.4.html#string">string</a></pre>
+
+			
+				<p>
+These constants represents the different built in response types.
+</p>
+
+				<pre>const (
+    <span id="BatchCursor">BatchCursor</span> <a href="godoc.191.html#BuiltinResponseType">BuiltinResponseType</a> = &#34;batch cursor&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Command">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=14836:14911#L538">Command</a>
+				<a class="permalink" href="godoc.191.html#Command">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Command holds the command serialization specific information for an operation.
+</p>
+
+			<pre>type Command struct {
+<span id="Command.Name"></span>    Name      <a href="godoc.4.html#string">string</a>
+<span id="Command.Parameter"></span>    Parameter <a href="godoc.4.html#string">string</a>
+<span id="Command.Database"></span>    Database  <a href="godoc.4.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LegacyOperation">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=10056:10083#L359">LegacyOperation</a>
+				<a class="permalink" href="godoc.191.html#LegacyOperation">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+LegacyOperation enables legacy versions of find, getMore, or killCursors operations.
+</p>
+
+			<pre>type LegacyOperation <a href="godoc.4.html#string">string</a></pre>
+
+			
+				<p>
+These constants are the various legacy operations that can be generated.
+</p>
+
+				<pre>const (
+    <span id="LegacyFind">LegacyFind</span>            <a href="godoc.191.html#LegacyOperation">LegacyOperation</a> = &#34;find&#34;
+    <span id="LegacyGetMore">LegacyGetMore</span>         <a href="godoc.191.html#LegacyOperation">LegacyOperation</a> = &#34;getMore&#34;
+    <span id="LegacyKillCursors">LegacyKillCursors</span>     <a href="godoc.191.html#LegacyOperation">LegacyOperation</a> = &#34;killCursors&#34;
+    <span id="LegacyListCollections">LegacyListCollections</span> <a href="godoc.191.html#LegacyOperation">LegacyOperation</a> = &#34;listCollections&#34;
+    <span id="LegacyListIndexes">LegacyListIndexes</span>     <a href="godoc.191.html#LegacyOperation">LegacyOperation</a> = &#34;listIndexes&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Operation">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=244:485#L7">Operation</a>
+				<a class="permalink" href="godoc.191.html#Operation">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Operation is the top-level configuration type. It&#39;s the direct representation of an operation
+TOML file.
+</p>
+
+			<pre>type Operation struct {
+<span id="Operation.Name"></span>    Name           <a href="godoc.4.html#string">string</a>
+<span id="Operation.Documentation"></span>    Documentation  <a href="godoc.4.html#string">string</a>
+<span id="Operation.Version"></span>    Version        <a href="godoc.4.html#int">int</a>
+<span id="Operation.DriverInternal"></span>    DriverInternal <a href="godoc.4.html#bool">bool</a>
+<span id="Operation.Properties"></span>    Properties     <a href="godoc.191.html#Properties">Properties</a>
+<span id="Operation.Command"></span>    Command        <a href="godoc.191.html#Command">Command</a>
+<span id="Operation.Request"></span>    Request        map[<a href="godoc.4.html#string">string</a>]<a href="godoc.191.html#RequestField">RequestField</a>
+<span id="Operation.Response"></span>    Response       <a href="godoc.191.html#Response">Response</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseFile">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=19895:19958#L738">ParseFile</a>
+					<a class="permalink" href="godoc.191.html#ParseFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseFile(filename, packagename <a href="godoc.4.html#string">string</a>) (<a href="godoc.191.html#Operation">Operation</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ParseFile will construct an Operation using the TOML in filename. The Operation will have the
+package name set to packagename.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Operation.CommandMethod">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=2847:2898#L101">CommandMethod</a>
+					<a class="permalink" href="godoc.191.html#Operation.CommandMethod">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) CommandMethod() (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CommandMethod returns the code required to transform the operation into a command. This code only
+returns the contents of the command method, without the function definition and return.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.ConstructorFields">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=2309:2357#L83">ConstructorFields</a>
+					<a class="permalink" href="godoc.191.html#Operation.ConstructorFields">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) ConstructorFields() []<a href="godoc.4.html#string">string</a></pre>
+				<p>
+ConstructorFields returns a slice of name name pairs that set fields in a newly instantiated
+operation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.ConstructorParameters">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=1929:1979#L70">ConstructorParameters</a>
+					<a class="permalink" href="godoc.191.html#Operation.ConstructorParameters">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) ConstructorParameters() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ConstructorParameters builds the parameter names and types for the operation constructor.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.EscapeDocumentation">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=1641:1696#L61">EscapeDocumentation</a>
+					<a class="permalink" href="godoc.191.html#Operation.EscapeDocumentation">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.191.html#Operation">Operation</a>) EscapeDocumentation(doc <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+EscapeDocumentation will add the required // in front of each line of documentation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.Generate">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=716:763#L24">Generate</a>
+					<a class="permalink" href="godoc.191.html#Operation.Generate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) Generate(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Generate creates the operation type and associated response types and writes them to w.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.PackageName">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=565:605#L21">PackageName</a>
+					<a class="permalink" href="godoc.191.html#Operation.PackageName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) PackageName() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+PackageName returns the package name to use when generating the operation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.ResultType">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=1354:1393#L53">ResultType</a>
+					<a class="permalink" href="godoc.191.html#Operation.ResultType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) ResultType() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ResultType returns the type to use as the result of running this operation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.ShortName">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=954:992#L33">ShortName</a>
+					<a class="permalink" href="godoc.191.html#Operation.ShortName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) ShortName() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ShortName returns the receiver used for this operation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.Title">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=1475:1520#L58">Title</a>
+					<a class="permalink" href="godoc.191.html#Operation.Title">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.191.html#Operation">Operation</a>) Title(name <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Title wraps strings.Title for use in templates.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Properties">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=5832:6143#L219">Properties</a>
+				<a class="permalink" href="godoc.191.html#Properties">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Properties represent general properties of the operation.
+</p>
+
+			<pre>type Properties struct {
+<span id="Properties.Disabled"></span>    Disabled                       []<a href="godoc.191.html#Builtin">Builtin</a>
+<span id="Properties.Enabled"></span>    Enabled                        []<a href="godoc.191.html#Builtin">Builtin</a>
+<span id="Properties.Retryable"></span>    Retryable                      <a href="godoc.191.html#Retryable">Retryable</a>
+<span id="Properties.Batches"></span>    Batches                        <a href="godoc.4.html#string">string</a>
+<span id="Properties.Legacy"></span>    Legacy                         <a href="godoc.191.html#LegacyOperation">LegacyOperation</a>
+<span id="Properties.MinimumWriteConcernWireVersion"></span>    MinimumWriteConcernWireVersion <a href="godoc.4.html#int">int</a>
+<span id="Properties.MinimumReadConcernWireVersion"></span>    MinimumReadConcernWireVersion  <a href="godoc.4.html#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Properties.Builtins">func (Properties) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=6291:6331#L231">Builtins</a>
+					<a class="permalink" href="godoc.191.html#Properties.Builtins">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.191.html#Properties">Properties</a>) Builtins() []<a href="godoc.191.html#Builtin">Builtin</a></pre>
+				<p>
+Builtins returns a slice of built-ins that is the combination of the non-disabled default
+built-ins plus any enabled non-default built-ins.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.BuiltinsMap">func (Properties) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=8561:8611#L307">BuiltinsMap</a>
+					<a class="permalink" href="godoc.191.html#Properties.BuiltinsMap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.191.html#Properties">Properties</a>) BuiltinsMap() map[<a href="godoc.191.html#Builtin">Builtin</a>]<a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+BuiltinsMap returns a map with the builtins that enabled.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.ExecuteBuiltins">func (Properties) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=7921:7968#L284">ExecuteBuiltins</a>
+					<a class="permalink" href="godoc.191.html#Properties.ExecuteBuiltins">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.191.html#Properties">Properties</a>) ExecuteBuiltins() []<a href="godoc.191.html#Builtin">Builtin</a></pre>
+				<p>
+ExecuteBuiltins returns the builtins that need to be set on the driver.Operation for the
+properties set.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.IsEnabled">func (Properties) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=8345:8398#L298">IsEnabled</a>
+					<a class="permalink" href="godoc.191.html#Properties.IsEnabled">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.191.html#Properties">Properties</a>) IsEnabled(builtin <a href="godoc.4.html#string">string</a>) <a href="godoc.191.html#Builtin">Builtin</a></pre>
+				<p>
+IsEnabled returns a Builtin if the string that matches that built-in is enabled. If it&#39;s not, an
+empty string is returned.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.LegacyOperationKind">func (Properties) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=8833:8881#L316">LegacyOperationKind</a>
+					<a class="permalink" href="godoc.191.html#Properties.LegacyOperationKind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.191.html#Properties">Properties</a>) LegacyOperationKind() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+LegacyOperationKind returns the corresponding LegacyOperationKind value for an operation.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RequestField">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=14971:15264#L545">RequestField</a>
+				<a class="permalink" href="godoc.191.html#RequestField">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RequestField represents an individual operation field.
+</p>
+
+			<pre>type RequestField struct {
+<span id="RequestField.Type"></span>    Type                   <a href="godoc.4.html#string">string</a>
+<span id="RequestField.Slice"></span>    Slice                  <a href="godoc.4.html#bool">bool</a>
+<span id="RequestField.Constructor"></span>    Constructor            <a href="godoc.4.html#bool">bool</a>
+<span id="RequestField.Variadic"></span>    Variadic               <a href="godoc.4.html#bool">bool</a>
+<span id="RequestField.Skip"></span>    Skip                   <a href="godoc.4.html#bool">bool</a>
+<span id="RequestField.Documentation"></span>    Documentation          <a href="godoc.4.html#string">string</a>
+<span id="RequestField.MinWireVersion"></span>    MinWireVersion         <a href="godoc.4.html#int">int</a>
+<span id="RequestField.MinWireVersionRequired"></span>    MinWireVersionRequired <a href="godoc.4.html#int">int</a>
+<span id="RequestField.KeyName"></span>    KeyName                <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RequestField.Command">func (RequestField) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=15658:15718#L561">Command</a>
+					<a class="permalink" href="godoc.191.html#RequestField.Command">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rf <a href="godoc.191.html#RequestField">RequestField</a>) Command(name, accessor <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Command returns a string function that sets the key to name and value to the RequestField type.
+It uses accessor to access the parameter. The accessor parameter should be the shortname of the
+operation and the name of the field of the property used for the command name. For example, if
+the shortname is &#34;eo&#34; and the field is &#34;collection&#34; then accessor should be &#34;eo.collection&#34;.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RequestField.DeclarationType">func (RequestField) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=16377:16424#L595">DeclarationType</a>
+					<a class="permalink" href="godoc.191.html#RequestField.DeclarationType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rf <a href="godoc.191.html#RequestField">RequestField</a>) DeclarationType() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+DeclarationType returns this field&#39;s type for use in a struct type declaration.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RequestField.ParameterType">func (RequestField) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=15811:15856#L566">ParameterType</a>
+					<a class="permalink" href="godoc.191.html#RequestField.ParameterType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rf <a href="godoc.191.html#RequestField">RequestField</a>) ParameterType() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ParameterType returns this field&#39;s type for use as a parameter argument.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RequestField.PointerType">func (RequestField) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=17031:17072#L626">PointerType</a>
+					<a class="permalink" href="godoc.191.html#RequestField.PointerType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rf <a href="godoc.191.html#RequestField">RequestField</a>) PointerType() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+PointerType returns true if the request field is a pointer type and the setter should take the
+address when setting via a setter method.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Response">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=17245:17329#L636">Response</a>
+				<a class="permalink" href="godoc.191.html#Response">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Response represents a response type to generate.
+</p>
+
+			<pre>type Response struct {
+<span id="Response.Name"></span>    Name  <a href="godoc.4.html#string">string</a>
+<span id="Response.Type"></span>    Type  <a href="godoc.4.html#string">string</a>
+<span id="Response.Field"></span>    Field map[<a href="godoc.4.html#string">string</a>]<a href="godoc.191.html#ResponseField">ResponseField</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Response.BuildMethod">func (Response) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=18263:18310#L673">BuildMethod</a>
+					<a class="permalink" href="godoc.191.html#Response.BuildMethod">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.191.html#Response">Response</a>) BuildMethod() (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+BuildMethod handles creating the body of a method to create a response from a BSON response
+document.
+</p>
+<p>
+TODO(GODRIVER-1094): This method is hacky because we&#39;re not using nested templates like we should
+be. Each template should be registered and we should be calling the template to create it.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Response.ShortName">func (Response) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=19444:19480#L717">ShortName</a>
+					<a class="permalink" href="godoc.191.html#Response.ShortName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.191.html#Response">Response</a>) ShortName() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ShortName returns the short name used when constructing a response.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ResponseField">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=17386:17459#L643">ResponseField</a>
+				<a class="permalink" href="godoc.191.html#ResponseField">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ResponseField is an individual field of a response.
+</p>
+
+			<pre>type ResponseField struct {
+<span id="ResponseField.Type"></span>    Type          <a href="godoc.4.html#string">string</a>
+<span id="ResponseField.Documentation"></span>    Documentation <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ResponseField.DeclarationType">func (ResponseField) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=17543:17591#L649">DeclarationType</a>
+					<a class="permalink" href="godoc.191.html#ResponseField.DeclarationType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rf <a href="godoc.191.html#ResponseField">ResponseField</a>) DeclarationType() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+DeclarationType returns the field&#39;s type for use in a struct type declaration.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Retryable">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=9303:9368#L334">Retryable</a>
+				<a class="permalink" href="godoc.191.html#Retryable">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Retryable represents retryable information for an operation.
+</p>
+
+			<pre>type Retryable struct {
+<span id="Retryable.Mode"></span>    Mode <a href="godoc.191.html#RetryableMode">RetryableMode</a>
+<span id="Retryable.Type"></span>    Type <a href="godoc.191.html#RetryableType">RetryableType</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RetryableMode">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=9452:9477#L340">RetryableMode</a>
+				<a class="permalink" href="godoc.191.html#RetryableMode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RetryableMode are the configuration representations of the retryability modes.
+</p>
+
+			<pre>type RetryableMode <a href="godoc.4.html#string">string</a></pre>
+
+			
+				<p>
+These constants are the various retryability modes.
+</p>
+
+				<pre>const (
+    <span id="RetryableOnce">RetryableOnce</span>           <a href="godoc.191.html#RetryableMode">RetryableMode</a> = &#34;once&#34;
+    <span id="RetryableOncePerCommand">RetryableOncePerCommand</span> <a href="godoc.191.html#RetryableMode">RetryableMode</a> = &#34;once per command&#34;
+    <span id="RetryableContext">RetryableContext</span>        <a href="godoc.191.html#RetryableMode">RetryableMode</a> = &#34;context&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RetryableType">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivergen/drivergen.go?s=9795:9820#L350">RetryableType</a>
+				<a class="permalink" href="godoc.191.html#RetryableType">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RetryableType instances are the configuration representation of a kind of retryability.
+</p>
+
+			<pre>type RetryableType <a href="godoc.4.html#string">string</a></pre>
+
+			
+				<p>
+These constants are the various retryable types.
+</p>
+
+				<pre>const (
+    <span id="RetryableWrites">RetryableWrites</span> <a href="godoc.191.html#RetryableType">RetryableType</a> = &#34;writes&#34;
+    <span id="RetryableReads">RetryableReads</span>  <a href="godoc.191.html#RetryableType">RetryableType</a> = &#34;reads&#34;
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

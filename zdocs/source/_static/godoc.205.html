@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>topology - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.205.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package topology
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/topology"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.205.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.205.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package topology contains types that handles the discovery, monitoring, and selection
+of servers. This package is designed to expose enough inner workings of service discovery
+and monitoring to allow low level applications to have fine grained control, while hiding
+most of the detailed implementation of the algorithms.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.205.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.205.html#Connection">type Connection</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.Address">func (c *Connection) Address() address.Address</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.Alive">func (c *Connection) Alive() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.Close">func (c *Connection) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.CompressWireMessage">func (c *Connection) CompressWireMessage(src, dst []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.Description">func (c *Connection) Description() description.Server</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.Expire">func (c *Connection) Expire() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.ID">func (c *Connection) ID() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.LocalAddress">func (c *Connection) LocalAddress() address.Address</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.ReadWireMessage">func (c *Connection) ReadWireMessage(ctx context.Context, dst []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Connection.WriteWireMessage">func (c *Connection) WriteWireMessage(ctx context.Context, wm []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#ConnectionError">type ConnectionError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#ConnectionError.Error">func (e ConnectionError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#ConnectionOption">type ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithCompressors">func WithCompressors(fn func([]string) []string) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithConnectTimeout">func WithConnectTimeout(fn func(time.Duration) time.Duration) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithConnectionAppName">func WithConnectionAppName(fn func(string) string) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithDialer">func WithDialer(fn func(Dialer) Dialer) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithHandshaker">func WithHandshaker(fn func(Handshaker) Handshaker) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithIdleTimeout">func WithIdleTimeout(fn func(time.Duration) time.Duration) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithLifeTimeout">func WithLifeTimeout(fn func(time.Duration) time.Duration) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithMonitor">func WithMonitor(fn func(*event.CommandMonitor) *event.CommandMonitor) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithReadTimeout">func WithReadTimeout(fn func(time.Duration) time.Duration) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithTLSConfig">func WithTLSConfig(fn func(*tls.Config) *tls.Config) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithWriteTimeout">func WithWriteTimeout(fn func(time.Duration) time.Duration) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithZlibLevel">func WithZlibLevel(fn func(*int) *int) ConnectionOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithZstdLevel">func WithZstdLevel(fn func(*int) *int) ConnectionOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.205.html#Dialer">type Dialer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.205.html#DialerFunc">type DialerFunc</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#DialerFunc.DialContext">func (df DialerFunc) DialContext(ctx context.Context, network, address string) (net.Conn, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#Handshaker">type Handshaker</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.205.html#MonitorMode">type MonitorMode</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.205.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithConnString">func WithConnString(fn func(connstring.ConnString) connstring.ConnString) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithMode">func WithMode(fn func(MonitorMode) MonitorMode) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithReplicaSetName">func WithReplicaSetName(fn func(string) string) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithSeedList">func WithSeedList(fn func(...string) []string) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithServerOptions">func WithServerOptions(fn func(...ServerOption) []ServerOption) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithServerSelectionTimeout">func WithServerSelectionTimeout(fn func(time.Duration) time.Duration) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.205.html#PoolError">type PoolError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#PoolError.Error">func (pe PoolError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#SelectedServer">type SelectedServer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#SelectedServer.Description">func (ss *SelectedServer) Description() description.SelectedServer</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#Server">type Server</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#ConnectServer">func ConnectServer(addr address.Address, updateCallback func(description.Server), opts ...ServerOption) (*Server, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#NewServer">func NewServer(addr address.Address, opts ...ServerOption) (*Server, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.Connect">func (s *Server) Connect(updateCallback func(description.Server)) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.Connection">func (s *Server) Connection(ctx context.Context) (driver.Connection, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.Description">func (s *Server) Description() description.Server</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.Disconnect">func (s *Server) Disconnect(ctx context.Context) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.ProcessError">func (s *Server) ProcessError(err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.RequestImmediateCheck">func (s *Server) RequestImmediateCheck()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.SelectedDescription">func (s *Server) SelectedDescription() description.SelectedServer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.String">func (s *Server) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Server.Subscribe">func (s *Server) Subscribe() (*ServerSubscription, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#ServerOption">type ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithClock">func WithClock(fn func(clock *session.ClusterClock) *session.ClusterClock) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithCompressionOptions">func WithCompressionOptions(fn func(...string) []string) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithConnectionOptions">func WithConnectionOptions(fn func(...ConnectionOption) []ConnectionOption) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithConnectionPoolMaxIdleTime">func WithConnectionPoolMaxIdleTime(fn func(time.Duration) time.Duration) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithConnectionPoolMonitor">func WithConnectionPoolMonitor(fn func(*event.PoolMonitor) *event.PoolMonitor) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithHeartbeatInterval">func WithHeartbeatInterval(fn func(time.Duration) time.Duration) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithHeartbeatTimeout">func WithHeartbeatTimeout(fn func(time.Duration) time.Duration) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithMaxConnections">func WithMaxConnections(fn func(uint64) uint64) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithMinConnections">func WithMinConnections(fn func(uint64) uint64) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithRegistry">func WithRegistry(fn func(*bsoncodec.Registry) *bsoncodec.Registry) ServerOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#WithServerAppName">func WithServerAppName(fn func(string) string) ServerOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.205.html#ServerSubscription">type ServerSubscription</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#ServerSubscription.Unsubscribe">func (ss *ServerSubscription) Unsubscribe() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.205.html#Topology">type Topology</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#New">func New(opts ...Option) (*Topology, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.Connect">func (t *Topology) Connect() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.Description">func (t *Topology) Description() description.Topology</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.Disconnect">func (t *Topology) Disconnect(ctx context.Context) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.FindServer">func (t *Topology) FindServer(selected description.Server) (*SelectedServer, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.Kind">func (t *Topology) Kind() description.TopologyKind</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.RequestImmediateCheck">func (t *Topology) RequestImmediateCheck()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.SelectServer">func (t *Topology) SelectServer(ctx context.Context, ss description.ServerSelector) (driver.Server, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.SelectServerLegacy">func (t *Topology) SelectServerLegacy(ctx context.Context, ss description.ServerSelector) (*SelectedServer, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.String">func (t *Topology) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.Subscribe">func (t *Topology) Subscribe() (*driver.Subscription, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.SupportsRetryWrites">func (t *Topology) SupportsRetryWrites() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.SupportsSessions">func (t *Topology) SupportsSessions() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.205.html#Topology.Unsubscribe">func (t *Topology) Unsubscribe(sub *driver.Subscription) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go">connection.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_legacy.go">connection_legacy.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_legacy_command_metadata.go">connection_legacy_command_metadata.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go">connection_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/errors.go">errors.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/fsm.go">fsm.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/pool.go">pool.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/resource_pool.go">resource_pool.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go">server.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go">server_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go">topology.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go">topology_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options_1_10.go">topology_options_1_10.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrConnectionClosed is returned from an attempt to use an already closed connection.
+</p>
+
+				<pre>var <span id="ErrConnectionClosed">ErrConnectionClosed</span> = <a href="godoc.205.html#ConnectionError">ConnectionError</a>{<a href="godoc.205.html#ConnectionError.ConnectionID">ConnectionID</a>: &#34;&lt;closed&gt;&#34;, <span class="comment">/* contains filtered or unexported fields */</span>}</pre>
+			
+				<p>
+ErrPoolConnected is returned from an attempt to connect an already connected pool
+</p>
+
+				<pre>var <span id="ErrPoolConnected">ErrPoolConnected</span> = <a href="godoc.205.html#PoolError">PoolError</a>(&#34;attempted to Connect to an already connected pool&#34;)</pre>
+			
+				<p>
+ErrPoolDisconnected is returned from an attempt to Close an already disconnected
+or disconnecting pool.
+</p>
+
+				<pre>var <span id="ErrPoolDisconnected">ErrPoolDisconnected</span> = <a href="godoc.205.html#PoolError">PoolError</a>(&#34;attempted to check out a connection from closed connection pool&#34;)</pre>
+			
+				<p>
+ErrServerClosed occurs when an attempt to Get a connection is made after
+the server has been closed.
+</p>
+
+				<pre>var <span id="ErrServerClosed">ErrServerClosed</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;server is closed&#34;)</pre>
+			
+				<p>
+ErrServerConnected occurs when at attempt to Connect is made after a server
+has already been connected.
+</p>
+
+				<pre>var <span id="ErrServerConnected">ErrServerConnected</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;server is connected&#34;)</pre>
+			
+				<p>
+ErrServerSelectionTimeout is returned from server selection when the server
+selection process took longer than allowed by the timeout.
+</p>
+
+				<pre>var <span id="ErrServerSelectionTimeout">ErrServerSelectionTimeout</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;server selection timeout&#34;)</pre>
+			
+				<p>
+ErrSubscribeAfterClosed is returned when a user attempts to subscribe to a
+closed Server or Topology.
+</p>
+
+				<pre>var <span id="ErrSubscribeAfterClosed">ErrSubscribeAfterClosed</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;cannot subscribe after closeConnection&#34;)</pre>
+			
+				<p>
+ErrTopologyClosed is returned when a user attempts to call a method on a
+closed Topology.
+</p>
+
+				<pre>var <span id="ErrTopologyClosed">ErrTopologyClosed</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;topology is closed&#34;)</pre>
+			
+				<p>
+ErrTopologyConnected is returned whena  user attempts to Connect to an
+already connected Topology.
+</p>
+
+				<pre>var <span id="ErrTopologyConnected">ErrTopologyConnected</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;topology is connected or connecting&#34;)</pre>
+			
+				<p>
+ErrWaitQueueTimeout is returned when the request to get a connection from the pool timesout when on the wait queue
+</p>
+
+				<pre>var <span id="ErrWaitQueueTimeout">ErrWaitQueueTimeout</span> = <a href="godoc.205.html#PoolError">PoolError</a>(&#34;timed out while checking out a connection from connection pool&#34;)</pre>
+			
+				<p>
+ErrWrongPool is return when a connection is returned to a pool it doesn&#39;t belong to.
+</p>
+
+				<pre>var <span id="ErrWrongPool">ErrWrongPool</span> = <a href="godoc.205.html#PoolError">PoolError</a>(&#34;connection does not belong to this pool&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Connection">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=9876:9944#L329">Connection</a>
+				<a class="permalink" href="godoc.205.html#Connection">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Connection implements the driver.Connection interface to allow reading and writing wire
+messages and the driver.Expirable interface to allow expiring.
+</p>
+
+			<pre>type Connection struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Connection.Address">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=13361:13407#L450">Address</a>
+					<a class="permalink" href="godoc.205.html#Connection.Address">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) Address() <a href="godoc.186.html">address</a>.<a href="godoc.186.html#Address">Address</a></pre>
+				<p>
+Address returns the address of this connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.Alive">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=13066:13099#L435">Alive</a>
+					<a class="permalink" href="godoc.205.html#Connection.Alive">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) Alive() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Alive returns if the connection is still alive.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.Close">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=12498:12532#L405">Close</a>
+					<a class="permalink" href="godoc.205.html#Connection.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) Close() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Close returns this connection to the connection pool. This method may not closeConnection the underlying
+socket.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.CompressWireMessage">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=10989:11062#L363">CompressWireMessage</a>
+					<a class="permalink" href="godoc.205.html#Connection.CompressWireMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) CompressWireMessage(src, dst []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CompressWireMessage handles compressing the provided wire message using the underlying
+connection&#39;s compressor. The dst parameter will be overwritten with the new wire message. If
+there is no compressor set on the underlying connection, then no compression will be performed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.Description">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=12210:12263#L394">Description</a>
+					<a class="permalink" href="godoc.205.html#Connection.Description">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) Description() <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a></pre>
+				<p>
+Description returns the server description of the server this connection is connected to.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.Expire">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=12807:12842#L420">Expire</a>
+					<a class="permalink" href="godoc.205.html#Connection.Expire">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) Expire() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Expire closes this connection and will closeConnection the underlying socket.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.ID">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=13174:13206#L440">ID</a>
+					<a class="permalink" href="godoc.205.html#Connection.ID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) ID() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+ID returns the ID of this connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.LocalAddress">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=13589:13640#L460">LocalAddress</a>
+					<a class="permalink" href="godoc.205.html#Connection.LocalAddress">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) LocalAddress() <a href="godoc.186.html">address</a>.<a href="godoc.186.html#Address">Address</a></pre>
+				<p>
+LocalAddress returns the local address of the connection
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.ReadWireMessage">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=10478:10563#L351">ReadWireMessage</a>
+					<a class="permalink" href="godoc.205.html#Connection.ReadWireMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) ReadWireMessage(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, dst []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ReadWireMessage handles reading a wire message from the underlying connection. The dst parameter
+will be overwritten with the new wire message.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Connection.WriteWireMessage">func (*Connection) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection.go?s=10117:10192#L340">WriteWireMessage</a>
+					<a class="permalink" href="godoc.205.html#Connection.WriteWireMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.205.html#Connection">Connection</a>) WriteWireMessage(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, wm []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+WriteWireMessage handles writing a wire message to the underlying connection.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ConnectionError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/errors.go?s=82:307#L1">ConnectionError</a>
+				<a class="permalink" href="godoc.205.html#ConnectionError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ConnectionError represents a connection error.
+</p>
+
+			<pre>type ConnectionError struct {
+<span id="ConnectionError.ConnectionID"></span>    ConnectionID <a href="godoc.4.html#string">string</a>
+<span id="ConnectionError.Wrapped"></span>    Wrapped      <a href="godoc.4.html#error">error</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ConnectionError.Error">func (ConnectionError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/errors.go?s=350:389#L7">Error</a>
+					<a class="permalink" href="godoc.205.html#ConnectionError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.205.html#ConnectionError">ConnectionError</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Error implements the error interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ConnectionOption">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=2510:2561#L75">ConnectionOption</a>
+				<a class="permalink" href="godoc.205.html#ConnectionOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ConnectionOption is used to configure a connection.
+</p>
+
+			<pre>type ConnectionOption func(*connectionConfig) <a href="godoc.4.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithCompressors">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=2903:2968#L87">WithCompressors</a>
+					<a class="permalink" href="godoc.205.html#WithCompressors">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithCompressors(fn func([]<a href="godoc.4.html#string">string</a>) []<a href="godoc.4.html#string">string</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithCompressors sets the compressors that can be used for communication.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithConnectTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=3202:3280#L96">WithConnectTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithConnectTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithConnectTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithConnectTimeout configures the maximum amount of time a dial will wait for a
+Connect to complete. The default is 30 seconds.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithConnectionAppName">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=2668:2735#L79">WithConnectionAppName</a>
+					<a class="permalink" href="godoc.205.html#WithConnectionAppName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithConnectionAppName(fn func(<a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithConnectionAppName sets the application name which gets sent to MongoDB when it
+first connects.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithDialer">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=3470:3526#L104">WithDialer</a>
+					<a class="permalink" href="godoc.205.html#WithDialer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithDialer(fn func(<a href="godoc.205.html#Dialer">Dialer</a>) <a href="godoc.205.html#Dialer">Dialer</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithDialer configures the Dialer to use when making a new connection to MongoDB.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithHandshaker">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=3720:3788#L113">WithHandshaker</a>
+					<a class="permalink" href="godoc.205.html#WithHandshaker">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithHandshaker(fn func(<a href="godoc.205.html#Handshaker">Handshaker</a>) <a href="godoc.205.html#Handshaker">Handshaker</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithHandshaker configures the Handshaker that wll be used to initialize newly
+dialed connections.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithIdleTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=3965:4040#L121">WithIdleTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithIdleTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithIdleTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithIdleTimeout configures the maximum idle time to allow for a connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithLifeTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=4204:4279#L129">WithLifeTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithLifeTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithLifeTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithLifeTimeout configures the maximum life of a connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithMonitor">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=5159:5246#L161">WithMonitor</a>
+					<a class="permalink" href="godoc.205.html#WithMonitor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithMonitor(fn func(*<a href="godoc.165.html">event</a>.<a href="godoc.165.html#CommandMonitor">CommandMonitor</a>) *<a href="godoc.165.html">event</a>.<a href="godoc.165.html#CommandMonitor">CommandMonitor</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithMonitor configures a event for command monitoring.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithReadTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=4449:4524#L137">WithReadTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithReadTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithReadTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithReadTimeout configures the maximum read time for a connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithTLSConfig">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=4936:5005#L153">WithTLSConfig</a>
+					<a class="permalink" href="godoc.205.html#WithTLSConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTLSConfig(fn func(*<a href="godoc.337.html">tls</a>.<a href="godoc.337.html#Config">Config</a>) *<a href="godoc.337.html">tls</a>.<a href="godoc.337.html#Config">Config</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithTLSConfig configures the TLS options for a connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithWriteTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=4696:4772#L145">WithWriteTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithWriteTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithWriteTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithWriteTimeout configures the maximum write time for a connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithZlibLevel">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=5394:5449#L169">WithZlibLevel</a>
+					<a class="permalink" href="godoc.205.html#WithZlibLevel">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithZlibLevel(fn func(*<a href="godoc.4.html#int">int</a>) *<a href="godoc.4.html#int">int</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithZlibLevel sets the zLib compression level.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithZstdLevel">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=5595:5650#L177">WithZstdLevel</a>
+					<a class="permalink" href="godoc.205.html#WithZstdLevel">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithZstdLevel(fn func(*<a href="godoc.4.html#int">int</a>) *<a href="godoc.4.html#int">int</a>) <a href="godoc.205.html#ConnectionOption">ConnectionOption</a></pre>
+				<p>
+WithZstdLevel sets the zstd compression level.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Dialer">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=259:361#L5">Dialer</a>
+				<a class="permalink" href="godoc.205.html#Dialer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Dialer is used to make network connections.
+</p>
+
+			<pre>type Dialer interface {
+    DialContext(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, network, address <a href="godoc.4.html#string">string</a>) (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+				<p>
+DefaultDialer is the Dialer implementation that is used by this package. Changing this
+will also change the Dialer used for this package. This should only be changed why all
+of the connections being made need to use a different Dialer. Most of the time, using a
+WithDialer option is more appropriate than changing this variable.
+</p>
+
+				<pre>var <span id="DefaultDialer">DefaultDialer</span> <a href="godoc.205.html#Dialer">Dialer</a> = &amp;<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Dialer">Dialer</a>{}</pre>
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DialerFunc">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=442:526#L10">DialerFunc</a>
+				<a class="permalink" href="godoc.205.html#DialerFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DialerFunc is a type implemented by functions that can be used as a Dialer.
+</p>
+
+			<pre>type DialerFunc func(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, network, address <a href="godoc.4.html#string">string</a>) (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, <a href="godoc.4.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DialerFunc.DialContext">func (DialerFunc) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=576:672#L13">DialContext</a>
+					<a class="permalink" href="godoc.205.html#DialerFunc.DialContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (df <a href="godoc.205.html#DialerFunc">DialerFunc</a>) DialContext(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, network, address <a href="godoc.4.html#string">string</a>) (<a href="godoc.14.html">net</a>.<a href="godoc.14.html#Conn">Conn</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+DialContext implements the Dialer interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Handshaker">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/connection_options.go?s=1312:1347#L26">Handshaker</a>
+				<a class="permalink" href="godoc.205.html#Handshaker">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Handshaker is the interface implemented by types that can perform a MongoDB
+handshake over a provided driver.Connection. This is used during connection
+initialization. Implementations must be goroutine safe.
+</p>
+
+			<pre>type Handshaker = <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Handshaker">Handshaker</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MonitorMode">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=1798:1820#L37">MonitorMode</a>
+				<a class="permalink" href="godoc.205.html#MonitorMode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MonitorMode represents the way in which a server is monitored.
+</p>
+
+			<pre>type MonitorMode <a href="godoc.4.html#uint8">uint8</a></pre>
+
+			
+				<p>
+These constants are the available monitoring modes.
+</p>
+
+				<pre>const (
+    <span id="AutomaticMode">AutomaticMode</span> <a href="godoc.205.html#MonitorMode">MonitorMode</a> = <a href="godoc.4.html#iota">iota</a>
+    <span id="SingleMode">SingleMode</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=666:697#L17">Option</a>
+				<a class="permalink" href="godoc.205.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Option is a configuration option for a topology.
+</p>
+
+			<pre>type Option func(*config) <a href="godoc.4.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithConnString">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=1298:1378#L45">WithConnString</a>
+					<a class="permalink" href="godoc.205.html#WithConnString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithConnString(fn func(<a href="godoc.188.html">connstring</a>.<a href="godoc.188.html#ConnString">ConnString</a>) <a href="godoc.188.html">connstring</a>.<a href="godoc.188.html#ConnString">ConnString</a>) <a href="godoc.205.html#Option">Option</a></pre>
+				<p>
+WithConnString configures the topology using the connection string.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithMode">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=6475:6529#L227">WithMode</a>
+					<a class="permalink" href="godoc.205.html#WithMode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithMode(fn func(<a href="godoc.205.html#MonitorMode">MonitorMode</a>) <a href="godoc.205.html#MonitorMode">MonitorMode</a>) <a href="godoc.205.html#Option">Option</a></pre>
+				<p>
+WithMode configures the topology&#39;s monitor mode.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithReplicaSetName">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=6685:6739#L235">WithReplicaSetName</a>
+					<a class="permalink" href="godoc.205.html#WithReplicaSetName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithReplicaSetName(fn func(<a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a>) <a href="godoc.205.html#Option">Option</a></pre>
+				<p>
+WithReplicaSetName configures the topology&#39;s default replica set name.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithSeedList">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=6892:6945#L243">WithSeedList</a>
+					<a class="permalink" href="godoc.205.html#WithSeedList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithSeedList(fn func(...<a href="godoc.4.html#string">string</a>) []<a href="godoc.4.html#string">string</a>) <a href="godoc.205.html#Option">Option</a></pre>
+				<p>
+WithSeedList configures a topology&#39;s seed list.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithServerOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=7144:7214#L252">WithServerOptions</a>
+					<a class="permalink" href="godoc.205.html#WithServerOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithServerOptions(fn func(...<a href="godoc.205.html#ServerOption">ServerOption</a>) []<a href="godoc.205.html#ServerOption">ServerOption</a>) <a href="godoc.205.html#Option">Option</a></pre>
+				<p>
+WithServerOptions configures a topology&#39;s server options for when a new server
+needs to be created.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithServerSelectionTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology_options.go?s=7474:7550#L261">WithServerSelectionTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithServerSelectionTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithServerSelectionTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#Option">Option</a></pre>
+				<p>
+WithServerSelectionTimeout configures a topology&#39;s server selection timeout.
+A server selection timeout of 0 means there is no timeout for server selection.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="PoolError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/pool.go?s=1446:1467#L26">PoolError</a>
+				<a class="permalink" href="godoc.205.html#PoolError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+PoolError is an error returned from a Pool method.
+</p>
+
+			<pre>type PoolError <a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PoolError.Error">func (PoolError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/pool.go?s=1613:1647#L31">Error</a>
+					<a class="permalink" href="godoc.205.html#PoolError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pe <a href="godoc.205.html#PoolError">PoolError</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SelectedServer">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=1239:1310#L30">SelectedServer</a>
+				<a class="permalink" href="godoc.205.html#SelectedServer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SelectedServer represents a specific server that was selected during server selection.
+It contains the kind of the topology it was selected from.
+</p>
+
+			<pre>type SelectedServer struct {
+    *<a href="godoc.205.html#Server">Server</a>
+
+<span id="SelectedServer.Kind"></span>    Kind <a href="godoc.189.html">description</a>.<a href="godoc.189.html#TopologyKind">TopologyKind</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SelectedServer.Description">func (*SelectedServer) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=1389:1455#L37">Description</a>
+					<a class="permalink" href="godoc.205.html#SelectedServer.Description">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ss *<a href="godoc.205.html#SelectedServer">SelectedServer</a>) Description() <a href="godoc.189.html">description</a>.<a href="godoc.189.html#SelectedServer">SelectedServer</a></pre>
+				<p>
+Description returns a description of the server as of the last heartbeat.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Server">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=2014:2718#L72">Server</a>
+				<a class="permalink" href="godoc.205.html#Server">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Server is a single server within a topology.
+</p>
+
+			<pre>type Server struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ConnectServer">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=2811:2931#L102">ConnectServer</a>
+					<a class="permalink" href="godoc.205.html#ConnectServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ConnectServer(addr <a href="godoc.186.html">address</a>.<a href="godoc.186.html#Address">Address</a>, updateCallback func(<a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>), opts ...<a href="godoc.205.html#ServerOption">ServerOption</a>) (*<a href="godoc.205.html#Server">Server</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ConnectServer creates a new Server and then initializes it using the
+Connect method.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewServer">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=3233:3308#L116">NewServer</a>
+					<a class="permalink" href="godoc.205.html#NewServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewServer(addr <a href="godoc.186.html">address</a>.<a href="godoc.186.html#Address">Address</a>, opts ...<a href="godoc.205.html#ServerOption">ServerOption</a>) (*<a href="godoc.205.html#Server">Server</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+NewServer creates a new server. The mongodb server at the address will be monitored
+on an internal monitoring goroutine.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Server.Connect">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=4339:4410#L159">Connect</a>
+					<a class="permalink" href="godoc.205.html#Server.Connect">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) Connect(updateCallback func(<a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>)) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Connect initializes the Server by starting background monitoring goroutines.
+This method must be called before a Server can be used.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.Connection">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=6081:6156#L208">Connection</a>
+					<a class="permalink" href="godoc.205.html#Server.Connection">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) Connection(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>) (<a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Connection gets a connection to the server.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.Description">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=7261:7310#L256">Description</a>
+					<a class="permalink" href="godoc.205.html#Server.Description">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) Description() <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a></pre>
+				<p>
+Description returns a description of the server as of the last heartbeat.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.Disconnect">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=5358:5412#L179">Disconnect</a>
+					<a class="permalink" href="godoc.205.html#Server.Disconnect">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) Disconnect(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Disconnect closes sockets to the server referenced by this Server.
+Subscriptions to this Server will be closed. Disconnect will shutdown
+any monitoring goroutines, closeConnection the idle connection pool, and will
+wait until all the in use connections have been returned to the connection
+pool and are closed before returning. If the context expires via
+cancellation, deadline, or timeout before the in use connections have been
+returned, the in use connections will be closed, resulting in the failure of
+any in flight read or write operations. If this method returns with no
+errors, all connections associated with this Server have been closed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.ProcessError">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=8811:8851#L309">ProcessError</a>
+					<a class="permalink" href="godoc.205.html#Server.ProcessError">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) ProcessError(err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ProcessError handles SDAM error handling and implements driver.ErrorProcessor.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.RequestImmediateCheck">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=8628:8668#L301">RequestImmediateCheck</a>
+					<a class="permalink" href="godoc.205.html#Server.RequestImmediateCheck">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) RequestImmediateCheck()</pre>
+				<p>
+RequestImmediateCheck will cause the server to send a heartbeat immediately
+instead of waiting for the heartbeat timeout.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.SelectedDescription">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=7582:7647#L263">SelectedDescription</a>
+					<a class="permalink" href="godoc.205.html#Server.SelectedDescription">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) SelectedDescription() <a href="godoc.189.html">description</a>.<a href="godoc.189.html#SelectedServer">SelectedServer</a></pre>
+				<p>
+SelectedDescription returns a description.SelectedServer with a Kind of
+Single. This can be used when performing tasks like monitoring a batch
+of servers and you want to run one off commands against those servers.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.String">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=15626:15658#L584">String</a>
+					<a class="permalink" href="godoc.205.html#Server.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String implements the Stringer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.Subscribe">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=7988:8045#L274">Subscribe</a>
+					<a class="permalink" href="godoc.205.html#Server.Subscribe">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.205.html#Server">Server</a>) Subscribe() (*<a href="godoc.205.html#ServerSubscription">ServerSubscription</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Subscribe returns a ServerSubscription which has a channel on which all
+updated server descriptions will be sent. The channel will have a buffer
+size of one, and will be pre-populated with the current description.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ServerOption">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=1403:1446#L43">ServerOption</a>
+				<a class="permalink" href="godoc.205.html#ServerOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ServerOption configures a server.
+</p>
+
+			<pre>type ServerOption func(*serverConfig) <a href="godoc.4.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithClock">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=4166:4253#L124">WithClock</a>
+					<a class="permalink" href="godoc.205.html#WithClock">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithClock(fn func(clock *<a href="godoc.204.html">session</a>.<a href="godoc.204.html#ClusterClock">ClusterClock</a>) *<a href="godoc.204.html">session</a>.<a href="godoc.204.html#ClusterClock">ClusterClock</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithClock configures the ClusterClock for the server to use.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithCompressionOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=1772:1841#L54">WithCompressionOptions</a>
+					<a class="permalink" href="godoc.205.html#WithCompressionOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithCompressionOptions(fn func(...<a href="godoc.4.html#string">string</a>) []<a href="godoc.4.html#string">string</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithCompressionOptions configures the server&#39;s compressors.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithConnectionOptions">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=1510:1598#L46">WithConnectionOptions</a>
+					<a class="permalink" href="godoc.205.html#WithConnectionOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithConnectionOptions(fn func(...<a href="godoc.205.html#ConnectionOption">ConnectionOption</a>) []<a href="godoc.205.html#ConnectionOption">ConnectionOption</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithConnectionOptions configures the server&#39;s connections.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithConnectionPoolMaxIdleTime">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=3610:3695#L108">WithConnectionPoolMaxIdleTime</a>
+					<a class="permalink" href="godoc.205.html#WithConnectionPoolMaxIdleTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithConnectionPoolMaxIdleTime(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithConnectionPoolMaxIdleTime configures the maximum time that a connection can remain idle in the connection pool
+before being removed. If connectionPoolMaxIdleTime is 0, then no idle time is set and connections will not be removed
+because of their age
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithConnectionPoolMonitor">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=3909:4000#L116">WithConnectionPoolMonitor</a>
+					<a class="permalink" href="godoc.205.html#WithConnectionPoolMonitor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithConnectionPoolMonitor(fn func(*<a href="godoc.165.html">event</a>.<a href="godoc.165.html#PoolMonitor">PoolMonitor</a>) *<a href="godoc.165.html">event</a>.<a href="godoc.165.html#PoolMonitor">PoolMonitor</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithConnectionPoolMonitor configures the monitor for all connection pool actions
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithHeartbeatInterval">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=2237:2314#L70">WithHeartbeatInterval</a>
+					<a class="permalink" href="godoc.205.html#WithHeartbeatInterval">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithHeartbeatInterval(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithHeartbeatInterval configures a server&#39;s heartbeat interval.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithHeartbeatTimeout">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=2521:2597#L79">WithHeartbeatTimeout</a>
+					<a class="permalink" href="godoc.205.html#WithHeartbeatTimeout">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithHeartbeatTimeout(fn func(<a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithHeartbeatTimeout configures how long to wait for a heartbeat socket to
+connection.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithMaxConnections">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=2861:2921#L88">WithMaxConnections</a>
+					<a class="permalink" href="godoc.205.html#WithMaxConnections">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithMaxConnections(fn func(<a href="godoc.4.html#uint64">uint64</a>) <a href="godoc.4.html#uint64">uint64</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithMaxConnections configures the maximum number of connections to allow for
+a given server. If max is 0, then the default will be math.MaxInt64.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithMinConnections">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=3191:3251#L98">WithMinConnections</a>
+					<a class="permalink" href="godoc.205.html#WithMinConnections">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithMinConnections(fn func(<a href="godoc.4.html#uint64">uint64</a>) <a href="godoc.4.html#uint64">uint64</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithMinConnections configures the minimum number of connections to allow for
+a given server. If min is 0, then there is no lower limit to the number of
+connections.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=4431:4511#L133">WithRegistry</a>
+					<a class="permalink" href="godoc.205.html#WithRegistry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithRegistry(fn func(*<a href="godoc.153.html">bsoncodec</a>.<a href="godoc.153.html#Registry">Registry</a>) *<a href="godoc.153.html">bsoncodec</a>.<a href="godoc.153.html#Registry">Registry</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithRegistry configures the registry for the server to use when creating
+cursors.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithServerAppName">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server_options.go?s=2017:2076#L62">WithServerAppName</a>
+					<a class="permalink" href="godoc.205.html#WithServerAppName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithServerAppName(fn func(<a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a>) <a href="godoc.205.html#ServerOption">ServerOption</a></pre>
+				<p>
+WithServerAppName configures the server&#39;s application name.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ServerSubscription">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=16230:16317#L604">ServerSubscription</a>
+				<a class="permalink" href="godoc.205.html#ServerSubscription">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ServerSubscription represents a subscription to the description.Server updates for
+a specific server.
+</p>
+
+			<pre>type ServerSubscription struct {
+<span id="ServerSubscription.C"></span>    C &lt;-chan <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ServerSubscription.Unsubscribe">func (*ServerSubscription) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/server.go?s=16424:16473#L612">Unsubscribe</a>
+					<a class="permalink" href="godoc.205.html#ServerSubscription.Unsubscribe">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ss *<a href="godoc.205.html#ServerSubscription">ServerSubscription</a>) Unsubscribe() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Unsubscribe unsubscribes this ServerSubscription from updates and closes the
+subscription channel.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Topology">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=1979:2988#L46">Topology</a>
+				<a class="permalink" href="godoc.205.html#Topology">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Topology represents a MongoDB deployment.
+</p>
+
+			<pre>type Topology struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="New">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=3414:3457#L97">New</a>
+					<a class="permalink" href="godoc.205.html#New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func New(opts ...<a href="godoc.205.html#Option">Option</a>) (*<a href="godoc.205.html#Topology">Topology</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+New creates a new topology.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Topology.Connect">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=4272:4306#L129">Connect</a>
+					<a class="permalink" href="godoc.205.html#Topology.Connect">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) Connect() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Connect initializes a Topology and starts the monitoring process. This function
+must be called to properly monitor the topology.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.Description">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=6040:6093#L201">Description</a>
+					<a class="permalink" href="godoc.205.html#Topology.Description">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) Description() <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Topology">Topology</a></pre>
+				<p>
+Description returns a description of the topology.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.Disconnect">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=5107:5163#L160">Disconnect</a>
+					<a class="permalink" href="godoc.205.html#Topology.Disconnect">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) Disconnect(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Disconnect closes the topology. It stops the monitoring thread and
+closes all open subscriptions.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.FindServer">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=12092:12175#L397">FindServer</a>
+					<a class="permalink" href="godoc.205.html#Topology.FindServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) FindServer(selected <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>) (*<a href="godoc.205.html#SelectedServer">SelectedServer</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+FindServer will attempt to find a server that fits the given server description.
+This method will return nil, nil if a matching server could not be found.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.Kind">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=6253:6303#L210">Kind</a>
+					<a class="permalink" href="godoc.205.html#Topology.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) Kind() <a href="godoc.189.html">description</a>.<a href="godoc.189.html#TopologyKind">TopologyKind</a></pre>
+				<p>
+Kind returns the topology kind of this Topology.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.RequestImmediateCheck">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=7809:7851#L264">RequestImmediateCheck</a>
+					<a class="permalink" href="godoc.205.html#Topology.RequestImmediateCheck">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) RequestImmediateCheck()</pre>
+				<p>
+RequestImmediateCheck will send heartbeats to all the servers in the
+topology right away, instead of waiting for the heartbeat timeout.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.SelectServer">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=8652:8758#L288">SelectServer</a>
+					<a class="permalink" href="godoc.205.html#Topology.SelectServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) SelectServer(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, ss <a href="godoc.189.html">description</a>.<a href="godoc.189.html#ServerSelector">ServerSelector</a>) (<a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Server">Server</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+SelectServer selects a server with given a selector. SelectServer complies with the
+server selection spec, and will time out after severSelectionTimeout or when the
+parent context is done.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.SelectServerLegacy">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=10775:10889#L354">SelectServerLegacy</a>
+					<a class="permalink" href="godoc.205.html#Topology.SelectServerLegacy">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) SelectServerLegacy(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, ss <a href="godoc.189.html">description</a>.<a href="godoc.189.html#ServerSelector">ServerSelector</a>) (*<a href="godoc.205.html#SelectedServer">SelectedServer</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+SelectServerLegacy selects a server with given a selector. SelectServerLegacy complies with the
+server selection spec, and will time out after severSelectionTimeout or when the
+parent context is done.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.String">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=18082:18116#L657">String</a>
+					<a class="permalink" href="godoc.205.html#Topology.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String implements the Stringer interface
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.Subscribe">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=6622:6682#L216">Subscribe</a>
+					<a class="permalink" href="godoc.205.html#Topology.Subscribe">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) Subscribe() (*<a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Subscription">Subscription</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Subscribe returns a Subscription on which all updated description.Topologys
+will be sent. The channel of the subscription will have a buffer size of one,
+and will be pre-populated with the current description.Topology.
+Subscribe implements the driver.Subscriber interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.SupportsRetryWrites">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=8374:8419#L281">SupportsRetryWrites</a>
+					<a class="permalink" href="godoc.205.html#Topology.SupportsRetryWrites">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) SupportsRetryWrites() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+SupportsRetryWrites returns true if the topology supports retryable writes, which it does if it supports sessions.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.SupportsSessions">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=8111:8153#L276">SupportsSessions</a>
+					<a class="permalink" href="godoc.205.html#Topology.SupportsSessions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) SupportsSessions() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+SupportsSessions returns true if the topology supports sessions.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Topology.Unsubscribe">func (*Topology) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/topology/topology.go?s=7395:7457#L244">Unsubscribe</a>
+					<a class="permalink" href="godoc.205.html#Topology.Unsubscribe">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.205.html#Topology">Topology</a>) Unsubscribe(sub *<a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Subscription">Subscription</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Unsubscribe unsubscribes the given subscription from the topology and closes the subscription channel.
+Unsubscribe implements the driver.Subscriber interface.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

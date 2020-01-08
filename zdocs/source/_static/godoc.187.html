@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>auth - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.187.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package auth
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/auth"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.187.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.187.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.187.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package auth is not for public use.
+</p>
+<p>
+The API for packages in the &#39;private&#39; directory have no stability
+guarantee.
+</p>
+<p>
+The packages within the &#39;private&#39; directory would normally be put into an
+&#39;internal&#39; directory to prohibit their use outside the &#39;mongo&#39; directory.
+However, some MongoDB tools require very low-level access to the building
+blocks of a driver, so we have placed them under &#39;private&#39; to allow these
+packages to be imported by projects that need them.
+</p>
+<p>
+These package APIs may be modified in backwards-incompatible ways at any
+time.
+</p>
+<p>
+You are strongly discouraged from directly using any packages
+under &#39;private&#39;.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.187.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.187.html#ConductSaslConversation">func ConductSaslConversation(ctx context.Context, conn driver.Connection, db string, client SaslClient) error</a></dd>
+			
+				
+				<dd><a href="godoc.187.html#Handshaker">func Handshaker(h driver.Handshaker, options *HandshakeOptions) driver.Handshaker</a></dd>
+			
+				
+				<dd><a href="godoc.187.html#RegisterAuthenticatorFactory">func RegisterAuthenticatorFactory(name string, factory AuthenticatorFactory)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.187.html#Authenticator">type Authenticator</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#CreateAuthenticator">func CreateAuthenticator(name string, cred *Cred) (Authenticator, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#AuthenticatorFactory">type AuthenticatorFactory</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Cred">type Cred</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#DefaultAuthenticator">type DefaultAuthenticator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#DefaultAuthenticator.Auth">func (a *DefaultAuthenticator) Auth(ctx context.Context, desc description.Server, conn driver.Connection) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.Error">func (e *Error) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.Inner">func (e *Error) Inner() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.Message">func (e *Error) Message() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#HandshakeOptions">type HandshakeOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#MongoDBCRAuthenticator">type MongoDBCRAuthenticator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#MongoDBCRAuthenticator.Auth">func (a *MongoDBCRAuthenticator) Auth(ctx context.Context, _ description.Server, conn driver.Connection) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#MongoDBX509Authenticator">type MongoDBX509Authenticator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#MongoDBX509Authenticator.Auth">func (a *MongoDBX509Authenticator) Auth(ctx context.Context, desc description.Server, conn driver.Connection) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#PlainAuthenticator">type PlainAuthenticator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#PlainAuthenticator.Auth">func (a *PlainAuthenticator) Auth(ctx context.Context, _ description.Server, conn driver.Connection) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#SaslClient">type SaslClient</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#SaslClientCloser">type SaslClientCloser</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#ScramAuthenticator">type ScramAuthenticator</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ScramAuthenticator.Auth">func (a *ScramAuthenticator) Auth(ctx context.Context, _ description.Server, conn driver.Connection) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go">auth.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/cred.go">cred.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/default.go">default.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/gssapi_not_enabled.go">gssapi_not_enabled.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/mongodbcr.go">mongodbcr.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/plain.go">plain.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/sasl.go">sasl.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/scram.go">scram.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/util.go">util.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/x509.go">x509.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+GSSAPI is the mechanism name for GSSAPI.
+</p>
+
+				<pre>const <span id="GSSAPI">GSSAPI</span> = &#34;GSSAPI&#34;</pre>
+			
+				<p>
+MONGODBCR is the mechanism name for MONGODB-CR.
+</p>
+<p>
+The MONGODB-CR authentication mechanism is deprecated in MongoDB 4.0.
+</p>
+
+				<pre>const <span id="MONGODBCR">MONGODBCR</span> = &#34;MONGODB-CR&#34;</pre>
+			
+				<p>
+MongoDBX509 is the mechanism name for MongoDBX509.
+</p>
+
+				<pre>const <span id="MongoDBX509">MongoDBX509</span> = &#34;MONGODB-X509&#34;</pre>
+			
+				<p>
+PLAIN is the mechanism name for PLAIN.
+</p>
+
+				<pre>const <span id="PLAIN">PLAIN</span> = &#34;PLAIN&#34;</pre>
+			
+				<p>
+SCRAMSHA1 holds the mechanism name &#34;SCRAM-SHA-1&#34;
+</p>
+
+				<pre>const <span id="SCRAMSHA1">SCRAMSHA1</span> = &#34;SCRAM-SHA-1&#34;</pre>
+			
+				<p>
+SCRAMSHA256 holds the mechanism name &#34;SCRAM-SHA-256&#34;
+</p>
+
+				<pre>const <span id="SCRAMSHA256">SCRAMSHA256</span> = &#34;SCRAM-SHA-256&#34;</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="ConductSaslConversation">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/sasl.go?s=877:986#L22">ConductSaslConversation</a>
+				<a class="permalink" href="godoc.187.html#ConductSaslConversation">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ConductSaslConversation(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, conn <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>, db <a href="godoc.4.html#string">string</a>, client <a href="godoc.187.html#SaslClient">SaslClient</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+ConductSaslConversation handles running a sasl conversation with MongoDB.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Handshaker">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=3548:3629#L95">Handshaker</a>
+				<a class="permalink" href="godoc.187.html#Handshaker">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Handshaker(h <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Handshaker">Handshaker</a>, options *<a href="godoc.187.html#HandshakeOptions">HandshakeOptions</a>) <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Handshaker">Handshaker</a></pre>
+			<p>
+Handshaker creates a connection handshaker for the given authenticator.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RegisterAuthenticatorFactory">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=1521:1597#L34">RegisterAuthenticatorFactory</a>
+				<a class="permalink" href="godoc.187.html#RegisterAuthenticatorFactory">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RegisterAuthenticatorFactory(name <a href="godoc.4.html#string">string</a>, factory <a href="godoc.187.html#AuthenticatorFactory">AuthenticatorFactory</a>)</pre>
+			<p>
+RegisterAuthenticatorFactory registers the authenticator factory.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Authenticator">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=3751:3890#L103">Authenticator</a>
+				<a class="permalink" href="godoc.187.html#Authenticator">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Authenticator handles authenticating a connection.
+</p>
+
+			<pre>type Authenticator interface {
+    <span class="comment">// Auth authenticates the connection.</span>
+    Auth(<a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>, <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>) <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="CreateAuthenticator">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=1235:1307#L25">CreateAuthenticator</a>
+					<a class="permalink" href="godoc.187.html#CreateAuthenticator">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func CreateAuthenticator(name <a href="godoc.4.html#string">string</a>, cred *<a href="godoc.187.html#Cred">Cred</a>) (<a href="godoc.187.html#Authenticator">Authenticator</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+CreateAuthenticator creates an authenticator.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="AuthenticatorFactory">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=582:647#L10">AuthenticatorFactory</a>
+				<a class="permalink" href="godoc.187.html#AuthenticatorFactory">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+AuthenticatorFactory constructs an authenticator.
+</p>
+
+			<pre>type AuthenticatorFactory func(cred *<a href="godoc.187.html#Cred">Cred</a>) (<a href="godoc.187.html#Authenticator">Authenticator</a>, <a href="godoc.4.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Cred">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/cred.go?s=316:445#L1">Cred</a>
+				<a class="permalink" href="godoc.187.html#Cred">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Cred is a user&#39;s credential.
+</p>
+
+			<pre>type Cred struct {
+<span id="Cred.Source"></span>    Source      <a href="godoc.4.html#string">string</a>
+<span id="Cred.Username"></span>    Username    <a href="godoc.4.html#string">string</a>
+<span id="Cred.Password"></span>    Password    <a href="godoc.4.html#string">string</a>
+<span id="Cred.PasswordSet"></span>    PasswordSet <a href="godoc.4.html#bool">bool</a>
+<span id="Cred.Props"></span>    Props       map[<a href="godoc.4.html#string">string</a>]<a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DefaultAuthenticator">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/default.go?s=625:673#L14">DefaultAuthenticator</a>
+				<a class="permalink" href="godoc.187.html#DefaultAuthenticator">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DefaultAuthenticator uses SCRAM-SHA-1 or MONGODB-CR depending
+on the server version.
+</p>
+
+			<pre>type DefaultAuthenticator struct {
+<span id="DefaultAuthenticator.Cred"></span>    Cred *<a href="godoc.187.html#Cred">Cred</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DefaultAuthenticator.Auth">func (*DefaultAuthenticator) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/default.go?s=713:824#L19">Auth</a>
+					<a class="permalink" href="godoc.187.html#DefaultAuthenticator.Auth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="godoc.187.html#DefaultAuthenticator">DefaultAuthenticator</a>) Auth(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, desc <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>, conn <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Auth authenticates the connection.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=4220:4272#L123">Error</a>
+				<a class="permalink" href="godoc.187.html#Error">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Error is an error that occurred during authentication.
+</p>
+
+			<pre>type Error struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (*Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=4274:4304#L128">Error</a>
+					<a class="permalink" href="godoc.187.html#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.187.html#Error">Error</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Error.Inner">func (*Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=4439:4468#L136">Inner</a>
+					<a class="permalink" href="godoc.187.html#Error.Inner">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.187.html#Error">Error</a>) Inner() <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Inner returns the wrapped error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.Message">func (*Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=4522:4554#L141">Message</a>
+					<a class="permalink" href="godoc.187.html#Error.Message">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.187.html#Error">Error</a>) Message() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Message returns the message.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HandshakeOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/auth.go?s=1859:2073#L41">HandshakeOptions</a>
+				<a class="permalink" href="godoc.187.html#HandshakeOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+HandshakeOptions packages options that can be passed to the Handshaker()
+function.  DBUser is optional but must be of the form &lt;dbname.username&gt;;
+if non-empty, then the connection will do SASL mechanism negotiation.
+</p>
+
+			<pre>type HandshakeOptions struct {
+<span id="HandshakeOptions.AppName"></span>    AppName               <a href="godoc.4.html#string">string</a>
+<span id="HandshakeOptions.Authenticator"></span>    Authenticator         <a href="godoc.187.html#Authenticator">Authenticator</a>
+<span id="HandshakeOptions.Compressors"></span>    Compressors           []<a href="godoc.4.html#string">string</a>
+<span id="HandshakeOptions.DBUser"></span>    DBUser                <a href="godoc.4.html#string">string</a>
+<span id="HandshakeOptions.PerformAuthentication"></span>    PerformAuthentication func(<a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>) <a href="godoc.4.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MongoDBCRAuthenticator">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/mongodbcr.go?s=1092:1181#L29">MongoDBCRAuthenticator</a>
+				<a class="permalink" href="godoc.187.html#MongoDBCRAuthenticator">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MongoDBCRAuthenticator uses the MONGODB-CR algorithm to authenticate a connection.
+</p>
+<p>
+The MONGODB-CR authentication mechanism is deprecated in MongoDB 4.0.
+</p>
+
+			<pre>type MongoDBCRAuthenticator struct {
+<span id="MongoDBCRAuthenticator.DB"></span>    DB       <a href="godoc.4.html#string">string</a>
+<span id="MongoDBCRAuthenticator.Username"></span>    Username <a href="godoc.4.html#string">string</a>
+<span id="MongoDBCRAuthenticator.Password"></span>    Password <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MongoDBCRAuthenticator.Auth">func (*MongoDBCRAuthenticator) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/mongodbcr.go?s=1297:1407#L38">Auth</a>
+					<a class="permalink" href="godoc.187.html#MongoDBCRAuthenticator.Auth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="godoc.187.html#MongoDBCRAuthenticator">MongoDBCRAuthenticator</a>) Auth(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, _ <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>, conn <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Auth authenticates the connection.
+</p>
+<p>
+The MONGODB-CR authentication mechanism is deprecated in MongoDB 4.0.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MongoDBX509Authenticator">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/x509.go?s=830:883#L16">MongoDBX509Authenticator</a>
+				<a class="permalink" href="godoc.187.html#MongoDBX509Authenticator">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MongoDBX509Authenticator uses X.509 certificates over TLS to authenticate a connection.
+</p>
+
+			<pre>type MongoDBX509Authenticator struct {
+<span id="MongoDBX509Authenticator.User"></span>    User <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MongoDBX509Authenticator.Auth">func (*MongoDBX509Authenticator) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/x509.go?s=933:1048#L21">Auth</a>
+					<a class="permalink" href="godoc.187.html#MongoDBX509Authenticator.Auth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="godoc.187.html#MongoDBX509Authenticator">MongoDBX509Authenticator</a>) Auth(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, desc <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>, conn <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Auth implements the Authenticator interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PlainAuthenticator">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/plain.go?s=722:790#L17">PlainAuthenticator</a>
+				<a class="permalink" href="godoc.187.html#PlainAuthenticator">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+PlainAuthenticator uses the PLAIN algorithm over SASL to authenticate a connection.
+</p>
+
+			<pre>type PlainAuthenticator struct {
+<span id="PlainAuthenticator.Username"></span>    Username <a href="godoc.4.html#string">string</a>
+<span id="PlainAuthenticator.Password"></span>    Password <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PlainAuthenticator.Auth">func (*PlainAuthenticator) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/plain.go?s=830:936#L23">Auth</a>
+					<a class="permalink" href="godoc.187.html#PlainAuthenticator.Auth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="godoc.187.html#PlainAuthenticator">PlainAuthenticator</a>) Auth(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, _ <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>, conn <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Auth authenticates the connection.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SaslClient">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/sasl.go?s=552:672#L9">SaslClient</a>
+				<a class="permalink" href="godoc.187.html#SaslClient">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SaslClient is the client piece of a sasl conversation.
+</p>
+
+			<pre>type SaslClient interface {
+    Start() (<a href="godoc.4.html#string">string</a>, []<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)
+    Next(challenge []<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)
+    Completed() <a href="godoc.4.html#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SaslClientCloser">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/sasl.go?s=742:798#L16">SaslClientCloser</a>
+				<a class="permalink" href="godoc.187.html#SaslClientCloser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SaslClientCloser is a SaslClient that has resources to clean up.
+</p>
+
+			<pre>type SaslClientCloser interface {
+    <a href="godoc.187.html#SaslClient">SaslClient</a>
+    Close()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ScramAuthenticator">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/scram.go?s=2017:2112#L53">ScramAuthenticator</a>
+				<a class="permalink" href="godoc.187.html#ScramAuthenticator">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ScramAuthenticator uses the SCRAM algorithm over SASL to authenticate a connection.
+</p>
+
+			<pre>type ScramAuthenticator struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ScramAuthenticator.Auth">func (*ScramAuthenticator) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/auth/scram.go?s=2152:2258#L60">Auth</a>
+					<a class="permalink" href="godoc.187.html#ScramAuthenticator.Auth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="godoc.187.html#ScramAuthenticator">ScramAuthenticator</a>) Auth(ctx <a href="godoc.137.html">context</a>.<a href="godoc.137.html#Context">Context</a>, _ <a href="godoc.189.html">description</a>.<a href="godoc.189.html#Server">Server</a>, conn <a href="godoc.185.html">driver</a>.<a href="godoc.185.html#Connection">Connection</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Auth authenticates the connection.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.185.html">..</a></td>
+			</tr>
+			
+
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

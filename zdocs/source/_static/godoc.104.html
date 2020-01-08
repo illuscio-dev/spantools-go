@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>flags - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.104.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package flags
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/jessevdk/go-flags"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.104.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.104.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.104.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.104.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package flags provides an extensive command line option parser.
+The flags package is similar in functionality to the go built-in flag package
+but provides more options and uses reflection to provide a convenient and
+succinct way of specifying command line options.
+</p>
+<h3 id="hdr-Supported_features">Supported features</h3>
+<p>
+The following features are supported in go-flags:
+</p>
+<pre>Options with short names (-v)
+Options with long names (--verbose)
+Options with and without arguments (bool v.s. other type)
+Options with optional arguments and default values
+Option default values from ENVIRONMENT_VARIABLES, including slice and map values
+Multiple option groups each containing a set of options
+Generate and print well-formatted help message
+Passing remaining command line arguments after -- (optional)
+Ignoring unknown command line options (optional)
+Supports -I/usr/include -I=/usr/include -I /usr/include option argument specification
+Supports multiple short options -aux
+Supports all primitive go types (string, int{8..64}, uint{8..64}, float)
+Supports same option multiple times (can store in slice or last option counts)
+Supports maps
+Supports function callbacks
+Supports namespaces for (nested) option groups
+</pre>
+<p>
+Additional features specific to Windows:
+</p>
+<pre>Options with short names (/v)
+Options with long names (/verbose)
+Windows-style options with arguments use a colon as the delimiter
+Modify generated help message with Windows-style / options
+Windows style options can be disabled at build time using the &#34;forceposix&#34;
+build tag
+</pre>
+<h3 id="hdr-Basic_usage">Basic usage</h3>
+<p>
+The flags package uses structs, reflection and struct field tags
+to allow users to specify command line options. This results in very simple
+and concise specification of your application options. For example:
+</p>
+<pre>type Options struct {
+    Verbose []bool `short:&#34;v&#34; long:&#34;verbose&#34; description:&#34;Show verbose debug information&#34;`
+}
+</pre>
+<p>
+This specifies one option with a short name -v and a long name --verbose.
+When either -v or --verbose is found on the command line, a &#39;true&#39; value
+will be appended to the Verbose field. e.g. when specifying -vvv, the
+resulting value of Verbose will be {[true, true, true]}.
+</p>
+<p>
+Slice options work exactly the same as primitive type options, except that
+whenever the option is encountered, a value is appended to the slice.
+</p>
+<p>
+Map options from string to primitive type are also supported. On the command
+line, you specify the value for such an option as key:value. For example
+</p>
+<pre>type Options struct {
+    AuthorInfo string[string] `short:&#34;a&#34;`
+}
+</pre>
+<p>
+Then, the AuthorInfo map can be filled with something like
+-a name:Jesse -a &#34;surname:van den Kieboom&#34;.
+</p>
+<p>
+Finally, for full control over the conversion between command line argument
+values and options, user defined types can choose to implement the Marshaler
+and Unmarshaler interfaces.
+</p>
+<h3 id="hdr-Available_field_tags">Available field tags</h3>
+<p>
+The following is a list of tags for struct fields supported by go-flags:
+</p>
+<pre>short:            the short name of the option (single character)
+long:             the long name of the option
+required:         if non empty, makes the option required to appear on the command
+                  line. If a required option is not present, the parser will
+                  return ErrRequired (optional)
+description:      the description of the option (optional)
+long-description: the long description of the option. Currently only
+                  displayed in generated man pages (optional)
+no-flag:          if non-empty, this field is ignored as an option (optional)
+
+optional:       if non-empty, makes the argument of the option optional. When an
+                argument is optional it can only be specified using
+                --option=argument (optional)
+optional-value: the value of an optional option when the option occurs
+                without an argument. This tag can be specified multiple
+                times in the case of maps or slices (optional)
+default:        the default value of an option. This tag can be specified
+                multiple times in the case of slices or maps (optional)
+default-mask:   when specified, this value will be displayed in the help
+                instead of the actual default value. This is useful
+                mostly for hiding otherwise sensitive information from
+                showing up in the help. If default-mask takes the special
+                value &#34;-&#34;, then no default value will be shown at all
+                (optional)
+env:            the default value of the option is overridden from the
+                specified environment variable, if one has been defined.
+                (optional)
+env-delim:      the &#39;env&#39; default value from environment is split into
+                multiple values with the given delimiter string, use with
+                slices and maps (optional)
+value-name:     the name of the argument value (to be shown in the help)
+                (optional)
+choice:         limits the values for an option to a set of values.
+                This tag can be specified multiple times (optional)
+hidden:         if non-empty, the option is not visible in the help or man page.
+
+base: a base (radix) used to convert strings to integer values, the
+      default base is 10 (i.e. decimal) (optional)
+
+ini-name:       the explicit ini option name (optional)
+no-ini:         if non-empty this field is ignored as an ini option
+                (optional)
+
+group:                when specified on a struct field, makes the struct
+                      field a separate group with the given name (optional)
+namespace:            when specified on a group struct field, the namespace
+                      gets prepended to every option&#39;s long name and
+                      subgroup&#39;s namespace of this group, separated by
+                      the parser&#39;s namespace delimiter (optional)
+command:              when specified on a struct field, makes the struct
+                      field a (sub)command with the given name (optional)
+subcommands-optional: when specified on a command struct field, makes
+                      any subcommands of that command optional (optional)
+alias:                when specified on a command struct field, adds the
+                      specified name as an alias for the command. Can be
+                      be specified multiple times to add more than one
+                      alias (optional)
+positional-args:      when specified on a field with a struct type,
+                      uses the fields of that struct to parse remaining
+                      positional command line arguments into (in order
+                      of the fields). If a field has a slice type,
+                      then all remaining arguments will be added to it.
+                      Positional arguments are optional by default,
+                      unless the &#34;required&#34; tag is specified together
+                      with the &#34;positional-args&#34; tag. The &#34;required&#34; tag
+                      can also be set on the individual rest argument
+                      fields, to require only the first N positional
+                      arguments. If the &#34;required&#34; tag is set on the
+                      rest arguments slice, then its value determines
+                      the minimum amount of rest arguments that needs to
+                      be provided (e.g. `required:&#34;2&#34;`) (optional)
+positional-arg-name:  used on a field in a positional argument struct; name
+                      of the positional argument placeholder to be shown in
+                      the help (optional)
+</pre>
+<p>
+Either the `short:` tag or the `long:` must be specified to make the field eligible as an
+option.
+</p>
+<h3 id="hdr-Option_groups">Option groups</h3>
+<p>
+Option groups are a simple way to semantically separate your options. All
+options in a particular group are shown together in the help under the name
+of the group. Namespaces can be used to specify option long names more
+precisely and emphasize the options affiliation to their group.
+</p>
+<p>
+There are currently three ways to specify option groups.
+</p>
+<pre>1. Use NewNamedParser specifying the various option groups.
+2. Use AddGroup to add a group to an existing parser.
+3. Add a struct field to the top-level options annotated with the
+   group:&#34;group-name&#34; tag.
+</pre>
+<h3 id="hdr-Commands">Commands</h3>
+<p>
+The flags package also has basic support for commands. Commands are often
+used in monolithic applications that support various commands or actions.
+Take git for example, all of the add, commit, checkout, etc. are called
+commands. Using commands you can easily separate multiple functions of your
+application.
+</p>
+<p>
+There are currently two ways to specify a command.
+</p>
+<pre>1. Use AddCommand on an existing parser.
+2. Add a struct field to your options struct annotated with the
+   command:&#34;command-name&#34; tag.
+</pre>
+<p>
+The most common, idiomatic way to implement commands is to define a global
+parser instance and implement each command in a separate file. These
+command files should define a go init function which calls AddCommand on
+the global parser.
+</p>
+<p>
+When parsing ends and there is an active command and that command implements
+the Commander interface, then its Execute method will be run with the
+remaining command line arguments.
+</p>
+<p>
+Command structs can have options which become valid to parse after the
+command has been specified on the command line, in addition to the options
+of all the parent commands. I.e. considering a -v flag on the parser and an
+add command, the following are equivalent:
+</p>
+<pre>./app -v add
+./app add -v
+</pre>
+<p>
+However, if the -v flag is defined on the add command, then the first of
+the two examples above would fail since the -v flag is not defined before
+the add command.
+</p>
+<h3 id="hdr-Completion">Completion</h3>
+<p>
+go-flags has builtin support to provide bash completion of flags, commands
+and argument values. To use completion, the binary which uses go-flags
+can be invoked in a special environment to list completion of the current
+command line argument. It should be noted that this `executes` your application,
+and it is up to the user to make sure there are no negative side effects (for
+example from init functions).
+</p>
+<p>
+Setting the environment variable `GO_FLAGS_COMPLETION=1` enables completion
+by replacing the argument parsing routine with the completion routine which
+outputs completions for the passed arguments. The basic invocation to
+complete a set of arguments is therefore:
+</p>
+<pre>GO_FLAGS_COMPLETION=1 ./completion-example arg1 arg2 arg3
+</pre>
+<p>
+where `completion-example` is the binary, `arg1` and `arg2` are
+the current arguments, and `arg3` (the last argument) is the argument
+to be completed. If the GO_FLAGS_COMPLETION is set to &#34;verbose&#34;, then
+descriptions of possible completion items will also be shown, if there
+are more than 1 completion items.
+</p>
+<p>
+To use this with bash completion, a simple file can be written which
+calls the binary which supports go-flags completion:
+</p>
+<pre>_completion_example() {
+    # All arguments except the first one
+    args=(&#34;${COMP_WORDS[@]:1:$COMP_CWORD}&#34;)
+
+    # Only split on newlines
+    local IFS=$&#39;\n&#39;
+
+    # Call completion (note that the first element of COMP_WORDS is
+    # the executable itself)
+    COMPREPLY=($(GO_FLAGS_COMPLETION=1 ${COMP_WORDS[0]} &#34;${args[@]}&#34;))
+    return 0
+}
+
+complete -F _completion_example completion-example
+</pre>
+<p>
+Completion requires the parser option PassDoubleDash and is therefore enforced if the environment variable GO_FLAGS_COMPLETION is set.
+</p>
+<p>
+Customized completion for argument values is supported by implementing
+the flags.Completer interface for the argument value type. An example
+of a type which does so is the flags.Filename type, an alias of string
+allowing simple filename completion. A slice or array argument value
+whose element type implements flags.Completer will also be completed.
+</p>
+
+				<div id="example_" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">var opts struct {
+    <span class="comment">// Slice of bool will append &#39;true&#39; each time the option</span>
+    <span class="comment">// is encountered (can be set multiple times, like -vvv)</span>
+    Verbose []bool `short:&#34;v&#34; long:&#34;verbose&#34; description:&#34;Show verbose debug information&#34;`
+
+    <span class="comment">// Example of automatic marshalling to desired type (uint)</span>
+    Offset uint `long:&#34;offset&#34; description:&#34;Offset&#34;`
+
+    <span class="comment">// Example of a callback, called each time the option is found.</span>
+    Call func(string) `short:&#34;c&#34; description:&#34;Call phone number&#34;`
+
+    <span class="comment">// Example of a required flag</span>
+    Name string `short:&#34;n&#34; long:&#34;name&#34; description:&#34;A name&#34; required:&#34;true&#34;`
+
+    <span class="comment">// Example of a value name</span>
+    File string `short:&#34;f&#34; long:&#34;file&#34; description:&#34;A file&#34; value-name:&#34;FILE&#34;`
+
+    <span class="comment">// Example of a pointer</span>
+    Ptr *int `short:&#34;p&#34; description:&#34;A pointer to an integer&#34;`
+
+    <span class="comment">// Example of a slice of strings</span>
+    StringSlice []string `short:&#34;s&#34; description:&#34;A slice of strings&#34;`
+
+    <span class="comment">// Example of a slice of pointers</span>
+    PtrSlice []*string `long:&#34;ptrslice&#34; description:&#34;A slice of pointers to string&#34;`
+
+    <span class="comment">// Example of a map</span>
+    IntMap map[string]int `long:&#34;intmap&#34; description:&#34;A map from string to int&#34;`
+
+    <span class="comment">// Example of a filename (useful for completion)</span>
+    Filename Filename `long:&#34;filename&#34; description:&#34;A filename&#34;`
+
+    <span class="comment">// Example of positional arguments</span>
+    Args struct {
+        ID   string
+        Num  int
+        Rest []string
+    } `positional-args:&#34;yes&#34; required:&#34;yes&#34;`
+}
+
+<span class="comment">// Callback which will invoke callto:&lt;argument&gt; to call a number.</span>
+<span class="comment">// Note that this works just on OS X (and probably only with</span>
+<span class="comment">// Skype) but it shows the idea.</span>
+opts.Call = func(num string) {
+    cmd := exec.Command(&#34;open&#34;, &#34;callto:&#34;+num)
+    cmd.Start()
+    cmd.Process.Release()
+}
+
+<span class="comment">// Make some fake arguments to parse.</span>
+args := []string{
+    &#34;-vv&#34;,
+    &#34;--offset=5&#34;,
+    &#34;-n&#34;, &#34;Me&#34;,
+    &#34;-p&#34;, &#34;3&#34;,
+    &#34;-s&#34;, &#34;hello&#34;,
+    &#34;-s&#34;, &#34;world&#34;,
+    &#34;--ptrslice&#34;, &#34;hello&#34;,
+    &#34;--ptrslice&#34;, &#34;world&#34;,
+    &#34;--intmap&#34;, &#34;a:1&#34;,
+    &#34;--intmap&#34;, &#34;b:5&#34;,
+    &#34;--filename&#34;, &#34;hello.go&#34;,
+    &#34;id&#34;,
+    &#34;10&#34;,
+    &#34;remaining1&#34;,
+    &#34;remaining2&#34;,
+}
+
+<span class="comment">// Parse flags from `args&#39;. Note that here we use flags.ParseArgs for</span>
+    <span class="comment">// the sake of making a working example. Normally, you would simply use</span>
+    <span class="comment">// flags.Parse(&amp;opts) which uses os.Args</span>
+    _, err := ParseArgs(&amp;opts, args)
+
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf(&#34;Verbosity: %v\n&#34;, opts.Verbose)
+    fmt.Printf(&#34;Offset: %d\n&#34;, opts.Offset)
+    fmt.Printf(&#34;Name: %s\n&#34;, opts.Name)
+    fmt.Printf(&#34;Ptr: %d\n&#34;, *opts.Ptr)
+    fmt.Printf(&#34;StringSlice: %v\n&#34;, opts.StringSlice)
+    fmt.Printf(&#34;PtrSlice: [%v %v]\n&#34;, *opts.PtrSlice[0], *opts.PtrSlice[1])
+    fmt.Printf(&#34;IntMap: [a:%v b:%v]\n&#34;, opts.IntMap[&#34;a&#34;], opts.IntMap[&#34;b&#34;])
+    fmt.Printf(&#34;Filename: %v\n&#34;, opts.Filename)
+    fmt.Printf(&#34;Args.ID: %s\n&#34;, opts.Args.ID)
+    fmt.Printf(&#34;Args.Num: %d\n&#34;, opts.Args.Num)
+    fmt.Printf(&#34;Args.Rest: %v\n&#34;, opts.Args.Rest)
+
+    <span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">Verbosity: [true true]
+Offset: 5
+Name: Me
+Ptr: 3
+StringSlice: [hello world]
+PtrSlice: [hello world]
+IntMap: [a:1 b:5]
+Filename: hello.go
+Args.ID: id
+Args.Num: 10
+Args.Rest: [remaining1 remaining2]
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.104.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.104.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.104.html#IniParse">func IniParse(filename string, data interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.104.html#Parse">func Parse(data interface{}) ([]string, error)</a></dd>
+			
+				
+				<dd><a href="godoc.104.html#ParseArgs">func ParseArgs(data interface{}, args []string) ([]string, error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.104.html#Arg">type Arg</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Command">type Command</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.AddCommand">func (c *Command) AddCommand(command string, shortDescription string, longDescription string, data interface{}) (*Command, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.AddGroup">func (c *Command) AddGroup(shortDescription string, longDescription string, data interface{}) (*Group, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.Args">func (c *Command) Args() []*Arg</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.Commands">func (c *Command) Commands() []*Command</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.Find">func (c *Command) Find(name string) *Command</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.FindOptionByLongName">func (c *Command) FindOptionByLongName(longName string) (option *Option)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Command.FindOptionByShortName">func (c *Command) FindOptionByShortName(shortName rune) (option *Option)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#Commander">type Commander</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Completer">type Completer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Completion">type Completion</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Error.Error">func (e *Error) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#ErrorType">type ErrorType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#ErrorType.String">func (e ErrorType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#Filename">type Filename</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Filename.Complete">func (f *Filename) Complete(match string) []Completion</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#Group">type Group</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Group.AddGroup">func (g *Group) AddGroup(shortDescription string, longDescription string, data interface{}) (*Group, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Group.Find">func (g *Group) Find(shortDescription string) *Group</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Group.FindOptionByLongName">func (g *Group) FindOptionByLongName(longName string) *Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Group.FindOptionByShortName">func (g *Group) FindOptionByShortName(shortName rune) *Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Group.Groups">func (g *Group) Groups() []*Group</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Group.Options">func (g *Group) Options() []*Option</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#IniError">type IniError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#IniError.Error">func (x *IniError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#IniOptions">type IniOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#IniParser">type IniParser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#NewIniParser">func NewIniParser(p *Parser) *IniParser</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#IniParser.Parse">func (i *IniParser) Parse(reader io.Reader) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#IniParser.ParseFile">func (i *IniParser) ParseFile(filename string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#IniParser.Write">func (i *IniParser) Write(writer io.Writer, options IniOptions)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#IniParser.WriteFile">func (i *IniParser) WriteFile(filename string, options IniOptions) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#Marshaler">type Marshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Option">type Option</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Option.Field">func (option *Option) Field() reflect.StructField</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Option.IsSet">func (option *Option) IsSet() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Option.IsSetDefault">func (option *Option) IsSetDefault() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Option.LongNameWithNamespace">func (option *Option) LongNameWithNamespace() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Option.String">func (option *Option) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Option.Value">func (option *Option) Value() interface{}</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#Options">type Options</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Parser">type Parser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#NewNamedParser">func NewNamedParser(appname string, options Options) *Parser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#NewParser">func NewParser(data interface{}, options Options) *Parser</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Parser.Parse">func (p *Parser) Parse() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Parser.ParseArgs">func (p *Parser) ParseArgs(args []string) ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Parser.WriteHelp">func (p *Parser) WriteHelp(writer io.Writer)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.104.html#Parser.WriteManPage">func (p *Parser) WriteManPage(wr io.Writer)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.104.html#SplitArgument">type SplitArgument</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Unmarshaler">type Unmarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.104.html#Usage">type Usage</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.104.html#example_">Package</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/arg.go">arg.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/closest.go">closest.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go">command.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/completion.go">completion.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/convert.go">convert.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/error.go">error.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/flags.go">flags.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go">group.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/help.go">help.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go">ini.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/man.go">man.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/multitag.go">multitag.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go">option.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/optstyle_other.go">optstyle_other.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go">parser.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/termsize.go">termsize.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/jessevdk/go-flags/tiocgwinsz_linux.go">tiocgwinsz_linux.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// IniNone indicates no options.</span>
+    <span id="IniNone">IniNone</span> <a href="godoc.104.html#IniOptions">IniOptions</a> = 0
+
+    <span class="comment">// IniIncludeDefaults indicates that default values should be written.</span>
+    <span id="IniIncludeDefaults">IniIncludeDefaults</span> = 1 &lt;&lt; <a href="godoc.4.html#iota">iota</a>
+
+    <span class="comment">// IniCommentDefaults indicates that if IniIncludeDefaults is used</span>
+    <span class="comment">// options with default values are written but commented out.</span>
+    <span id="IniCommentDefaults">IniCommentDefaults</span>
+
+    <span class="comment">// IniIncludeComments indicates that comments containing the description</span>
+    <span class="comment">// of an option should be written.</span>
+    <span id="IniIncludeComments">IniIncludeComments</span>
+
+    <span class="comment">// IniDefault provides a default set of options.</span>
+    <span id="IniDefault">IniDefault</span> = <a href="godoc.104.html#IniIncludeComments">IniIncludeComments</a>
+)</pre>
+			
+				
+				<pre>const (
+    <span class="comment">// None indicates no options.</span>
+    <span id="None">None</span> <a href="godoc.104.html#Options">Options</a> = 0
+
+    <span class="comment">// HelpFlag adds a default Help Options group to the parser containing</span>
+    <span class="comment">// -h and --help options. When either -h or --help is specified on the</span>
+    <span class="comment">// command line, the parser will return the special error of type</span>
+    <span class="comment">// ErrHelp. When PrintErrors is also specified, then the help message</span>
+    <span class="comment">// will also be automatically printed to os.Stdout.</span>
+    <span id="HelpFlag">HelpFlag</span> = 1 &lt;&lt; <a href="godoc.4.html#iota">iota</a>
+
+    <span class="comment">// PassDoubleDash passes all arguments after a double dash, --, as</span>
+    <span class="comment">// remaining command line arguments (i.e. they will not be parsed for</span>
+    <span class="comment">// flags).</span>
+    <span id="PassDoubleDash">PassDoubleDash</span>
+
+    <span class="comment">// IgnoreUnknown ignores any unknown options and passes them as</span>
+    <span class="comment">// remaining command line arguments instead of generating an error.</span>
+    <span id="IgnoreUnknown">IgnoreUnknown</span>
+
+    <span class="comment">// PrintErrors prints any errors which occurred during parsing to</span>
+    <span class="comment">// os.Stderr. In the special case of ErrHelp, the message will be printed</span>
+    <span class="comment">// to os.Stdout.</span>
+    <span id="PrintErrors">PrintErrors</span>
+
+    <span class="comment">// PassAfterNonOption passes all arguments after the first non option</span>
+    <span class="comment">// as remaining command line arguments. This is equivalent to strict</span>
+    <span class="comment">// POSIX processing.</span>
+    <span id="PassAfterNonOption">PassAfterNonOption</span>
+
+    <span class="comment">// Default is a convenient default set of options which should cover</span>
+    <span class="comment">// most of the uses of the flags package.</span>
+    <span id="Default">Default</span> = <a href="godoc.104.html#HelpFlag">HelpFlag</a> | <a href="godoc.104.html#PrintErrors">PrintErrors</a> | <a href="godoc.104.html#PassDoubleDash">PassDoubleDash</a>
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrNotPointerToStruct indicates that a provided data container is not
+a pointer to a struct. Only pointers to structs are valid data containers
+for options.
+</p>
+
+				<pre>var <span id="ErrNotPointerToStruct">ErrNotPointerToStruct</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;provided data is not a pointer to struct&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="IniParse">func <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=1957:2011#L81">IniParse</a>
+				<a class="permalink" href="godoc.104.html#IniParse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IniParse(filename <a href="godoc.4.html#string">string</a>, data interface{}) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+IniParse is a convenience function to parse command line options with default
+settings from an ini formatted file. The provided data is a pointer to a struct
+representing the default option group (named &#34;Application Options&#34;). For
+more control, use flags.NewParser.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Parse">func <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=4280:4326#L122">Parse</a>
+				<a class="permalink" href="godoc.104.html#Parse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Parse(data interface{}) ([]<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Parse is a convenience function to parse command line options with default
+settings. The provided data is a pointer to a struct representing the
+default option group (named &#34;Application Options&#34;). For more control, use
+flags.NewParser.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ParseArgs">func <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=4812:4877#L132">ParseArgs</a>
+				<a class="permalink" href="godoc.104.html#ParseArgs">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ParseArgs(data interface{}, args []<a href="godoc.4.html#string">string</a>) ([]<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+ParseArgs is a convenience function to parse command line options with default
+settings. The provided data is a pointer to a struct representing the
+default option group (named &#34;Application Options&#34;). The args argument is
+the list of command line arguments to parse. If you just want to parse the
+default program command line arguments (i.e. os.Args), then use flags.Parse
+instead. For more control, use flags.NewParser.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Arg">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/arg.go?s=99:462#L1">Arg</a>
+				<a class="permalink" href="godoc.104.html#Arg">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Arg represents a positional argument on the command line.
+</p>
+
+			<pre>type Arg struct {
+    <span class="comment">// The name of the positional argument (used in the help)</span>
+<span id="Arg.Name"></span>    Name <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// A description of the positional argument (used in the help)</span>
+<span id="Arg.Description"></span>    Description <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The minimal number of required positional arguments</span>
+<span id="Arg.Required"></span>    Required <a href="godoc.4.html#int">int</a>
+
+    <span class="comment">// The maximum number of required positional arguments</span>
+<span id="Arg.RequiredMaximum"></span>    RequiredMaximum <a href="godoc.4.html#int">int</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Command">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=355:827#L4">Command</a>
+				<a class="permalink" href="godoc.104.html#Command">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Command represents an application command. Commands can be added to the
+parser (which itself is a command) and are selected/executed when its name
+is specified on the command line. The Command type embeds a Group and
+therefore also carries a set of command specific options.
+</p>
+
+			<pre>type Command struct {
+    <span class="comment">// Embedded, see Group for more information</span>
+    *<a href="godoc.104.html#Group">Group</a>
+
+    <span class="comment">// The name by which the command can be invoked</span>
+<span id="Command.Name"></span>    Name <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The active sub command (set by parsing) or nil</span>
+<span id="Command.Active"></span>    Active *<a href="godoc.104.html#Command">Command</a>
+
+    <span class="comment">// Whether subcommands are optional</span>
+<span id="Command.SubcommandsOptional"></span>    SubcommandsOptional <a href="godoc.4.html#bool">bool</a>
+
+<span id="Command.Aliases"></span>    <span class="comment">// Aliases for the command</span>
+    Aliases []<a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// Whether positional arguments are required</span>
+<span id="Command.ArgsRequired"></span>    ArgsRequired <a href="godoc.4.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Command.AddCommand">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=2013:2142#L58">AddCommand</a>
+					<a class="permalink" href="godoc.104.html#Command.AddCommand">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) AddCommand(command <a href="godoc.4.html#string">string</a>, shortDescription <a href="godoc.4.html#string">string</a>, longDescription <a href="godoc.4.html#string">string</a>, data interface{}) (*<a href="godoc.104.html#Command">Command</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+AddCommand adds a new command to the parser with the given name and data. The
+data needs to be a pointer to a struct from which the fields indicate which
+options are in the command. The provided data can implement the Command and
+Usage interfaces.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Command.AddGroup">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=2534:2643#L74">AddGroup</a>
+					<a class="permalink" href="godoc.104.html#Command.AddGroup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) AddGroup(shortDescription <a href="godoc.4.html#string">string</a>, longDescription <a href="godoc.4.html#string">string</a>, data interface{}) (*<a href="godoc.104.html#Group">Group</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+AddGroup adds a new group to the command with the given name and data. The
+data needs to be a pointer to a struct from which the fields indicate which
+options are in the group.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Command.Args">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=4095:4126#L131">Args</a>
+					<a class="permalink" href="godoc.104.html#Command.Args">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) Args() []*<a href="godoc.104.html#Arg">Arg</a></pre>
+				<p>
+Args returns a list of positional arguments associated with this command.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Command.Commands">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=2937:2976#L88">Commands</a>
+					<a class="permalink" href="godoc.104.html#Command.Commands">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) Commands() []*<a href="godoc.104.html#Command">Command</a></pre>
+				<p>
+Commands returns a list of subcommands of this command.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Command.Find">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=3125:3169#L94">Find</a>
+					<a class="permalink" href="godoc.104.html#Command.Find">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) Find(name <a href="godoc.4.html#string">string</a>) *<a href="godoc.104.html#Command">Command</a></pre>
+				<p>
+Find locates the subcommand with the given name and returns it. If no such
+command can be found Find will return nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Command.FindOptionByLongName">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=3429:3501#L107">FindOptionByLongName</a>
+					<a class="permalink" href="godoc.104.html#Command.FindOptionByLongName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) FindOptionByLongName(longName <a href="godoc.4.html#string">string</a>) (option *<a href="godoc.104.html#Option">Option</a>)</pre>
+				<p>
+FindOptionByLongName finds an option that is part of the command, or any of
+its parent commands, by matching its long name (including the option
+namespace).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Command.FindOptionByShortName">func (*Command) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=3806:3878#L120">FindOptionByShortName</a>
+					<a class="permalink" href="godoc.104.html#Command.FindOptionByShortName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.104.html#Command">Command</a>) FindOptionByShortName(shortName <a href="godoc.4.html#rune">rune</a>) (option *<a href="godoc.104.html#Option">Option</a>)</pre>
+				<p>
+FindOptionByShortName finds an option that is part of the command, or any of
+its parent commands, by matching its long name (including the option
+namespace).
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Commander">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=1062:1354#L31">Commander</a>
+				<a class="permalink" href="godoc.104.html#Commander">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Commander is an interface which can be implemented by any command added in
+the options. When implemented, the Execute method will be called for the last
+specified (sub)command providing the remaining command line arguments.
+</p>
+
+			<pre>type Commander interface {
+    <span class="comment">// Execute will be called for the last active (sub)command. The</span>
+    <span class="comment">// args argument contains the remaining command line arguments. The</span>
+    <span class="comment">// error that Execute returns will be eventually passed out of the</span>
+    <span class="comment">// Parse method of the Parser.</span>
+    Execute(args []<a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Completer">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/completion.go?s=639:844#L27">Completer</a>
+				<a class="permalink" href="godoc.104.html#Completer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Completer is an interface which can be implemented by types
+to provide custom command line argument completion.
+</p>
+
+			<pre>type Completer interface {
+    <span class="comment">// Complete receives a prefix representing a (partial) value</span>
+    <span class="comment">// for its type and should provide a list of possible valid</span>
+    <span class="comment">// completions.</span>
+    Complete(match <a href="godoc.4.html#string">string</a>) []<a href="godoc.104.html#Completion">Completion</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Completion">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/completion.go?s=161:295#L3">Completion</a>
+				<a class="permalink" href="godoc.104.html#Completion">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Completion is a type containing information of a completion.
+</p>
+
+			<pre>type Completion struct {
+    <span class="comment">// The completed item</span>
+<span id="Completion.Item"></span>    Item <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// A description of the completed item (optional)</span>
+<span id="Completion.Description"></span>    Description <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/error.go?s=2441:2539#L92">Error</a>
+				<a class="permalink" href="godoc.104.html#Error">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Error represents a parser error. The error returned from Parse is of this
+type. The error contains both a Type and Message.
+</p>
+
+			<pre>type Error struct {
+    <span class="comment">// The type of error</span>
+<span id="Error.Type"></span>    Type <a href="godoc.104.html#ErrorType">ErrorType</a>
+
+    <span class="comment">// The error message</span>
+<span id="Error.Message"></span>    Message <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (*Error) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/error.go?s=2578:2608#L101">Error</a>
+					<a class="permalink" href="godoc.104.html#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.104.html#Error">Error</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Error returns the error&#39;s message
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrorType">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/error.go?s=77:96#L1">ErrorType</a>
+				<a class="permalink" href="godoc.104.html#ErrorType">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ErrorType represents the type of error.
+</p>
+
+			<pre>type ErrorType <a href="godoc.4.html#uint">uint</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// ErrUnknown indicates a generic error.</span>
+    <span id="ErrUnknown">ErrUnknown</span> <a href="godoc.104.html#ErrorType">ErrorType</a> = <a href="godoc.4.html#iota">iota</a>
+
+    <span class="comment">// ErrExpectedArgument indicates that an argument was expected.</span>
+    <span id="ErrExpectedArgument">ErrExpectedArgument</span>
+
+    <span class="comment">// ErrUnknownFlag indicates an unknown flag.</span>
+    <span id="ErrUnknownFlag">ErrUnknownFlag</span>
+
+    <span class="comment">// ErrUnknownGroup indicates an unknown group.</span>
+    <span id="ErrUnknownGroup">ErrUnknownGroup</span>
+
+    <span class="comment">// ErrMarshal indicates a marshalling error while converting values.</span>
+    <span id="ErrMarshal">ErrMarshal</span>
+
+    <span class="comment">// ErrHelp indicates that the built-in help was shown (the error</span>
+    <span class="comment">// contains the help message).</span>
+    <span id="ErrHelp">ErrHelp</span>
+
+    <span class="comment">// ErrNoArgumentForBool indicates that an argument was given for a</span>
+    <span class="comment">// boolean flag (which don&#39;t not take any arguments).</span>
+    <span id="ErrNoArgumentForBool">ErrNoArgumentForBool</span>
+
+    <span class="comment">// ErrRequired indicates that a required flag was not provided.</span>
+    <span id="ErrRequired">ErrRequired</span>
+
+    <span class="comment">// ErrShortNameTooLong indicates that a short flag name was specified,</span>
+    <span class="comment">// longer than one character.</span>
+    <span id="ErrShortNameTooLong">ErrShortNameTooLong</span>
+
+    <span class="comment">// ErrDuplicatedFlag indicates that a short or long flag has been</span>
+    <span class="comment">// defined more than once</span>
+    <span id="ErrDuplicatedFlag">ErrDuplicatedFlag</span>
+
+    <span class="comment">// ErrTag indicates an error while parsing flag tags.</span>
+    <span id="ErrTag">ErrTag</span>
+
+    <span class="comment">// ErrCommandRequired indicates that a command was required but not</span>
+    <span class="comment">// specified</span>
+    <span id="ErrCommandRequired">ErrCommandRequired</span>
+
+    <span class="comment">// ErrUnknownCommand indicates that an unknown command was specified.</span>
+    <span id="ErrUnknownCommand">ErrUnknownCommand</span>
+
+    <span class="comment">// ErrInvalidChoice indicates an invalid option value which only allows</span>
+    <span class="comment">// a certain number of choices.</span>
+    <span id="ErrInvalidChoice">ErrInvalidChoice</span>
+
+    <span class="comment">// ErrInvalidTag indicates an invalid tag or invalid use of an existing tag</span>
+    <span id="ErrInvalidTag">ErrInvalidTag</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrorType.String">func (ErrorType) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/error.go?s=1528:1562#L53">String</a>
+					<a class="permalink" href="godoc.104.html#ErrorType.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.104.html#ErrorType">ErrorType</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Filename">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/completion.go?s=956:976#L39">Filename</a>
+				<a class="permalink" href="godoc.104.html#Filename">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Filename is a string alias which provides filename completion.
+</p>
+
+			<pre>type Filename <a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Filename.Complete">func (*Filename) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/completion.go?s=1220:1274#L53">Complete</a>
+					<a class="permalink" href="godoc.104.html#Filename.Complete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.104.html#Filename">Filename</a>) Complete(match <a href="godoc.4.html#string">string</a>) []<a href="godoc.104.html#Completion">Completion</a></pre>
+				<p>
+Complete returns a list of existing files with the given
+prefix.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Group">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=773:1551#L13">Group</a>
+				<a class="permalink" href="godoc.104.html#Group">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Group represents an option group. Option groups can be used to logically
+group options together under a description. Groups are only used to provide
+more structure to options both for the user (as displayed in the help message)
+and for you, since groups can be nested.
+</p>
+
+			<pre>type Group struct {
+    <span class="comment">// A short description of the group. The</span>
+    <span class="comment">// short description is primarily used in the built-in generated help</span>
+    <span class="comment">// message</span>
+<span id="Group.ShortDescription"></span>    ShortDescription <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// A long description of the group. The long</span>
+    <span class="comment">// description is primarily used to present information on commands</span>
+    <span class="comment">// (Command embeds Group) in the built-in generated help and man pages.</span>
+<span id="Group.LongDescription"></span>    LongDescription <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The namespace of the group</span>
+<span id="Group.Namespace"></span>    Namespace <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// If true, the group is not displayed in the help or man page</span>
+<span id="Group.Hidden"></span>    Hidden <a href="godoc.4.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Group.AddGroup">func (*Group) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=1813:1920#L50">AddGroup</a>
+					<a class="permalink" href="godoc.104.html#Group.AddGroup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.104.html#Group">Group</a>) AddGroup(shortDescription <a href="godoc.4.html#string">string</a>, longDescription <a href="godoc.4.html#string">string</a>, data interface{}) (*<a href="godoc.104.html#Group">Group</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+AddGroup adds a new group to the command with the given name and data. The
+data needs to be a pointer to a struct from which the fields indicate which
+options are in the group.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Group.Find">func (*Group) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=2544:2596#L76">Find</a>
+					<a class="permalink" href="godoc.104.html#Group.Find">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.104.html#Group">Group</a>) Find(shortDescription <a href="godoc.4.html#string">string</a>) *<a href="godoc.104.html#Group">Group</a></pre>
+				<p>
+Find locates the subgroup with the given short description and returns it.
+If no such group can be found Find will return nil. Note that the description
+is matched case insensitively.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Group.FindOptionByLongName">func (*Group) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=3196:3257#L104">FindOptionByLongName</a>
+					<a class="permalink" href="godoc.104.html#Group.FindOptionByLongName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.104.html#Group">Group</a>) FindOptionByLongName(longName <a href="godoc.4.html#string">string</a>) *<a href="godoc.104.html#Option">Option</a></pre>
+				<p>
+FindOptionByLongName finds an option that is part of the group, or any of its
+subgroups, by matching its long name (including the option namespace).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Group.FindOptionByShortName">func (*Group) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=3492:3553#L112">FindOptionByShortName</a>
+					<a class="permalink" href="godoc.104.html#Group.FindOptionByShortName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.104.html#Group">Group</a>) FindOptionByShortName(shortName <a href="godoc.4.html#rune">rune</a>) *<a href="godoc.104.html#Option">Option</a></pre>
+				<p>
+FindOptionByShortName finds an option that is part of the group, or any of
+its subgroups, by matching its short name.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Group.Groups">func (*Group) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=2182:2215#L64">Groups</a>
+					<a class="permalink" href="godoc.104.html#Group.Groups">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.104.html#Group">Group</a>) Groups() []*<a href="godoc.104.html#Group">Group</a></pre>
+				<p>
+Groups returns the list of groups embedded in this group.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Group.Options">func (*Group) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/group.go?s=2292:2327#L69">Options</a>
+					<a class="permalink" href="godoc.104.html#Group.Options">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.104.html#Group">Group</a>) Options() []*<a href="godoc.104.html#Option">Option</a></pre>
+				<p>
+Options returns the list of options in this group.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="IniError">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=166:368#L5">IniError</a>
+				<a class="permalink" href="godoc.104.html#IniError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+IniError contains location information on where an error occurred.
+</p>
+
+			<pre>type IniError struct {
+    <span class="comment">// The error message.</span>
+<span id="IniError.Message"></span>    Message <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The filename of the file in which the error occurred.</span>
+<span id="IniError.File"></span>    File <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The line number at which the error occurred.</span>
+<span id="IniError.LineNumber"></span>    LineNumber <a href="godoc.4.html#uint">uint</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="IniError.Error">func (*IniError) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=447:480#L17">Error</a>
+					<a class="permalink" href="godoc.104.html#IniError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (x *<a href="godoc.104.html#IniError">IniError</a>) Error() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Error provides a &#34;file:line: message&#34; formatted message of the ini error.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="IniOptions">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=590:610#L27">IniOptions</a>
+				<a class="permalink" href="godoc.104.html#IniOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+IniOptions for writing
+</p>
+
+			<pre>type IniOptions <a href="godoc.4.html#uint">uint</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="IniParser">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=1249:1339#L50">IniParser</a>
+				<a class="permalink" href="godoc.104.html#IniParser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+IniParser is a utility to read and write flags options from and to ini
+formatted strings.
+</p>
+
+			<pre>type IniParser struct {
+<span id="IniParser.ParseAsDefaults"></span>    ParseAsDefaults <a href="godoc.4.html#bool">bool</a> <span class="comment">// override default flags</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewIniParser">func <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=1598:1637#L71">NewIniParser</a>
+					<a class="permalink" href="godoc.104.html#NewIniParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewIniParser(p *<a href="godoc.104.html#Parser">Parser</a>) *<a href="godoc.104.html#IniParser">IniParser</a></pre>
+				<p>
+NewIniParser creates a new ini parser for a given Parser.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="IniParser.Parse">func (*IniParser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=3441:3490#L124">Parse</a>
+					<a class="permalink" href="godoc.104.html#IniParser.Parse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.104.html#IniParser">IniParser</a>) Parse(reader <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+Parse parses flags from an ini format. You can use ParseFile as a
+convenience function to parse from a filename instead of a general
+io.Reader.
+</p>
+<p>
+The format of the ini file is as follows:
+</p>
+<pre>[Option group name]
+option = value
+</pre>
+<p>
+Each section in the ini file represents an option group or command in the
+flags parser. The default flags parser option group (i.e. when using
+flags.Parse) is named &#39;Application Options&#39;. The ini option name is matched
+in the following order:
+</p>
+<pre>1. Compared to the ini-name tag on the option struct field (if present)
+2. Compared to the struct field name
+3. Compared to the option long name (if present)
+4. Compared to the option short name (if present)
+</pre>
+<p>
+Sections for nested groups and commands can be addressed using a dot `.&#39;
+namespacing notation (i.e [subcommand.Options]). Group section names are
+matched case insensitive.
+</p>
+<p>
+The returned errors can be of the type flags.Error or flags.IniError.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="IniParser.ParseFile">func (*IniParser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=2278:2330#L90">ParseFile</a>
+					<a class="permalink" href="godoc.104.html#IniParser.ParseFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.104.html#IniParser">IniParser</a>) ParseFile(filename <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+ParseFile parses flags from an ini formatted file. See Parse for more
+information on the ini file format. The returned errors can be of the type
+flags.Error or flags.IniError.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="IniParser.Write">func (*IniParser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=4238:4301#L146">Write</a>
+					<a class="permalink" href="godoc.104.html#IniParser.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.104.html#IniParser">IniParser</a>) Write(writer <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, options <a href="godoc.104.html#IniOptions">IniOptions</a>)</pre>
+				<p>
+Write writes the current values of all the flags to an ini format.
+See Parse for more information on the ini file format. You typically
+call this only after settings have been parsed since the default values of each
+option are stored just before parsing the flags (this is only relevant when
+IniIncludeDefaults is _not_ set in options).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="IniParser.WriteFile">func (*IniParser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/ini.go?s=3763:3835#L137">WriteFile</a>
+					<a class="permalink" href="godoc.104.html#IniParser.WriteFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.104.html#IniParser">IniParser</a>) WriteFile(filename <a href="godoc.4.html#string">string</a>, options <a href="godoc.104.html#IniOptions">IniOptions</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+WriteFile writes the flags as ini format into a file. See Write
+for more information. The returned error occurs when the specified file
+could not be opened for writing.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Marshaler">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/convert.go?s=364:491#L7">Marshaler</a>
+				<a class="permalink" href="godoc.104.html#Marshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Marshaler is the interface implemented by types that can marshal themselves
+to a string representation of the flag.
+</p>
+
+			<pre>type Marshaler interface {
+    <span class="comment">// MarshalFlag marshals a flag value to its string representation.</span>
+    MarshalFlag() (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=257:2678#L5">Option</a>
+				<a class="permalink" href="godoc.104.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Option flag information. Contains a description of the option, short and
+long name as well as a default value and whether an argument for this
+flag is optional.
+</p>
+
+			<pre>type Option struct {
+    <span class="comment">// The description of the option flag. This description is shown</span>
+    <span class="comment">// automatically in the built-in help.</span>
+<span id="Option.Description"></span>    Description <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The short name of the option (a single character). If not 0, the</span>
+    <span class="comment">// option flag can be &#39;activated&#39; using -&lt;ShortName&gt;. Either ShortName</span>
+    <span class="comment">// or LongName needs to be non-empty.</span>
+<span id="Option.ShortName"></span>    ShortName <a href="godoc.4.html#rune">rune</a>
+
+    <span class="comment">// The long name of the option. If not &#34;&#34;, the option flag can be</span>
+    <span class="comment">// activated using --&lt;LongName&gt;. Either ShortName or LongName needs</span>
+    <span class="comment">// to be non-empty.</span>
+<span id="Option.LongName"></span>    LongName <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The default value of the option.</span>
+<span id="Option.Default"></span>    Default []<a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The optional environment default value key name.</span>
+<span id="Option.EnvDefaultKey"></span>    EnvDefaultKey <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// The optional delimiter string for EnvDefaultKey values.</span>
+<span id="Option.EnvDefaultDelim"></span>    EnvDefaultDelim <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// If true, specifies that the argument to an option flag is optional.</span>
+    <span class="comment">// When no argument to the flag is specified on the command line, the</span>
+    <span class="comment">// value of OptionalValue will be set in the field this option represents.</span>
+    <span class="comment">// This is only valid for non-boolean options.</span>
+<span id="Option.OptionalArgument"></span>    OptionalArgument <a href="godoc.4.html#bool">bool</a>
+
+    <span class="comment">// The optional value of the option. The optional value is used when</span>
+    <span class="comment">// the option flag is marked as having an OptionalArgument. This means</span>
+    <span class="comment">// that when the flag is specified, but no option argument is given,</span>
+    <span class="comment">// the value of the field this option represents will be set to</span>
+<span id="Option.OptionalValue"></span>    <span class="comment">// OptionalValue. This is only valid for non-boolean options.</span>
+    OptionalValue []<a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// If true, the option _must_ be specified on the command line. If the</span>
+    <span class="comment">// option is not specified, the parser will generate an ErrRequired type</span>
+    <span class="comment">// error.</span>
+<span id="Option.Required"></span>    Required <a href="godoc.4.html#bool">bool</a>
+
+    <span class="comment">// A name for the value of an option shown in the Help as --flag [ValueName]</span>
+<span id="Option.ValueName"></span>    ValueName <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// A mask value to show in the help instead of the default value. This</span>
+    <span class="comment">// is useful for hiding sensitive information in the help, such as</span>
+    <span class="comment">// passwords.</span>
+<span id="Option.DefaultMask"></span>    DefaultMask <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// If non empty, only a certain set of values is allowed for an option.</span>
+<span id="Option.Choices"></span>    Choices []<a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// If true, the option is not displayed in the help or man page</span>
+<span id="Option.Hidden"></span>    Hidden <a href="godoc.4.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Option.Field">func (*Option) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=4650:4699#L163">Field</a>
+					<a class="permalink" href="godoc.104.html#Option.Field">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (option *<a href="godoc.104.html#Option">Option</a>) Field() <a href="godoc.39.html">reflect</a>.<a href="godoc.39.html#StructField">StructField</a></pre>
+				<p>
+Field returns the reflect struct field of the option.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Option.IsSet">func (*Option) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=4771:4805#L168">IsSet</a>
+					<a class="permalink" href="godoc.104.html#Option.IsSet">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (option *<a href="godoc.104.html#Option">Option</a>) IsSet() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsSet returns true if option has been set
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Option.IsSetDefault">func (*Option) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=4911:4952#L173">IsSetDefault</a>
+					<a class="permalink" href="godoc.104.html#Option.IsSetDefault">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (option *<a href="godoc.104.html#Option">Option</a>) IsSetDefault() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsSetDefault returns true if option has been set via the default option tag
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Option.LongNameWithNamespace">func (*Option) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=2962:3014#L85">LongNameWithNamespace</a>
+					<a class="permalink" href="godoc.104.html#Option.LongNameWithNamespace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (option *<a href="godoc.104.html#Option">Option</a>) LongNameWithNamespace() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+LongNameWithNamespace returns the option&#39;s long name with the group namespaces
+prepended by walking up the option&#39;s group tree. Namespaces and the long name
+itself are separated by the parser&#39;s namespace delimiter. If the long name is
+empty an empty string is returned.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Option.String">func (*Option) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=3844:3881#L134">String</a>
+					<a class="permalink" href="godoc.104.html#Option.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (option *<a href="godoc.104.html#Option">Option</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String converts an option to a human friendly readable string describing the
+option.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Option.Value">func (*Option) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/option.go?s=4513:4554#L158">Value</a>
+					<a class="permalink" href="godoc.104.html#Option.Value">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (option *<a href="godoc.104.html#Option">Option</a>) Value() interface{}</pre>
+				<p>
+Value returns the option value as an interface{}.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Options">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=2593:2610#L70">Options</a>
+				<a class="permalink" href="godoc.104.html#Options">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Options provides parser options that change the behavior of the option
+parser.
+</p>
+
+			<pre>type Options <a href="godoc.4.html#uint">uint</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Parser">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=385:2073#L9">Parser</a>
+				<a class="permalink" href="godoc.104.html#Parser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Parser provides command line option parsing. It can contain several
+option groups each with their own set of options.
+</p>
+
+			<pre>type Parser struct {
+    <span class="comment">// Embedded, see Command for more information</span>
+    *<a href="godoc.104.html#Command">Command</a>
+
+    <span class="comment">// A usage string to be displayed in the help message.</span>
+<span id="Parser.Usage"></span>    Usage <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// Option flags changing the behavior of the parser.</span>
+<span id="Parser.Options"></span>    Options <a href="godoc.104.html#Options">Options</a>
+
+<span id="Parser.NamespaceDelimiter"></span>    <span class="comment">// NamespaceDelimiter separates group namespaces and option long names</span>
+    NamespaceDelimiter <a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// UnknownOptionsHandler is a function which gets called when the parser</span>
+    <span class="comment">// encounters an unknown option. The function receives the unknown option</span>
+    <span class="comment">// name, a SplitArgument which specifies its value if set with an argument</span>
+    <span class="comment">// separator, and the remaining command line arguments.</span>
+    <span class="comment">// It should return a new list of remaining arguments to continue parsing,</span>
+    <span class="comment">// or an error to indicate a parse failure.</span>
+<span id="Parser.UnknownOptionHandler"></span>    UnknownOptionHandler func(option <a href="godoc.4.html#string">string</a>, arg <a href="godoc.104.html#SplitArgument">SplitArgument</a>, args []<a href="godoc.4.html#string">string</a>) ([]<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)
+
+<span id="Parser.CompletionHandler"></span>    <span class="comment">// CompletionHandler is a function gets called to handle the completion of</span>
+    <span class="comment">// items. By default, the items are printed and the application is exited.</span>
+    <span class="comment">// You can override this default behavior by specifying a custom CompletionHandler.</span>
+    CompletionHandler func(items []<a href="godoc.104.html#Completion">Completion</a>)
+
+<span id="Parser.CommandHandler"></span>    <span class="comment">// CommandHandler is a function that gets called to handle execution of a</span>
+    <span class="comment">// command. By default, the command will simply be executed. This can be</span>
+    <span class="comment">// overridden to perform certain actions (such as applying global flags)</span>
+    <span class="comment">// just before the command is executed. Note that if you override the</span>
+    <span class="comment">// handler it is your responsibility to call the command.Execute function.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The command passed into CommandHandler may be nil in case there is no</span>
+    <span class="comment">// command to be executed when parsing has finished.</span>
+    CommandHandler func(command <a href="godoc.104.html#Commander">Commander</a>, args []<a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewNamedParser">func <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=5819:5879#L161">NewNamedParser</a>
+					<a class="permalink" href="godoc.104.html#NewNamedParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewNamedParser(appname <a href="godoc.4.html#string">string</a>, options <a href="godoc.104.html#Options">Options</a>) *<a href="godoc.104.html#Parser">Parser</a></pre>
+				<p>
+NewNamedParser creates a new parser. The appname is used to display the
+executable name in the built-in help message. Option groups and commands can
+be added to this parser by using AddGroup and AddCommand.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewParser">func <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=5334:5391#L142">NewParser</a>
+					<a class="permalink" href="godoc.104.html#NewParser">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewParser(data interface{}, options <a href="godoc.104.html#Options">Options</a>) *<a href="godoc.104.html#Parser">Parser</a></pre>
+				<p>
+NewParser creates a new parser. It uses os.Args[0] as the application
+name and then calls Parser.NewNamedParser (see Parser.NewNamedParser for
+more details). The provided data is a pointer to a struct representing the
+default option group (named &#34;Application Options&#34;), or nil if the default
+group should not be added. The options parameter specifies a set of options
+for the parser.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Parser.Parse">func (*Parser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=6179:6221#L175">Parse</a>
+					<a class="permalink" href="godoc.104.html#Parser.Parse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.104.html#Parser">Parser</a>) Parse() ([]<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Parse parses the command line arguments from os.Args using Parser.ParseArgs.
+For more detailed information see ParseArgs.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.ParseArgs">func (*Parser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=6966:7025#L190">ParseArgs</a>
+					<a class="permalink" href="godoc.104.html#Parser.ParseArgs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.104.html#Parser">Parser</a>) ParseArgs(args []<a href="godoc.4.html#string">string</a>) ([]<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ParseArgs parses the command line arguments according to the option groups that
+were added to the parser. On successful parsing of the arguments, the
+remaining, non-option, arguments (if any) are returned. The returned error
+indicates a parsing error and can be used with PrintError to display
+contextual information on where the error occurred exactly.
+</p>
+<p>
+When the common help group has been added (AddHelp) and either -h or --help
+was specified in the command line arguments, a help message will be
+automatically printed if the PrintErrors option is enabled.
+Furthermore, the special error type ErrHelp is returned.
+It is up to the caller to exit the program if so desired.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.WriteHelp">func (*Parser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/help.go?s=4981:5025#L267">WriteHelp</a>
+					<a class="permalink" href="godoc.104.html#Parser.WriteHelp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.104.html#Parser">Parser</a>) WriteHelp(writer <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>)</pre>
+				<p>
+WriteHelp writes a help message containing all the possible options and
+their descriptions to the provided writer. Note that the HelpFlag parser
+option provides a convenient way to add a -h/--help option group to the
+command line parser which will automatically show the help messages using
+this method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.WriteManPage">func (*Parser) <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/man.go?s=4038:4081#L166">WriteManPage</a>
+					<a class="permalink" href="godoc.104.html#Parser.WriteManPage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.104.html#Parser">Parser</a>) WriteManPage(wr <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>)</pre>
+				<p>
+WriteManPage writes a basic man page in groff format to the specified
+writer.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SplitArgument">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/parser.go?s=2183:2346#L50">SplitArgument</a>
+				<a class="permalink" href="godoc.104.html#SplitArgument">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SplitArgument represents the argument value of an option that was passed using
+an argument separator.
+</p>
+
+			<pre>type SplitArgument interface {
+    <span class="comment">// String returns the option&#39;s value as a string, and a boolean indicating</span>
+    <span class="comment">// if the option was present.</span>
+    Value() (<a href="godoc.4.html#string">string</a>, <a href="godoc.4.html#bool">bool</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Unmarshaler">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/convert.go?s=663:859#L15">Unmarshaler</a>
+				<a class="permalink" href="godoc.104.html#Unmarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Unmarshaler is the interface implemented by types that can unmarshal a flag
+argument to themselves. The provided value is directly passed from the
+command line.
+</p>
+
+			<pre>type Unmarshaler interface {
+    <span class="comment">// UnmarshalFlag unmarshals a string value representation to the flag</span>
+    <span class="comment">// value (which therefore needs to be a pointer receiver).</span>
+    UnmarshalFlag(value <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Usage">type <a href="http://localhost:6161/src/github.com/jessevdk/go-flags/command.go?s=1480:1634#L41">Usage</a>
+				<a class="permalink" href="godoc.104.html#Usage">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Usage is an interface which can be implemented to show a custom usage string
+in the help message shown for a command.
+</p>
+
+			<pre>type Usage interface {
+    <span class="comment">// Usage is called for commands to allow customized printing of command</span>
+    <span class="comment">// usage in the generated help message.</span>
+    Usage() <a href="godoc.4.html#string">string</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="http://localhost:6161/pkg/github.com/jessevdk/">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.105.html">examples</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

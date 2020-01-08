@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>date - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.343.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package date
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/date"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.343.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.343.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.343.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/date/tables.go">tables.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="EtcUTC">EtcUTC</span>                   = 0   <span class="comment">// Etc/UTC</span>
+    <span id="EuropeLondon">EuropeLondon</span>             = 1   <span class="comment">// Europe/London</span>
+    <span id="EuropeDublin">EuropeDublin</span>             = 2   <span class="comment">// Europe/Dublin</span>
+    <span id="PacificHonolulu">PacificHonolulu</span>          = 3   <span class="comment">// Pacific/Honolulu</span>
+    <span id="Afghanistan">Afghanistan</span>              = 0   <span class="comment">// Afghanistan</span>
+    <span id="Africa_Central">Africa_Central</span>           = 1   <span class="comment">// Africa_Central</span>
+    <span id="Africa_Eastern">Africa_Eastern</span>           = 2   <span class="comment">// Africa_Eastern</span>
+    <span id="Africa_Southern">Africa_Southern</span>          = 3   <span class="comment">// Africa_Southern</span>
+    <span id="Africa_Western">Africa_Western</span>           = 4   <span class="comment">// Africa_Western</span>
+    <span id="Alaska">Alaska</span>                   = 5   <span class="comment">// Alaska</span>
+    <span id="Amazon">Amazon</span>                   = 6   <span class="comment">// Amazon</span>
+    <span id="America_Central">America_Central</span>          = 7   <span class="comment">// America_Central</span>
+    <span id="America_Eastern">America_Eastern</span>          = 8   <span class="comment">// America_Eastern</span>
+    <span id="America_Mountain">America_Mountain</span>         = 9   <span class="comment">// America_Mountain</span>
+    <span id="America_Pacific">America_Pacific</span>          = 10  <span class="comment">// America_Pacific</span>
+    <span id="Anadyr">Anadyr</span>                   = 11  <span class="comment">// Anadyr</span>
+    <span id="Apia">Apia</span>                     = 12  <span class="comment">// Apia</span>
+    <span id="Arabian">Arabian</span>                  = 13  <span class="comment">// Arabian</span>
+    <span id="Argentina">Argentina</span>                = 14  <span class="comment">// Argentina</span>
+    <span id="Argentina_Western">Argentina_Western</span>        = 15  <span class="comment">// Argentina_Western</span>
+    <span id="Armenia">Armenia</span>                  = 16  <span class="comment">// Armenia</span>
+    <span id="Atlantic">Atlantic</span>                 = 17  <span class="comment">// Atlantic</span>
+    <span id="Australia_Central">Australia_Central</span>        = 18  <span class="comment">// Australia_Central</span>
+    <span id="Australia_CentralWestern">Australia_CentralWestern</span> = 19  <span class="comment">// Australia_CentralWestern</span>
+    <span id="Australia_Eastern">Australia_Eastern</span>        = 20  <span class="comment">// Australia_Eastern</span>
+    <span id="Australia_Western">Australia_Western</span>        = 21  <span class="comment">// Australia_Western</span>
+    <span id="Azerbaijan">Azerbaijan</span>               = 22  <span class="comment">// Azerbaijan</span>
+    <span id="Azores">Azores</span>                   = 23  <span class="comment">// Azores</span>
+    <span id="Bangladesh">Bangladesh</span>               = 24  <span class="comment">// Bangladesh</span>
+    <span id="Bhutan">Bhutan</span>                   = 25  <span class="comment">// Bhutan</span>
+    <span id="Bolivia">Bolivia</span>                  = 26  <span class="comment">// Bolivia</span>
+    <span id="Brasilia">Brasilia</span>                 = 27  <span class="comment">// Brasilia</span>
+    <span id="Brunei">Brunei</span>                   = 28  <span class="comment">// Brunei</span>
+    <span id="Cape_Verde">Cape_Verde</span>               = 29  <span class="comment">// Cape_Verde</span>
+    <span id="Chamorro">Chamorro</span>                 = 30  <span class="comment">// Chamorro</span>
+    <span id="Chatham">Chatham</span>                  = 31  <span class="comment">// Chatham</span>
+    <span id="Chile">Chile</span>                    = 32  <span class="comment">// Chile</span>
+    <span id="China">China</span>                    = 33  <span class="comment">// China</span>
+    <span id="Choibalsan">Choibalsan</span>               = 34  <span class="comment">// Choibalsan</span>
+    <span id="Christmas">Christmas</span>                = 35  <span class="comment">// Christmas</span>
+    <span id="Cocos">Cocos</span>                    = 36  <span class="comment">// Cocos</span>
+    <span id="Colombia">Colombia</span>                 = 37  <span class="comment">// Colombia</span>
+    <span id="Cook">Cook</span>                     = 38  <span class="comment">// Cook</span>
+    <span id="Cuba">Cuba</span>                     = 39  <span class="comment">// Cuba</span>
+    <span id="Davis">Davis</span>                    = 40  <span class="comment">// Davis</span>
+    <span id="DumontDUrville">DumontDUrville</span>           = 41  <span class="comment">// DumontDUrville</span>
+    <span id="East_Timor">East_Timor</span>               = 42  <span class="comment">// East_Timor</span>
+    <span id="Easter">Easter</span>                   = 43  <span class="comment">// Easter</span>
+    <span id="Ecuador">Ecuador</span>                  = 44  <span class="comment">// Ecuador</span>
+    <span id="Europe_Central">Europe_Central</span>           = 45  <span class="comment">// Europe_Central</span>
+    <span id="Europe_Eastern">Europe_Eastern</span>           = 46  <span class="comment">// Europe_Eastern</span>
+    <span id="Europe_Further_Eastern">Europe_Further_Eastern</span>   = 47  <span class="comment">// Europe_Further_Eastern</span>
+    <span id="Europe_Western">Europe_Western</span>           = 48  <span class="comment">// Europe_Western</span>
+    <span id="Falkland">Falkland</span>                 = 49  <span class="comment">// Falkland</span>
+    <span id="Fiji">Fiji</span>                     = 50  <span class="comment">// Fiji</span>
+    <span id="French_Guiana">French_Guiana</span>            = 51  <span class="comment">// French_Guiana</span>
+    <span id="French_Southern">French_Southern</span>          = 52  <span class="comment">// French_Southern</span>
+    <span id="Galapagos">Galapagos</span>                = 53  <span class="comment">// Galapagos</span>
+    <span id="Gambier">Gambier</span>                  = 54  <span class="comment">// Gambier</span>
+    <span id="Georgia">Georgia</span>                  = 55  <span class="comment">// Georgia</span>
+    <span id="Gilbert_Islands">Gilbert_Islands</span>          = 56  <span class="comment">// Gilbert_Islands</span>
+    <span id="GMT">GMT</span>                      = 57  <span class="comment">// GMT</span>
+    <span id="Greenland_Eastern">Greenland_Eastern</span>        = 58  <span class="comment">// Greenland_Eastern</span>
+    <span id="Greenland_Western">Greenland_Western</span>        = 59  <span class="comment">// Greenland_Western</span>
+    <span id="Gulf">Gulf</span>                     = 60  <span class="comment">// Gulf</span>
+    <span id="Guyana">Guyana</span>                   = 61  <span class="comment">// Guyana</span>
+    <span id="Hawaii_Aleutian">Hawaii_Aleutian</span>          = 62  <span class="comment">// Hawaii_Aleutian</span>
+    <span id="Hong_Kong">Hong_Kong</span>                = 63  <span class="comment">// Hong_Kong</span>
+    <span id="Hovd">Hovd</span>                     = 64  <span class="comment">// Hovd</span>
+    <span id="India">India</span>                    = 65  <span class="comment">// India</span>
+    <span id="Indian_Ocean">Indian_Ocean</span>             = 66  <span class="comment">// Indian_Ocean</span>
+    <span id="Indochina">Indochina</span>                = 67  <span class="comment">// Indochina</span>
+    <span id="Indonesia_Central">Indonesia_Central</span>        = 68  <span class="comment">// Indonesia_Central</span>
+    <span id="Indonesia_Eastern">Indonesia_Eastern</span>        = 69  <span class="comment">// Indonesia_Eastern</span>
+    <span id="Indonesia_Western">Indonesia_Western</span>        = 70  <span class="comment">// Indonesia_Western</span>
+    <span id="Iran">Iran</span>                     = 71  <span class="comment">// Iran</span>
+    <span id="Irkutsk">Irkutsk</span>                  = 72  <span class="comment">// Irkutsk</span>
+    <span id="Israel">Israel</span>                   = 73  <span class="comment">// Israel</span>
+    <span id="Japan">Japan</span>                    = 74  <span class="comment">// Japan</span>
+    <span id="Kamchatka">Kamchatka</span>                = 75  <span class="comment">// Kamchatka</span>
+    <span id="Kazakhstan_Eastern">Kazakhstan_Eastern</span>       = 76  <span class="comment">// Kazakhstan_Eastern</span>
+    <span id="Kazakhstan_Western">Kazakhstan_Western</span>       = 77  <span class="comment">// Kazakhstan_Western</span>
+    <span id="Korea">Korea</span>                    = 78  <span class="comment">// Korea</span>
+    <span id="Kosrae">Kosrae</span>                   = 79  <span class="comment">// Kosrae</span>
+    <span id="Krasnoyarsk">Krasnoyarsk</span>              = 80  <span class="comment">// Krasnoyarsk</span>
+    <span id="Kyrgystan">Kyrgystan</span>                = 81  <span class="comment">// Kyrgystan</span>
+    <span id="Line_Islands">Line_Islands</span>             = 82  <span class="comment">// Line_Islands</span>
+    <span id="Lord_Howe">Lord_Howe</span>                = 83  <span class="comment">// Lord_Howe</span>
+    <span id="Macquarie">Macquarie</span>                = 84  <span class="comment">// Macquarie</span>
+    <span id="Magadan">Magadan</span>                  = 85  <span class="comment">// Magadan</span>
+    <span id="Malaysia">Malaysia</span>                 = 86  <span class="comment">// Malaysia</span>
+    <span id="Maldives">Maldives</span>                 = 87  <span class="comment">// Maldives</span>
+    <span id="Marquesas">Marquesas</span>                = 88  <span class="comment">// Marquesas</span>
+    <span id="Marshall_Islands">Marshall_Islands</span>         = 89  <span class="comment">// Marshall_Islands</span>
+    <span id="Mauritius">Mauritius</span>                = 90  <span class="comment">// Mauritius</span>
+    <span id="Mawson">Mawson</span>                   = 91  <span class="comment">// Mawson</span>
+    <span id="Mexico_Northwest">Mexico_Northwest</span>         = 92  <span class="comment">// Mexico_Northwest</span>
+    <span id="Mexico_Pacific">Mexico_Pacific</span>           = 93  <span class="comment">// Mexico_Pacific</span>
+    <span id="Mongolia">Mongolia</span>                 = 94  <span class="comment">// Mongolia</span>
+    <span id="Moscow">Moscow</span>                   = 95  <span class="comment">// Moscow</span>
+    <span id="Myanmar">Myanmar</span>                  = 96  <span class="comment">// Myanmar</span>
+    <span id="Nauru">Nauru</span>                    = 97  <span class="comment">// Nauru</span>
+    <span id="Nepal">Nepal</span>                    = 98  <span class="comment">// Nepal</span>
+    <span id="New_Caledonia">New_Caledonia</span>            = 99  <span class="comment">// New_Caledonia</span>
+    <span id="New_Zealand">New_Zealand</span>              = 100 <span class="comment">// New_Zealand</span>
+    <span id="Newfoundland">Newfoundland</span>             = 101 <span class="comment">// Newfoundland</span>
+    <span id="Niue">Niue</span>                     = 102 <span class="comment">// Niue</span>
+    <span id="Norfolk">Norfolk</span>                  = 103 <span class="comment">// Norfolk</span>
+    <span id="Noronha">Noronha</span>                  = 104 <span class="comment">// Noronha</span>
+    <span id="Novosibirsk">Novosibirsk</span>              = 105 <span class="comment">// Novosibirsk</span>
+    <span id="Omsk">Omsk</span>                     = 106 <span class="comment">// Omsk</span>
+    <span id="Pakistan">Pakistan</span>                 = 107 <span class="comment">// Pakistan</span>
+    <span id="Palau">Palau</span>                    = 108 <span class="comment">// Palau</span>
+    <span id="Papua_New_Guinea">Papua_New_Guinea</span>         = 109 <span class="comment">// Papua_New_Guinea</span>
+    <span id="Paraguay">Paraguay</span>                 = 110 <span class="comment">// Paraguay</span>
+    <span id="Peru">Peru</span>                     = 111 <span class="comment">// Peru</span>
+    <span id="Philippines">Philippines</span>              = 112 <span class="comment">// Philippines</span>
+    <span id="Phoenix_Islands">Phoenix_Islands</span>          = 113 <span class="comment">// Phoenix_Islands</span>
+    <span id="Pierre_Miquelon">Pierre_Miquelon</span>          = 114 <span class="comment">// Pierre_Miquelon</span>
+    <span id="Pitcairn">Pitcairn</span>                 = 115 <span class="comment">// Pitcairn</span>
+    <span id="Ponape">Ponape</span>                   = 116 <span class="comment">// Ponape</span>
+    <span id="Pyongyang">Pyongyang</span>                = 117 <span class="comment">// Pyongyang</span>
+    <span id="Reunion">Reunion</span>                  = 118 <span class="comment">// Reunion</span>
+    <span id="Rothera">Rothera</span>                  = 119 <span class="comment">// Rothera</span>
+    <span id="Sakhalin">Sakhalin</span>                 = 120 <span class="comment">// Sakhalin</span>
+    <span id="Samara">Samara</span>                   = 121 <span class="comment">// Samara</span>
+    <span id="Samoa">Samoa</span>                    = 122 <span class="comment">// Samoa</span>
+    <span id="Seychelles">Seychelles</span>               = 123 <span class="comment">// Seychelles</span>
+    <span id="Singapore">Singapore</span>                = 124 <span class="comment">// Singapore</span>
+    <span id="Solomon">Solomon</span>                  = 125 <span class="comment">// Solomon</span>
+    <span id="South_Georgia">South_Georgia</span>            = 126 <span class="comment">// South_Georgia</span>
+    <span id="Suriname">Suriname</span>                 = 127 <span class="comment">// Suriname</span>
+    <span id="Syowa">Syowa</span>                    = 128 <span class="comment">// Syowa</span>
+    <span id="Tahiti">Tahiti</span>                   = 129 <span class="comment">// Tahiti</span>
+    <span id="Taipei">Taipei</span>                   = 130 <span class="comment">// Taipei</span>
+    <span id="Tajikistan">Tajikistan</span>               = 131 <span class="comment">// Tajikistan</span>
+    <span id="Tokelau">Tokelau</span>                  = 132 <span class="comment">// Tokelau</span>
+    <span id="Tonga">Tonga</span>                    = 133 <span class="comment">// Tonga</span>
+    <span id="Truk">Truk</span>                     = 134 <span class="comment">// Truk</span>
+    <span id="Turkmenistan">Turkmenistan</span>             = 135 <span class="comment">// Turkmenistan</span>
+    <span id="Tuvalu">Tuvalu</span>                   = 136 <span class="comment">// Tuvalu</span>
+    <span id="Uruguay">Uruguay</span>                  = 137 <span class="comment">// Uruguay</span>
+    <span id="Uzbekistan">Uzbekistan</span>               = 138 <span class="comment">// Uzbekistan</span>
+    <span id="Vanuatu">Vanuatu</span>                  = 139 <span class="comment">// Vanuatu</span>
+    <span id="Venezuela">Venezuela</span>                = 140 <span class="comment">// Venezuela</span>
+    <span id="Vladivostok">Vladivostok</span>              = 141 <span class="comment">// Vladivostok</span>
+    <span id="Volgograd">Volgograd</span>                = 142 <span class="comment">// Volgograd</span>
+    <span id="Vostok">Vostok</span>                   = 143 <span class="comment">// Vostok</span>
+    <span id="Wake">Wake</span>                     = 144 <span class="comment">// Wake</span>
+    <span id="Wallis">Wallis</span>                   = 145 <span class="comment">// Wallis</span>
+    <span id="Yakutsk">Yakutsk</span>                  = 146 <span class="comment">// Yakutsk</span>
+    <span id="Yekaterinburg">Yekaterinburg</span>            = 147 <span class="comment">// Yekaterinburg</span>
+    <span id="Guam">Guam</span>                     = 148 <span class="comment">// Guam</span>
+    <span id="North_Mariana">North_Mariana</span>            = 149 <span class="comment">// North_Mariana</span>
+    <span id="Acre">Acre</span>                     = 150 <span class="comment">// Acre</span>
+    <span id="Almaty">Almaty</span>                   = 151 <span class="comment">// Almaty</span>
+    <span id="Aqtau">Aqtau</span>                    = 152 <span class="comment">// Aqtau</span>
+    <span id="Aqtobe">Aqtobe</span>                   = 153 <span class="comment">// Aqtobe</span>
+    <span id="Casey">Casey</span>                    = 154 <span class="comment">// Casey</span>
+    <span id="Lanka">Lanka</span>                    = 155 <span class="comment">// Lanka</span>
+    <span id="Macau">Macau</span>                    = 156 <span class="comment">// Macau</span>
+    <span id="Qyzylorda">Qyzylorda</span>                = 157 <span class="comment">// Qyzylorda</span>
+)</pre>
+			
+				<p>
+CLDRVersion is the CLDR version from which the tables in this package are derived.
+</p>
+
+				<pre>const <span id="CLDRVersion">CLDRVersion</span> = &#34;31&#34;</pre>
+			
+		
+		
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

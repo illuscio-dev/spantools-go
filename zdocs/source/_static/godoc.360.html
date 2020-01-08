@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>message - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.360.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package message
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/message"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.360.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.360.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.360.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.360.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package message implements formatted I/O for localized strings with functions
+analogous to the fmt&#39;s print functions. It is a drop-in replacement for fmt.
+</p>
+<h3 id="hdr-Localized_Formatting">Localized Formatting</h3>
+<p>
+A format string can be localized by replacing any of the print functions of
+fmt with an equivalent call to a Printer.
+</p>
+<pre>p := message.NewPrinter(message.MatchLanguage(&#34;en&#34;))
+p.Println(123456.78) // Prints 123,456.78
+
+p.Printf(&#34;%d ducks in a row&#34;, 4331) // Prints 4,331 ducks in a row
+
+p := message.NewPrinter(message.MatchLanguage(&#34;nl&#34;))
+p.Println(&#34;Hoogte: %f meter&#34;, 1244.9) // Prints Hoogte: 1.244,9 meter
+
+p := message.NewPrinter(message.MatchLanguage(&#34;bn&#34;))
+p.Println(123456.78) // Prints ১,২৩,৪৫৬.৭৮
+</pre>
+<p>
+Printer currently supports numbers and specialized types for which packages
+exist in x/text. Other builtin types such as time.Time and slices are
+planned.
+</p>
+<p>
+Format strings largely have the same meaning as with fmt with the following
+notable exceptions:
+</p>
+<pre>- flag # always resorts to fmt for printing
+- verb &#39;f&#39;, &#39;e&#39;, &#39;g&#39;, &#39;d&#39; use localized formatting unless the &#39;#&#39; flag is
+  specified.
+</pre>
+<p>
+See package fmt for more options.
+</p>
+<h3 id="hdr-Translation">Translation</h3>
+<p>
+The format strings that are passed to Printf, Sprintf, Fprintf, or Errorf
+are used as keys to look up translations for the specified languages.
+More on how these need to be specified below.
+</p>
+<p>
+One can use arbitrary keys to distinguish between otherwise ambiguous
+strings:
+</p>
+<pre>p := message.NewPrinter(language.English)
+p.Printf(&#34;archive(noun)&#34;)  // Prints &#34;archive&#34;
+p.Printf(&#34;archive(verb)&#34;)  // Prints &#34;archive&#34;
+
+p := message.NewPrinter(language.German)
+p.Printf(&#34;archive(noun)&#34;)  // Prints &#34;Archiv&#34;
+p.Printf(&#34;archive(verb)&#34;)  // Prints &#34;archivieren&#34;
+</pre>
+<p>
+To retain the fallback functionality, use Key:
+</p>
+<pre>p.Printf(message.Key(&#34;archive(noun)&#34;, &#34;archive&#34;))
+p.Printf(message.Key(&#34;archive(verb)&#34;, &#34;archive&#34;))
+</pre>
+<h3 id="hdr-Translation_Pipeline">Translation Pipeline</h3>
+<p>
+Format strings that contain text need to be translated to support different
+locales. The first step is to extract strings that need to be translated.
+</p>
+<p>
+1. Install gotext
+</p>
+<pre>go get -u golang.org/x/text/cmd/gotext
+gotext -help
+</pre>
+<p>
+2. Mark strings in your source to be translated by using message.Printer,
+instead of the functions of the fmt package.
+</p>
+<p>
+3. Extract the strings from your source
+</p>
+<pre>gotext extract
+</pre>
+<p>
+The output will be written to the textdata directory.
+</p>
+<p>
+4. Send the files for translation
+</p>
+<p>
+It is planned to support multiple formats, but for now one will have to
+rewrite the JSON output to the desired format.
+</p>
+<p>
+5. Inject translations into program
+</p>
+<p>
+6. Repeat from 2
+</p>
+<p>
+Right now this has to be done programmatically with calls to Set or
+SetString. These functions as well as the methods defined in
+see also package golang.org/x/text/message/catalog can be used to implement
+either dynamic or static loading of messages.
+</p>
+<h3 id="hdr-Plural_and_Gender_Forms">Plural and Gender Forms</h3>
+<p>
+Translated messages can vary based on the plural and gender forms of
+substitution values. In general, it is up to the translators to provide
+alternative translations for such forms. See the packages in
+golang.org/x/text/feature and golang.org/x/text/message/catalog for more
+information.
+</p>
+
+				<div id="example__http" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Http)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Http)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+<span class="comment">// languages supported by this service:</span>
+matcher := language.NewMatcher(message.DefaultCatalog.Languages())
+
+http.HandleFunc(&#34;/&#34;, func(w http.ResponseWriter, r *http.Request) {
+    lang, _ := r.Cookie(&#34;lang&#34;)
+    accept := r.Header.Get(&#34;Accept-Language&#34;)
+    fallback := &#34;en&#34;
+    tag, _ := language.MatchStrings(matcher, lang.String(), accept, fallback)
+
+    p := message.NewPrinter(tag)
+
+    p.Fprintln(w, &#34;User language is&#34;, tag)
+})
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.360.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.360.html#MatchLanguage">func MatchLanguage(preferred ...string) language.Tag</a></dd>
+			
+				
+				<dd><a href="godoc.360.html#Set">func Set(tag language.Tag, key string, msg ...catalog.Message) error</a></dd>
+			
+				
+				<dd><a href="godoc.360.html#SetString">func SetString(tag language.Tag, key string, msg string) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.360.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Catalog">func Catalog(c catalog.Catalog) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.360.html#Printer">type Printer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#NewPrinter">func NewPrinter(t language.Tag, opts ...Option) *Printer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Fprint">func (p *Printer) Fprint(w io.Writer, a ...interface{}) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Fprintf">func (p *Printer) Fprintf(w io.Writer, key Reference, a ...interface{}) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Fprintln">func (p *Printer) Fprintln(w io.Writer, a ...interface{}) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Print">func (p *Printer) Print(a ...interface{}) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Printf">func (p *Printer) Printf(key Reference, a ...interface{}) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Println">func (p *Printer) Println(a ...interface{}) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Sprint">func (p *Printer) Sprint(a ...interface{}) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Sprintf">func (p *Printer) Sprintf(key Reference, a ...interface{}) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Printer.Sprintln">func (p *Printer) Sprintln(a ...interface{}) string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.360.html#Reference">type Reference</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.360.html#Key">func Key(id string, fallback string) Reference</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.360.html#example_Printer_numbers">Printer (Numbers)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.360.html#example__http">Package (Http)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/catalog.go">catalog.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/format.go">format.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/message.go">message.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/print.go">print.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+DefaultCatalog is used by SetString.
+</p>
+
+				<pre>var <span id="DefaultCatalog">DefaultCatalog</span> <a href="godoc.361.html">catalog</a>.<a href="godoc.361.html#Catalog">Catalog</a> = defaultCatalog</pre>
+			
+		
+		
+			
+			
+			<h2 id="MatchLanguage">func <a href="http://localhost:6161/src/golang.org/x/text/message/catalog.go?s=531:583#L7">MatchLanguage</a>
+				<a class="permalink" href="godoc.360.html#MatchLanguage">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MatchLanguage(preferred ...<a href="godoc.4.html#string">string</a>) <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a></pre>
+			<p>
+MatchLanguage reports the matched tag obtained from language.MatchStrings for
+the Matcher of the DefaultCatalog.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Set">func <a href="http://localhost:6161/src/golang.org/x/text/message/catalog.go?s=1044:1112#L24">Set</a>
+				<a class="permalink" href="godoc.360.html#Set">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Set(tag <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, key <a href="godoc.4.html#string">string</a>, msg ...<a href="godoc.361.html">catalog</a>.<a href="godoc.361.html#Message">Message</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+Set calls Set on the initial default Catalog.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SetString">func <a href="http://localhost:6161/src/golang.org/x/text/message/catalog.go?s=879:941#L19">SetString</a>
+				<a class="permalink" href="godoc.360.html#SetString">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SetString(tag <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, key <a href="godoc.4.html#string">string</a>, msg <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+SetString calls SetString on the initial default Catalog.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=909:937#L31">Option</a>
+				<a class="permalink" href="godoc.360.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Option defines an option of a Printer.
+</p>
+
+			<pre>type Option func(o *options)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Catalog">func <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=982:1020#L34">Catalog</a>
+					<a class="permalink" href="godoc.360.html#Catalog">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Catalog(c <a href="godoc.361.html">catalog</a>.<a href="godoc.361.html#Catalog">Catalog</a>) <a href="godoc.360.html#Option">Option</a></pre>
+				<p>
+Catalog defines the catalog to be used.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Printer">type <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=527:670#L11">Printer</a>
+				<a class="permalink" href="godoc.360.html#Printer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Printer implements language-specific formatted I/O analogous to the fmt
+package.
+</p>
+
+			<pre>type Printer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_Printer_numbers" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Numbers)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Numbers)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">for _, lang := range []string{&#34;en&#34;, &#34;de&#34;, &#34;de-CH&#34;, &#34;fr&#34;, &#34;bn&#34;} {
+    p := message.NewPrinter(language.Make(lang))
+    p.Printf(&#34;%-6s %g\n&#34;, lang, 123456.78)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">en     123,456.78
+de     123.456,78
+de-CH  123’456.78
+fr     123 456,78
+bn     ১,২৩,৪৫৬.৭৮
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+				
+				<h3 id="NewPrinter">func <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=1143:1199#L39">NewPrinter</a>
+					<a class="permalink" href="godoc.360.html#NewPrinter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewPrinter(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, opts ...<a href="godoc.360.html#Option">Option</a>) *<a href="godoc.360.html#Printer">Printer</a></pre>
+				<p>
+NewPrinter returns a Printer that formats messages tailored to language t.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Printer.Fprint">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=1686:1760#L65">Fprint</a>
+					<a class="permalink" href="godoc.360.html#Printer.Fprint">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Fprint(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, a ...interface{}) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Fprint is like fmt.Fprint, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Fprintf">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=2990:3080#L111">Fprintf</a>
+					<a class="permalink" href="godoc.360.html#Printer.Fprintf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Fprintf(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, key <a href="godoc.360.html#Reference">Reference</a>, a ...interface{}) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Fprintf is like fmt.Fprintf, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Fprintln">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=2321:2397#L88">Fprintln</a>
+					<a class="permalink" href="godoc.360.html#Printer.Fprintln">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Fprintln(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, a ...interface{}) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Fprintln is like fmt.Fprintln, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Print">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=1939:1999#L74">Print</a>
+					<a class="permalink" href="godoc.360.html#Printer.Print">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Print(a ...interface{}) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Print is like fmt.Print, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Printf">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=3263:3339#L121">Printf</a>
+					<a class="permalink" href="godoc.360.html#Printer.Printf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Printf(key <a href="godoc.360.html#Reference">Reference</a>, a ...interface{}) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Printf is like fmt.Printf, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Println">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=2582:2644#L97">Println</a>
+					<a class="permalink" href="godoc.360.html#Printer.Println">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Println(a ...interface{}) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Println is like fmt.Println, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Sprint">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=1486:1535#L56">Sprint</a>
+					<a class="permalink" href="godoc.360.html#Printer.Sprint">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Sprint(a ...interface{}) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Sprint is like fmt.Sprint, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Sprintf">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=2758:2823#L102">Sprintf</a>
+					<a class="permalink" href="godoc.360.html#Printer.Sprintf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Sprintf(key <a href="godoc.360.html#Reference">Reference</a>, a ...interface{}) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Sprintf is like fmt.Sprintf, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Printer.Sprintln">func (*Printer) <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=2113:2164#L79">Sprintln</a>
+					<a class="permalink" href="godoc.360.html#Printer.Sprintln">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.360.html#Printer">Printer</a>) Sprintln(a ...interface{}) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Sprintln is like fmt.Sprintln, but using language-specific formatting.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Reference">type <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=4200:4258#L164">Reference</a>
+				<a class="permalink" href="godoc.360.html#Reference">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Reference is a string or a message reference.
+</p>
+
+			<pre>type Reference interface {
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Key">func <a href="http://localhost:6161/src/golang.org/x/text/message/message.go?s=4414:4460#L170">Key</a>
+					<a class="permalink" href="godoc.360.html#Key">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Key(id <a href="godoc.4.html#string">string</a>, fallback <a href="godoc.4.html#string">string</a>) <a href="godoc.360.html#Reference">Reference</a></pre>
+				<p>
+Key creates a message Reference for a message where the given id is used for
+message lookup and the fallback is returned when no matches are found.
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.327.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.361.html">catalog</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package catalog defines collections of translated format strings.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.362.html">pipeline</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package pipeline provides tools for creating translation pipelines.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

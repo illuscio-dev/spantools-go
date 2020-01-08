@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>primitive - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.160.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package primitive
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/bson/primitive"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.160.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.160.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package primitive contains types similar to Go primitives for BSON types can do not have direct
+Go primitive representations.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.160.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.160.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.160.html#CompareTimestamp">func CompareTimestamp(tp, tp2 Timestamp) int</a></dd>
+			
+			
+				
+				<dd><a href="godoc.160.html#A">type A</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#Binary">type Binary</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Binary.Equal">func (bp Binary) Equal(bp2 Binary) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Binary.IsZero">func (bp Binary) IsZero() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#CodeWithScope">type CodeWithScope</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#CodeWithScope.String">func (cws CodeWithScope) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#D">type D</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#D.Map">func (d D) Map() M</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#DBPointer">type DBPointer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#DBPointer.Equal">func (d DBPointer) Equal(d2 DBPointer) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#DBPointer.IsZero">func (d DBPointer) IsZero() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#DBPointer.String">func (d DBPointer) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#DateTime">type DateTime</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#NewDateTimeFromTime">func NewDateTimeFromTime(t time.Time) DateTime</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#DateTime.MarshalJSON">func (d DateTime) MarshalJSON() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#DateTime.Time">func (d DateTime) Time() time.Time</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#Decimal128">type Decimal128</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#NewDecimal128">func NewDecimal128(h, l uint64) Decimal128</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ParseDecimal128">func ParseDecimal128(s string) (Decimal128, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ParseDecimal128FromBigInt">func ParseDecimal128FromBigInt(bi *big.Int, exp int) (Decimal128, bool)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Decimal128.BigInt">func (d Decimal128) BigInt() (bi *big.Int, exp int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Decimal128.GetBytes">func (d Decimal128) GetBytes() (uint64, uint64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Decimal128.IsInf">func (d Decimal128) IsInf() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Decimal128.IsNaN">func (d Decimal128) IsNaN() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Decimal128.String">func (d Decimal128) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#E">type E</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#JavaScript">type JavaScript</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#M">type M</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#MaxKey">type MaxKey</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#MinKey">type MinKey</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#Null">type Null</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#ObjectID">type ObjectID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#NewObjectID">func NewObjectID() ObjectID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#NewObjectIDFromTimestamp">func NewObjectIDFromTimestamp(timestamp time.Time) ObjectID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectIDFromHex">func ObjectIDFromHex(s string) (ObjectID, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectID.Hex">func (id ObjectID) Hex() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectID.IsZero">func (id ObjectID) IsZero() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectID.MarshalJSON">func (id ObjectID) MarshalJSON() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectID.String">func (id ObjectID) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectID.Timestamp">func (id ObjectID) Timestamp() time.Time</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#ObjectID.UnmarshalJSON">func (id *ObjectID) UnmarshalJSON(b []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#Regex">type Regex</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Regex.Equal">func (rp Regex) Equal(rp2 Regex) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Regex.IsZero">func (rp Regex) IsZero() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Regex.String">func (rp Regex) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#Symbol">type Symbol</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.160.html#Timestamp">type Timestamp</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Timestamp.Equal">func (tp Timestamp) Equal(tp2 Timestamp) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.160.html#Timestamp.IsZero">func (tp Timestamp) IsZero() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.160.html#Undefined">type Undefined</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go">decimal.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go">objectid.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go">primitive.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+These constants are the maximum and minimum values for the exponent field in a decimal128 value.
+</p>
+
+				<pre>const (
+    <span id="MaxDecimal128Exp">MaxDecimal128Exp</span> = 6111
+    <span id="MinDecimal128Exp">MinDecimal128Exp</span> = -6176
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+These errors are returned when an invalid value is parsed as a big.Int.
+</p>
+
+				<pre>var (
+    <span id="ErrParseNaN">ErrParseNaN</span>    = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;cannot parse NaN as a *big.Int&#34;)
+    <span id="ErrParseInf">ErrParseInf</span>    = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;cannot parse Infinity as a *big.Int&#34;)
+    <span id="ErrParseNegInf">ErrParseNegInf</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;cannot parse -Infinity as a *big.Int&#34;)
+)</pre>
+			
+				<p>
+ErrInvalidHex indicates that a hex string cannot be converted to an ObjectID.
+</p>
+
+				<pre>var <span id="ErrInvalidHex">ErrInvalidHex</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;the provided hex string is not a valid ObjectID&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="CompareTimestamp">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=3514:3558#L125">CompareTimestamp</a>
+				<a class="permalink" href="godoc.160.html#CompareTimestamp">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CompareTimestamp(tp, tp2 <a href="godoc.160.html#Timestamp">Timestamp</a>) <a href="godoc.4.html#int">int</a></pre>
+			<p>
+CompareTimestamp returns an integer comparing two Timestamps, where T is compared first, followed by I.
+Returns 0 if tp = tp2, 1 if tp &gt; tp2, -1 if tp &lt; tp2.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="A">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=5097:5117#L186">A</a>
+				<a class="permalink" href="godoc.160.html#A">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An A is an ordered representation of a BSON array.
+</p>
+<p>
+Example usage:
+</p>
+<pre>bson.A{&#34;bar&#34;, &#34;world&#34;, 3.14159, bson.D{{&#34;qux&#34;, 12345}}}
+</pre>
+
+			<pre>type A []interface{}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Binary">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=571:623#L9">Binary</a>
+				<a class="permalink" href="godoc.160.html#Binary">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Binary represents a BSON binary value.
+</p>
+
+			<pre>type Binary struct {
+<span id="Binary.Subtype"></span>    Subtype <a href="godoc.4.html#byte">byte</a>
+<span id="Binary.Data"></span>    Data    []<a href="godoc.4.html#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Binary.Equal">func (Binary) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=688:727#L15">Equal</a>
+					<a class="permalink" href="godoc.160.html#Binary.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bp <a href="godoc.160.html#Binary">Binary</a>) Equal(bp2 <a href="godoc.160.html#Binary">Binary</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Equal compares bp to bp2 and returns true is the are equal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Binary.IsZero">func (Binary) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=866:896#L23">IsZero</a>
+					<a class="permalink" href="godoc.160.html#Binary.IsZero">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bp <a href="godoc.160.html#Binary">Binary</a>) IsZero() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsZero returns if bp is the empty Binary
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CodeWithScope">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2800:2866#L98">CodeWithScope</a>
+				<a class="permalink" href="godoc.160.html#CodeWithScope">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CodeWithScope represents a BSON JavaScript code with scope value.
+</p>
+
+			<pre>type CodeWithScope struct {
+<span id="CodeWithScope.Code"></span>    Code  <a href="godoc.160.html#JavaScript">JavaScript</a>
+<span id="CodeWithScope.Scope"></span>    Scope interface{}
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CodeWithScope.String">func (CodeWithScope) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2868:2908#L103">String</a>
+					<a class="permalink" href="godoc.160.html#CodeWithScope.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cws <a href="godoc.160.html#CodeWithScope">CodeWithScope</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="D">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=4211:4221#L155">D</a>
+				<a class="permalink" href="godoc.160.html#D">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+D is an ordered representation of a BSON document. This type should be used when the order of the elements matters,
+such as MongoDB command documents. If the order of the elements does not matter, an M should be used instead.
+</p>
+<p>
+Example usage:
+</p>
+<pre>bson.D{{&#34;foo&#34;, &#34;bar&#34;}, {&#34;hello&#34;, &#34;world&#34;}, {&#34;pi&#34;, 3.14159}}
+</pre>
+
+			<pre>type D []<a href="godoc.160.html#E">E</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="D.Map">func (D) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=4272:4290#L158">Map</a>
+					<a class="permalink" href="godoc.160.html#D.Map">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#D">D</a>) Map() <a href="godoc.160.html#M">M</a></pre>
+				<p>
+Map creates a map from the elements of the D.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DBPointer">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2118:2177#L72">DBPointer</a>
+				<a class="permalink" href="godoc.160.html#DBPointer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DBPointer represents a BSON dbpointer value.
+</p>
+
+			<pre>type DBPointer struct {
+<span id="DBPointer.DB"></span>    DB      <a href="godoc.4.html#string">string</a>
+<span id="DBPointer.Pointer"></span>    Pointer <a href="godoc.160.html#ObjectID">ObjectID</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DBPointer.Equal">func (DBPointer) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2350:2393#L82">Equal</a>
+					<a class="permalink" href="godoc.160.html#DBPointer.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#DBPointer">DBPointer</a>) Equal(d2 <a href="godoc.160.html#DBPointer">DBPointer</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Equal compares d to d2 and returns true is the are equal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DBPointer.IsZero">func (DBPointer) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2511:2543#L87">IsZero</a>
+					<a class="permalink" href="godoc.160.html#DBPointer.IsZero">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#DBPointer">DBPointer</a>) IsZero() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsZero returns if d is the empty DBPointer
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DBPointer.String">func (DBPointer) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2179:2213#L77">String</a>
+					<a class="permalink" href="godoc.160.html#DBPointer.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#DBPointer">DBPointer</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DateTime">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1075:1094#L31">DateTime</a>
+				<a class="permalink" href="godoc.160.html#DateTime">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DateTime represents the BSON datetime value.
+</p>
+
+			<pre>type DateTime <a href="godoc.4.html#int64">int64</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDateTimeFromTime">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1412:1458#L44">NewDateTimeFromTime</a>
+					<a class="permalink" href="godoc.160.html#NewDateTimeFromTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDateTimeFromTime(t <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a>) <a href="godoc.160.html#DateTime">DateTime</a></pre>
+				<p>
+NewDateTimeFromTime creates a new DateTime from a Time.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="DateTime.MarshalJSON">func (DateTime) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1132:1179#L34">MarshalJSON</a>
+					<a class="permalink" href="godoc.160.html#DateTime.MarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#DateTime">DateTime</a>) MarshalJSON() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MarshalJSON marshal to time type
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DateTime.Time">func (DateTime) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1257:1291#L39">Time</a>
+					<a class="permalink" href="godoc.160.html#DateTime.Time">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#DateTime">DateTime</a>) Time() <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a></pre>
+				<p>
+Time returns the date as a time type.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Decimal128">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=963:1002#L25">Decimal128</a>
+				<a class="permalink" href="godoc.160.html#Decimal128">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Decimal128 holds decimal128 BSON values.
+</p>
+
+			<pre>type Decimal128 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDecimal128">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=1082:1124#L30">NewDecimal128</a>
+					<a class="permalink" href="godoc.160.html#NewDecimal128">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDecimal128(h, l <a href="godoc.4.html#uint64">uint64</a>) <a href="godoc.160.html#Decimal128">Decimal128</a></pre>
+				<p>
+NewDecimal128 creates a Decimal128 using the provide high and low uint64s.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ParseDecimal128">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=6004:6054#L229">ParseDecimal128</a>
+					<a class="permalink" href="godoc.160.html#ParseDecimal128">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseDecimal128(s <a href="godoc.4.html#string">string</a>) (<a href="godoc.160.html#Decimal128">Decimal128</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ParseDecimal128 takes the given string and attempts to parse it into a valid
+Decimal128 value.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ParseDecimal128FromBigInt">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=7310:7381#L299">ParseDecimal128FromBigInt</a>
+					<a class="permalink" href="godoc.160.html#ParseDecimal128FromBigInt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseDecimal128FromBigInt(bi *<a href="godoc.7.html">big</a>.<a href="godoc.7.html#Int">Int</a>, exp <a href="godoc.4.html#int">int</a>) (<a href="godoc.160.html#Decimal128">Decimal128</a>, <a href="godoc.4.html#bool">bool</a>)</pre>
+				<p>
+ParseDecimal128FromBigInt attempts to parse the given significand and exponent into a valid Decimal128 value.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Decimal128.BigInt">func (Decimal128) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=3583:3645#L125">BigInt</a>
+					<a class="permalink" href="godoc.160.html#Decimal128.BigInt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#Decimal128">Decimal128</a>) BigInt() (bi *<a href="godoc.7.html">big</a>.<a href="godoc.7.html#Int">Int</a>, exp <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+BigInt returns significand as big.Int and exponent, bi * 10 ^ exp.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decimal128.GetBytes">func (Decimal128) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=1344:1391#L36">GetBytes</a>
+					<a class="permalink" href="godoc.160.html#Decimal128.GetBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#Decimal128">Decimal128</a>) GetBytes() (<a href="godoc.4.html#uint64">uint64</a>, <a href="godoc.4.html#uint64">uint64</a>)</pre>
+				<p>
+GetBytes returns the underlying bytes of the BSON decimal value as two uint64 values. The first
+contains the most first 8 bytes of the value and the second contains the latter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decimal128.IsInf">func (Decimal128) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=5018:5049#L188">IsInf</a>
+					<a class="permalink" href="godoc.160.html#Decimal128.IsInf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#Decimal128">Decimal128</a>) IsInf() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+IsInf returns:
+</p>
+<pre>+1 d == Infinity
+ 0 other case
+-1 d == -Infinity
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Decimal128.IsNaN">func (Decimal128) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=4859:4891#L178">IsNaN</a>
+					<a class="permalink" href="godoc.160.html#Decimal128.IsNaN">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#Decimal128">Decimal128</a>) IsNaN() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsNaN returns whether d is NaN.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decimal128.String">func (Decimal128) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/decimal.go?s=1478:1513#L41">String</a>
+					<a class="permalink" href="godoc.160.html#Decimal128.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.160.html#Decimal128">Decimal128</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String returns a string representation of the decimal value.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="E">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=4446:4496#L167">E</a>
+				<a class="permalink" href="godoc.160.html#E">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+E represents a BSON element for a D. It is usually used inside a D.
+</p>
+
+			<pre>type E struct {
+<span id="E.Key"></span>    Key   <a href="godoc.4.html#string">string</a>
+<span id="E.Value"></span>    Value interface{}
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="JavaScript">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2645:2667#L92">JavaScript</a>
+				<a class="permalink" href="godoc.160.html#JavaScript">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+JavaScript represents a BSON JavaScript code value.
+</p>
+
+			<pre>type JavaScript <a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="M">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=4927:4956#L179">M</a>
+				<a class="permalink" href="godoc.160.html#M">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+M is an unordered representation of a BSON document. This type should be used when the order of the elements does not
+matter. This type is handled as a regular map[string]interface{} when encoding and decoding. Elements will be
+serialized in an undefined, random order. If the order of the elements matters, a D should be used instead.
+</p>
+<p>
+Example usage:
+</p>
+<pre>bson.M{&#34;foo&#34;: &#34;bar&#34;, &#34;hello&#34;: &#34;world&#34;, &#34;pi&#34;: 3.14159}.
+</pre>
+
+			<pre>type M map[<a href="godoc.4.html#string">string</a>]interface{}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MaxKey">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=3868:3888#L147">MaxKey</a>
+				<a class="permalink" href="godoc.160.html#MaxKey">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MaxKey represents the BSON maxkey value.
+</p>
+
+			<pre>type MaxKey struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MinKey">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=3802:3822#L144">MinKey</a>
+				<a class="permalink" href="godoc.160.html#MinKey">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MinKey represents the BSON minkey value.
+</p>
+
+			<pre>type MinKey struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Null">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1545:1563#L49">Null</a>
+				<a class="permalink" href="godoc.160.html#Null">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Null represents the BSON null value.
+</p>
+
+			<pre>type Null struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ObjectID">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=737:759#L19">ObjectID</a>
+				<a class="permalink" href="godoc.160.html#ObjectID">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ObjectID is the BSON ObjectID type.
+</p>
+
+			<pre>type ObjectID [12]<a href="godoc.4.html#byte">byte</a></pre>
+
+			
+
+			
+				<p>
+NilObjectID is the zero value for ObjectID.
+</p>
+
+				<pre>var <span id="NilObjectID">NilObjectID</span> <a href="godoc.160.html#ObjectID">ObjectID</a></pre>
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewObjectID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=958:985#L28">NewObjectID</a>
+					<a class="permalink" href="godoc.160.html#NewObjectID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewObjectID() <a href="godoc.160.html#ObjectID">ObjectID</a></pre>
+				<p>
+NewObjectID generates a new ObjectID.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewObjectIDFromTimestamp">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=1114:1173#L33">NewObjectIDFromTimestamp</a>
+					<a class="permalink" href="godoc.160.html#NewObjectIDFromTimestamp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewObjectIDFromTimestamp(timestamp <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a>) <a href="godoc.160.html#ObjectID">ObjectID</a></pre>
+				<p>
+NewObjectIDFromTimestamp generates a new ObjectID based on the given time.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ObjectIDFromHex">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=2027:2075#L65">ObjectIDFromHex</a>
+					<a class="permalink" href="godoc.160.html#ObjectIDFromHex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ObjectIDFromHex(s <a href="godoc.4.html#string">string</a>) (<a href="godoc.160.html#ObjectID">ObjectID</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+ObjectIDFromHex creates a new ObjectID from a hex string. It returns an error if the hex string is not a
+valid ObjectID.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ObjectID.Hex">func (ObjectID) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=1610:1641#L50">Hex</a>
+					<a class="permalink" href="godoc.160.html#ObjectID.Hex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id <a href="godoc.160.html#ObjectID">ObjectID</a>) Hex() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+Hex returns the hex encoding of the ObjectID as a string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ObjectID.IsZero">func (ObjectID) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=1819:1851#L59">IsZero</a>
+					<a class="permalink" href="godoc.160.html#ObjectID.IsZero">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id <a href="godoc.160.html#ObjectID">ObjectID</a>) IsZero() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsZero returns true if id is the empty ObjectID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ObjectID.MarshalJSON">func (ObjectID) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=2322:2370#L82">MarshalJSON</a>
+					<a class="permalink" href="godoc.160.html#ObjectID.MarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id <a href="godoc.160.html#ObjectID">ObjectID</a>) MarshalJSON() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MarshalJSON returns the ObjectID as a string
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ObjectID.String">func (ObjectID) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=1681:1715#L54">String</a>
+					<a class="permalink" href="godoc.160.html#ObjectID.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id <a href="godoc.160.html#ObjectID">ObjectID</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ObjectID.Timestamp">func (ObjectID) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=1413:1453#L44">Timestamp</a>
+					<a class="permalink" href="godoc.160.html#ObjectID.Timestamp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id <a href="godoc.160.html#ObjectID">ObjectID</a>) Timestamp() <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a></pre>
+				<p>
+Timestamp extracts the time part of the ObjectId.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ObjectID.UnmarshalJSON">func (*ObjectID) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/objectid.go?s=2722:2771#L90">UnmarshalJSON</a>
+					<a class="permalink" href="godoc.160.html#ObjectID.UnmarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id *<a href="godoc.160.html#ObjectID">ObjectID</a>) UnmarshalJSON(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+UnmarshalJSON populates the byte slice with the ObjectID. If the byte slice is 64 bytes long, it
+will be populated with the hex representation of the ObjectID. If the byte slice is twelve bytes
+long, it will be populated with the BSON representation of the ObjectID. Otherwise, it will
+return an error.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Regex">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1605:1658#L52">Regex</a>
+				<a class="permalink" href="godoc.160.html#Regex">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Regex represents a BSON regex value.
+</p>
+
+			<pre>type Regex struct {
+<span id="Regex.Pattern"></span>    Pattern <a href="godoc.4.html#string">string</a>
+<span id="Regex.Options"></span>    Options <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Regex.Equal">func (Regex) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1842:1879#L62">Equal</a>
+					<a class="permalink" href="godoc.160.html#Regex.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rp <a href="godoc.160.html#Regex">Regex</a>) Equal(rp2 <a href="godoc.160.html#Regex">Regex</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Equal compares rp to rp2 and returns true is the are equal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Regex.IsZero">func (Regex) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1990:2019#L67">IsZero</a>
+					<a class="permalink" href="godoc.160.html#Regex.IsZero">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rp <a href="godoc.160.html#Regex">Regex</a>) IsZero() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsZero returns if rp is the empty Regex
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Regex.String">func (Regex) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1660:1691#L57">String</a>
+					<a class="permalink" href="godoc.160.html#Regex.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rp <a href="godoc.160.html#Regex">Regex</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Symbol">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=2711:2729#L95">Symbol</a>
+				<a class="permalink" href="godoc.160.html#Symbol">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Symbol represents a BSON symbol value.
+</p>
+
+			<pre>type Symbol <a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Timestamp">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=3034:3079#L108">Timestamp</a>
+				<a class="permalink" href="godoc.160.html#Timestamp">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Timestamp represents a BSON timestamp value.
+</p>
+
+			<pre>type Timestamp struct {
+<span id="Timestamp.T"></span>    T <a href="godoc.4.html#uint32">uint32</a>
+<span id="Timestamp.I"></span>    I <a href="godoc.4.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Timestamp.Equal">func (Timestamp) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=3144:3189#L114">Equal</a>
+					<a class="permalink" href="godoc.160.html#Timestamp.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tp <a href="godoc.160.html#Timestamp">Timestamp</a>) Equal(tp2 <a href="godoc.160.html#Timestamp">Timestamp</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Equal compares tp to tp2 and returns true is the are equal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Timestamp.IsZero">func (Timestamp) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=3280:3313#L119">IsZero</a>
+					<a class="permalink" href="godoc.160.html#Timestamp.IsZero">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tp <a href="godoc.160.html#Timestamp">Timestamp</a>) IsZero() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsZero returns if tp is the zero Timestamp
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Undefined">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive/primitive.go?s=1002:1025#L28">Undefined</a>
+				<a class="permalink" href="godoc.160.html#Undefined">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Undefined represents the BSON undefined value type.
+</p>
+
+			<pre>type Undefined struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

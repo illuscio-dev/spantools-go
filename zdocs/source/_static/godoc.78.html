@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>embedded - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.78.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package embedded
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/GeertJohan/go.rice/embedded"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.78.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.78.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package embedded defines embedded data types that are shared between the go.rice package and generated code.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.78.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.78.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.78.html#RegisterEmbeddedBox">func RegisterEmbeddedBox(name string, box *EmbeddedBox)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.78.html#EmbeddedBox">type EmbeddedBox</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.78.html#EmbeddedBox.Link">func (e *EmbeddedBox) Link()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.78.html#EmbeddedDir">type EmbeddedDir</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.78.html#EmbeddedFile">type EmbeddedFile</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded/embedded.go">embedded.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="EmbedTypeGo">EmbedTypeGo</span>   = 0
+    <span id="EmbedTypeSyso">EmbedTypeSyso</span> = 1
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+EmbeddedBoxes is a public register of embedded boxes
+</p>
+
+				<pre>var <span id="EmbeddedBoxes">EmbeddedBoxes</span> = <a href="godoc.4.html#make">make</a>(map[<a href="godoc.4.html#string">string</a>]*<a href="godoc.78.html#EmbeddedBox">EmbeddedBox</a>)</pre>
+			
+		
+		
+			
+			
+			<h2 id="RegisterEmbeddedBox">func <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded/embedded.go?s=2335:2390#L68">RegisterEmbeddedBox</a>
+				<a class="permalink" href="godoc.78.html#RegisterEmbeddedBox">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RegisterEmbeddedBox(name <a href="godoc.4.html#string">string</a>, box *<a href="godoc.78.html#EmbeddedBox">EmbeddedBox</a>)</pre>
+			<p>
+RegisterEmbeddedBox registers an EmbeddedBox
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="EmbeddedBox">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded/embedded.go?s=273:596#L7">EmbeddedBox</a>
+				<a class="permalink" href="godoc.78.html#EmbeddedBox">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+EmbeddedBox defines an embedded box
+</p>
+
+			<pre>type EmbeddedBox struct {
+<span id="EmbeddedBox.Name"></span>    Name      <a href="godoc.4.html#string">string</a>                   <span class="comment">// box name</span>
+<span id="EmbeddedBox.Time"></span>    Time      <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a>                <span class="comment">// embed time</span>
+<span id="EmbeddedBox.EmbedType"></span>    EmbedType <a href="godoc.4.html#int">int</a>                      <span class="comment">// kind of embedding</span>
+<span id="EmbeddedBox.Files"></span>    Files     map[<a href="godoc.4.html#string">string</a>]*<a href="godoc.78.html#EmbeddedFile">EmbeddedFile</a> <span class="comment">// ALL embedded files by full path</span>
+<span id="EmbeddedBox.Dirs"></span>    Dirs      map[<a href="godoc.4.html#string">string</a>]*<a href="godoc.78.html#EmbeddedDir">EmbeddedDir</a>  <span class="comment">// ALL embedded dirs by full path</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="EmbeddedBox.Link">func (*EmbeddedBox) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded/embedded.go?s=670:698#L16">Link</a>
+					<a class="permalink" href="godoc.78.html#EmbeddedBox.Link">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.78.html#EmbeddedBox">EmbeddedBox</a>) Link()</pre>
+				<p>
+Link creates the ChildDirs and ChildFiles links in all EmbeddedDir&#39;s
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EmbeddedDir">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded/embedded.go?s=1712:1944#L50">EmbeddedDir</a>
+				<a class="permalink" href="godoc.78.html#EmbeddedDir">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+EmbeddedDir is instanced in the code generated by the rice tool and contains all necicary information about an embedded file
+</p>
+
+			<pre>type EmbeddedDir struct {
+<span id="EmbeddedDir.Filename"></span>    Filename   <a href="godoc.4.html#string">string</a>
+<span id="EmbeddedDir.DirModTime"></span>    DirModTime <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a>
+<span id="EmbeddedDir.ChildDirs"></span>    ChildDirs  []*<a href="godoc.78.html#EmbeddedDir">EmbeddedDir</a>  <span class="comment">// direct childs, as returned by virtualDir.Readdir()</span>
+<span id="EmbeddedDir.ChildFiles"></span>    ChildFiles []*<a href="godoc.78.html#EmbeddedFile">EmbeddedFile</a> <span class="comment">// direct childs, as returned by virtualDir.Readdir()</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="EmbeddedFile">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded/embedded.go?s=2075:2178#L58">EmbeddedFile</a>
+				<a class="permalink" href="godoc.78.html#EmbeddedFile">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+EmbeddedFile is instanced in the code generated by the rice tool and contains all necicary information about an embedded file
+</p>
+
+			<pre>type EmbeddedFile struct {
+<span id="EmbeddedFile.Filename"></span>    Filename    <a href="godoc.4.html#string">string</a> <span class="comment">// filename</span>
+<span id="EmbeddedFile.FileModTime"></span>    FileModTime <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Time">Time</a>
+<span id="EmbeddedFile.Content"></span>    Content     <a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

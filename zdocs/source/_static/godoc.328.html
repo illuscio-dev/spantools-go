@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>cases - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.328.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package cases
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/cases"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.328.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.328.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.328.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package cases provides general and language-specific case mappers.
+</p>
+
+				<div id="example_" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">src := []string{
+    &#34;hello world!&#34;,
+    &#34;i with dot&#34;,
+    &#34;&#39;n ijsberg&#34;,
+    &#34;here comes O&#39;Brian&#34;,
+}
+for _, c := range []cases.Caser{
+    cases.Lower(language.Und),
+    cases.Upper(language.Turkish),
+    cases.Title(language.Dutch),
+    cases.Title(language.Und, cases.NoLower),
+} {
+    fmt.Println()
+    for _, s := range src {
+        fmt.Println(c.String(s))
+    }
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">hello world!
+i with dot
+&#39;n ijsberg
+here comes o&#39;brian
+
+HELLO WORLD!
+İ WİTH DOT
+&#39;N İJSBERG
+HERE COMES O&#39;BRİAN
+
+Hello World!
+I With Dot
+&#39;n IJsberg
+Here Comes O&#39;brian
+
+Hello World!
+I With Dot
+&#39;N Ijsberg
+Here Comes O&#39;Brian
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.328.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.328.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.328.html#Caser">type Caser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Fold">func Fold(opts ...Option) Caser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Lower">func Lower(t language.Tag, opts ...Option) Caser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Title">func Title(t language.Tag, opts ...Option) Caser</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Upper">func Upper(t language.Tag, opts ...Option) Caser</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Caser.Bytes">func (c Caser) Bytes(b []byte) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Caser.Reset">func (c Caser) Reset()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Caser.Span">func (c Caser) Span(src []byte, atEOF bool) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Caser.String">func (c Caser) String(s string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#Caser.Transform">func (c Caser) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.328.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.328.html#HandleFinalSigma">func HandleFinalSigma(enable bool) Option</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.328.html#example_">Package</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go">cases.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/context.go">context.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/fold.go">fold.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/info.go">info.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/map.go">map.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/tables10.0.0.go">tables10.0.0.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/cases/trieval.go">trieval.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+UnicodeVersion is the Unicode version from which the tables in this package are derived.
+</p>
+
+				<pre>const <span id="UnicodeVersion">UnicodeVersion</span> = &#34;10.0.0&#34;</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span id="Supported">Supported</span> <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Coverage">Coverage</a>
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Caser">type <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=1269:1323#L27">Caser</a>
+				<a class="permalink" href="godoc.328.html#Caser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Caser transforms given input to a certain case. It implements
+transform.Transformer.
+</p>
+<p>
+A Caser may be stateful and should therefore not be shared between
+goroutines.
+</p>
+
+			<pre>type Caser struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Fold">func <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=3240:3271#L83">Fold</a>
+					<a class="permalink" href="godoc.328.html#Fold">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Fold(opts ...<a href="godoc.328.html#Option">Option</a>) <a href="godoc.328.html#Caser">Caser</a></pre>
+				<p>
+Fold returns a Caser that implements Unicode case folding. The returned Caser
+is stateless and safe to use concurrently by multiple goroutines.
+</p>
+<p>
+Case folding does not normalize the input and may not preserve a normal form.
+Use the collate or search package for more convenient and linguistically
+sound comparisons. Use golang.org/x/text/secure/precis for string comparisons
+where security aspects are a concern.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Lower">func <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=2474:2522#L66">Lower</a>
+					<a class="permalink" href="godoc.328.html#Lower">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Lower(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, opts ...<a href="godoc.328.html#Option">Option</a>) <a href="godoc.328.html#Caser">Caser</a></pre>
+				<p>
+Lower returns a Caser for language-specific lowercasing.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Title">func <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=2708:2756#L72">Title</a>
+					<a class="permalink" href="godoc.328.html#Title">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Title(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, opts ...<a href="godoc.328.html#Option">Option</a>) <a href="godoc.328.html#Caser">Caser</a></pre>
+				<p>
+Title returns a Caser for language-specific title casing. It uses an
+approximation of the default Unicode Word Break algorithm.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Upper">func <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=2314:2362#L61">Upper</a>
+					<a class="permalink" href="godoc.328.html#Upper">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Upper(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, opts ...<a href="godoc.328.html#Option">Option</a>) <a href="godoc.328.html#Caser">Caser</a></pre>
+				<p>
+Upper returns a Caser for language-specific uppercasing.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Caser.Bytes">func (Caser) <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=1429:1466#L33">Bytes</a>
+					<a class="permalink" href="godoc.328.html#Caser.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.328.html#Caser">Caser</a>) Bytes(b []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Bytes returns a new byte slice with the result of converting b to the case
+form implemented by c.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Caser.Reset">func (Caser) <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=1798:1820#L47">Reset</a>
+					<a class="permalink" href="godoc.328.html#Caser.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.328.html#Caser">Caser</a>) Reset()</pre>
+				<p>
+Reset resets the Caser to be reused for new input after a previous call to
+Transform.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Caser.Span">func (Caser) <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=2157:2219#L56">Span</a>
+					<a class="permalink" href="godoc.328.html#Caser.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.328.html#Caser">Caser</a>) Span(src []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Span implements the transform.SpanningTransformer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Caser.String">func (Caser) <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=1616:1654#L40">String</a>
+					<a class="permalink" href="godoc.328.html#Caser.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.328.html#Caser">Caser</a>) String(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String returns a string with the result of transforming s to the case form
+implemented by c.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Caser.Transform">func (Caser) <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=1967:2048#L51">Transform</a>
+					<a class="permalink" href="godoc.328.html#Caser.Transform">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.328.html#Caser">Caser</a>) Transform(dst, src []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (nDst, nSrc <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Transform implements the transform.Transformer interface and transforms the
+given input to the case form implemented by c.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=3375:3410#L88">Option</a>
+				<a class="permalink" href="godoc.328.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Option is used to modify the behavior of a Caser.
+</p>
+
+			<pre>type Option func(o options) options</pre>
+
+			
+
+			
+				
+				<pre>var (
+    <span class="comment">// NoLower disables the lowercasing of non-leading letters for a title</span>
+    <span class="comment">// caser.</span>
+    <span id="NoLower">NoLower</span> <a href="godoc.328.html#Option">Option</a> = noLower
+
+    <span class="comment">// Compact omits mappings in case folding for characters that would grow the</span>
+    <span class="comment">// input. (Unimplemented.)</span>
+    <span id="Compact">Compact</span> <a href="godoc.328.html#Option">Option</a> = compact
+)</pre>
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="HandleFinalSigma">func <a href="http://localhost:6161/src/golang.org/x/text/cases/cases.go?s=4705:4746#L137">HandleFinalSigma</a>
+					<a class="permalink" href="godoc.328.html#HandleFinalSigma">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func HandleFinalSigma(enable <a href="godoc.4.html#bool">bool</a>) <a href="godoc.328.html#Option">Option</a></pre>
+				<p>
+HandleFinalSigma specifies whether the special handling of Greek final sigma
+should be enabled. Unicode prescribes handling the Greek final sigma for all
+locales, but standards like IDNA and PRECIS override this default.
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

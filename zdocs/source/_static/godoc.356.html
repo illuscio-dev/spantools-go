@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>plural - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.356.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package plural
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/feature/plural"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.356.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.356.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package plural provides utilities for handling linguistic plurals in text.
+</p>
+<p>
+The definitions in this package are based on the plural rule handling defined
+in CLDR. See
+<a href="http://unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules">http://unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules</a> for
+details.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.356.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.356.html#Selectf">func Selectf(arg int, format string, cases ...interface{}) catalog.Message</a></dd>
+			
+			
+				
+				<dd><a href="godoc.356.html#Form">type Form</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.356.html#Interface">type Interface</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.356.html#Rules">type Rules</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.356.html#Rules.MatchDigits">func (p *Rules) MatchDigits(t language.Tag, digits []byte, exp, scale int) Form</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.356.html#Rules.MatchPlural">func (p *Rules) MatchPlural(lang language.Tag, i, v, w, f, t int) Form</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/feature/plural/common.go">common.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/feature/plural/message.go">message.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/feature/plural/plural.go">plural.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/feature/plural/tables.go">tables.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+CLDRVersion is the CLDR version from which the tables in this package are derived.
+</p>
+
+				<pre>const <span id="CLDRVersion">CLDRVersion</span> = &#34;32&#34;</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Selectf">func <a href="http://localhost:6161/src/golang.org/x/text/feature/plural/message.go?s=2041:2115#L46">Selectf</a>
+				<a class="permalink" href="godoc.356.html#Selectf">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Selectf(arg <a href="godoc.4.html#int">int</a>, format <a href="godoc.4.html#string">string</a>, cases ...interface{}) <a href="godoc.361.html">catalog</a>.<a href="godoc.361.html#Message">Message</a></pre>
+			<p>
+Selectf returns the first case for which its selector is a match for the
+arg-th substitution argument to a formatting call, formatting it as indicated
+by format.
+</p>
+<p>
+The cases argument are pairs of selectors and messages. Selectors are of type
+string or Form. Messages are of type string or catalog.Message. A selector
+matches an argument if:
+</p>
+<pre>- it is &#34;other&#34; or Other
+- it matches the plural form of the argument: &#34;zero&#34;, &#34;one&#34;, &#34;two&#34;, &#34;few&#34;,
+  or &#34;many&#34;, or the equivalent Form
+- it is of the form &#34;=x&#34; where x is an integer that matches the value of
+  the argument.
+- it is of the form &#34;&lt;x&#34; where x is an integer that is larger than the
+  argument.
+</pre>
+<p>
+The format argument determines the formatting parameters for which to
+determine the plural form. This is especially relevant for non-integer
+values.
+</p>
+<p>
+The format string may be &#34;&#34;, in which case a best-effort attempt is made to
+find a reasonable representation on which to base the plural form. Examples
+of format strings are:
+</p>
+<pre>- %.2f   decimal with scale 2
+- %.2e   scientific notation with precision 3 (scale + 1)
+- %d     integer
+</pre>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Form">type <a href="http://localhost:6161/src/golang.org/x/text/feature/plural/common.go?s=480:494#L3">Form</a>
+				<a class="permalink" href="godoc.356.html#Form">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Form defines a plural form.
+</p>
+<p>
+Not all languages support all forms. Also, the meaning of each form varies
+per language. It is important to note that the name of a form does not
+necessarily correspond one-to-one with the set of numbers. For instance,
+for Croation, One matches not only 1, but also 11, 21, etc.
+</p>
+<p>
+Each language must at least support the form &#34;other&#34;.
+</p>
+
+			<pre>type Form <a href="godoc.4.html#byte">byte</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="Other">Other</span> <a href="godoc.356.html#Form">Form</a> = <a href="godoc.4.html#iota">iota</a>
+    <span id="Zero">Zero</span>
+    <span id="One">One</span>
+    <span id="Two">Two</span>
+    <span id="Few">Few</span>
+    <span id="Many">Many</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Interface">type <a href="http://localhost:6161/src/golang.org/x/text/feature/plural/message.go?s=548:861#L13">Interface</a>
+				<a class="permalink" href="godoc.356.html#Interface">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Interface is used for types that can determine their own plural form.
+</p>
+
+			<pre>type Interface interface {
+    <span class="comment">// PluralForm reports the plural form for the given language of the</span>
+    <span class="comment">// underlying value. It also returns the integer value. If the integer value</span>
+    <span class="comment">// is larger than fits in n, PluralForm may return a value modulo</span>
+    <span class="comment">// 10,000,000.</span>
+    PluralForm(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, scale <a href="godoc.4.html#int">int</a>) (f <a href="godoc.356.html#Form">Form</a>, n <a href="godoc.4.html#int">int</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Rules">type <a href="http://localhost:6161/src/golang.org/x/text/feature/plural/plural.go?s=714:836#L14">Rules</a>
+				<a class="permalink" href="godoc.356.html#Rules">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Rules defines the plural rules for all languages for a certain plural type.
+</p>
+<p>
+This package is UNDER CONSTRUCTION and its API may change.
+</p>
+
+			<pre>type Rules struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+				
+				<pre>var (
+    <span class="comment">// Cardinal defines the plural rules for numbers indicating quantities.</span>
+    <span id="Cardinal">Cardinal</span> *<a href="godoc.356.html#Rules">Rules</a> = cardinal
+
+    <span class="comment">// Ordinal defines the plural rules for numbers indicating position</span>
+    <span class="comment">// (first, second, etc.).</span>
+    <span id="Ordinal">Ordinal</span> *<a href="godoc.356.html#Rules">Rules</a> = ordinal
+)</pre>
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Rules.MatchDigits">func (*Rules) <a href="http://localhost:6161/src/golang.org/x/text/feature/plural/plural.go?s=3189:3268#L105">MatchDigits</a>
+					<a class="permalink" href="godoc.356.html#Rules.MatchDigits">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.356.html#Rules">Rules</a>) MatchDigits(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, digits []<a href="godoc.4.html#byte">byte</a>, exp, scale <a href="godoc.4.html#int">int</a>) <a href="godoc.356.html#Form">Form</a></pre>
+				<p>
+MatchDigits computes the plural form for the given language and the given
+decimal floating point digits. The digits are stored in big-endian order and
+are of value byte(0) - byte(9). The floating point position is indicated by
+exp and the number of visible decimals is scale. All leading and trailing
+zeros may be omitted from digits.
+</p>
+<p>
+The following table contains examples of possible arguments to represent
+the given numbers.
+</p>
+<pre>decimal    digits              exp    scale
+123        []byte{1, 2, 3}     3      0
+123.4      []byte{1, 2, 3, 4}  3      1
+123.40     []byte{1, 2, 3, 4}  3      2
+100000     []byte{1}           6      0
+100000.00  []byte{1}           6      3
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Rules.MatchPlural">func (*Rules) <a href="http://localhost:6161/src/golang.org/x/text/feature/plural/plural.go?s=5043:5113#L157">MatchPlural</a>
+					<a class="permalink" href="godoc.356.html#Rules.MatchPlural">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.356.html#Rules">Rules</a>) MatchPlural(lang <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, i, v, w, f, t <a href="godoc.4.html#int">int</a>) <a href="godoc.356.html#Form">Form</a></pre>
+				<p>
+MatchPlural returns the plural form for the given language and plural
+operands (as defined in
+<a href="http://unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules">http://unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules</a>):
+</p>
+<pre>where
+	n  absolute value of the source number (integer and decimals)
+input
+	i  integer digits of n.
+	v  number of visible fraction digits in n, with trailing zeros.
+	w  number of visible fraction digits in n, without trailing zeros.
+	f  visible fractional digits in n, with trailing zeros (f = t * 10^(v-w))
+	t  visible fractional digits in n, without trailing zeros.
+</pre>
+<p>
+If any of the operand values is too large to fit in an int, it is okay to
+pass the value modulo 10,000,000.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

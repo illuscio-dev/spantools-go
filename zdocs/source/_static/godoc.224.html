@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>hkdf - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.224.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package hkdf
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/hkdf"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.224.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.224.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.224.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package hkdf implements the HMAC-based Extract-and-Expand Key Derivation
+Function (HKDF) as defined in RFC 5869.
+</p>
+<p>
+HKDF is a cryptographic key derivation function (KDF) with the goal of
+expanding limited input keying material into one or more cryptographically
+strong secret keys.
+</p>
+
+				<div id="example__usage" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Usage)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Usage)</span></p>
+		<p>Usage example that expands one master secret into three other
+cryptographically secure keys.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// Underlying hash function for HMAC.</span>
+hash := sha256.New
+
+<span class="comment">// Cryptographically secure master secret.</span>
+secret := []byte{0x00, 0x01, 0x02, 0x03} <span class="comment">// i.e. NOT this.</span>
+
+<span class="comment">// Non-secret salt, optional (can be nil).</span>
+<span class="comment">// Recommended: hash-length random value.</span>
+salt := make([]byte, hash().Size())
+if _, err := rand.Read(salt); err != nil {
+    panic(err)
+}
+
+<span class="comment">// Non-secret context info, optional (can be nil).</span>
+info := []byte(&#34;hkdf example&#34;)
+
+<span class="comment">// Generate three 128-bit derived keys.</span>
+hkdf := hkdf.New(hash, secret, salt, info)
+
+var keys [][]byte
+for i := 0; i &lt; 3; i++ {
+    key := make([]byte, 16)
+    if _, err := io.ReadFull(hkdf, key); err != nil {
+        panic(err)
+    }
+    keys = append(keys, key)
+}
+
+for i := range keys {
+    fmt.Printf(&#34;Key #%d: %v\n&#34;, i+1, !bytes.Equal(keys[i], make([]byte, 16)))
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">Key #1: true
+Key #2: true
+Key #3: true
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.224.html#Expand">func Expand(hash func() hash.Hash, pseudorandomKey, info []byte) io.Reader</a></dd>
+			
+				
+				<dd><a href="godoc.224.html#Extract">func Extract(hash func() hash.Hash, secret, salt []byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.224.html#New">func New(hash func() hash.Hash, secret, salt, info []byte) io.Reader</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.224.html#example__usage">Package (Usage)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/hkdf/hkdf.go">hkdf.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Expand">func <a href="http://localhost:6161/src/golang.org/x/crypto/hkdf/hkdf.go?s=2286:2360#L73">Expand</a>
+				<a class="permalink" href="godoc.224.html#Expand">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Expand(hash func() <a href="godoc.568.html">hash</a>.<a href="godoc.568.html#Hash">Hash</a>, pseudorandomKey, info []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a></pre>
+			<p>
+Expand returns a Reader, from which keys can be read, using the given
+pseudorandom key and optional context info, skipping the extraction step.
+</p>
+<p>
+The pseudorandomKey should have been generated by Extract, or be a uniformly
+random or pseudorandom cryptographically strong key. See RFC 5869, Section
+3.3. Most common scenarios will want to use New instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Extract">func <a href="http://localhost:6161/src/golang.org/x/crypto/hkdf/hkdf.go?s=904:967#L16">Extract</a>
+				<a class="permalink" href="godoc.224.html#Extract">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Extract(hash func() <a href="godoc.568.html">hash</a>.<a href="godoc.568.html#Hash">Hash</a>, secret, salt []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+Extract generates a pseudorandom key for use with Expand from an input secret
+and an optional independent salt.
+</p>
+<p>
+Only use this function if you need to reuse the extracted key with multiple
+Expand invocations and different context values. Most common scenarios,
+including the generation of multiple keys, should use New instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="New">func <a href="http://localhost:6161/src/golang.org/x/crypto/hkdf/hkdf.go?s=2607:2675#L80">New</a>
+				<a class="permalink" href="godoc.224.html#New">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func New(hash func() <a href="godoc.568.html">hash</a>.<a href="godoc.568.html#Hash">Hash</a>, secret, salt, info []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a></pre>
+			<p>
+New returns a Reader, from which keys can be read, using the given hash,
+secret, salt and context info. Salt and info can be nil.
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

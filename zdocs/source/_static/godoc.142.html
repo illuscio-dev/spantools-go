@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>pretty - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.142.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package pretty
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/tidwall/pretty"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.142.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.142.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.142.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.142.html#Color">func Color(src []byte, style *Style) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.142.html#Pretty">func Pretty(json []byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.142.html#PrettyOptions">func PrettyOptions(json []byte, opts *Options) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.142.html#Ugly">func Ugly(json []byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.142.html#UglyInPlace">func UglyInPlace(json []byte) []byte</a></dd>
+			
+			
+				
+				<dd><a href="godoc.142.html#Options">type Options</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.142.html#Style">type Style</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go">pretty.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+DefaultOptions is the default options for pretty formats.
+</p>
+
+				<pre>var <span id="DefaultOptions">DefaultOptions</span> = &amp;<a href="godoc.142.html#Options">Options</a>{<a href="godoc.142.html#Options.Width">Width</a>: 80, <a href="godoc.142.html#Options.Prefix">Prefix</a>: &#34;&#34;, <a href="godoc.142.html#Options.Indent">Indent</a>: &#34;  &#34;, <a href="godoc.142.html#Options.SortKeys">SortKeys</a>: <a href="godoc.4.html#false">false</a>}</pre>
+			
+				<p>
+TerminalStyle is for terminals
+</p>
+
+				<pre>var <span id="TerminalStyle">TerminalStyle</span> = &amp;<a href="godoc.142.html#Style">Style</a>{
+    <a href="godoc.142.html#Style.Key">Key</a>:    [2]<a href="godoc.4.html#string">string</a>{&#34;\x1B[94m&#34;, &#34;\x1B[0m&#34;},
+    <a href="godoc.142.html#Style.String">String</a>: [2]<a href="godoc.4.html#string">string</a>{&#34;\x1B[92m&#34;, &#34;\x1B[0m&#34;},
+    <a href="godoc.142.html#Style.Number">Number</a>: [2]<a href="godoc.4.html#string">string</a>{&#34;\x1B[93m&#34;, &#34;\x1B[0m&#34;},
+    <a href="godoc.142.html#Style.True">True</a>:   [2]<a href="godoc.4.html#string">string</a>{&#34;\x1B[96m&#34;, &#34;\x1B[0m&#34;},
+    <a href="godoc.142.html#Style.False">False</a>:  [2]<a href="godoc.4.html#string">string</a>{&#34;\x1B[96m&#34;, &#34;\x1B[0m&#34;},
+    <a href="godoc.142.html#Style.Null">Null</a>:   [2]<a href="godoc.4.html#string">string</a>{&#34;\x1B[91m&#34;, &#34;\x1B[0m&#34;},
+    <a href="godoc.142.html#Style.Append">Append</a>: func(dst []<a href="godoc.4.html#byte">byte</a>, c <a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a> {
+        if c &lt; &#39; &#39; &amp;&amp; (c != &#39;\r&#39; &amp;&amp; c != &#39;\n&#39; &amp;&amp; c != &#39;\t&#39; &amp;&amp; c != &#39;\v&#39;) {
+            dst = <a href="godoc.4.html#append">append</a>(dst, &#34;\\u00&#34;...)
+            dst = <a href="godoc.4.html#append">append</a>(dst, hexp((c&gt;&gt;4)&amp;0xF))
+            return <a href="godoc.4.html#append">append</a>(dst, hexp((c)&amp;0xF))
+        }
+        return <a href="godoc.4.html#append">append</a>(dst, c)
+    },
+}</pre>
+			
+		
+		
+			
+			
+			<h2 id="Color">func <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=8288:8331#L331">Color</a>
+				<a class="permalink" href="godoc.142.html#Color">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Color(src []<a href="godoc.4.html#byte">byte</a>, style *<a href="godoc.142.html#Style">Style</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+Color will colorize the json. The style parma is used for customizing
+the colors. Passing nil to the style param will use the default
+TerminalStyle.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Pretty">func <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=699:730#L18">Pretty</a>
+				<a class="permalink" href="godoc.142.html#Pretty">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Pretty(json []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+Pretty converts the input json into a more human readable format where each
+element is on it&#39;s own line with clear indentation.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PrettyOptions">func <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=829:882#L21">PrettyOptions</a>
+				<a class="permalink" href="godoc.142.html#PrettyOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PrettyOptions(json []<a href="godoc.4.html#byte">byte</a>, opts *<a href="godoc.142.html#Options">Options</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+PrettyOptions is like Pretty but with customized options.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Ugly">func <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=1329:1358#L40">Ugly</a>
+				<a class="permalink" href="godoc.142.html#Ugly">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Ugly(json []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+Ugly removes insignificant space characters from the input json byte slice
+and returns the compacted result.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UglyInPlace">func <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=1663:1699#L49">UglyInPlace</a>
+				<a class="permalink" href="godoc.142.html#UglyInPlace">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UglyInPlace(json []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+UglyInPlace removes insignificant space characters from the input json
+byte slice and returns the compacted result. This method reuses the
+input json buffer to avoid allocations. Do not use the original bytes
+slice upon return.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Options">type <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=65:417#L1">Options</a>
+				<a class="permalink" href="godoc.142.html#Options">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Options is Pretty options
+</p>
+
+			<pre>type Options struct {
+<span id="Options.Width"></span>    <span class="comment">// Width is an max column width for single line arrays</span>
+    <span class="comment">// Default is 80</span>
+    Width <a href="godoc.4.html#int">int</a>
+<span id="Options.Prefix"></span>    <span class="comment">// Prefix is a prefix for all lines</span>
+    <span class="comment">// Default is an empty string</span>
+    Prefix <a href="godoc.4.html#string">string</a>
+<span id="Options.Indent"></span>    <span class="comment">// Indent is the nested indentation</span>
+    <span class="comment">// Default is two spaces</span>
+    Indent <a href="godoc.4.html#string">string</a>
+<span id="Options.SortKeys"></span>    <span class="comment">// SortKeys will sort the keys alphabetically</span>
+    <span class="comment">// Default is false</span>
+    SortKeys <a href="godoc.4.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Style">type <a href="http://localhost:6161/src/github.com/tidwall/pretty/pretty.go?s=7310:7446#L295">Style</a>
+				<a class="permalink" href="godoc.142.html#Style">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Style is the color style
+</p>
+
+			<pre>type Style struct {
+<span id="Style.Key"></span>    Key, String, Number [2]<a href="godoc.4.html#string">string</a>
+<span id="Style.True"></span>    True, False, Null   [2]<a href="godoc.4.html#string">string</a>
+<span id="Style.Append"></span>    Append              func(dst []<a href="godoc.4.html#byte">byte</a>, c <a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

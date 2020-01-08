@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>box - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.230.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package box
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/nacl/box"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.230.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.230.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.230.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package box authenticates and encrypts small messages using public-key cryptography.
+</p>
+<p>
+Box uses Curve25519, XSalsa20 and Poly1305 to encrypt and authenticate
+messages. The length of messages is not hidden.
+</p>
+<p>
+It is the caller&#39;s responsibility to ensure the uniqueness of nonces—for
+example, by using nonce 1 for the first message, nonce 2 for the second
+message, etc. Nonces are long enough that randomly generated nonces have
+negligible risk of collision.
+</p>
+<p>
+Messages should be small because:
+</p>
+<p>
+1. The whole message needs to be held in memory to be processed.
+</p>
+<p>
+2. Using large messages pressures implementations on small machines to decrypt
+and process plaintext before authenticating it. This is very dangerous, and
+this API does not allow it, but a protocol that uses excessive message sizes
+might present some implementations with no other choice.
+</p>
+<p>
+3. Fixed overheads will be sufficiently amortised by messages as small as 8KB.
+</p>
+<p>
+4. Performance may be improved by working with messages that fit into data caches.
+</p>
+<p>
+Thus large amounts of data should be chunked so that each message is small.
+(Each message still needs a unique nonce.) If in doubt, 16KB is a reasonable
+chunk size.
+</p>
+<p>
+This package is interoperable with NaCl: <a href="https://nacl.cr.yp.to/box.html">https://nacl.cr.yp.to/box.html</a>.
+</p>
+
+				<div id="example_" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">senderPublicKey, senderPrivateKey, err := box.GenerateKey(crypto_rand.Reader)
+if err != nil {
+    panic(err)
+}
+
+recipientPublicKey, recipientPrivateKey, err := box.GenerateKey(crypto_rand.Reader)
+if err != nil {
+    panic(err)
+}
+
+<span class="comment">// You must use a different nonce for each message you encrypt with the</span>
+<span class="comment">// same key. Since the nonce here is 192 bits long, a random value</span>
+<span class="comment">// provides a sufficiently small probability of repeats.</span>
+var nonce [24]byte
+if _, err := io.ReadFull(crypto_rand.Reader, nonce[:]); err != nil {
+    panic(err)
+}
+
+msg := []byte(&#34;Alas, poor Yorick! I knew him, Horatio&#34;)
+<span class="comment">// This encrypts msg and appends the result to the nonce.</span>
+encrypted := box.Seal(nonce[:], msg, &amp;nonce, recipientPublicKey, senderPrivateKey)
+
+<span class="comment">// The recipient can decrypt the message using their private key and the</span>
+<span class="comment">// sender&#39;s public key. When you decrypt, you must use the same nonce you</span>
+<span class="comment">// used to encrypt the message. One way to achieve this is to store the</span>
+<span class="comment">// nonce alongside the encrypted message. Above, we stored the nonce in the</span>
+<span class="comment">// first 24 bytes of the encrypted text.</span>
+var decryptNonce [24]byte
+copy(decryptNonce[:], encrypted[:24])
+decrypted, ok := box.Open(nil, encrypted[24:], &amp;decryptNonce, senderPublicKey, recipientPrivateKey)
+if !ok {
+    panic(&#34;decryption error&#34;)
+}
+fmt.Println(string(decrypted))
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">Alas, poor Yorick! I knew him, Horatio
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example__precompute" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Precompute)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Precompute)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">senderPublicKey, senderPrivateKey, err := box.GenerateKey(crypto_rand.Reader)
+if err != nil {
+    panic(err)
+}
+
+recipientPublicKey, recipientPrivateKey, err := box.GenerateKey(crypto_rand.Reader)
+if err != nil {
+    panic(err)
+}
+
+<span class="comment">// The shared key can be used to speed up processing when using the same</span>
+<span class="comment">// pair of keys repeatedly.</span>
+sharedEncryptKey := new([32]byte)
+box.Precompute(sharedEncryptKey, recipientPublicKey, senderPrivateKey)
+
+<span class="comment">// You must use a different nonce for each message you encrypt with the</span>
+<span class="comment">// same key. Since the nonce here is 192 bits long, a random value</span>
+<span class="comment">// provides a sufficiently small probability of repeats.</span>
+var nonce [24]byte
+if _, err := io.ReadFull(crypto_rand.Reader, nonce[:]); err != nil {
+    panic(err)
+}
+
+msg := []byte(&#34;A fellow of infinite jest, of most excellent fancy&#34;)
+<span class="comment">// This encrypts msg and appends the result to the nonce.</span>
+encrypted := box.SealAfterPrecomputation(nonce[:], msg, &amp;nonce, sharedEncryptKey)
+
+<span class="comment">// The shared key can be used to speed up processing when using the same</span>
+<span class="comment">// pair of keys repeatedly.</span>
+var sharedDecryptKey [32]byte
+box.Precompute(&amp;sharedDecryptKey, senderPublicKey, recipientPrivateKey)
+
+<span class="comment">// The recipient can decrypt the message using the shared key. When you</span>
+<span class="comment">// decrypt, you must use the same nonce you used to encrypt the message.</span>
+<span class="comment">// One way to achieve this is to store the nonce alongside the encrypted</span>
+<span class="comment">// message. Above, we stored the nonce in the first 24 bytes of the</span>
+<span class="comment">// encrypted text.</span>
+var decryptNonce [24]byte
+copy(decryptNonce[:], encrypted[:24])
+decrypted, ok := box.OpenAfterPrecomputation(nil, encrypted[24:], &amp;decryptNonce, &amp;sharedDecryptKey)
+if !ok {
+    panic(&#34;decryption error&#34;)
+}
+fmt.Println(string(decrypted))
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">A fellow of infinite jest, of most excellent fancy
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.230.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.230.html#GenerateKey">func GenerateKey(rand io.Reader) (publicKey, privateKey *[32]byte, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.230.html#Open">func Open(out, box []byte, nonce *[24]byte, peersPublicKey, privateKey *[32]byte) ([]byte, bool)</a></dd>
+			
+				
+				<dd><a href="godoc.230.html#OpenAfterPrecomputation">func OpenAfterPrecomputation(out, box []byte, nonce *[24]byte, sharedKey *[32]byte) ([]byte, bool)</a></dd>
+			
+				
+				<dd><a href="godoc.230.html#Precompute">func Precompute(sharedKey, peersPublicKey, privateKey *[32]byte)</a></dd>
+			
+				
+				<dd><a href="godoc.230.html#Seal">func Seal(out, message []byte, nonce *[24]byte, peersPublicKey, privateKey *[32]byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.230.html#SealAfterPrecomputation">func SealAfterPrecomputation(out, message []byte, nonce *[24]byte, sharedKey *[32]byte) []byte</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.230.html#example_">Package</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.230.html#example__precompute">Package (Precompute)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go">box.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Overhead is the number of bytes of overhead when boxing a message.
+</p>
+
+				<pre>const <span id="Overhead">Overhead</span> = <a href="godoc.231.html">secretbox</a>.<a href="godoc.231.html#Overhead">Overhead</a></pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="GenerateKey">func <a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go?s=1801:1878#L40">GenerateKey</a>
+				<a class="permalink" href="godoc.230.html#GenerateKey">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GenerateKey(rand <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) (publicKey, privateKey *[32]<a href="godoc.4.html#byte">byte</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+GenerateKey generates a new public/private key pair suitable for use with
+Seal and Open.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Open">func <a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go?s=3496:3592#L83">Open</a>
+				<a class="permalink" href="godoc.230.html#Open">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Open(out, box []<a href="godoc.4.html#byte">byte</a>, nonce *[24]<a href="godoc.4.html#byte">byte</a>, peersPublicKey, privateKey *[32]<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#bool">bool</a>)</pre>
+			<p>
+Open authenticates and decrypts a box produced by Seal and appends the
+message to out, which must not overlap box. The output will be Overhead
+bytes smaller than box.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="OpenAfterPrecomputation">func <a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go?s=3842:3940#L91">OpenAfterPrecomputation</a>
+				<a class="permalink" href="godoc.230.html#OpenAfterPrecomputation">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func OpenAfterPrecomputation(out, box []<a href="godoc.4.html#byte">byte</a>, nonce *[24]<a href="godoc.4.html#byte">byte</a>, sharedKey *[32]<a href="godoc.4.html#byte">byte</a>) ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#bool">bool</a>)</pre>
+			<p>
+OpenAfterPrecomputation performs the same actions as Open, but takes a
+shared key as generated by Precompute.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Precompute">func <a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go?s=2394:2458#L60">Precompute</a>
+				<a class="permalink" href="godoc.230.html#Precompute">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Precompute(sharedKey, peersPublicKey, privateKey *[32]<a href="godoc.4.html#byte">byte</a>)</pre>
+			<p>
+Precompute calculates the shared key between peersPublicKey and privateKey
+and writes it to sharedKey. The shared key can be used with
+OpenAfterPrecomputation and SealAfterPrecomputation to speed up processing
+when using the same pair of keys repeatedly.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Seal">func <a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go?s=2819:2911#L68">Seal</a>
+				<a class="permalink" href="godoc.230.html#Seal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Seal(out, message []<a href="godoc.4.html#byte">byte</a>, nonce *[24]<a href="godoc.4.html#byte">byte</a>, peersPublicKey, privateKey *[32]<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+Seal appends an encrypted and authenticated copy of message to out, which
+will be Overhead bytes longer than the original and must not overlap it. The
+nonce must be unique for each distinct message for a given pair of keys.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SealAfterPrecomputation">func <a href="http://localhost:6161/src/golang.org/x/crypto/nacl/box/box.go?s=3165:3259#L76">SealAfterPrecomputation</a>
+				<a class="permalink" href="godoc.230.html#SealAfterPrecomputation">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SealAfterPrecomputation(out, message []<a href="godoc.4.html#byte">byte</a>, nonce *[24]<a href="godoc.4.html#byte">byte</a>, sharedKey *[32]<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+			<p>
+SealAfterPrecomputation performs the same actions as Seal, but takes a
+shared key as generated by Precompute.
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

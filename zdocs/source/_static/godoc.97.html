@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>stack - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.97.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package stack
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/go-stack/stack"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.97.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.97.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.97.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package stack implements utilities to capture, manipulate, and format call
+stacks. It provides a simpler API than package runtime.
+</p>
+<p>
+The implementation takes care of the minutia and special cases of
+interpreting the program counter (pc) values returned by runtime.Callers.
+</p>
+<p>
+Package stack&#39;s types implement fmt.Formatter, which provides a simple and
+flexible way to declaratively configure formatting when used with logging
+or error tracking packages.
+</p>
+
+				<div id="example__callFormat" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (CallFormat)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (CallFormat)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">package stack_test
+
+import (
+    &#34;fmt&#34;
+
+    &#34;github.com/go-stack/stack&#34;
+)
+
+func Example_callFormat() {
+    logCaller(&#34;%+s&#34;)
+    logCaller(&#34;%v   %[1]n()&#34;)
+    <span class="comment">// Output:</span>
+    <span class="comment">// github.com/go-stack/stack/format_test.go</span>
+    <span class="comment">// format_test.go:13   Example_callFormat()</span>
+}
+
+func logCaller(format string) {
+    fmt.Printf(format+&#34;\n&#34;, stack.Caller(1))
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.97.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.97.html#Call">type Call</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Caller">func Caller(skip int) Call</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Call.Format">func (c Call) Format(s fmt.State, verb rune)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Call.Frame">func (c Call) Frame() runtime.Frame</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Call.MarshalText">func (c Call) MarshalText() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Call.PC">func (c Call) PC() uintptr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Call.String">func (c Call) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.97.html#CallStack">type CallStack</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#Trace">func Trace() CallStack</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#CallStack.Format">func (cs CallStack) Format(s fmt.State, verb rune)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#CallStack.MarshalText">func (cs CallStack) MarshalText() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#CallStack.String">func (cs CallStack) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#CallStack.TrimAbove">func (cs CallStack) TrimAbove(c Call) CallStack</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#CallStack.TrimBelow">func (cs CallStack) TrimBelow(c Call) CallStack</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.97.html#CallStack.TrimRuntime">func (cs CallStack) TrimRuntime() CallStack</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.97.html#example__callFormat">Package (CallFormat)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go">stack.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrNoFunc means that the Call has a nil *runtime.Func. The most likely
+cause is a Call with the zero value.
+</p>
+
+				<pre>var <span id="ErrNoFunc">ErrNoFunc</span> = <a href="godoc.550.html">errors</a>.<a href="godoc.550.html#New">New</a>(&#34;no call stack information&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Call">type <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=653:694#L15">Call</a>
+				<a class="permalink" href="godoc.97.html#Call">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Call records a single function invocation from a goroutine stack.
+</p>
+
+			<pre>type Call struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Caller">func <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=868:894#L22">Caller</a>
+					<a class="permalink" href="godoc.97.html#Caller">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Caller(skip <a href="godoc.4.html#int">int</a>) <a href="godoc.97.html#Call">Call</a></pre>
+				<p>
+Caller returns a Call from the stack of the current goroutine. The argument
+skip is the number of stack frames to ascend, with 0 identifying the
+calling function.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Call.Format">func (Call) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=2814:2858#L82">Format</a>
+					<a class="permalink" href="godoc.97.html#Call.Format">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.97.html#Call">Call</a>) Format(s <a href="godoc.553.html">fmt</a>.<a href="godoc.553.html#State">State</a>, verb <a href="godoc.4.html#rune">rune</a>)</pre>
+				<p>
+Format implements fmt.Formatter with support for the following verbs.
+</p>
+<pre>%s    source file
+%d    line number
+%n    function name
+%k    last segment of the package path
+%v    equivalent to %s:%d
+</pre>
+<p>
+It accepts the &#39;+&#39; and &#39;#&#39; flags for most of the verbs as follows.
+</p>
+<pre>%+s   path of source file relative to the compile time GOPATH,
+      or the module path joined to the path of source file relative
+      to module root
+%#s   full path of source file
+%+n   import path qualified function name
+%+k   full package path
+%+v   equivalent to %+s:%d
+%#v   equivalent to %#s:%d
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Call.Frame">func (Call) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=4173:4208#L145">Frame</a>
+					<a class="permalink" href="godoc.97.html#Call.Frame">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.97.html#Call">Call</a>) Frame() <a href="godoc.42.html">runtime</a>.<a href="godoc.42.html#Frame">Frame</a></pre>
+				<p>
+Frame returns the call frame infomation for the Call.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Call.MarshalText">func (Call) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=1808:1851#L50">MarshalText</a>
+					<a class="permalink" href="godoc.97.html#Call.MarshalText">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.97.html#Call">Call</a>) MarshalText() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MarshalText implements encoding.TextMarshaler. It formats the Call the same
+as fmt.Sprintf(&#34;%v&#34;, c).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Call.PC">func (Call) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=4374:4400#L153">PC</a>
+					<a class="permalink" href="godoc.97.html#Call.PC">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.97.html#Call">Call</a>) PC() <a href="godoc.4.html#uintptr">uintptr</a></pre>
+				<p>
+PC returns the program counter for this call frame; multiple frames may
+have the same PC value.
+</p>
+<p>
+Deprecated: Use Call.Frame instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Call.String">func (Call) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=1644:1673#L44">String</a>
+					<a class="permalink" href="godoc.97.html#Call.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.97.html#Call">Call</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String implements fmt.Stinger. It is equivalent to fmt.Sprintf(&#34;%v&#34;, c).
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CallStack">type <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=4508:4529#L159">CallStack</a>
+				<a class="permalink" href="godoc.97.html#CallStack">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CallStack records a sequence of function invocations from a goroutine
+stack.
+</p>
+
+			<pre>type CallStack []<a href="godoc.97.html#Call">Call</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Trace">func <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=5643:5665#L203">Trace</a>
+					<a class="permalink" href="godoc.97.html#Trace">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Trace() <a href="godoc.97.html#CallStack">CallStack</a></pre>
+				<p>
+Trace returns a CallStack for the current goroutine with element 0
+identifying the calling function.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="CallStack.Format">func (CallStack) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=5336:5386#L190">Format</a>
+					<a class="permalink" href="godoc.97.html#CallStack.Format">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cs <a href="godoc.97.html#CallStack">CallStack</a>) Format(s <a href="godoc.553.html">fmt</a>.<a href="godoc.553.html#State">State</a>, verb <a href="godoc.4.html#rune">rune</a>)</pre>
+				<p>
+Format implements fmt.Formatter by printing the CallStack as square brackets
+([, ]) surrounding a space separated list of Calls each formatted with the
+supplied verb and options.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CallStack.MarshalText">func (CallStack) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=4893:4942#L174">MarshalText</a>
+					<a class="permalink" href="godoc.97.html#CallStack.MarshalText">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cs <a href="godoc.97.html#CallStack">CallStack</a>) MarshalText() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MarshalText implements encoding.TextMarshaler. It formats the CallStack the
+same as fmt.Sprintf(&#34;%v&#34;, cs).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CallStack.String">func (CallStack) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=4608:4643#L162">String</a>
+					<a class="permalink" href="godoc.97.html#CallStack.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cs <a href="godoc.97.html#CallStack">CallStack</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String implements fmt.Stinger. It is equivalent to fmt.Sprintf(&#34;%v&#34;, cs).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CallStack.TrimAbove">func (CallStack) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=6304:6351#L233">TrimAbove</a>
+					<a class="permalink" href="godoc.97.html#CallStack.TrimAbove">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cs <a href="godoc.97.html#CallStack">CallStack</a>) TrimAbove(c <a href="godoc.97.html#Call">Call</a>) <a href="godoc.97.html#CallStack">CallStack</a></pre>
+				<p>
+TrimAbove returns a slice of the CallStack with all entries above c
+removed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CallStack.TrimBelow">func (CallStack) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=6107:6154#L224">TrimBelow</a>
+					<a class="permalink" href="godoc.97.html#CallStack.TrimBelow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cs <a href="godoc.97.html#CallStack">CallStack</a>) TrimBelow(c <a href="godoc.97.html#Call">Call</a>) <a href="godoc.97.html#CallStack">CallStack</a></pre>
+				<p>
+TrimBelow returns a slice of the CallStack with all entries below c
+removed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CallStack.TrimRuntime">func (CallStack) <a href="http://localhost:6161/src/github.com/go-stack/stack/stack.go?s=11702:11745#L385">TrimRuntime</a>
+					<a class="permalink" href="godoc.97.html#CallStack.TrimRuntime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cs <a href="godoc.97.html#CallStack">CallStack</a>) TrimRuntime() <a href="godoc.97.html#CallStack">CallStack</a></pre>
+				<p>
+TrimRuntime returns a slice of the CallStack with the topmost entries from
+the go runtime removed. It considers any calls originating from unknown
+files, files under GOROOT, or _testmain.go as part of the runtime.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

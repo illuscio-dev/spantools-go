@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>runenames - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.376.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package runenames
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/unicode/runenames"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.376.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.376.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.376.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package runenames provides rune names from the Unicode Character Database.
+For example, the name for &#39;\u0100&#39; is &#34;LATIN CAPITAL LETTER A WITH MACRON&#34;.
+</p>
+<p>
+See <a href="http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt">http://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt</a>
+</p>
+
+				<div id="example_" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">runes := []rune{
+    -1,
+    &#39;\U00000000&#39;,
+    &#39;\U0000001f&#39;,
+    &#39;\U00000020&#39;,
+    &#39;\U00000021&#39;,
+    &#39;\U00000041&#39;,
+    &#39;\U0000007e&#39;,
+    &#39;\U0000007f&#39;,
+    &#39;\U00000080&#39;,
+    &#39;\U000000e0&#39;,
+
+    &#39;\U0000037f&#39;,
+    &#39;\U00000380&#39;,
+    &#39;\U00000381&#39;,
+    &#39;\U00000382&#39;,
+    &#39;\U00000383&#39;,
+    &#39;\U00000384&#39;,
+    &#39;\U00000385&#39;,
+    &#39;\U00000386&#39;,
+    &#39;\U000007c0&#39;,
+
+    &#39;\U00002603&#39;,
+    &#39;\U000033ff&#39;,
+    &#39;\U00003400&#39;,
+    &#39;\U00003401&#39;,
+    &#39;\U00003402&#39;,
+    &#39;\U00004dc0&#39;,
+
+    &#39;\U00009fd5&#39;,
+    &#39;\U00009fd6&#39;,
+    &#39;\U00009fff&#39;,
+    &#39;\U0000a000&#39;,
+    0xdc00, <span class="comment">// &#39;\U0000dc00&#39; (Low Surrogate) is an invalid Go literal.</span>
+    &#39;\U0000f800&#39;,
+    &#39;\U0000fffc&#39;,
+    &#39;\U0000fffd&#39;,
+    &#39;\U0000fffe&#39;,
+    &#39;\U0000ffff&#39;,
+
+    &#39;\U00010000&#39;,
+    &#39;\U0001f574&#39;,
+    &#39;\U0002fa1d&#39;,
+    &#39;\U0002fa1e&#39;,
+    &#39;\U000e0100&#39;,
+    &#39;\U000e01ef&#39;,
+    &#39;\U000e01f0&#39;,
+    &#39;\U00100000&#39;,
+    &#39;\U0010fffd&#39;,
+    &#39;\U0010fffe&#39;,
+    &#39;\U0010ffff&#39;,
+}
+
+for _, r := range runes {
+    fmt.Printf(&#34;%08x %q\n&#34;, r, runenames.Name(r))
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">-0000001 &#34;&#34;
+00000000 &#34;&lt;control&gt;&#34;
+0000001f &#34;&lt;control&gt;&#34;
+00000020 &#34;SPACE&#34;
+00000021 &#34;EXCLAMATION MARK&#34;
+00000041 &#34;LATIN CAPITAL LETTER A&#34;
+0000007e &#34;TILDE&#34;
+0000007f &#34;&lt;control&gt;&#34;
+00000080 &#34;&lt;control&gt;&#34;
+000000e0 &#34;LATIN SMALL LETTER A WITH GRAVE&#34;
+0000037f &#34;GREEK CAPITAL LETTER YOT&#34;
+00000380 &#34;&#34;
+00000381 &#34;&#34;
+00000382 &#34;&#34;
+00000383 &#34;&#34;
+00000384 &#34;GREEK TONOS&#34;
+00000385 &#34;GREEK DIALYTIKA TONOS&#34;
+00000386 &#34;GREEK CAPITAL LETTER ALPHA WITH TONOS&#34;
+000007c0 &#34;NKO DIGIT ZERO&#34;
+00002603 &#34;SNOWMAN&#34;
+000033ff &#34;SQUARE GAL&#34;
+00003400 &#34;&lt;CJK Ideograph Extension A&gt;&#34;
+00003401 &#34;&lt;CJK Ideograph Extension A&gt;&#34;
+00003402 &#34;&lt;CJK Ideograph Extension A&gt;&#34;
+00004dc0 &#34;HEXAGRAM FOR THE CREATIVE HEAVEN&#34;
+00009fd5 &#34;&lt;CJK Ideograph&gt;&#34;
+00009fd6 &#34;&#34;
+00009fff &#34;&#34;
+0000a000 &#34;YI SYLLABLE IT&#34;
+0000dc00 &#34;&lt;Low Surrogate&gt;&#34;
+0000f800 &#34;&lt;Private Use&gt;&#34;
+0000fffc &#34;OBJECT REPLACEMENT CHARACTER&#34;
+0000fffd &#34;REPLACEMENT CHARACTER&#34;
+0000fffe &#34;&#34;
+0000ffff &#34;&#34;
+00010000 &#34;LINEAR B SYLLABLE B008 A&#34;
+0001f574 &#34;MAN IN BUSINESS SUIT LEVITATING&#34;
+0002fa1d &#34;CJK COMPATIBILITY IDEOGRAPH-2FA1D&#34;
+0002fa1e &#34;&#34;
+000e0100 &#34;VARIATION SELECTOR-17&#34;
+000e01ef &#34;VARIATION SELECTOR-256&#34;
+000e01f0 &#34;&#34;
+00100000 &#34;&lt;Plane 16 Private Use&gt;&#34;
+0010fffd &#34;&lt;Plane 16 Private Use&gt;&#34;
+0010fffe &#34;&#34;
+0010ffff &#34;&#34;
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.376.html#Name">func Name(r rune) string</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.376.html#example_">Package</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/runenames/bits.go">bits.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/runenames/runenames.go">runenames.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/runenames/tables.go">tables.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Name">func <a href="http://localhost:6161/src/golang.org/x/text/unicode/runenames/runenames.go?s=500:524#L8">Name</a>
+				<a class="permalink" href="godoc.376.html#Name">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Name(r <a href="godoc.4.html#rune">rune</a>) <a href="godoc.4.html#string">string</a></pre>
+			<p>
+Name returns the name for r.
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>colltab - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.535.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package colltab
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/internal/colltab"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.535.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.535.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package colltab contains functionality related to collation tables.
+It is only to be used by the collate and search packages.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.535.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.535.html#MatchLang">func MatchLang(t language.Tag, tags []language.Tag) int</a></dd>
+			
+			
+				
+				<dd><a href="godoc.535.html#ContractTrieSet">type ContractTrieSet</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.535.html#Elem">type Elem</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#MakeElem">func MakeElem(primary, secondary, tertiary int, ccc uint8) (Elem, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#MakeQuaternary">func MakeQuaternary(v int) Elem</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.CCC">func (ce Elem) CCC() uint8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.Mask">func (ce Elem) Mask(l Level) uint32</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.Primary">func (ce Elem) Primary() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.Quaternary">func (ce Elem) Quaternary() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.Secondary">func (ce Elem) Secondary() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.Tertiary">func (ce Elem) Tertiary() uint8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Elem.Weight">func (ce Elem) Weight(l Level) int</a></dd>
+				
+			
+				
+				<dd><a href="godoc.535.html#Iter">type Iter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.Discard">func (i *Iter) Discard()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.End">func (i *Iter) End() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.Len">func (i *Iter) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.Next">func (i *Iter) Next() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.Reset">func (i *Iter) Reset(p int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.SetInput">func (i *Iter) SetInput(s []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Iter.SetInputString">func (i *Iter) SetInputString(s string)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.535.html#Level">type Level</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.535.html#Table">type Table</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Table.AppendNext">func (t *Table) AppendNext(w []Elem, b []byte) (res []Elem, n int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Table.AppendNextString">func (t *Table) AppendNextString(w []Elem, s string) (res []Elem, n int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Table.Domain">func (t *Table) Domain() []string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Table.Start">func (t *Table) Start(p int, b []byte) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Table.StartString">func (t *Table) StartString(p int, s string) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#Table.Top">func (t *Table) Top() uint32</a></dd>
+				
+			
+				
+				<dd><a href="godoc.535.html#Trie">type Trie</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.535.html#Weighter">type Weighter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.535.html#NewNumericWeighter">func NewNumericWeighter(w Weighter) Weighter</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go">collelem.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/colltab.go">colltab.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/contract.go">contract.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go">iter.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/numeric.go">numeric.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go">table.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/trie.go">trie.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/weighter.go">weighter.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+For normal collation elements, we assume that a collation element either has
+a primary or non-default secondary value, not both.
+Collation elements with a primary value are of the form
+01pppppp pppppppp ppppppp0 ssssssss
+</p>
+<pre>- p* is primary collation value
+- s* is the secondary collation value
+</pre>
+<p>
+00pppppp pppppppp ppppppps sssttttt, where
+</p>
+<pre>- p* is primary collation value
+- s* offset of secondary from default value.
+- t* is the tertiary collation value
+</pre>
+<p>
+100ttttt cccccccc pppppppp pppppppp
+</p>
+<pre>- t* is the tertiar collation value
+- c* is the canonical combining class
+- p* is the primary collation value
+</pre>
+<p>
+Collation elements with a secondary value are of the form
+1010cccc ccccssss ssssssss tttttttt, where
+</p>
+<pre>- c* is the canonical combining class
+- s* is the secondary collation value
+- t* is the tertiary collation value
+</pre>
+<p>
+11qqqqqq qqqqqqqq qqqqqqq0 00000000
+</p>
+<pre>- q* quaternary value
+</pre>
+
+				<pre>const (
+    <span id="Ignore">Ignore</span> = ceType4
+)</pre>
+			
+				
+				<pre>const (
+    <span id="MaxQuaternary">MaxQuaternary</span> = 0x1FFFFF <span class="comment">// 21 bits.</span>
+)</pre>
+			
+				
+				<pre>const (
+    <span id="PrivateUse">PrivateUse</span> = minContract
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="MatchLang">func <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/colltab.go?s=992:1047#L15">MatchLang</a>
+				<a class="permalink" href="godoc.535.html#MatchLang">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MatchLang(t <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>, tags []<a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>) <a href="godoc.4.html#int">int</a></pre>
+			<p>
+MatchLang finds the index of t in tags, using a matching algorithm used for
+collation and search. tags[0] must be language.Und, the remaining tags should
+be sorted alphabetically.
+</p>
+<p>
+Language matching for collation and search is different from the matching
+defined by language.Matcher: the (inferred) base language must be an exact
+match for the relevant fields. For example, &#34;gsw&#34; should not match &#34;de&#34;.
+Also the parent relation is different, as a parent may have a different
+script. So usually the parent of zh-Hant is und, whereas for MatchLang it is
+zh.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ContractTrieSet">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/contract.go?s=278:327#L1">ContractTrieSet</a>
+				<a class="permalink" href="godoc.535.html#ContractTrieSet">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ContractTrieSet []struct{ L, H, N, I <a href="godoc.4.html#uint8">uint8</a> }</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Elem">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=1089:1105#L31">Elem</a>
+				<a class="permalink" href="godoc.535.html#Elem">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Elem is a representation of a collation element. This API provides ways to encode
+and decode Elems. Implementations of collation tables may use values greater
+or equal to PrivateUse for their own purposes.  However, these should never be
+returned by AppendNext.
+</p>
+
+			<pre>type Elem <a href="godoc.4.html#uint32">uint32</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MakeElem">func <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=4008:4080#L123">MakeElem</a>
+					<a class="permalink" href="godoc.535.html#MakeElem">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MakeElem(primary, secondary, tertiary <a href="godoc.4.html#int">int</a>, ccc <a href="godoc.4.html#uint8">uint8</a>) (<a href="godoc.535.html#Elem">Elem</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MakeElem returns an Elem for the given values.  It will return an error
+if the given combination of values is invalid.
+</p>
+
+				
+				
+			
+				
+				<h3 id="MakeQuaternary">func <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=6146:6177#L172">MakeQuaternary</a>
+					<a class="permalink" href="godoc.535.html#MakeQuaternary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MakeQuaternary(v <a href="godoc.4.html#int">int</a>) <a href="godoc.535.html#Elem">Elem</a></pre>
+				<p>
+MakeQuaternary returns an Elem with the given quaternary value.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Elem.CCC">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=6567:6593#L185">CCC</a>
+					<a class="permalink" href="godoc.535.html#Elem.CCC">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) CCC() <a href="godoc.4.html#uint8">uint8</a></pre>
+				<p>
+CCC returns the canonical combining class associated with the underlying character,
+if applicable, or 0 otherwise.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Elem.Mask">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=6395:6430#L179">Mask</a>
+					<a class="permalink" href="godoc.535.html#Elem.Mask">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) Mask(l <a href="godoc.535.html#Level">Level</a>) <a href="godoc.4.html#uint32">uint32</a></pre>
+				<p>
+Mask sets weights for any level smaller than l to 0.
+The resulting Elem can be used to test for equality with
+other Elems to which the same mask has been applied.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Elem.Primary">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=6780:6808#L196">Primary</a>
+					<a class="permalink" href="godoc.535.html#Elem.Primary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) Primary() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Primary returns the primary collation weight for ce.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Elem.Quaternary">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=8324:8355#L260">Quaternary</a>
+					<a class="permalink" href="godoc.535.html#Elem.Quaternary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) Quaternary() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Quaternary returns the quaternary value if explicitly specified,
+0 if ce == Ignore, or MaxQuaternary otherwise.
+Quaternary values are used only for shifted variants.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Elem.Secondary">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=7026:7056#L207">Secondary</a>
+					<a class="permalink" href="godoc.535.html#Elem.Secondary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) Secondary() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Secondary returns the secondary collation weight for ce.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Elem.Tertiary">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=7426:7457#L225">Tertiary</a>
+					<a class="permalink" href="godoc.535.html#Elem.Tertiary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) Tertiary() <a href="godoc.4.html#uint8">uint8</a></pre>
+				<p>
+Tertiary returns the tertiary collation weight for ce.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Elem.Weight">func (Elem) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=8577:8611#L270">Weight</a>
+					<a class="permalink" href="godoc.535.html#Elem.Weight">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ce <a href="godoc.535.html#Elem">Elem</a>) Weight(l <a href="godoc.535.html#Level">Level</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Weight returns the collation weight for the given level.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Iter">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=409:971#L1">Iter</a>
+				<a class="permalink" href="godoc.535.html#Iter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Iter incrementally converts chunks of the input text to collation
+elements, while ensuring that the collation elements are in normalized order
+(that is, they are in the order as if the input text were normalized first).
+</p>
+
+			<pre>type Iter struct {
+<span id="Iter.Weighter"></span>    Weighter <a href="godoc.535.html#Weighter">Weighter</a>
+<span id="Iter.Elems"></span>    Elems    []<a href="godoc.535.html#Elem">Elem</a>
+<span id="Iter.N"></span>    <span class="comment">// N is the number of elements in Elems that will not be reordered on</span>
+    <span class="comment">// subsequent iterations, N &lt;= len(Elems).</span>
+    N <a href="godoc.4.html#int">int</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Iter.Discard">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=1357:1381#L35">Discard</a>
+					<a class="permalink" href="godoc.535.html#Iter.Discard">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) Discard()</pre>
+				<p>
+Discard removes the collation elements up to N.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.End">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=1630:1654#L44">End</a>
+					<a class="permalink" href="godoc.535.html#Iter.End">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) End() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+End returns the end position of the input text for which Next has returned
+results.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Len">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=1211:1235#L27">Len</a>
+					<a class="permalink" href="godoc.535.html#Iter.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) Len() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Len returns the length of the input text.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Next">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=2639:2665#L88">Next</a>
+					<a class="permalink" href="godoc.535.html#Iter.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) Next() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Next appends Elems to the internal array. On each iteration, it will either
+add starters or modifiers. In the majority of cases, an Elem with a primary
+value &gt; 0 will have a CCC of 0. The CCC values of collation elements are also
+used to detect if the input string was not normalized and to adjust the
+result accordingly.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Reset">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=1076:1103#L19">Reset</a>
+					<a class="permalink" href="godoc.535.html#Iter.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) Reset(p <a href="godoc.4.html#int">int</a>)</pre>
+				<p>
+Reset sets the position in the current input text to p and discards any
+results obtained so far.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.SetInput">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=1708:1741#L49">SetInput</a>
+					<a class="permalink" href="godoc.535.html#Iter.SetInput">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) SetInput(s []<a href="godoc.4.html#byte">byte</a>)</pre>
+				<p>
+SetInput resets i to input s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.SetInputString">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/iter.go?s=1823:1862#L56">SetInputString</a>
+					<a class="permalink" href="godoc.535.html#Iter.SetInputString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.535.html#Iter">Iter</a>) SetInputString(s <a href="godoc.4.html#string">string</a>)</pre>
+				<p>
+SetInputString resets i to input s.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Level">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/collelem.go?s=585:599#L8">Level</a>
+				<a class="permalink" href="godoc.535.html#Level">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Level identifies the collation comparison level.
+The primary level corresponds to the basic sorting of text.
+The secondary level corresponds to accents and related linguistic elements.
+The tertiary level corresponds to casing and related concepts.
+The quaternary level is derived from the other levels by the
+various algorithms for handling variable elements.
+</p>
+
+			<pre>type Level <a href="godoc.4.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="Primary">Primary</span> <a href="godoc.535.html#Level">Level</a> = <a href="godoc.4.html#iota">iota</a>
+    <span id="Secondary">Secondary</span>
+    <span id="Tertiary">Tertiary</span>
+    <span id="Quaternary">Quaternary</span>
+    <span id="Identity">Identity</span>
+
+    <span id="NumLevels">NumLevels</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Table">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=306:515#L4">Table</a>
+				<a class="permalink" href="godoc.535.html#Table">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Table holds all collation data for a given collation ordering.
+</p>
+
+			<pre>type Table struct {
+<span id="Table.Index"></span>    Index <a href="godoc.535.html#Trie">Trie</a> <span class="comment">// main trie</span>
+
+    <span class="comment">// expansion info</span>
+<span id="Table.ExpandElem"></span>    ExpandElem []<a href="godoc.4.html#uint32">uint32</a>
+
+    <span class="comment">// contraction info</span>
+<span id="Table.ContractTries"></span>    ContractTries  <a href="godoc.535.html#ContractTrieSet">ContractTrieSet</a>
+<span id="Table.ContractElem"></span>    ContractElem   []<a href="godoc.4.html#uint32">uint32</a>
+<span id="Table.MaxContractLen"></span>    MaxContractLen <a href="godoc.4.html#int">int</a>
+<span id="Table.VariableTop"></span>    VariableTop    <a href="godoc.4.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Table.AppendNext">func (*Table) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=517:583#L17">AppendNext</a>
+					<a class="permalink" href="godoc.535.html#Table.AppendNext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.535.html#Table">Table</a>) AppendNext(w []<a href="godoc.535.html#Elem">Elem</a>, b []<a href="godoc.4.html#byte">byte</a>) (res []<a href="godoc.535.html#Elem">Elem</a>, n <a href="godoc.4.html#int">int</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Table.AppendNextString">func (*Table) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=631:703#L21">AppendNextString</a>
+					<a class="permalink" href="godoc.535.html#Table.AppendNextString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.535.html#Table">Table</a>) AppendNextString(w []<a href="godoc.535.html#Elem">Elem</a>, s <a href="godoc.4.html#string">string</a>) (res []<a href="godoc.535.html#Elem">Elem</a>, n <a href="godoc.4.html#int">int</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Table.Domain">func (*Table) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=943:976#L35">Domain</a>
+					<a class="permalink" href="godoc.535.html#Table.Domain">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.535.html#Table">Table</a>) Domain() []<a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Table.Start">func (*Table) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=749:791#L25">Start</a>
+					<a class="permalink" href="godoc.535.html#Table.Start">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.535.html#Table">Table</a>) Start(p <a href="godoc.4.html#int">int</a>, b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Table.StartString">func (*Table) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=843:891#L30">StartString</a>
+					<a class="permalink" href="godoc.535.html#Table.StartString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.535.html#Table">Table</a>) StartString(p <a href="godoc.4.html#int">int</a>, s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Table.Top">func (*Table) <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/table.go?s=1028:1056#L40">Top</a>
+					<a class="permalink" href="godoc.535.html#Table.Top">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.535.html#Table">Table</a>) Top() <a href="godoc.4.html#uint32">uint32</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Trie">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/trie.go?s=575:739#L5">Trie</a>
+				<a class="permalink" href="godoc.535.html#Trie">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Trie struct {
+<span id="Trie.Index0"></span>    Index0  []<a href="godoc.4.html#uint16">uint16</a> <span class="comment">// index for first byte (0xC0-0xFF)</span>
+<span id="Trie.Values0"></span>    Values0 []<a href="godoc.4.html#uint32">uint32</a> <span class="comment">// index for first byte (0x00-0x7F)</span>
+<span id="Trie.Index"></span>    Index   []<a href="godoc.4.html#uint16">uint16</a>
+<span id="Trie.Values"></span>    Values  []<a href="godoc.4.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Weighter">type <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/weighter.go?s=289:1243#L1">Weighter</a>
+				<a class="permalink" href="godoc.535.html#Weighter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Weighter can be used as a source for Collator and Searcher.
+</p>
+
+			<pre>type Weighter interface {
+    <span class="comment">// Start finds the start of the segment that includes position p.</span>
+    Start(p <a href="godoc.4.html#int">int</a>, b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#int">int</a>
+
+    <span class="comment">// StartString finds the start of the segment that includes position p.</span>
+    StartString(p <a href="godoc.4.html#int">int</a>, s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#int">int</a>
+
+    <span class="comment">// AppendNext appends Elems to buf corresponding to the longest match</span>
+    <span class="comment">// of a single character or contraction from the start of s.</span>
+    <span class="comment">// It returns the new buf and the number of bytes consumed.</span>
+    AppendNext(buf []<a href="godoc.535.html#Elem">Elem</a>, s []<a href="godoc.4.html#byte">byte</a>) (ce []<a href="godoc.535.html#Elem">Elem</a>, n <a href="godoc.4.html#int">int</a>)
+
+    <span class="comment">// AppendNextString appends Elems to buf corresponding to the longest match</span>
+    <span class="comment">// of a single character or contraction from the start of s.</span>
+    <span class="comment">// It returns the new buf and the number of bytes consumed.</span>
+    AppendNextString(buf []<a href="godoc.535.html#Elem">Elem</a>, s <a href="godoc.4.html#string">string</a>) (ce []<a href="godoc.535.html#Elem">Elem</a>, n <a href="godoc.4.html#int">int</a>)
+
+    <span class="comment">// Domain returns a slice of all single characters and contractions for which</span>
+    <span class="comment">// collation elements are defined in this table.</span>
+    Domain() []<a href="godoc.4.html#string">string</a>
+
+    <span class="comment">// Top returns the highest variable primary value.</span>
+    Top() <a href="godoc.4.html#uint32">uint32</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewNumericWeighter">func <a href="http://localhost:6161/src/golang.org/x/text/internal/colltab/numeric.go?s=516:560#L8">NewNumericWeighter</a>
+					<a class="permalink" href="godoc.535.html#NewNumericWeighter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewNumericWeighter(w <a href="godoc.535.html#Weighter">Weighter</a>) <a href="godoc.535.html#Weighter">Weighter</a></pre>
+				<p>
+NewNumericWeighter wraps w to replace individual digits to sort based on their
+numeric value.
+</p>
+<p>
+Weighter w must have a free primary weight after the primary weight for 9.
+If this is not the case, numeric value will sort at the same primary level
+as the first primary sorting after 9.
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

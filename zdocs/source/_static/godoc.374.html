@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>norm - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.374.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package norm
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/unicode/norm"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.374.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.374.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.374.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package norm contains types and functions for normalizing Unicode strings.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.374.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.374.html#Form">type Form</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Append">func (f Form) Append(out []byte, src ...byte) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.AppendString">func (f Form) AppendString(out []byte, src string) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Bytes">func (f Form) Bytes(b []byte) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.FirstBoundary">func (f Form) FirstBoundary(b []byte) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.FirstBoundaryInString">func (f Form) FirstBoundaryInString(s string) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.IsNormal">func (f Form) IsNormal(b []byte) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.IsNormalString">func (f Form) IsNormalString(s string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.LastBoundary">func (f Form) LastBoundary(b []byte) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.NextBoundary">func (f Form) NextBoundary(b []byte, atEOF bool) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.NextBoundaryInString">func (f Form) NextBoundaryInString(s string, atEOF bool) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Properties">func (f Form) Properties(s []byte) Properties</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.PropertiesString">func (f Form) PropertiesString(s string) Properties</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.QuickSpan">func (f Form) QuickSpan(b []byte) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.QuickSpanString">func (f Form) QuickSpanString(s string) int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Reader">func (f Form) Reader(r io.Reader) io.Reader</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Reset">func (Form) Reset()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Span">func (f Form) Span(b []byte, atEOF bool) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.SpanString">func (f Form) SpanString(s string, atEOF bool) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.String">func (f Form) String(s string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Transform">func (f Form) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Form.Writer">func (f Form) Writer(w io.Writer) io.WriteCloser</a></dd>
+				
+			
+				
+				<dd><a href="godoc.374.html#Iter">type Iter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Iter.Done">func (i *Iter) Done() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Iter.Init">func (i *Iter) Init(f Form, src []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Iter.InitString">func (i *Iter) InitString(f Form, src string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Iter.Next">func (i *Iter) Next() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Iter.Pos">func (i *Iter) Pos() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Iter.Seek">func (i *Iter) Seek(offset int64, whence int) (int64, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.374.html#Properties">type Properties</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.BoundaryAfter">func (p Properties) BoundaryAfter() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.BoundaryBefore">func (p Properties) BoundaryBefore() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.CCC">func (p Properties) CCC() uint8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.Decomposition">func (p Properties) Decomposition() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.LeadCCC">func (p Properties) LeadCCC() uint8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.Size">func (p Properties) Size() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.374.html#Properties.TrailCCC">func (p Properties) TrailCCC() uint8</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.374.html#example_Form_NextBoundary">Form.NextBoundary</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.374.html#example_Iter">Iter</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/composition.go">composition.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go">forminfo.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/input.go">input.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go">iter.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go">normalize.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/readwriter.go">readwriter.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/tables10.0.0.go">tables10.0.0.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/transform.go">transform.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/trie.go">trie.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// Version is the Unicode edition from which the tables are derived.</span>
+    <span id="Version">Version</span> = &#34;10.0.0&#34;
+
+    <span class="comment">// MaxTransformChunkSize indicates the maximum number of bytes that Transform</span>
+    <span class="comment">// may need to write atomically for any Form. Making a destination buffer at</span>
+    <span class="comment">// least this size ensures that Transform can always make progress and that</span>
+    <span class="comment">// the user does not need to grow the buffer on an ErrShortDst.</span>
+    <span id="MaxTransformChunkSize">MaxTransformChunkSize</span> = 35 + maxNonStarters*4
+)</pre>
+			
+				<p>
+GraphemeJoiner is inserted after maxNonStarters non-starter runes.
+</p>
+
+				<pre>const <span id="GraphemeJoiner">GraphemeJoiner</span> = &#34;\u034F&#34;</pre>
+			
+				<p>
+MaxSegmentSize is the maximum size of a byte buffer needed to consider any
+sequence of starter and non-starter runes for the purpose of normalization.
+</p>
+
+				<pre>const <span id="MaxSegmentSize">MaxSegmentSize</span> = maxByteBufferSize</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="Form">type <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=1177:1190#L24">Form</a>
+				<a class="permalink" href="godoc.374.html#Form">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Form denotes a canonical representation of Unicode code points.
+The Unicode-defined normalization and equivalence forms are:
+</p>
+<pre>NFC   Unicode Normalization Form C
+NFD   Unicode Normalization Form D
+NFKC  Unicode Normalization Form KC
+NFKD  Unicode Normalization Form KD
+</pre>
+<p>
+For a Form f, this documentation uses the notation f(x) to mean
+the bytes or string x converted to the given form.
+A position n in x is called a boundary if conversion to the form can
+proceed independently on both sides:
+</p>
+<pre>f(x) == append(f(x[0:n]), f(x[n:])...)
+</pre>
+<p>
+References: <a href="http://unicode.org/reports/tr15/">http://unicode.org/reports/tr15/</a> and
+<a href="http://unicode.org/notes/tn5/">http://unicode.org/notes/tn5/</a>.
+</p>
+
+			<pre>type Form <a href="godoc.4.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="NFC">NFC</span> <a href="godoc.374.html#Form">Form</a> = <a href="godoc.4.html#iota">iota</a>
+    <span id="NFD">NFD</span>
+    <span id="NFKC">NFKC</span>
+    <span id="NFKD">NFKD</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Form.Append">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=4723:4775#L182">Append</a>
+					<a class="permalink" href="godoc.374.html#Form.Append">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Append(out []<a href="godoc.4.html#byte">byte</a>, src ...<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Append returns f(append(out, b...)).
+The buffer out must be nil, empty, or equal to f(out).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.AppendString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=6431:6488#L250">AppendString</a>
+					<a class="permalink" href="godoc.374.html#Form.AppendString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) AppendString(out []<a href="godoc.4.html#byte">byte</a>, src <a href="godoc.4.html#string">string</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+AppendString returns f(append(out, []byte(s))).
+The buffer out must be nil, empty, or equal to f(out).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Bytes">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=1286:1322#L34">Bytes</a>
+					<a class="permalink" href="godoc.374.html#Form.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Bytes(b []<a href="godoc.4.html#byte">byte</a>) []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Bytes returns f(b). May return b if f(b) = b.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.FirstBoundary">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=9208:9249#L355">FirstBoundary</a>
+					<a class="permalink" href="godoc.374.html#Form.FirstBoundary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) FirstBoundary(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+FirstBoundary returns the position i of the first boundary in b
+or -1 if b contains no boundary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.FirstBoundaryInString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=10034:10083#L389">FirstBoundaryInString</a>
+					<a class="permalink" href="godoc.374.html#Form.FirstBoundaryInString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) FirstBoundaryInString(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+FirstBoundaryInString returns the position i of the first boundary in s
+or -1 if s contains no boundary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.IsNormal">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=1993:2030#L62">IsNormal</a>
+					<a class="permalink" href="godoc.374.html#Form.IsNormal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) IsNormal(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsNormal returns true if b == f(b).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.IsNormalString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=2769:2812#L101">IsNormalString</a>
+					<a class="permalink" href="godoc.374.html#Form.IsNormalString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) IsNormalString(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsNormalString returns true if s == f(s).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.LastBoundary">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=11539:11579#L447">LastBoundary</a>
+					<a class="permalink" href="godoc.374.html#Form.LastBoundary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) LastBoundary(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+LastBoundary returns the position i of the last boundary in b
+or -1 if b contains no boundary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.NextBoundary">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=10316:10368#L396">NextBoundary</a>
+					<a class="permalink" href="godoc.374.html#Form.NextBoundary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) NextBoundary(b []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+NextBoundary reports the index of the boundary between the first and next
+segment in b or -1 if atEOF is false and there are not enough bytes to
+determine this boundary.
+</p>
+
+				
+				<div id="example_Form_NextBoundary" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">s := norm.NFD.String(&#34;Mêlée&#34;)
+
+for i := 0; i &lt; len(s); {
+    d := norm.NFC.NextBoundaryInString(s[i:], true)
+    fmt.Printf(&#34;%[1]s: %+[1]q\n&#34;, s[i:i+d])
+    i += d
+}
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">M: &#34;M&#34;
+ê: &#34;e\u0302&#34;
+l: &#34;l&#34;
+é: &#34;e\u0301&#34;
+e: &#34;e&#34;
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+				
+				<h3 id="Form.NextBoundaryInString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=10614:10674#L403">NextBoundaryInString</a>
+					<a class="permalink" href="godoc.374.html#Form.NextBoundaryInString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) NextBoundaryInString(s <a href="godoc.4.html#string">string</a>, atEOF <a href="godoc.4.html#bool">bool</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+NextBoundaryInString reports the index of the boundary between the first and
+next segment in b or -1 if atEOF is false and there are not enough bytes to
+determine this boundary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Properties">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=7041:7086#L195">Properties</a>
+					<a class="permalink" href="godoc.374.html#Form.Properties">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Properties(s []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.374.html#Properties">Properties</a></pre>
+				<p>
+Properties returns properties for the first rune in s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.PropertiesString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=7260:7311#L203">PropertiesString</a>
+					<a class="permalink" href="godoc.374.html#Form.PropertiesString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) PropertiesString(s <a href="godoc.4.html#string">string</a>) <a href="godoc.374.html#Properties">Properties</a></pre>
+				<p>
+PropertiesString returns properties for the first rune in s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.QuickSpan">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=6665:6702#L256">QuickSpan</a>
+					<a class="permalink" href="godoc.374.html#Form.QuickSpan">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) QuickSpan(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+QuickSpan returns a boundary n such that b[0:n] == f(b[0:n]).
+It is not guaranteed to return the largest such n.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.QuickSpanString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=8981:9024#L348">QuickSpanString</a>
+					<a class="permalink" href="godoc.374.html#Form.QuickSpanString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) QuickSpanString(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#int">int</a></pre>
+				<p>
+QuickSpanString returns a boundary n such that s[0:n] == f(s[0:n]).
+It is not guaranteed to return the largest such n.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Reader">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/readwriter.go?s=2776:2819#L109">Reader</a>
+					<a class="permalink" href="godoc.374.html#Form.Reader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Reader(r <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a>) <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Reader">Reader</a></pre>
+				<p>
+Reader returns a new reader that implements Read
+by reading data from r and returning f(data).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Reset">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/transform.go?s=311:330#L4">Reset</a>
+					<a class="permalink" href="godoc.374.html#Form.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.374.html#Form">Form</a>) Reset()</pre>
+				<p>
+Reset implements the Reset method of the transform.Transformer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Span">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=6941:7000#L263">Span</a>
+					<a class="permalink" href="godoc.374.html#Form.Span">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Span(b []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Span implements transform.SpanningTransformer. It returns a boundary n such
+that b[0:n] == f(b[0:n]). It is not guaranteed to return the largest such n.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.SpanString">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=7316:7381#L277">SpanString</a>
+					<a class="permalink" href="godoc.374.html#Form.SpanString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) SpanString(s <a href="godoc.4.html#string">string</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+SpanString returns a boundary n such that s[0:n] == f(s[0:n]).
+It is not guaranteed to return the largest such n.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.String">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/normalize.go?s=1627:1664#L48">String</a>
+					<a class="permalink" href="godoc.374.html#Form.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) String(s <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#string">string</a></pre>
+				<p>
+String returns f(s).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Transform">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/transform.go?s=636:716#L10">Transform</a>
+					<a class="permalink" href="godoc.374.html#Form.Transform">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Transform(dst, src []<a href="godoc.4.html#byte">byte</a>, atEOF <a href="godoc.4.html#bool">bool</a>) (nDst, nSrc <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Transform implements the Transform method of the transform.Transformer
+interface. It may need to write segments of up to MaxSegmentSize at once.
+Users should either catch ErrShortDst and allow dst to grow or have dst be at
+least of size MaxTransformChunkSize to be guaranteed of progress.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Form.Writer">func (Form) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/readwriter.go?s=1583:1631#L56">Writer</a>
+					<a class="permalink" href="godoc.374.html#Form.Writer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.374.html#Form">Form</a>) Writer(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>) <a href="godoc.585.html">io</a>.<a href="godoc.585.html#WriteCloser">WriteCloser</a></pre>
+				<p>
+Writer returns a new writer that implements Write(b)
+by writing f(b) to w.  The returned writer may use an
+an internal buffer to maintain state across Write calls.
+Calling its Close method writes any buffered data to w.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Iter">type <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=498:833#L8">Iter</a>
+				<a class="permalink" href="godoc.374.html#Iter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Iter iterates over a string or byte slice, while normalizing it
+to a given Form.
+</p>
+
+			<pre>type Iter struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_Iter" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">package norm_test
+
+import (
+    &#34;bytes&#34;
+    &#34;fmt&#34;
+    &#34;unicode/utf8&#34;
+
+    &#34;golang.org/x/text/unicode/norm&#34;
+)
+
+<span class="comment">// EqualSimple uses a norm.Iter to compare two non-normalized</span>
+<span class="comment">// strings for equivalence.</span>
+func EqualSimple(a, b string) bool {
+    var ia, ib norm.Iter
+    ia.InitString(norm.NFKD, a)
+    ib.InitString(norm.NFKD, b)
+    for !ia.Done() &amp;&amp; !ib.Done() {
+        if !bytes.Equal(ia.Next(), ib.Next()) {
+            return false
+        }
+    }
+    return ia.Done() &amp;&amp; ib.Done()
+}
+
+<span class="comment">// FindPrefix finds the longest common prefix of ASCII characters</span>
+<span class="comment">// of a and b.</span>
+func FindPrefix(a, b string) int {
+    i := 0
+    for ; i &lt; len(a) &amp;&amp; i &lt; len(b) &amp;&amp; a[i] &lt; utf8.RuneSelf &amp;&amp; a[i] == b[i]; i++ {
+    }
+    return i
+}
+
+<span class="comment">// EqualOpt is like EqualSimple, but optimizes the special</span>
+<span class="comment">// case for ASCII characters.</span>
+func EqualOpt(a, b string) bool {
+    n := FindPrefix(a, b)
+    a, b = a[n:], b[n:]
+    var ia, ib norm.Iter
+    ia.InitString(norm.NFKD, a)
+    ib.InitString(norm.NFKD, b)
+    for !ia.Done() &amp;&amp; !ib.Done() {
+        if !bytes.Equal(ia.Next(), ib.Next()) {
+            return false
+        }
+        if n := int64(FindPrefix(a[ia.Pos():], b[ib.Pos():])); n != 0 {
+            ia.Seek(n, 1)
+            ib.Seek(n, 1)
+        }
+    }
+    return ia.Done() &amp;&amp; ib.Done()
+}
+
+var compareTests = []struct{ a, b string }{
+    {&#34;aaa&#34;, &#34;aaa&#34;},
+    {&#34;aaa&#34;, &#34;aab&#34;},
+    {&#34;a\u0300a&#34;, &#34;\u00E0a&#34;},
+    {&#34;a\u0300\u0320b&#34;, &#34;a\u0320\u0300b&#34;},
+    {&#34;\u1E0A\u0323&#34;, &#34;\x44\u0323\u0307&#34;},
+    <span class="comment">// A character that decomposes into multiple segments</span>
+    <span class="comment">// spans several iterations.</span>
+    {&#34;\u3304&#34;, &#34;\u30A4\u30CB\u30F3\u30AF\u3099&#34;},
+}
+
+func ExampleIter() {
+    for i, t := range compareTests {
+        r0 := EqualSimple(t.a, t.b)
+        r1 := EqualOpt(t.a, t.b)
+        fmt.Printf(&#34;%d: %v %v\n&#34;, i, r0, r1)
+    }
+    <span class="comment">// Output:</span>
+    <span class="comment">// 0: true true</span>
+    <span class="comment">// 1: false false</span>
+    <span class="comment">// 2: true true</span>
+    <span class="comment">// 3: true true</span>
+    <span class="comment">// 4: true true</span>
+    <span class="comment">// 5: true true</span>
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+
+			
+				
+				<h3 id="Iter.Done">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=2936:2962#L105">Done</a>
+					<a class="permalink" href="godoc.374.html#Iter.Done">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.374.html#Iter">Iter</a>) Done() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+Done returns true if there is no more input to process.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Init">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=943:982#L22">Init</a>
+					<a class="permalink" href="godoc.374.html#Iter.Init">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.374.html#Iter">Iter</a>) Init(f <a href="godoc.374.html#Form">Form</a>, src []<a href="godoc.4.html#byte">byte</a>)</pre>
+				<p>
+Init initializes i to iterate over src after normalizing it to Form f.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.InitString">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=1289:1334#L38">InitString</a>
+					<a class="permalink" href="godoc.374.html#Iter.InitString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.374.html#Iter">Iter</a>) InitString(f <a href="godoc.374.html#Form">Form</a>, src <a href="godoc.4.html#string">string</a>)</pre>
+				<p>
+InitString initializes i to iterate over src after normalizing it to Form f.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Next">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=3341:3369#L114">Next</a>
+					<a class="permalink" href="godoc.374.html#Iter.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.374.html#Iter">Iter</a>) Next() []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Next returns f(i.input[i.Pos():n]), where n is a boundary of i.input.
+For any input a and b for which f(a) == f(b), subsequent calls
+to Next will return the same segments.
+Modifying runes are grouped together with the preceding starter, if such a starter exists.
+Although not guaranteed, n will typically be the smallest possible n.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Pos">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=2769:2793#L95">Pos</a>
+					<a class="permalink" href="godoc.374.html#Iter.Pos">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.374.html#Iter">Iter</a>) Pos() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Pos returns the byte position at which the next call to Next will commence processing.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Iter.Seek">func (*Iter) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/iter.go?s=1739:1799#L56">Seek</a>
+					<a class="permalink" href="godoc.374.html#Iter.Seek">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.374.html#Iter">Iter</a>) Seek(offset <a href="godoc.4.html#int64">int64</a>, whence <a href="godoc.4.html#int">int</a>) (<a href="godoc.4.html#int64">int64</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Seek sets the segment to be returned by the next call to Next to start
+at position p.  It is the responsibility of the caller to set p to the
+start of a segment.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Properties">type <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=1905:2314#L28">Properties</a>
+				<a class="permalink" href="godoc.374.html#Properties">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Properties provides access to normalization properties of a rune.
+</p>
+
+			<pre>type Properties struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Properties.BoundaryAfter">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=4091:4131#L95">BoundaryAfter</a>
+					<a class="permalink" href="godoc.374.html#Properties.BoundaryAfter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) BoundaryAfter() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+BoundaryAfter returns true if runes cannot combine with or otherwise
+interact with this or previous runes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.BoundaryBefore">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=3659:3700#L83">BoundaryBefore</a>
+					<a class="permalink" href="godoc.374.html#Properties.BoundaryBefore">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) BoundaryBefore() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+BoundaryBefore returns true if this rune starts a new segment and
+cannot combine with any rune on the left.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.CCC">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=5781:5812#L152">CCC</a>
+					<a class="permalink" href="godoc.374.html#Properties.CCC">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) CCC() <a href="godoc.4.html#uint8">uint8</a></pre>
+				<p>
+CCC returns the canonical combining class of the underlying rune.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.Decomposition">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=5383:5425#L135">Decomposition</a>
+					<a class="permalink" href="godoc.374.html#Properties.Decomposition">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) Decomposition() []<a href="godoc.4.html#byte">byte</a></pre>
+				<p>
+Decomposition returns the decomposition for the underlying rune
+or nil if there is none.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.LeadCCC">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=6007:6042#L161">LeadCCC</a>
+					<a class="permalink" href="godoc.374.html#Properties.LeadCCC">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) LeadCCC() <a href="godoc.4.html#uint8">uint8</a></pre>
+				<p>
+LeadCCC returns the CCC of the first rune in the decomposition.
+If there is no decomposition, LeadCCC equals CCC.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.Size">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=5656:5686#L147">Size</a>
+					<a class="permalink" href="godoc.374.html#Properties.Size">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) Size() <a href="godoc.4.html#int">int</a></pre>
+				<p>
+Size returns the length of UTF-8 encoding of the rune.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Properties.TrailCCC">func (Properties) <a href="http://localhost:6161/src/golang.org/x/text/unicode/norm/forminfo.go?s=6188:6224#L167">TrailCCC</a>
+					<a class="permalink" href="godoc.374.html#Properties.TrailCCC">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.374.html#Properties">Properties</a>) TrailCCC() <a href="godoc.4.html#uint8">uint8</a></pre>
+				<p>
+TrailCCC returns the CCC of the last rune in the decomposition.
+If there is no decomposition, TrailCCC equals CCC.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

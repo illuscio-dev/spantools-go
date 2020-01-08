@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>connstring - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.188.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package connstring
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/connstring"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.188.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.188.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.188.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.188.html#ConnString">type ConnString</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.188.html#Parse">func Parse(s string) (ConnString, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.188.html#ConnString.String">func (u *ConnString) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.188.html#ConnectMode">type ConnectMode</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/connstring/connstring.go">connstring.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Scheme constants
+</p>
+
+				<pre>const (
+    <span id="SchemeMongoDB">SchemeMongoDB</span>    = &#34;mongodb&#34;
+    <span id="SchemeMongoDBSRV">SchemeMongoDBSRV</span> = &#34;mongodb+srv&#34;
+)</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="ConnString">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/connstring/connstring.go?s=960:3716#L25">ConnString</a>
+				<a class="permalink" href="godoc.188.html#ConnString">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ConnString represents a connection string to mongodb.
+</p>
+
+			<pre>type ConnString struct {
+<span id="ConnString.Original"></span>    Original                           <a href="godoc.4.html#string">string</a>
+<span id="ConnString.AppName"></span>    AppName                            <a href="godoc.4.html#string">string</a>
+<span id="ConnString.AuthMechanism"></span>    AuthMechanism                      <a href="godoc.4.html#string">string</a>
+<span id="ConnString.AuthMechanismProperties"></span>    AuthMechanismProperties            map[<a href="godoc.4.html#string">string</a>]<a href="godoc.4.html#string">string</a>
+<span id="ConnString.AuthSource"></span>    AuthSource                         <a href="godoc.4.html#string">string</a>
+<span id="ConnString.Compressors"></span>    Compressors                        []<a href="godoc.4.html#string">string</a>
+<span id="ConnString.Connect"></span>    Connect                            <a href="godoc.188.html#ConnectMode">ConnectMode</a>
+<span id="ConnString.ConnectSet"></span>    ConnectSet                         <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.ConnectTimeout"></span>    ConnectTimeout                     <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.ConnectTimeoutSet"></span>    ConnectTimeoutSet                  <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.Database"></span>    Database                           <a href="godoc.4.html#string">string</a>
+<span id="ConnString.HeartbeatInterval"></span>    HeartbeatInterval                  <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.HeartbeatIntervalSet"></span>    HeartbeatIntervalSet               <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.Hosts"></span>    Hosts                              []<a href="godoc.4.html#string">string</a>
+<span id="ConnString.J"></span>    J                                  <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.JSet"></span>    JSet                               <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.LocalThreshold"></span>    LocalThreshold                     <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.LocalThresholdSet"></span>    LocalThresholdSet                  <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.MaxConnIdleTime"></span>    MaxConnIdleTime                    <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.MaxConnIdleTimeSet"></span>    MaxConnIdleTimeSet                 <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.MaxPoolSize"></span>    MaxPoolSize                        <a href="godoc.4.html#uint64">uint64</a>
+<span id="ConnString.MaxPoolSizeSet"></span>    MaxPoolSizeSet                     <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.MinPoolSize"></span>    MinPoolSize                        <a href="godoc.4.html#uint64">uint64</a>
+<span id="ConnString.MinPoolSizeSet"></span>    MinPoolSizeSet                     <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.Password"></span>    Password                           <a href="godoc.4.html#string">string</a>
+<span id="ConnString.PasswordSet"></span>    PasswordSet                        <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.ReadConcernLevel"></span>    ReadConcernLevel                   <a href="godoc.4.html#string">string</a>
+<span id="ConnString.ReadPreference"></span>    ReadPreference                     <a href="godoc.4.html#string">string</a>
+<span id="ConnString.ReadPreferenceTagSets"></span>    ReadPreferenceTagSets              []map[<a href="godoc.4.html#string">string</a>]<a href="godoc.4.html#string">string</a>
+<span id="ConnString.RetryWrites"></span>    RetryWrites                        <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.RetryWritesSet"></span>    RetryWritesSet                     <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.RetryReads"></span>    RetryReads                         <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.RetryReadsSet"></span>    RetryReadsSet                      <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.MaxStaleness"></span>    MaxStaleness                       <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.MaxStalenessSet"></span>    MaxStalenessSet                    <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.ReplicaSet"></span>    ReplicaSet                         <a href="godoc.4.html#string">string</a>
+<span id="ConnString.Scheme"></span>    Scheme                             <a href="godoc.4.html#string">string</a>
+<span id="ConnString.ServerSelectionTimeout"></span>    ServerSelectionTimeout             <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.ServerSelectionTimeoutSet"></span>    ServerSelectionTimeoutSet          <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SocketTimeout"></span>    SocketTimeout                      <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.SocketTimeoutSet"></span>    SocketTimeoutSet                   <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSL"></span>    SSL                                <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSLSet"></span>    SSLSet                             <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSLClientCertificateKeyFile"></span>    SSLClientCertificateKeyFile        <a href="godoc.4.html#string">string</a>
+<span id="ConnString.SSLClientCertificateKeyFileSet"></span>    SSLClientCertificateKeyFileSet     <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSLClientCertificateKeyPassword"></span>    SSLClientCertificateKeyPassword    func() <a href="godoc.4.html#string">string</a>
+<span id="ConnString.SSLClientCertificateKeyPasswordSet"></span>    SSLClientCertificateKeyPasswordSet <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSLInsecure"></span>    SSLInsecure                        <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSLInsecureSet"></span>    SSLInsecureSet                     <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.SSLCaFile"></span>    SSLCaFile                          <a href="godoc.4.html#string">string</a>
+<span id="ConnString.SSLCaFileSet"></span>    SSLCaFileSet                       <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.WString"></span>    WString                            <a href="godoc.4.html#string">string</a>
+<span id="ConnString.WNumber"></span>    WNumber                            <a href="godoc.4.html#int">int</a>
+<span id="ConnString.WNumberSet"></span>    WNumberSet                         <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.Username"></span>    Username                           <a href="godoc.4.html#string">string</a>
+<span id="ConnString.ZlibLevel"></span>    ZlibLevel                          <a href="godoc.4.html#int">int</a>
+<span id="ConnString.ZlibLevelSet"></span>    ZlibLevelSet                       <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.ZstdLevel"></span>    ZstdLevel                          <a href="godoc.4.html#int">int</a>
+<span id="ConnString.ZstdLevelSet"></span>    ZstdLevelSet                       <a href="godoc.4.html#bool">bool</a>
+
+<span id="ConnString.WTimeout"></span>    WTimeout              <a href="godoc.66.html">time</a>.<a href="godoc.66.html#Duration">Duration</a>
+<span id="ConnString.WTimeoutSet"></span>    WTimeoutSet           <a href="godoc.4.html#bool">bool</a>
+<span id="ConnString.WTimeoutSetFromOption"></span>    WTimeoutSetFromOption <a href="godoc.4.html#bool">bool</a>
+
+<span id="ConnString.Options"></span>    Options        map[<a href="godoc.4.html#string">string</a>][]<a href="godoc.4.html#string">string</a>
+<span id="ConnString.UnknownOptions"></span>    UnknownOptions map[<a href="godoc.4.html#string">string</a>][]<a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Parse">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/connstring/connstring.go?s=691:731#L15">Parse</a>
+					<a class="permalink" href="godoc.188.html#Parse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Parse(s <a href="godoc.4.html#string">string</a>) (<a href="godoc.188.html#ConnString">ConnString</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Parse parses the provided uri and returns a URI object.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ConnString.String">func (*ConnString) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/connstring/connstring.go?s=3718:3754#L94">String</a>
+					<a class="permalink" href="godoc.188.html#ConnString.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (u *<a href="godoc.188.html#ConnString">ConnString</a>) String() <a href="godoc.4.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ConnectMode">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/connstring/connstring.go?s=3849:3871#L100">ConnectMode</a>
+				<a class="permalink" href="godoc.188.html#ConnectMode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ConnectMode informs the driver on how to connect
+to the server.
+</p>
+
+			<pre>type ConnectMode <a href="godoc.4.html#uint8">uint8</a></pre>
+
+			
+				<p>
+ConnectMode constants.
+</p>
+
+				<pre>const (
+    <span id="AutoConnect">AutoConnect</span> <a href="godoc.188.html#ConnectMode">ConnectMode</a> = <a href="godoc.4.html#iota">iota</a>
+    <span id="SingleConnect">SingleConnect</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

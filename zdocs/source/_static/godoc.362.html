@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>pipeline - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.588.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.588.html">GoDoc</a></div>
+<a href="godoc.362.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package pipeline
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/message/pipeline"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.362.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.362.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package pipeline provides tools for creating translation pipelines.
+</p>
+<p>
+NOTE: UNDER DEVELOPMENT. API MAY CHANGE.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.362.html#Generate">func Generate(w io.Writer, pkg string, extracted *Locale, trans ...*Locale) (n int, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.362.html#Rewrite">func Rewrite(w io.Writer, goPackage string) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.362.html#Config">type Config</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.362.html#Feature">type Feature</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.362.html#IDList">type IDList</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#IDList.MarshalJSON">func (id *IDList) MarshalJSON() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#IDList.UnmarshalJSON">func (id *IDList) UnmarshalJSON(b []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.362.html#Locale">type Locale</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#Extract">func Extract(c *Config) (*Locale, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.362.html#Message">type Message</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#Message.Placeholder">func (m *Message) Placeholder(id string) *Placeholder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#Message.Substitute">func (m *Message) Substitute(msg string) (sub string, err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.362.html#Placeholder">type Placeholder</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.362.html#Select">type Select</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.362.html#Text">type Text</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#Text.IsEmpty">func (t *Text) IsEmpty() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#Text.MarshalJSON">func (t *Text) MarshalJSON() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.362.html#Text.UnmarshalJSON">func (t *Text) UnmarshalJSON(b []byte) error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/extract.go">extract.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/generate.go">generate.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go">message.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/pipeline.go">pipeline.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/rewrite.go">rewrite.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Generate">func <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/generate.go?s=620:714#L17">Generate</a>
+				<a class="permalink" href="godoc.362.html#Generate">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Generate(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, pkg <a href="godoc.4.html#string">string</a>, extracted *<a href="godoc.362.html#Locale">Locale</a>, trans ...*<a href="godoc.362.html#Locale">Locale</a>) (n <a href="godoc.4.html#int">int</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+			<p>
+Generate writes a Go file with the given package name to w, which defines a
+Catalog with translated messages.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Rewrite">func <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/rewrite.go?s=660:709#L17">Rewrite</a>
+				<a class="permalink" href="godoc.362.html#Rewrite">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Rewrite(w <a href="godoc.585.html">io</a>.<a href="godoc.585.html#Writer">Writer</a>, goPackage <a href="godoc.4.html#string">string</a>) <a href="godoc.4.html#error">error</a></pre>
+			<p>
+Rewrite rewrites the Go files in a single package to use the localization
+machinery and rewrites strings to adopt best practices when possible.
+If w is not nil the generated files are written to it, each files with a
+&#34;--- &lt;filename&gt;&#34; header. Otherwise the files are overwritten.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Config">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=851:1273#L17">Config</a>
+				<a class="permalink" href="godoc.362.html#Config">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Config contains configuration for the translation pipeline.
+</p>
+
+			<pre>type Config struct {
+<span id="Config.SourceLanguage"></span>    SourceLanguage <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>
+
+<span id="Config.Supported"></span>    <span class="comment">// Supported indicates the languages for which data should be generated.</span>
+    <span class="comment">// If unspecified, it will attempt to derive the set of supported languages</span>
+    <span class="comment">// from the context.</span>
+    Supported []<a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>
+
+<span id="Config.Packages"></span>    Packages []<a href="godoc.4.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Feature">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=4951:5125#L151">Feature</a>
+				<a class="permalink" href="godoc.362.html#Feature">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Feature holds information about a feature that can be implemented by
+an Argument.
+</p>
+
+			<pre>type Feature struct {
+<span id="Feature.Type"></span>    Type <a href="godoc.4.html#string">string</a> `json:&#34;type&#34;` <span class="comment">// Right now this is only gender and plural.</span>
+
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="IDList">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=6464:6484#L200">IDList</a>
+				<a class="permalink" href="godoc.362.html#IDList">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+IDList is a set identifiers that each may refer to possibly different
+versions of the same message. When looking up a messages, the first
+identifier in the list takes precedence.
+</p>
+
+			<pre>type IDList []<a href="godoc.4.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="IDList.MarshalJSON">func (*IDList) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=6752:6799#L212">MarshalJSON</a>
+					<a class="permalink" href="godoc.362.html#IDList.MarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id *<a href="godoc.362.html#IDList">IDList</a>) MarshalJSON() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MarshalJSON implements json.Marshaler.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="IDList.UnmarshalJSON">func (*IDList) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=6532:6579#L203">UnmarshalJSON</a>
+					<a class="permalink" href="godoc.362.html#IDList.UnmarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (id *<a href="godoc.362.html#IDList">IDList</a>) UnmarshalJSON(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+UnmarshalJSON implements json.Unmarshaler.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Locale">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=1397:1559#L37">Locale</a>
+				<a class="permalink" href="godoc.362.html#Locale">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Locale is used to store all information for a single locale. This type is
+used both for extraction and injection.
+</p>
+
+			<pre>type Locale struct {
+<span id="Locale.Language"></span>    Language <a href="godoc.357.html">language</a>.<a href="godoc.357.html#Tag">Tag</a>    `json:&#34;language&#34;`
+<span id="Locale.Messages"></span>    Messages []<a href="godoc.362.html#Message">Message</a>       `json:&#34;messages&#34;`
+<span id="Locale.Macros"></span>    Macros   map[<a href="godoc.4.html#string">string</a>]<a href="godoc.362.html#Text">Text</a> `json:&#34;macros,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Extract">func <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/extract.go?s=640:680#L22">Extract</a>
+					<a class="permalink" href="godoc.362.html#Extract">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Extract(c *<a href="godoc.362.html#Config">Config</a>) (*<a href="godoc.362.html#Locale">Locale</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Extract extracts all strings form the package defined in Config.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Message">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=1612:2305#L44">Message</a>
+				<a class="permalink" href="godoc.362.html#Message">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Message describes a message to be translated.
+</p>
+
+			<pre>type Message struct {
+<span id="Message.ID"></span>    <span class="comment">// ID contains a list of identifiers for the message.</span>
+    ID <a href="godoc.362.html#IDList">IDList</a> `json:&#34;id&#34;`
+<span id="Message.Key"></span>    <span class="comment">// Key is the string that is used to look up the message at runtime.</span>
+    Key         <a href="godoc.4.html#string">string</a> `json:&#34;key&#34;`
+<span id="Message.Meaning"></span>    Meaning     <a href="godoc.4.html#string">string</a> `json:&#34;meaning,omitempty&#34;`
+<span id="Message.Message"></span>    Message     <a href="godoc.362.html#Text">Text</a>   `json:&#34;message&#34;`
+<span id="Message.Translation"></span>    Translation <a href="godoc.362.html#Text">Text</a>   `json:&#34;translation&#34;`
+
+<span id="Message.Comment"></span>    Comment           <a href="godoc.4.html#string">string</a> `json:&#34;comment,omitempty&#34;`
+<span id="Message.TranslatorComment"></span>    TranslatorComment <a href="godoc.4.html#string">string</a> `json:&#34;translatorComment,omitempty&#34;`
+
+<span id="Message.Placeholders"></span>    Placeholders []<a href="godoc.362.html#Placeholder">Placeholder</a> `json:&#34;placeholders,omitempty&#34;`
+
+    <span class="comment">// Extraction information.</span>
+<span id="Message.Position"></span>    Position <a href="godoc.4.html#string">string</a> `json:&#34;position,omitempty&#34;` <span class="comment">// filePosition:line</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Message.Placeholder">func (*Message) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=2401:2454#L67">Placeholder</a>
+					<a class="permalink" href="godoc.362.html#Message.Placeholder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.362.html#Message">Message</a>) Placeholder(id <a href="godoc.4.html#string">string</a>) *<a href="godoc.362.html#Placeholder">Placeholder</a></pre>
+				<p>
+Placeholder reports the placeholder for the given ID if it is defined or nil
+otherwise.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Message.Substitute">func (*Message) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=2616:2680#L77">Substitute</a>
+					<a class="permalink" href="godoc.362.html#Message.Substitute">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.362.html#Message">Message</a>) Substitute(msg <a href="godoc.4.html#string">string</a>) (sub <a href="godoc.4.html#string">string</a>, err <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+Substitute replaces placeholders in msg with their original value.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Placeholder">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=3497:4296#L110">Placeholder</a>
+				<a class="permalink" href="godoc.362.html#Placeholder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Placeholder is a part of the message that should not be changed by a
+translator. It can be used to hide or prettify format strings (e.g. %d or
+{{.Count}}), hide HTML, or mark common names that should not be translated.
+</p>
+
+			<pre>type Placeholder struct {
+<span id="Placeholder.ID"></span>    <span class="comment">// ID is the placeholder identifier without the curly braces.</span>
+    ID <a href="godoc.4.html#string">string</a> `json:&#34;id&#34;`
+
+<span id="Placeholder.String"></span>    <span class="comment">// String is the string with which to replace the placeholder. This may be a</span>
+    <span class="comment">// formatting string (for instance &#34;%d&#34; or &#34;{{.Count}}&#34;) or a literal string</span>
+    <span class="comment">// (&lt;div&gt;).</span>
+    String <a href="godoc.4.html#string">string</a> `json:&#34;string&#34;`
+
+<span id="Placeholder.Type"></span>    Type           <a href="godoc.4.html#string">string</a> `json:&#34;type&#34;`
+<span id="Placeholder.UnderlyingType"></span>    UnderlyingType <a href="godoc.4.html#string">string</a> `json:&#34;underlyingType&#34;`
+<span id="Placeholder.ArgNum"></span>    <span class="comment">// ArgNum and Expr are set if the placeholder is a substitution of an</span>
+    <span class="comment">// argument.</span>
+    ArgNum <a href="godoc.4.html#int">int</a>    `json:&#34;argNum,omitempty&#34;`
+<span id="Placeholder.Expr"></span>    Expr   <a href="godoc.4.html#string">string</a> `json:&#34;expr,omitempty&#34;`
+
+<span id="Placeholder.Comment"></span>    Comment <a href="godoc.4.html#string">string</a> `json:&#34;comment,omitempty&#34;`
+<span id="Placeholder.Example"></span>    Example <a href="godoc.4.html#string">string</a> `json:&#34;example,omitempty&#34;`
+
+<span id="Placeholder.Features"></span>    <span class="comment">// Features contains the features that are available for the implementation</span>
+    <span class="comment">// of this argument.</span>
+    Features []<a href="godoc.362.html#Feature">Feature</a> `json:&#34;features,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Select">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=7002:7207#L221">Select</a>
+				<a class="permalink" href="godoc.362.html#Select">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Select selects a Text based on the feature value associated with a feature of
+a certain argument.
+</p>
+
+			<pre>type Select struct {
+<span id="Select.Feature"></span>    Feature <a href="godoc.4.html#string">string</a>          `json:&#34;feature&#34;` <span class="comment">// Name of Feature type (e.g plural)</span>
+<span id="Select.Arg"></span>    Arg     <a href="godoc.4.html#string">string</a>          `json:&#34;arg&#34;`     <span class="comment">// The placeholder ID</span>
+<span id="Select.Cases"></span>    Cases   map[<a href="godoc.4.html#string">string</a>]<a href="godoc.362.html#Text">Text</a> `json:&#34;cases&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Text">type <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=5170:5651#L159">Text</a>
+				<a class="permalink" href="godoc.362.html#Text">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Text defines a message to be displayed.
+</p>
+
+			<pre>type Text struct {
+<span id="Text.Msg"></span>    <span class="comment">// Msg and Select contains the message to be displayed. Msg may be used as</span>
+    <span class="comment">// a fallback value if none of the select cases match.</span>
+    Msg    <a href="godoc.4.html#string">string</a>  `json:&#34;msg,omitempty&#34;`
+<span id="Text.Select"></span>    Select *<a href="godoc.362.html#Select">Select</a> `json:&#34;select,omitempty&#34;`
+
+<span id="Text.Var"></span>    <span class="comment">// Var defines a map of variables that may be substituted in the selected</span>
+    <span class="comment">// message.</span>
+    Var map[<a href="godoc.4.html#string">string</a>]<a href="godoc.362.html#Text">Text</a> `json:&#34;var,omitempty&#34;`
+
+<span id="Text.Example"></span>    <span class="comment">// Example contains an example message formatted with default values.</span>
+    Example <a href="godoc.4.html#string">string</a> `json:&#34;example,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Text.IsEmpty">func (*Text) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=5713:5742#L174">IsEmpty</a>
+					<a class="permalink" href="godoc.362.html#Text.IsEmpty">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.362.html#Text">Text</a>) IsEmpty() <a href="godoc.4.html#bool">bool</a></pre>
+				<p>
+IsEmpty reports whether this Text can generate anything.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Text.MarshalJSON">func (*Text) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=6101:6145#L190">MarshalJSON</a>
+					<a class="permalink" href="godoc.362.html#Text.MarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.362.html#Text">Text</a>) MarshalJSON() ([]<a href="godoc.4.html#byte">byte</a>, <a href="godoc.4.html#error">error</a>)</pre>
+				<p>
+MarshalJSON implements json.Marshaler.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Text.UnmarshalJSON">func (*Text) <a href="http://localhost:6161/src/golang.org/x/text/message/pipeline/message.go?s=5912:5956#L182">UnmarshalJSON</a>
+					<a class="permalink" href="godoc.362.html#Text.UnmarshalJSON">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t *<a href="godoc.362.html#Text">Text</a>) UnmarshalJSON(b []<a href="godoc.4.html#byte">byte</a>) <a href="godoc.4.html#error">error</a></pre>
+				<p>
+UnmarshalJSON implements json.Unmarshaler.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
