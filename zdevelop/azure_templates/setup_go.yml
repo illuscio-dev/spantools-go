@@ -2,6 +2,11 @@
 steps:
 
 - script: |
+    wget "https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz" --output-document "$(Agent.BuildDirectory)/go1.13.5.linux-amd64.tar.gz"
+    tar -C '$(Agent.BuildDirectory)' -xzf "$(Agent.BuildDirectory)/go1.12.3.tar.gz"
+  displayName: 'Install Go 1.13.5'
+
+- script: |
     mkdir -p '$(GOBIN)'
     shopt -s extglob
     shopt -s dotglob

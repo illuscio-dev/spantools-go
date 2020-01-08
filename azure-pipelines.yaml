@@ -7,9 +7,9 @@ variables:
 
   # NOT FOR CONFIGURATION
   # Go installation path, we want to use go 1.13
-  GOROOT: '/usr/local/go1.13'
+  GOROOT: '$(Agent.BuildDirectory)/go'
   # Go binaries path
-  GOBIN:  '$(system.defaultWorkingDirectory)/gobin'
+  GOBIN:  '$(Agent.BuildDirectory)/gobin'
 
 trigger:
   batch: true
