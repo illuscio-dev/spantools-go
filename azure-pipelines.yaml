@@ -5,7 +5,7 @@ resources:
     - repository: templates
       type: github
       name: illuscio-dev/azure-pipelines-templates
-      endpoint: bpeake-illuscio
+      endpoint: Github_Read
 
 
 variables:
