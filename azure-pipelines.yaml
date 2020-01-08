@@ -44,20 +44,24 @@ jobs:
 
   steps:
   # Setup python environment
-  - template: zdevelop/azure_templates/setup_git.yml
+  - template: git_setup.yml@templates
+
   # Setup python environment
-  - template: setup_python.yml@templates
+  - template: python_setup.yml@templates
     parameters:
       pythonVersion: $(pythonVersion)
+
   # Setup go environment
-  - template: zdevelop/azure_templates/setup_go.yml
+  - template: go_setup.yml@templates
+    parameters:
+      goVersionLink: $(goVersionLink)
 
   # Run job
   - script: revive -config revive.toml ./...
     displayName: 'Lint'
 
   # Release the module on github.
-  - template: zdevelop/azure_templates/go_run_tests.yml
+  - template: go_run_tests.yml@templates
 
   # Get the release version
   - script: python3 zdevelop/azure_scripts/get_release_version.py
