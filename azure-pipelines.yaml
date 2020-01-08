@@ -1,5 +1,12 @@
 name: build_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: illuscio-dev/azure-pipelines-templates
+
+
 variables:
   # PIPELINE CONFIGURATION
   minimumCoverage: 0.85
@@ -38,7 +45,9 @@ jobs:
   # Setup python environment
   - template: zdevelop/azure_templates/setup_git.yml
   # Setup python environment
-  - template: zdevelop/azure_templates/setup_python.yml
+  - template: setup_python.yml@templates
+    parameters:
+      pythonVersion: $(pythonVersion)
   # Setup go environment
   - template: zdevelop/azure_templates/setup_go.yml
 
