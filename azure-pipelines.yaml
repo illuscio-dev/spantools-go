@@ -23,8 +23,9 @@ pr:
   - dev
 
 variables:
+  # Link to the variables template.
   - template: variables.yml@templates
 
 jobs:
-  # Release the module on github.
+  # Link to the pipeline template.
   - template: go_module_main.yml@templates
