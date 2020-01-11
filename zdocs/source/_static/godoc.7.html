@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>encoding - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="http://localhost:6161/pkg/">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="http://localhost:6161/pkg/">GoDoc</a></div>
+<a href="godoc.7.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package encoding
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/illuscio-dev/spantools-go/encoding"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.7.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.7.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Arbitrarily encode and decode of message body content.
+</p>
+<p>
+Spantool&#39;s goal is to make a single interface specification for any given content type,
+so that content can be determined and decoded dynamically based on message headers or
+mimetype sniffing, removing the need to explicitly call mimetype-specific methods when
+decoding content.
+</p>
+<h3 id="hdr-Specific_objectives">Specific objectives</h3>
+<p>
+1. Clients can send arbitrary object serializations and request back whichever encoding
+type they are most comfortable with.
+</p>
+<p>
+2. Service developers do not have to explicitly add support for encoding types to a
+given service or handler. Support for a mimetype should be able to be added once to
+a shared library and gotten for free by an entire ecosystem.
+</p>
+<p>
+3. Content encoding and decoding support should be independent of service pattern. IE,
+adding support for understanding yaml should upgrade both REST server and http client
+libraries on a rebuild.
+</p>
+<p>
+4. Developers can easily extend all of their services to support a new content type
+by creating their own encoding.
+</p>
+<p>
+5. All default encoding shipped with spantools can be easily extendable to handle
+custom types.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.7.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.7.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.7.html#BsonCodecOpts">type BsonCodecOpts</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.7.html#ContentEngine">type ContentEngine</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.7.html#Decoder">type Decoder</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.7.html#Encoder">type Encoder</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.7.html#JSONExtensionOpts">type JSONExtensionOpts</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.7.html#SpanEngine">type SpanEngine</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#NewContentEngine">func NewContentEngine(allowSniff bool) (*SpanEngine, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.AddBSONCodecs">func (engine *SpanEngine) AddBSONCodecs(codecs []*BsonCodecOpts) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.AddJSONExtensions">func (engine *SpanEngine) AddJSONExtensions(extensions []*JSONExtensionOpts) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.BSONRegistry">func (engine *SpanEngine) BSONRegistry() *bsoncodec.Registry</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.Decode">func (engine *SpanEngine) Decode(mimeType mimetype.MimeType, contentReceiver interface{}, reader io.Reader) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.Encode">func (engine *SpanEngine) Encode(mimeType mimetype.MimeType, content interface{}, writer io.Writer) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.Handles">func (engine *SpanEngine) Handles(mimeType mimetype.MimeType) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.HandlesDecode">func (engine *SpanEngine) HandlesDecode(mimeType mimetype.MimeType) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.HandlesEncode">func (engine *SpanEngine) HandlesEncode(mimeType mimetype.MimeType) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.JSONHandle">func (engine *SpanEngine) JSONHandle() *codec.JsonHandle</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.SetDecoder">func (engine *SpanEngine) SetDecoder(mimeType mimetype.MimeType, decoder Decoder)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.SetEncoder">func (engine *SpanEngine) SetEncoder(mimeType mimetype.MimeType, encoder Encoder)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.SetPassedEngine">func (engine *SpanEngine) SetPassedEngine(newEngine ContentEngine)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.7.html#SpanEngine.SniffType">func (engine *SpanEngine) SniffType() bool</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/bson.go">bson.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/encoderType.go">encoderType.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go">engine.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/json.go">json.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/text.go">text.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+BsonListSepString is a delimiter for top-level bson lists, which bson does not not
+normally support. When multiple documents are being sent in a single payload, the
+unicode SYMBOL FOR RECORD SEPARATOR is used.
+(<a href="http://fileformat.info/info/unicode/char/241e/index.htm">http://fileformat.info/info/unicode/char/241e/index.htm</a>)
+</p>
+
+				<pre>const <span id="BsonListSepString">BsonListSepString</span> = &#34;\u241E&#34;</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+BsonListSepBytes is a byte representation of BsonListSepString.
+</p>
+
+				<pre>var <span id="BsonListSepBytes">BsonListSepBytes</span> = []<a href="http://localhost:6161/pkg/builtin/#byte">byte</a>(<a href="godoc.7.html#BsonListSepString">BsonListSepString</a>)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="BsonCodecOpts">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/bson.go?s=1269:1440#L38">BsonCodecOpts</a>
+				<a class="permalink" href="godoc.7.html#BsonCodecOpts">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BsonCodecOpts holds options for registering new BSON codecs with SpanEngine.
+</p>
+
+			<pre>type BsonCodecOpts struct {
+    <span class="comment">// Type this codec handles encoding / decoding to.</span>
+<span id="BsonCodecOpts.ValueType"></span>    ValueType <a href="http://localhost:6161/pkg/reflect/">reflect</a>.<a href="http://localhost:6161/pkg/reflect/#Type">Type</a>
+
+<span id="BsonCodecOpts.Codec"></span>    <span class="comment">// Codec to register for this type.</span>
+    Codec <a href="http://localhost:6161/pkg/go.mongodb.org/mongo-driver/bson/bsoncodec/">bsoncodec</a>.<a href="http://localhost:6161/pkg/go.mongodb.org/mongo-driver/bson/bsoncodec/#ValueCodec">ValueCodec</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ContentEngine">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=710:1800#L15">ContentEngine</a>
+				<a class="permalink" href="godoc.7.html#ContentEngine">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ContentEngine details the contract for a content encoding engine. The goal of the
+content engine is to allow a common decoding and encoding methodology for any
+supported mimetype, allowing easy support for client-requested payload encodings, and
+a shared interface for different types of services to add support for various
+encoding types.
+</p>
+
+			<pre>type ContentEngine interface {
+    <span class="comment">// Registers an encoder for a given mimetype.</span>
+    SetEncoder(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>, encoder <a href="godoc.7.html#Encoder">Encoder</a>)
+
+    <span class="comment">// Registers a decoder for a given mimetype.</span>
+    SetDecoder(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>, decoder <a href="godoc.7.html#Decoder">Decoder</a>)
+
+    <span class="comment">// Returns true if the engine has a registered encoder for the mimetype.</span>
+    HandlesEncode(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>) <a href="http://localhost:6161/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Returns true if the engine has a registered decoder for the mimetype.</span>
+    HandlesDecode(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>) <a href="http://localhost:6161/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Returns true if the engine has a registered encoder AND decoder for the mimetype.</span>
+    Handles(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>) <a href="http://localhost:6161/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Whether the engine will attempt to encode / decode unknown mimetypes.</span>
+    SniffType() <a href="http://localhost:6161/pkg/builtin/#bool">bool</a>
+
+    <span class="comment">// Decode mimeType content from reader using the decoder for mimeType. Decoded</span>
+    <span class="comment">// content is stored in contentReceiver.</span>
+    Decode(
+        mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>,
+        contentReceiver interface{},
+        reader <a href="http://localhost:6161/pkg/io/">io</a>.<a href="http://localhost:6161/pkg/io/#Reader">Reader</a>,
+    ) <a href="http://localhost:6161/pkg/builtin/#error">error</a>
+
+    <span class="comment">// Encode content as mimetype using registered mimeType to writer.</span>
+    Encode(
+        mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>,
+        content interface{},
+        writer <a href="http://localhost:6161/pkg/io/">io</a>.<a href="http://localhost:6161/pkg/io/#Writer">Writer</a>,
+    ) <a href="http://localhost:6161/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Decoder">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/encoderType.go?s=462:847#L6">Decoder</a>
+				<a class="permalink" href="godoc.7.html#Decoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Interface for defining a content decoder.
+</p>
+
+			<pre>type Decoder interface {
+    <span class="comment">// To be implemented by content decoder. Implementation is expected to read content</span>
+    <span class="comment">// from reader and unmarshal it into contentReceiver. The content engine which is</span>
+    <span class="comment">// calling Decode is made available through engine, allowing decoders to access</span>
+    <span class="comment">// engine-level settings.</span>
+    Decode(engine <a href="godoc.7.html#ContentEngine">ContentEngine</a>, reader <a href="http://localhost:6161/pkg/io/">io</a>.<a href="http://localhost:6161/pkg/io/#Reader">Reader</a>, contentReceiver interface{}) <a href="http://localhost:6161/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Encoder">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/encoderType.go?s=81:415#L1">Encoder</a>
+				<a class="permalink" href="godoc.7.html#Encoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Interface for defining a content encoder.
+</p>
+
+			<pre>type Encoder interface {
+    <span class="comment">// To be implemented by content encoder. Implementation is expected to write content</span>
+    <span class="comment">// to writer. The content engine which is calling Encode is made available through</span>
+    <span class="comment">// engine, allowing encoding to access engine-level settings.</span>
+    Encode(engine <a href="godoc.7.html#ContentEngine">ContentEngine</a>, writer <a href="http://localhost:6161/pkg/io/">io</a>.<a href="http://localhost:6161/pkg/io/#Writer">Writer</a>, content interface{}) <a href="http://localhost:6161/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="JSONExtensionOpts">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/json.go?s=415:508#L7">JSONExtensionOpts</a>
+				<a class="permalink" href="godoc.7.html#JSONExtensionOpts">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+JSONExtensionOpts holds options For Json Handle extension to add to the handle on
+server setup.
+</p>
+
+			<pre>type JSONExtensionOpts struct {
+<span id="JSONExtensionOpts.ValueType"></span>    ValueType    <a href="http://localhost:6161/pkg/reflect/">reflect</a>.<a href="http://localhost:6161/pkg/reflect/#Type">Type</a>
+<span id="JSONExtensionOpts.ExtInterface"></span>    ExtInterface <a href="http://localhost:6161/pkg/github.com/ugorji/go/codec/">codec</a>.<a href="http://localhost:6161/pkg/github.com/ugorji/go/codec/#InterfaceExt">InterfaceExt</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SpanEngine">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=4258:4860#L124">SpanEngine</a>
+				<a class="permalink" href="godoc.7.html#SpanEngine">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SpanEngine is the default implementation of the ContentEngine interface.
+Implementation is done through an Interface so that the Engine can be extended
+through type wrapping.
+</p>
+<h3 id="hdr-Instantiation">Instantiation</h3>
+<p>
+Use NewContentEngine() to create a new SpanEngine.
+</p>
+<h3 id="hdr-Default_Mimetypes">Default Mimetypes</h3>
+<p>
+• plain/text
+</p>
+<p>
+• application/json
+</p>
+<p>
+• application/bson
+</p>
+<p>
+Object encoding/decoders have been selected to be extensible, and SpanEngine exposes
+functions to let you add custom type handlers to each.
+</p>
+<h3 id="hdr-Default_JSON_Extensions">Default JSON Extensions</h3>
+<p>
+SpanEngine uses the codec library to encode/decode json
+(<a href="https://godoc.org/github.com/ugorji/go/codec">https://godoc.org/github.com/ugorji/go/codec</a>), which allows the definition of
+extensions. SpanEngine ships with the following types handled:
+</p>
+<p>
+• UUIDs from &#34;github.com/satori/go.uuid&#34;
+</p>
+<p>
+• Binary blob data represented as []byte or *[]bytes are represented as a hex string.
+To signal that this conversion should take place, you must use the named type
+BinData in the &#34;spantypes&#34; package of this module.
+</p>
+<p>
+• BSON primitive.Binary data will be decoded as a string for 0x3 subtype (UUID) and a
+hex string for 0x0 subtype (arbitrary binary data). Other subtypes are not currently
+supported and will panic.
+</p>
+<p>
+• BSON raw is converted to a map and THEN encoded to a json object.
+</p>
+<p>
+Additional json extensions can be registered through the AddJSONExtensions() by passing
+a slice of JSONExtensionOpts objects.
+</p>
+<h3 id="hdr-Default_BSON_Codecs">Default BSON Codecs</h3>
+<p>
+SpanEngine handles the encoding and decoding of Bson data through the official bson
+driver (<a href="https://godoc.org/go.mongodb.org/mongo-driver">https://godoc.org/go.mongodb.org/mongo-driver</a>).
+</p>
+<p>
+See information on defining a bson codec
+here: <a href="https://godoc.org/go.mongodb.org/mongo-driver/bson/bsoncodec">https://godoc.org/go.mongodb.org/mongo-driver/bson/bsoncodec</a>
+</p>
+<p>
+The following type extensions ship with SpanEngine:
+</p>
+<p>
+• primitive.Binary of subtype 0x3 can be decoded to / encoded from UUID objects from
+&#34;github.com/satori/go.uuid&#34;.
+</p>
+<p>
+• primitive.Binary of subtype 0x0 can be decoded to / encoded from the BinData named
+type of []byte in the &#34;spantypes&#34; module.
+</p>
+<p>
+Default Text/Plain Returns
+</p>
+<p>
+When encoding to plaintext, format.Sprint is used on the passed object, so any type
+can be sent and represented as text.
+</p>
+<h3 id="hdr-Type_Sniffing">Type Sniffing</h3>
+<p>
+If created with &#34;sniffMimeType&#34; set to true, when decoding SpanEngine will attempt
+to use each decoder until one does not return an error or panic. Because decoders are
+internally stored in a map, the order of these attempts is not guaranteed to be
+consistent.
+</p>
+<h3 id="hdr-Panics">Panics</h3>
+<p>
+If an encoder or decoder panics during execution, that panic is caught and returned as
+an error.
+</p>
+
+			<pre>type SpanEngine struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewContentEngine">func <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=12307:12366#L421">NewContentEngine</a>
+					<a class="permalink" href="godoc.7.html#NewContentEngine">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewContentEngine(allowSniff <a href="http://localhost:6161/pkg/builtin/#bool">bool</a>) (*<a href="godoc.7.html#SpanEngine">SpanEngine</a>, <a href="http://localhost:6161/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="SpanEngine.AddBSONCodecs">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=11351:11421#L389">AddBSONCodecs</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.AddBSONCodecs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) AddBSONCodecs(codecs []*<a href="godoc.7.html#BsonCodecOpts">BsonCodecOpts</a>) <a href="http://localhost:6161/pkg/builtin/#error">error</a></pre>
+				<p>
+Adds BSON codecs to engine for use when encoding/decoding bson data.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.AddJSONExtensions">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=10928:11010#L374">AddJSONExtensions</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.AddJSONExtensions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) AddJSONExtensions(extensions []*<a href="godoc.7.html#JSONExtensionOpts">JSONExtensionOpts</a>) <a href="http://localhost:6161/pkg/builtin/#error">error</a></pre>
+				<p>
+Adds JSON extensions to handle.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.BSONRegistry">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=10799:10859#L369">BSONRegistry</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.BSONRegistry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) BSONRegistry() *<a href="http://localhost:6161/pkg/go.mongodb.org/mongo-driver/bson/bsoncodec/">bsoncodec</a>.<a href="http://localhost:6161/pkg/go.mongodb.org/mongo-driver/bson/bsoncodec/#Registry">Registry</a></pre>
+				<p>
+Returns the internal bsoncodec.BSONRegistry used by the bson encoder/decoder.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.Decode">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=9383:9502#L308">Decode</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.Decode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) Decode(
+    mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>,
+    contentReceiver interface{},
+    reader <a href="http://localhost:6161/pkg/io/">io</a>.<a href="http://localhost:6161/pkg/io/#Reader">Reader</a>,
+) <a href="http://localhost:6161/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.Encode">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=10201:10312#L343">Encode</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.Encode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) Encode(
+    mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>,
+    content interface{},
+    writer <a href="http://localhost:6161/pkg/io/">io</a>.<a href="http://localhost:6161/pkg/io/#Writer">Writer</a>,
+) <a href="http://localhost:6161/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.Handles">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=6307:6373#L189">Handles</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.Handles">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) Handles(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>) <a href="http://localhost:6161/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Whether the SpanEngine has a registered decoder AND encoder for mimeType.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.HandlesDecode">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=6079:6151#L182">HandlesDecode</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.HandlesDecode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) HandlesDecode(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>) <a href="http://localhost:6161/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Whether the SpanEngine has a registered decoder for mimeType.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.HandlesEncode">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=5889:5961#L176">HandlesEncode</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.HandlesEncode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) HandlesEncode(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>) <a href="http://localhost:6161/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Whether the SpanEngine has a registered encoder for mimeType.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.JSONHandle">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=10630:10686#L364">JSONHandle</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.JSONHandle">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) JSONHandle() *<a href="http://localhost:6161/pkg/github.com/ugorji/go/codec/">codec</a>.<a href="http://localhost:6161/pkg/github.com/ugorji/go/codec/#JsonHandle">JsonHandle</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.SetDecoder">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=5249:5330#L155">SetDecoder</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.SetDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) SetDecoder(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>, decoder <a href="godoc.7.html#Decoder">Decoder</a>)</pre>
+				<p>
+Register a decoder for a given mimeType
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.SetEncoder">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=5082:5163#L150">SetEncoder</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.SetEncoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) SetEncoder(mimeType <a href="godoc.3.html">mimetype</a>.<a href="godoc.3.html#MimeType">MimeType</a>, encoder <a href="godoc.7.html#Encoder">Encoder</a>)</pre>
+				<p>
+Register an encoder for a given mimeType
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.SetPassedEngine">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=4933:4999#L145">SetPassedEngine</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.SetPassedEngine">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) SetPassedEngine(newEngine <a href="godoc.7.html#ContentEngine">ContentEngine</a>)</pre>
+				<p>
+Change the engine passed into Encoder.Encode() and decoder.Decode()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SpanEngine.SniffType">func (*SpanEngine) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/encoding/engine.go?s=5747:5789#L171">SniffType</a>
+					<a class="permalink" href="godoc.7.html#SpanEngine.SniffType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (engine *<a href="godoc.7.html#SpanEngine">SpanEngine</a>) SniffType() <a href="http://localhost:6161/pkg/builtin/#bool">bool</a></pre>
+				<p>
+Whether SpanEngine will attempt to decode UNKNOWN content.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
