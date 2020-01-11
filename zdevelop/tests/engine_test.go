@@ -69,6 +69,7 @@ func TestCreateEngineDefault(test *testing.T) {
 func RoundTripName(
 	test *testing.T, mimeTypeEncode mimetype.MimeType, mimeTypeDecode mimetype.MimeType,
 ) *Name {
+	assert := assert.New(test)
 	engine := createEngine(test)
 
 	testName := Name{
@@ -78,20 +79,32 @@ func RoundTripName(
 
 	buffer := bytes.Buffer{}
 
-	err := engine.Encode(mimeTypeEncode, testName, &buffer)
+	mimeType, err := engine.Encode(mimeTypeEncode, testName, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+
+	mimeTypeExpected := mimeTypeEncode
+	if mimeTypeEncode == mimetype.UNKNOWN {
+		mimeTypeExpected = mimetype.JSON
+	}
+	assert.Equal(mimeTypeExpected, mimeType)
 
 	loaded := Name{}
-	err = engine.Decode(mimeTypeDecode, &loaded, &buffer)
+	mimeType, err = engine.Decode(mimeTypeDecode, &loaded, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
 
-	assert.Equal(test, testName, loaded)
-	assert.Equal(test, "Harry", loaded.First)
-	assert.Equal(test, "Potter", loaded.Last)
+	mimeTypeExpected = mimeTypeDecode
+	if mimeTypeExpected == mimetype.UNKNOWN {
+		mimeTypeExpected = mimeType
+	}
+	assert.Equal(mimeTypeExpected, mimeType)
+
+	assert.Equal(testName, loaded)
+	assert.Equal("Harry", loaded.First)
+	assert.Equal("Potter", loaded.Last)
 
 	return &loaded
 }
@@ -117,6 +130,8 @@ func TestBSONToUnknownRoundTrip(test *testing.T) {
 }
 
 func TestTextRoundTrip(test *testing.T) {
+	assert := assert.New(test)
+
 	engine, err := encoding.NewContentEngine(false)
 	if err != nil {
 		test.Error(test)
@@ -125,21 +140,25 @@ func TestTextRoundTrip(test *testing.T) {
 	stringPayload := "Test String."
 	buffer := bytes.Buffer{}
 
-	err = engine.Encode(mimetype.TEXT, stringPayload, &buffer)
+	mimeType, err := engine.Encode(mimetype.TEXT, stringPayload, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.TEXT, mimeType)
 
 	loaded := ""
-	err = engine.Decode(mimetype.TEXT, &loaded, &buffer)
+	mimeType, err = engine.Decode(mimetype.TEXT, &loaded, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.TEXT, mimeType)
 
-	assert.Equal(test, stringPayload, loaded)
+	assert.Equal(stringPayload, loaded)
 }
 
 func TestTextRoundUnknown(test *testing.T) {
+	assert := assert.New(test)
+
 	engine, err := encoding.NewContentEngine(true)
 	if err != nil {
 		test.Error(test)
@@ -148,41 +167,49 @@ func TestTextRoundUnknown(test *testing.T) {
 	stringPayload := "Test String."
 	buffer := bytes.Buffer{}
 
-	err = engine.Encode(mimetype.UNKNOWN, stringPayload, &buffer)
+	mimeType, err := engine.Encode(mimetype.UNKNOWN, stringPayload, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.TEXT, mimeType)
 
 	loaded := ""
-	err = engine.Decode(mimetype.UNKNOWN, &loaded, &buffer)
+	mimeType, err = engine.Decode(mimetype.UNKNOWN, &loaded, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
-
-	assert.Equal(test, stringPayload, loaded)
+	assert.Equal(mimetype.TEXT, mimeType)
+	assert.Equal(stringPayload, loaded)
 }
 
 func TestNoDecoderError(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 	buffer := &bytes.Buffer{}
 	receiver := make(map[string]interface{})
 
-	err := engine.Decode("text/csv", receiver, buffer)
-
-	assert.EqualError(test, err, "no decoder for text/csv")
+	mimeType, err := engine.Decode("text/csv", receiver, buffer)
+	assert.Zero(mimeType)
+	assert.EqualError(err, "no decoder for text/csv")
 }
 
 func TestNoEncoderError(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 	buffer := &bytes.Buffer{}
 	data := make(map[string]interface{})
 
-	err := engine.Encode("text/csv", data, buffer)
+	mimeType, err := engine.Encode("text/csv", data, buffer)
+	assert.Zero(mimeType)
 
-	assert.EqualError(test, err, "no encoder for text/csv")
+	assert.EqualError(err, "no encoder for text/csv")
 }
 
 func TestEncodePanicsError(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 	buffer := &bytes.Buffer{}
 
@@ -190,14 +217,17 @@ func TestEncodePanicsError(test *testing.T) {
 	engine.SetEncoder("text/csv", decoder)
 
 	data := make(map[string]interface{})
-	err := engine.Encode("text/csv", data, buffer)
+	mimeType, err := engine.Encode("text/csv", data, buffer)
 
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "encode err: panic during encode: encode panicked",
+		err, "encode err: panic during encode: encode panicked",
 	)
 }
 
 func TestDecoderPanicsError(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 	buffer := &bytes.Buffer{}
 
@@ -205,14 +235,17 @@ func TestDecoderPanicsError(test *testing.T) {
 	engine.SetDecoder("text/csv", decoder)
 
 	data := make(map[string]interface{})
-	err := engine.Decode("text/csv", data, buffer)
 
+	mimeType, err := engine.Decode("text/csv", data, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "decode err: panic during decode: decode panicked",
+		err, "decode err: panic during decode: decode panicked",
 	)
 }
 
 func TestNoSniffError(test *testing.T) {
+	assert := assert.New(test)
+
 	engine, err := encoding.NewContentEngine(false)
 	if err != nil {
 		test.Error(err)
@@ -221,9 +254,10 @@ func TestNoSniffError(test *testing.T) {
 	buffer := &bytes.Buffer{}
 	receiver := make(map[string]interface{})
 
-	err = engine.Decode(mimetype.UNKNOWN, receiver, buffer)
+	mimeType, err := engine.Decode(mimetype.UNKNOWN, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "mimetype is unknown and sniffing is disabled",
+		err, "mimetype is unknown and sniffing is disabled",
 	)
 }
 
@@ -245,16 +279,18 @@ func TestSniffFailsError(test *testing.T) {
 	subdata["Field"] = 10
 	data["SubData"] = subdata
 
-	err := engine.Encode(mimetype.JSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	test.Log("DUMPED:", buffer.String())
 
 	receiver := &TestData{}
 
-	err = engine.Decode(mimetype.UNKNOWN, receiver, buffer)
+	mimeType, err = engine.Decode(mimetype.UNKNOWN, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.Contains(
 		err.Error(),
 		"content receiver must be a string pointer to receive a string",
@@ -270,6 +306,8 @@ func TestSniffFailsError(test *testing.T) {
 }
 
 func TestSniffErrorReadingBytes(test *testing.T) {
+	assert := assert.New(test)
+
 	mockReadFrom := func(buffer *bytes.Buffer, reader io.Reader) (int64, error) {
 		return 0, xerrors.New("mock reader error")
 	}
@@ -285,9 +323,10 @@ func TestSniffErrorReadingBytes(test *testing.T) {
 	buffer := &bytes.Buffer{}
 	receiver := make(map[string]interface{})
 
-	err := engine.Decode(mimetype.UNKNOWN, receiver, buffer)
+	mimeType, err := engine.Decode(mimetype.UNKNOWN, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "error reading contentBytes: mock reader error",
+		err, "error reading contentBytes: mock reader error",
 	)
 }
 
@@ -367,10 +406,11 @@ func TestClosesReader(test *testing.T) {
 		Last:  "Potter",
 	}
 
-	err := engine.Encode(mimetype.JSON, name, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, name, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	closer := &TestCloser{
 		Buffer: buffer,
@@ -379,10 +419,11 @@ func TestClosesReader(test *testing.T) {
 	assert.False(closer.Closed)
 
 	loaded := &Name{}
-	err = engine.Decode(mimetype.JSON, loaded, closer)
+	mimeType, err = engine.Decode(mimetype.JSON, loaded, closer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	assert.True(closer.Closed)
 	assert.Equal(name, loaded)
@@ -416,6 +457,7 @@ func (encoder CustomTextEncoder) Encode(
 }
 
 func TestExtendEngine(test *testing.T) {
+	assert := assert.New(test)
 
 	engine, err := encoding.NewContentEngine(false)
 	if err != nil {
@@ -431,12 +473,12 @@ func TestExtendEngine(test *testing.T) {
 	ourEngine.SetEncoder(mimetype.TEXT, &CustomTextEncoder{})
 
 	buffer := new(bytes.Buffer)
-	err = ourEngine.Encode(mimetype.TEXT, "some message", buffer)
+	mimeType, err := ourEngine.Encode(mimetype.TEXT, "some message", buffer)
 	if err != nil {
 		panic(err)
 	}
-
+	assert.Equal(mimetype.TEXT, mimeType)
 	assert.Equal(
-		test, "MyAwesomeApp says: 'some message'.", buffer.String(),
+		"MyAwesomeApp says: 'some message'.", buffer.String(),
 	)
 }

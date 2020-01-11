@@ -33,6 +33,7 @@ func TestPanickedReader(test *testing.T) {
 
 	buffer := &bytes.Buffer{}
 
-	err := engine.Decode(mimetype.TEXT, receiver, buffer)
+	mimeType, err := engine.Decode(mimetype.TEXT, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(err, "decode err: mock reader error")
 }

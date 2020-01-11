@@ -47,14 +47,18 @@ type ContentEngine interface {
 		mimeType mimetype.MimeType,
 		contentReceiver interface{},
 		reader io.Reader,
-	) error
+	) (mimetype.MimeType, error)
 
 	// Encode content as mimetype using registered mimeType to writer.
 	Encode(
 		mimeType mimetype.MimeType,
 		content interface{},
 		writer io.Writer,
-	) error
+	) (mimetype.MimeType, error)
+
+	PickContentMimeType(
+		mimeType mimetype.MimeType, content interface{}, encoding bool,
+	) mimetype.MimeType
 }
 
 /*
@@ -248,22 +252,22 @@ func (engine *SpanEngine) safeDecode(
 // Attempts to decode content with all registered decoders until one succeeds or all
 // fail.
 func (engine *SpanEngine) sniffContent(
-	mimeType mimetype.MimeType,
 	contentReceiver interface{},
 	reader io.Reader,
-) error {
+) (mimetype.MimeType, error) {
 	// We need to read the content multiple times, so lets load the bytes into a var.
 	// This will cause a slight performance hit, which is why this is a separate process
 	// from loading a KNOWN mimetype.
 	contentBuffer := bytes.NewBuffer(make([]byte, 0))
 	if _, err := contentBuffer.ReadFrom(reader); err != nil {
-		return xerrors.Errorf("error reading contentBytes: %w", err)
+		return "", xerrors.Errorf("error reading contentBytes: %w", err)
 	}
 
 	var decoderErr error
 	var decoded bool
+	var decodeMimetype mimetype.MimeType
 
-	for _, decoder := range engine.decoderList {
+	for thisMimetype, decoder := range engine.decoders {
 		// Make a buffer for this attempt, otherwise we'll run out of bytes.
 		thisReader := bytes.NewBuffer(contentBuffer.Bytes())
 		thisErr := engine.safeDecode(decoder, thisReader, contentReceiver)
@@ -278,6 +282,7 @@ func (engine *SpanEngine) sniffContent(
 			}
 		} else {
 			decoded = true
+			decodeMimetype = thisMimetype
 			break
 		}
 	}
@@ -286,12 +291,12 @@ func (engine *SpanEngine) sniffContent(
 		decoderErr = nil
 	}
 
-	return decoderErr
+	return decodeMimetype, decoderErr
 }
 
 // Picks the mimetype for encoding / decoding objects when source or target mimetype is
 // unknown.
-func pickContentMimeType(
+func (engine *SpanEngine) PickContentMimeType(
 	mimeType mimetype.MimeType, content interface{}, encoding bool,
 ) mimetype.MimeType {
 	if mimeType == mimetype.UNKNOWN {
@@ -319,8 +324,8 @@ func (engine *SpanEngine) Decode(
 	mimeType mimetype.MimeType,
 	contentReceiver interface{},
 	reader io.Reader,
-) error {
-	mimeType = pickContentMimeType(mimeType, contentReceiver, false)
+) (mimetype.MimeType, error) {
+	mimeType = engine.PickContentMimeType(mimeType, contentReceiver, false)
 
 	// Close the reader if it's a closer.
 	if readCloser, ok := reader.(io.ReadCloser); ok {
@@ -332,43 +337,43 @@ func (engine *SpanEngine) Decode(
 	// If we want to sniff
 	if mimeType == mimetype.UNKNOWN {
 		if !engine.SniffType() {
-			return xerrors.New("mimetype is unknown and sniffing is disabled")
+			return "", xerrors.New("mimetype is unknown and sniffing is disabled")
 		}
-		return engine.sniffContent(mimeType, contentReceiver, reader)
+		return engine.sniffContent(contentReceiver, reader)
 	}
 
 	decoder, ok := engine.decoders[mimeType]
 	if !ok {
-		return xerrors.New("no decoder for " + string(mimeType))
+		return "", xerrors.New("no decoder for " + string(mimeType))
 	}
 
 	err := engine.safeDecode(decoder, reader, contentReceiver)
 	if err != nil {
-		return xerrors.Errorf("decode err: %w", err)
+		return "", xerrors.Errorf("decode err: %w", err)
 	}
 
-	return nil
+	return mimeType, nil
 }
 
 func (engine *SpanEngine) Encode(
 	mimeType mimetype.MimeType,
 	content interface{},
 	writer io.Writer,
-) error {
-	mimeType = pickContentMimeType(mimeType, content, true)
+) (mimetype.MimeType, error) {
+	mimeType = engine.PickContentMimeType(mimeType, content, true)
 
 	encoder, ok := engine.encoders[mimeType]
 	if !ok {
-		return xerrors.New("no encoder for " + string(mimeType))
+		return "", xerrors.New("no encoder for " + string(mimeType))
 	}
 
 	err := engine.safeEncode(encoder, writer, content)
 	if err != nil {
-		return xerrors.Errorf(
+		return "", xerrors.Errorf(
 			"encode err: %w", err,
 		)
 	}
-	return nil
+	return mimeType, nil
 }
 
 func (engine *SpanEngine) JSONHandle() *codec.JsonHandle {

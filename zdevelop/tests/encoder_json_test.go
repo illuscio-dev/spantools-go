@@ -20,6 +20,8 @@ import (
 )
 
 func TestJsonListRoundTrip(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	data := []*Name{
@@ -35,23 +37,27 @@ func TestJsonListRoundTrip(test *testing.T) {
 
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.JSON, &data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, &data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	test.Log("DUMPED:", buffer.String())
 
 	loaded := make([]*Name, 0)
-	err = engine.Decode(mimetype.JSON, &loaded, buffer)
+	mimeType, err = engine.Decode(mimetype.JSON, &loaded, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
-	assert.Equal(test, data, loaded)
+	assert.Equal(data, loaded)
 }
 
 func TestBsonUUIDToJson(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	uuidValue := uuid.NewV4()
@@ -64,20 +70,22 @@ func TestBsonUUIDToJson(test *testing.T) {
 	data := bson.M{"Id": bsonUUID}
 
 	buffer := bytes.Buffer{}
-	err := engine.Encode(mimetype.JSON, &data, &buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, &data, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	test.Log("Dumped: ", buffer.String())
 
 	loaded := Receiver{}
-	err = engine.Decode(mimetype.JSON, &loaded, &buffer)
+	mimeType, err = engine.Decode(mimetype.JSON, &loaded, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
 
-	assert.Equal(test, uuidValue, loaded.Id)
+	assert.Equal(mimetype.JSON, mimeType)
+	assert.Equal(uuidValue, loaded.Id)
 }
 
 func TestBinBlobToJson(test *testing.T) {
@@ -97,14 +105,14 @@ func TestBinBlobToJson(test *testing.T) {
 	data := map[string]interface{}{"Data": binData}
 
 	buffer = bytes.Buffer{}
-	if err := engine.Encode(mimetype.JSON, &data, &buffer); err != nil {
+	if _, err := engine.Encode(mimetype.JSON, &data, &buffer); err != nil {
 		test.Error(err)
 	}
 
 	test.Logf("Dumped: %s", buffer.String())
 
 	loaded := Receiver{}
-	if err := engine.Decode(mimetype.JSON, &loaded, &buffer); err != nil {
+	if _, err := engine.Decode(mimetype.JSON, &loaded, &buffer); err != nil {
 		test.Error(err)
 	}
 
@@ -131,14 +139,14 @@ func TestBinBlobBSONToJson(test *testing.T) {
 	}}
 
 	buffer = bytes.Buffer{}
-	if err := engine.Encode(mimetype.JSON, &data, &buffer); err != nil {
+	if _, err := engine.Encode(mimetype.JSON, &data, &buffer); err != nil {
 		test.Error(err)
 	}
 
 	test.Logf("Dumped: %s", buffer.String())
 
 	loaded := Receiver{}
-	if err := engine.Decode(mimetype.JSON, &loaded, &buffer); err != nil {
+	if _, err := engine.Decode(mimetype.JSON, &loaded, &buffer); err != nil {
 		test.Error(err)
 	}
 
@@ -146,6 +154,8 @@ func TestBinBlobBSONToJson(test *testing.T) {
 }
 
 func TestBSONRawToJson(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	type Receiver struct {
@@ -172,18 +182,20 @@ func TestBSONRawToJson(test *testing.T) {
 	rawDoc := bson.Raw(rawBytes)
 
 	buffer = bytes.Buffer{}
-	err = engine.Encode(mimetype.JSON, &rawDoc, &buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, &rawDoc, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	loaded := Receiver{}
-	err = engine.Decode(mimetype.JSON, &loaded, &buffer)
+	mimeType, err = engine.Decode(mimetype.JSON, &loaded, &buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
-	assert.Equal(test, spantypes.BinData(binData), loaded.Data)
+	assert.Equal(spantypes.BinData(binData), loaded.Data)
 }
 
 func TestNonHexDecodeError(test *testing.T) {
@@ -193,17 +205,19 @@ func TestNonHexDecodeError(test *testing.T) {
 	data := map[string]interface{}{"Data": "not bin data"}
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.JSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	type Receiver struct {
 		Data spantypes.BinData
 	}
 	receiver := &Receiver{}
 
-	err = engine.Decode(mimetype.JSON, receiver, buffer)
+	mimeType, err = engine.Decode(mimetype.JSON, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
 		err,
 		"decode err: json decode error [pos 22]: could not decode hex: "+
@@ -212,6 +226,8 @@ func TestNonHexDecodeError(test *testing.T) {
 }
 
 func TestNonHexEncodeErrorLen(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	buffer := bytes.Buffer{}
@@ -232,9 +248,9 @@ func TestNonHexEncodeErrorLen(test *testing.T) {
 	defer monkey.UnpatchAll()
 
 	contentBuffer := new(bytes.Buffer)
-	err = engine.Encode(mimetype.JSON, data, contentBuffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, contentBuffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test,
 		err,
 		"encode err: json encode error: error encoding BinData to hex",
 	)
@@ -250,7 +266,8 @@ func TestBsonUUIDError(test *testing.T) {
 	}}
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.JSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
 		err,
 		"encode err: json encode error: Error converting bson uuid: uuid: "+
@@ -268,7 +285,8 @@ func TestBsonBinNotSupportedError(test *testing.T) {
 	}}
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.JSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
 		err,
 		"encode err: json encode error: unsupported Binary BSON format",
@@ -300,7 +318,8 @@ func TestBsonUnmarshalBSONError(test *testing.T) {
 	)
 	defer monkey.UnpatchAll()
 
-	err = engine.Encode(mimetype.JSON, &dataRaw, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, &dataRaw, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
 		err,
 		"encode err: json encode error: error while unmarshalling bson "+
@@ -315,10 +334,11 @@ func TestUnmarshalToBsonBinError(test *testing.T) {
 	data := map[string]interface{}{"Data": hex.EncodeToString(uuid.NewV4().Bytes())}
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.JSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	test.Log("DUMPED:", buffer.String())
 
@@ -327,7 +347,8 @@ func TestUnmarshalToBsonBinError(test *testing.T) {
 	}
 
 	receiver := &TestData{}
-	err = engine.Decode(mimetype.JSON, receiver, buffer)
+	mimeType, err = engine.Decode(mimetype.JSON, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
 		err, "decode err: json decode error [pos 42]: decoding to bson binary "+
 			"field not supported -- use uuid or BinData type as intermediary",
@@ -341,10 +362,11 @@ func TestUnmarshalToBsonRawError(test *testing.T) {
 	data := map[string]interface{}{"Data": map[string]interface{}{"key": "value"}}
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.JSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.JSON, data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.JSON, mimeType)
 
 	test.Log("DUMPED:", buffer.String())
 
@@ -353,7 +375,8 @@ func TestUnmarshalToBsonRawError(test *testing.T) {
 	}
 
 	receiver := &TestData{}
-	err = engine.Decode(mimetype.JSON, receiver, buffer)
+	mimeType, err = engine.Decode(mimetype.JSON, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
 		err, "decode err: json decode error [pos 23]: Decoding to BSON raw "+
 			"field not supported",

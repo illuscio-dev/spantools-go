@@ -177,7 +177,7 @@ func (spanError *SpanError) ToHeader(
 
 	if spanError.ErrorData != nil {
 		dataBytes := bytes.Buffer{}
-		err := dataEngine.Encode(mimetype.JSON, spanError.ErrorData, &dataBytes)
+		_, err := dataEngine.Encode(mimetype.JSON, spanError.ErrorData, &dataBytes)
 		if err != nil {
 			return err
 		}
