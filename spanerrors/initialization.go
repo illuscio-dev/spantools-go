@@ -1,10 +1,10 @@
 package spanerrors
 
 import (
-	uuid "github.com/satori/go.uuid"
-	"golang.org/x/xerrors"
 	"github.com/illuscio-dev/spantools-go/encoding"
 	"github.com/illuscio-dev/spantools-go/mimetype"
+	uuid "github.com/satori/go.uuid"
+	"golang.org/x/xerrors"
 	"strconv"
 	"strings"
 )
@@ -82,7 +82,7 @@ func ErrorFromHeaders(
 	errorData := make(map[string]interface{})
 	if errorDataStr := headers.Get("error-data"); errorDataStr != "" {
 		stringReader := strings.NewReader(errorDataStr)
-		err := dataEngine.Decode(mimetype.JSON, errorData, stringReader)
+		_, err := dataEngine.Decode(mimetype.JSON, errorData, stringReader)
 		if err != nil {
 			return nil,
 				true,

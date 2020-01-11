@@ -6,6 +6,9 @@ package tests
 import (
 	"bou.ke/monkey"
 	"bytes"
+	"github.com/illuscio-dev/spantools-go/encoding"
+	"github.com/illuscio-dev/spantools-go/mimetype"
+	"github.com/illuscio-dev/spantools-go/spantypes"
 	uuid "github.com/satori/go.uuid"
 	"github.com/stretchr/testify/assert"
 	"go.mongodb.org/mongo-driver/bson"
@@ -14,13 +17,11 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"github.com/illuscio-dev/spantools-go/encoding"
-	"github.com/illuscio-dev/spantools-go/mimetype"
-	"github.com/illuscio-dev/spantools-go/spantypes"
 	"testing"
 )
 
 func TestBSONListRoundTrip(test *testing.T) {
+	assert := assert.New(test)
 	engine := createEngine(test)
 
 	data := []Name{
@@ -40,24 +41,28 @@ func TestBSONListRoundTrip(test *testing.T) {
 
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.BSON, &data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
 
 	test.Log("DUMPED:", buffer.String())
+	assert.Equal(mimetype.BSON, mimeType)
 
 	loaded := make([]Name, 0)
-	err = engine.Decode(mimetype.BSON, &loaded, buffer)
+	mimeType, err = engine.Decode(mimetype.BSON, &loaded, buffer)
 	if err != nil {
 		test.Error(err)
 	}
 
 	test.Log("ELEMENT 1:", loaded[0].First)
-	assert.Equal(test, data, loaded)
+	assert.Equal(data, loaded)
+	assert.Equal(mimetype.BSON, mimeType)
 }
 
 func TestBSONListRoundTripPointers(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	data := []*Name{
@@ -77,24 +82,27 @@ func TestBSONListRoundTripPointers(test *testing.T) {
 
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.BSON, &data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
 
 	test.Log("DUMPED:", buffer.String())
+	assert.Equal(mimetype.BSON, mimeType)
 
 	loaded := make([]*Name, 0)
-	err = engine.Decode(mimetype.BSON, &loaded, buffer)
+	mimeType, err = engine.Decode(mimetype.BSON, &loaded, buffer)
 	if err != nil {
 		test.Error(err)
 	}
 
 	test.Log("ELEMENT 1:", loaded[0].First)
-	assert.Equal(test, data, loaded)
+	assert.Equal(mimetype.BSON, mimeType)
+	assert.Equal(data, loaded)
 }
 
 func TestBSONRawToBSON(test *testing.T) {
+	assert := assert.New(test)
 	engine := createEngine(test)
 
 	type Receiver struct {
@@ -121,21 +129,26 @@ func TestBSONRawToBSON(test *testing.T) {
 	rawDoc := bson.Raw(rawBytes)
 
 	buffer = bytes.NewBuffer(make([]byte, 0))
-	err = engine.Encode(mimetype.BSON, &rawDoc, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &rawDoc, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+
+	assert.Equal(mimetype.BSON, mimeType)
 
 	loaded := Receiver{}
-	err = engine.Decode(mimetype.BSON, &loaded, buffer)
+	mimeType, err = engine.Decode(mimetype.BSON, &loaded, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.BSON, mimeType)
 
-	assert.Equal(test, spantypes.BinData(binData), loaded.Data)
+	assert.Equal(spantypes.BinData(binData), loaded.Data)
 }
 
 func TestUUIDToBSON(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	type Receiver struct {
@@ -145,14 +158,23 @@ func TestUUIDToBSON(test *testing.T) {
 	data := Receiver{Data: uuid.NewV4()}
 
 	buffer := bytes.Buffer{}
-	engine.Encode(mimetype.BSON, &data, &buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &data, &buffer)
+	if err != nil {
+		test.Error(err)
+	}
+
+	assert.Equal(mimetype.BSON, mimeType)
 
 	test.Logf("Dumped: %s", buffer.String())
 
 	loaded := Receiver{}
-	engine.Decode(mimetype.BSON, &loaded, &buffer)
+	mimeType, err = engine.Decode(mimetype.BSON, &loaded, &buffer)
+	if err != nil {
+		test.Error(err)
+	}
 
-	assert.Equal(test, data.Data, loaded.Data)
+	assert.Equal(mimetype.BSON, mimeType)
+	assert.Equal(data.Data, loaded.Data)
 }
 
 type BinReceiver struct {
@@ -162,6 +184,8 @@ type BinReceiver struct {
 func setupBinData(
 	test *testing.T, engine encoding.ContentEngine,
 ) (dumpedObject *BinReceiver, contentBuffer *bytes.Buffer) {
+	assert := assert.New(test)
+
 	buffer := new(bytes.Buffer)
 	_, err := io.WriteString(buffer, "Test Data.")
 	if err != nil {
@@ -172,10 +196,12 @@ func setupBinData(
 	data := &BinReceiver{Data: spantypes.BinData(binData)}
 
 	buffer = new(bytes.Buffer)
-	err = engine.Encode(mimetype.BSON, &data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+
+	assert.Equal(mimetype.BSON, mimeType)
 
 	test.Logf("Dumped: %s", buffer.String())
 	return data, buffer
@@ -187,15 +213,17 @@ func TestBinBlobToBSON(test *testing.T) {
 	dumpedObj, contentBuffer := setupBinData(test, engine)
 
 	loaded := BinReceiver{}
-	err := engine.Decode(mimetype.BSON, &loaded, contentBuffer)
+	mimeType, err := engine.Decode(mimetype.BSON, &loaded, contentBuffer)
 	if err != nil {
 		test.Error(err)
 	}
 
+	assert.Equal(test, mimetype.BSON, mimeType)
 	assert.Equal(test, dumpedObj.Data, loaded.Data)
 }
 
 func TestUnmarshalToBinDataUnknownError(test *testing.T) {
+	assert := assert.New(test)
 	engine := createEngine(test)
 
 	_, contentBuffer := setupBinData(test, engine)
@@ -210,13 +238,15 @@ func TestUnmarshalToBinDataUnknownError(test *testing.T) {
 	)
 
 	loaded := new(BinReceiver)
-	err := engine.Decode(mimetype.BSON, loaded, contentBuffer)
+	mimeType, err := engine.Decode(mimetype.BSON, loaded, contentBuffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "decode err: unknown error decoding spantools.BinData",
+		err, "decode err: unknown error decoding spantools.BinData",
 	)
 }
 
 func TestUnmarshalToBinDataWrongSubtype(test *testing.T) {
+	assert := assert.New(test)
 	engine := createEngine(test)
 
 	_, contentBuffer := setupBinData(test, engine)
@@ -231,15 +261,17 @@ func TestUnmarshalToBinDataWrongSubtype(test *testing.T) {
 	)
 
 	loaded := new(BinReceiver)
-	err := engine.Decode(mimetype.BSON, loaded, contentBuffer)
+	mimeType, err := engine.Decode(mimetype.BSON, loaded, contentBuffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test,
 		err,
 		"decode err: spantools.BinData field is not bson subtype 0x0",
 	)
 }
 
 func TestErrorDecodingUUID(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 	buffer := &bytes.Buffer{}
 
@@ -249,29 +281,32 @@ func TestErrorDecodingUUID(test *testing.T) {
 
 	data := map[string]string{"Id": "not an Id"}
 
-	err := engine.Encode(mimetype.BSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.BSON, mimeType)
 
 	receiver := &TestData{}
-	err = engine.Decode(mimetype.BSON, receiver, buffer)
+	mimeType, err = engine.Decode(mimetype.BSON, receiver, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test,
 		err,
 		"decode err: uuid: UUID must be exactly 16 bytes long, got 0 bytes",
 	)
 }
 
 func TestErrorMarshall(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 	buffer := &bytes.Buffer{}
 
 	data := "I am a string"
 
-	err := engine.Encode(mimetype.BSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, data, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test,
 		err,
 		"encode err: WriteString can only write while positioned on a "+
 			"Element or Value but is positioned on a TopLevel",
@@ -279,6 +314,8 @@ func TestErrorMarshall(test *testing.T) {
 }
 
 func TestBSONListMustBePointer(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	data := []*Name{
@@ -290,33 +327,40 @@ func TestBSONListMustBePointer(test *testing.T) {
 
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.BSON, &data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.BSON, mimeType)
 
 	test.Log("DUMPED:", buffer.String())
 
 	loaded := make([]*Name, 0)
-	err = engine.Decode(mimetype.BSON, loaded, buffer)
+	mimeType, err = engine.Decode(mimetype.BSON, loaded, buffer)
 
-	assert.EqualError(test, err, "decode err: slice receiver must be pointer")
+	assert.Zero(mimeType)
+	assert.EqualError(err, "decode err: slice receiver must be pointer")
 }
 
 func TestBSONListEncodeErrorWithElement(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	data := []string{"I am a string"}
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.BSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, data, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "encode err: WriteString can only write while "+
+		err, "encode err: WriteString can only write while "+
 			"positioned on a Element or Value but is positioned on a TopLevel",
 	)
 }
 
 func TestBSONListDecodeErrorWithElement(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	data := []*Name{
@@ -328,10 +372,11 @@ func TestBSONListDecodeErrorWithElement(test *testing.T) {
 
 	buffer := &bytes.Buffer{}
 
-	err := engine.Encode(mimetype.BSON, &data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, &data, buffer)
 	if err != nil {
 		test.Error(err)
 	}
+	assert.Equal(mimetype.BSON, mimeType)
 
 	type NotName struct {
 		First int
@@ -341,14 +386,16 @@ func TestBSONListDecodeErrorWithElement(test *testing.T) {
 	test.Log("DUMPED:", buffer.String())
 
 	loaded := make([]*NotName, 0)
-	err = engine.Decode(mimetype.BSON, &loaded, buffer)
-
+	mimeType, err = engine.Decode(mimetype.BSON, &loaded, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, "decode err: cannot decode string into an integer type",
+		err, "decode err: cannot decode string into an integer type",
 	)
 }
 
 func TestBSONListEncodeErrorWritingSeparator(test *testing.T) {
+	assert := assert.New(test)
+
 	engine := createEngine(test)
 
 	data := []*Name{
@@ -379,8 +426,9 @@ func TestBSONListEncodeErrorWritingSeparator(test *testing.T) {
 		mockBufferWrite,
 	)
 
-	err := engine.Encode(mimetype.BSON, data, buffer)
+	mimeType, err := engine.Encode(mimetype.BSON, data, buffer)
+	assert.Zero(mimeType)
 	assert.EqualError(
-		test, err, ": : ",
+		err, ": : ",
 	)
 }
