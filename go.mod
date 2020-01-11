@@ -1,4 +1,4 @@
-module spantools
+module github.com/illuscio-dev/spantools-go
 
 go 1.13
 

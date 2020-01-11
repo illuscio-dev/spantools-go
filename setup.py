@@ -1,6 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 from configparser import ConfigParser
-from typing import List
 
 # TO FILL OUT LIB INFO AND REQUIREMENTS: edit the [metadata] and [options] sections
 # of setup.cfg
