@@ -1,6 +1,6 @@
 package models
 
-import "spantools/spanerrors"
+import "github.com/illuscio-dev/spantools-go/spanerrors"
 
 // Alias to errors_api.SpanErrorType
 type SpanErrorType = spanerrors.SpanErrorType

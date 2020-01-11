@@ -3,8 +3,8 @@ package spanerrors
 import (
 	uuid "github.com/satori/go.uuid"
 	"golang.org/x/xerrors"
-	"spantools/encoding"
-	"spantools/mimetype"
+	"github.com/illuscio-dev/spantools-go/encoding"
+	"github.com/illuscio-dev/spantools-go/mimetype"
 	"strconv"
 	"strings"
 )

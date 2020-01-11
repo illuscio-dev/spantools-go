@@ -6,7 +6,7 @@ package tests
 import (
 	"github.com/stretchr/testify/assert"
 	"net/http"
-	"spantools/models"
+	"github.com/illuscio-dev/spantools-go/models"
 	"testing"
 )
 

@@ -9,7 +9,7 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/spantypes"
+	"github.com/illuscio-dev/spantools-go/spantypes"
 )
 
 // JSONExtensionOpts holds options For Json Handle extension to add to the handle on

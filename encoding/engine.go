@@ -7,7 +7,7 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/mimetype"
+	"github.com/illuscio-dev/spantools-go/mimetype"
 )
 import "github.com/ugorji/go/codec"
 

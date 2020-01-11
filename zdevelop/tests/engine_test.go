@@ -12,8 +12,8 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/encoding"
-	"spantools/mimetype"
+	"github.com/illuscio-dev/spantools-go/encoding"
+	"github.com/illuscio-dev/spantools-go/mimetype"
 	"testing"
 )
 

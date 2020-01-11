@@ -9,8 +9,8 @@ import (
 	"golang.org/x/xerrors"
 	"net/http"
 	"reflect"
-	"spantools/encoding"
-	"spantools/spanerrors"
+	"github.com/illuscio-dev/spantools-go/encoding"
+	"github.com/illuscio-dev/spantools-go/spanerrors"
 	"testing"
 )
 

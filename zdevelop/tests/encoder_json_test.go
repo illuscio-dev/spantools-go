@@ -14,8 +14,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/xerrors"
 	"io"
-	"spantools/mimetype"
-	"spantools/spantypes"
+	"github.com/illuscio-dev/spantools-go/mimetype"
+	"github.com/illuscio-dev/spantools-go/spantypes"
 	"testing"
 )
 

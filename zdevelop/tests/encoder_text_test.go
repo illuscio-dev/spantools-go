@@ -10,7 +10,7 @@ import (
 	"golang.org/x/xerrors"
 	"io"
 	"reflect"
-	"spantools/mimetype"
+	"github.com/illuscio-dev/spantools-go/mimetype"
 	"testing"
 )
 
