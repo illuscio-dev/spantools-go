@@ -3,6 +3,7 @@ import pathlib
 import os
 import shutil
 import re
+import subprocess
 from itertools import count
 from glob import iglob
 from dataclasses import dataclass
@@ -69,7 +70,7 @@ def make_new_directory(script_info: ScriptInfo) -> None:
     # load current and new paths
     script_info.path_original = pathlib.Path(".").absolute()
     script_info.path_target = (
-        script_info.path_original.parent / f"{script_info.name_target}-py"
+        script_info.path_original.parent / f"{script_info.name_target}-go"
     )
 
     # throw error if new library directory already exists
@@ -78,6 +79,8 @@ def make_new_directory(script_info: ScriptInfo) -> None:
 
     # create new directory and copy current contents
     shutil.copytree(str(script_info.path_original), str(script_info.path_target))
+
+    assert script_info.path_target.exists()
 
     # switch this flag to show the high-level error catcher that the new directory
     # has been made and will need to be removed in cleanup of a later exception is
@@ -97,8 +100,6 @@ def edit_cfg(script_info: ScriptInfo) -> str:
     old_name = config.get("metadata", "name")
 
     config.set("metadata", "name", target_name)
-    config.set("coverage:run", "source", target_name)
-    config.set("coverage:html", "title", f"coverage report for {target_name}")
     config.set("build_sphinx", "project", target_name)
 
     with open(str(script_info.config_path()), mode="w") as f:
@@ -133,39 +134,41 @@ def rename_packages(old_name: str, target_name: str) -> None:
     :return:
     """
     # find current lib path - look for the init and ignore zdevelop
-    search_pattern = "./*/__init__.py"
+    search_pattern = "./**/*.go"
 
-    # iterate through init statements in current directory and rename parents
-    i = None
-    for init_path, i in zip(iglob(search_pattern, recursive=True), count(1)):
+    # Rewrite the mod name with the new target name
+    go_mod_path = pathlib.Path("./go.mod")
+    package_regex = re.compile(r"(package) \S+", flags=re.IGNORECASE)
 
-        parent_path: pathlib.Path = pathlib.Path(init_path).parent
+    os.remove(str(go_mod_path))
+    process = subprocess.Popen(
+        ["go", "mod", "init", f"github.com/illuscio-dev/{target_name}-go"]
+    )
+    if process.wait(timeout=5) != 0:
+        raise RuntimeError("could not init gomod")
+
+    # iterate through
+    i = 0
+    for gofile_path_str, i in zip(iglob(search_pattern, recursive=True), count(1)):
+
+        gofile_path = pathlib.Path(gofile_path_str)
+        parent_path: pathlib.Path = pathlib.Path(gofile_path).parent
         parent_name = parent_path.name
 
+        # Skip anything
         if parent_name.lower() == "zdevelop":
             continue
 
-        # if this lib has multiple packages, we may need to sub-out the name
-        if old_name.lower() in parent_name.lower():
-            new_name = re.sub(parent_name, old_name, target_name, flags=re.IGNORECASE)
-        # otherwise, if the name is unrelated it just gets renamed to the new one
-        else:
-            new_name = target_name
+        gofile_content = gofile_path.read_text()
 
-        target_path = parent_path.with_name(new_name)
+        with gofile_path.open(mode="w") as f:
+            # replace with
+            gofile_content = package_regex.sub(f"package {target_name}", gofile_content)
+            f.write(gofile_content)
 
-        # rename module folder name
-        try:
-            parent_path.rename(target_path)
-        except FileExistsError as this_error:
-            sys.stderr.write(
-                f"package '{target_name}' already exists, your current package names"
-                f"may not conform to illuscio's standards. All packages names should "
-                f"contain the root name of the library"
-            )
-            raise this_error
+        i += 1
 
-    if i is None:
+    if i == 0:
         raise FileNotFoundError("no packages found in library")
 
 

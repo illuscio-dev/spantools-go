@@ -56,7 +56,7 @@ endif
 .PHONY: install-dev
 install-dev:
 	pip install --upgrade pip
-	pip install -r requirements.txt
+	pip install --no-cache-dir -e .[build,doc]
 
 # Installs command line tools into global GOPATH.
 .PHONY: install-globals
@@ -79,3 +79,9 @@ doc:
 	python setup.py build_sphinx -E
 	sleep 1
 	open ./zdocs/build/html/index.html
+
+.PHONY: name
+name:
+	$(eval PATH_NEW := $(shell python3 ./zdevelop/make_scripts/make_name.py $(n)))
+	@echo "library renamed! to switch your current directory, use the following \
+	command:\ncd '$(PATH_NEW)'"
