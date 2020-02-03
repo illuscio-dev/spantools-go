@@ -29,3 +29,6 @@ variables:
 jobs:
   # Link to the pipeline template.
   - template: go_module_main.yml@templates
+    parameters:
+      # Artifact feed to pull custom packages from.
+      pypiAzureArtifactFeed: astral-pypi
