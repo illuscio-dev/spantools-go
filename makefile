@@ -77,10 +77,16 @@ install-globals:
 doc:
 	rm -rf ./zdocs/build
 	mkdir ./zdocs/build
+	# Rip API docs from godoc. This tools spins up a godoc server and downloads
+	# module docs
 	docmodule-go
 	python setup.py build_sphinx -E
 	sleep 1
 	open ./zdocs/build/html/index.html
+	# Remove Deleted files from git
+	git add -u
+	# Add any new files to git
+	git add zdocs/*
 
 .PHONY: name
 name:
