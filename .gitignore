@@ -29,7 +29,7 @@ ENV/
 
 # Build Detritus
 bin/
-build/
+./build/
 dist/
 lib/
 gobin/
