@@ -77,7 +77,7 @@
 		
 		<div id="short-nav">
 			<dl>
-			<dd><code>import "spantools/spanerrors"</code></dd>
+			<dd><code>import "github.com/illuscio-dev/spantools-go/spanerrors"</code></dd>
 			</dl>
 			<dl>
 			<dd><a href="godoc.5.html#pkg-overview" class="overviewLink">Overview</a></dd>
@@ -197,13 +197,13 @@ Several pointers to SpanErrorType definitions are included in this package.
 			<p>
 			<span style="font-size:90%">
 			
-				<a href="http://localhost:6161/src/spantools/spanerrors/doc.go">doc.go</a>
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/doc.go">doc.go</a>
 			
-				<a href="http://localhost:6161/src/spantools/spanerrors/errorList.go">errorList.go</a>
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/errorList.go">errorList.go</a>
 			
-				<a href="http://localhost:6161/src/spantools/spanerrors/initialization.go">initialization.go</a>
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/initialization.go">initialization.go</a>
 			
-				<a href="http://localhost:6161/src/spantools/spanerrors/model.go">model.go</a>
+				<a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go">model.go</a>
 			
 			</span>
 			</p>
@@ -313,7 +313,7 @@ This type SHOULD NOT be invoked by app logic.
 		
 			
 			
-			<h2 id="SpanError">type <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=3126:3699#L99">SpanError</a>
+			<h2 id="SpanError">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=3180:3753#L99">SpanError</a>
 				<a class="permalink" href="godoc.5.html#SpanError">&#xb6;</a>
 				
 				
@@ -348,7 +348,7 @@ Used to return a specific error instance.
 
 			
 				
-				<h3 id="ErrorFromHeaders">func <a href="http://localhost:6161/src/spantools/spanerrors/initialization.go?s=1192:1369#L32">ErrorFromHeaders</a>
+				<h3 id="ErrorFromHeaders">func <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/initialization.go?s=1246:1423#L32">ErrorFromHeaders</a>
 					<a class="permalink" href="godoc.5.html#ErrorFromHeaders">&#xb6;</a>
 					
 					
@@ -376,7 +376,7 @@ be returned as a nil pointer, and err will specify that no error was found.
 
 			
 				
-				<h3 id="SpanError.Error">func (*SpanError) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=4084:4126#L131">Error</a>
+				<h3 id="SpanError.Error">func (*SpanError) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=4138:4180#L131">Error</a>
 					<a class="permalink" href="godoc.5.html#SpanError.Error">&#xb6;</a>
 					
 					
@@ -391,7 +391,7 @@ Error string to conform to builtin error interface.
 				
 			
 				
-				<h3 id="SpanError.IsType">func (*SpanError) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=3897:3962#L126">IsType</a>
+				<h3 id="SpanError.IsType">func (*SpanError) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=3951:4016#L126">IsType</a>
 					<a class="permalink" href="godoc.5.html#SpanError.IsType">&#xb6;</a>
 					
 					
@@ -408,7 +408,7 @@ field equality directly.
 				
 			
 				
-				<h3 id="SpanError.LogMessage">func (*SpanError) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=4713:4760#L145">LogMessage</a>
+				<h3 id="SpanError.LogMessage">func (*SpanError) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=4767:4814#L145">LogMessage</a>
 					<a class="permalink" href="godoc.5.html#SpanError.LogMessage">&#xb6;</a>
 					
 					
@@ -425,7 +425,7 @@ it may contain sensitive information that is not desirable to return to the clie
 				
 			
 				
-				<h3 id="SpanError.ToHeader">func (*SpanError) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=5100:5202#L160">ToHeader</a>
+				<h3 id="SpanError.ToHeader">func (*SpanError) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=5154:5256#L160">ToHeader</a>
 					<a class="permalink" href="godoc.5.html#SpanError.ToHeader">&#xb6;</a>
 					
 					
@@ -443,7 +443,7 @@ like http.Request or http.Response.
 				
 			
 				
-				<h3 id="SpanError.Unwrap">func (*SpanError) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=4354:4396#L137">Unwrap</a>
+				<h3 id="SpanError.Unwrap">func (*SpanError) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=4408:4450#L137">Unwrap</a>
 					<a class="permalink" href="godoc.5.html#SpanError.Unwrap">&#xb6;</a>
 					
 					
@@ -461,7 +461,7 @@ implementation in future GO versions with more traceback support.
 		
 			
 			
-			<h2 id="SpanErrorType">type <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=833:1174#L21">SpanErrorType</a>
+			<h2 id="SpanErrorType">type <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=887:1228#L21">SpanErrorType</a>
 				<a class="permalink" href="godoc.5.html#SpanErrorType">&#xb6;</a>
 				
 				
@@ -497,7 +497,7 @@ accessed through functions. Define new error types using NewSpanErrorType()
 
 			
 				
-				<h3 id="NewSpanErrorType">func <a href="http://localhost:6161/src/spantools/spanerrors/initialization.go?s=415:497#L5">NewSpanErrorType</a>
+				<h3 id="NewSpanErrorType">func <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/initialization.go?s=469:551#L5">NewSpanErrorType</a>
 					<a class="permalink" href="godoc.5.html#NewSpanErrorType">&#xb6;</a>
 					
 					
@@ -519,7 +519,7 @@ names for the error type across all services / libraries of a given language.
 
 			
 				
-				<h3 id="SpanErrorType.ApiCode">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=2297:2342#L72">ApiCode</a>
+				<h3 id="SpanErrorType.ApiCode">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=2351:2396#L72">ApiCode</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.ApiCode">&#xb6;</a>
 					
 					
@@ -534,7 +534,7 @@ Unique number to identify the error type in the API ecosystem.
 				
 			
 				
-				<h3 id="SpanErrorType.Error">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=2957:3003#L93">Error</a>
+				<h3 id="SpanErrorType.Error">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=3011:3057#L93">Error</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.Error">&#xb6;</a>
 					
 					
@@ -550,7 +550,7 @@ testing error equality.
 				
 			
 				
-				<h3 id="SpanErrorType.HttpCode">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=2503:2549#L78">HttpCode</a>
+				<h3 id="SpanErrorType.HttpCode">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=2557:2603#L78">HttpCode</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.HttpCode">&#xb6;</a>
 					
 					
@@ -566,7 +566,7 @@ if the http error is determined dynamically.
 				
 			
 				
-				<h3 id="SpanErrorType.Name">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=2157:2202#L67">Name</a>
+				<h3 id="SpanErrorType.Name">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=2211:2256#L67">Name</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.Name">&#xb6;</a>
 					
 					
@@ -581,7 +581,7 @@ Unique human-readable name of the error type for the API ecosystem.
 				
 			
 				
-				<h3 id="SpanErrorType.New">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=1253:1369#L34">New</a>
+				<h3 id="SpanErrorType.New">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=1307:1423#L34">New</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.New">&#xb6;</a>
 					
 					
@@ -600,7 +600,7 @@ Returns a new span error to be returned by the route handler or panicked.
 				
 			
 				
-				<h3 id="SpanErrorType.Panic">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=1899:2006#L57">Panic</a>
+				<h3 id="SpanErrorType.Panic">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=1953:2060#L57">Panic</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.Panic">&#xb6;</a>
 					
 					
@@ -622,7 +622,7 @@ function returns.
 				
 			
 				
-				<h3 id="SpanErrorType.WithHttpCode">func (*SpanErrorType) <a href="http://localhost:6161/src/spantools/spanerrors/model.go?s=2653:2729#L83">WithHttpCode</a>
+				<h3 id="SpanErrorType.WithHttpCode">func (*SpanErrorType) <a href="http://localhost:6161/src/github.com/illuscio-dev/spantools-go/spanerrors/model.go?s=2707:2783#L83">WithHttpCode</a>
 					<a class="permalink" href="godoc.5.html#SpanErrorType.WithHttpCode">&#xb6;</a>
 					
 					

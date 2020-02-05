@@ -75,6 +75,8 @@ install-globals:
 # Creates docs.
 .PHONY: doc
 doc:
+	rm -rf ./zdocs/build
+	mkdir ./zdocs/build
 	docmodule-go
 	python setup.py build_sphinx -E
 	sleep 1
