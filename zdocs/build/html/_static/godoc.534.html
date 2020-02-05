@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>sys - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.534.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package sys
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "runtime/internal/sys"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.534.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.534.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+package sys contains system- and configuration- and architecture-specific
+constants used by the runtime.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.534.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.534.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.534.html#Bswap32">func Bswap32(x uint32) uint32</a></dd>
+			
+				
+				<dd><a href="godoc.534.html#Bswap64">func Bswap64(x uint64) uint64</a></dd>
+			
+				
+				<dd><a href="godoc.534.html#Ctz32">func Ctz32(x uint32) int</a></dd>
+			
+				
+				<dd><a href="godoc.534.html#Ctz64">func Ctz64(x uint64) int</a></dd>
+			
+				
+				<dd><a href="godoc.534.html#Ctz8">func Ctz8(x uint8) int</a></dd>
+			
+			
+				
+				<dd><a href="godoc.534.html#ArchFamilyType">type ArchFamilyType</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.534.html#Uintreg">type Uintreg</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/arch.go">arch.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/arch_amd64.go">arch_amd64.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/intrinsics.go">intrinsics.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/stubs.go">stubs.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/sys.go">sys.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/zgoarch_amd64.go">zgoarch_amd64.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/zgoos_darwin.go">zgoos_darwin.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/internal/sys/zversion.go">zversion.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="ArchFamily">ArchFamily</span>          = <a href="godoc.534.html#AMD64">AMD64</a>
+    <span id="BigEndian">BigEndian</span>           = <a href="godoc.26.html#false">false</a>
+    <span id="DefaultPhysPageSize">DefaultPhysPageSize</span> = 4096
+    <span id="PCQuantum">PCQuantum</span>           = 1
+    <span id="Int64Align">Int64Align</span>          = 8
+    <span id="MinFrameSize">MinFrameSize</span>        = 0
+)</pre>
+			
+				
+				<pre>const <span id="GOARCH">GOARCH</span> = `amd64`</pre>
+			
+				
+				<pre>const <span id="GOOS">GOOS</span> = `darwin`</pre>
+			
+				
+				<pre>const <span id="Goarch386">Goarch386</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchAmd64">GoarchAmd64</span> = 1</pre>
+			
+				
+				<pre>const <span id="GoarchAmd64p32">GoarchAmd64p32</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchArm">GoarchArm</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchArm64">GoarchArm64</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchArm64be">GoarchArm64be</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchArmbe">GoarchArmbe</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchMips">GoarchMips</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchMips64">GoarchMips64</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchMips64le">GoarchMips64le</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchMips64p32">GoarchMips64p32</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchMips64p32le">GoarchMips64p32le</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchMipsle">GoarchMipsle</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchPpc">GoarchPpc</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchPpc64">GoarchPpc64</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchPpc64le">GoarchPpc64le</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchRiscv">GoarchRiscv</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchRiscv64">GoarchRiscv64</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchS390">GoarchS390</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchS390x">GoarchS390x</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchSparc">GoarchSparc</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchSparc64">GoarchSparc64</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoarchWasm">GoarchWasm</span> = 0</pre>
+			
+				
+				<pre>const <span id="Goexperiment">Goexperiment</span> = ``</pre>
+			
+				
+				<pre>const <span id="GoosAix">GoosAix</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosAndroid">GoosAndroid</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosDarwin">GoosDarwin</span> = 1</pre>
+			
+				
+				<pre>const <span id="GoosDragonfly">GoosDragonfly</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosFreebsd">GoosFreebsd</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosHurd">GoosHurd</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosIllumos">GoosIllumos</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosJs">GoosJs</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosLinux">GoosLinux</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosNacl">GoosNacl</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosNetbsd">GoosNetbsd</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosOpenbsd">GoosOpenbsd</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosPlan9">GoosPlan9</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosSolaris">GoosSolaris</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosWindows">GoosWindows</span> = 0</pre>
+			
+				
+				<pre>const <span id="GoosZos">GoosZos</span> = 0</pre>
+			
+				
+				<pre>const <span id="PtrSize">PtrSize</span> = 4 &lt;&lt; (^<a href="godoc.26.html#uintptr">uintptr</a>(0) &gt;&gt; 63) <span class="comment">// unsafe.Sizeof(uintptr(0)) but an ideal const</span>
+</pre>
+			
+				
+				<pre>const <span id="RegSize">RegSize</span> = 4 &lt;&lt; (^<a href="godoc.534.html#Uintreg">Uintreg</a>(0) &gt;&gt; 63) <span class="comment">// unsafe.Sizeof(uintreg(0)) but an ideal const</span>
+</pre>
+			
+				
+				<pre>const <span id="SpAlign">SpAlign</span> = 1*(1-<a href="godoc.534.html#GoarchArm64">GoarchArm64</a>) + 16*<a href="godoc.534.html#GoarchArm64">GoarchArm64</a> <span class="comment">// SP alignment: 1 normally, 16 for ARM64</span>
+</pre>
+			
+				<p>
+AIX requires a larger stack for syscalls.
+</p>
+
+				<pre>const <span id="StackGuardMultiplier">StackGuardMultiplier</span> = <a href="godoc.534.html#StackGuardMultiplierDefault">StackGuardMultiplierDefault</a>*(1-<a href="godoc.534.html#GoosAix">GoosAix</a>) + 2*<a href="godoc.534.html#GoosAix">GoosAix</a></pre>
+			
+				
+				<pre>const <span id="StackGuardMultiplierDefault">StackGuardMultiplierDefault</span> = 1</pre>
+			
+				
+				<pre>const <span id="TheVersion">TheVersion</span> = `go1.13.5`</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var <span id="DefaultGoroot">DefaultGoroot</span> <a href="godoc.26.html#string">string</a> <span class="comment">// set at link time</span>
+</pre>
+			
+		
+		
+			
+			
+			<h2 id="Bswap32">func <a href="http://localhost:6161/src/runtime/internal/sys/intrinsics.go?s=3674:3703#L87">Bswap32</a>
+				<a class="permalink" href="godoc.534.html#Bswap32">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Bswap32(x <a href="godoc.26.html#uint32">uint32</a>) <a href="godoc.26.html#uint32">uint32</a></pre>
+			<p>
+Bswap32 returns its input with byte order reversed
+0x01020304 -&gt; 0x04030201
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Bswap64">func <a href="http://localhost:6161/src/runtime/internal/sys/intrinsics.go?s=3292:3321#L69">Bswap64</a>
+				<a class="permalink" href="godoc.534.html#Bswap64">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Bswap64(x <a href="godoc.26.html#uint64">uint64</a>) <a href="godoc.26.html#uint64">uint64</a></pre>
+			<p>
+Bswap64 returns its input with byte order reversed
+0x0102030405060708 -&gt; 0x0807060504030201
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Ctz32">func <a href="http://localhost:6161/src/runtime/internal/sys/intrinsics.go?s=1206:1230#L35">Ctz32</a>
+				<a class="permalink" href="godoc.534.html#Ctz32">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Ctz32(x <a href="godoc.26.html#uint32">uint32</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+Ctz32 counts trailing (low-order) zeroes,
+and if all are zero, then 32.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Ctz64">func <a href="http://localhost:6161/src/runtime/internal/sys/intrinsics.go?s=856:880#L25">Ctz64</a>
+				<a class="permalink" href="godoc.534.html#Ctz64">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Ctz64(x <a href="godoc.26.html#uint64">uint64</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+Ctz64 counts trailing (low-order) zeroes,
+and if all are zero, then 64.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Ctz8">func <a href="http://localhost:6161/src/runtime/internal/sys/intrinsics.go?s=1561:1583#L44">Ctz8</a>
+				<a class="permalink" href="godoc.534.html#Ctz8">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Ctz8(x <a href="godoc.26.html#uint8">uint8</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+Ctz8 returns the number of trailing zero bits in x; the result is 8 for x == 0.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ArchFamilyType">type <a href="http://localhost:6161/src/runtime/internal/sys/arch.go?s=173:196#L1">ArchFamilyType</a>
+				<a class="permalink" href="godoc.534.html#ArchFamilyType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ArchFamilyType <a href="godoc.26.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="AMD64">AMD64</span> <a href="godoc.534.html#ArchFamilyType">ArchFamilyType</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="ARM">ARM</span>
+    <span id="ARM64">ARM64</span>
+    <span id="I386">I386</span>
+    <span id="MIPS">MIPS</span>
+    <span id="MIPS64">MIPS64</span>
+    <span id="PPC64">PPC64</span>
+    <span id="S390X">S390X</span>
+    <span id="WASM">WASM</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Uintreg">type <a href="http://localhost:6161/src/runtime/internal/sys/arch_amd64.go?s=345:364#L6">Uintreg</a>
+				<a class="permalink" href="godoc.534.html#Uintreg">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Uintreg <a href="godoc.26.html#uint64">uint64</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

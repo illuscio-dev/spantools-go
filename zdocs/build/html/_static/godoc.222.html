@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>cryptobyte - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.222.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package cryptobyte
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/cryptobyte"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.222.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.222.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.222.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.222.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package cryptobyte contains types that help with parsing and constructing
+length-prefixed, binary messages, including ASN.1 DER. (The asn1 subpackage
+contains useful ASN.1 constants.)
+</p>
+<p>
+The String type is for parsing. It wraps a []byte slice and provides helper
+functions for consuming structures, value by value.
+</p>
+<p>
+The Builder type is for constructing messages. It providers helper functions
+for appending values and also for appending length-prefixed submessages –
+without having to worry about calculating the length prefix ahead of time.
+</p>
+<p>
+See the documentation and examples for the Builder and String types to get
+started.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.222.html#BuildError">type BuildError</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.222.html#Builder">type Builder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#NewBuilder">func NewBuilder(buffer []byte) *Builder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#NewFixedBuilder">func NewFixedBuilder(buffer []byte) *Builder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1">func (b *Builder) AddASN1(tag asn1.Tag, f BuilderContinuation)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1BigInt">func (b *Builder) AddASN1BigInt(n *big.Int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1BitString">func (b *Builder) AddASN1BitString(data []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1Boolean">func (b *Builder) AddASN1Boolean(v bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1Enum">func (b *Builder) AddASN1Enum(v int64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1GeneralizedTime">func (b *Builder) AddASN1GeneralizedTime(t time.Time)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1Int64">func (b *Builder) AddASN1Int64(v int64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1Int64WithTag">func (b *Builder) AddASN1Int64WithTag(v int64, tag asn1.Tag)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1NULL">func (b *Builder) AddASN1NULL()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1ObjectIdentifier">func (b *Builder) AddASN1ObjectIdentifier(oid encoding_asn1.ObjectIdentifier)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1OctetString">func (b *Builder) AddASN1OctetString(bytes []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddASN1Uint64">func (b *Builder) AddASN1Uint64(v uint64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddBytes">func (b *Builder) AddBytes(v []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint16">func (b *Builder) AddUint16(v uint16)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint16LengthPrefixed">func (b *Builder) AddUint16LengthPrefixed(f BuilderContinuation)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint24">func (b *Builder) AddUint24(v uint32)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint24LengthPrefixed">func (b *Builder) AddUint24LengthPrefixed(f BuilderContinuation)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint32">func (b *Builder) AddUint32(v uint32)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint32LengthPrefixed">func (b *Builder) AddUint32LengthPrefixed(f BuilderContinuation)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint8">func (b *Builder) AddUint8(v uint8)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddUint8LengthPrefixed">func (b *Builder) AddUint8LengthPrefixed(f BuilderContinuation)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.AddValue">func (b *Builder) AddValue(v MarshalingValue)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.Bytes">func (b *Builder) Bytes() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.BytesOrPanic">func (b *Builder) BytesOrPanic() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.MarshalASN1">func (b *Builder) MarshalASN1(v interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.SetError">func (b *Builder) SetError(err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#Builder.Unwrite">func (b *Builder) Unwrite(n int)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.222.html#BuilderContinuation">type BuilderContinuation</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.222.html#MarshalingValue">type MarshalingValue</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.222.html#String">type String</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.CopyBytes">func (s *String) CopyBytes(out []byte) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.Empty">func (s String) Empty() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.PeekASN1Tag">func (s String) PeekASN1Tag(tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1">func (s *String) ReadASN1(out *String, tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1BitString">func (s *String) ReadASN1BitString(out *encoding_asn1.BitString) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1BitStringAsBytes">func (s *String) ReadASN1BitStringAsBytes(out *[]byte) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1Boolean">func (s *String) ReadASN1Boolean(out *bool) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1Bytes">func (s *String) ReadASN1Bytes(out *[]byte, tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1Element">func (s *String) ReadASN1Element(out *String, tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1Enum">func (s *String) ReadASN1Enum(out *int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1GeneralizedTime">func (s *String) ReadASN1GeneralizedTime(out *time.Time) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1Int64WithTag">func (s *String) ReadASN1Int64WithTag(out *int64, tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1Integer">func (s *String) ReadASN1Integer(out interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadASN1ObjectIdentifier">func (s *String) ReadASN1ObjectIdentifier(out *encoding_asn1.ObjectIdentifier) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadAnyASN1">func (s *String) ReadAnyASN1(out *String, outTag *asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadAnyASN1Element">func (s *String) ReadAnyASN1Element(out *String, outTag *asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadBytes">func (s *String) ReadBytes(out *[]byte, n int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadOptionalASN1">func (s *String) ReadOptionalASN1(out *String, outPresent *bool, tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadOptionalASN1Boolean">func (s *String) ReadOptionalASN1Boolean(out *bool, defaultValue bool) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadOptionalASN1Integer">func (s *String) ReadOptionalASN1Integer(out interface{}, tag asn1.Tag, defaultValue interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadOptionalASN1OctetString">func (s *String) ReadOptionalASN1OctetString(out *[]byte, outPresent *bool, tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint16">func (s *String) ReadUint16(out *uint16) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint16LengthPrefixed">func (s *String) ReadUint16LengthPrefixed(out *String) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint24">func (s *String) ReadUint24(out *uint32) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint24LengthPrefixed">func (s *String) ReadUint24LengthPrefixed(out *String) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint32">func (s *String) ReadUint32(out *uint32) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint8">func (s *String) ReadUint8(out *uint8) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.ReadUint8LengthPrefixed">func (s *String) ReadUint8LengthPrefixed(out *String) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.Skip">func (s *String) Skip(n int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.SkipASN1">func (s *String) SkipASN1(tag asn1.Tag) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.222.html#String.SkipOptionalASN1">func (s *String) SkipOptionalASN1(tag asn1.Tag) bool</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.222.html#example_BuilderContinuation_errorHandling">BuilderContinuation (ErrorHandling)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.222.html#example_Builder_aSN1">Builder (ASN1)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.222.html#example_Builder_lengthPrefixOverflow">Builder (LengthPrefixOverflow)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.222.html#example_Builder_lengthPrefixed">Builder (LengthPrefixed)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.222.html#example_String_aSN1">String (ASN1)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.222.html#example_String_lengthPrefixed">String (LengthPrefixed)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go">asn1.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go">builder.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go">string.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="BuildError">type <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=4321:4358#L120">BuildError</a>
+				<a class="permalink" href="godoc.222.html#BuildError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BuildError wraps an error. If a BuilderContinuation panics with this value,
+the panic will be recovered and the inner error will be returned from
+Builder.Bytes.
+</p>
+
+			<pre>type BuildError struct {
+<span id="BuildError.Err"></span>    Err <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Builder">type <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=835:1032#L13">Builder</a>
+				<a class="permalink" href="godoc.222.html#Builder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Builder builds byte strings from fixed-length and length-prefixed values.
+Builders either allocate space as needed, or are ‘fixed’, which means that
+they write into a given buffer and produce an error if it&#39;s exhausted.
+</p>
+<p>
+The zero value is a usable Builder that allocates space as needed.
+</p>
+<p>
+Simple values are marshaled and appended to a Builder using methods on the
+Builder. Length-prefixed values are marshaled by providing a
+BuilderContinuation, which is a function that writes the inner contents of
+the value to a given Builder. See the documentation for BuilderContinuation
+for details.
+</p>
+
+			<pre>type Builder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_Builder_aSN1" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (ASN1)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (ASN1)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This is an example of building ASN.1 data that looks like:</span>
+<span class="comment">//    Foo ::= SEQUENCE {</span>
+<span class="comment">//      version [6] INTEGER DEFAULT 0</span>
+<span class="comment">//      data OCTET STRING</span>
+<span class="comment">//    }</span>
+
+version := int64(2)
+data := []byte(&#34;hello&#34;)
+const defaultVersion = 0
+
+var b cryptobyte.Builder
+b.AddASN1(asn1.SEQUENCE, func(b *cryptobyte.Builder) {
+    if version != defaultVersion {
+        b.AddASN1(asn1.Tag(6).Constructed().ContextSpecific(), func(b *cryptobyte.Builder) {
+            b.AddASN1Int64(version)
+        })
+    }
+    b.AddASN1OctetString(data)
+})
+
+result, err := b.Bytes()
+if err != nil {
+    panic(err)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">300ca603020102040568656c6c6f
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Builder_lengthPrefixOverflow" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (LengthPrefixOverflow)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (LengthPrefixOverflow)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// Writing more data that can be expressed by the length prefix results</span>
+<span class="comment">// in an error from Bytes().</span>
+
+tooLarge := make([]byte, 256)
+
+var b cryptobyte.Builder
+b.AddUint8LengthPrefixed(func(b *cryptobyte.Builder) {
+    b.AddBytes(tooLarge)
+})
+
+result, err := b.Bytes()
+fmt.Printf(&#34;len=%d err=%s\n&#34;, len(result), err)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">len=0 err=cryptobyte: pending child length 256 exceeds 1-byte length prefix
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Builder_lengthPrefixed" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (LengthPrefixed)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (LengthPrefixed)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This is an example of building length-prefixed data (as found in,</span>
+<span class="comment">// for example, TLS). Imagine a 16-bit prefixed series of 8-bit</span>
+<span class="comment">// prefixed strings.</span>
+input := []string{&#34;hello&#34;, &#34;world&#34;}
+
+var b cryptobyte.Builder
+b.AddUint16LengthPrefixed(func(b *cryptobyte.Builder) {
+    for _, value := range input {
+        b.AddUint8LengthPrefixed(func(b *cryptobyte.Builder) {
+            b.AddBytes([]byte(value))
+        })
+    }
+})
+
+result, err := b.Bytes()
+if err != nil {
+    panic(err)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">000c0568656c6c6f05776f726c64
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+				
+				<h3 id="NewBuilder">func <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=1226:1265#L27">NewBuilder</a>
+					<a class="permalink" href="godoc.222.html#NewBuilder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBuilder(buffer []<a href="godoc.26.html#byte">byte</a>) *<a href="godoc.222.html#Builder">Builder</a></pre>
+				<p>
+NewBuilder creates a Builder that appends its output to the given buffer.
+Like append(), the slice will be reallocated if its capacity is exceeded.
+Use Bytes to get the final buffer.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewFixedBuilder">func <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=1524:1568#L36">NewFixedBuilder</a>
+					<a class="permalink" href="godoc.222.html#NewFixedBuilder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFixedBuilder(buffer []<a href="godoc.26.html#byte">byte</a>) *<a href="godoc.222.html#Builder">Builder</a></pre>
+				<p>
+NewFixedBuilder creates a Builder that appends its output into the given
+buffer. This builder does not reallocate the output buffer. Writes that
+would exceed the buffer&#39;s capacity are treated as an error.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Builder.AddASN1">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=5014:5076#L207">AddASN1</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1(tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>, f <a href="godoc.222.html#BuilderContinuation">BuilderContinuation</a>)</pre>
+				<p>
+AddASN1 appends an ASN.1 object. The object is prefixed with the given tag.
+Tags greater than 30 are not supported and result in an error (i.e.
+low-tag-number form only). The child builder passed to the
+BuilderContinuation can be used to build the content of the ASN.1 object.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1BigInt">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=1461:1504#L57">AddASN1BigInt</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1BigInt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1BigInt(n *<a href="godoc.9.html">big</a>.<a href="godoc.9.html#Int">Int</a>)</pre>
+				<p>
+AddASN1BigInt appends a DER-encoded ASN.1 INTEGER.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1BitString">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=2961:3008#L112">AddASN1BitString</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1BitString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1BitString(data []<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+AddASN1BitString appends a DER-encoded ASN.1 BIT STRING. This does not
+support BIT STRINGs that are not a whole number of bytes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1Boolean">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=3968:4008#L172">AddASN1Boolean</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1Boolean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1Boolean(v <a href="godoc.26.html#bool">bool</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1Enum">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=743:781#L23">AddASN1Enum</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1Enum">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1Enum(v <a href="godoc.26.html#int64">int64</a>)</pre>
+				<p>
+AddASN1Enum appends a DER-encoded ASN.1 ENUMERATION.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1GeneralizedTime">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=2524:2577#L100">AddASN1GeneralizedTime</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1GeneralizedTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1GeneralizedTime(t <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>)</pre>
+				<p>
+AddASN1GeneralizedTime appends a DER-encoded ASN.1 GENERALIZEDTIME.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1Int64">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=435:474#L12">AddASN1Int64</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1Int64">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1Int64(v <a href="godoc.26.html#int64">int64</a>)</pre>
+				<p>
+AddASN1Int64 appends a DER-encoded ASN.1 INTEGER.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1Int64WithTag">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=596:656#L18">AddASN1Int64WithTag</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1Int64WithTag">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1Int64WithTag(v <a href="godoc.26.html#int64">int64</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>)</pre>
+				<p>
+AddASN1Int64WithTag appends a DER-encoded ASN.1 INTEGER with the
+given tag.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1NULL">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=4123:4154#L182">AddASN1NULL</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1NULL">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1NULL()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1ObjectIdentifier">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=3615:3692#L158">AddASN1ObjectIdentifier</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1ObjectIdentifier">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1ObjectIdentifier(oid <a href="godoc.525.html">encoding_asn1</a>.<a href="godoc.525.html#ObjectIdentifier">ObjectIdentifier</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1OctetString">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=2268:2318#L91">AddASN1OctetString</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1OctetString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1OctetString(bytes []<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+AddASN1OctetString appends a DER-encoded ASN.1 OCTET STRING.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddASN1Uint64">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=1148:1189#L42">AddASN1Uint64</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddASN1Uint64">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddASN1Uint64(v <a href="godoc.26.html#uint64">uint64</a>)</pre>
+				<p>
+AddASN1Uint64 appends a DER-encoded ASN.1 INTEGER.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddBytes">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=2957:2993#L89">AddBytes</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddBytes(v []<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+AddBytes appends a sequence of bytes to the byte string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint16">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=2440:2477#L73">AddUint16</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint16">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint16(v <a href="godoc.26.html#uint16">uint16</a>)</pre>
+				<p>
+AddUint16 appends a big-endian, 16-bit value to the byte string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint16LengthPrefixed">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=4617:4681#L130">AddUint16LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint16LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint16LengthPrefixed(f <a href="godoc.222.html#BuilderContinuation">BuilderContinuation</a>)</pre>
+				<p>
+AddUint16LengthPrefixed adds a big-endian, 16-bit length-prefixed byte sequence.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint24">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=2648:2685#L79">AddUint24</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint24">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint24(v <a href="godoc.26.html#uint32">uint32</a>)</pre>
+				<p>
+AddUint24 appends a big-endian, 24-bit value to the byte string. The highest
+byte of the 32-bit input value is silently truncated.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint24LengthPrefixed">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=4805:4869#L135">AddUint24LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint24LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint24LengthPrefixed(f <a href="godoc.222.html#BuilderContinuation">BuilderContinuation</a>)</pre>
+				<p>
+AddUint24LengthPrefixed adds a big-endian, 24-bit length-prefixed byte sequence.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint32">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=2800:2837#L84">AddUint32</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint32">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint32(v <a href="godoc.26.html#uint32">uint32</a>)</pre>
+				<p>
+AddUint32 appends a big-endian, 32-bit value to the byte string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint32LengthPrefixed">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=4993:5057#L140">AddUint32LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint32LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint32LengthPrefixed(f <a href="godoc.222.html#BuilderContinuation">BuilderContinuation</a>)</pre>
+				<p>
+AddUint32LengthPrefixed adds a big-endian, 32-bit length-prefixed byte sequence.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint8">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=2315:2350#L68">AddUint8</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint8">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint8(v <a href="godoc.26.html#uint8">uint8</a>)</pre>
+				<p>
+AddUint8 appends an 8-bit value to the byte string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddUint8LengthPrefixed">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=4430:4493#L125">AddUint8LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddUint8LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddUint8LengthPrefixed(f <a href="godoc.222.html#BuilderContinuation">BuilderContinuation</a>)</pre>
+				<p>
+AddUint8LengthPrefixed adds a 8-bit length-prefixed byte sequence.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.AddValue">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=9498:9543#L322">AddValue</a>
+					<a class="permalink" href="godoc.222.html#Builder.AddValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) AddValue(v <a href="godoc.222.html#MarshalingValue">MarshalingValue</a>)</pre>
+				<p>
+AddValue calls Marshal on v, passing a pointer to the builder to append to.
+If Marshal returns an error, it is set on the Builder so that subsequent
+appends don&#39;t have an effect.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.Bytes">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=1916:1957#L51">Bytes</a>
+					<a class="permalink" href="godoc.222.html#Builder.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) Bytes() ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Bytes returns the bytes written by the builder or an error if one has
+occurred during building.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.BytesOrPanic">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=2150:2189#L60">BytesOrPanic</a>
+					<a class="permalink" href="godoc.222.html#Builder.BytesOrPanic">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) BytesOrPanic() []<a href="godoc.26.html#byte">byte</a></pre>
+				<p>
+BytesOrPanic returns the bytes written by the builder or panics if an error
+has occurred during building.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.MarshalASN1">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=4321:4365#L188">MarshalASN1</a>
+					<a class="permalink" href="godoc.222.html#Builder.MarshalASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) MarshalASN1(v interface{})</pre>
+				<p>
+MarshalASN1 calls encoding_asn1.Marshal on its input and appends the result if
+successful or records an error if one occurred.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.SetError">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=1758:1795#L45">SetError</a>
+					<a class="permalink" href="godoc.222.html#Builder.SetError">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) SetError(err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetError sets the value to be returned as the error from Bytes. Writes
+performed after calling SetError are ignored.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Builder.Unwrite">func (*Builder) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=8601:8633#L294">Unwrite</a>
+					<a class="permalink" href="godoc.222.html#Builder.Unwrite">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.222.html#Builder">Builder</a>) Unwrite(n <a href="godoc.26.html#int">int</a>)</pre>
+				<p>
+Unwrite rolls back n bytes written directly to the Builder. An attempt by a
+child builder passed to a continuation to unwrite bytes from its parent will
+panic.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BuilderContinuation">type <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=4104:4149#L115">BuilderContinuation</a>
+				<a class="permalink" href="godoc.222.html#BuilderContinuation">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BuilderContinuation is a continuation-passing interface for building
+length-prefixed byte sequences. Builder methods for length-prefixed
+sequences (AddUint8LengthPrefixed etc) will invoke the BuilderContinuation
+supplied to them. The child builder passed to the continuation can be used
+to build the content of the length-prefixed sequence. For example:
+</p>
+<pre>parent := cryptobyte.NewBuilder()
+parent.AddUint8LengthPrefixed(func (child *Builder) {
+  child.AddUint8(42)
+  child.AddUint8LengthPrefixed(func (grandchild *Builder) {
+    grandchild.AddUint8(5)
+  })
+})
+</pre>
+<p>
+It is an error to write more bytes to the child than allowed by the reserved
+length prefix. After the continuation returns, the child must be considered
+invalid, i.e. users must not store any copies or references of the child
+that outlive the continuation.
+</p>
+<p>
+If the continuation panics with a value of type BuildError then the inner
+error will be returned as the error from Bytes. If the child panics
+otherwise then Bytes will repanic with the same value.
+</p>
+
+			<pre>type BuilderContinuation func(child *<a href="godoc.222.html#Builder">Builder</a>)</pre>
+
+			
+
+			
+
+			<div id="example_BuilderContinuation_errorHandling" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (ErrorHandling)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (ErrorHandling)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">var b cryptobyte.Builder
+<span class="comment">// Continuations that panic with a BuildError will cause Bytes to</span>
+<span class="comment">// return the inner error.</span>
+b.AddUint16LengthPrefixed(func(b *cryptobyte.Builder) {
+    b.AddUint32(0)
+    panic(cryptobyte.BuildError{Err: errors.New(&#34;example error&#34;)})
+})
+
+result, err := b.Bytes()
+fmt.Printf(&#34;len=%d err=%s\n&#34;, len(result), err)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">len=0 err=example error
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MarshalingValue">type <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/builder.go?s=9048:9308#L312">MarshalingValue</a>
+				<a class="permalink" href="godoc.222.html#MarshalingValue">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A MarshalingValue marshals itself into a Builder.
+</p>
+
+			<pre>type MarshalingValue interface {
+    <span class="comment">// Marshal is called by Builder.AddValue. It receives a pointer to a builder</span>
+    <span class="comment">// to marshal itself into. It may return an error that occurred during</span>
+    <span class="comment">// marshaling, such as unset or invalid values.</span>
+    Marshal(b *<a href="godoc.222.html#Builder">Builder</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="String">type <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=1010:1028#L12">String</a>
+				<a class="permalink" href="godoc.222.html#String">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+String represents a string of bytes. It provides methods for parsing
+fixed-length and length-prefixed values from it.
+</p>
+
+			<pre>type String []<a href="godoc.26.html#byte">byte</a></pre>
+
+			
+
+			
+
+			<div id="example_String_aSN1" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (ASN1)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (ASN1)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This is an example of parsing ASN.1 data that looks like:</span>
+<span class="comment">//    Foo ::= SEQUENCE {</span>
+<span class="comment">//      version [6] INTEGER DEFAULT 0</span>
+<span class="comment">//      data OCTET STRING</span>
+<span class="comment">//    }</span>
+
+input := cryptobyte.String([]byte{0x30, 12, 0xa6, 3, 2, 1, 2, 4, 5, &#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;})
+
+var (
+    version                   int64
+    data, inner, versionBytes cryptobyte.String
+    haveVersion               bool
+)
+if !input.ReadASN1(&amp;inner, asn1.SEQUENCE) ||
+    !input.Empty() ||
+    !inner.ReadOptionalASN1(&amp;versionBytes, &amp;haveVersion, asn1.Tag(6).Constructed().ContextSpecific()) ||
+    (haveVersion &amp;&amp; !versionBytes.ReadASN1Integer(&amp;version)) ||
+    (haveVersion &amp;&amp; !versionBytes.Empty()) ||
+    !inner.ReadASN1(&amp;data, asn1.OCTET_STRING) ||
+    !inner.Empty() {
+    panic(&#34;bad format&#34;)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">haveVersion: true, version: 2, data: hello
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_String_lengthPrefixed" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (LengthPrefixed)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (LengthPrefixed)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This is an example of parsing length-prefixed data (as found in, for</span>
+<span class="comment">// example, TLS). Imagine a 16-bit prefixed series of 8-bit prefixed</span>
+<span class="comment">// strings.</span>
+
+input := cryptobyte.String([]byte{0, 12, 5, &#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, 5, &#39;w&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;})
+var result []string
+
+var values cryptobyte.String
+if !input.ReadUint16LengthPrefixed(&amp;values) ||
+    !input.Empty() {
+    panic(&#34;bad format&#34;)
+}
+
+for !values.Empty() {
+    var value cryptobyte.String
+    if !values.ReadUint8LengthPrefixed(&amp;value) {
+        panic(&#34;bad format&#34;)
+    }
+
+    result = append(result, string(value))
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">[]string{&#34;hello&#34;, &#34;world&#34;}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+
+			
+				
+				<h3 id="String.CopyBytes">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=4438:4481#L144">CopyBytes</a>
+					<a class="permalink" href="godoc.222.html#String.CopyBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) CopyBytes(out []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+CopyBytes copies len(out) bytes into out and advances over them. It reports
+whether the copy operation was successful
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.Empty">func (String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=4641:4669#L154">Empty</a>
+					<a class="permalink" href="godoc.222.html#String.Empty">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s <a href="godoc.222.html#String">String</a>) Empty() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Empty reports whether the string does not contain any bytes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.PeekASN1Tag">func (String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=14489:14535#L550">PeekASN1Tag</a>
+					<a class="permalink" href="godoc.222.html#String.PeekASN1Tag">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s <a href="godoc.222.html#String">String</a>) PeekASN1Tag(tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+PeekASN1Tag reports whether the next ASN.1 value on the string starts with
+the given tag.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=12956:13013#L509">ReadASN1</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1(out *<a href="godoc.222.html#String">String</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1 reads the contents of a DER-encoded ASN.1 element (not including
+tag and length bytes) into out, and advances. The element must match the
+given tag. It reports whether the read was successful.
+</p>
+<p>
+Tags greater than 30 are not supported (i.e. low-tag-number format only).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1BitString">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=11431:11500#L461">ReadASN1BitString</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1BitString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1BitString(out *<a href="godoc.525.html">encoding_asn1</a>.<a href="godoc.525.html#BitString">BitString</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1BitString decodes an ASN.1 BIT STRING into out and advances.
+It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1BitStringAsBytes">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=12073:12132#L483">ReadASN1BitStringAsBytes</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1BitStringAsBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1BitStringAsBytes(out *[]<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1BitString decodes an ASN.1 BIT STRING into out and advances. It is
+an error if the BIT STRING is not a whole number of bytes. It reports
+whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1Boolean">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=5598:5646#L226">ReadASN1Boolean</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1Boolean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1Boolean(out *<a href="godoc.26.html#bool">bool</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1Boolean decodes an ASN.1 INTEGER and converts it to a boolean
+representation into out and advances. It reports whether the read
+was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1Bytes">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=12557:12619#L500">ReadASN1Bytes</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1Bytes(out *[]<a href="godoc.26.html#byte">byte</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1Bytes reads the contents of a DER-encoded ASN.1 element (not including
+tag and length bytes) into out, and advances. The element must match the
+given tag. It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1Element">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=13402:13466#L522">ReadASN1Element</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1Element">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1Element(out *<a href="godoc.222.html#String">String</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1Element reads the contents of a DER-encoded ASN.1 element (including
+tag and length bytes) into out, and advances. The element must match the
+given tag. It reports whether the read was successful.
+</p>
+<p>
+Tags greater than 30 are not supported (i.e. low-tag-number format only).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1Enum">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=9196:9240#L371">ReadASN1Enum</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1Enum">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1Enum(out *<a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1Enum decodes an ASN.1 ENUMERATION into out and advances. It reports
+whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1GeneralizedTime">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=10936:10997#L442">ReadASN1GeneralizedTime</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1GeneralizedTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1GeneralizedTime(out *<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1GeneralizedTime decodes an ASN.1 GENERALIZEDTIME into out and
+advances. It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1Int64WithTag">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=8904:8972#L364">ReadASN1Int64WithTag</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1Int64WithTag">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1Int64WithTag(out *<a href="godoc.26.html#int64">int64</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1Int64WithTag decodes an ASN.1 INTEGER with the given tag into out
+and advances. It reports whether the read was successful and resulted in a
+value that can be represented in an int64.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1Integer">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=6097:6151#L249">ReadASN1Integer</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1Integer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1Integer(out interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1Integer decodes an ASN.1 INTEGER into out and advances. If out does
+not point to an integer or to a big.Int, it panics. It reports whether the
+read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadASN1ObjectIdentifier">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=9855:9938#L403">ReadASN1ObjectIdentifier</a>
+					<a class="permalink" href="godoc.222.html#String.ReadASN1ObjectIdentifier">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadASN1ObjectIdentifier(out *<a href="godoc.525.html">encoding_asn1</a>.<a href="godoc.525.html#ObjectIdentifier">ObjectIdentifier</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadASN1ObjectIdentifier decodes an ASN.1 OBJECT IDENTIFIER into out and
+advances. It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadAnyASN1">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=13848:13912#L535">ReadAnyASN1</a>
+					<a class="permalink" href="godoc.222.html#String.ReadAnyASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadAnyASN1(out *<a href="godoc.222.html#String">String</a>, outTag *<a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadAnyASN1 reads the contents of a DER-encoded ASN.1 element (not including
+tag and length bytes) into out, sets outTag to its tag, and advances.
+It reports whether the read was successful.
+</p>
+<p>
+Tags greater than 30 are not supported (i.e. low-tag-number format only).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadAnyASN1Element">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=14256:14327#L544">ReadAnyASN1Element</a>
+					<a class="permalink" href="godoc.222.html#String.ReadAnyASN1Element">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadAnyASN1Element(out *<a href="godoc.222.html#String">String</a>, outTag *<a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadAnyASN1Element reads the contents of a DER-encoded ASN.1 element
+(including tag and length bytes) into out, sets outTag to is tag, and
+advances. It reports whether the read was successful.
+</p>
+<p>
+Tags greater than 30 are not supported (i.e. low-tag-number format only).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadBytes">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=4185:4236#L133">ReadBytes</a>
+					<a class="permalink" href="godoc.222.html#String.ReadBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadBytes(out *[]<a href="godoc.26.html#byte">byte</a>, n <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadBytes reads n bytes into out and advances over them. It reports
+whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadOptionalASN1">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=15129:15212#L568">ReadOptionalASN1</a>
+					<a class="permalink" href="godoc.222.html#String.ReadOptionalASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadOptionalASN1(out *<a href="godoc.222.html#String">String</a>, outPresent *<a href="godoc.26.html#bool">bool</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadOptionalASN1 attempts to read the contents of a DER-encoded ASN.1
+element (not including tag and length bytes) tagged with the given tag into
+out. It stores whether an element with the tag was found in outPresent,
+unless outPresent is nil. It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadOptionalASN1Boolean">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=17946:18021#L656">ReadOptionalASN1Boolean</a>
+					<a class="permalink" href="godoc.222.html#String.ReadOptionalASN1Boolean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadOptionalASN1Boolean(out *<a href="godoc.26.html#bool">bool</a>, defaultValue <a href="godoc.26.html#bool">bool</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadOptionalASN1Boolean sets *out to the value of the next ASN.1 BOOLEAN or,
+if the next bytes are not an ASN.1 BOOLEAN, to the value of defaultValue.
+It reports whether the operation was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadOptionalASN1Integer">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=16003:16105#L594">ReadOptionalASN1Integer</a>
+					<a class="permalink" href="godoc.222.html#String.ReadOptionalASN1Integer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadOptionalASN1Integer(out interface{}, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>, defaultValue interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadOptionalASN1Integer attempts to read an optional ASN.1 INTEGER
+explicitly tagged with tag into out and advances. If no element with a
+matching tag is present, it writes defaultValue into out instead. If out
+does not point to an integer or to a big.Int, it panics. It reports
+whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadOptionalASN1OctetString">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=17314:17408#L632">ReadOptionalASN1OctetString</a>
+					<a class="permalink" href="godoc.222.html#String.ReadOptionalASN1OctetString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadOptionalASN1OctetString(out *[]<a href="godoc.26.html#byte">byte</a>, outPresent *<a href="godoc.26.html#bool">bool</a>, tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadOptionalASN1OctetString attempts to read an optional ASN.1 OCTET STRING
+explicitly tagged with tag into out and advances. If no element with a
+matching tag is present, it sets &#34;out&#34; to nil instead. It reports
+whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint16">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=1761:1806#L43">ReadUint16</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint16">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint16(out *<a href="godoc.26.html#uint16">uint16</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint16 decodes a big-endian, 16-bit value into out and advances over it.
+It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint16LengthPrefixed">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=3701:3760#L120">ReadUint16LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint16LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint16LengthPrefixed(out *<a href="godoc.222.html#String">String</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint16LengthPrefixed reads the content of a big-endian, 16-bit
+length-prefixed value into out and advances over it. It reports whether the
+read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint24">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=2040:2085#L54">ReadUint24</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint24">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint24(out *<a href="godoc.26.html#uint32">uint32</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint24 decodes a big-endian, 24-bit value into out and advances over it.
+It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint24LengthPrefixed">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=3976:4035#L127">ReadUint24LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint24LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint24LengthPrefixed(out *<a href="godoc.222.html#String">String</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint24LengthPrefixed reads the content of a big-endian, 24-bit
+length-prefixed value into out and advances over it. It reports whether
+the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint32">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=2338:2383#L65">ReadUint32</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint32">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint32(out *<a href="godoc.26.html#uint32">uint32</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint32 decodes a big-endian, 32-bit value into out and advances over it.
+It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint8">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=1503:1546#L32">ReadUint8</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint8">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint8(out *<a href="godoc.26.html#uint8">uint8</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint8 decodes an 8-bit value into out and advances over it.
+It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.ReadUint8LengthPrefixed">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=3427:3485#L113">ReadUint8LengthPrefixed</a>
+					<a class="permalink" href="godoc.222.html#String.ReadUint8LengthPrefixed">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) ReadUint8LengthPrefixed(out *<a href="godoc.222.html#String">String</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ReadUint8LengthPrefixed reads the content of an 8-bit length-prefixed value
+into out and advances over it. It reports whether the read was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.Skip">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/string.go?s=1325:1358#L26">Skip</a>
+					<a class="permalink" href="godoc.222.html#String.Skip">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) Skip(n <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Skip advances the String by n byte and reports whether it was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.SkipASN1">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=14727:14771#L559">SkipASN1</a>
+					<a class="permalink" href="godoc.222.html#String.SkipASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) SkipASN1(tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+SkipASN1 reads and discards an ASN.1 element with the given tag. It
+reports whether the operation was successful.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="String.SkipOptionalASN1">func (*String) <a href="http://localhost:6161/src/golang.org/x/crypto/cryptobyte/asn1.go?s=15523:15575#L581">SkipOptionalASN1</a>
+					<a class="permalink" href="godoc.222.html#String.SkipOptionalASN1">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.222.html#String">String</a>) SkipOptionalASN1(tag <a href="godoc.223.html">asn1</a>.<a href="godoc.223.html#Tag">Tag</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+SkipOptionalASN1 advances s over an ASN.1 element with the given tag, or
+else leaves s unchanged. It reports whether the operation was successful.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.210.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.223.html">asn1</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package asn1 contains supporting types for parsing and building ASN.1 messages with the cryptobyte package.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

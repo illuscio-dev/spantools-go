@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>readpref - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.177.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package readpref
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/mongo/readpref"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.177.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.177.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.177.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.177.html#Mode">type Mode</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#ModeFromString">func ModeFromString(mode string) (Mode, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.177.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#WithMaxStaleness">func WithMaxStaleness(ms time.Duration) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#WithTagSets">func WithTagSets(tagSets ...tag.Set) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#WithTags">func WithTags(tags ...string) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.177.html#ReadPref">type ReadPref</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#Nearest">func Nearest(opts ...Option) *ReadPref</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#New">func New(mode Mode, opts ...Option) (*ReadPref, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#Primary">func Primary() *ReadPref</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#PrimaryPreferred">func PrimaryPreferred(opts ...Option) *ReadPref</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#Secondary">func Secondary(opts ...Option) *ReadPref</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#SecondaryPreferred">func SecondaryPreferred(opts ...Option) *ReadPref</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#ReadPref.MaxStaleness">func (r *ReadPref) MaxStaleness() (time.Duration, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#ReadPref.Mode">func (r *ReadPref) Mode() Mode</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.177.html#ReadPref.TagSets">func (r *ReadPref) TagSets() []tag.Set</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/mode.go">mode.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/options.go">options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go">readpref.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrInvalidTagSet indicates that an invalid set of tags was specified.
+</p>
+
+				<pre>var <span id="ErrInvalidTagSet">ErrInvalidTagSet</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;an even number of tags must be specified&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Mode">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/mode.go?s=368:383#L5">Mode</a>
+				<a class="permalink" href="godoc.177.html#Mode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Mode indicates the user&#39;s preference on reads.
+</p>
+
+			<pre>type Mode <a href="godoc.26.html#uint8">uint8</a></pre>
+
+			
+				<p>
+Mode constants
+</p>
+
+				<pre>const (
+
+    <span class="comment">// PrimaryMode indicates that only a primary is</span>
+    <span class="comment">// considered for reading. This is the default</span>
+    <span class="comment">// mode.</span>
+    <span id="PrimaryMode">PrimaryMode</span> <a href="godoc.177.html#Mode">Mode</a>
+    <span class="comment">// PrimaryPreferredMode indicates that if a primary</span>
+    <span class="comment">// is available, use it; otherwise, eligible</span>
+    <span class="comment">// secondaries will be considered.</span>
+    <span id="PrimaryPreferredMode">PrimaryPreferredMode</span>
+    <span class="comment">// SecondaryMode indicates that only secondaries</span>
+    <span class="comment">// should be considered.</span>
+    <span id="SecondaryMode">SecondaryMode</span>
+    <span class="comment">// SecondaryPreferredMode indicates that only secondaries</span>
+    <span class="comment">// should be considered when one is available. If none</span>
+    <span class="comment">// are available, then a primary will be considered.</span>
+    <span id="SecondaryPreferredMode">SecondaryPreferredMode</span>
+    <span class="comment">// NearestMode indicates that all primaries and secondaries</span>
+    <span class="comment">// will be considered.</span>
+    <span id="NearestMode">NearestMode</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ModeFromString">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/mode.go?s=1147:1193#L32">ModeFromString</a>
+					<a class="permalink" href="godoc.177.html#ModeFromString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ModeFromString(mode <a href="godoc.26.html#string">string</a>) (<a href="godoc.177.html#Mode">Mode</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ModeFromString returns a mode corresponding to
+mode.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/options.go?s=545:578#L10">Option</a>
+				<a class="permalink" href="godoc.177.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Option configures a read preference
+</p>
+
+			<pre>type Option func(*<a href="godoc.177.html#ReadPref">ReadPref</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithMaxStaleness">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/options.go?s=651:697#L14">WithMaxStaleness</a>
+					<a class="permalink" href="godoc.177.html#WithMaxStaleness">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithMaxStaleness(ms <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>) <a href="godoc.177.html#Option">Option</a></pre>
+				<p>
+WithMaxStaleness sets the maximum staleness a
+server is allowed.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithTagSets">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/options.go?s=1459:1502#L45">WithTagSets</a>
+					<a class="permalink" href="godoc.177.html#WithTagSets">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTagSets(tagSets ...<a href="godoc.180.html">tag</a>.<a href="godoc.180.html#Set">Set</a>) <a href="godoc.177.html#Option">Option</a></pre>
+				<p>
+WithTagSets sets the tag sets used to match
+a server. The last call to WithTags or WithTagSets
+overrides all previous calls to either method.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithTags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/options.go?s=957:993#L25">WithTags</a>
+					<a class="permalink" href="godoc.177.html#WithTags">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTags(tags ...<a href="godoc.26.html#string">string</a>) <a href="godoc.177.html#Option">Option</a></pre>
+				<p>
+WithTags sets a single tag set used to match
+a server. The last call to WithTags or WithTagSets
+overrides all previous calls to either method.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="ReadPref">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=1965:2091#L66">ReadPref</a>
+				<a class="permalink" href="godoc.177.html#ReadPref">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ReadPref determines which servers are considered suitable for read operations.
+</p>
+
+			<pre>type ReadPref struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Nearest">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=1419:1457#L39">Nearest</a>
+					<a class="permalink" href="godoc.177.html#Nearest">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Nearest(opts ...<a href="godoc.177.html#Option">Option</a>) *<a href="godoc.177.html#ReadPref">ReadPref</a></pre>
+				<p>
+Nearest constructs a read preference with a NearestMode.
+</p>
+
+				
+				
+			
+				
+				<h3 id="New">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=1594:1648#L46">New</a>
+					<a class="permalink" href="godoc.177.html#New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func New(mode <a href="godoc.177.html#Mode">Mode</a>, opts ...<a href="godoc.177.html#Option">Option</a>) (*<a href="godoc.177.html#ReadPref">ReadPref</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+New creates a new ReadPref.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Primary">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=612:636#L13">Primary</a>
+					<a class="permalink" href="godoc.177.html#Primary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Primary() *<a href="godoc.177.html#ReadPref">ReadPref</a></pre>
+				<p>
+Primary constructs a read preference with a PrimaryMode.
+</p>
+
+				
+				
+			
+				
+				<h3 id="PrimaryPreferred">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=737:784#L18">PrimaryPreferred</a>
+					<a class="permalink" href="godoc.177.html#PrimaryPreferred">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func PrimaryPreferred(opts ...<a href="godoc.177.html#Option">Option</a>) *<a href="godoc.177.html#ReadPref">ReadPref</a></pre>
+				<p>
+PrimaryPreferred constructs a read preference with a PrimaryPreferredMode.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Secondary">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=1211:1251#L32">Secondary</a>
+					<a class="permalink" href="godoc.177.html#Secondary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Secondary(opts ...<a href="godoc.177.html#Option">Option</a>) *<a href="godoc.177.html#ReadPref">ReadPref</a></pre>
+				<p>
+Secondary constructs a read preference with a SecondaryMode.
+</p>
+
+				
+				
+			
+				
+				<h3 id="SecondaryPreferred">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=981:1030#L25">SecondaryPreferred</a>
+					<a class="permalink" href="godoc.177.html#SecondaryPreferred">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func SecondaryPreferred(opts ...<a href="godoc.177.html#Option">Option</a>) *<a href="godoc.177.html#ReadPref">ReadPref</a></pre>
+				<p>
+SecondaryPreferred constructs a read preference with a SecondaryPreferredMode.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ReadPref.MaxStaleness">func (*ReadPref) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=2266:2321#L76">MaxStaleness</a>
+					<a class="permalink" href="godoc.177.html#ReadPref.MaxStaleness">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.177.html#ReadPref">ReadPref</a>) MaxStaleness() (<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+MaxStaleness is the maximum amount of time to allow
+a server to be considered eligible for selection. The
+second return value indicates if this value has been set.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ReadPref.Mode">func (*ReadPref) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=2420:2450#L81">Mode</a>
+					<a class="permalink" href="godoc.177.html#ReadPref.Mode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.177.html#ReadPref">ReadPref</a>) Mode() <a href="godoc.177.html#Mode">Mode</a></pre>
+				<p>
+Mode indicates the mode of the read preference.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ReadPref.TagSets">func (*ReadPref) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/mongo/readpref/readpref.go?s=2554:2592#L87">TagSets</a>
+					<a class="permalink" href="godoc.177.html#ReadPref.TagSets">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.177.html#ReadPref">ReadPref</a>) TagSets() []<a href="godoc.180.html">tag</a>.<a href="godoc.180.html#Set">Set</a></pre>
+				<p>
+TagSets are multiple tag sets indicating
+which servers should be considered.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>autocert - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.212.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package autocert
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/acme/autocert"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.212.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.212.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.212.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.212.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package autocert provides automatic access to certificates from Let&#39;s Encrypt
+and any other ACME-based CA.
+</p>
+<p>
+This package is a work in progress and makes no API stability promises.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.212.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.212.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.212.html#AcceptTOS">func AcceptTOS(tosURL string) bool</a></dd>
+			
+				
+				<dd><a href="godoc.212.html#NewListener">func NewListener(domains ...string) net.Listener</a></dd>
+			
+			
+				
+				<dd><a href="godoc.212.html#Cache">type Cache</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.212.html#DirCache">type DirCache</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#DirCache.Delete">func (d DirCache) Delete(ctx context.Context, name string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#DirCache.Get">func (d DirCache) Get(ctx context.Context, name string) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#DirCache.Put">func (d DirCache) Put(ctx context.Context, name string, data []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.212.html#HostPolicy">type HostPolicy</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#HostWhitelist">func HostWhitelist(hosts ...string) HostPolicy</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.212.html#Manager">type Manager</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#Manager.GetCertificate">func (m *Manager) GetCertificate(hello *tls.ClientHelloInfo) (*tls.Certificate, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#Manager.HTTPHandler">func (m *Manager) HTTPHandler(fallback http.Handler) http.Handler</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#Manager.Listener">func (m *Manager) Listener() net.Listener</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.212.html#Manager.TLSConfig">func (m *Manager) TLSConfig() *tls.Config</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.212.html#example_Manager">Manager</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.212.html#example_NewListener">NewListener</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go">autocert.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/cache.go">cache.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/listener.go">listener.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/renewal.go">renewal.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+DefaultACMEDirectory is the default ACME Directory URL used when the Manager&#39;s Client is nil.
+</p>
+
+				<pre>const <span id="DefaultACMEDirectory">DefaultACMEDirectory</span> = &#34;https://acme-v02.api.letsencrypt.org/directory&#34;</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrCacheMiss is returned when a certificate is not found in cache.
+</p>
+
+				<pre>var <span id="ErrCacheMiss">ErrCacheMiss</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;acme/autocert: certificate cache miss&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="AcceptTOS">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=1501:1535#L48">AcceptTOS</a>
+				<a class="permalink" href="godoc.212.html#AcceptTOS">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AcceptTOS(tosURL <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+AcceptTOS is a Manager.Prompt function that always returns true to
+indicate acceptance of the CA&#39;s Terms of Service during account
+registration.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewListener">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/listener.go?s=1524:1572#L35">NewListener</a>
+				<a class="permalink" href="godoc.212.html#NewListener">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewListener(domains ...<a href="godoc.26.html#string">string</a>) <a href="godoc.17.html">net</a>.<a href="godoc.17.html#Listener">Listener</a></pre>
+			<p>
+NewListener returns a net.Listener that listens on the standard TLS
+port (443) on all interfaces and returns *tls.Conn connections with
+LetsEncrypt certificates for the provided domain or domains.
+</p>
+<p>
+It enables one-line HTTPS servers:
+</p>
+<pre>log.Fatal(http.Serve(autocert.NewListener(&#34;example.com&#34;), handler))
+</pre>
+<p>
+NewListener is a convenience function for a common configuration.
+More complex or custom configurations can use the autocert.Manager
+type instead.
+</p>
+<p>
+Use of this function implies acceptance of the LetsEncrypt Terms of
+Service. If domains is not empty, the provided domains are passed
+to HostWhitelist. If domains is empty, the listener will do
+LetsEncrypt challenges for any requested domain, which is not
+recommended.
+</p>
+<p>
+Certificates are cached in a &#34;golang-autocert&#34; directory under an
+operating system-specific cache or temp directory. This may not
+be suitable for servers spanning multiple machines.
+</p>
+<p>
+The returned listener uses a *tls.Config that enables HTTP/2, and
+should only be used with servers that support HTTP/2.
+</p>
+<p>
+The returned Listener also enables TCP keep-alives on the accepted
+connections. The returned *tls.Conn are returned before their TLS
+handshake has completed.
+</p>
+
+			<div id="example_NewListener" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+mux := http.NewServeMux()
+mux.HandleFunc(&#34;/&#34;, func(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, &#34;Hello, TLS user! Your config: %+v&#34;, r.TLS)
+})
+log.Fatal(http.Serve(autocert.NewListener(&#34;example.com&#34;), mux))
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+		
+			
+			
+			<h2 id="Cache">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/cache.go?s=670:1304#L13">Cache</a>
+				<a class="permalink" href="godoc.212.html#Cache">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Cache is used by Manager to store and retrieve previously obtained certificates
+and other account data as opaque blobs.
+</p>
+<p>
+Cache implementations should not rely on the key naming pattern. Keys can
+include any printable ASCII characters, except the following: \/:*?&#34;&lt;&gt;|
+</p>
+
+			<pre>type Cache interface {
+    <span class="comment">// Get returns a certificate data for the specified key.</span>
+    <span class="comment">// If there&#39;s no such key, Get returns ErrCacheMiss.</span>
+    Get(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, key <a href="godoc.26.html#string">string</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+
+    <span class="comment">// Put stores the data in the cache under the specified key.</span>
+    <span class="comment">// Underlying implementations may use any data storage format,</span>
+    <span class="comment">// as long as the reverse operation, Get, results in the original data.</span>
+    Put(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, key <a href="godoc.26.html#string">string</a>, data []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>
+
+    <span class="comment">// Delete removes a certificate data from the cache under the specified key.</span>
+    <span class="comment">// If there&#39;s no such key in the cache, Delete returns nil.</span>
+    Delete(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, key <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DirCache">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/cache.go?s=1456:1476#L30">DirCache</a>
+				<a class="permalink" href="godoc.212.html#DirCache">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DirCache implements Cache using a directory on the local filesystem.
+If the directory does not exist, it will be created with 0700 permissions.
+</p>
+
+			<pre>type DirCache <a href="godoc.26.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DirCache.Delete">func (DirCache) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/cache.go?s=2699:2763#L88">Delete</a>
+					<a class="permalink" href="godoc.212.html#DirCache.Delete">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.212.html#DirCache">DirCache</a>) Delete(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, name <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Delete removes the specified file name.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DirCache.Get">func (DirCache) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/cache.go?s=1540:1611#L33">Get</a>
+					<a class="permalink" href="godoc.212.html#DirCache.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.212.html#DirCache">DirCache</a>) Get(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, name <a href="godoc.26.html#string">string</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Get reads a certificate data from the specified file name.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DirCache.Put">func (DirCache) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/cache.go?s=2048:2122#L57">Put</a>
+					<a class="permalink" href="godoc.212.html#DirCache.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d <a href="godoc.212.html#DirCache">DirCache</a>) Put(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, name <a href="godoc.26.html#string">string</a>, data []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Put writes the certificate data to the specified file name.
+The file will be created with 0600 permissions.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HostPolicy">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=1853:1913#L54">HostPolicy</a>
+				<a class="permalink" href="godoc.212.html#HostPolicy">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+HostPolicy specifies which host names the Manager is allowed to respond to.
+It returns a non-nil error if the host should be rejected.
+The returned error is accessible via tls.Conn.Handshake and its callers.
+See Manager&#39;s HostPolicy field and GetCertificate method docs for more details.
+</p>
+
+			<pre>type HostPolicy func(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, host <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="HostWhitelist">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=2310:2356#L63">HostWhitelist</a>
+					<a class="permalink" href="godoc.212.html#HostWhitelist">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func HostWhitelist(hosts ...<a href="godoc.26.html#string">string</a>) <a href="godoc.212.html#HostPolicy">HostPolicy</a></pre>
+				<p>
+HostWhitelist returns a policy where only the specified host names are allowed.
+Only exact matches are currently supported. Subdomains, regexp or wildcard
+will not match.
+</p>
+<p>
+Note that all hosts will be converted to Punycode via idna.Lookup.ToASCII so that
+Manager.GetCertificate can handle the Unicode IDN and mixedcase hosts correctly.
+Invalid hosts will be silently ignored.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Manager">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=3303:7378#L92">Manager</a>
+				<a class="permalink" href="godoc.212.html#Manager">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Manager is a stateful certificate manager built on top of acme.Client.
+It obtains and refreshes certificates automatically using &#34;tls-alpn-01&#34;
+or &#34;http-01&#34; challenge types, as well as providing them to a TLS server
+via tls.Config.
+</p>
+<p>
+You must specify a cache implementation, such as DirCache,
+to reuse obtained certificates across program restarts.
+Otherwise your server is very likely to exceed the certificate
+issuer&#39;s request rate limits.
+</p>
+
+			<pre>type Manager struct {
+<span id="Manager.Prompt"></span>    <span class="comment">// Prompt specifies a callback function to conditionally accept a CA&#39;s Terms of Service (TOS).</span>
+    <span class="comment">// The registration may require the caller to agree to the CA&#39;s TOS.</span>
+    <span class="comment">// If so, Manager calls Prompt with a TOS URL provided by the CA. Prompt should report</span>
+    <span class="comment">// whether the caller agrees to the terms.</span>
+    <span class="comment">//</span>
+    <span class="comment">// To always accept the terms, the callers can use AcceptTOS.</span>
+    Prompt func(tosURL <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#bool">bool</a>
+
+<span id="Manager.Cache"></span>    <span class="comment">// Cache optionally stores and retrieves previously-obtained certificates</span>
+    <span class="comment">// and other state. If nil, certs will only be cached for the lifetime of</span>
+    <span class="comment">// the Manager. Multiple Managers can share the same Cache.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Using a persistent Cache, such as DirCache, is strongly recommended.</span>
+    Cache <a href="godoc.212.html#Cache">Cache</a>
+
+<span id="Manager.HostPolicy"></span>    <span class="comment">// HostPolicy controls which domains the Manager will attempt</span>
+    <span class="comment">// to retrieve new certificates for. It does not affect cached certs.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If non-nil, HostPolicy is called before requesting a new cert.</span>
+    <span class="comment">// If nil, all hosts are currently allowed. This is not recommended,</span>
+    <span class="comment">// as it opens a potential attack where clients connect to a server</span>
+    <span class="comment">// by IP address and pretend to be asking for an incorrect host name.</span>
+    <span class="comment">// Manager will attempt to obtain a certificate for that host, incorrectly,</span>
+    <span class="comment">// eventually reaching the CA&#39;s rate limit for certificate requests</span>
+    <span class="comment">// and making it impossible to obtain actual certificates.</span>
+    <span class="comment">//</span>
+    <span class="comment">// See GetCertificate for more details.</span>
+    HostPolicy <a href="godoc.212.html#HostPolicy">HostPolicy</a>
+
+<span id="Manager.RenewBefore"></span>    <span class="comment">// RenewBefore optionally specifies how early certificates should</span>
+    <span class="comment">// be renewed before they expire.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If zero, they&#39;re renewed 30 days before expiration.</span>
+    RenewBefore <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+
+<span id="Manager.Client"></span>    <span class="comment">// Client is used to perform low-level operations, such as account registration</span>
+    <span class="comment">// and requesting new certificates.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If Client is nil, a zero-value acme.Client is used with DefaultACMEDirectory</span>
+    <span class="comment">// as the directory endpoint.</span>
+    <span class="comment">// If the Client.Key is nil, a new ECDSA P-256 key is generated and,</span>
+    <span class="comment">// if Cache is not nil, stored in cache.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Mutating the field after the first call of GetCertificate method will have no effect.</span>
+    Client *<a href="godoc.211.html">acme</a>.<a href="godoc.211.html#Client">Client</a>
+
+<span id="Manager.Email"></span>    <span class="comment">// Email optionally specifies a contact email address.</span>
+    <span class="comment">// This is used by CAs, such as Let&#39;s Encrypt, to notify about problems</span>
+    <span class="comment">// with issued certificates.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If the Client&#39;s account key is already registered, Email is not used.</span>
+    Email <a href="godoc.26.html#string">string</a>
+
+<span id="Manager.ForceRSA"></span>    <span class="comment">// ForceRSA used to make the Manager generate RSA certificates. It is now ignored.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Deprecated: the Manager will request the correct type of certificate based</span>
+    <span class="comment">// on what each client supports.</span>
+    ForceRSA <a href="godoc.26.html#bool">bool</a>
+
+<span id="Manager.ExtraExtensions"></span>    <span class="comment">// ExtraExtensions are used when generating a new CSR (Certificate Request),</span>
+    <span class="comment">// thus allowing customization of the resulting certificate.</span>
+    <span class="comment">// For instance, TLS Feature Extension (RFC 7633) can be used</span>
+    <span class="comment">// to prevent an OCSP downgrade attack.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The field value is passed to crypto/x509.CreateCertificateRequest</span>
+    <span class="comment">// in the template&#39;s ExtraExtensions field as is.</span>
+    ExtraExtensions []<a href="godoc.381.html">pkix</a>.<a href="godoc.381.html#Extension">Extension</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_Manager" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+m := &amp;autocert.Manager{
+    Cache:      autocert.DirCache(&#34;secret-dir&#34;),
+    Prompt:     autocert.AcceptTOS,
+    HostPolicy: autocert.HostWhitelist(&#34;example.org&#34;, &#34;www.example.org&#34;),
+}
+s := &amp;http.Server{
+    Addr:      &#34;:https&#34;,
+    TLSConfig: m.TLSConfig(),
+}
+s.ListenAndServeTLS(&#34;&#34;, &#34;&#34;)
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+
+			
+				
+				<h3 id="Manager.GetCertificate">func (*Manager) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=8959:9045#L232">GetCertificate</a>
+					<a class="permalink" href="godoc.212.html#Manager.GetCertificate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.212.html#Manager">Manager</a>) GetCertificate(hello *<a href="godoc.359.html">tls</a>.<a href="godoc.359.html#ClientHelloInfo">ClientHelloInfo</a>) (*<a href="godoc.359.html">tls</a>.<a href="godoc.359.html#Certificate">Certificate</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+GetCertificate implements the tls.Config.GetCertificate hook.
+It provides a TLS certificate for hello.ServerName host, including answering
+tls-alpn-01 challenges.
+All other fields of hello are ignored.
+</p>
+<p>
+If m.HostPolicy is non-nil, GetCertificate calls the policy before requesting
+a new cert. A non-nil error returned from m.HostPolicy halts TLS negotiation.
+The error is propagated back to the caller of GetCertificate and is user-visible.
+This does not affect cached certs. See HostPolicy field description for more details.
+</p>
+<p>
+If GetCertificate is used directly, instead of via Manager.TLSConfig, package users will
+also have to add acme.ALPNProto to NextProtos for tls-alpn-01, or use HTTPHandler for http-01.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Manager.HTTPHandler">func (*Manager) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=13694:13759#L373">HTTPHandler</a>
+					<a class="permalink" href="godoc.212.html#Manager.HTTPHandler">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.212.html#Manager">Manager</a>) HTTPHandler(fallback <a href="godoc.18.html">http</a>.<a href="godoc.18.html#Handler">Handler</a>) <a href="godoc.18.html">http</a>.<a href="godoc.18.html#Handler">Handler</a></pre>
+				<p>
+HTTPHandler configures the Manager to provision ACME &#34;http-01&#34; challenge responses.
+It returns an http.Handler that responds to the challenges and must be
+running on port 80. If it receives a request that is not an ACME challenge,
+it delegates the request to the optional fallback handler.
+</p>
+<p>
+If fallback is nil, the returned handler redirects all GET and HEAD requests
+to the default TLS port 443 with 302 Found status code, preserving the original
+request path and query. It responds with 400 Bad Request to all other HTTP methods.
+The fallback is not protected by the optional HostPolicy.
+</p>
+<p>
+Because the fallback handler is run with unencrypted port 80 requests,
+the fallback should not serve TLS-only requests.
+</p>
+<p>
+If HTTPHandler is never called, the Manager will only use the &#34;tls-alpn-01&#34;
+challenge for domain verification.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Manager.Listener">func (*Manager) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/listener.go?s=2465:2506#L63">Listener</a>
+					<a class="permalink" href="godoc.212.html#Manager.Listener">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.212.html#Manager">Manager</a>) Listener() <a href="godoc.17.html">net</a>.<a href="godoc.17.html#Listener">Listener</a></pre>
+				<p>
+Listener listens on the standard TLS port (443) on all interfaces
+and returns a net.Listener returning *tls.Conn connections.
+</p>
+<p>
+The returned listener uses a *tls.Config that enables HTTP/2, and
+should only be used with servers that support HTTP/2.
+</p>
+<p>
+The returned Listener also enables TCP keep-alives on the accepted
+connections. The returned *tls.Conn are returned before their TLS
+handshake has completed.
+</p>
+<p>
+Unlike NewListener, it is the caller&#39;s responsibility to initialize
+the Manager m&#39;s Prompt, Cache, HostPolicy, and other desired options.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Manager.TLSConfig">func (*Manager) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/autocert/autocert.go?s=7985:8026#L210">TLSConfig</a>
+					<a class="permalink" href="godoc.212.html#Manager.TLSConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m *<a href="godoc.212.html#Manager">Manager</a>) TLSConfig() *<a href="godoc.359.html">tls</a>.<a href="godoc.359.html#Config">Config</a></pre>
+				<p>
+TLSConfig creates a new TLS config suitable for net/http.Server servers,
+supporting HTTP/2 and the tls-alpn-01 ACME challenge type.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.211.html">..</a></td>
+			</tr>
+			
+
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

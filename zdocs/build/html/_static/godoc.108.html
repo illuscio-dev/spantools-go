@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>godirwalk - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.108.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package godirwalk
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/karrick/godirwalk"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.108.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.108.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.108.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package godirwalk provides functions to read and traverse directory trees.
+</p>
+<p>
+In short, why do I use this library?
+</p>
+<p>
+* It&#39;s faster than `filepath.Walk`.
+</p>
+<p>
+* It&#39;s more correct on Windows than `filepath.Walk`.
+</p>
+<p>
+* It&#39;s more easy to use than `filepath.Walk`.
+</p>
+<p>
+* It&#39;s more flexible than `filepath.Walk`.
+</p>
+<h3 id="hdr-USAGE">USAGE</h3>
+<p>
+This library will normalize the provided top level directory name based on the
+os-specific path separator by calling `filepath.Clean` on its first
+argument. However it always provides the pathname created by using the correct
+os-specific path separator when invoking the provided callback function.
+</p>
+<pre>dirname := &#34;some/directory/root&#34;
+err := godirwalk.Walk(dirname, &amp;godirwalk.Options{
+    Callback: func(osPathname string, de *godirwalk.Dirent) error {
+        fmt.Printf(&#34;%s %s\n&#34;, de.ModeType(), osPathname)
+        return nil
+    },
+})
+</pre>
+<p>
+This library not only provides functions for traversing a file system directory
+tree, but also for obtaining a list of immediate descendants of a particular
+directory, typically much more quickly than using `os.ReadDir` or
+`os.ReadDirnames`.
+</p>
+<pre>dirname := &#34;some/directory&#34;
+names, err := godirwalk.ReadDirnames()
+</pre>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.108.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.108.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.108.html#ReadDirnames">func ReadDirnames(osDirname string, _ []byte) ([]string, error)</a></dd>
+			
+				
+				<dd><a href="godoc.108.html#Walk">func Walk(pathname string, options *Options) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.108.html#Dirent">type Dirent</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#NewDirent">func NewDirent(osPathname string) (*Dirent, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirent.IsDevice">func (de Dirent) IsDevice() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirent.IsDir">func (de Dirent) IsDir() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirent.IsRegular">func (de Dirent) IsRegular() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirent.IsSymlink">func (de Dirent) IsSymlink() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirent.ModeType">func (de Dirent) ModeType() os.FileMode</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirent.Name">func (de Dirent) Name() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.108.html#Dirents">type Dirents</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#ReadDirents">func ReadDirents(osDirname string, _ []byte) (Dirents, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirents.Len">func (l Dirents) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirents.Less">func (l Dirents) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Dirents.Swap">func (l Dirents) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.108.html#ErrorAction">type ErrorAction</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.108.html#Options">type Options</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.108.html#Scanner">type Scanner</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#NewScanner">func NewScanner(osDirname string) (*Scanner, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Scanner.Dirent">func (s *Scanner) Dirent() (*Dirent, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Scanner.Err">func (s *Scanner) Err() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Scanner.Name">func (s *Scanner) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.108.html#Scanner.Scan">func (s *Scanner) Scan() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.108.html#WalkFunc">type WalkFunc</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/debug_release.go">debug_release.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go">dirent.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/inoWithIno.go">inoWithIno.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/modeType.go">modeType.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/modeTypeWithType.go">modeTypeWithType.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/nameWithNamlen.go">nameWithNamlen.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/readdir.go">readdir.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go">scandir_unix.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/scanner.go">scanner.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/symdir.go">symdir.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/karrick/godirwalk/walk.go">walk.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+DefaultScratchBuffer is a deprecated config parameter, whose usage was
+obsoleted by the introduction of the Scanner struct, and migrating
+ReadDirents, ReadDirnames, and Walk to use Scanner for enumerating directory
+contents.
+</p>
+
+				<pre>const <span id="DefaultScratchBufferSize">DefaultScratchBufferSize</span> = 0</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+MinimumScratchBufferSize specifies the minimum size of the scratch buffer
+that Walk, ReadDirents, ReadDirnames, and Scandir will use when reading file
+entries from the operating system. It is initialized to the result from
+calling `os.Getpagesize()` during program startup.
+</p>
+
+				<pre>var <span id="MinimumScratchBufferSize">MinimumScratchBufferSize</span> = <a href="godoc.33.html">os</a>.<a href="godoc.33.html#Getpagesize">Getpagesize</a>()</pre>
+			
+		
+		
+			
+			
+			<h2 id="ReadDirnames">func <a href="http://localhost:6161/src/github.com/karrick/godirwalk/readdir.go?s=2207:2270#L50">ReadDirnames</a>
+				<a class="permalink" href="godoc.108.html#ReadDirnames">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadDirnames(osDirname <a href="godoc.26.html#string">string</a>, _ []<a href="godoc.26.html#byte">byte</a>) ([]<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+ReadDirnames returns a slice of strings, representing the immediate
+descendants of the specified directory. If the specified directory is a
+symbolic link, it will be resolved.
+</p>
+<p>
+The second parameter was an optional scratch buffer, but is no longer used
+because ReadDirents invokes Scanner to enumerate the contents of the
+directory.
+</p>
+<p>
+Note that this function, depending on operating system, may or may not invoke
+the ReadDirents function, in order to prepare the list of immediate
+descendants. Therefore, if your program needs both the names and the file
+system mode types of descendants, it will always be faster to invoke
+ReadDirents directly, rather than calling this function, then looping over
+the results and calling os.Stat or os.LStat for each entry.
+</p>
+<pre>children, err := godirwalk.ReadDirnames(osDirname, nil)
+if err != nil {
+    return nil, errors.Wrap(err, &#34;cannot get list of directory children&#34;)
+}
+sort.Strings(children)
+for _, child := range children {
+    fmt.Printf(&#34;%s\n&#34;, child)
+}
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Walk">func <a href="http://localhost:6161/src/github.com/karrick/godirwalk/walk.go?s=7958:8008#L156">Walk</a>
+				<a class="permalink" href="godoc.108.html#Walk">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Walk(pathname <a href="godoc.26.html#string">string</a>, options *<a href="godoc.108.html#Options">Options</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Walk walks the file tree rooted at the specified directory, calling the
+specified callback function for each file system node in the tree, including
+root, symbolic links, and other node types.
+</p>
+<p>
+This function is often much faster than filepath.Walk because it does not
+invoke os.Stat for every node it encounters, but rather obtains the file
+system node type when it reads the parent directory.
+</p>
+<p>
+If a runtime error occurs, either from the operating system or from the
+upstream Callback or PostChildrenCallback functions, processing typically
+halts. However, when an ErrorCallback function is provided in the provided
+Options structure, that function is invoked with the error along with the OS
+pathname of the file system node that caused the error. The ErrorCallback
+function&#39;s return value determines the action that Walk will then take.
+</p>
+<pre>func main() {
+    dirname := &#34;.&#34;
+    if len(os.Args) &gt; 1 {
+        dirname = os.Args[1]
+    }
+    err := godirwalk.Walk(dirname, &amp;godirwalk.Options{
+        Callback: func(osPathname string, de *godirwalk.Dirent) error {
+            fmt.Printf(&#34;%s %s\n&#34;, de.ModeType(), osPathname)
+            return nil
+        },
+        ErrorCallback: func(osPathname string, err error) godirwalk.ErrorAction {
+        	// Your program may want to log the error somehow.
+        	fmt.Fprintf(os.Stderr, &#34;ERROR: %s\n&#34;, err)
+
+        	// For the purposes of this example, a simple SkipNode will suffice,
+        	// although in reality perhaps additional logic might be called for.
+        	return godirwalk.SkipNode
+        },
+    })
+    if err != nil {
+        fmt.Fprintf(os.Stderr, &#34;%s\n&#34;, err)
+        os.Exit(1)
+    }
+}
+</pre>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Dirent">type <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=144:306#L1">Dirent</a>
+				<a class="permalink" href="godoc.108.html#Dirent">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Dirent stores the name and file system mode type of discovered file system
+entries.
+</p>
+
+			<pre>type Dirent struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDirent">func <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=657:707#L11">NewDirent</a>
+					<a class="permalink" href="godoc.108.html#NewDirent">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDirent(osPathname <a href="godoc.26.html#string">string</a>) (*<a href="godoc.108.html#Dirent">Dirent</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewDirent returns a newly initialized Dirent structure, or an error.  This
+function does not follow symbolic links.
+</p>
+<p>
+This function is rarely used, as Dirent structures are provided by other
+functions in this library that read and walk directories, but is provided,
+however, for the occasion when a program needs to create a Dirent.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Dirent.IsDevice">func (Dirent) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=2707:2739#L60">IsDevice</a>
+					<a class="permalink" href="godoc.108.html#Dirent.IsDevice">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (de <a href="godoc.108.html#Dirent">Dirent</a>) IsDevice() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsDevice returns true if and only if the Dirent represents a device file.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirent.IsDir">func (Dirent) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=1949:1978#L46">IsDir</a>
+					<a class="permalink" href="godoc.108.html#Dirent.IsDir">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (de <a href="godoc.108.html#Dirent">Dirent</a>) IsDir() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsDir returns true if and only if the Dirent represents a file system
+directory.  Note that on some operating systems, more than one file mode bit
+may be set for a node.  For instance, on Windows, a symbolic link that points
+to a directory will have both the directory and the symbolic link bits set.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirent.IsRegular">func (Dirent) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=2153:2186#L50">IsRegular</a>
+					<a class="permalink" href="godoc.108.html#Dirent.IsRegular">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (de <a href="godoc.108.html#Dirent">Dirent</a>) IsRegular() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsRegular returns true if and only if the Dirent represents a regular file.
+That is, it ensures that no mode type bits are set.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirent.IsSymlink">func (Dirent) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=2552:2585#L57">IsSymlink</a>
+					<a class="permalink" href="godoc.108.html#Dirent.IsSymlink">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (de <a href="godoc.108.html#Dirent">Dirent</a>) IsSymlink() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsSymlink returns true if and only if the Dirent represents a file system
+symbolic link.  Note that on some operating systems, more than one file mode
+bit may be set for a node.  For instance, on Windows, a symbolic link that
+points to a directory will have both the directory and the symbolic link bits
+set.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirent.ModeType">func (Dirent) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=1572:1611#L40">ModeType</a>
+					<a class="permalink" href="godoc.108.html#Dirent.ModeType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (de <a href="godoc.108.html#Dirent">Dirent</a>) ModeType() <a href="godoc.33.html">os</a>.<a href="godoc.33.html#FileMode">FileMode</a></pre>
+				<p>
+ModeType returns the mode bits that specify the file system node type.  We
+could make our own enum-like data type for encoding the file type, but Go&#39;s
+runtime already gives us architecture independent file modes, as discussed in
+`os/types.go`:
+</p>
+<pre>Go&#39;s runtime FileMode type has same definition on all systems, so that
+information about files can be moved from one system to another portably.
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirent.Name">func (Dirent) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=1105:1135#L31">Name</a>
+					<a class="permalink" href="godoc.108.html#Dirent.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (de <a href="godoc.108.html#Dirent">Dirent</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the basename of the file system entry.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Dirents">type <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=3058:3080#L70">Dirents</a>
+				<a class="permalink" href="godoc.108.html#Dirents">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Dirents represents a slice of Dirent pointers, which are sortable by
+name. This type satisfies the `sort.Interface` interface.
+</p>
+
+			<pre>type Dirents []*<a href="godoc.108.html#Dirent">Dirent</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadDirents">func <a href="http://localhost:6161/src/github.com/karrick/godirwalk/readdir.go?s=761:822#L10">ReadDirents</a>
+					<a class="permalink" href="godoc.108.html#ReadDirents">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadDirents(osDirname <a href="godoc.26.html#string">string</a>, _ []<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.108.html#Dirents">Dirents</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadDirents returns a sortable slice of pointers to Dirent structures, each
+representing the file system name and mode type for one of the immediate
+descendant of the specified directory. If the specified directory is a
+symbolic link, it will be resolved.
+</p>
+<p>
+The second parameter was an optional scratch buffer, but is no longer used
+because ReadDirents invokes Scanner to enumerate the contents of the
+directory.
+</p>
+<pre>children, err := godirwalk.ReadDirents(osDirname, nil)
+if err != nil {
+    return nil, errors.Wrap(err, &#34;cannot get list of directory children&#34;)
+}
+sort.Sort(children)
+for _, child := range children {
+    fmt.Printf(&#34;%s %s\n&#34;, child.ModeType, child.Name)
+}
+</pre>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Dirents.Len">func (Dirents) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=3142:3168#L73">Len</a>
+					<a class="permalink" href="godoc.108.html#Dirents.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l <a href="godoc.108.html#Dirents">Dirents</a>) Len() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Len returns the count of Dirent structures in the slice.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirents.Less">func (Dirents) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=3337:3373#L77">Less</a>
+					<a class="permalink" href="godoc.108.html#Dirents.Less">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l <a href="godoc.108.html#Dirents">Dirents</a>) Less(i, j <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Less returns true if and only if the Name of the element specified by the
+first index is lexicographically less than that of the second index.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Dirents.Swap">func (Dirents) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/dirent.go?s=3488:3519#L80">Swap</a>
+					<a class="permalink" href="godoc.108.html#Dirents.Swap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (l <a href="godoc.108.html#Dirents">Dirents</a>) Swap(i, j <a href="godoc.26.html#int">int</a>)</pre>
+				<p>
+Swap exchanges the two Dirent entries specified by the two provided indexes.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrorAction">type <a href="http://localhost:6161/src/github.com/karrick/godirwalk/walk.go?s=3935:3955#L77">ErrorAction</a>
+				<a class="permalink" href="godoc.108.html#ErrorAction">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ErrorAction defines a set of actions the Walk function could take based on
+the occurrence of an error while walking the file system. See the
+documentation for the ErrorCallback field of the Options structure for more
+information.
+</p>
+
+			<pre>type ErrorAction <a href="godoc.26.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span class="comment">// Halt is the ErrorAction return value when the upstream code wants to halt</span>
+    <span class="comment">// the walk process when a runtime error takes place. It matches the default</span>
+    <span class="comment">// action the Walk function would take were no ErrorCallback provided.</span>
+    <span id="Halt">Halt</span> <a href="godoc.108.html#ErrorAction">ErrorAction</a> = <a href="godoc.26.html#iota">iota</a>
+
+    <span class="comment">// SkipNode is the ErrorAction return value when the upstream code wants to</span>
+    <span class="comment">// ignore the runtime error for the current file system node, skip</span>
+    <span class="comment">// processing of the node that caused the error, and continue walking the</span>
+    <span class="comment">// file system hierarchy with the remaining nodes.</span>
+    <span id="SkipNode">SkipNode</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Options">type <a href="http://localhost:6161/src/github.com/karrick/godirwalk/walk.go?s=410:3691#L7">Options</a>
+				<a class="permalink" href="godoc.108.html#Options">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Options provide parameters for how the Walk function operates.
+</p>
+
+			<pre>type Options struct {
+<span id="Options.ErrorCallback"></span>    <span class="comment">// ErrorCallback specifies a function to be invoked in the case of an error</span>
+    <span class="comment">// that could potentially be ignored while walking a file system</span>
+    <span class="comment">// hierarchy. When set to nil or left as its zero-value, any error condition</span>
+    <span class="comment">// causes Walk to immediately return the error describing what took</span>
+    <span class="comment">// place. When non-nil, this user supplied function is invoked with the OS</span>
+    <span class="comment">// pathname of the file system object that caused the error along with the</span>
+    <span class="comment">// error that took place. The return value of the supplied ErrorCallback</span>
+    <span class="comment">// function determines whether the error will cause Walk to halt immediately</span>
+    <span class="comment">// as it would were no ErrorCallback value provided, or skip this file</span>
+    <span class="comment">// system node yet continue on with the remaining nodes in the file system</span>
+    <span class="comment">// hierarchy.</span>
+    <span class="comment">//</span>
+    <span class="comment">// ErrorCallback is invoked both for errors that are returned by the</span>
+    <span class="comment">// runtime, and for errors returned by other user supplied callback</span>
+    <span class="comment">// functions.</span>
+    ErrorCallback func(<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>) <a href="godoc.108.html#ErrorAction">ErrorAction</a>
+
+<span id="Options.FollowSymbolicLinks"></span>    <span class="comment">// FollowSymbolicLinks specifies whether Walk will follow symbolic links</span>
+    <span class="comment">// that refer to directories. When set to false or left as its zero-value,</span>
+    <span class="comment">// Walk will still invoke the callback function with symbolic link nodes,</span>
+    <span class="comment">// but if the symbolic link refers to a directory, it will not recurse on</span>
+    <span class="comment">// that directory. When set to true, Walk will recurse on symbolic links</span>
+    <span class="comment">// that refer to a directory.</span>
+    FollowSymbolicLinks <a href="godoc.26.html#bool">bool</a>
+
+<span id="Options.Unsorted"></span>    <span class="comment">// Unsorted controls whether or not Walk will sort the immediate descendants</span>
+    <span class="comment">// of a directory by their relative names prior to visiting each of those</span>
+    <span class="comment">// entries.</span>
+    <span class="comment">//</span>
+    <span class="comment">// When set to false or left at its zero-value, Walk will get the list of</span>
+    <span class="comment">// immediate descendants of a particular directory, sort that list by</span>
+    <span class="comment">// lexical order of their names, and then visit each node in the list in</span>
+    <span class="comment">// sorted order. This will cause Walk to always traverse the same directory</span>
+    <span class="comment">// tree in the same order, however may be inefficient for directories with</span>
+    <span class="comment">// many immediate descendants.</span>
+    <span class="comment">//</span>
+    <span class="comment">// When set to true, Walk skips sorting the list of immediate descendants</span>
+    <span class="comment">// for a directory, and simply visits each node in the order the operating</span>
+    <span class="comment">// system enumerated them. This will be more fast, but with the side effect</span>
+    <span class="comment">// that the traversal order may be different from one invocation to the</span>
+    <span class="comment">// next.</span>
+    Unsorted <a href="godoc.26.html#bool">bool</a>
+
+<span id="Options.Callback"></span>    <span class="comment">// Callback is a required function that Walk will invoke for every file</span>
+    <span class="comment">// system node it encounters.</span>
+    Callback <a href="godoc.108.html#WalkFunc">WalkFunc</a>
+
+<span id="Options.PostChildrenCallback"></span>    <span class="comment">// PostChildrenCallback is an option function that Walk will invoke for</span>
+    <span class="comment">// every file system directory it encounters after its children have been</span>
+    <span class="comment">// processed.</span>
+    PostChildrenCallback <a href="godoc.108.html#WalkFunc">WalkFunc</a>
+
+<span id="Options.ScratchBuffer"></span>    <span class="comment">// ScratchBuffer is a deprecated config parameter, whose usage was obsoleted</span>
+    <span class="comment">// by the introduction of the Scanner struct, and migrating ReadDirents,</span>
+    <span class="comment">// ReadDirnames, and Walk to use Scanner for enumerating directory contents.</span>
+    ScratchBuffer []<a href="godoc.26.html#byte">byte</a>
+
+<span id="Options.AllowNonDirectory"></span>    <span class="comment">// AllowNonDirectory causes Walk to bypass the check that ensures it is</span>
+    <span class="comment">// being called on a directory node, or when FollowSymbolicLinks is true, a</span>
+    <span class="comment">// symbolic link that points to a directory. Leave this value false to have</span>
+    <span class="comment">// Walk return an error when called on a non-directory. Set this true to</span>
+    <span class="comment">// have Walk run even when called on a non-directory node.</span>
+    AllowNonDirectory <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Scanner">type <a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go?s=487:1136#L9">Scanner</a>
+				<a class="permalink" href="godoc.108.html#Scanner">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Scanner is an iterator to enumerate the contents of a directory.
+</p>
+
+			<pre>type Scanner struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewScanner">func <a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go?s=1928:1979#L48">NewScanner</a>
+					<a class="permalink" href="godoc.108.html#NewScanner">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewScanner(osDirname <a href="godoc.26.html#string">string</a>) (*<a href="godoc.108.html#Scanner">Scanner</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewScanner returns a new directory Scanner that lazily enumerates the
+contents of a single directory.
+</p>
+<pre>scanner, err := godirwalk.NewScanner(dirname)
+if err != nil {
+    fatal(&#34;cannot scan directory: %s&#34;, err)
+}
+
+for scanner.Scan() {
+    dirent, err := scanner.Dirent()
+    if err != nil {
+        warning(&#34;cannot get dirent: %s&#34;, err)
+        continue
+    }
+    name := dirent.Name()
+    if name == &#34;break&#34; {
+        break
+    }
+    if name == &#34;continue&#34; {
+        continue
+    }
+    fmt.Printf(&#34;%v %v\n&#34;, dirent.ModeType(), dirent.Name())
+}
+if err := scanner.Err(); err != nil {
+    fatal(&#34;cannot scan directory: %s&#34;, err)
+}
+</pre>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Scanner.Dirent">func (*Scanner) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go?s=2311:2354#L63">Dirent</a>
+					<a class="permalink" href="godoc.108.html#Scanner.Dirent">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.108.html#Scanner">Scanner</a>) Dirent() (*<a href="godoc.108.html#Dirent">Dirent</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Dirent returns the current directory entry while scanning a directory.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Scanner.Err">func (*Scanner) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go?s=3050:3079#L94">Err</a>
+					<a class="permalink" href="godoc.108.html#Scanner.Err">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.108.html#Scanner">Scanner</a>) Err() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Err returns the error associated with scanning a directory.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Scanner.Name">func (*Scanner) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go?s=3239:3270#L104">Name</a>
+					<a class="permalink" href="godoc.108.html#Scanner.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.108.html#Scanner">Scanner</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the current directory entry while scanning a
+directory.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Scanner.Scan">func (*Scanner) <a href="http://localhost:6161/src/github.com/karrick/godirwalk/scandir_unix.go?s=3547:3576#L111">Scan</a>
+					<a class="permalink" href="godoc.108.html#Scanner.Scan">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.108.html#Scanner">Scanner</a>) Scan() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Scan potentially reads and then decodes the next directory entry from the
+file system.
+</p>
+<p>
+When it returns false, this releases resources used by the Scanner then
+returns any error associated with closing the file system directory resource.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WalkFunc">type <a href="http://localhost:6161/src/github.com/karrick/godirwalk/walk.go?s=6056:6123#L115">WalkFunc</a>
+				<a class="permalink" href="godoc.108.html#WalkFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+WalkFunc is the type of the function called for each file system node visited
+by Walk. The pathname argument will contain the argument to Walk as a prefix;
+that is, if Walk is called with &#34;dir&#34;, which is a directory containing the
+file &#34;a&#34;, the provided WalkFunc will be invoked with the argument &#34;dir/a&#34;,
+using the correct os.PathSeparator for the Go Operating System architecture,
+GOOS. The directory entry argument is a pointer to a Dirent for the node,
+providing access to both the basename and the mode type of the file system
+node.
+</p>
+<p>
+If an error is returned by the Callback or PostChildrenCallback functions,
+and no ErrorCallback function is provided, processing stops. If an
+ErrorCallback function is provided, then it is invoked with the OS pathname
+of the node that caused the error along along with the error. The return
+value of the ErrorCallback function determines whether to halt processing, or
+skip this node and continue processing remaining file system nodes.
+</p>
+<p>
+The exception is when the function returns the special value
+filepath.SkipDir. If the function returns filepath.SkipDir when invoked on a
+directory, Walk skips the directory&#39;s contents entirely. If the function
+returns filepath.SkipDir when invoked on a non-directory file system node,
+Walk skips the remaining files in the containing directory. Note that any
+supplied ErrorCallback function is not invoked with filepath.SkipDir when the
+Callback or PostChildrenCallback functions return that special value.
+</p>
+
+			<pre>type WalkFunc func(osPathname <a href="godoc.26.html#string">string</a>, directoryEntry *<a href="godoc.108.html#Dirent">Dirent</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="http://localhost:6161/pkg/github.com/karrick/">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.109.html">examples</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.110.html">remove-empty-directories</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						* remove-empty-directories * * Walks a file system hierarchy and removes all directories with no children.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.111.html">scanner</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.112.html">sizes</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						* sizes * * Walks a file system hierarchy and prints sizes of file system objects, * recursively printing sizes of directories.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.113.html">walk-fast</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						* walk-fast * * Walks a file system hierarchy using this library.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.116.html">walk-stdlib</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						* walk-fast * * Walks a file system hierarchy using the standard library.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

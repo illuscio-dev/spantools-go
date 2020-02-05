@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>wiremessage - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.209.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package wiremessage
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.209.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.209.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.209.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.209.html#AppendCompressedCompressedMessage">func AppendCompressedCompressedMessage(dst []byte, msg []byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendCompressedCompressorID">func AppendCompressedCompressorID(dst []byte, id CompressorID) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendCompressedOriginalOpCode">func AppendCompressedOriginalOpCode(dst []byte, opcode OpCode) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendCompressedUncompressedSize">func AppendCompressedUncompressedSize(dst []byte, size int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendGetMoreCursorID">func AppendGetMoreCursorID(dst []byte, cursorID int64) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendGetMoreFullCollectionName">func AppendGetMoreFullCollectionName(dst []byte, ns string) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendGetMoreNumberToReturn">func AppendGetMoreNumberToReturn(dst []byte, numToReturn int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendGetMoreZero">func AppendGetMoreZero(dst []byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendHeader">func AppendHeader(dst []byte, length, reqid, respto int32, opcode OpCode) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendHeaderStart">func AppendHeaderStart(dst []byte, reqid, respto int32, opcode OpCode) (index int32, b []byte)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendKillCursorsCursorIDs">func AppendKillCursorsCursorIDs(dst []byte, cursors []int64) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendKillCursorsNumberIDs">func AppendKillCursorsNumberIDs(dst []byte, numIDs int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendKillCursorsZero">func AppendKillCursorsZero(dst []byte) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendMsgFlags">func AppendMsgFlags(dst []byte, flags MsgFlag) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendMsgSectionType">func AppendMsgSectionType(dst []byte, stype SectionType) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendQueryFlags">func AppendQueryFlags(dst []byte, flags QueryFlag) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendQueryFullCollectionName">func AppendQueryFullCollectionName(dst []byte, ns string) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendQueryNumberToReturn">func AppendQueryNumberToReturn(dst []byte, nor int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendQueryNumberToSkip">func AppendQueryNumberToSkip(dst []byte, skip int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendReplyCursorID">func AppendReplyCursorID(dst []byte, id int64) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendReplyFlags">func AppendReplyFlags(dst []byte, flags ReplyFlag) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendReplyNumberReturned">func AppendReplyNumberReturned(dst []byte, nr int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#AppendReplyStartingFrom">func AppendReplyStartingFrom(dst []byte, sf int32) []byte</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#CurrentRequestID">func CurrentRequestID() int32</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#IsMsgMoreToCome">func IsMsgMoreToCome(wm []byte) bool</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#NextRequestID">func NextRequestID() int32</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadCompressedCompressedMessage">func ReadCompressedCompressedMessage(src []byte, length int32) (msg []byte, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadCompressedUncompressedSize">func ReadCompressedUncompressedSize(src []byte) (size int32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadKillCursorsCursorIDs">func ReadKillCursorsCursorIDs(src []byte, numIDs int32) (cursorIDs []int64, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadKillCursorsNumberIDs">func ReadKillCursorsNumberIDs(src []byte) (numIDs int32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadKillCursorsZero">func ReadKillCursorsZero(src []byte) (zero int32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadMsgChecksum">func ReadMsgChecksum(src []byte) (checksum uint32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadMsgSectionDocumentSequence">func ReadMsgSectionDocumentSequence(src []byte) (identifier string, docs []bsoncore.Document, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadMsgSectionSingleDocument">func ReadMsgSectionSingleDocument(src []byte) (doc bsoncore.Document, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadQueryFullCollectionName">func ReadQueryFullCollectionName(src []byte) (collname string, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadQueryNumberToReturn">func ReadQueryNumberToReturn(src []byte) (ntr int32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadQueryNumberToSkip">func ReadQueryNumberToSkip(src []byte) (nts int32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadQueryQuery">func ReadQueryQuery(src []byte) (query bsoncore.Document, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadQueryReturnFieldsSelector">func ReadQueryReturnFieldsSelector(src []byte) (rfs bsoncore.Document, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadReplyCursorID">func ReadReplyCursorID(src []byte) (cursorID int64, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadReplyDocument">func ReadReplyDocument(src []byte) (doc bsoncore.Document, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadReplyDocuments">func ReadReplyDocuments(src []byte) (docs []bsoncore.Document, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadReplyNumberReturned">func ReadReplyNumberReturned(src []byte) (numberReturned int32, rem []byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.209.html#ReadReplyStartingFrom">func ReadReplyStartingFrom(src []byte) (startingFrom int32, rem []byte, ok bool)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.209.html#CompressorID">type CompressorID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadCompressedCompressorID">func ReadCompressedCompressorID(src []byte) (id CompressorID, rem []byte, ok bool)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.209.html#MsgFlag">type MsgFlag</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadMsgFlags">func ReadMsgFlags(src []byte) (flags MsgFlag, rem []byte, ok bool)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.209.html#OpCode">type OpCode</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadCompressedOriginalOpCode">func ReadCompressedOriginalOpCode(src []byte) (opcode OpCode, rem []byte, ok bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadHeader">func ReadHeader(src []byte) (length, requestID, responseTo int32, opcode OpCode, rem []byte, ok bool)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#OpCode.String">func (oc OpCode) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.209.html#QueryFlag">type QueryFlag</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadQueryFlags">func ReadQueryFlags(src []byte) (flags QueryFlag, rem []byte, ok bool)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#QueryFlag.String">func (qf QueryFlag) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.209.html#ReplyFlag">type ReplyFlag</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadReplyFlags">func ReadReplyFlags(src []byte) (flags ReplyFlag, rem []byte, ok bool)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReplyFlag.String">func (rf ReplyFlag) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.209.html#SectionType">type SectionType</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.209.html#ReadMsgSectionType">func ReadMsgSectionType(src []byte) (stype SectionType, rem []byte, ok bool)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.209.html#WireMessage">type WireMessage</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go">wiremessage.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// DefaultZlibLevel is the default level for zlib compression</span>
+    <span id="DefaultZlibLevel">DefaultZlibLevel</span> = 6
+    <span class="comment">// DefaultZstdLevel is the default level for zstd compression.</span>
+    <span class="comment">// Matches https://github.com/wiredtiger/wiredtiger/blob/f08bc4b18612ef95a39b12166abcccf207f91596/ext/compressors/zstd/zstd_compress.c#L299</span>
+    <span id="DefaultZstdLevel">DefaultZstdLevel</span> = 6
+)</pre>
+			
+				<p>
+OpmsgWireVersion is the minimum wire version needed to use OP_MSG
+</p>
+
+				<pre>const <span id="OpmsgWireVersion">OpmsgWireVersion</span> = 6</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="AppendCompressedCompressedMessage">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=8145:8214#L279">AppendCompressedCompressedMessage</a>
+				<a class="permalink" href="godoc.209.html#AppendCompressedCompressedMessage">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendCompressedCompressedMessage(dst []<a href="godoc.26.html#byte">byte</a>, msg []<a href="godoc.26.html#byte">byte</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendCompressedCompressedMessage appends the compressed wiremessage to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendCompressedCompressorID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=7960:8029#L274">AppendCompressedCompressorID</a>
+				<a class="permalink" href="godoc.209.html#AppendCompressedCompressorID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendCompressedCompressorID(dst []<a href="godoc.26.html#byte">byte</a>, id <a href="godoc.209.html#CompressorID">CompressorID</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendCompressedCompressorID appends the ID of the compressor to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendCompressedOriginalOpCode">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=7567:7636#L265">AppendCompressedOriginalOpCode</a>
+				<a class="permalink" href="godoc.209.html#AppendCompressedOriginalOpCode">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendCompressedOriginalOpCode(dst []<a href="godoc.26.html#byte">byte</a>, opcode <a href="godoc.209.html#OpCode">OpCode</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendCompressedOriginalOpCode appends the original opcode to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendCompressedUncompressedSize">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=7785:7853#L271">AppendCompressedUncompressedSize</a>
+				<a class="permalink" href="godoc.209.html#AppendCompressedUncompressedSize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendCompressedUncompressedSize(dst []<a href="godoc.26.html#byte">byte</a>, size <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendCompressedUncompressedSize appends the uncompressed size of a
+compressed wiremessage to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendGetMoreCursorID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=8799:8860#L297">AppendGetMoreCursorID</a>
+				<a class="permalink" href="godoc.209.html#AppendGetMoreCursorID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendGetMoreCursorID(dst []<a href="godoc.26.html#byte">byte</a>, cursorID <a href="godoc.26.html#int64">int64</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendGetMoreCursorID appends the cursorID field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendGetMoreFullCollectionName">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=8452:8518#L287">AppendGetMoreFullCollectionName</a>
+				<a class="permalink" href="godoc.209.html#AppendGetMoreFullCollectionName">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendGetMoreFullCollectionName(dst []<a href="godoc.26.html#byte">byte</a>, ns <a href="godoc.26.html#string">string</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendGetMoreFullCollectionName appends the fullCollectionName field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendGetMoreNumberToReturn">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=8627:8697#L292">AppendGetMoreNumberToReturn</a>
+				<a class="permalink" href="godoc.209.html#AppendGetMoreNumberToReturn">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendGetMoreNumberToReturn(dst []<a href="godoc.26.html#byte">byte</a>, numToReturn <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendGetMoreNumberToReturn appends the numberToReturn field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendGetMoreZero">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=8299:8340#L282">AppendGetMoreZero</a>
+				<a class="permalink" href="godoc.209.html#AppendGetMoreZero">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendGetMoreZero(dst []<a href="godoc.26.html#byte">byte</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendGetMoreZero appends the zero field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendHeader">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=5039:5119#L194">AppendHeader</a>
+				<a class="permalink" href="godoc.209.html#AppendHeader">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendHeader(dst []<a href="godoc.26.html#byte">byte</a>, length, reqid, respto <a href="godoc.26.html#int32">int32</a>, opcode <a href="godoc.209.html#OpCode">OpCode</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendHeader appends a header to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendHeaderStart">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=4741:4835#L185">AppendHeaderStart</a>
+				<a class="permalink" href="godoc.209.html#AppendHeaderStart">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendHeaderStart(dst []<a href="godoc.26.html#byte">byte</a>, reqid, respto <a href="godoc.26.html#int32">int32</a>, opcode <a href="godoc.209.html#OpCode">OpCode</a>) (index <a href="godoc.26.html#int32">int32</a>, b []<a href="godoc.26.html#byte">byte</a>)</pre>
+			<p>
+AppendHeaderStart appends a header to the dst slice and returns an index where the wire message
+starts in dst and the updated slice.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendKillCursorsCursorIDs">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=9278:9345#L312">AppendKillCursorsCursorIDs</a>
+				<a class="permalink" href="godoc.209.html#AppendKillCursorsCursorIDs">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendKillCursorsCursorIDs(dst []<a href="godoc.26.html#byte">byte</a>, cursors []<a href="godoc.26.html#int64">int64</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendKillCursorsCursorIDs appends each the cursorIDs field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendKillCursorsNumberIDs">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=9106:9170#L307">AppendKillCursorsNumberIDs</a>
+				<a class="permalink" href="godoc.209.html#AppendKillCursorsNumberIDs">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendKillCursorsNumberIDs(dst []<a href="godoc.26.html#byte">byte</a>, numIDs <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendKillCursorsNumberIDs appends the numberOfCursorIDs field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendKillCursorsZero">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=8955:9000#L302">AppendKillCursorsZero</a>
+				<a class="permalink" href="godoc.209.html#AppendKillCursorsZero">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendKillCursorsZero(dst []<a href="godoc.26.html#byte">byte</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendKillCursorsZero appends the zero field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendMsgFlags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=6130:6183#L220">AppendMsgFlags</a>
+				<a class="permalink" href="godoc.209.html#AppendMsgFlags">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendMsgFlags(dst []<a href="godoc.26.html#byte">byte</a>, flags <a href="godoc.209.html#MsgFlag">MsgFlag</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendMsgFlags appends the flags for an OP_MSG wire message.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendMsgSectionType">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=6451:6514#L230">AppendMsgSectionType</a>
+				<a class="permalink" href="godoc.209.html#AppendMsgSectionType">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendMsgSectionType(dst []<a href="godoc.26.html#byte">byte</a>, stype <a href="godoc.209.html#SectionType">SectionType</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendMsgSectionType appends the section type to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendQueryFlags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=5966:6023#L215">AppendQueryFlags</a>
+				<a class="permalink" href="godoc.209.html#AppendQueryFlags">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendQueryFlags(dst []<a href="godoc.26.html#byte">byte</a>, flags <a href="godoc.209.html#QueryFlag">QueryFlag</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendQueryFlags appends the flags for an OP_QUERY wire message.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendQueryFullCollectionName">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=6627:6691#L235">AppendQueryFullCollectionName</a>
+				<a class="permalink" href="godoc.209.html#AppendQueryFullCollectionName">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendQueryFullCollectionName(dst []<a href="godoc.26.html#byte">byte</a>, ns <a href="godoc.26.html#string">string</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendQueryFullCollectionName appends the full collection name to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendQueryNumberToReturn">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=6950:7010#L245">AppendQueryNumberToReturn</a>
+				<a class="permalink" href="godoc.209.html#AppendQueryNumberToReturn">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendQueryNumberToReturn(dst []<a href="godoc.26.html#byte">byte</a>, nor <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendQueryNumberToReturn appends the number to return to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendQueryNumberToSkip">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=6790:6849#L240">AppendQueryNumberToSkip</a>
+				<a class="permalink" href="godoc.209.html#AppendQueryNumberToSkip">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendQueryNumberToSkip(dst []<a href="godoc.26.html#byte">byte</a>, skip <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendQueryNumberToSkip appends the number to skip to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendReplyCursorID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=7097:7150#L250">AppendReplyCursorID</a>
+				<a class="permalink" href="godoc.209.html#AppendReplyCursorID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendReplyCursorID(dst []<a href="godoc.26.html#byte">byte</a>, id <a href="godoc.26.html#int64">int64</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendReplyCursorID appends the cursor ID to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendReplyFlags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=6294:6351#L225">AppendReplyFlags</a>
+				<a class="permalink" href="godoc.209.html#AppendReplyFlags">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendReplyFlags(dst []<a href="godoc.26.html#byte">byte</a>, flags <a href="godoc.209.html#ReplyFlag">ReplyFlag</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendReplyFlags appends the flags for an OP_REPLY wire message.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendReplyNumberReturned">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=7405:7464#L260">AppendReplyNumberReturned</a>
+				<a class="permalink" href="godoc.209.html#AppendReplyNumberReturned">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendReplyNumberReturned(dst []<a href="godoc.26.html#byte">byte</a>, nr <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendReplyNumberReturned appends the number returned to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="AppendReplyStartingFrom">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=7250:7307#L255">AppendReplyStartingFrom</a>
+				<a class="permalink" href="godoc.209.html#AppendReplyStartingFrom">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AppendReplyStartingFrom(dst []<a href="godoc.26.html#byte">byte</a>, sf <a href="godoc.26.html#int32">int32</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+AppendReplyStartingFrom appends the starting from field to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CurrentRequestID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=286:315#L7">CurrentRequestID</a>
+				<a class="permalink" href="godoc.209.html#CurrentRequestID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CurrentRequestID() <a href="godoc.26.html#int32">int32</a></pre>
+			<p>
+CurrentRequestID returns the current request ID.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsMsgMoreToCome">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=9713:9749#L326">IsMsgMoreToCome</a>
+				<a class="permalink" href="godoc.209.html#IsMsgMoreToCome">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsMsgMoreToCome(wm []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+IsMsgMoreToCome returns if the provided wire message is an OP_MSG with the more to come flag set.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NextRequestID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=409:435#L10">NextRequestID</a>
+				<a class="permalink" href="godoc.209.html#NextRequestID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NextRequestID() <a href="godoc.26.html#int32">int32</a></pre>
+			<p>
+NextRequestID returns the next request ID.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadCompressedCompressedMessage">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=14243:14339#L473">ReadCompressedCompressedMessage</a>
+				<a class="permalink" href="godoc.209.html#ReadCompressedCompressedMessage">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadCompressedCompressedMessage(src []<a href="godoc.26.html#byte">byte</a>, length <a href="godoc.26.html#int32">int32</a>) (msg []<a href="godoc.26.html#byte">byte</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadCompressedCompressedMessage reads the compressed wiremessage to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadCompressedUncompressedSize">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=13814:13895#L462">ReadCompressedUncompressedSize</a>
+				<a class="permalink" href="godoc.209.html#ReadCompressedUncompressedSize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadCompressedUncompressedSize(src []<a href="godoc.26.html#byte">byte</a>) (size <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadCompressedUncompressedSize reads the uncompressed size of a
+compressed wiremessage to dst.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadKillCursorsCursorIDs">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=14832:14928#L491">ReadKillCursorsCursorIDs</a>
+				<a class="permalink" href="godoc.209.html#ReadKillCursorsCursorIDs">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadKillCursorsCursorIDs(src []<a href="godoc.26.html#byte">byte</a>, numIDs <a href="godoc.26.html#int32">int32</a>) (cursorIDs []<a href="godoc.26.html#int64">int64</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadKillCursorsCursorIDs reads numIDs cursor IDs from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadKillCursorsNumberIDs">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=14666:14743#L486">ReadKillCursorsNumberIDs</a>
+				<a class="permalink" href="godoc.209.html#ReadKillCursorsNumberIDs">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadKillCursorsNumberIDs(src []<a href="godoc.26.html#byte">byte</a>) (numIDs <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadKillCursorsNumberIDs reads the numberOfCursorIDs field from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadKillCursorsZero">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=14497:14567#L481">ReadKillCursorsZero</a>
+				<a class="permalink" href="godoc.209.html#ReadKillCursorsZero">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadKillCursorsZero(src []<a href="godoc.26.html#byte">byte</a>) (zero <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadKillCursorsZero reads the zero field from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadMsgChecksum">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=11112:11183#L376">ReadMsgChecksum</a>
+				<a class="permalink" href="godoc.209.html#ReadMsgChecksum">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadMsgChecksum(src []<a href="godoc.26.html#byte">byte</a>) (checksum <a href="godoc.26.html#uint32">uint32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadMsgChecksum reads a checksum from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadMsgSectionDocumentSequence">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=10396:10510#L346">ReadMsgSectionDocumentSequence</a>
+				<a class="permalink" href="godoc.209.html#ReadMsgSectionDocumentSequence">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadMsgSectionDocumentSequence(src []<a href="godoc.26.html#byte">byte</a>) (identifier <a href="godoc.26.html#string">string</a>, docs []<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadMsgSectionDocumentSequence reads an identifier and document sequence from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadMsgSectionSingleDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=10179:10269#L341">ReadMsgSectionSingleDocument</a>
+				<a class="permalink" href="godoc.209.html#ReadMsgSectionSingleDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadMsgSectionSingleDocument(src []<a href="godoc.26.html#byte">byte</a>) (doc <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadMsgSectionSingleDocument reads a single document from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadQueryFullCollectionName">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=11507:11590#L388">ReadQueryFullCollectionName</a>
+				<a class="permalink" href="godoc.209.html#ReadQueryFullCollectionName">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadQueryFullCollectionName(src []<a href="godoc.26.html#byte">byte</a>) (collname <a href="godoc.26.html#string">string</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadQueryFullCollectionName reads the full collection name from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadQueryNumberToReturn">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=11843:11916#L398">ReadQueryNumberToReturn</a>
+				<a class="permalink" href="godoc.209.html#ReadQueryNumberToReturn">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadQueryNumberToReturn(src []<a href="godoc.26.html#byte">byte</a>) (ntr <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadQueryNumberToReturn reads the number to return from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadQueryNumberToSkip">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=11681:11752#L393">ReadQueryNumberToSkip</a>
+				<a class="permalink" href="godoc.209.html#ReadQueryNumberToSkip">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadQueryNumberToSkip(src []<a href="godoc.26.html#byte">byte</a>) (nts <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadQueryNumberToSkip reads the number to skip from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadQueryQuery">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=11987:12065#L403">ReadQueryQuery</a>
+				<a class="permalink" href="godoc.209.html#ReadQueryQuery">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadQueryQuery(src []<a href="godoc.26.html#byte">byte</a>) (query <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadQueryQuery reads the query from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadQueryReturnFieldsSelector">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=12189:12280#L408">ReadQueryReturnFieldsSelector</a>
+				<a class="permalink" href="godoc.209.html#ReadQueryReturnFieldsSelector">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadQueryReturnFieldsSelector(src []<a href="godoc.26.html#byte">byte</a>) (rfs <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadQueryReturnFieldsSelector reads a return fields selector document from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadReplyCursorID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=12557:12629#L419">ReadReplyCursorID</a>
+				<a class="permalink" href="godoc.209.html#ReadReplyCursorID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadReplyCursorID(src []<a href="godoc.26.html#byte">byte</a>) (cursorID <a href="godoc.26.html#int64">int64</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadReplyCursorID reads a cursor ID from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadReplyDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=13378:13457#L450">ReadReplyDocument</a>
+				<a class="permalink" href="godoc.209.html#ReadReplyDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadReplyDocument(src []<a href="godoc.26.html#byte">byte</a>) (doc <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadReplyDocument reads a reply document from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadReplyDocuments">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=13065:13148#L434">ReadReplyDocuments</a>
+				<a class="permalink" href="godoc.209.html#ReadReplyDocuments">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadReplyDocuments(src []<a href="godoc.26.html#byte">byte</a>) (docs []<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadReplyDocuments reads as many documents as possible from src
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadReplyNumberReturned">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=12887:12971#L429">ReadReplyNumberReturned</a>
+				<a class="permalink" href="godoc.209.html#ReadReplyNumberReturned">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadReplyNumberReturned(src []<a href="godoc.26.html#byte">byte</a>) (numberReturned <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadReplyNumberReturned reads the numbered returned from src.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadReplyStartingFrom">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=12715:12795#L424">ReadReplyStartingFrom</a>
+				<a class="permalink" href="godoc.209.html#ReadReplyStartingFrom">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ReadReplyStartingFrom(src []<a href="godoc.26.html#byte">byte</a>) (startingFrom <a href="godoc.26.html#int32">int32</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+ReadReplyStartingFrom reads the starting from from src.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="CompressorID">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=4076:4099#L165">CompressorID</a>
+				<a class="permalink" href="godoc.209.html#CompressorID">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CompressorID is the ID for each type of Compressor.
+</p>
+
+			<pre>type CompressorID <a href="godoc.26.html#uint8">uint8</a></pre>
+
+			
+				<p>
+These constants represent the individual compressor IDs for an OP_COMPRESSED.
+</p>
+
+				<pre>const (
+    <span id="CompressorNoOp">CompressorNoOp</span> <a href="godoc.209.html#CompressorID">CompressorID</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="CompressorSnappy">CompressorSnappy</span>
+    <span id="CompressorZLib">CompressorZLib</span>
+    <span id="CompressorZstd">CompressorZstd</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadCompressedCompressorID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=13990:14072#L465">ReadCompressedCompressorID</a>
+					<a class="permalink" href="godoc.209.html#ReadCompressedCompressorID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadCompressedCompressorID(src []<a href="godoc.26.html#byte">byte</a>) (id <a href="godoc.209.html#CompressorID">CompressorID</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadCompressedCompressorID reads the ID of the compressor to dst.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="MsgFlag">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=2732:2751#L110">MsgFlag</a>
+				<a class="permalink" href="godoc.209.html#MsgFlag">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MsgFlag represents the flags on an OP_MSG message.
+</p>
+
+			<pre>type MsgFlag <a href="godoc.26.html#uint32">uint32</a></pre>
+
+			
+				<p>
+These constants represent the individual flags on an OP_MSG message.
+</p>
+
+				<pre>const (
+    <span id="ChecksumPresent">ChecksumPresent</span> <a href="godoc.209.html#MsgFlag">MsgFlag</a> = 1 &lt;&lt; <a href="godoc.26.html#iota">iota</a>
+    <span id="MoreToCome">MoreToCome</span>
+
+    <span id="ExhaustAllowed">ExhaustAllowed</span> <a href="godoc.209.html#MsgFlag">MsgFlag</a> = 1 &lt;&lt; 16
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadMsgFlags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=9480:9546#L320">ReadMsgFlags</a>
+					<a class="permalink" href="godoc.209.html#ReadMsgFlags">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadMsgFlags(src []<a href="godoc.26.html#byte">byte</a>) (flags <a href="godoc.209.html#MsgFlag">MsgFlag</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadMsgFlags reads the OP_MSG flags from src.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="OpCode">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=538:555#L13">OpCode</a>
+				<a class="permalink" href="godoc.209.html#OpCode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+OpCode represents a MongoDB wire protocol opcode.
+</p>
+
+			<pre>type OpCode <a href="godoc.26.html#int32">int32</a></pre>
+
+			
+				<p>
+These constants are the valid opcodes for the version of the wireprotocol
+supported by this library. The skipped OpCodes are historical OpCodes that
+are no longer used.
+</p>
+
+				<pre>const (
+    <span id="OpReply">OpReply</span> <a href="godoc.209.html#OpCode">OpCode</a> = 1
+
+    <span id="OpUpdate">OpUpdate</span> <a href="godoc.209.html#OpCode">OpCode</a> = 2001
+    <span id="OpInsert">OpInsert</span> <a href="godoc.209.html#OpCode">OpCode</a> = 2002
+
+    <span id="OpQuery">OpQuery</span>        <a href="godoc.209.html#OpCode">OpCode</a> = 2004
+    <span id="OpGetMore">OpGetMore</span>      <a href="godoc.209.html#OpCode">OpCode</a> = 2005
+    <span id="OpDelete">OpDelete</span>       <a href="godoc.209.html#OpCode">OpCode</a> = 2006
+    <span id="OpKillCursors">OpKillCursors</span>  <a href="godoc.209.html#OpCode">OpCode</a> = 2007
+    <span id="OpCommand">OpCommand</span>      <a href="godoc.209.html#OpCode">OpCode</a> = 2010
+    <span id="OpCommandReply">OpCommandReply</span> <a href="godoc.209.html#OpCode">OpCode</a> = 2011
+    <span id="OpCompressed">OpCompressed</span>   <a href="godoc.209.html#OpCode">OpCode</a> = 2012
+    <span id="OpMsg">OpMsg</span>          <a href="godoc.209.html#OpCode">OpCode</a> = 2013
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadCompressedOriginalOpCode">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=13566:13648#L455">ReadCompressedOriginalOpCode</a>
+					<a class="permalink" href="godoc.209.html#ReadCompressedOriginalOpCode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadCompressedOriginalOpCode(src []<a href="godoc.26.html#byte">byte</a>) (opcode <a href="godoc.209.html#OpCode">OpCode</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadCompressedOriginalOpCode reads the original opcode from src.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ReadHeader">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=5315:5416#L203">ReadHeader</a>
+					<a class="permalink" href="godoc.209.html#ReadHeader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadHeader(src []<a href="godoc.26.html#byte">byte</a>) (length, requestID, responseTo <a href="godoc.26.html#int32">int32</a>, opcode <a href="godoc.209.html#OpCode">OpCode</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadHeader reads a wire message header from src.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="OpCode.String">func (OpCode) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=1182:1214#L35">String</a>
+					<a class="permalink" href="godoc.209.html#OpCode.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (oc <a href="godoc.209.html#OpCode">OpCode</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the fmt.Stringer interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="QueryFlag">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=1765:1785#L65">QueryFlag</a>
+				<a class="permalink" href="godoc.209.html#QueryFlag">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+QueryFlag represents the flags on an OP_QUERY message.
+</p>
+
+			<pre>type QueryFlag <a href="godoc.26.html#int32">int32</a></pre>
+
+			
+				<p>
+These constants represent the individual flags on an OP_QUERY message.
+</p>
+
+				<pre>const (
+    <span id="TailableCursor">TailableCursor</span> <a href="godoc.209.html#QueryFlag">QueryFlag</a>
+    <span id="SlaveOK">SlaveOK</span>
+    <span id="OplogReplay">OplogReplay</span>
+    <span id="NoCursorTimeout">NoCursorTimeout</span>
+    <span id="AwaitData">AwaitData</span>
+    <span id="Exhaust">Exhaust</span>
+    <span id="Partial">Partial</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadQueryFlags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=11297:11367#L382">ReadQueryFlags</a>
+					<a class="permalink" href="godoc.209.html#ReadQueryFlags">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadQueryFlags(src []<a href="godoc.26.html#byte">byte</a>) (flags <a href="godoc.209.html#QueryFlag">QueryFlag</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadQueryFlags reads OP_QUERY flags from src.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="QueryFlag.String">func (QueryFlag) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=2030:2065#L80">String</a>
+					<a class="permalink" href="godoc.209.html#QueryFlag.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (qf <a href="godoc.209.html#QueryFlag">QueryFlag</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the fmt.Stringer interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ReplyFlag">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=2978:2998#L121">ReplyFlag</a>
+				<a class="permalink" href="godoc.209.html#ReplyFlag">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ReplyFlag represents the flags of an OP_REPLY message.
+</p>
+
+			<pre>type ReplyFlag <a href="godoc.26.html#int32">int32</a></pre>
+
+			
+				<p>
+These constants represent the individual flags of an OP_REPLY message.
+</p>
+
+				<pre>const (
+    <span id="CursorNotFound">CursorNotFound</span> <a href="godoc.209.html#ReplyFlag">ReplyFlag</a> = 1 &lt;&lt; <a href="godoc.26.html#iota">iota</a>
+    <span id="QueryFailure">QueryFailure</span>
+    <span id="ShardConfigStale">ShardConfigStale</span>
+    <span id="AwaitCapable">AwaitCapable</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadReplyFlags">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=12370:12440#L413">ReadReplyFlags</a>
+					<a class="permalink" href="godoc.209.html#ReadReplyFlags">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadReplyFlags(src []<a href="godoc.26.html#byte">byte</a>) (flags <a href="godoc.209.html#ReplyFlag">ReplyFlag</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadReplyFlags reads OP_REPLY flags from src.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ReplyFlag.String">func (ReplyFlag) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=3218:3253#L132">String</a>
+					<a class="permalink" href="godoc.209.html#ReplyFlag.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rf <a href="godoc.209.html#ReplyFlag">ReplyFlag</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the fmt.Stringer interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SectionType">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=3751:3773#L153">SectionType</a>
+				<a class="permalink" href="godoc.209.html#SectionType">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SectionType represents the type for 1 section in an OP_MSG
+</p>
+
+			<pre>type SectionType <a href="godoc.26.html#uint8">uint8</a></pre>
+
+			
+				<p>
+These constants represent the individual section types for a section in an OP_MSG
+</p>
+
+				<pre>const (
+    <span id="SingleDocument">SingleDocument</span> <a href="godoc.209.html#SectionType">SectionType</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="DocumentSequence">DocumentSequence</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadMsgSectionType">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=9943:10019#L333">ReadMsgSectionType</a>
+					<a class="permalink" href="godoc.209.html#ReadMsgSectionType">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ReadMsgSectionType(src []<a href="godoc.26.html#byte">byte</a>) (stype <a href="godoc.209.html#SectionType">SectionType</a>, rem []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadMsgSectionType reads the section type from src.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="WireMessage">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/wiremessage/wiremessage.go?s=182:205#L2">WireMessage</a>
+				<a class="permalink" href="godoc.209.html#WireMessage">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+WireMessage represents a MongoDB wire message in binary form.
+</p>
+
+			<pre>type WireMessage []<a href="godoc.26.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,3023 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>driver - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.187.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package driver
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.187.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.187.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.187.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.187.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.187.html#CompressPlayoad">func CompressPlayoad(in []byte, opts CompressionOpts) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.187.html#DecompressPayload">func DecompressPayload(in []byte, opts CompressionOpts) ([]byte, error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.187.html#BatchCursor">type BatchCursor</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewBatchCursor">func NewBatchCursor(cr CursorResponse, clientSession *session.Client, clock *session.ClusterClock, opts CursorOptions) (*BatchCursor, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewEmptyBatchCursor">func NewEmptyBatchCursor() *BatchCursor</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.Batch">func (bc *BatchCursor) Batch() *bsoncore.DocumentSequence</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.Close">func (bc *BatchCursor) Close(ctx context.Context) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.Err">func (bc *BatchCursor) Err() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.ID">func (bc *BatchCursor) ID() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.KillCursor">func (bc *BatchCursor) KillCursor(ctx context.Context) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.Next">func (bc *BatchCursor) Next(ctx context.Context) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.PostBatchResumeToken">func (bc *BatchCursor) PostBatchResumeToken() bsoncore.Document</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#BatchCursor.Server">func (bc *BatchCursor) Server() Server</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#Batches">type Batches</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Batches.AdvanceBatch">func (b *Batches) AdvanceBatch(maxCount, targetBatchSize, maxDocSize int) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Batches.ClearBatch">func (b *Batches) ClearBatch()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Batches.Valid">func (b *Batches) Valid() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#CollectionInfoFn">type CollectionInfoFn</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#CompressionOpts">type CompressionOpts</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Compressor">type Compressor</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Connection">type Connection</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Connector">type Connector</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Crypt">type Crypt</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewCrypt">func NewCrypt(opts *CryptOptions) (*Crypt, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Crypt.Close">func (c *Crypt) Close()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Crypt.CreateDataKey">func (c *Crypt) CreateDataKey(ctx context.Context, kmsProvider string, opts *options.DataKeyOptions) (bsoncore.Document, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Crypt.Decrypt">func (c *Crypt) Decrypt(ctx context.Context, cmdResponse bsoncore.Document) (bsoncore.Document, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Crypt.DecryptExplicit">func (c *Crypt) DecryptExplicit(ctx context.Context, subtype byte, data []byte) (bsoncore.Value, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Crypt.Encrypt">func (c *Crypt) Encrypt(ctx context.Context, db string, cmd bsoncore.Document) (bsoncore.Document, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Crypt.EncryptExplicit">func (c *Crypt) EncryptExplicit(ctx context.Context, val bsoncore.Value, opts *options.ExplicitEncryptionOptions) (byte, []byte, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#CryptOptions">type CryptOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#CursorOptions">type CursorOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#CursorResponse">type CursorResponse</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewCursorResponse">func NewCursorResponse(response bsoncore.Document, server Server, desc description.Server) (CursorResponse, error)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Deployment">type Deployment</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Disconnector">type Disconnector</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.Error">func (e Error) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.HasErrorLabel">func (e Error) HasErrorLabel(label string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.NamespaceNotFound">func (e Error) NamespaceNotFound() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.NetworkError">func (e Error) NetworkError() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.NodeIsRecovering">func (e Error) NodeIsRecovering() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.NodeIsShuttingDown">func (e Error) NodeIsShuttingDown() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.NotMaster">func (e Error) NotMaster() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.Retryable">func (e Error) Retryable() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Error.UnsupportedStorageEngine">func (e Error) UnsupportedStorageEngine() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#ErrorProcessor">type ErrorProcessor</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Expirable">type Expirable</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Handshaker">type Handshaker</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#InvalidOperationError">type InvalidOperationError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#InvalidOperationError.Error">func (err InvalidOperationError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#KeyRetrieverFn">type KeyRetrieverFn</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#LegacyOperationKind">type LegacyOperationKind</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#ListCollectionsBatchCursor">type ListCollectionsBatchCursor</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewLegacyListCollectionsBatchCursor">func NewLegacyListCollectionsBatchCursor(bc *BatchCursor) (*ListCollectionsBatchCursor, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewListCollectionsBatchCursor">func NewListCollectionsBatchCursor(bc *BatchCursor) (*ListCollectionsBatchCursor, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ListCollectionsBatchCursor.Batch">func (lcbc *ListCollectionsBatchCursor) Batch() *bsoncore.DocumentSequence</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ListCollectionsBatchCursor.Close">func (lcbc *ListCollectionsBatchCursor) Close(ctx context.Context) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ListCollectionsBatchCursor.Err">func (lcbc *ListCollectionsBatchCursor) Err() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ListCollectionsBatchCursor.ID">func (lcbc *ListCollectionsBatchCursor) ID() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ListCollectionsBatchCursor.Next">func (lcbc *ListCollectionsBatchCursor) Next(ctx context.Context) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ListCollectionsBatchCursor.Server">func (lcbc *ListCollectionsBatchCursor) Server() Server</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#LocalAddresser">type LocalAddresser</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#MarkCommandFn">type MarkCommandFn</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Operation">type Operation</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Operation.Execute">func (op Operation) Execute(ctx context.Context, scratch []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#Operation.Validate">func (op Operation) Validate() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#QueryFailureError">type QueryFailureError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#QueryFailureError.Error">func (e QueryFailureError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#ResponseError">type ResponseError</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#NewCommandResponseError">func NewCommandResponseError(msg string, err error) ResponseError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#ResponseError.Error">func (e ResponseError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#RetryMode">type RetryMode</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#RetryMode.Enabled">func (rm RetryMode) Enabled() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#Server">type Server</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#SingleConnectionDeployment">type SingleConnectionDeployment</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleConnectionDeployment.Connection">func (ssd SingleConnectionDeployment) Connection(context.Context) (Connection, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleConnectionDeployment.Kind">func (ssd SingleConnectionDeployment) Kind() description.TopologyKind</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleConnectionDeployment.SelectServer">func (ssd SingleConnectionDeployment) SelectServer(context.Context, description.ServerSelector) (Server, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleConnectionDeployment.SupportsRetryWrites">func (ssd SingleConnectionDeployment) SupportsRetryWrites() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#SingleServerDeployment">type SingleServerDeployment</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleServerDeployment.Kind">func (SingleServerDeployment) Kind() description.TopologyKind</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleServerDeployment.SelectServer">func (ssd SingleServerDeployment) SelectServer(context.Context, description.ServerSelector) (Server, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#SingleServerDeployment.SupportsRetryWrites">func (SingleServerDeployment) SupportsRetryWrites() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#Subscriber">type Subscriber</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Subscription">type Subscription</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#Type">type Type</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.187.html#WriteCommandError">type WriteCommandError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteCommandError.Error">func (wce WriteCommandError) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteCommandError.Retryable">func (wce WriteCommandError) Retryable() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteCommandError.UnsupportedStorageEngine">func (wce WriteCommandError) UnsupportedStorageEngine() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#WriteConcernError">type WriteConcernError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteConcernError.Error">func (wce WriteConcernError) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteConcernError.NodeIsRecovering">func (wce WriteConcernError) NodeIsRecovering() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteConcernError.NodeIsShuttingDown">func (wce WriteConcernError) NodeIsShuttingDown() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteConcernError.NotMaster">func (wce WriteConcernError) NotMaster() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteConcernError.Retryable">func (wce WriteConcernError) Retryable() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#WriteError">type WriteError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteError.Error">func (we WriteError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.187.html#WriteErrors">type WriteErrors</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.187.html#WriteErrors.Error">func (we WriteErrors) Error() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go">batch_cursor.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batches.go">batches.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/compression.go">compression.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/compression_cgo.go">compression_cgo.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go">crypt.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go">driver.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go">errors.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/legacy.go">legacy.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go">list_collections_batch_cursor.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation.go">operation.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation_legacy.go">operation_legacy.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// UnknownTransactionCommitResult is an error label for unknown transaction commit results.</span>
+    <span id="UnknownTransactionCommitResult">UnknownTransactionCommitResult</span> = &#34;UnknownTransactionCommitResult&#34;
+    <span class="comment">// TransientTransactionError is an error label for transient errors with transactions.</span>
+    <span id="TransientTransactionError">TransientTransactionError</span> = &#34;TransientTransactionError&#34;
+    <span class="comment">// NetworkError is an error label for network errors.</span>
+    <span id="NetworkError">NetworkError</span> = &#34;NetworkError&#34;
+    <span class="comment">// ErrCursorNotFound is the cursor not found error for legacy find operations.</span>
+    <span id="ErrCursorNotFound">ErrCursorNotFound</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;cursor not found&#34;)
+    <span class="comment">// ErrUnacknowledgedWrite is returned from functions that have an unacknowledged</span>
+    <span class="comment">// write concern.</span>
+    <span id="ErrUnacknowledgedWrite">ErrUnacknowledgedWrite</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;unacknowledged write&#34;)
+    <span class="comment">// ErrUnsupportedStorageEngine is returned when a retryable write is attempted against a server</span>
+    <span class="comment">// that uses a storage engine that does not support retryable writes</span>
+    <span id="ErrUnsupportedStorageEngine">ErrUnsupportedStorageEngine</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;this MongoDB deployment does not support retryable writes. Please add retryWrites=false to your connection string&#34;)
+)</pre>
+			
+				
+				<pre>var (
+    <span class="comment">// ErrNoDocCommandResponse occurs when the server indicated a response existed, but none was found.</span>
+    <span id="ErrNoDocCommandResponse">ErrNoDocCommandResponse</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;command returned no documents&#34;)
+    <span class="comment">// ErrMultiDocCommandResponse occurs when the server sent multiple documents in response to a command.</span>
+    <span id="ErrMultiDocCommandResponse">ErrMultiDocCommandResponse</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;command returned multiple documents&#34;)
+    <span class="comment">// ErrReplyDocumentMismatch occurs when the number of documents returned in an OP_QUERY does not match the numberReturned field.</span>
+    <span id="ErrReplyDocumentMismatch">ErrReplyDocumentMismatch</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;number of documents returned does not match numberReturned field&#34;)
+    <span class="comment">// ErrNonPrimaryReadPref is returned when a read is attempted in a transaction with a non-primary read preference.</span>
+    <span id="ErrNonPrimaryReadPref">ErrNonPrimaryReadPref</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;read preference in a transaction must be primary&#34;)
+)</pre>
+			
+				<p>
+ErrDocumentTooLarge occurs when a document that is larger than the maximum size accepted by a
+server is passed to an insert command.
+</p>
+
+				<pre>var <span id="ErrDocumentTooLarge">ErrDocumentTooLarge</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;an inserted document is too large&#34;)</pre>
+			
+				
+				<pre>var (
+
+    <span class="comment">// ErrFilterType is returned when the filter for a legacy list collections operation is of the wrong type.</span>
+    <span id="ErrFilterType">ErrFilterType</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;filter for list collections operation must be a string&#34;)
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="CompressPlayoad">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/compression.go?s=720:789#L18">CompressPlayoad</a>
+				<a class="permalink" href="godoc.187.html#CompressPlayoad">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CompressPlayoad(in []<a href="godoc.26.html#byte">byte</a>, opts <a href="godoc.187.html#CompressionOpts">CompressionOpts</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+CompressPlayoad takes a byte slice and compresses it according to the options passed
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DecompressPayload">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/compression.go?s=1510:1581#L47">DecompressPayload</a>
+				<a class="permalink" href="godoc.187.html#DecompressPayload">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DecompressPayload(in []<a href="godoc.26.html#byte">byte</a>, opts <a href="godoc.187.html#CompressionOpts">CompressionOpts</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+DecompressPayload takes a byte slice that has been compressed and undoes it according to the options passed
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BatchCursor">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=504:1186#L8">BatchCursor</a>
+				<a class="permalink" href="godoc.187.html#BatchCursor">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BatchCursor is a batch implementation of a cursor. It returns documents in entire batches instead
+of one at a time. An individual document cursor can be built on top of this batch cursor.
+</p>
+
+			<pre>type BatchCursor struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewBatchCursor">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=3715:3855#L99">NewBatchCursor</a>
+					<a class="permalink" href="godoc.187.html#NewBatchCursor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewBatchCursor(cr <a href="godoc.187.html#CursorResponse">CursorResponse</a>, clientSession *<a href="godoc.206.html">session</a>.<a href="godoc.206.html#Client">Client</a>, clock *<a href="godoc.206.html">session</a>.<a href="godoc.206.html#ClusterClock">ClusterClock</a>, opts <a href="godoc.187.html#CursorOptions">CursorOptions</a>) (*<a href="godoc.187.html#BatchCursor">BatchCursor</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewBatchCursor creates a new BatchCursor from the provided parameters.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewEmptyBatchCursor">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=4912:4951#L141">NewEmptyBatchCursor</a>
+					<a class="permalink" href="godoc.187.html#NewEmptyBatchCursor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEmptyBatchCursor() *<a href="godoc.187.html#BatchCursor">BatchCursor</a></pre>
+				<p>
+NewEmptyBatchCursor returns a batch cursor that is empty.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="BatchCursor.Batch">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=5933:5990#L176">Batch</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.Batch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) Batch() *<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#DocumentSequence">DocumentSequence</a></pre>
+				<p>
+Batch will return a DocumentSequence for the current batch of documents. The returned
+DocumentSequence is only valid until the next call to Next or Close.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.Close">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=6153:6208#L182">Close</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) Close(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Close closes this batch cursor.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.Err">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=6064:6098#L179">Err</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.Err">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) Err() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Err returns the latest error encountered.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.ID">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=5075:5108#L146">ID</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.ID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) ID() <a href="godoc.26.html#int64">int64</a></pre>
+				<p>
+ID returns the cursor ID for this batch cursor.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.KillCursor">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=6667:6727#L206">KillCursor</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.KillCursor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) KillCursor(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+KillCursor kills cursor on server without closing batch cursor
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.Next">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=5474:5527#L155">Next</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) Next(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Next indicates if there is another batch available. Returning false does not necessarily indicate
+that the cursor is closed. This method will return false when an empty batch is returned.
+</p>
+<p>
+If Next returns true, there is a valid batch of documents available. If Next returns false, there
+is not a valid batch of documents available.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.PostBatchResumeToken">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=10037:10100#L310">PostBatchResumeToken</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.PostBatchResumeToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) PostBatchResumeToken() <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a></pre>
+				<p>
+PostBatchResumeToken returns the latest seen post batch resume token.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BatchCursor.Server">func (*BatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=6449:6487#L197">Server</a>
+					<a class="permalink" href="godoc.187.html#BatchCursor.Server">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) Server() <a href="godoc.187.html#Server">Server</a></pre>
+				<p>
+Server returns the server for this cursor.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Batches">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batches.go?s=583:707#L9">Batches</a>
+				<a class="permalink" href="godoc.187.html#Batches">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Batches contains the necessary information to batch split an operation. This is only used for write
+oeprations.
+</p>
+
+			<pre>type Batches struct {
+<span id="Batches.Identifier"></span>    Identifier <a href="godoc.26.html#string">string</a>
+<span id="Batches.Documents"></span>    Documents  []<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+<span id="Batches.Current"></span>    Current    []<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+<span id="Batches.Ordered"></span>    Ordered    *<a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Batches.AdvanceBatch">func (*Batches) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batches.go?s=1666:1745#L30">AdvanceBatch</a>
+					<a class="permalink" href="godoc.187.html#Batches.AdvanceBatch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.187.html#Batches">Batches</a>) AdvanceBatch(maxCount, targetBatchSize, maxDocSize <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+AdvanceBatch splits the next batch using maxCount and targetBatchSize. This method will do nothing if
+the current batch has not been cleared. We do this so that when this is called during execute we
+can call it without first needing to check if we already have a batch, which makes the code
+simpler and makes retrying easier.
+The maxDocSize parameter is used to check that any one document is not too large. If the first document is bigger
+than targetBatchSize but smaller than maxDocSize, a batch of size 1 containing that document will be created.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Batches.ClearBatch">func (*Batches) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batches.go?s=1036:1066#L22">ClearBatch</a>
+					<a class="permalink" href="godoc.187.html#Batches.ClearBatch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.187.html#Batches">Batches</a>) ClearBatch()</pre>
+				<p>
+ClearBatch clears the Current batch. This must be called before AdvanceBatch will advance to the
+next batch.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Batches.Valid">func (*Batches) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batches.go?s=823:853#L18">Valid</a>
+					<a class="permalink" href="godoc.187.html#Batches.Valid">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.187.html#Batches">Batches</a>) Valid() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Valid returns true if Batches contains both an identifier and the length of Documents is greater
+than zero.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CollectionInfoFn">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=675:786#L18">CollectionInfoFn</a>
+				<a class="permalink" href="godoc.187.html#CollectionInfoFn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CollectionInfoFn is a callback used to retrieve collection information.
+</p>
+
+			<pre>type CollectionInfoFn func(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, db <a href="godoc.26.html#string">string</a>, filter <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) (<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, <a href="godoc.26.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CompressionOpts">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/compression.go?s=488:630#L10">CompressionOpts</a>
+				<a class="permalink" href="godoc.187.html#CompressionOpts">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CompressionOpts holds settings for how to compress a payload
+</p>
+
+			<pre>type CompressionOpts struct {
+<span id="CompressionOpts.Compressor"></span>    Compressor       <a href="godoc.209.html">wiremessage</a>.<a href="godoc.209.html#CompressorID">CompressorID</a>
+<span id="CompressionOpts.ZlibLevel"></span>    ZlibLevel        <a href="godoc.26.html#int">int</a>
+<span id="CompressionOpts.ZstdLevel"></span>    ZstdLevel        <a href="godoc.26.html#int">int</a>
+<span id="CompressionOpts.UncompressedSize"></span>    UncompressedSize <a href="godoc.26.html#int32">int32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Compressor">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=2191:2274#L61">Compressor</a>
+				<a class="permalink" href="godoc.187.html#Compressor">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Compressor is an interface used to compress wire messages. If a Connection supports compression
+it should implement this interface as well. The CompressWireMessage method will be called during
+the execution of an operation if the wire message is allowed to be compressed.
+</p>
+
+			<pre>type Compressor interface {
+    CompressWireMessage(src, dst []<a href="godoc.26.html#byte">byte</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Connection">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=1434:1667#L38">Connection</a>
+				<a class="permalink" href="godoc.187.html#Connection">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Connection represents a connection to a MongoDB server.
+</p>
+
+			<pre>type Connection interface {
+    WriteWireMessage(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>
+    ReadWireMessage(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, dst []<a href="godoc.26.html#byte">byte</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+    Description() <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>
+    Close() <a href="godoc.26.html#error">error</a>
+    ID() <a href="godoc.26.html#string">string</a>
+    Address() <a href="godoc.188.html">address</a>.<a href="godoc.188.html#Address">Address</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Connector">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=517:562#L8">Connector</a>
+				<a class="permalink" href="godoc.187.html#Connector">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Connector represents a type that can connect to a server.
+</p>
+
+			<pre>type Connector interface {
+    Connect() <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Crypt">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=1623:1789#L38">Crypt</a>
+				<a class="permalink" href="godoc.187.html#Crypt">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Crypt consumes the libmongocrypt.MongoCrypt type to iterate the mongocrypt state machine and perform encryption
+and decryption.
+</p>
+
+			<pre>type Crypt struct {
+<span id="Crypt.BypassAutoEncryption"></span>    BypassAutoEncryption <a href="godoc.26.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCrypt">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=1881:1930#L48">NewCrypt</a>
+					<a class="permalink" href="godoc.187.html#NewCrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCrypt(opts *<a href="godoc.187.html#CryptOptions">CryptOptions</a>) (*<a href="godoc.187.html#Crypt">Crypt</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewCrypt creates a new Crypt instance configured with the given AutoEncryptionOptions.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Crypt.Close">func (*Crypt) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=4686:4709#L143">Close</a>
+					<a class="permalink" href="godoc.187.html#Crypt.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.187.html#Crypt">Crypt</a>) Close()</pre>
+				<p>
+Close cleans up any resources associated with the Crypt instance.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Crypt.CreateDataKey">func (*Crypt) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=3050:3177#L91">CreateDataKey</a>
+					<a class="permalink" href="godoc.187.html#Crypt.CreateDataKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.187.html#Crypt">Crypt</a>) CreateDataKey(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, kmsProvider <a href="godoc.26.html#string">string</a>, opts *<a href="godoc.204.html">options</a>.<a href="godoc.204.html#DataKeyOptions">DataKeyOptions</a>) (<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+CreateDataKey creates a data key using the given KMS provider and options.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Crypt.Decrypt">func (*Crypt) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=2684:2786#L80">Decrypt</a>
+					<a class="permalink" href="godoc.187.html#Crypt.Decrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.187.html#Crypt">Crypt</a>) Decrypt(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, cmdResponse <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) (<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Decrypt decrypts the given command response.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Crypt.DecryptExplicit">func (*Crypt) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=4073:4176#L123">DecryptExplicit</a>
+					<a class="permalink" href="godoc.187.html#Crypt.DecryptExplicit">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.187.html#Crypt">Crypt</a>) DecryptExplicit(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, subtype <a href="godoc.26.html#byte">byte</a>, data []<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Value">Value</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+DecryptExplicit decrypts the given encrypted value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Crypt.Encrypt">func (*Crypt) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=2298:2403#L65">Encrypt</a>
+					<a class="permalink" href="godoc.187.html#Crypt.Encrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.187.html#Crypt">Crypt</a>) Encrypt(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, db <a href="godoc.26.html#string">string</a>, cmd <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) (<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Encrypt encrypts the given command.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Crypt.EncryptExplicit">func (*Crypt) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=3434:3569#L102">EncryptExplicit</a>
+					<a class="permalink" href="godoc.187.html#Crypt.EncryptExplicit">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.187.html#Crypt">Crypt</a>) EncryptExplicit(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, val <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Value">Value</a>, opts *<a href="godoc.204.html">options</a>.<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a>) (<a href="godoc.26.html#byte">byte</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+EncryptExplicit encrypts the given value with the given options.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CryptOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=1213:1487#L27">CryptOptions</a>
+				<a class="permalink" href="godoc.187.html#CryptOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CryptOptions specifies options to configure a Crypt instance.
+</p>
+
+			<pre>type CryptOptions struct {
+<span id="CryptOptions.CollInfoFn"></span>    CollInfoFn           <a href="godoc.187.html#CollectionInfoFn">CollectionInfoFn</a>
+<span id="CryptOptions.KeyFn"></span>    KeyFn                <a href="godoc.187.html#KeyRetrieverFn">KeyRetrieverFn</a>
+<span id="CryptOptions.MarkFn"></span>    MarkFn               <a href="godoc.187.html#MarkCommandFn">MarkCommandFn</a>
+<span id="CryptOptions.KmsProviders"></span>    KmsProviders         map[<a href="godoc.26.html#string">string</a>]map[<a href="godoc.26.html#string">string</a>]interface{}
+<span id="CryptOptions.SchemaMap"></span>    SchemaMap            map[<a href="godoc.26.html#string">string</a>]<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+<span id="CryptOptions.BypassAutoEncryption"></span>    BypassAutoEncryption <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CursorOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=3483:3639#L90">CursorOptions</a>
+				<a class="permalink" href="godoc.187.html#CursorOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CursorOptions are extra options that are required to construct a BatchCursor.
+</p>
+
+			<pre>type CursorOptions struct {
+<span id="CursorOptions.BatchSize"></span>    BatchSize      <a href="godoc.26.html#int32">int32</a>
+<span id="CursorOptions.MaxTimeMS"></span>    MaxTimeMS      <a href="godoc.26.html#int64">int64</a>
+<span id="CursorOptions.Limit"></span>    Limit          <a href="godoc.26.html#int32">int32</a>
+<span id="CursorOptions.CommandMonitor"></span>    CommandMonitor *<a href="godoc.167.html">event</a>.<a href="godoc.167.html#CommandMonitor">CommandMonitor</a>
+<span id="CursorOptions.Crypt"></span>    Crypt          *<a href="godoc.187.html#Crypt">Crypt</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CursorResponse">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=1329:1604#L32">CursorResponse</a>
+				<a class="permalink" href="godoc.187.html#CursorResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CursorResponse represents the response from a command the results in a cursor. A BatchCursor can
+be constructed from a CursorResponse.
+</p>
+
+			<pre>type CursorResponse struct {
+<span id="CursorResponse.Server"></span>    Server     <a href="godoc.187.html#Server">Server</a>
+<span id="CursorResponse.Desc"></span>    Desc       <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>
+<span id="CursorResponse.FirstBatch"></span>    FirstBatch *<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#DocumentSequence">DocumentSequence</a>
+<span id="CursorResponse.Database"></span>    Database   <a href="godoc.26.html#string">string</a>
+<span id="CursorResponse.Collection"></span>    Collection <a href="godoc.26.html#string">string</a>
+<span id="CursorResponse.ID"></span>    ID         <a href="godoc.26.html#int64">int64</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCursorResponse">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/batch_cursor.go?s=1771:1885#L44">NewCursorResponse</a>
+					<a class="permalink" href="godoc.187.html#NewCursorResponse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCursorResponse(response <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, server <a href="godoc.187.html#Server">Server</a>, desc <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>) (<a href="godoc.187.html#CursorResponse">CursorResponse</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewCursorResponse constructs a cursor response from the given response and server. This method
+can be used within the ProcessResponse method for an operation.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Deployment">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=289:454#L1">Deployment</a>
+				<a class="permalink" href="godoc.187.html#Deployment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Deployment is implemented by types that can select a server from a deployment.
+</p>
+
+			<pre>type Deployment interface {
+    SelectServer(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, <a href="godoc.191.html">description</a>.<a href="godoc.191.html#ServerSelector">ServerSelector</a>) (<a href="godoc.187.html#Server">Server</a>, <a href="godoc.26.html#error">error</a>)
+    SupportsRetryWrites() <a href="godoc.26.html#bool">bool</a>
+    Kind() <a href="godoc.191.html">description</a>.<a href="godoc.191.html#TopologyKind">TopologyKind</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Disconnector">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=633:699#L13">Disconnector</a>
+				<a class="permalink" href="godoc.187.html#Disconnector">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Disconnector represents a type that can disconnect from a server.
+</p>
+
+			<pre>type Disconnector interface {
+    Disconnect(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=5511:5597#L178">Error</a>
+				<a class="permalink" href="godoc.187.html#Error">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Error is a command execution error from the database.
+</p>
+
+			<pre>type Error struct {
+<span id="Error.Code"></span>    Code    <a href="godoc.26.html#int32">int32</a>
+<span id="Error.Message"></span>    Message <a href="godoc.26.html#string">string</a>
+<span id="Error.Labels"></span>    Labels  []<a href="godoc.26.html#string">string</a>
+<span id="Error.Name"></span>    Name    <a href="godoc.26.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=5881:5910#L191">Error</a>
+					<a class="permalink" href="godoc.187.html#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Error implements the error interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.HasErrorLabel">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=6080:6127#L199">HasErrorLabel</a>
+					<a class="permalink" href="godoc.187.html#Error.HasErrorLabel">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) HasErrorLabel(label <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+HasErrorLabel returns true if the error contains the specified label.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.NamespaceNotFound">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=7702:7741#L270">NamespaceNotFound</a>
+					<a class="permalink" href="godoc.187.html#Error.NamespaceNotFound">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) NamespaceNotFound() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NamespaceNotFound returns true if this errors is a NamespaceNotFound error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.NetworkError">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=6699:6733#L230">NetworkError</a>
+					<a class="permalink" href="godoc.187.html#Error.NetworkError">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) NetworkError() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NetworkError returns true if the error is a network error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.NodeIsRecovering">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=6916:6954#L240">NodeIsRecovering</a>
+					<a class="permalink" href="godoc.187.html#Error.NodeIsRecovering">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) NodeIsRecovering() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NodeIsRecovering returns true if this error is a node is recovering error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.NodeIsShuttingDown">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=7191:7231#L250">NodeIsShuttingDown</a>
+					<a class="permalink" href="godoc.187.html#Error.NodeIsShuttingDown">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) NodeIsShuttingDown() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NodeIsShuttingDown returns true if this error is a node is shutting down error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.NotMaster">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=7453:7484#L260">NotMaster</a>
+					<a class="permalink" href="godoc.187.html#Error.NotMaster">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) NotMaster() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NotMaster returns true if this error is a not master error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.Retryable">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=6299:6330#L211">Retryable</a>
+					<a class="permalink" href="godoc.187.html#Error.Retryable">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) Retryable() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Retryable returns true if the error is retryable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Error.UnsupportedStorageEngine">func (Error) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=5695:5741#L186">UnsupportedStorageEngine</a>
+					<a class="permalink" href="godoc.187.html#Error.UnsupportedStorageEngine">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#Error">Error</a>) UnsupportedStorageEngine() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+UnsupportedStorageEngine returns whether e came as a result of an unsupported storage engine
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrorProcessor">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=2517:2571#L68">ErrorProcessor</a>
+				<a class="permalink" href="godoc.187.html#ErrorProcessor">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ErrorProcessor implementations can handle processing errors, which may modify their internal state.
+If this type is implemented by a Server, then Operation.Execute will call it&#39;s ProcessError
+method after it decodes a wire message.
+</p>
+
+			<pre>type ErrorProcessor interface {
+    ProcessError(<a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Expirable">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=1850:1908#L53">Expirable</a>
+				<a class="permalink" href="godoc.187.html#Expirable">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Expirable represents an expirable object.
+</p>
+
+			<pre>type Expirable interface {
+    Expire() <a href="godoc.26.html#error">error</a>
+    Alive() <a href="godoc.26.html#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Handshaker">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=2790:2961#L75">Handshaker</a>
+				<a class="permalink" href="godoc.187.html#Handshaker">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Handshaker is the interface implemented by types that can perform a MongoDB
+handshake over a provided driver.Connection. This is used during connection
+initialization. Implementations must be goroutine safe.
+</p>
+
+			<pre>type Handshaker interface {
+    GetDescription(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, <a href="godoc.188.html">address</a>.<a href="godoc.188.html#Address">Address</a>, <a href="godoc.187.html#Connection">Connection</a>) (<a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>, <a href="godoc.26.html#error">error</a>)
+    FinishHandshake(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, <a href="godoc.187.html#Connection">Connection</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="InvalidOperationError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation.go?s=1869:1925#L38">InvalidOperationError</a>
+				<a class="permalink" href="godoc.187.html#InvalidOperationError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+InvalidOperationError is returned from Validate and indicates that a required field is missing
+from an instance of Operation.
+</p>
+
+			<pre>type InvalidOperationError struct{ MissingField <a href="godoc.26.html#string">string</a> }
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InvalidOperationError.Error">func (InvalidOperationError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation.go?s=1927:1974#L40">Error</a>
+					<a class="permalink" href="godoc.187.html#InvalidOperationError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (err <a href="godoc.187.html#InvalidOperationError">InvalidOperationError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="KeyRetrieverFn">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=862:962#L21">KeyRetrieverFn</a>
+				<a class="permalink" href="godoc.187.html#KeyRetrieverFn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+KeyRetrieverFn is a callback used to retrieve keys from the key vault.
+</p>
+
+			<pre>type KeyRetrieverFn func(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, filter <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) ([]<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, <a href="godoc.26.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="LegacyOperationKind">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/legacy.go?s=254:283#L1">LegacyOperationKind</a>
+				<a class="permalink" href="godoc.187.html#LegacyOperationKind">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+LegacyOperationKind indicates if an operation is a legacy find, getMore, or killCursors. This is used
+in Operation.Execute, which will create legacy OP_QUERY, OP_GET_MORE, or OP_KILL_CURSORS instead
+of sending them as a command.
+</p>
+
+			<pre>type LegacyOperationKind <a href="godoc.26.html#uint">uint</a></pre>
+
+			
+				<p>
+These constants represent the three different kinds of legacy operations.
+</p>
+
+				<pre>const (
+    <span id="LegacyNone">LegacyNone</span> <a href="godoc.187.html#LegacyOperationKind">LegacyOperationKind</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="LegacyFind">LegacyFind</span>
+    <span id="LegacyGetMore">LegacyGetMore</span>
+    <span id="LegacyKillCursors">LegacyKillCursors</span>
+    <span id="LegacyListCollections">LegacyListCollections</span>
+    <span id="LegacyListIndexes">LegacyListIndexes</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ListCollectionsBatchCursor">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=543:716#L10">ListCollectionsBatchCursor</a>
+				<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ListCollectionsBatchCursor is a special batch cursor returned from ListCollections that properly
+handles current and legacy ListCollections operations.
+</p>
+
+			<pre>type ListCollectionsBatchCursor struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewLegacyListCollectionsBatchCursor">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=1147:1241#L26">NewLegacyListCollectionsBatchCursor</a>
+					<a class="permalink" href="godoc.187.html#NewLegacyListCollectionsBatchCursor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewLegacyListCollectionsBatchCursor(bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) (*<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewLegacyListCollectionsBatchCursor creates a new legacy ListCollectionsCursor.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewListCollectionsBatchCursor">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=799:887#L18">NewListCollectionsBatchCursor</a>
+					<a class="permalink" href="godoc.187.html#NewListCollectionsBatchCursor">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewListCollectionsBatchCursor(bc *<a href="godoc.187.html#BatchCursor">BatchCursor</a>) (*<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewListCollectionsBatchCursor creates a new non-legacy ListCollectionsCursor.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ListCollectionsBatchCursor.Batch">func (*ListCollectionsBatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=2829:2903#L80">Batch</a>
+					<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor.Batch">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lcbc *<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>) Batch() *<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#DocumentSequence">DocumentSequence</a></pre>
+				<p>
+Batch will return a DocumentSequence for the current batch of documents. The returned
+DocumentSequence is only valid until the next call to Next or Close.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ListCollectionsBatchCursor.Close">func (*ListCollectionsBatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=3271:3343#L94">Close</a>
+					<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lcbc *<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>) Close(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Close closes this batch cursor.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ListCollectionsBatchCursor.Err">func (*ListCollectionsBatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=3114:3165#L86">Err</a>
+					<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor.Err">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lcbc *<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>) Err() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Err returns the latest error encountered.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ListCollectionsBatchCursor.ID">func (*ListCollectionsBatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=1483:1533#L34">ID</a>
+					<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor.ID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lcbc *<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>) ID() <a href="godoc.26.html#int64">int64</a></pre>
+				<p>
+ID returns the cursor ID for this batch cursor.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ListCollectionsBatchCursor.Next">func (*ListCollectionsBatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=1906:1976#L43">Next</a>
+					<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lcbc *<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>) Next(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Next indicates if there is another batch available. Returning false does not necessarily indicate
+that the cursor is closed. This method will return false when an empty batch is returned.
+</p>
+<p>
+If Next returns true, there is a valid batch of documents available. If Next returns false, there
+is not a valid batch of documents available.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ListCollectionsBatchCursor.Server">func (*ListCollectionsBatchCursor) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/list_collections_batch_cursor.go?s=2986:3041#L83">Server</a>
+					<a class="permalink" href="godoc.187.html#ListCollectionsBatchCursor.Server">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lcbc *<a href="godoc.187.html#ListCollectionsBatchCursor">ListCollectionsBatchCursor</a>) Server() <a href="godoc.187.html#Server">Server</a></pre>
+				<p>
+Server returns a pointer to the cursor&#39;s server.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LocalAddresser">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=1738:1803#L48">LocalAddresser</a>
+				<a class="permalink" href="godoc.187.html#LocalAddresser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+LocalAddresser is a type that is able to supply its local address
+</p>
+
+			<pre>type LocalAddresser interface {
+    LocalAddress() <a href="godoc.188.html">address</a>.<a href="godoc.188.html#Address">Address</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MarkCommandFn">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/crypt.go?s=1041:1146#L24">MarkCommandFn</a>
+				<a class="permalink" href="godoc.187.html#MarkCommandFn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MarkCommandFn is a callback used to add encryption markings to a command.
+</p>
+
+			<pre>type MarkCommandFn func(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, db <a href="godoc.26.html#string">string</a>, cmd <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) (<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, <a href="godoc.26.html#error">error</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Operation">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation.go?s=3650:8362#L84">Operation</a>
+				<a class="permalink" href="godoc.187.html#Operation">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Operation is used to execute an operation. It contains all of the common code required to
+select a server, transform an operation into a command, write the command to a connection from
+the selected server, read a response from that connection, process the response, and potentially
+retry.
+</p>
+<p>
+The required fields are Database, CommandFn, and Deployment. All other fields are optional.
+</p>
+<p>
+While an Operation can be constructed manually, drivergen should be used to generate an
+implementation of an operation instead. This will ensure that there are helpers for constructing
+the operation and that this type isn&#39;t configured incorrectly.
+</p>
+
+			<pre>type Operation struct {
+<span id="Operation.CommandFn"></span>    <span class="comment">// CommandFn is used to create the command that will be wrapped in a wire message and sent to</span>
+    <span class="comment">// the server. This function should only add the elements of the command and not start or end</span>
+    <span class="comment">// the enclosing BSON document. Per the command API, the first element must be the name of the</span>
+    <span class="comment">// command to run. This field is required.</span>
+    CommandFn func(dst []<a href="godoc.26.html#byte">byte</a>, desc <a href="godoc.191.html">description</a>.<a href="godoc.191.html#SelectedServer">SelectedServer</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+
+<span id="Operation.Database"></span>    <span class="comment">// Database is the database that the command will be run against. This field is required.</span>
+    Database <a href="godoc.26.html#string">string</a>
+
+<span id="Operation.Deployment"></span>    <span class="comment">// Deployment is the MongoDB Deployment to use. While most of the time this will be multiple</span>
+    <span class="comment">// servers, commands that need to run against a single, preselected server can use the</span>
+    <span class="comment">// SingleServerDeployment type. Commands that need to run on a preselected connection can use</span>
+    <span class="comment">// the SingleConnectionDeployment type.</span>
+    Deployment <a href="godoc.187.html#Deployment">Deployment</a>
+
+<span id="Operation.ProcessResponseFn"></span>    <span class="comment">// ProcessResponseFn is called after a response to the command is returned. The server is</span>
+    <span class="comment">// provided for types like Cursor that are required to run subsequent commands using the same</span>
+    <span class="comment">// server.</span>
+    ProcessResponseFn func(response <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>, srvr <a href="godoc.187.html#Server">Server</a>, desc <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>) <a href="godoc.26.html#error">error</a>
+
+<span id="Operation.Selector"></span>    <span class="comment">// Selector is the server selector that&#39;s used during both initial server selection and</span>
+    <span class="comment">// subsequent selection for retries. Depending on the Deployment implementation, the</span>
+    <span class="comment">// SelectServer method may not actually be called.</span>
+    Selector <a href="godoc.191.html">description</a>.<a href="godoc.191.html#ServerSelector">ServerSelector</a>
+
+<span id="Operation.ReadPreference"></span>    <span class="comment">// ReadPreference is the read preference that will be attached to the command. If this field is</span>
+    <span class="comment">// not specified a default read preference of primary will be used.</span>
+    ReadPreference *<a href="godoc.177.html">readpref</a>.<a href="godoc.177.html#ReadPref">ReadPref</a>
+
+<span id="Operation.ReadConcern"></span>    <span class="comment">// ReadConcern is the read concern used when running read commands. This field should not be set</span>
+    <span class="comment">// for write operations. If this field is set, it will be encoded onto the commands sent to the</span>
+    <span class="comment">// server.</span>
+    ReadConcern *<a href="godoc.176.html">readconcern</a>.<a href="godoc.176.html#ReadConcern">ReadConcern</a>
+
+<span id="Operation.MinimumReadConcernWireVersion"></span>    <span class="comment">// MinimumReadConcernWireVersion specifies the minimum wire version to add the read concern to</span>
+    <span class="comment">// the command being executed.</span>
+    MinimumReadConcernWireVersion <a href="godoc.26.html#int32">int32</a>
+
+<span id="Operation.WriteConcern"></span>    <span class="comment">// WriteConcern is the write concern used when running write commands. This field should not be</span>
+    <span class="comment">// set for read operations. If this field is set, it will be encoded onto the commands sent to</span>
+    <span class="comment">// the server.</span>
+    WriteConcern *<a href="godoc.179.html">writeconcern</a>.<a href="godoc.179.html#WriteConcern">WriteConcern</a>
+
+<span id="Operation.MinimumWriteConcernWireVersion"></span>    <span class="comment">// MinimumWriteConcernWireVersion specifies the minimum wire version to add the write concern to</span>
+    <span class="comment">// the command being executed.</span>
+    MinimumWriteConcernWireVersion <a href="godoc.26.html#int32">int32</a>
+
+<span id="Operation.Client"></span>    <span class="comment">// Client is the session used with this operation. This can be either an implicit or explicit</span>
+    <span class="comment">// session. If the server selected does not support sessions and Client is specified the</span>
+    <span class="comment">// behavior depends on the session type. If the session is implicit, the session fields will not</span>
+    <span class="comment">// be encoded onto the command. If the session is explicit, an error will be returned. The</span>
+    <span class="comment">// caller is responsible for ensuring that this field is nil if the Deployment does not support</span>
+    <span class="comment">// sessions.</span>
+    Client *<a href="godoc.206.html">session</a>.<a href="godoc.206.html#Client">Client</a>
+
+<span id="Operation.Clock"></span>    <span class="comment">// Clock is a cluster clock, different from the one contained within a session.Client. This</span>
+    <span class="comment">// allows updating cluster times for a global cluster clock while allowing individual session&#39;s</span>
+    <span class="comment">// cluster clocks to be only updated as far as the last command that&#39;s been run.</span>
+    Clock *<a href="godoc.206.html">session</a>.<a href="godoc.206.html#ClusterClock">ClusterClock</a>
+
+<span id="Operation.RetryMode"></span>    <span class="comment">// RetryMode specifies how to retry. There are three modes that enable retry: RetryOnce,</span>
+    <span class="comment">// RetryOncePerCommand, and RetryContext. For more information about what these modes do, please</span>
+    <span class="comment">// refer to their definitions. Both RetryMode and Type must be set for retryability to be enabled.</span>
+    RetryMode *<a href="godoc.187.html#RetryMode">RetryMode</a>
+
+<span id="Operation.Type"></span>    <span class="comment">// Type specifies the kind of operation this is. There is only one mode that enables retry: Write.</span>
+    <span class="comment">// For more information about what this mode does, please refer to it&#39;s definition. Both Type and</span>
+    <span class="comment">// RetryMode must be set for retryability to be enabled.</span>
+    Type <a href="godoc.187.html#Type">Type</a>
+
+<span id="Operation.Batches"></span>    <span class="comment">// Batches contains the documents that are split when executing a write command that potentially</span>
+    <span class="comment">// has more documents than can fit in a single command. This should only be specified for</span>
+    <span class="comment">// commands that are batch compatible. For more information, please refer to the definition of</span>
+    <span class="comment">// Batches.</span>
+    Batches *<a href="godoc.187.html#Batches">Batches</a>
+
+<span id="Operation.Legacy"></span>    <span class="comment">// Legacy sets the legacy type for this operation. There are only 3 types that require legacy</span>
+    <span class="comment">// support: find, getMore, and killCursors. For more information about LegacyOperationKind,</span>
+    <span class="comment">// please refer to it&#39;s definition.</span>
+    Legacy <a href="godoc.187.html#LegacyOperationKind">LegacyOperationKind</a>
+
+<span id="Operation.CommandMonitor"></span>    <span class="comment">// CommandMonitor specifies the monitor to use for APM events. If this field is not set,</span>
+    <span class="comment">// no events will be reported.</span>
+    CommandMonitor *<a href="godoc.167.html">event</a>.<a href="godoc.167.html#CommandMonitor">CommandMonitor</a>
+
+<span id="Operation.Crypt"></span>    <span class="comment">// Crypt specifies a Crypt object to use for automatic client side encryption and decryption.</span>
+    Crypt *<a href="godoc.187.html#Crypt">Crypt</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Operation.Execute">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation.go?s=9870:9940#L225">Execute</a>
+					<a class="permalink" href="godoc.187.html#Operation.Execute">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.187.html#Operation">Operation</a>) Execute(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, scratch []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Execute runs this operation. The scratch parameter will be used and overwritten (potentially many
+times), this should mainly be used to enable pooling of byte slices.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Operation.Validate">func (Operation) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/operation.go?s=9246:9282#L207">Validate</a>
+					<a class="permalink" href="godoc.187.html#Operation.Validate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (op <a href="godoc.187.html#Operation">Operation</a>) Validate() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Validate validates this operation, ensuring the fields are set properly.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="QueryFailureError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=1513:1591#L28">QueryFailureError</a>
+				<a class="permalink" href="godoc.187.html#QueryFailureError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+QueryFailureError is an error representing a command failure as a document.
+</p>
+
+			<pre>type QueryFailureError struct {
+<span id="QueryFailureError.Message"></span>    Message  <a href="godoc.26.html#string">string</a>
+<span id="QueryFailureError.Response"></span>    Response <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="QueryFailureError.Error">func (QueryFailureError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=1634:1675#L34">Error</a>
+					<a class="permalink" href="godoc.187.html#QueryFailureError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#QueryFailureError">QueryFailureError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Error implements the error interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ResponseError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=1798:1858#L39">ResponseError</a>
+				<a class="permalink" href="godoc.187.html#ResponseError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ResponseError is an error parsing the response to a command.
+</p>
+
+			<pre>type ResponseError struct {
+<span id="ResponseError.Message"></span>    Message <a href="godoc.26.html#string">string</a>
+<span id="ResponseError.Wrapped"></span>    Wrapped <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCommandResponseError">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=1919:1984#L45">NewCommandResponseError</a>
+					<a class="permalink" href="godoc.187.html#NewCommandResponseError">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCommandResponseError(msg <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>) <a href="godoc.187.html#ResponseError">ResponseError</a></pre>
+				<p>
+NewCommandResponseError creates a CommandResponseError.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ResponseError.Error">func (ResponseError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=2081:2118#L50">Error</a>
+					<a class="permalink" href="godoc.187.html#ResponseError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.187.html#ResponseError">ResponseError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Error implements the error interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RetryMode">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=6330:6349#L151">RetryMode</a>
+				<a class="permalink" href="godoc.187.html#RetryMode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RetryMode specifies the way that retries are handled for retryable operations.
+</p>
+
+			<pre>type RetryMode <a href="godoc.26.html#uint">uint</a></pre>
+
+			
+				<p>
+These are the modes available for retrying.
+</p>
+
+				<pre>const (
+    <span class="comment">// RetryNone disables retrying.</span>
+    <span id="RetryNone">RetryNone</span> <a href="godoc.187.html#RetryMode">RetryMode</a> = <a href="godoc.26.html#iota">iota</a>
+    <span class="comment">// RetryOnce will enable retrying the entire operation once.</span>
+    <span id="RetryOnce">RetryOnce</span>
+    <span class="comment">// RetryOncePerCommand will enable retrying each command associated with an operation. For</span>
+    <span class="comment">// example, if an insert is batch split into 4 commands then each of those commands is eligible</span>
+    <span class="comment">// for one retry.</span>
+    <span id="RetryOncePerCommand">RetryOncePerCommand</span>
+    <span class="comment">// RetryContext will enable retrying until the context.Context&#39;s deadline is exceeded or it is</span>
+    <span class="comment">// cancelled.</span>
+    <span id="RetryContext">RetryContext</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RetryMode.Enabled">func (RetryMode) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=6952:6986#L169">Enabled</a>
+					<a class="permalink" href="godoc.187.html#RetryMode.Enabled">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rm <a href="godoc.187.html#RetryMode">RetryMode</a>) Enabled() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Enabled returns if this RetryMode enables retrying.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Server">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=1299:1373#L33">Server</a>
+				<a class="permalink" href="godoc.187.html#Server">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Server represents a MongoDB server. Implementations should pool connections and handle the
+retrieving and returning of connections.
+</p>
+
+			<pre>type Server interface {
+    Connection(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) (<a href="godoc.187.html#Connection">Connection</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SingleConnectionDeployment">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=3956:4010#L100">SingleConnectionDeployment</a>
+				<a class="permalink" href="godoc.187.html#SingleConnectionDeployment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SingleConnectionDeployment is an implementation of Deployment that always returns the same
+Connection.
+</p>
+
+			<pre>type SingleConnectionDeployment struct{ C <a href="godoc.187.html#Connection">Connection</a> }
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SingleConnectionDeployment.Connection">func (SingleConnectionDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=5142:5227#L123">Connection</a>
+					<a class="permalink" href="godoc.187.html#SingleConnectionDeployment.Connection">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ssd <a href="godoc.187.html#SingleConnectionDeployment">SingleConnectionDeployment</a>) Connection(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) (<a href="godoc.187.html#Connection">Connection</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Connection implements the Server interface. It always returns the embedded connection.
+</p>
+<p>
+This method returns a Connection with a no-op Close method. This ensures that a
+SingleConnectionDeployment can be used across multiple operation executions.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SingleConnectionDeployment.Kind">func (SingleConnectionDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=4785:4854#L117">Kind</a>
+					<a class="permalink" href="godoc.187.html#SingleConnectionDeployment.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ssd <a href="godoc.187.html#SingleConnectionDeployment">SingleConnectionDeployment</a>) Kind() <a href="godoc.191.html">description</a>.<a href="godoc.191.html#TopologyKind">TopologyKind</a></pre>
+				<p>
+Kind implements the Deployment interface. It always returns description.Single.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SingleConnectionDeployment.SelectServer">func (SingleConnectionDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=4336:4447#L108">SelectServer</a>
+					<a class="permalink" href="godoc.187.html#SingleConnectionDeployment.SelectServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ssd <a href="godoc.187.html#SingleConnectionDeployment">SingleConnectionDeployment</a>) SelectServer(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, <a href="godoc.191.html">description</a>.<a href="godoc.191.html#ServerSelector">ServerSelector</a>) (<a href="godoc.187.html#Server">Server</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SelectServer implements the Deployment interface. This method does not use the
+description.SelectedServer provided and instead returns itself. The Connections returned from the
+Connection method have a no-op Close method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SingleConnectionDeployment.SupportsRetryWrites">func (SingleConnectionDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=4619:4683#L114">SupportsRetryWrites</a>
+					<a class="permalink" href="godoc.187.html#SingleConnectionDeployment.SupportsRetryWrites">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ssd <a href="godoc.187.html#SingleConnectionDeployment">SingleConnectionDeployment</a>) SupportsRetryWrites() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+SupportsRetryWrites implements the Deployment interface. It always returns Type(0), because a single
+connection does not support retryability.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SingleServerDeployment">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=3061:3105#L81">SingleServerDeployment</a>
+				<a class="permalink" href="godoc.187.html#SingleServerDeployment">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SingleServerDeployment is an implementation of Deployment that always returns a single server.
+</p>
+
+			<pre>type SingleServerDeployment struct{ <a href="godoc.187.html#Server">Server</a> }
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SingleServerDeployment.Kind">func (SingleServerDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=3754:3815#L96">Kind</a>
+					<a class="permalink" href="godoc.187.html#SingleServerDeployment.Kind">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.187.html#SingleServerDeployment">SingleServerDeployment</a>) Kind() <a href="godoc.191.html">description</a>.<a href="godoc.191.html#TopologyKind">TopologyKind</a></pre>
+				<p>
+Kind implements the Deployment interface. It always returns description.Single.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SingleServerDeployment.SelectServer">func (SingleServerDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=3314:3421#L87">SelectServer</a>
+					<a class="permalink" href="godoc.187.html#SingleServerDeployment.SelectServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ssd <a href="godoc.187.html#SingleServerDeployment">SingleServerDeployment</a>) SelectServer(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, <a href="godoc.191.html">description</a>.<a href="godoc.191.html#ServerSelector">ServerSelector</a>) (<a href="godoc.187.html#Server">Server</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SelectServer implements the Deployment interface. This method does not use the
+description.SelectedServer provided and instead returns the embedded Server.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SingleServerDeployment.SupportsRetryWrites">func (SingleServerDeployment) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=3596:3652#L93">SupportsRetryWrites</a>
+					<a class="permalink" href="godoc.187.html#SingleServerDeployment.SupportsRetryWrites">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.187.html#SingleServerDeployment">SingleServerDeployment</a>) SupportsRetryWrites() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+SupportsRetryWrites implements the Deployment interface. It always returns Type(0), because a single
+server does not support retryability.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Subscriber">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=1060:1159#L26">Subscriber</a>
+				<a class="permalink" href="godoc.187.html#Subscriber">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Subscriber represents a type to which another type can subscribe. A subscription contains a channel that
+is updated with topology descriptions.
+</p>
+
+			<pre>type Subscriber interface {
+    Subscribe() (*<a href="godoc.187.html#Subscription">Subscription</a>, <a href="godoc.26.html#error">error</a>)
+    Unsubscribe(*<a href="godoc.187.html#Subscription">Subscription</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Subscription">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=827:908#L19">Subscription</a>
+				<a class="permalink" href="godoc.187.html#Subscription">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Subscription represents a subscription to topology updates. A subscriber can receive updates through the
+Updates field.
+</p>
+
+			<pre>type Subscription struct {
+<span id="Subscription.Updates"></span>    Updates &lt;-chan <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Topology">Topology</a>
+<span id="Subscription.ID"></span>    ID      <a href="godoc.26.html#uint64">uint64</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Type">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/driver.go?s=6150:6164#L141">Type</a>
+				<a class="permalink" href="godoc.187.html#Type">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Type specifies whether an operation is a read, write, or unknown.
+</p>
+
+			<pre>type Type <a href="godoc.26.html#uint">uint</a></pre>
+
+			
+				<p>
+THese are the availables types of Type.
+</p>
+
+				<pre>const (
+    <span id="Write">Write</span> <a href="godoc.187.html#Type">Type</a>
+    <span id="Read">Read</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="WriteCommandError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=2294:2396#L58">WriteCommandError</a>
+				<a class="permalink" href="godoc.187.html#WriteCommandError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+WriteCommandError is an error for a write command.
+</p>
+
+			<pre>type WriteCommandError struct {
+<span id="WriteCommandError.WriteConcernError"></span>    WriteConcernError *<a href="godoc.187.html#WriteConcernError">WriteConcernError</a>
+<span id="WriteCommandError.WriteErrors"></span>    WriteErrors       <a href="godoc.187.html#WriteErrors">WriteErrors</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="WriteCommandError.Error">func (WriteCommandError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=2849:2892#L74">Error</a>
+					<a class="permalink" href="godoc.187.html#WriteCommandError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteCommandError">WriteCommandError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WriteCommandError.Retryable">func (WriteCommandError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=3134:3179#L83">Retryable</a>
+					<a class="permalink" href="godoc.187.html#WriteCommandError.Retryable">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteCommandError">WriteCommandError</a>) Retryable() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Retryable returns true if the error is retryable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WriteCommandError.UnsupportedStorageEngine">func (WriteCommandError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=2591:2651#L65">UnsupportedStorageEngine</a>
+					<a class="permalink" href="godoc.187.html#WriteCommandError.UnsupportedStorageEngine">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteCommandError">WriteCommandError</a>) UnsupportedStorageEngine() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+UnsupportedStorageEngine returns whether or not the WriteCommandError comes from a retryable write being attempted
+against a server that has a storage engine where they are not supported
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WriteConcernError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=3382:3489#L92">WriteConcernError</a>
+				<a class="permalink" href="godoc.187.html#WriteConcernError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+WriteConcernError is a write concern failure that occurred as a result of a
+write operation.
+</p>
+
+			<pre>type WriteConcernError struct {
+<span id="WriteConcernError.Name"></span>    Name    <a href="godoc.26.html#string">string</a>
+<span id="WriteConcernError.Code"></span>    Code    <a href="godoc.26.html#int64">int64</a>
+<span id="WriteConcernError.Message"></span>    Message <a href="godoc.26.html#string">string</a>
+<span id="WriteConcernError.Details"></span>    Details <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="WriteConcernError.Error">func (WriteConcernError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=3491:3534#L99">Error</a>
+					<a class="permalink" href="godoc.187.html#WriteConcernError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteConcernError">WriteConcernError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WriteConcernError.NodeIsRecovering">func (WriteConcernError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=4049:4101#L121">NodeIsRecovering</a>
+					<a class="permalink" href="godoc.187.html#WriteConcernError.NodeIsRecovering">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteConcernError">WriteConcernError</a>) NodeIsRecovering() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NodeIsRecovering returns true if this error is a node is recovering error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WriteConcernError.NodeIsShuttingDown">func (WriteConcernError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=4349:4403#L131">NodeIsShuttingDown</a>
+					<a class="permalink" href="godoc.187.html#WriteConcernError.NodeIsShuttingDown">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteConcernError">WriteConcernError</a>) NodeIsShuttingDown() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NodeIsShuttingDown returns true if this error is a node is shutting down error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WriteConcernError.NotMaster">func (WriteConcernError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=4636:4681#L141">NotMaster</a>
+					<a class="permalink" href="godoc.187.html#WriteConcernError.NotMaster">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteConcernError">WriteConcernError</a>) NotMaster() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+NotMaster returns true if this error is a not master error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WriteConcernError.Retryable">func (WriteConcernError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=3691:3736#L107">Retryable</a>
+					<a class="permalink" href="godoc.187.html#WriteConcernError.Retryable">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wce <a href="godoc.187.html#WriteConcernError">WriteConcernError</a>) Retryable() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Retryable returns true if the error is retryable
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WriteError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=4927:4999#L152">WriteError</a>
+				<a class="permalink" href="godoc.187.html#WriteError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+WriteError is a non-write concern failure that occurred as a result of a write
+operation.
+</p>
+
+			<pre>type WriteError struct {
+<span id="WriteError.Index"></span>    Index   <a href="godoc.26.html#int64">int64</a>
+<span id="WriteError.Code"></span>    Code    <a href="godoc.26.html#int64">int64</a>
+<span id="WriteError.Message"></span>    Message <a href="godoc.26.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="WriteError.Error">func (WriteError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=5001:5036#L158">Error</a>
+					<a class="permalink" href="godoc.187.html#WriteError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (we <a href="godoc.187.html#WriteError">WriteError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WriteErrors">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=5167:5196#L162">WriteErrors</a>
+				<a class="permalink" href="godoc.187.html#WriteErrors">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+WriteErrors is a group of non-write concern failures that occurred as a result
+of a write operation.
+</p>
+
+			<pre>type WriteErrors []<a href="godoc.187.html#WriteError">WriteError</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="WriteErrors.Error">func (WriteErrors) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/errors.go?s=5198:5234#L164">Error</a>
+					<a class="permalink" href="godoc.187.html#WriteErrors.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (we <a href="godoc.187.html#WriteErrors">WriteErrors</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.186.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.188.html">address</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.189.html">auth</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package auth is not for public use.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.190.html">connstring</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.191.html">description</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.193.html">dns</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.194.html">drivergen</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.195.html">drivertest</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.196.html">examples</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.197.html">cluster_monitoring</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.198.html">count</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.199.html">server_monitoring</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.200.html">workload</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.201.html">integration</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.202.html">mongocrypt</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.204.html">options</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.205.html">operation</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.206.html">session</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.207.html">topology</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package topology contains types that handles the discovery, monitoring, and selection of servers.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.208.html">uuid</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.209.html">wiremessage</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

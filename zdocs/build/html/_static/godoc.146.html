@@ -1,0 +1,3042 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>codec - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.146.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package codec
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/ugorji/go/codec"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.146.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.146.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.146.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package codec provides a
+High Performance, Feature-Rich Idiomatic Go 1.4+ codec/encoding library
+for binc, msgpack, cbor, json.
+</p>
+<p>
+Supported Serialization formats are:
+</p>
+<pre>- msgpack: <a href="https://github.com/msgpack/msgpack">https://github.com/msgpack/msgpack</a>
+- binc:    <a href="http://github.com/ugorji/binc">http://github.com/ugorji/binc</a>
+- cbor:    <a href="http://cbor.io">http://cbor.io</a> <a href="http://tools.ietf.org/html/rfc7049">http://tools.ietf.org/html/rfc7049</a>
+- json:    <a href="http://json.org">http://json.org</a> <a href="http://tools.ietf.org/html/rfc7159">http://tools.ietf.org/html/rfc7159</a>
+- simple:
+</pre>
+<p>
+This package will carefully use &#39;package unsafe&#39; for performance reasons in specific places.
+You can build without unsafe use by passing the safe or appengine tag
+i.e. &#39;go install -tags=safe ...&#39;.
+</p>
+<p>
+For detailed usage information, read the primer at <a href="http://ugorji.net/blog/go-codec-primer">http://ugorji.net/blog/go-codec-primer</a> .
+</p>
+<p>
+The idiomatic Go support is as seen in other encoding packages in
+the standard library (ie json, xml, gob, etc).
+</p>
+<p>
+Rich Feature Set includes:
+</p>
+<pre>- Simple but extremely powerful and feature-rich API
+- Support for go 1.4 and above, while selectively using newer APIs for later releases
+- Excellent code coverage ( &gt; 90% )
+- Very High Performance.
+  Our extensive benchmarks show us outperforming Gob, Json, Bson, etc by 2-4X.
+- Careful selected use of &#39;unsafe&#39; for targeted performance gains.
+- 100% safe mode supported, where &#39;unsafe&#39; is not used at all.
+- Lock-free (sans mutex) concurrency for scaling to 100&#39;s of cores
+- In-place updates during decode, with option to zero value in maps and slices prior to decode
+- Coerce types where appropriate
+  e.g. decode an int in the stream into a float, decode numbers from formatted strings, etc
+- Corner Cases:
+  Overflows, nil maps/slices, nil values in streams are handled correctly
+- Standard field renaming via tags
+- Support for omitting empty fields during an encoding
+- Encoding from any value and decoding into pointer to any value
+  (struct, slice, map, primitives, pointers, interface{}, etc)
+- Extensions to support efficient encoding/decoding of any named types
+- Support encoding.(Binary|Text)(M|Unm)arshaler interfaces
+- Support IsZero() bool to determine if a value is a zero value.
+  Analogous to time.Time.IsZero() bool.
+- Decoding without a schema (into a interface{}).
+  Includes Options to configure what specific map or slice type to use
+  when decoding an encoded list or map into a nil interface{}
+- Mapping a non-interface type to an interface, so we can decode appropriately
+  into any interface type with a correctly configured non-interface value.
+- Encode a struct as an array, and decode struct from an array in the data stream
+- Option to encode struct keys as numbers (instead of strings)
+  (to support structured streams with fields encoded as numeric codes)
+- Comprehensive support for anonymous fields
+- Fast (no-reflection) encoding/decoding of common maps and slices
+- Code-generation for faster performance, supported in go 1.6+
+- Support binary (e.g. messagepack, cbor) and text (e.g. json) formats
+- Support indefinite-length formats to enable true streaming
+  (for formats which support it e.g. json, cbor)
+- Support canonical encoding, where a value is ALWAYS encoded as same sequence of bytes.
+  This mostly applies to maps, where iteration order is non-deterministic.
+- NIL in data stream decoded as zero value
+- Never silently skip data when decoding.
+  User decides whether to return an error or silently skip data when keys or indexes
+  in the data stream do not map to fields in the struct.
+- Detect and error when encoding a cyclic reference (instead of stack overflow shutdown)
+- Encode/Decode from/to chan types (for iterative streaming support)
+- Drop-in replacement for encoding/json. `json:` key in struct tag supported.
+- Provides a RPC Server and Client Codec for net/rpc communication protocol.
+- Handle unique idiosyncrasies of codecs e.g.
+  - For messagepack, configure how ambiguities in handling raw bytes are resolved
+  - For messagepack, provide rpc server/client codec to support
+    msgpack-rpc protocol defined at:
+    <a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md">https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md</a>
+</pre>
+<h3 id="hdr-Extension_Support">Extension Support</h3>
+<p>
+Users can register a function to handle the encoding or decoding of
+their custom types.
+</p>
+<p>
+There are no restrictions on what the custom type can be. Some examples:
+</p>
+<pre>type BisSet   []int
+type BitSet64 uint64
+type UUID     string
+type MyStructWithUnexportedFields struct { a int; b bool; c []int; }
+type GifImage struct { ... }
+</pre>
+<p>
+As an illustration, MyStructWithUnexportedFields would normally be
+encoded as an empty map because it has no exported fields, while UUID
+would be encoded as a string. However, with extension support, you can
+encode any of these however you like.
+</p>
+<p>
+There is also seamless support provided for registering an extension (with a tag)
+but letting the encoding mechanism default to the standard way.
+</p>
+<h3 id="hdr-Custom_Encoding_and_Decoding">Custom Encoding and Decoding</h3>
+<p>
+This package maintains symmetry in the encoding and decoding halfs.
+We determine how to encode or decode by walking this decision tree
+</p>
+<pre>- is there an extension registered for the type?
+- is type a codec.Selfer?
+- is format binary, and is type a encoding.BinaryMarshaler and BinaryUnmarshaler?
+- is format specifically json, and is type a encoding/json.Marshaler and Unmarshaler?
+- is format text-based, and type an encoding.TextMarshaler and TextUnmarshaler?
+- else we use a pair of functions based on the &#34;kind&#34; of the type e.g. map, slice, int64, etc
+</pre>
+<p>
+This symmetry is important to reduce chances of issues happening because the
+encoding and decoding sides are out of sync e.g. decoded via very specific
+encoding.TextUnmarshaler but encoded via kind-specific generalized mode.
+</p>
+<p>
+Consequently, if a type only defines one-half of the symmetry
+(e.g. it implements UnmarshalJSON() but not MarshalJSON() ),
+then that type doesn&#39;t satisfy the check and we will continue walking down the
+decision tree.
+</p>
+<h3 id="hdr-RPC">RPC</h3>
+<p>
+RPC Client and Server Codecs are implemented, so the codecs can be used
+with the standard net/rpc package.
+</p>
+<h3 id="hdr-Usage">Usage</h3>
+<p>
+The Handle is SAFE for concurrent READ, but NOT SAFE for concurrent modification.
+</p>
+<p>
+The Encoder and Decoder are NOT safe for concurrent use.
+</p>
+<p>
+Consequently, the usage model is basically:
+</p>
+<pre>- Create and initialize the Handle before any use.
+  Once created, DO NOT modify it.
+- Multiple Encoders or Decoders can now use the Handle concurrently.
+  They only read information off the Handle (never write).
+- However, each Encoder or Decoder MUST not be used concurrently
+- To re-use an Encoder/Decoder, call Reset(...) on it first.
+  This allows you use state maintained on the Encoder/Decoder.
+</pre>
+<p>
+Sample usage model:
+</p>
+<pre>// create and configure Handle
+var (
+  bh codec.BincHandle
+  mh codec.MsgpackHandle
+  ch codec.CborHandle
+)
+
+mh.MapType = reflect.TypeOf(map[string]interface{}(nil))
+
+// configure extensions
+// e.g. for msgpack, define functions and enable Time support for tag 1
+// mh.SetExt(reflect.TypeOf(time.Time{}), 1, myExt)
+
+// create and use decoder/encoder
+var (
+  r io.Reader
+  w io.Writer
+  b []byte
+  h = &amp;bh // or mh to use msgpack
+)
+
+dec = codec.NewDecoder(r, h)
+dec = codec.NewDecoderBytes(b, h)
+err = dec.Decode(&amp;v)
+
+enc = codec.NewEncoder(w, h)
+enc = codec.NewEncoderBytes(&amp;b, h)
+err = enc.Encode(v)
+
+//RPC Server
+go func() {
+    for {
+        conn, err := listener.Accept()
+        rpcCodec := codec.GoRpc.ServerCodec(conn, h)
+        //OR rpcCodec := codec.MsgpackSpecRpc.ServerCodec(conn, h)
+        rpc.ServeCodec(rpcCodec)
+    }
+}()
+
+//RPC Communication (client side)
+conn, err = net.Dial(&#34;tcp&#34;, &#34;localhost:5555&#34;)
+rpcCodec := codec.GoRpc.ClientCodec(conn, h)
+//OR rpcCodec := codec.MsgpackSpecRpc.ClientCodec(conn, h)
+client := rpc.NewClientWithCodec(rpcCodec)
+</pre>
+<h3 id="hdr-Running_Tests">Running Tests</h3>
+<p>
+To run tests, use the following:
+</p>
+<pre>go test
+</pre>
+<p>
+To run the full suite of tests, use the following:
+</p>
+<pre>go test -tags alltests -run Suite
+</pre>
+<p>
+You can run the tag &#39;safe&#39; to run tests or build in safe mode. e.g.
+</p>
+<pre>go test -tags safe -run Json
+go test -tags &#34;alltests safe&#34; -run Suite
+</pre>
+<p>
+Running Benchmarks
+</p>
+<pre>cd bench
+go test -bench . -benchmem -benchtime 1s
+</pre>
+<p>
+Please see <a href="http://github.com/ugorji/go-codec-bench">http://github.com/ugorji/go-codec-bench</a> .
+</p>
+<h3 id="hdr-Caveats">Caveats</h3>
+<p>
+Struct fields matching the following are ignored during encoding and decoding
+</p>
+<pre>- struct tag value set to -
+- func, complex numbers, unsafe pointers
+- unexported and not embedded
+- unexported and embedded and not struct kind
+- unexported and embedded pointers (from go1.10)
+</pre>
+<p>
+Every other field in a struct will be encoded/decoded.
+</p>
+<p>
+Embedded fields are encoded as if they exist in the top-level struct,
+with some caveats. See Encode documentation.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.146.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.146.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.146.html#GenHelperDecoder">func GenHelperDecoder(d *Decoder) (gd genHelperDecoder, dd genHelperDecDriver)</a></dd>
+			
+				
+				<dd><a href="godoc.146.html#GenHelperEncoder">func GenHelperEncoder(e *Encoder) (ge genHelperEncoder, ee genHelperEncDriver)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.146.html#BasicHandle">type BasicHandle</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BasicHandle.AddExt">func (o *BasicHandle) AddExt(rt reflect.Type, tag byte, encfn func(reflect.Value) ([]byte, error), decfn func(reflect.Value, []byte) error) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BasicHandle.Intf2Impl">func (o *BasicHandle) Intf2Impl(intf, impl reflect.Type) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BasicHandle.SetExt">func (o *BasicHandle) SetExt(rt reflect.Type, tag uint64, ext Ext) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#BincHandle">type BincHandle</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BincHandle.AddExt">func (o *BincHandle) AddExt(rt reflect.Type, tag byte, encfn func(reflect.Value) ([]byte, error), decfn func(reflect.Value, []byte) error) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BincHandle.Intf2Impl">func (o *BincHandle) Intf2Impl(intf, impl reflect.Type) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BincHandle.Name">func (h *BincHandle) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BincHandle.SetBytesExt">func (h *BincHandle) SetBytesExt(rt reflect.Type, tag uint64, ext BytesExt) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#BincHandle.SetExt">func (o *BincHandle) SetExt(rt reflect.Type, tag uint64, ext Ext) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#BytesExt">type BytesExt</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#CborHandle">type CborHandle</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#CborHandle.AddExt">func (o *CborHandle) AddExt(rt reflect.Type, tag byte, encfn func(reflect.Value) ([]byte, error), decfn func(reflect.Value, []byte) error) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#CborHandle.Intf2Impl">func (o *CborHandle) Intf2Impl(intf, impl reflect.Type) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#CborHandle.Name">func (h *CborHandle) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#CborHandle.SetExt">func (o *CborHandle) SetExt(rt reflect.Type, tag uint64, ext Ext) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#CborHandle.SetInterfaceExt">func (h *CborHandle) SetInterfaceExt(rt reflect.Type, tag uint64, ext InterfaceExt) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#DecodeOptions">type DecodeOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#Decoder">type Decoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#NewDecoder">func NewDecoder(r io.Reader, h Handle) *Decoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#NewDecoderBytes">func NewDecoderBytes(in []byte, h Handle) *Decoder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Decoder.Decode">func (d *Decoder) Decode(v interface{}) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Decoder.MustDecode">func (d *Decoder) MustDecode(v interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Decoder.NumBytesRead">func (d *Decoder) NumBytesRead() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Decoder.Release">func (d *Decoder) Release()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Decoder.Reset">func (d *Decoder) Reset(r io.Reader)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Decoder.ResetBytes">func (d *Decoder) ResetBytes(in []byte)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#EncodeOptions">type EncodeOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#Encoder">type Encoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#NewEncoder">func NewEncoder(w io.Writer, h Handle) *Encoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#NewEncoderBytes">func NewEncoderBytes(out *[]byte, h Handle) *Encoder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Encoder.Encode">func (e *Encoder) Encode(v interface{}) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Encoder.MustEncode">func (e *Encoder) MustEncode(v interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Encoder.Release">func (e *Encoder) Release()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Encoder.Reset">func (e *Encoder) Reset(w io.Writer)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#Encoder.ResetBytes">func (e *Encoder) ResetBytes(out *[]byte)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#Ext">type Ext</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#Handle">type Handle</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#InterfaceExt">type InterfaceExt</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#JsonHandle">type JsonHandle</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#JsonHandle.AddExt">func (o *JsonHandle) AddExt(rt reflect.Type, tag byte, encfn func(reflect.Value) ([]byte, error), decfn func(reflect.Value, []byte) error) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#JsonHandle.Intf2Impl">func (o *JsonHandle) Intf2Impl(intf, impl reflect.Type) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#JsonHandle.Name">func (h *JsonHandle) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#JsonHandle.SetExt">func (o *JsonHandle) SetExt(rt reflect.Type, tag uint64, ext Ext) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#JsonHandle.SetInterfaceExt">func (h *JsonHandle) SetInterfaceExt(rt reflect.Type, tag uint64, ext InterfaceExt) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#MapBySlice">type MapBySlice</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#MissingFielder">type MissingFielder</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#MsgpackHandle">type MsgpackHandle</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#MsgpackHandle.AddExt">func (o *MsgpackHandle) AddExt(rt reflect.Type, tag byte, encfn func(reflect.Value) ([]byte, error), decfn func(reflect.Value, []byte) error) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#MsgpackHandle.Intf2Impl">func (o *MsgpackHandle) Intf2Impl(intf, impl reflect.Type) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#MsgpackHandle.Name">func (h *MsgpackHandle) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#MsgpackHandle.SetBytesExt">func (h *MsgpackHandle) SetBytesExt(rt reflect.Type, tag uint64, ext BytesExt) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#MsgpackHandle.SetExt">func (o *MsgpackHandle) SetExt(rt reflect.Type, tag uint64, ext Ext) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#MsgpackSpecRpcMultiArgs">type MsgpackSpecRpcMultiArgs</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#RPCOptions">type RPCOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#Raw">type Raw</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#RawExt">type RawExt</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#Rpc">type Rpc</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#Selfer">type Selfer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.146.html#SimpleHandle">type SimpleHandle</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#SimpleHandle.AddExt">func (o *SimpleHandle) AddExt(rt reflect.Type, tag byte, encfn func(reflect.Value) ([]byte, error), decfn func(reflect.Value, []byte) error) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#SimpleHandle.Intf2Impl">func (o *SimpleHandle) Intf2Impl(intf, impl reflect.Type) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#SimpleHandle.Name">func (h *SimpleHandle) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#SimpleHandle.SetBytesExt">func (h *SimpleHandle) SetBytesExt(rt reflect.Type, tag uint64, ext BytesExt) (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#SimpleHandle.SetExt">func (o *SimpleHandle) SetExt(rt reflect.Type, tag uint64, ext Ext) (err error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.146.html#TypeInfos">type TypeInfos</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.146.html#NewTypeInfos">func NewTypeInfos(tags []string) *TypeInfos</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/0_importpath.go">0_importpath.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/binc.go">binc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/cbor.go">cbor.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go">decode.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go">encode.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/fast-path.generated.go">fast-path.generated.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/float.go">float.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/gen-helper.generated.go">gen-helper.generated.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/goversion_arrayof_gte_go15.go">goversion_arrayof_gte_go15.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/goversion_fmt_time_gte_go15.go">goversion_fmt_time_gte_go15.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/goversion_makemap_gte_go19.go">goversion_makemap_gte_go19.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/goversion_unexportedembeddedptr_gte_go110.go">goversion_unexportedembeddedptr_gte_go110.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/goversion_vendor_gte_go17.go">goversion_vendor_gte_go17.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go">helper.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper_internal.go">helper_internal.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper_unsafe.go">helper_unsafe.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/json.go">json.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/msgpack.go">msgpack.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/reader.go">reader.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/register_ext.go">register_ext.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/rpc.go">rpc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/simple.go">simple.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/sort-slice.generated.go">sort-slice.generated.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/ugorji/go/codec/writer.go">writer.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+These define some in-stream descriptors for
+manual encoding e.g. when doing explicit indefinite-length
+</p>
+
+				<pre>const (
+    <span id="CborStreamBytes">CborStreamBytes</span>  <a href="godoc.26.html#byte">byte</a> = 0x5f
+    <span id="CborStreamString">CborStreamString</span> <a href="godoc.26.html#byte">byte</a> = 0x7f
+    <span id="CborStreamArray">CborStreamArray</span>  <a href="godoc.26.html#byte">byte</a> = 0x9f
+    <span id="CborStreamMap">CborStreamMap</span>    <a href="godoc.26.html#byte">byte</a> = 0xbf
+    <span id="CborStreamBreak">CborStreamBreak</span>  <a href="godoc.26.html#byte">byte</a> = 0xff
+)</pre>
+			
+				<p>
+GenVersion is the current version of codecgen.
+</p>
+
+				<pre>const <span id="GenVersion">GenVersion</span> = 16</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+GoRpc implements Rpc using the communication protocol defined in net/rpc package.
+</p>
+<p>
+Note: network connection (from net.Dial, of type io.ReadWriteCloser) is not buffered.
+</p>
+<p>
+For performance, you should configure WriterBufferSize and ReaderBufferSize on the handle.
+This ensures we use an adequate buffer during reading and writing.
+If not configured, we will internally initialize and use a buffer during reads and writes.
+This can be turned off via the RPCNoBuffer option on the Handle.
+</p>
+<pre>var handle codec.JsonHandle
+handle.RPCNoBuffer = true // turns off attempt by rpc module to initialize a buffer
+</pre>
+<p>
+Example 1: one way of configuring buffering explicitly:
+</p>
+<pre>var handle codec.JsonHandle // codec handle
+handle.ReaderBufferSize = 1024
+handle.WriterBufferSize = 1024
+var conn io.ReadWriteCloser // connection got from a socket
+var serverCodec = GoRpc.ServerCodec(conn, handle)
+var clientCodec = GoRpc.ClientCodec(conn, handle)
+</pre>
+<p>
+Example 2: you can also explicitly create a buffered connection yourself,
+and not worry about configuring the buffer sizes in the Handle.
+</p>
+<pre>var handle codec.Handle     // codec handle
+var conn io.ReadWriteCloser // connection got from a socket
+var bufconn = struct {      // bufconn here is a buffered io.ReadWriteCloser
+    io.Closer
+    *bufio.Reader
+    *bufio.Writer
+}{conn, bufio.NewReader(conn), bufio.NewWriter(conn)}
+var serverCodec = GoRpc.ServerCodec(bufconn, handle)
+var clientCodec = GoRpc.ClientCodec(bufconn, handle)
+</pre>
+
+				<pre>var <span id="GoRpc">GoRpc</span> goRpc</pre>
+			
+				<p>
+MsgpackSpecRpc implements Rpc using the communication protocol defined in
+the msgpack spec at <a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md">https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md</a> .
+</p>
+<p>
+See GoRpc documentation, for information on buffering for better performance.
+</p>
+
+				<pre>var <span id="MsgpackSpecRpc">MsgpackSpecRpc</span> msgpackSpecRpc</pre>
+			
+				<p>
+SelfExt is a sentinel extension signifying that types
+registered with it SHOULD be encoded and decoded
+based on the native mode of the format.
+</p>
+<p>
+This allows users to define a tag for an extension,
+but signify that the types should be encoded/decoded as the native encoding.
+This way, users need not also define how to encode or decode the extension.
+</p>
+
+				<pre>var <span id="SelfExt">SelfExt</span> = &amp;extFailWrapper{}</pre>
+			
+		
+		
+			
+			
+			<h2 id="GenHelperDecoder">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/gen-helper.generated.go?s=1051:1129#L21">GenHelperDecoder</a>
+				<a class="permalink" href="godoc.146.html#GenHelperDecoder">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GenHelperDecoder(d *<a href="godoc.146.html#Decoder">Decoder</a>) (gd genHelperDecoder, dd genHelperDecDriver)</pre>
+			<p>
+GenHelperDecoder is exported so that it can be used externally by codecgen.
+</p>
+<p>
+Library users: DO NOT USE IT DIRECTLY. IT WILL CHANGE CONTINOUSLY WITHOUT NOTICE.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="GenHelperEncoder">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/gen-helper.generated.go?s=722:800#L12">GenHelperEncoder</a>
+				<a class="permalink" href="godoc.146.html#GenHelperEncoder">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GenHelperEncoder(e *<a href="godoc.146.html#Encoder">Encoder</a>) (ge genHelperEncoder, ee genHelperEncDriver)</pre>
+			<p>
+GenHelperEncoder is exported so that it can be used externally by codecgen.
+</p>
+<p>
+Library users: DO NOT USE IT DIRECTLY. IT WILL CHANGE CONTINOUSLY WITHOUT NOTICE.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BasicHandle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=18529:21377#L564">BasicHandle</a>
+				<a class="permalink" href="godoc.146.html#BasicHandle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BasicHandle encapsulates the common options and extension functions.
+</p>
+<p>
+Deprecated: DO NOT USE DIRECTLY. EXPORTED FOR GODOC BENEFIT. WILL BE REMOVED.
+</p>
+
+			<pre>type BasicHandle struct {
+
+<span id="BasicHandle.TypeInfos"></span>    <span class="comment">// TypeInfos is used to get the type info for any type.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If not configured, the default TypeInfos is used, which uses struct tag keys: codec, json</span>
+    TypeInfos *<a href="godoc.146.html#TypeInfos">TypeInfos</a>
+
+    <a href="godoc.146.html#DecodeOptions">DecodeOptions</a>
+
+    <a href="godoc.146.html#EncodeOptions">EncodeOptions</a>
+
+    <a href="godoc.146.html#RPCOptions">RPCOptions</a>
+
+<span id="BasicHandle.TimeNotBuiltin"></span>    <span class="comment">// TimeNotBuiltin configures whether time.Time should be treated as a builtin type.</span>
+    <span class="comment">//</span>
+    <span class="comment">// All Handlers should know how to encode/decode time.Time as part of the core</span>
+    <span class="comment">// format specification, or as a standard extension defined by the format.</span>
+    <span class="comment">//</span>
+    <span class="comment">// However, users can elect to handle time.Time as a custom extension, or via the</span>
+    <span class="comment">// standard library&#39;s encoding.Binary(M|Unm)arshaler or Text(M|Unm)arshaler interface.</span>
+    <span class="comment">// To elect this behavior, users can set TimeNotBuiltin=true.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: Setting TimeNotBuiltin=true can be used to enable the legacy behavior</span>
+    <span class="comment">// (for Cbor and Msgpack), where time.Time was not a builtin supported type.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: DO NOT CHANGE AFTER FIRST USE.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Once a Handle has been used, do not modify this option.</span>
+    <span class="comment">// It will lead to unexpected behaviour during encoding and decoding.</span>
+    TimeNotBuiltin <a href="godoc.26.html#bool">bool</a>
+
+<span id="BasicHandle.ExplicitRelease"></span>    <span class="comment">// ExplicitRelease configures whether Release() is implicitly called after an encode or</span>
+    <span class="comment">// decode call.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If you will hold onto an Encoder or Decoder for re-use, by calling Reset(...)</span>
+    <span class="comment">// on it or calling (Must)Encode repeatedly into a given []byte or io.Writer,</span>
+    <span class="comment">// then you do not want it to be implicitly closed after each Encode/Decode call.</span>
+    <span class="comment">// Doing so will unnecessarily return resources to the shared pool, only for you to</span>
+    <span class="comment">// grab them right after again to do another Encode/Decode call.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Instead, you configure ExplicitRelease=true, and you explicitly call Release() when</span>
+    <span class="comment">// you are truly done.</span>
+    <span class="comment">//</span>
+    <span class="comment">// As an alternative, you can explicitly set a finalizer - so its resources</span>
+    <span class="comment">// are returned to the shared pool before it is garbage-collected. Do it as below:</span>
+    <span class="comment">//    runtime.SetFinalizer(e, (*Encoder).Release)</span>
+    <span class="comment">//    runtime.SetFinalizer(d, (*Decoder).Release)</span>
+    <span class="comment">//</span>
+    <span class="comment">// Deprecated: This is not longer used as pools are only used for long-lived objects</span>
+    <span class="comment">// which are shared across goroutines.</span>
+    <span class="comment">// Setting this value has no effect. It is maintained for backward compatibility.</span>
+    ExplicitRelease <a href="godoc.26.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BasicHandle.AddExt">func (*BasicHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37158:37309#L1169">AddExt</a>
+					<a class="permalink" href="godoc.146.html#BasicHandle.AddExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#BasicHandle">BasicHandle</a>) AddExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#byte">byte</a>,
+    encfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>),
+    decfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AddExt registes an encode and decode function for a reflect.Type.
+To deregister an Ext, call AddExt with nil encfn and/or nil decfn.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BasicHandle.Intf2Impl">func (*BasicHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=39552:39619#L1256">Intf2Impl</a>
+					<a class="permalink" href="godoc.146.html#BasicHandle.Intf2Impl">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#BasicHandle">BasicHandle</a>) Intf2Impl(intf, impl <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Intf2Impl maps an interface to an implementing type.
+This allows us support infering the concrete type
+and populating it when passed an interface.
+e.g. var v io.Reader can be decoded as a bytes.Buffer, etc.
+</p>
+<p>
+Passing a nil impl will clear the mapping.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BasicHandle.SetExt">func (*BasicHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37781:37857#L1184">SetExt</a>
+					<a class="permalink" href="godoc.146.html#BasicHandle.SetExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#BasicHandle">BasicHandle</a>) SetExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#Ext">Ext</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetExt will set the extension for a tag and reflect.Type.
+Note that the type must be a named type, and specifically not a pointer or Interface.
+An error is returned if that is not honored.
+To Deregister an ext, call SetExt with nil Ext.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BincHandle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/binc.go?s=22183:22940#L952">BincHandle</a>
+				<a class="permalink" href="godoc.146.html#BincHandle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BincHandle is a Handle for the Binc Schema-Free Encoding Format
+defined at <a href="https://github.com/ugorji/binc">https://github.com/ugorji/binc</a> .
+</p>
+<p>
+BincHandle currently supports all Binc features with the following EXCEPTIONS:
+</p>
+<pre>- only integers up to 64 bits of precision are supported.
+  big integers are unsupported.
+- Only IEEE 754 binary32 and binary64 floats are supported (ie Go float32 and float64 types).
+  extended precision and decimal IEEE 754 floats are unsupported.
+- Only UTF-8 strings supported.
+  Unicode_Other Binc types (UTF16, UTF32) are currently unsupported.
+</pre>
+<p>
+Note that these EXCEPTIONS are temporary and full support is possible and may happen soon.
+</p>
+
+			<pre>type BincHandle struct {
+    <a href="godoc.146.html#BasicHandle">BasicHandle</a>
+
+<span id="BincHandle.AsSymbols"></span>    <span class="comment">// AsSymbols defines what should be encoded as symbols.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Encoding as symbols can reduce the encoded size significantly.</span>
+    <span class="comment">//</span>
+    <span class="comment">// However, during decoding, each string to be encoded as a symbol must</span>
+    <span class="comment">// be checked to see if it has been seen before. Consequently, encoding time</span>
+    <span class="comment">// will increase if using symbols, because string comparisons has a clear cost.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Values:</span>
+    <span class="comment">// - 0: default: library uses best judgement</span>
+    <span class="comment">// - 1: use symbols</span>
+    <span class="comment">// - 2: do not use symbols</span>
+    AsSymbols <a href="godoc.26.html#uint8">uint8</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BincHandle.AddExt">func (*BincHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37158:37309#L1169">AddExt</a>
+					<a class="permalink" href="godoc.146.html#BincHandle.AddExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#BincHandle">BincHandle</a>) AddExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#byte">byte</a>,
+    encfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>),
+    decfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AddExt registes an encode and decode function for a reflect.Type.
+To deregister an Ext, call AddExt with nil encfn and/or nil decfn.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BincHandle.Intf2Impl">func (*BincHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=39552:39619#L1256">Intf2Impl</a>
+					<a class="permalink" href="godoc.146.html#BincHandle.Intf2Impl">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#BincHandle">BincHandle</a>) Intf2Impl(intf, impl <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Intf2Impl maps an interface to an implementing type.
+This allows us support infering the concrete type
+and populating it when passed an interface.
+e.g. var v io.Reader can be decoded as a bytes.Buffer, etc.
+</p>
+<p>
+Passing a nil impl will clear the mapping.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BincHandle.Name">func (*BincHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/binc.go?s=22987:23021#L981">Name</a>
+					<a class="permalink" href="godoc.146.html#BincHandle.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#BincHandle">BincHandle</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the handle: binc
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BincHandle.SetBytesExt">func (*BincHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/register_ext.go?s=1071:1158#L22">SetBytesExt</a>
+					<a class="permalink" href="godoc.146.html#BincHandle.SetBytesExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#BincHandle">BincHandle</a>) SetBytesExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#BytesExt">BytesExt</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetBytesExt sets an extension
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="BincHandle.SetExt">func (*BincHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37781:37857#L1184">SetExt</a>
+					<a class="permalink" href="godoc.146.html#BincHandle.SetExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#BincHandle">BincHandle</a>) SetExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#Ext">Ext</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetExt will set the extension for a tag and reflect.Type.
+Note that the type must be a named type, and specifically not a pointer or Interface.
+An error is returned if that is not honored.
+To Deregister an ext, call SetExt with nil Ext.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="BytesExt">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=33144:33495#L1017">BytesExt</a>
+				<a class="permalink" href="godoc.146.html#BytesExt">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+BytesExt handles custom (de)serialization of types to/from []byte.
+It is used by codecs (e.g. binc, msgpack, simple) which do custom serialization of the types.
+</p>
+
+			<pre>type BytesExt interface {
+    <span class="comment">// WriteExt converts a value to a []byte.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: v is a pointer iff the registered extension type is a struct or array kind.</span>
+    WriteExt(v interface{}) []<a href="godoc.26.html#byte">byte</a>
+
+    <span class="comment">// ReadExt updates a value from a []byte.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: dst is always a pointer kind to the registered extension type.</span>
+    ReadExt(dst interface{}, src []<a href="godoc.26.html#byte">byte</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CborHandle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/cbor.go?s=17816:18450#L784">CborHandle</a>
+				<a class="permalink" href="godoc.146.html#CborHandle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CborHandle is a Handle for the CBOR encoding format,
+defined at <a href="http://tools.ietf.org/html/rfc7049">http://tools.ietf.org/html/rfc7049</a> and documented further at <a href="http://cbor.io">http://cbor.io</a> .
+</p>
+<p>
+CBOR is comprehensively supported, including support for:
+</p>
+<pre>- indefinite-length arrays/maps/bytes/strings
+- (extension) tags in range 0..0xffff (0 .. 65535)
+- half, single and double-precision floats
+- all numbers (1, 2, 4 and 8-byte signed and unsigned integers)
+- nil, true, false, ...
+- arrays and maps, bytes and text strings
+</pre>
+<p>
+None of the optional extensions (with tags) defined in the spec are supported out-of-the-box.
+Users can implement them as needed (using SetExt), including spec-documented ones:
+</p>
+<pre>- timestamp, BigNum, BigFloat, Decimals,
+- Encoded Text (e.g. URL, regexp, base64, MIME Message), etc.
+</pre>
+
+			<pre>type CborHandle struct {
+
+    <span class="comment">// noElemSeparators</span>
+    <a href="godoc.146.html#BasicHandle">BasicHandle</a>
+
+<span id="CborHandle.IndefiniteLength"></span>    <span class="comment">// IndefiniteLength=true, means that we encode using indefinitelength</span>
+    IndefiniteLength <a href="godoc.26.html#bool">bool</a>
+
+<span id="CborHandle.TimeRFC3339"></span>    <span class="comment">// TimeRFC3339 says to encode time.Time using RFC3339 format.</span>
+    <span class="comment">// If unset, we encode time.Time using seconds past epoch.</span>
+    TimeRFC3339 <a href="godoc.26.html#bool">bool</a>
+
+<span id="CborHandle.SkipUnexpectedTags"></span>    <span class="comment">// SkipUnexpectedTags says to skip over any tags for which extensions are</span>
+    <span class="comment">// not defined. This is in keeping with the cbor spec on &#34;Optional Tagging of Items&#34;.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Furthermore, this allows the skipping over of the Self Describing Tag 0xd9d9f7.</span>
+    SkipUnexpectedTags <a href="godoc.26.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CborHandle.AddExt">func (*CborHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37158:37309#L1169">AddExt</a>
+					<a class="permalink" href="godoc.146.html#CborHandle.AddExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#CborHandle">CborHandle</a>) AddExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#byte">byte</a>,
+    encfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>),
+    decfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AddExt registes an encode and decode function for a reflect.Type.
+To deregister an Ext, call AddExt with nil encfn and/or nil decfn.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CborHandle.Intf2Impl">func (*CborHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=39552:39619#L1256">Intf2Impl</a>
+					<a class="permalink" href="godoc.146.html#CborHandle.Intf2Impl">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#CborHandle">CborHandle</a>) Intf2Impl(intf, impl <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Intf2Impl maps an interface to an implementing type.
+This allows us support infering the concrete type
+and populating it when passed an interface.
+e.g. var v io.Reader can be decoded as a bytes.Buffer, etc.
+</p>
+<p>
+Passing a nil impl will clear the mapping.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CborHandle.Name">func (*CborHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/cbor.go?s=18497:18531#L806">Name</a>
+					<a class="permalink" href="godoc.146.html#CborHandle.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#CborHandle">CborHandle</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the handle: cbor
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CborHandle.SetExt">func (*CborHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37781:37857#L1184">SetExt</a>
+					<a class="permalink" href="godoc.146.html#CborHandle.SetExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#CborHandle">CborHandle</a>) SetExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#Ext">Ext</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetExt will set the extension for a tag and reflect.Type.
+Note that the type must be a named type, and specifically not a pointer or Interface.
+An error is returned if that is not honored.
+To Deregister an ext, call SetExt with nil Ext.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="CborHandle.SetInterfaceExt">func (*CborHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/register_ext.go?s=560:655#L7">SetInterfaceExt</a>
+					<a class="permalink" href="godoc.146.html#CborHandle.SetInterfaceExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#CborHandle">CborHandle</a>) SetInterfaceExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#InterfaceExt">InterfaceExt</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetInterfaceExt sets an extension
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DecodeOptions">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=5627:10379#L155">DecodeOptions</a>
+				<a class="permalink" href="godoc.146.html#DecodeOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DecodeOptions captures configuration options during decode.
+</p>
+
+			<pre>type DecodeOptions struct {
+<span id="DecodeOptions.MapType"></span>    <span class="comment">// MapType specifies type to use during schema-less decoding of a map in the stream.</span>
+    <span class="comment">// If nil (unset), we default to map[string]interface{} iff json handle and MapStringAsKey=true,</span>
+    <span class="comment">// else map[interface{}]interface{}.</span>
+    MapType <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+
+<span id="DecodeOptions.SliceType"></span>    <span class="comment">// SliceType specifies type to use during schema-less decoding of an array in the stream.</span>
+    <span class="comment">// If nil (unset), we default to []interface{} for all formats.</span>
+    SliceType <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+
+<span id="DecodeOptions.MaxInitLen"></span>    <span class="comment">// MaxInitLen defines the maxinum initial length that we &#34;make&#34; a collection</span>
+    <span class="comment">// (string, slice, map, chan). If 0 or negative, we default to a sensible value</span>
+    <span class="comment">// based on the size of an element in the collection.</span>
+    <span class="comment">//</span>
+    <span class="comment">// For example, when decoding, a stream may say that it has 2^64 elements.</span>
+    <span class="comment">// We should not auto-matically provision a slice of that size, to prevent Out-Of-Memory crash.</span>
+    <span class="comment">// Instead, we provision up to MaxInitLen, fill that up, and start appending after that.</span>
+    MaxInitLen <a href="godoc.26.html#int">int</a>
+
+<span id="DecodeOptions.ReaderBufferSize"></span>    <span class="comment">// ReaderBufferSize is the size of the buffer used when reading.</span>
+    <span class="comment">//</span>
+    <span class="comment">// if &gt; 0, we use a smart buffer internally for performance purposes.</span>
+    ReaderBufferSize <a href="godoc.26.html#int">int</a>
+
+<span id="DecodeOptions.MaxDepth"></span>    <span class="comment">// MaxDepth defines the maximum depth when decoding nested</span>
+    <span class="comment">// maps and slices. If 0 or negative, we default to a suitably large number (currently 1024).</span>
+    MaxDepth <a href="godoc.26.html#int16">int16</a>
+
+    <span class="comment">// If ErrorIfNoField, return an error when decoding a map</span>
+    <span class="comment">// from a codec stream into a struct, and no matching struct field is found.</span>
+<span id="DecodeOptions.ErrorIfNoField"></span>    ErrorIfNoField <a href="godoc.26.html#bool">bool</a>
+
+    <span class="comment">// If ErrorIfNoArrayExpand, return an error when decoding a slice/array that cannot be expanded.</span>
+    <span class="comment">// For example, the stream contains an array of 8 items, but you are decoding into a [4]T array,</span>
+    <span class="comment">// or you are decoding into a slice of length 4 which is non-addressable (and so cannot be set).</span>
+<span id="DecodeOptions.ErrorIfNoArrayExpand"></span>    ErrorIfNoArrayExpand <a href="godoc.26.html#bool">bool</a>
+
+    <span class="comment">// If SignedInteger, use the int64 during schema-less decoding of unsigned values (not uint64).</span>
+<span id="DecodeOptions.SignedInteger"></span>    SignedInteger <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.MapValueReset"></span>    <span class="comment">// MapValueReset controls how we decode into a map value.</span>
+    <span class="comment">//</span>
+    <span class="comment">// By default, we MAY retrieve the mapping for a key, and then decode into that.</span>
+    <span class="comment">// However, especially with big maps, that retrieval may be expensive and unnecessary</span>
+    <span class="comment">// if the stream already contains all that is necessary to recreate the value.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If true, we will never retrieve the previous mapping,</span>
+    <span class="comment">// but rather decode into a new value and set that in the map.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If false, we will retrieve the previous mapping if necessary e.g.</span>
+    <span class="comment">// the previous mapping is a pointer, or is a struct or array with pre-set state,</span>
+    <span class="comment">// or is an interface.</span>
+    MapValueReset <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.SliceElementReset"></span>    <span class="comment">// SliceElementReset: on decoding a slice, reset the element to a zero value first.</span>
+    <span class="comment">//</span>
+    <span class="comment">// concern: if the slice already contained some garbage, we will decode into that garbage.</span>
+    SliceElementReset <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.InterfaceReset"></span>    <span class="comment">// InterfaceReset controls how we decode into an interface.</span>
+    <span class="comment">//</span>
+    <span class="comment">// By default, when we see a field that is an interface{...},</span>
+    <span class="comment">// or a map with interface{...} value, we will attempt decoding into the</span>
+    <span class="comment">// &#34;contained&#34; value.</span>
+    <span class="comment">//</span>
+    <span class="comment">// However, this prevents us from reading a string into an interface{}</span>
+    <span class="comment">// that formerly contained a number.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If true, we will decode into a new &#34;blank&#34; value, and set that in the interface.</span>
+    <span class="comment">// If false, we will decode into whatever is contained in the interface.</span>
+    InterfaceReset <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.InternString"></span>    <span class="comment">// InternString controls interning of strings during decoding.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Some handles, e.g. json, typically will read map keys as strings.</span>
+    <span class="comment">// If the set of keys are finite, it may help reduce allocation to</span>
+    <span class="comment">// look them up from a map (than to allocate them afresh).</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: Handles will be smart when using the intern functionality.</span>
+    <span class="comment">// Every string should not be interned.</span>
+    <span class="comment">// An excellent use-case for interning is struct field names,</span>
+    <span class="comment">// or map keys where key type is string.</span>
+    InternString <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.PreferArrayOverSlice"></span>    <span class="comment">// PreferArrayOverSlice controls whether to decode to an array or a slice.</span>
+    <span class="comment">//</span>
+    <span class="comment">// This only impacts decoding into a nil interface{}.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Consequently, it has no effect on codecgen.</span>
+    <span class="comment">//</span>
+    <span class="comment">// *Note*: This only applies if using go1.5 and above,</span>
+    <span class="comment">// as it requires reflect.ArrayOf support which was absent before go1.5.</span>
+    PreferArrayOverSlice <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.DeleteOnNilMapValue"></span>    <span class="comment">// DeleteOnNilMapValue controls how to decode a nil value in the stream.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If true, we will delete the mapping of the key.</span>
+    <span class="comment">// Else, just set the mapping to the zero value of the type.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Deprecated: This does NOTHING and is left behind for compiling compatibility.</span>
+    <span class="comment">// This change is necessitated because &#39;nil&#39; in a stream now consistently</span>
+    <span class="comment">// means the zero value (ie reset the value to its zero state).</span>
+    DeleteOnNilMapValue <a href="godoc.26.html#bool">bool</a>
+
+<span id="DecodeOptions.RawToString"></span>    <span class="comment">// RawToString controls how raw bytes in a stream are decoded into a nil interface{}.</span>
+    <span class="comment">// By default, they are decoded as []byte, but can be decoded as string (if configured).</span>
+    RawToString <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Decoder">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=33494:34703#L1130">Decoder</a>
+				<a class="permalink" href="godoc.146.html#Decoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Decoder reads and decodes an object from an input stream in a supported format.
+</p>
+<p>
+Decoder is NOT safe for concurrent use i.e. a Decoder cannot be used
+concurrently in multiple goroutines.
+</p>
+<p>
+However, as Decoder could be allocation heavy to initialize, a Reset method is provided
+so its state can be reused to decode new input streams repeatedly.
+This is the idiomatic way to use.
+</p>
+
+			<pre>type Decoder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDecoder">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=34946:34993#L1181">NewDecoder</a>
+					<a class="permalink" href="godoc.146.html#NewDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDecoder(r <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>, h <a href="godoc.146.html#Handle">Handle</a>) *<a href="godoc.146.html#Decoder">Decoder</a></pre>
+				<p>
+NewDecoder returns a Decoder for decoding a stream of bytes from an io.Reader.
+</p>
+<p>
+For efficiency, Users are encouraged to configure ReaderBufferSize on the handle
+OR pass in a memory buffered reader (eg bufio.Reader, bytes.Buffer).
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewDecoderBytes">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=35166:35216#L1189">NewDecoderBytes</a>
+					<a class="permalink" href="godoc.146.html#NewDecoderBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDecoderBytes(in []<a href="godoc.26.html#byte">byte</a>, h <a href="godoc.146.html#Handle">Handle</a>) *<a href="godoc.146.html#Decoder">Decoder</a></pre>
+				<p>
+NewDecoderBytes returns a Decoder which efficiently decodes directly
+from a byte slice with zero copying.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Decoder.Decode">func (*Decoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=40054:40105#L1333">Decode</a>
+					<a class="permalink" href="godoc.146.html#Decoder.Decode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.146.html#Decoder">Decoder</a>) Decode(v interface{}) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Decode decodes the stream from reader and stores the result in the
+value pointed to by v. v cannot be a nil pointer. v can also be
+a reflect.Value of a pointer.
+</p>
+<p>
+Note that a pointer to a nil interface is not a nil pointer.
+If you do not know what type of stream it is, pass in a pointer to a nil interface.
+We will decode and store a value in that nil interface.
+</p>
+<p>
+Sample usages:
+</p>
+<pre>// Decoding into a non-nil typed value
+var f float32
+err = codec.NewDecoder(r, handle).Decode(&amp;f)
+
+// Decoding into nil interface
+var v interface{}
+dec := codec.NewDecoder(r, handle)
+err = dec.Decode(&amp;v)
+</pre>
+<p>
+When decoding into a nil interface{}, we will decode into an appropriate value based
+on the contents of the stream:
+</p>
+<pre>- Numbers are decoded as float64, int64 or uint64.
+- Other values are decoded appropriately depending on the type:
+  bool, string, []byte, time.Time, etc
+- Extensions are decoded as RawExt (if no ext function registered for the tag)
+</pre>
+<p>
+Configurations exist on the Handle to override defaults
+(e.g. for MapType, SliceType and how to decode raw bytes).
+</p>
+<p>
+When decoding into a non-nil interface{} value, the mode of encoding is based on the
+type of the value. When a value is seen:
+</p>
+<pre>- If an extension is registered for it, call that extension function
+- If it implements BinaryUnmarshaler, call its UnmarshalBinary(data []byte) error
+- Else decode it based on its reflect.Kind
+</pre>
+<p>
+There are some special rules when decoding into containers (slice/array/map/struct).
+Decode will typically use the stream contents to UPDATE the container i.e. the values
+in these containers will not be zero&#39;ed before decoding.
+</p>
+<pre>- A map can be decoded from a stream map, by updating matching keys.
+- A slice can be decoded from a stream array,
+  by updating the first n elements, where n is length of the stream.
+- A slice can be decoded from a stream map, by decoding as if
+  it contains a sequence of key-value pairs.
+- A struct can be decoded from a stream map, by updating matching fields.
+- A struct can be decoded from a stream array,
+  by updating fields as they occur in the struct (by index).
+</pre>
+<p>
+This in-place update maintains consistency in the decoding philosophy (i.e. we ALWAYS update
+in place by default). However, the consequence of this is that values in slices or maps
+which are not zero&#39;ed before hand, will have part of the prior values in place after decode
+if the stream doesn&#39;t contain an update for those parts.
+</p>
+<p>
+This in-place update can be disabled by configuring the MapValueReset and SliceElementReset
+decode options available on every handle.
+</p>
+<p>
+Furthermore, when decoding a stream map or array with length of 0 into a nil map or slice,
+we reset the destination map or slice to a zero-length value.
+</p>
+<p>
+However, when decoding a stream nil, we reset the destination container
+to its &#34;zero&#34; value (e.g. nil for slice/map, etc).
+</p>
+<p>
+Note: we allow nil values in the stream anywhere except for map keys.
+A nil value in the encoded stream where a map key is expected is treated as an error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.MustDecode">func (*Decoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=40845:40888#L1360">MustDecode</a>
+					<a class="permalink" href="godoc.146.html#Decoder.MustDecode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.146.html#Decoder">Decoder</a>) MustDecode(v interface{})</pre>
+				<p>
+MustDecode is like Decode, but panics if unable to Decode.
+This provides insight to the code location that triggered the error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.NumBytesRead">func (*Decoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=49398:49434#L1727">NumBytesRead</a>
+					<a class="permalink" href="godoc.146.html#Decoder.NumBytesRead">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.146.html#Decoder">Decoder</a>) NumBytesRead() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+NumBytesRead returns the number of bytes read
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Release">func (*Decoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=41690:41717#L1389">Release</a>
+					<a class="permalink" href="godoc.146.html#Decoder.Release">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.146.html#Decoder">Decoder</a>) Release()</pre>
+				<p>
+Release releases shared (pooled) resources.
+</p>
+<p>
+It is important to call Release() when done with a Decoder, so those resources
+are released instantly for use by subsequently created Decoders.
+</p>
+<p>
+By default, Release() is automatically called unless the option ExplicitRelease is set.
+</p>
+<p>
+Deprecated: Release is a no-op as pooled resources are not used with an Decoder.
+This method is kept for compatibility reasons only.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Reset">func (*Decoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=36207:36243#L1235">Reset</a>
+					<a class="permalink" href="godoc.146.html#Decoder.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.146.html#Decoder">Decoder</a>) Reset(r <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>)</pre>
+				<p>
+Reset the Decoder with a new Reader to decode from,
+clearing all state from last run(s).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.ResetBytes">func (*Decoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/decode.go?s=36673:36712#L1258">ResetBytes</a>
+					<a class="permalink" href="godoc.146.html#Decoder.ResetBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.146.html#Decoder">Decoder</a>) ResetBytes(in []<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+ResetBytes resets the Decoder with a new []byte to decode from,
+clearing all state from last run(s).
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EncodeOptions">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=1737:5107#L60">EncodeOptions</a>
+				<a class="permalink" href="godoc.146.html#EncodeOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+EncodeOptions captures configuration options during encode.
+</p>
+
+			<pre>type EncodeOptions struct {
+<span id="EncodeOptions.WriterBufferSize"></span>    <span class="comment">// WriterBufferSize is the size of the buffer used when writing.</span>
+    <span class="comment">//</span>
+    <span class="comment">// if &gt; 0, we use a smart buffer internally for performance purposes.</span>
+    WriterBufferSize <a href="godoc.26.html#int">int</a>
+
+<span id="EncodeOptions.ChanRecvTimeout"></span>    <span class="comment">// ChanRecvTimeout is the timeout used when selecting from a chan.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Configuring this controls how we receive from a chan during the encoding process.</span>
+    <span class="comment">//   - If ==0, we only consume the elements currently available in the chan.</span>
+    <span class="comment">//   - if  &lt;0, we consume until the chan is closed.</span>
+    <span class="comment">//   - If  &gt;0, we consume until this timeout.</span>
+    ChanRecvTimeout <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+
+<span id="EncodeOptions.StructToArray"></span>    <span class="comment">// StructToArray specifies to encode a struct as an array, and not as a map</span>
+    StructToArray <a href="godoc.26.html#bool">bool</a>
+
+<span id="EncodeOptions.Canonical"></span>    <span class="comment">// Canonical representation means that encoding a value will always result in the same</span>
+    <span class="comment">// sequence of bytes.</span>
+    <span class="comment">//</span>
+    <span class="comment">// This only affects maps, as the iteration order for maps is random.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The implementation MAY use the natural sort order for the map keys if possible:</span>
+    <span class="comment">//</span>
+    <span class="comment">//     - If there is a natural sort order (ie for number, bool, string or []byte keys),</span>
+    <span class="comment">//       then the map keys are first sorted in natural order and then written</span>
+    <span class="comment">//       with corresponding map values to the strema.</span>
+    <span class="comment">//     - If there is no natural sort order, then the map keys will first be</span>
+    <span class="comment">//       encoded into []byte, and then sorted,</span>
+    <span class="comment">//       before writing the sorted keys and the corresponding map values to the stream.</span>
+    <span class="comment">//</span>
+    Canonical <a href="godoc.26.html#bool">bool</a>
+
+<span id="EncodeOptions.CheckCircularRef"></span>    <span class="comment">// CheckCircularRef controls whether we check for circular references</span>
+    <span class="comment">// and error fast during an encode.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If enabled, an error is received if a pointer to a struct</span>
+    <span class="comment">// references itself either directly or through one of its fields (iteratively).</span>
+    <span class="comment">//</span>
+    <span class="comment">// This is opt-in, as there may be a performance hit to checking circular references.</span>
+    CheckCircularRef <a href="godoc.26.html#bool">bool</a>
+
+<span id="EncodeOptions.RecursiveEmptyCheck"></span>    <span class="comment">// RecursiveEmptyCheck controls whether we descend into interfaces, structs and pointers</span>
+    <span class="comment">// when checking if a value is empty.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note that this may make OmitEmpty more expensive, as it incurs a lot more reflect calls.</span>
+    RecursiveEmptyCheck <a href="godoc.26.html#bool">bool</a>
+
+<span id="EncodeOptions.Raw"></span>    <span class="comment">// Raw controls whether we encode Raw values.</span>
+    <span class="comment">// This is a &#34;dangerous&#34; option and must be explicitly set.</span>
+    <span class="comment">// If set, we blindly encode Raw values as-is, without checking</span>
+    <span class="comment">// if they are a correct representation of a value in that format.</span>
+    <span class="comment">// If unset, we error out.</span>
+    Raw <a href="godoc.26.html#bool">bool</a>
+
+<span id="EncodeOptions.StringToRaw"></span>    <span class="comment">// StringToRaw controls how strings are encoded.</span>
+    <span class="comment">//</span>
+    <span class="comment">// As a go string is just an (immutable) sequence of bytes,</span>
+    <span class="comment">// it can be encoded either as raw bytes or as a UTF string.</span>
+    <span class="comment">//</span>
+    <span class="comment">// By default, strings are encoded as UTF-8.</span>
+    <span class="comment">// but can be treated as []byte during an encode.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note that things which we know (by definition) to be UTF-8</span>
+    <span class="comment">// are ALWAYS encoded as UTF-8 strings.</span>
+    <span class="comment">// These include encoding.TextMarshaler, time.Format calls, struct field names, etc.</span>
+    StringToRaw <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Encoder">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=21121:21687#L810">Encoder</a>
+				<a class="permalink" href="godoc.146.html#Encoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Encoder writes an object to an output stream in a supported format.
+</p>
+<p>
+Encoder is NOT safe for concurrent use i.e. a Encoder cannot be used
+concurrently in multiple goroutines.
+</p>
+<p>
+However, as Encoder could be allocation heavy to initialize, a Reset method is provided
+so its state can be reused to decode new input streams repeatedly.
+This is the idiomatic way to use.
+</p>
+
+			<pre>type Encoder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewEncoder">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=21913:21960#L842">NewEncoder</a>
+					<a class="permalink" href="godoc.146.html#NewEncoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEncoder(w <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>, h <a href="godoc.146.html#Handle">Handle</a>) *<a href="godoc.146.html#Encoder">Encoder</a></pre>
+				<p>
+NewEncoder returns an Encoder for encoding into an io.Writer.
+</p>
+<p>
+For efficiency, Users are encouraged to configure WriterBufferSize on the handle
+OR pass in a memory buffered writer (eg bufio.Writer, bytes.Buffer).
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewEncoderBytes">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=22295:22347#L853">NewEncoderBytes</a>
+					<a class="permalink" href="godoc.146.html#NewEncoderBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEncoderBytes(out *[]<a href="godoc.26.html#byte">byte</a>, h <a href="godoc.146.html#Handle">Handle</a>) *<a href="godoc.146.html#Encoder">Encoder</a></pre>
+				<p>
+NewEncoderBytes returns an encoder for encoding directly and efficiently
+into a byte slice, using zero-copying to temporary slices.
+</p>
+<p>
+It will potentially replace the output byte slice pointed to.
+After encoding, the out parameter contains the encoded contents.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Encoder.Encode">func (*Encoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=27771:27822#L995">Encode</a>
+					<a class="permalink" href="godoc.146.html#Encoder.Encode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.146.html#Encoder">Encoder</a>) Encode(v interface{}) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Encode writes an object into a stream.
+</p>
+<p>
+Encoding can be configured via the struct tag for the fields.
+The key (in the struct tags) that we look at is configurable.
+</p>
+<p>
+By default, we look up the &#34;codec&#34; key in the struct field&#39;s tags,
+and fall bak to the &#34;json&#34; key if &#34;codec&#34; is absent.
+That key in struct field&#39;s tag value is the key name,
+followed by an optional comma and options.
+</p>
+<p>
+To set an option on all fields (e.g. omitempty on all fields), you
+can create a field called _struct, and set flags on it. The options
+which can be set on _struct are:
+</p>
+<pre>- omitempty: so all fields are omitted if empty
+- toarray: so struct is encoded as an array
+- int: so struct key names are encoded as signed integers (instead of strings)
+- uint: so struct key names are encoded as unsigned integers (instead of strings)
+- float: so struct key names are encoded as floats (instead of strings)
+</pre>
+<p>
+More details on these below.
+</p>
+<p>
+Struct values &#34;usually&#34; encode as maps. Each exported struct field is encoded unless:
+</p>
+<pre>- the field&#39;s tag is &#34;-&#34;, OR
+- the field is empty (empty or the zero value) and its tag specifies the &#34;omitempty&#34; option.
+</pre>
+<p>
+When encoding as a map, the first string in the tag (before the comma)
+is the map key string to use when encoding.
+...
+This key is typically encoded as a string.
+However, there are instances where the encoded stream has mapping keys encoded as numbers.
+For example, some cbor streams have keys as integer codes in the stream, but they should map
+to fields in a structured object. Consequently, a struct is the natural representation in code.
+For these, configure the struct to encode/decode the keys as numbers (instead of string).
+This is done with the int,uint or float option on the _struct field (see above).
+</p>
+<p>
+However, struct values may encode as arrays. This happens when:
+</p>
+<pre>- StructToArray Encode option is set, OR
+- the tag on the _struct field sets the &#34;toarray&#34; option
+</pre>
+<p>
+Note that omitempty is ignored when encoding struct values as arrays,
+as an entry must be encoded for each field, to maintain its position.
+</p>
+<p>
+Values with types that implement MapBySlice are encoded as stream maps.
+</p>
+<p>
+The empty values (for omitempty option) are false, 0, any nil pointer
+or interface value, and any array, slice, map, or string of length zero.
+</p>
+<p>
+Anonymous fields are encoded inline except:
+</p>
+<pre>- the struct tag specifies a replacement name (first value)
+- the field is of an interface type
+</pre>
+<p>
+Examples:
+</p>
+<pre>// NOTE: &#39;json:&#39; can be used as struct tag key, in place &#39;codec:&#39; below.
+type MyStruct struct {
+    _struct bool    `codec:&#34;,omitempty&#34;`   //set omitempty for every field
+    Field1 string   `codec:&#34;-&#34;`            //skip this field
+    Field2 int      `codec:&#34;myName&#34;`       //Use key &#34;myName&#34; in encode stream
+    Field3 int32    `codec:&#34;,omitempty&#34;`   //use key &#34;Field3&#34;. Omit if empty.
+    Field4 bool     `codec:&#34;f4,omitempty&#34;` //use key &#34;f4&#34;. Omit if empty.
+    io.Reader                              //use key &#34;Reader&#34;.
+    MyStruct        `codec:&#34;my1&#34;           //use key &#34;my1&#34;.
+    MyStruct                               //inline it
+    ...
+}
+
+type MyStruct struct {
+    _struct bool    `codec:&#34;,toarray&#34;`     //encode struct as an array
+}
+
+type MyStruct struct {
+    _struct bool    `codec:&#34;,uint&#34;`        //encode struct with &#34;unsigned integer&#34; keys
+    Field1 string   `codec:&#34;1&#34;`            //encode Field1 key using: EncodeInt(1)
+    Field2 string   `codec:&#34;2&#34;`            //encode Field2 key using: EncodeInt(2)
+}
+</pre>
+<p>
+The mode of encoding is based on the type of the value. When a value is seen:
+</p>
+<pre>- If a Selfer, call its CodecEncodeSelf method
+- If an extension is registered for it, call that extension function
+- If implements encoding.(Binary|Text|JSON)Marshaler, call Marshal(Binary|Text|JSON) method
+- Else encode it based on its reflect.Kind
+</pre>
+<p>
+Note that struct field names and keys in map[string]XXX will be treated as symbols.
+Some formats support symbols (e.g. binc) and will properly encode the string
+only once in the stream, and use a tag to refer to it thereafter.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.MustEncode">func (*Encoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=28788:28831#L1031">MustEncode</a>
+					<a class="permalink" href="godoc.146.html#Encoder.MustEncode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.146.html#Encoder">Encoder</a>) MustEncode(v interface{})</pre>
+				<p>
+MustEncode is like Encode, but panics if unable to Encode.
+This provides insight to the code location that triggered the error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.Release">func (*Encoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=29376:29403#L1055">Release</a>
+					<a class="permalink" href="godoc.146.html#Encoder.Release">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.146.html#Encoder">Encoder</a>) Release()</pre>
+				<p>
+Release releases shared (pooled) resources.
+</p>
+<p>
+It is important to call Release() when done with an Encoder, so those resources
+are released instantly for use by subsequently created Encoders.
+</p>
+<p>
+Deprecated: Release is a no-op as pooled resources are not used with an Encoder.
+This method is kept for compatibility reasons only.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.Reset">func (*Encoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=22928:22964#L886">Reset</a>
+					<a class="permalink" href="godoc.146.html#Encoder.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.146.html#Encoder">Encoder</a>) Reset(w <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>)</pre>
+				<p>
+Reset resets the Encoder with a new output stream.
+</p>
+<p>
+This accommodates using the state of the Encoder,
+where it has &#34;cached&#34; information about sub-engines.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.ResetBytes">func (*Encoder) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/encode.go?s=23199:23240#L899">ResetBytes</a>
+					<a class="permalink" href="godoc.146.html#Encoder.ResetBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.146.html#Encoder">Encoder</a>) ResetBytes(out *[]<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+ResetBytes resets the Encoder with a new destination output []byte.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Ext">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=34363:34409#L1048">Ext</a>
+				<a class="permalink" href="godoc.146.html#Ext">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Ext handles custom (de)serialization of custom types / extensions.
+</p>
+
+			<pre>type Ext interface {
+    <a href="godoc.146.html#BytesExt">BytesExt</a>
+    <a href="godoc.146.html#InterfaceExt">InterfaceExt</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Handle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=31750:32029#L982">Handle</a>
+				<a class="permalink" href="godoc.146.html#Handle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Handle defines a specific encoding format. It also stores any runtime state
+used during an Encoding or Decoding session e.g. stored state about Types, etc.
+</p>
+<p>
+Once a handle is configured, it can be shared across multiple Encoders and Decoders.
+</p>
+<p>
+Note that a Handle is NOT safe for concurrent modification.
+</p>
+<p>
+A Handle also should not be modified after it is configured and has
+been used at least once. This is because stored state may be out of sync with the
+new configuration, and a data race can occur when multiple goroutines access it.
+i.e. multiple Encoders or Decoders in different goroutines.
+</p>
+<p>
+Consequently, the typical usage model is that a Handle is pre-configured
+before first time use, and not modified while in use.
+Such a pre-configured Handle is safe for concurrent access.
+</p>
+
+			<pre>type Handle interface {
+    Name() <a href="godoc.26.html#string">string</a>
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="InterfaceExt">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=33786:34291#L1033">InterfaceExt</a>
+				<a class="permalink" href="godoc.146.html#InterfaceExt">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+InterfaceExt handles custom (de)serialization of types to/from another interface{} value.
+The Encoder or Decoder will then handle the further (de)serialization of that known type.
+</p>
+<p>
+It is used by codecs (e.g. cbor, json) which use the format to do custom serialization of types.
+</p>
+
+			<pre>type InterfaceExt interface {
+    <span class="comment">// ConvertExt converts a value into a simpler interface for easy encoding</span>
+    <span class="comment">// e.g. convert time.Time to int64.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: v is a pointer iff the registered extension type is a struct or array kind.</span>
+    ConvertExt(v interface{}) interface{}
+
+    <span class="comment">// UpdateExt updates a value from a simpler interface for easy decoding</span>
+    <span class="comment">// e.g. convert int64 to time.Time.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Note: dst is always a pointer kind to the registered extension type.</span>
+    UpdateExt(dst interface{}, src interface{})
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="JsonHandle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/json.go?s=28296:30439#L1198">JsonHandle</a>
+				<a class="permalink" href="godoc.146.html#JsonHandle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+JsonHandle is a handle for JSON encoding format.
+</p>
+<p>
+Json is comprehensively supported:
+</p>
+<pre>- decodes numbers into interface{} as int, uint or float64
+  based on how the number looks and some config parameters e.g. PreferFloat, SignedInt, etc.
+- decode integers from float formatted numbers e.g. 1.27e+8
+- decode any json value (numbers, bool, etc) from quoted strings
+- configurable way to encode/decode []byte .
+  by default, encodes and decodes []byte using base64 Std Encoding
+- UTF-8 support for encoding and decoding
+</pre>
+<p>
+It has better performance than the json library in the standard library,
+by leveraging the performance improvements of the codec library.
+</p>
+<p>
+In addition, it doesn&#39;t read more bytes than necessary during a decode, which allows
+reading multiple values from a stream containing json and non-json content.
+For example, a user can read a json value, then a cbor value, then a msgpack value,
+all from the same stream in sequence.
+</p>
+<p>
+Note that, when decoding quoted strings, invalid UTF-8 or invalid UTF-16 surrogate pairs are
+not treated as an error. Instead, they are replaced by the Unicode replacement character U+FFFD.
+</p>
+
+			<pre>type JsonHandle struct {
+    <a href="godoc.146.html#BasicHandle">BasicHandle</a>
+
+<span id="JsonHandle.Indent"></span>    <span class="comment">// Indent indicates how a value is encoded.</span>
+    <span class="comment">//   - If positive, indent by that number of spaces.</span>
+    <span class="comment">//   - If negative, indent by that number of tabs.</span>
+    Indent <a href="godoc.26.html#int8">int8</a>
+
+<span id="JsonHandle.IntegerAsString"></span>    <span class="comment">// IntegerAsString controls how integers (signed and unsigned) are encoded.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Per the JSON Spec, JSON numbers are 64-bit floating point numbers.</span>
+    <span class="comment">// Consequently, integers &gt; 2^53 cannot be represented as a JSON number without losing precision.</span>
+    <span class="comment">// This can be mitigated by configuring how to encode integers.</span>
+    <span class="comment">//</span>
+    <span class="comment">// IntegerAsString interpretes the following values:</span>
+    <span class="comment">//   - if &#39;L&#39;, then encode integers &gt; 2^53 as a json string.</span>
+    <span class="comment">//   - if &#39;A&#39;, then encode all integers as a json string</span>
+    <span class="comment">//             containing the exact integer representation as a decimal.</span>
+    <span class="comment">//   - else    encode all integers as a json number (default)</span>
+    IntegerAsString <a href="godoc.26.html#byte">byte</a>
+
+<span id="JsonHandle.HTMLCharsAsIs"></span>    <span class="comment">// HTMLCharsAsIs controls how to encode some special characters to html: &lt; &gt; &amp;</span>
+    <span class="comment">//</span>
+    <span class="comment">// By default, we encode them as \uXXX</span>
+    <span class="comment">// to prevent security holes when served from some browsers.</span>
+    HTMLCharsAsIs <a href="godoc.26.html#bool">bool</a>
+
+<span id="JsonHandle.PreferFloat"></span>    <span class="comment">// PreferFloat says that we will default to decoding a number as a float.</span>
+    <span class="comment">// If not set, we will examine the characters of the number and decode as an</span>
+    <span class="comment">// integer type if it doesn&#39;t have any of the characters [.eE].</span>
+    PreferFloat <a href="godoc.26.html#bool">bool</a>
+
+<span id="JsonHandle.TermWhitespace"></span>    <span class="comment">// TermWhitespace says that we add a whitespace character</span>
+    <span class="comment">// at the end of an encoding.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The whitespace is important, especially if using numbers in a context</span>
+    <span class="comment">// where multiple items are written to a stream.</span>
+    TermWhitespace <a href="godoc.26.html#bool">bool</a>
+
+<span id="JsonHandle.MapKeyAsString"></span>    <span class="comment">// MapKeyAsString says to encode all map keys as strings.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Use this to enforce strict json output.</span>
+    <span class="comment">// The only caveat is that nil value is ALWAYS written as null (never as &#34;null&#34;)</span>
+    MapKeyAsString <a href="godoc.26.html#bool">bool</a>
+
+<span id="JsonHandle.RawBytesExt"></span>    <span class="comment">// RawBytesExt, if configured, is used to encode and decode raw bytes in a custom way.</span>
+    <span class="comment">// If not configured, raw bytes are encoded to/from base64 text.</span>
+    RawBytesExt <a href="godoc.146.html#InterfaceExt">InterfaceExt</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="JsonHandle.AddExt">func (*JsonHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37158:37309#L1169">AddExt</a>
+					<a class="permalink" href="godoc.146.html#JsonHandle.AddExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#JsonHandle">JsonHandle</a>) AddExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#byte">byte</a>,
+    encfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>),
+    decfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AddExt registes an encode and decode function for a reflect.Type.
+To deregister an Ext, call AddExt with nil encfn and/or nil decfn.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="JsonHandle.Intf2Impl">func (*JsonHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=39552:39619#L1256">Intf2Impl</a>
+					<a class="permalink" href="godoc.146.html#JsonHandle.Intf2Impl">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#JsonHandle">JsonHandle</a>) Intf2Impl(intf, impl <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Intf2Impl maps an interface to an implementing type.
+This allows us support infering the concrete type
+and populating it when passed an interface.
+e.g. var v io.Reader can be decoded as a bytes.Buffer, etc.
+</p>
+<p>
+Passing a nil impl will clear the mapping.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="JsonHandle.Name">func (*JsonHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/json.go?s=30486:30520#L1257">Name</a>
+					<a class="permalink" href="godoc.146.html#JsonHandle.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#JsonHandle">JsonHandle</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the handle: json
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="JsonHandle.SetExt">func (*JsonHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37781:37857#L1184">SetExt</a>
+					<a class="permalink" href="godoc.146.html#JsonHandle.SetExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#JsonHandle">JsonHandle</a>) SetExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#Ext">Ext</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetExt will set the extension for a tag and reflect.Type.
+Note that the type must be a named type, and specifically not a pointer or Interface.
+An error is returned if that is not honored.
+To Deregister an ext, call SetExt with nil Ext.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="JsonHandle.SetInterfaceExt">func (*JsonHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/register_ext.go?s=382:477#L2">SetInterfaceExt</a>
+					<a class="permalink" href="godoc.146.html#JsonHandle.SetInterfaceExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#JsonHandle">JsonHandle</a>) SetInterfaceExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#InterfaceExt">InterfaceExt</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetInterfaceExt sets an extension
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MapBySlice">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=18328:18371#L557">MapBySlice</a>
+				<a class="permalink" href="godoc.146.html#MapBySlice">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MapBySlice is a tag interface that denotes wrapped slice should encode as a map in the stream.
+The slice contains a sequence of key-value pairs.
+This affords storing a map in a specific sequence in the stream.
+</p>
+<p>
+Example usage:
+</p>
+<pre>type T1 []string         // or []int or []Point or any other &#34;slice&#34; type
+func (_ T1) MapBySlice{} // T1 now implements MapBySlice, and will be encoded as a map
+type T2 struct { KeyValues T1 }
+
+var kvs = []string{&#34;one&#34;, &#34;1&#34;, &#34;two&#34;, &#34;2&#34;, &#34;three&#34;, &#34;3&#34;}
+var v2 = T2{ KeyValues: T1(kvs) }
+// v2 will be encoded like the map: {&#34;KeyValues&#34;: {&#34;one&#34;: &#34;1&#34;, &#34;two&#34;: &#34;2&#34;, &#34;three&#34;: &#34;3&#34;} }
+</pre>
+<p>
+The support of MapBySlice affords the following:
+</p>
+<pre>- A slice type which implements MapBySlice will be encoded as a map
+- A slice can be decoded from a map in the stream
+- It MUST be a slice type (not a pointer receiver) that implements MapBySlice
+</pre>
+
+			<pre>type MapBySlice interface {
+    MapBySlice()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MissingFielder">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=17054:17406#L530">MissingFielder</a>
+				<a class="permalink" href="godoc.146.html#MissingFielder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MissingFielder defines the interface allowing structs to internally decode or encode
+values which do not map to struct fields.
+</p>
+<p>
+We expect that this interface is bound to a pointer type (so the mutation function works).
+</p>
+<p>
+A use-case is if a version of a type unexports a field, but you want compatibility between
+both versions during encoding and decoding.
+</p>
+<p>
+Note that the interface is completely ignored during codecgen.
+</p>
+
+			<pre>type MissingFielder interface {
+    <span class="comment">// CodecMissingField is called to set a missing field and value pair.</span>
+    <span class="comment">//</span>
+    <span class="comment">// It returns true if the missing field was set on the struct.</span>
+    CodecMissingField(field []<a href="godoc.26.html#byte">byte</a>, value interface{}) <a href="godoc.26.html#bool">bool</a>
+
+    <span class="comment">// CodecMissingFields returns the set of fields which are not struct fields</span>
+    CodecMissingFields() map[<a href="godoc.26.html#string">string</a>]interface{}
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="MsgpackHandle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/msgpack.go?s=24225:25095#L932">MsgpackHandle</a>
+				<a class="permalink" href="godoc.146.html#MsgpackHandle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MsgpackHandle is a Handle for the Msgpack Schema-Free Encoding Format.
+</p>
+
+			<pre>type MsgpackHandle struct {
+    <a href="godoc.146.html#BasicHandle">BasicHandle</a>
+
+<span id="MsgpackHandle.NoFixedNum"></span>    <span class="comment">// NoFixedNum says to output all signed integers as 2-bytes, never as 1-byte fixednum.</span>
+    NoFixedNum <a href="godoc.26.html#bool">bool</a>
+
+<span id="MsgpackHandle.WriteExt"></span>    <span class="comment">// WriteExt controls whether the new spec is honored.</span>
+    <span class="comment">//</span>
+    <span class="comment">// With WriteExt=true, we can encode configured extensions with extension tags</span>
+    <span class="comment">// and encode string/[]byte/extensions in a way compatible with the new spec</span>
+    <span class="comment">// but incompatible with the old spec.</span>
+    <span class="comment">//</span>
+    <span class="comment">// For compatibility with the old spec, set WriteExt=false.</span>
+    <span class="comment">//</span>
+    <span class="comment">// With WriteExt=false:</span>
+    <span class="comment">//    configured extensions are serialized as raw bytes (not msgpack extensions).</span>
+    <span class="comment">//    reserved byte descriptors like Str8 and those enabling the new msgpack Binary type</span>
+    <span class="comment">//    are not encoded.</span>
+    WriteExt <a href="godoc.26.html#bool">bool</a>
+
+<span id="MsgpackHandle.PositiveIntUnsigned"></span>    <span class="comment">// PositiveIntUnsigned says to encode positive integers as unsigned.</span>
+    PositiveIntUnsigned <a href="godoc.26.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MsgpackHandle.AddExt">func (*MsgpackHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37158:37309#L1169">AddExt</a>
+					<a class="permalink" href="godoc.146.html#MsgpackHandle.AddExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#MsgpackHandle">MsgpackHandle</a>) AddExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#byte">byte</a>,
+    encfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>),
+    decfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AddExt registes an encode and decode function for a reflect.Type.
+To deregister an Ext, call AddExt with nil encfn and/or nil decfn.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgpackHandle.Intf2Impl">func (*MsgpackHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=39552:39619#L1256">Intf2Impl</a>
+					<a class="permalink" href="godoc.146.html#MsgpackHandle.Intf2Impl">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#MsgpackHandle">MsgpackHandle</a>) Intf2Impl(intf, impl <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Intf2Impl maps an interface to an implementing type.
+This allows us support infering the concrete type
+and populating it when passed an interface.
+e.g. var v io.Reader can be decoded as a bytes.Buffer, etc.
+</p>
+<p>
+Passing a nil impl will clear the mapping.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgpackHandle.Name">func (*MsgpackHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/msgpack.go?s=25145:25182#L960">Name</a>
+					<a class="permalink" href="godoc.146.html#MsgpackHandle.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#MsgpackHandle">MsgpackHandle</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the handle: msgpack
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgpackHandle.SetBytesExt">func (*MsgpackHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/register_ext.go?s=734:824#L12">SetBytesExt</a>
+					<a class="permalink" href="godoc.146.html#MsgpackHandle.SetBytesExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#MsgpackHandle">MsgpackHandle</a>) SetBytesExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#BytesExt">BytesExt</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetBytesExt sets an extension
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgpackHandle.SetExt">func (*MsgpackHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37781:37857#L1184">SetExt</a>
+					<a class="permalink" href="godoc.146.html#MsgpackHandle.SetExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#MsgpackHandle">MsgpackHandle</a>) SetExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#Ext">Ext</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetExt will set the extension for a tag and reflect.Type.
+Note that the type must be a named type, and specifically not a pointer or Interface.
+An error is returned if that is not honored.
+To Deregister an ext, call SetExt with nil Ext.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MsgpackSpecRpcMultiArgs">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/msgpack.go?s=4389:4431#L158">MsgpackSpecRpcMultiArgs</a>
+				<a class="permalink" href="godoc.146.html#MsgpackSpecRpcMultiArgs">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MsgpackSpecRpcMultiArgs is a special type which signifies to the MsgpackSpecRpcCodec
+that the backend RPC service takes multiple arguments, which have been arranged
+in sequence in the slice.
+</p>
+<p>
+The Codec then passes it AS-IS to the rpc service (without wrapping it in an
+array of 1 element).
+</p>
+
+			<pre>type MsgpackSpecRpcMultiArgs []interface{}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RPCOptions">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/rpc.go?s=587:891#L12">RPCOptions</a>
+				<a class="permalink" href="godoc.146.html#RPCOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RPCOptions holds options specific to rpc functionality
+</p>
+
+			<pre>type RPCOptions struct {
+<span id="RPCOptions.RPCNoBuffer"></span>    <span class="comment">// RPCNoBuffer configures whether we attempt to buffer reads and writes during RPC calls.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Set RPCNoBuffer=true to turn buffering off.</span>
+    <span class="comment">// Buffering can still be done if buffered connections are passed in, or</span>
+    <span class="comment">// buffering is configured on the handle.</span>
+    RPCNoBuffer <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Raw">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=32275:32290#L996">Raw</a>
+				<a class="permalink" href="godoc.146.html#Raw">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Raw represents raw formatted bytes.
+We &#34;blindly&#34; store it during encode and retrieve the raw bytes during decode.
+Note: it is dangerous during encode, so we may gate the behaviour
+behind an Encode flag which must be explicitly set.
+</p>
+
+			<pre>type Raw []<a href="godoc.26.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RawExt">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=32559:32975#L1004">RawExt</a>
+				<a class="permalink" href="godoc.146.html#RawExt">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RawExt represents raw unprocessed extension data.
+Some codecs will decode extension data as a *RawExt
+if there is no registered extension for the tag.
+</p>
+<p>
+Only one of Data or Value is nil.
+If Data is nil, then the content of the RawExt is in the Value.
+</p>
+
+			<pre>type RawExt struct {
+<span id="RawExt.Tag"></span>    Tag <a href="godoc.26.html#uint64">uint64</a>
+<span id="RawExt.Data"></span>    <span class="comment">// Data is the []byte which represents the raw ext. If nil, ext is exposed in Value.</span>
+    <span class="comment">// Data is used by codecs (e.g. binc, msgpack, simple) which do custom serialization of types</span>
+    Data []<a href="godoc.26.html#byte">byte</a>
+<span id="RawExt.Value"></span>    <span class="comment">// Value represents the extension, if Data is nil.</span>
+    <span class="comment">// Value is used by codecs (e.g. cbor, json) which leverage the format to do</span>
+    <span class="comment">// custom serialization of the types.</span>
+    Value interface{}
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Rpc">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/rpc.go?s=377:527#L6">Rpc</a>
+				<a class="permalink" href="godoc.146.html#Rpc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Rpc provides a rpc Server or Client Codec for rpc communication.
+</p>
+
+			<pre>type Rpc interface {
+    ServerCodec(conn <a href="godoc.589.html">io</a>.<a href="godoc.589.html#ReadWriteCloser">ReadWriteCloser</a>, h <a href="godoc.146.html#Handle">Handle</a>) <a href="godoc.28.html">rpc</a>.<a href="godoc.28.html#ServerCodec">ServerCodec</a>
+    ClientCodec(conn <a href="godoc.589.html">io</a>.<a href="godoc.589.html#ReadWriteCloser">ReadWriteCloser</a>, h <a href="godoc.146.html#Handle">Handle</a>) <a href="godoc.28.html">rpc</a>.<a href="godoc.28.html#ClientCodec">ClientCodec</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Selfer">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=16530:16609#L516">Selfer</a>
+				<a class="permalink" href="godoc.146.html#Selfer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Selfer defines methods by which a value can encode or decode itself.
+</p>
+<p>
+Any type which implements Selfer will be able to encode or decode itself.
+Consequently, during (en|de)code, this takes precedence over
+(text|binary)(M|Unm)arshal or extension support.
+</p>
+<p>
+By definition, it is not allowed for a Selfer to directly call Encode or Decode on itself.
+If that is done, Encode/Decode will rightfully fail with a Stack Overflow style error.
+For example, the snippet below will cause such an error.
+</p>
+<pre>type testSelferRecur struct{}
+func (s *testSelferRecur) CodecEncodeSelf(e *Encoder) { e.MustEncode(s) }
+func (s *testSelferRecur) CodecDecodeSelf(d *Decoder) { d.MustDecode(s) }
+</pre>
+<p>
+Note: *the first set of bytes of any value MUST NOT represent nil in the format*.
+This is because, during each decode, we first check the the next set of bytes
+represent nil, and if so, we just set the value to nil.
+</p>
+
+			<pre>type Selfer interface {
+    CodecEncodeSelf(*<a href="godoc.146.html#Encoder">Encoder</a>)
+    CodecDecodeSelf(*<a href="godoc.146.html#Decoder">Decoder</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SimpleHandle">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/simple.go?s=15000:15215#L600">SimpleHandle</a>
+				<a class="permalink" href="godoc.146.html#SimpleHandle">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SimpleHandle is a Handle for a very simple encoding format.
+</p>
+<p>
+simple is a simplistic codec similar to binc, but not as compact.
+</p>
+<pre>- Encoding of a value is always preceded by the descriptor byte (bd)
+- True, false, nil are encoded fully in 1 byte (the descriptor)
+- Integers (intXXX, uintXXX) are encoded in 1, 2, 4 or 8 bytes (plus a descriptor byte).
+  There are positive (uintXXX and intXXX &gt;= 0) and negative (intXXX &lt; 0) integers.
+- Floats are encoded in 4 or 8 bytes (plus a descriptor byte)
+- Length of containers (strings, bytes, array, map, extensions)
+  are encoded in 0, 1, 2, 4 or 8 bytes.
+  Zero-length containers have no length encoded.
+  For others, the number of bytes is given by pow(2, bd%3)
+- maps are encoded as [bd] [length] [[key][value]]...
+- arrays are encoded as [bd] [length] [value]...
+- extensions are encoded as [bd] [length] [tag] [byte]...
+- strings/bytearrays are encoded as [bd] [length] [byte]...
+- time.Time are encoded as [bd] [length] [byte]...
+</pre>
+<p>
+The full spec will be published soon.
+</p>
+
+			<pre>type SimpleHandle struct {
+    <a href="godoc.146.html#BasicHandle">BasicHandle</a>
+<span id="SimpleHandle.EncZeroValuesAsNil"></span>    <span class="comment">// EncZeroValuesAsNil says to encode zero values for numbers, bool, string, etc as nil</span>
+    EncZeroValuesAsNil <a href="godoc.26.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SimpleHandle.AddExt">func (*SimpleHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37158:37309#L1169">AddExt</a>
+					<a class="permalink" href="godoc.146.html#SimpleHandle.AddExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#SimpleHandle">SimpleHandle</a>) AddExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#byte">byte</a>,
+    encfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>),
+    decfn func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AddExt registes an encode and decode function for a reflect.Type.
+To deregister an Ext, call AddExt with nil encfn and/or nil decfn.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SimpleHandle.Intf2Impl">func (*SimpleHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=39552:39619#L1256">Intf2Impl</a>
+					<a class="permalink" href="godoc.146.html#SimpleHandle.Intf2Impl">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#SimpleHandle">SimpleHandle</a>) Intf2Impl(intf, impl <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Intf2Impl maps an interface to an implementing type.
+This allows us support infering the concrete type
+and populating it when passed an interface.
+e.g. var v io.Reader can be decoded as a bytes.Buffer, etc.
+</p>
+<p>
+Passing a nil impl will clear the mapping.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SimpleHandle.Name">func (*SimpleHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/simple.go?s=15264:15300#L610">Name</a>
+					<a class="permalink" href="godoc.146.html#SimpleHandle.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#SimpleHandle">SimpleHandle</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the handle: simple
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SimpleHandle.SetBytesExt">func (*SimpleHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/register_ext.go?s=903:992#L17">SetBytesExt</a>
+					<a class="permalink" href="godoc.146.html#SimpleHandle.SetBytesExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (h *<a href="godoc.146.html#SimpleHandle">SimpleHandle</a>) SetBytesExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#BytesExt">BytesExt</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetBytesExt sets an extension
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SimpleHandle.SetExt">func (*SimpleHandle) <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=37781:37857#L1184">SetExt</a>
+					<a class="permalink" href="godoc.146.html#SimpleHandle.SetExt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="godoc.146.html#SimpleHandle">SimpleHandle</a>) SetExt(rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, tag <a href="godoc.26.html#uint64">uint64</a>, ext <a href="godoc.146.html#Ext">Ext</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+SetExt will set the extension for a tag and reflect.Type.
+Note that the type must be a named type, and specifically not a pointer or Interface.
+An error is returned if that is not honored.
+To Deregister an ext, call SetExt with nil Ext.
+</p>
+<p>
+Deprecated: Use SetBytesExt or SetInterfaceExt on the Handle instead.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypeInfos">type <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=48133:48377#L1627">TypeInfos</a>
+				<a class="permalink" href="godoc.146.html#TypeInfos">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TypeInfos caches typeInfo for each type on first inspection.
+</p>
+<p>
+It is configured with a set of tag keys, which are used to get
+configuration for the type.
+</p>
+
+			<pre>type TypeInfos struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTypeInfos">func <a href="http://localhost:6161/src/github.com/ugorji/go/codec/helper.go?s=48549:48592#L1640">NewTypeInfos</a>
+					<a class="permalink" href="godoc.146.html#NewTypeInfos">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTypeInfos(tags []<a href="godoc.26.html#string">string</a>) *<a href="godoc.146.html#TypeInfos">TypeInfos</a></pre>
+				<p>
+NewTypeInfos creates a TypeInfos given a set of struct tags keys.
+</p>
+<p>
+This allows users customize the struct tag keys which contain configuration
+of their types.
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.145.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.147.html">bench</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package codec provides a High Performance, Feature-Rich Idiomatic Go 1.4+ codec/encoding library for binc, msgpack, cbor, json.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

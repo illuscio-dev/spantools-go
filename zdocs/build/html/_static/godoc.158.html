@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>bsonrwtest - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.158.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package bsonrwtest
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.158.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.158.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.158.html#Invoked">type Invoked</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#Invoked.String">func (i Invoked) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.158.html#ValueReaderWriter">type ValueReaderWriter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadArray">func (llvrw *ValueReaderWriter) ReadArray() (bsonrw.ArrayReader, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadBinary">func (llvrw *ValueReaderWriter) ReadBinary() (b []byte, btype byte, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadBoolean">func (llvrw *ValueReaderWriter) ReadBoolean() (bool, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadCodeWithScope">func (llvrw *ValueReaderWriter) ReadCodeWithScope() (code string, dr bsonrw.DocumentReader, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadDBPointer">func (llvrw *ValueReaderWriter) ReadDBPointer() (ns string, oid primitive.ObjectID, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadDateTime">func (llvrw *ValueReaderWriter) ReadDateTime() (int64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadDecimal128">func (llvrw *ValueReaderWriter) ReadDecimal128() (primitive.Decimal128, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadDocument">func (llvrw *ValueReaderWriter) ReadDocument() (bsonrw.DocumentReader, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadDouble">func (llvrw *ValueReaderWriter) ReadDouble() (float64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadElement">func (llvrw *ValueReaderWriter) ReadElement() (string, bsonrw.ValueReader, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadInt32">func (llvrw *ValueReaderWriter) ReadInt32() (int32, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadInt64">func (llvrw *ValueReaderWriter) ReadInt64() (int64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadJavascript">func (llvrw *ValueReaderWriter) ReadJavascript() (code string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadMaxKey">func (llvrw *ValueReaderWriter) ReadMaxKey() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadMinKey">func (llvrw *ValueReaderWriter) ReadMinKey() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadNull">func (llvrw *ValueReaderWriter) ReadNull() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadObjectID">func (llvrw *ValueReaderWriter) ReadObjectID() (primitive.ObjectID, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadRegex">func (llvrw *ValueReaderWriter) ReadRegex() (pattern string, options string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadString">func (llvrw *ValueReaderWriter) ReadString() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadSymbol">func (llvrw *ValueReaderWriter) ReadSymbol() (symbol string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadTimestamp">func (llvrw *ValueReaderWriter) ReadTimestamp() (t uint32, i uint32, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadUndefined">func (llvrw *ValueReaderWriter) ReadUndefined() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.ReadValue">func (llvrw *ValueReaderWriter) ReadValue() (bsonrw.ValueReader, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.Skip">func (llvrw *ValueReaderWriter) Skip() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.Type">func (llvrw *ValueReaderWriter) Type() bsontype.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteArray">func (llvrw *ValueReaderWriter) WriteArray() (bsonrw.ArrayWriter, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteArrayElement">func (llvrw *ValueReaderWriter) WriteArrayElement() (bsonrw.ValueWriter, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteArrayEnd">func (llvrw *ValueReaderWriter) WriteArrayEnd() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteBinary">func (llvrw *ValueReaderWriter) WriteBinary(b []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteBinaryWithSubtype">func (llvrw *ValueReaderWriter) WriteBinaryWithSubtype(b []byte, btype byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteBoolean">func (llvrw *ValueReaderWriter) WriteBoolean(bool) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteCodeWithScope">func (llvrw *ValueReaderWriter) WriteCodeWithScope(code string) (bsonrw.DocumentWriter, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDBPointer">func (llvrw *ValueReaderWriter) WriteDBPointer(ns string, oid primitive.ObjectID) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDateTime">func (llvrw *ValueReaderWriter) WriteDateTime(dt int64) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDecimal128">func (llvrw *ValueReaderWriter) WriteDecimal128(primitive.Decimal128) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDocument">func (llvrw *ValueReaderWriter) WriteDocument() (bsonrw.DocumentWriter, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDocumentElement">func (llvrw *ValueReaderWriter) WriteDocumentElement(string) (bsonrw.ValueWriter, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDocumentEnd">func (llvrw *ValueReaderWriter) WriteDocumentEnd() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteDouble">func (llvrw *ValueReaderWriter) WriteDouble(float64) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteInt32">func (llvrw *ValueReaderWriter) WriteInt32(int32) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteInt64">func (llvrw *ValueReaderWriter) WriteInt64(int64) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteJavascript">func (llvrw *ValueReaderWriter) WriteJavascript(code string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteMaxKey">func (llvrw *ValueReaderWriter) WriteMaxKey() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteMinKey">func (llvrw *ValueReaderWriter) WriteMinKey() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteNull">func (llvrw *ValueReaderWriter) WriteNull() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteObjectID">func (llvrw *ValueReaderWriter) WriteObjectID(primitive.ObjectID) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteRegex">func (llvrw *ValueReaderWriter) WriteRegex(pattern string, options string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteString">func (llvrw *ValueReaderWriter) WriteString(string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteSymbol">func (llvrw *ValueReaderWriter) WriteSymbol(symbol string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteTimestamp">func (llvrw *ValueReaderWriter) WriteTimestamp(t uint32, i uint32) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.158.html#ValueReaderWriter.WriteUndefined">func (llvrw *ValueReaderWriter) WriteUndefined() error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go">bsonrwtest.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Invoked">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=733:750#L12">Invoked</a>
+				<a class="permalink" href="godoc.158.html#Invoked">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Invoked is a type used to indicate what method was called last.
+</p>
+
+			<pre>type Invoked <a href="godoc.26.html#byte">byte</a></pre>
+
+			
+				<p>
+These are the different methods that can be invoked.
+</p>
+
+				<pre>const (
+    <span id="Nothing">Nothing</span> <a href="godoc.158.html#Invoked">Invoked</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="ReadArray">ReadArray</span>
+    <span id="ReadBinary">ReadBinary</span>
+    <span id="ReadBoolean">ReadBoolean</span>
+    <span id="ReadDocument">ReadDocument</span>
+    <span id="ReadCodeWithScope">ReadCodeWithScope</span>
+    <span id="ReadDBPointer">ReadDBPointer</span>
+    <span id="ReadDateTime">ReadDateTime</span>
+    <span id="ReadDecimal128">ReadDecimal128</span>
+    <span id="ReadDouble">ReadDouble</span>
+    <span id="ReadInt32">ReadInt32</span>
+    <span id="ReadInt64">ReadInt64</span>
+    <span id="ReadJavascript">ReadJavascript</span>
+    <span id="ReadMaxKey">ReadMaxKey</span>
+    <span id="ReadMinKey">ReadMinKey</span>
+    <span id="ReadNull">ReadNull</span>
+    <span id="ReadObjectID">ReadObjectID</span>
+    <span id="ReadRegex">ReadRegex</span>
+    <span id="ReadString">ReadString</span>
+    <span id="ReadSymbol">ReadSymbol</span>
+    <span id="ReadTimestamp">ReadTimestamp</span>
+    <span id="ReadUndefined">ReadUndefined</span>
+    <span id="ReadElement">ReadElement</span>
+    <span id="ReadValue">ReadValue</span>
+    <span id="WriteArray">WriteArray</span>
+    <span id="WriteBinary">WriteBinary</span>
+    <span id="WriteBinaryWithSubtype">WriteBinaryWithSubtype</span>
+    <span id="WriteBoolean">WriteBoolean</span>
+    <span id="WriteCodeWithScope">WriteCodeWithScope</span>
+    <span id="WriteDBPointer">WriteDBPointer</span>
+    <span id="WriteDateTime">WriteDateTime</span>
+    <span id="WriteDecimal128">WriteDecimal128</span>
+    <span id="WriteDouble">WriteDouble</span>
+    <span id="WriteInt32">WriteInt32</span>
+    <span id="WriteInt64">WriteInt64</span>
+    <span id="WriteJavascript">WriteJavascript</span>
+    <span id="WriteMaxKey">WriteMaxKey</span>
+    <span id="WriteMinKey">WriteMinKey</span>
+    <span id="WriteNull">WriteNull</span>
+    <span id="WriteObjectID">WriteObjectID</span>
+    <span id="WriteRegex">WriteRegex</span>
+    <span id="WriteString">WriteString</span>
+    <span id="WriteDocument">WriteDocument</span>
+    <span id="WriteSymbol">WriteSymbol</span>
+    <span id="WriteTimestamp">WriteTimestamp</span>
+    <span id="WriteUndefined">WriteUndefined</span>
+    <span id="WriteDocumentElement">WriteDocumentElement</span>
+    <span id="WriteDocumentEnd">WriteDocumentEnd</span>
+    <span id="WriteArrayElement">WriteArrayElement</span>
+    <span id="WriteArrayEnd">WriteArrayEnd</span>
+    <span id="Skip">Skip</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Invoked.String">func (Invoked) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=1546:1578#L69">String</a>
+					<a class="permalink" href="godoc.158.html#Invoked.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i <a href="godoc.158.html#Invoked">Invoked</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueReaderWriter">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=3935:4183#L177">ValueReaderWriter</a>
+				<a class="permalink" href="godoc.158.html#ValueReaderWriter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueReaderWriter is a test implementation of a bsonrw.ValueReader and bsonrw.ValueWriter
+</p>
+
+			<pre>type ValueReaderWriter struct {
+<span id="ValueReaderWriter.T"></span>    T        *<a href="godoc.60.html">testing</a>.<a href="godoc.60.html#T">T</a>
+<span id="ValueReaderWriter.Invoked"></span>    Invoked  <a href="godoc.158.html#Invoked">Invoked</a>
+<span id="ValueReaderWriter.Return"></span>    Return   interface{} <span class="comment">// Can be a primitive or a bsoncore.Value</span>
+<span id="ValueReaderWriter.BSONType"></span>    BSONType <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>
+<span id="ValueReaderWriter.Err"></span>    Err      <a href="godoc.26.html#error">error</a>
+<span id="ValueReaderWriter.ErrAfter"></span>    ErrAfter <a href="godoc.158.html#Invoked">Invoked</a> <span class="comment">// error after this method is called</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueReaderWriter.ReadArray">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=4768:4839#L212">ReadArray</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadArray">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadArray() (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ArrayReader">ArrayReader</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadArray implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadBinary">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=5036:5114#L223">ReadBinary</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadBinary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadBinary() (b []<a href="godoc.26.html#byte">byte</a>, btype <a href="godoc.26.html#byte">byte</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadBinary implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadBoolean">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=5686:5745#L245">ReadBoolean</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadBoolean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadBoolean() (<a href="godoc.26.html#bool">bool</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadBoolean implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadCodeWithScope">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=6599:6701#L280">ReadCodeWithScope</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadCodeWithScope">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadCodeWithScope() (code <a href="godoc.26.html#string">string</a>, dr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#DocumentReader">DocumentReader</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadCodeWithScope implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadDBPointer">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=6917:7011#L291">ReadDBPointer</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadDBPointer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadDBPointer() (ns <a href="godoc.26.html#string">string</a>, oid <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadDBPointer implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadDateTime">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=7637:7698#L313">ReadDateTime</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadDateTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadDateTime() (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadDateTime implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadDecimal128">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=8054:8132#L330">ReadDecimal128</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadDecimal128">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadDecimal128() (<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Decimal128">Decimal128</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadDecimal128 implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadDocument">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=6315:6392#L269">ReadDocument</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadDocument">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadDocument() (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#DocumentReader">DocumentReader</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadDocument implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadDouble">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=8549:8610#L347">ReadDouble</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadDouble">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadDouble() (<a href="godoc.26.html#float64">float64</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadDouble implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadElement">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=19628:19709#L774">ReadElement</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadElement">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadElement() (<a href="godoc.26.html#string">string</a>, <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadElement implements the bsonrw.DocumentReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadInt32">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=8961:9019#L364">ReadInt32</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadInt32">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadInt32() (<a href="godoc.26.html#int32">int32</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadInt32 implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadInt64">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=9366:9424#L381">ReadInt64</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadInt64">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadInt64() (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadInt64 implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadJavascript">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=9775:9848#L397">ReadJavascript</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadJavascript">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadJavascript() (code <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadJavascript implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadMaxKey">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=10206:10256#L413">ReadMaxKey</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadMaxKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadMaxKey() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ReadMaxKey implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadMinKey">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=10442:10492#L424">ReadMinKey</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadMinKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadMinKey() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ReadMinKey implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadNull">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=10676:10724#L435">ReadNull</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadNull">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadNull() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ReadNull implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadObjectID">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=10910:10984#L446">ReadObjectID</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadObjectID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadObjectID() (<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadObjectID implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadRegex">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=11387:11474#L462">ReadRegex</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadRegex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadRegex() (pattern <a href="godoc.26.html#string">string</a>, options <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadRegex implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadString">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=12029:12089#L483">ReadString</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadString() (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadString implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadSymbol">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=12441:12512#L499">ReadSymbol</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadSymbol">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadSymbol() (symbol <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadSymbol implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadTimestamp">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=13073:13152#L522">ReadTimestamp</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadTimestamp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadTimestamp() (t <a href="godoc.26.html#uint32">uint32</a>, i <a href="godoc.26.html#uint32">uint32</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadTimestamp implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadUndefined">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=13713:13766#L543">ReadUndefined</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadUndefined">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadUndefined() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ReadUndefined implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.ReadValue">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=20481:20552#L807">ReadValue</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.ReadValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) ReadValue() (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadValue implements the bsonrw.ArrayReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.Skip">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=4546:4590#L202">Skip</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.Skip">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) Skip() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Skip implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.Type">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=4392:4444#L196">Type</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) Type() <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a></pre>
+				<p>
+Type implements the bsonrw.ValueReader interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteArray">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=13955:14027#L554">WriteArray</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteArray">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteArray() (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ArrayWriter">ArrayWriter</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteArray implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteArrayElement">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=20756:20835#L818">WriteArrayElement</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteArrayElement">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteArrayElement() (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteArrayElement implements the bsonrw.ArrayWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteArrayEnd">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=21043:21096#L829">WriteArrayEnd</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteArrayEnd">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteArrayEnd() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteArrayEnd implements the bsonrw.ArrayWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteBinary">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=14225:14284#L564">WriteBinary</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteBinary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteBinary(b []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteBinary implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteBinaryWithSubtype">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=14482:14564#L574">WriteBinaryWithSubtype</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteBinaryWithSubtype">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteBinaryWithSubtype(b []<a href="godoc.26.html#byte">byte</a>, btype <a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteBinaryWithSubtype implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteBoolean">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=14763:14819#L584">WriteBoolean</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteBoolean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteBoolean(<a href="godoc.26.html#bool">bool</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteBoolean implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteCodeWithScope">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=15014:15108#L594">WriteCodeWithScope</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteCodeWithScope">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteCodeWithScope(code <a href="godoc.26.html#string">string</a>) (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#DocumentWriter">DocumentWriter</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteCodeWithScope implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDBPointer">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=15317:15404#L604">WriteDBPointer</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDBPointer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDBPointer(ns <a href="godoc.26.html#string">string</a>, oid <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteDBPointer implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDateTime">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=15596:15657#L614">WriteDateTime</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDateTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDateTime(dt <a href="godoc.26.html#int64">int64</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteDateTime implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDecimal128">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=15850:15925#L624">WriteDecimal128</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDecimal128">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDecimal128(<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Decimal128">Decimal128</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteDecimal128 implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDocument">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=18583:18661#L734">WriteDocument</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDocument">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDocument() (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#DocumentWriter">DocumentWriter</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteDocument implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDocumentElement">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=19929:20017#L785">WriteDocumentElement</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDocumentElement">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDocumentElement(<a href="godoc.26.html#string">string</a>) (<a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteDocumentElement implements the bsonrw.DocumentWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDocumentEnd">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=20234:20290#L796">WriteDocumentEnd</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDocumentEnd">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDocumentEnd() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteDocumentEnd implements the bsonrw.DocumentWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteDouble">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=16116:16174#L634">WriteDouble</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteDouble">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteDouble(<a href="godoc.26.html#float64">float64</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteDouble implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteInt32">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=16360:16415#L644">WriteInt32</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteInt32">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteInt32(<a href="godoc.26.html#int32">int32</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteInt32 implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteInt64">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=16600:16655#L654">WriteInt64</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteInt64">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteInt64(<a href="godoc.26.html#int64">int64</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteInt64 implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteJavascript">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=16845:16911#L664">WriteJavascript</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteJavascript">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteJavascript(code <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteJavascript implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteMaxKey">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=17102:17153#L674">WriteMaxKey</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteMaxKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteMaxKey() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteMaxKey implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteMinKey">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=17340:17391#L684">WriteMinKey</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteMinKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteMinKey() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteMinKey implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteNull">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=17576:17625#L694">WriteNull</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteNull">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteNull() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteNull implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteObjectID">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=17812:17883#L704">WriteObjectID</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteObjectID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteObjectID(<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteObjectID implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteRegex">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=18071:18151#L714">WriteRegex</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteRegex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteRegex(pattern <a href="godoc.26.html#string">string</a>, options <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteRegex implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteString">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=18337:18394#L724">WriteString</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteString(<a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteString implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteSymbol">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=18862:18926#L744">WriteSymbol</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteSymbol">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteSymbol(symbol <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteSymbol implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteTimestamp">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=19116:19188#L754">WriteTimestamp</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteTimestamp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteTimestamp(t <a href="godoc.26.html#uint32">uint32</a>, i <a href="godoc.26.html#uint32">uint32</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteTimestamp implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ValueReaderWriter.WriteUndefined">func (*ValueReaderWriter) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsonrw/bsonrwtest/bsonrwtest.go?s=19381:19435#L764">WriteUndefined</a>
+					<a class="permalink" href="godoc.158.html#ValueReaderWriter.WriteUndefined">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (llvrw *<a href="godoc.158.html#ValueReaderWriter">ValueReaderWriter</a>) WriteUndefined() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteUndefined implements the bsonrw.ValueWriter interface.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

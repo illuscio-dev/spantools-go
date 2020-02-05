@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>number - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.365.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package number
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/number"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.365.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.365.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.365.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package number formats numbers according to the customs of different locales.
+</p>
+<p>
+The number formats of this package allow for greater formatting flexibility
+than passing values to message.Printf calls as is. It currently supports the
+builtin Go types and anything that implements the Convert interface
+(currently internal).
+</p>
+<pre>p := message.NewPrinter(language.English)
+
+p.Printf(&#34;%v bottles of beer on the wall.&#34;, number.Decimal(1234))
+// Prints: 1,234 bottles of beer on the wall.
+
+p.Printf(&#34;%v of gophers lose too much fur&#34;, number.Percent(0.12))
+// Prints: 12% of gophers lose too much fur.
+
+p := message.NewPrinter(language.Dutch)
+
+p.Printf(&#34;There are %v bikes per household.&#34;, number.Decimal(1.2))
+// Prints: Er zijn 1,2 fietsen per huishouden.
+</pre>
+<p>
+The width and scale specified in the formatting directives override the
+configuration of the formatter.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.365.html#FormatFunc">type FormatFunc</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#NewFormat">func NewFormat(format FormatFunc, opts ...Option) FormatFunc</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.365.html#Formatter">type Formatter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Decimal">func Decimal(x interface{}, opts ...Option) Formatter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Engineering">func Engineering(x interface{}, opts ...Option) Formatter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#PerMille">func PerMille(x interface{}, opts ...Option) Formatter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Percent">func Percent(x interface{}, opts ...Option) Formatter</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Scientific">func Scientific(x interface{}, opts ...Option) Formatter</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Formatter.Digits">func (f Formatter) Digits(buf []byte, tag language.Tag, scale int) number.Digits</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Formatter.Format">func (f Formatter) Format(state format.State, verb rune)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.365.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#FormatWidth">func FormatWidth(n int) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#IncrementString">func IncrementString(decimal string) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#MaxFractionDigits">func MaxFractionDigits(max int) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#MaxIntegerDigits">func MaxIntegerDigits(max int) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#MinFractionDigits">func MinFractionDigits(min int) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#MinIntegerDigits">func MinIntegerDigits(min int) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#NoSeparator">func NoSeparator() Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Pad">func Pad(r rune) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#PatternOverrides">func PatternOverrides(patterns map[string]string) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Precision">func Precision(prec int) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.365.html#Scale">func Scale(decimals int) Option</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.365.html#example_IncrementString">IncrementString</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.365.html#example_MaxIntegerDigits">MaxIntegerDigits</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/number/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/number/format.go">format.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/number/number.go">number.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/number/option.go">option.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="FormatFunc">type <a href="http://localhost:6161/src/golang.org/x/text/number/format.go?s=382:443#L8">FormatFunc</a>
+				<a class="permalink" href="godoc.365.html#FormatFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A FormatFunc formates a number.
+</p>
+
+			<pre>type FormatFunc func(x interface{}, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#Formatter">Formatter</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFormat">func <a href="http://localhost:6161/src/golang.org/x/text/number/format.go?s=577:637#L12">NewFormat</a>
+					<a class="permalink" href="godoc.365.html#NewFormat">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFormat(format <a href="godoc.365.html#FormatFunc">FormatFunc</a>, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#FormatFunc">FormatFunc</a></pre>
+				<p>
+NewFormat creates a FormatFunc based on another FormatFunc and new options.
+Use NewFormat to cash the creation of formatters.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Formatter">type <a href="http://localhost:6161/src/golang.org/x/text/number/format.go?s=1411:1465#L52">Formatter</a>
+				<a class="permalink" href="godoc.365.html#Formatter">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Formatter struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Decimal">func <a href="http://localhost:6161/src/golang.org/x/text/number/number.go?s=590:643#L15">Decimal</a>
+					<a class="permalink" href="godoc.365.html#Decimal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Decimal(x interface{}, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#Formatter">Formatter</a></pre>
+				<p>
+Decimal formats a number as a floating point decimal.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Engineering">func <a href="http://localhost:6161/src/golang.org/x/text/number/number.go?s=1178:1235#L30">Engineering</a>
+					<a class="permalink" href="godoc.365.html#Engineering">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Engineering(x interface{}, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#Formatter">Formatter</a></pre>
+				<p>
+Engineering formats a number using engineering notation, which is like
+scientific notation, but with the exponent normalized to multiples of 3.
+</p>
+
+				
+				
+			
+				
+				<h3 id="PerMille">func <a href="http://localhost:6161/src/golang.org/x/text/number/number.go?s=1728:1782#L45">PerMille</a>
+					<a class="permalink" href="godoc.365.html#PerMille">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func PerMille(x interface{}, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#Formatter">Formatter</a></pre>
+				<p>
+PerMille formats a number as a per mille indication. A value of 1.0 means
+1000‰.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Percent">func <a href="http://localhost:6161/src/golang.org/x/text/number/number.go?s=1454:1507#L37">Percent</a>
+					<a class="permalink" href="godoc.365.html#Percent">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Percent(x interface{}, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#Formatter">Formatter</a></pre>
+				<p>
+Percent formats a number as a percentage. A value of 1.0 means 100%.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Scientific">func <a href="http://localhost:6161/src/golang.org/x/text/number/number.go?s=828:884#L22">Scientific</a>
+					<a class="permalink" href="godoc.365.html#Scientific">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Scientific(x interface{}, opts ...<a href="godoc.365.html#Option">Option</a>) <a href="godoc.365.html#Formatter">Formatter</a></pre>
+				<p>
+Scientific formats a number in scientific format.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Formatter.Digits">func (Formatter) <a href="http://localhost:6161/src/golang.org/x/text/number/format.go?s=2753:2833#L101">Digits</a>
+					<a class="permalink" href="godoc.365.html#Formatter.Digits">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.365.html#Formatter">Formatter</a>) Digits(buf []<a href="godoc.26.html#byte">byte</a>, tag <a href="godoc.360.html">language</a>.<a href="godoc.360.html#Tag">Tag</a>, scale <a href="godoc.26.html#int">int</a>) <a href="godoc.542.html">number</a>.<a href="godoc.542.html#Digits">Digits</a></pre>
+				<p>
+Digits returns information about which logical digits will be presented to
+the user. This information is relevant, for instance, to determine plural
+forms.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Formatter.Format">func (Formatter) <a href="http://localhost:6161/src/golang.org/x/text/number/format.go?s=1543:1599#L58">Format</a>
+					<a class="permalink" href="godoc.365.html#Formatter.Format">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.365.html#Formatter">Formatter</a>) Format(state <a href="godoc.540.html">format</a>.<a href="godoc.540.html#State">State</a>, verb <a href="godoc.26.html#rune">rune</a>)</pre>
+				<p>
+Format implements format.Formatter. It is for internal use only for now.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=300:318#L5">Option</a>
+				<a class="permalink" href="godoc.365.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Option configures a Formatter.
+</p>
+
+			<pre>type Option option</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FormatWidth">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=4095:4125#L142">FormatWidth</a>
+					<a class="permalink" href="godoc.365.html#FormatWidth">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FormatWidth(n <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+FormatWidth sets the total format width.
+</p>
+
+				
+				
+			
+				
+				<h3 id="IncrementString">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=2351:2394#L80">IncrementString</a>
+					<a class="permalink" href="godoc.365.html#IncrementString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func IncrementString(decimal <a href="godoc.26.html#string">string</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+IncrementString sets the incremental value to which numbers should be
+rounded. For instance: Increment(&#34;0.05&#34;) will cause 1.44 to round to 1.45.
+IncrementString also sets scale to the scale of the increment.
+</p>
+
+				<div id="example_IncrementString" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">p := message.NewPrinter(language.English)
+
+p.Println(number.Decimal(1.33, number.IncrementString(&#34;0.50&#34;)))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">1.50
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+				
+				<h3 id="MaxFractionDigits">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=1287:1325#L42">MaxFractionDigits</a>
+					<a class="permalink" href="godoc.365.html#MaxFractionDigits">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MaxFractionDigits(max <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+MaxFractionDigits specifies the maximum number of fractional digits.
+</p>
+
+				
+				
+			
+				
+				<h3 id="MaxIntegerDigits">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=756:793#L21">MaxIntegerDigits</a>
+					<a class="permalink" href="godoc.365.html#MaxIntegerDigits">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MaxIntegerDigits(max <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+MaxIntegerDigits limits the number of integer digits, eliminating the
+most significant digits.
+</p>
+
+				<div id="example_MaxIntegerDigits" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">const year = 1999
+p := message.NewPrinter(language.English)
+p.Println(&#34;Year:&#34;, number.Decimal(year, number.MaxIntegerDigits(2)))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">Year: 99
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+				
+				<h3 id="MinFractionDigits">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=1540:1578#L52">MinFractionDigits</a>
+					<a class="permalink" href="godoc.365.html#MinFractionDigits">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MinFractionDigits(min <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+MinFractionDigits specifies the minimum number of fractional digits.
+</p>
+
+				
+				
+			
+				
+				<h3 id="MinIntegerDigits">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=1038:1075#L32">MinIntegerDigits</a>
+					<a class="permalink" href="godoc.365.html#MinIntegerDigits">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MinIntegerDigits(min <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+MinIntegerDigits specifies the minimum number of integer digits, adding
+leading zeros when needed.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NoSeparator">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=539:564#L13">NoSeparator</a>
+					<a class="permalink" href="godoc.365.html#NoSeparator">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NoSeparator() <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+NoSeparator causes a number to be displayed without grouping separators.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Pad">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=4357:4380#L155">Pad</a>
+					<a class="permalink" href="godoc.365.html#Pad">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Pad(r <a href="godoc.26.html#rune">rune</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+Pad sets the rune to be used for filling up to the format width.
+</p>
+
+				
+				
+			
+				
+				<h3 id="PatternOverrides">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=3286:3342#L114">PatternOverrides</a>
+					<a class="permalink" href="godoc.365.html#PatternOverrides">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func PatternOverrides(patterns map[<a href="godoc.26.html#string">string</a>]<a href="godoc.26.html#string">string</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+PatternOverrides allows users to specify alternative patterns for specific
+languages. The Pattern will be overridden for all languages in a subgroup as
+well. The function will panic for invalid input. It is best to create this
+option at startup time.
+PatternOverrides must be the first Option passed to a formatter.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Precision">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=1812:1843#L63">Precision</a>
+					<a class="permalink" href="godoc.365.html#Precision">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Precision(prec <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+Precision sets the maximum number of significant digits. A negative value
+means exact.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Scale">func <a href="http://localhost:6161/src/golang.org/x/text/number/option.go?s=2019:2050#L71">Scale</a>
+					<a class="permalink" href="godoc.365.html#Scale">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Scale(decimals <a href="godoc.26.html#int">int</a>) <a href="godoc.365.html#Option">Option</a></pre>
+				<p>
+Scale simultaneously sets MinFractionDigits and MaxFractionDigits to the
+given value.
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

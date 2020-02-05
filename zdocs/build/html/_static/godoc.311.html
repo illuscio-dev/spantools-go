@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>errgroup - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.311.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package errgroup
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/sync/errgroup"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.311.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.311.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.311.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package errgroup provides synchronization, error propagation, and Context
+cancelation for groups of goroutines working on subtasks of a common task.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.311.html#Group">type Group</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.311.html#WithContext">func WithContext(ctx context.Context) (*Group, context.Context)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.311.html#Group.Go">func (g *Group) Go(f func() error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.311.html#Group.Wait">func (g *Group) Wait() error</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.311.html#example_Group_justErrors">Group (JustErrors)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.311.html#example_Group_parallel">Group (Parallel)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.311.html#example_Group_pipeline">Group (Pipeline)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/sync/errgroup/errgroup.go">errgroup.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Group">type <a href="http://localhost:6161/src/golang.org/x/sync/errgroup/errgroup.go?s=526:617#L8">Group</a>
+				<a class="permalink" href="godoc.311.html#Group">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Group is a collection of goroutines working on subtasks that are part of
+the same overall task.
+</p>
+<p>
+A zero Group is valid and does not cancel on error.
+</p>
+
+			<pre>type Group struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_Group_justErrors" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (JustErrors)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (JustErrors)</span></p>
+		<p>JustErrors illustrates the use of a Group in place of a sync.WaitGroup to
+simplify goroutine counting and error handling. This example is derived from
+the sync.WaitGroup example at https://golang.org/pkg/sync/#example_WaitGroup.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+var g errgroup.Group
+var urls = []string{
+    &#34;http://www.golang.org/&#34;,
+    &#34;http://www.google.com/&#34;,
+    &#34;http://www.somestupidname.com/&#34;,
+}
+for _, url := range urls {
+    <span class="comment">// Launch a goroutine to fetch the URL.</span>
+    url := url <span class="comment">// https://golang.org/doc/faq#closures_and_goroutines</span>
+    g.Go(func() error {
+        <span class="comment">// Fetch the URL.</span>
+        resp, err := http.Get(url)
+        if err == nil {
+            resp.Body.Close()
+        }
+        return err
+    })
+}
+<span class="comment">// Wait for all HTTP fetches to complete.</span>
+if err := g.Wait(); err == nil {
+    fmt.Println(&#34;Successfully fetched all URLs.&#34;)
+}
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Group_parallel" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Parallel)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Parallel)</span></p>
+		<p>Parallel illustrates the use of a Group for synchronizing a simple parallel
+task: the &#34;Google Search 2.0&#34; function from
+https://talks.golang.org/2012/concurrency.slide#46, augmented with a Context
+and error-handling.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">Google := func(ctx context.Context, query string) ([]Result, error) {
+    g, ctx := errgroup.WithContext(ctx)
+
+    searches := []Search{Web, Image, Video}
+    results := make([]Result, len(searches))
+    for i, search := range searches {
+        i, search := i, search <span class="comment">// https://golang.org/doc/faq#closures_and_goroutines</span>
+        g.Go(func() error {
+            result, err := search(ctx, query)
+            if err == nil {
+                results[i] = result
+            }
+            return err
+        })
+    }
+    if err := g.Wait(); err != nil {
+        return nil, err
+    }
+    return results, nil
+}
+
+results, err := Google(context.Background(), &#34;golang&#34;)
+if err != nil {
+    fmt.Fprintln(os.Stderr, err)
+    return
+}
+for _, result := range results {
+    fmt.Println(result)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">web result for &#34;golang&#34;
+image result for &#34;golang&#34;
+video result for &#34;golang&#34;
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Group_pipeline" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Pipeline)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Pipeline)</span></p>
+		<p>Pipeline demonstrates the use of a Group to implement a multi-stage
+pipeline: a version of the MD5All function with bounded parallelism from
+https://blog.golang.org/pipelines.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">package errgroup_test
+
+import (
+    &#34;context&#34;
+    &#34;crypto/md5&#34;
+    &#34;fmt&#34;
+    &#34;io/ioutil&#34;
+    &#34;log&#34;
+    &#34;os&#34;
+    &#34;path/filepath&#34;
+
+    &#34;golang.org/x/sync/errgroup&#34;
+)
+
+<span class="comment">// Pipeline demonstrates the use of a Group to implement a multi-stage</span>
+<span class="comment">// pipeline: a version of the MD5All function with bounded parallelism from</span>
+<span class="comment">// https://blog.golang.org/pipelines.</span>
+func ExampleGroup_pipeline() {
+    m, err := MD5All(context.Background(), &#34;.&#34;)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    for k, sum := range m {
+        fmt.Printf(&#34;%s:\t%x\n&#34;, k, sum)
+    }
+}
+
+type result struct {
+    path string
+    sum  [md5.Size]byte
+}
+
+<span class="comment">// MD5All reads all the files in the file tree rooted at root and returns a map</span>
+<span class="comment">// from file path to the MD5 sum of the file&#39;s contents. If the directory walk</span>
+<span class="comment">// fails or any read operation fails, MD5All returns an error.</span>
+func MD5All(ctx context.Context, root string) (map[string][md5.Size]byte, error) {
+    <span class="comment">// ctx is canceled when g.Wait() returns. When this version of MD5All returns</span>
+    <span class="comment">// - even in case of error! - we know that all of the goroutines have finished</span>
+    <span class="comment">// and the memory they were using can be garbage-collected.</span>
+    g, ctx := errgroup.WithContext(ctx)
+    paths := make(chan string)
+
+    g.Go(func() error {
+        defer close(paths)
+        return filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+            if err != nil {
+                return err
+            }
+            if !info.Mode().IsRegular() {
+                return nil
+            }
+            select {
+            case paths &lt;- path:
+            case &lt;-ctx.Done():
+                return ctx.Err()
+            }
+            return nil
+        })
+    })
+
+    <span class="comment">// Start a fixed number of goroutines to read and digest files.</span>
+    c := make(chan result)
+    const numDigesters = 20
+    for i := 0; i &lt; numDigesters; i++ {
+        g.Go(func() error {
+            for path := range paths {
+                data, err := ioutil.ReadFile(path)
+                if err != nil {
+                    return err
+                }
+                select {
+                case c &lt;- result{path, md5.Sum(data)}:
+                case &lt;-ctx.Done():
+                    return ctx.Err()
+                }
+            }
+            return nil
+        })
+    }
+    go func() {
+        g.Wait()
+        close(c)
+    }()
+
+    m := make(map[string][md5.Size]byte)
+    for r := range c {
+        m[r.path] = r.sum
+    }
+    <span class="comment">// Check whether any of the goroutines failed. Since g is accumulating the</span>
+    <span class="comment">// errors, we don&#39;t need to send them (or check for them) in the individual</span>
+    <span class="comment">// results sent on the channel.</span>
+    if err := g.Wait(); err != nil {
+        return nil, err
+    }
+    return m, nil
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+				
+				<h3 id="WithContext">func <a href="http://localhost:6161/src/golang.org/x/sync/errgroup/errgroup.go?s=861:924#L22">WithContext</a>
+					<a class="permalink" href="godoc.311.html#WithContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithContext(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) (*<a href="godoc.311.html#Group">Group</a>, <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>)</pre>
+				<p>
+WithContext returns a new Group and an associated Context derived from ctx.
+</p>
+<p>
+The derived Context is canceled the first time a function passed to Go
+returns a non-nil error or the first time Wait returns, whichever occurs
+first.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Group.Go">func (*Group) <a href="http://localhost:6161/src/golang.org/x/sync/errgroup/errgroup.go?s=1395:1429#L41">Go</a>
+					<a class="permalink" href="godoc.311.html#Group.Go">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.311.html#Group">Group</a>) Go(f func() <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Go calls the given function in a new goroutine.
+</p>
+<p>
+The first call to return a non-nil error cancels the group; its error will be
+returned by Wait.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Group.Wait">func (*Group) <a href="http://localhost:6161/src/golang.org/x/sync/errgroup/errgroup.go?s=1140:1168#L29">Wait</a>
+					<a class="permalink" href="godoc.311.html#Group.Wait">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (g *<a href="godoc.311.html#Group">Group</a>) Wait() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Wait blocks until all function calls from the Go method have returned, then
+returns the first non-nil error (if any) from them.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

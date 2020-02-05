@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>module - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.267.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package module
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/module"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.267.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.267.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package module defines the module.Version type along with support code.
+</p>
+<p>
+The module.Version type is a simple Path, Version pair:
+</p>
+<pre>type Version struct {
+	Path string
+	Version string
+}
+</pre>
+<p>
+There are no restrictions imposed directly by use of this structure,
+but additional checking functions, most notably Check, verify that
+a particular path, version pair is valid.
+</p>
+<h3 id="hdr-Escaped_Paths">Escaped Paths</h3>
+<p>
+Module paths appear as substrings of file system paths
+(in the download cache) and of web server URLs in the proxy protocol.
+In general we cannot rely on file systems to be case-sensitive,
+nor can we rely on web servers, since they read from file systems.
+That is, we cannot rely on the file system to keep rsc.io/QUOTE
+and rsc.io/quote separate. Windows and macOS don&#39;t.
+Instead, we must never require two different casings of a file path.
+Because we want the download cache to match the proxy protocol,
+and because we want the proxy protocol to be possible to serve
+from a tree of static files (which might be stored on a case-insensitive
+file system), the proxy protocol must never require two different casings
+of a URL path either.
+</p>
+<p>
+One possibility would be to make the escaped form be the lowercase
+hexadecimal encoding of the actual path bytes. This would avoid ever
+needing different casings of a file path, but it would be fairly illegible
+to most programmers when those paths appeared in the file system
+(including in file paths in compiler errors and stack traces)
+in web server logs, and so on. Instead, we want a safe escaped form that
+leaves most paths unaltered.
+</p>
+<p>
+The safe escaped form is to replace every uppercase letter
+with an exclamation mark followed by the letter&#39;s lowercase equivalent.
+</p>
+<p>
+For example,
+</p>
+<pre>github.com/Azure/azure-sdk-for-go -&gt;  github.com/!azure/azure-sdk-for-go.
+github.com/GoogleCloudPlatform/cloudsql-proxy -&gt; github.com/!google!cloud!platform/cloudsql-proxy
+github.com/Sirupsen/logrus -&gt; github.com/!sirupsen/logrus.
+</pre>
+<p>
+Import paths that avoid upper-case letters are left unchanged.
+Note that because import paths are ASCII-only and avoid various
+problematic punctuation (like : &lt; and &gt;), the escaped form is also ASCII-only
+and avoids the same problematic punctuation.
+</p>
+<p>
+Import paths have never allowed exclamation marks, so there is no
+need to define how to escape a literal !.
+</p>
+<h3 id="hdr-Unicode_Restrictions">Unicode Restrictions</h3>
+<p>
+Today, paths are disallowed from using Unicode.
+</p>
+<p>
+Although paths are currently disallowed from using Unicode,
+we would like at some point to allow Unicode letters as well, to assume that
+file systems and URLs are Unicode-safe (storing UTF-8), and apply
+the !-for-uppercase convention for escaping them in the file system.
+But there are at least two subtle considerations.
+</p>
+<p>
+First, note that not all case-fold equivalent distinct runes
+form an upper/lower pair.
+For example, U+004B (&#39;K&#39;), U+006B (&#39;k&#39;), and U+212A (&#39;K&#39; for Kelvin)
+are three distinct runes that case-fold to each other.
+When we do add Unicode letters, we must not assume that upper/lower
+are the only case-equivalent pairs.
+Perhaps the Kelvin symbol would be disallowed entirely, for example.
+Or perhaps it would escape as &#34;!!k&#34;, or perhaps as &#34;(212A)&#34;.
+</p>
+<p>
+Second, it would be nice to allow Unicode marks as well as letters,
+but marks include combining marks, and then we must deal not
+only with case folding but also normalization: both U+00E9 (&#39;é&#39;)
+and U+0065 U+0301 (&#39;e&#39; followed by combining acute accent)
+look the same on the page and are treated by some file systems
+as the same path. If we do allow Unicode marks in paths, there
+must be some kind of normalization to allow only one canonical
+encoding of any character used in an import path.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.267.html#CanonicalVersion">func CanonicalVersion(v string) string</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#Check">func Check(path, version string) error</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#CheckFilePath">func CheckFilePath(path string) error</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#CheckImportPath">func CheckImportPath(path string) error</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#CheckPath">func CheckPath(path string) error</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#CheckPathMajor">func CheckPathMajor(v, pathMajor string) error</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#EscapePath">func EscapePath(path string) (escaped string, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#EscapeVersion">func EscapeVersion(v string) (escaped string, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#MatchPathMajor">func MatchPathMajor(v, pathMajor string) bool</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#PathMajorPrefix">func PathMajorPrefix(pathMajor string) string</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#Sort">func Sort(list []Version)</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#SplitPathVersion">func SplitPathVersion(path string) (prefix, pathMajor string, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#UnescapePath">func UnescapePath(escaped string) (path string, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#UnescapeVersion">func UnescapeVersion(escaped string) (v string, err error)</a></dd>
+			
+				
+				<dd><a href="godoc.267.html#VersionError">func VersionError(v Version, err error) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.267.html#InvalidVersionError">type InvalidVersionError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.267.html#InvalidVersionError.Error">func (e *InvalidVersionError) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.267.html#InvalidVersionError.Unwrap">func (e *InvalidVersionError) Unwrap() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.267.html#ModuleError">type ModuleError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.267.html#ModuleError.Error">func (e *ModuleError) Error() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.267.html#ModuleError.Unwrap">func (e *ModuleError) Unwrap() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.267.html#Version">type Version</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.267.html#Version.String">func (m Version) String() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/mod/module/module.go">module.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="CanonicalVersion">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=20126:20164#L558">CanonicalVersion</a>
+				<a class="permalink" href="godoc.267.html#CanonicalVersion">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CanonicalVersion(v <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#string">string</a></pre>
+			<p>
+CanonicalVersion returns the canonical form of the version string v.
+It is the same as semver.Canonical(v) except that it preserves the special build suffix &#34;+incompatible&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Check">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=7351:7389#L186">Check</a>
+				<a class="permalink" href="godoc.267.html#Check">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Check(path, version <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Check checks that a given module path, version pair is valid.
+In addition to the path being a valid module path
+and the version being a valid semantic version,
+the two must correspond.
+For example, the path &#34;yaml/v2&#34; only corresponds to
+semantic versions beginning with &#34;v2.&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CheckFilePath">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=15275:15312#L406">CheckFilePath</a>
+				<a class="permalink" href="godoc.267.html#CheckFilePath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CheckFilePath(path <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+CheckFilePath checks that a slash-separated file path is valid.
+The definition of a valid file path is the same as the definition
+of a valid import path except that the set of allowed characters is larger:
+all Unicode letters, ASCII digits, the ASCII space character (U+0020),
+and the ASCII punctuation characters
+&ldquo;!#$%&amp;()+,-.=@[]^_{}~&rdquo;.
+(The excluded punctuation characters, &#34; * &lt; &gt; ? ` &#39; | / \ and :,
+have special meanings in certain shells or operating systems.)
+</p>
+<p>
+CheckFilePath may be less restrictive in the future, but see the
+top-level package documentation for additional information about
+subtleties of Unicode.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CheckImportPath">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=12349:12388#L311">CheckImportPath</a>
+				<a class="permalink" href="godoc.267.html#CheckImportPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CheckImportPath(path <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+CheckImportPath checks that an import path is valid.
+</p>
+<p>
+A valid import path consists of one or more valid path elements
+separated by slashes (U+002F). (It must not begin with nor end in a slash.)
+</p>
+<p>
+A valid path element is a non-empty string made up of
+ASCII letters, ASCII digits, and limited ASCII punctuation: + - . _ and ~.
+It must not begin or end with a dot (U+002E), nor contain two dots in a row.
+</p>
+<p>
+The element prefix up to the first dot must not be a reserved file name
+on Windows, regardless of case (CON, com1, NuL, and so on).
+</p>
+<p>
+CheckImportPath may be less restrictive in the future, but see the
+top-level package documentation for additional information about
+subtleties of Unicode.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CheckPath">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=10784:10817#L268">CheckPath</a>
+				<a class="permalink" href="godoc.267.html#CheckPath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CheckPath(path <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+CheckPath checks that a module path is valid.
+A valid module path is a valid import path, as checked by CheckImportPath,
+with two additional constraints.
+First, the leading path element (up to the first slash, if any),
+by convention a domain name, must contain only lower-case ASCII letters,
+ASCII digits, dots (U+002E), and dashes (U+002D);
+it must contain at least one dot and cannot start with a dash.
+Second, for a final path element of the form /vN, where N looks numeric
+(ASCII digits and dots) must not begin with a leading zero, must not be /v1,
+and must not contain any dots. For paths beginning with &#34;gopkg.in/&#34;,
+this second requirement is replaced by a requirement that the path
+follow the gopkg.in server&#39;s conventions.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CheckPathMajor">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=17952:17998#L503">CheckPathMajor</a>
+				<a class="permalink" href="godoc.267.html#CheckPathMajor">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CheckPathMajor(v, pathMajor <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+CheckPathMajor returns a non-nil error if the semantic version v
+does not match the path major version pathMajor.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="EscapePath">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=21218:21274#L598">EscapePath</a>
+				<a class="permalink" href="godoc.267.html#EscapePath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EscapePath(path <a href="godoc.26.html#string">string</a>) (escaped <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+EscapePath returns the escaped form of the given module path.
+It fails if the module path is invalid.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="EscapeVersion">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=21556:21612#L609">EscapeVersion</a>
+				<a class="permalink" href="godoc.267.html#EscapeVersion">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EscapeVersion(v <a href="godoc.26.html#string">string</a>) (escaped <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+EscapeVersion returns the escaped form of the given module version.
+Versions are allowed to be in non-semver form but must be valid file names
+and not contain exclamation marks.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MatchPathMajor">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=17737:17782#L497">MatchPathMajor</a>
+				<a class="permalink" href="godoc.267.html#MatchPathMajor">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MatchPathMajor(v, pathMajor <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+MatchPathMajor reports whether the semantic version v
+matches the path major version pathMajor.
+</p>
+<p>
+MatchPathMajor returns true if and only if CheckPathMajor returns nil.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PathMajorPrefix">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=19412:19457#L539">PathMajorPrefix</a>
+				<a class="permalink" href="godoc.267.html#PathMajorPrefix">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PathMajorPrefix(pathMajor <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#string">string</a></pre>
+			<p>
+PathMajorPrefix returns the major-version tag prefix implied by pathMajor.
+An empty PathMajorPrefix allows either v0 or v1.
+</p>
+<p>
+Note that MatchPathMajor may accept some versions that do not actually begin
+with this prefix: namely, it accepts a &#39;v0.0.0-&#39; prefix for a &#39;.v1&#39;
+pathMajor, even though that pathMajor implies &#39;v1&#39; tagging.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Sort">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=20542:20567#L570">Sort</a>
+				<a class="permalink" href="godoc.267.html#Sort">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Sort(list []<a href="godoc.267.html#Version">Version</a>)</pre>
+			<p>
+Sort sorts the list by Path, breaking ties by comparing Version fields.
+The Version fields are interpreted as semantic versions (using semver.Compare)
+optionally followed by a tie-breaking suffix introduced by a slash character,
+like in &#34;v0.0.1/go.mod&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SplitPathVersion">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=16300:16370#L447">SplitPathVersion</a>
+				<a class="permalink" href="godoc.267.html#SplitPathVersion">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SplitPathVersion(path <a href="godoc.26.html#string">string</a>) (prefix, pathMajor <a href="godoc.26.html#string">string</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+SplitPathVersion returns prefix and major version such that prefix+pathMajor == path
+and version is either empty or &#34;/vN&#34; for N &gt;= 2.
+As a special case, gopkg.in paths are recognized directly;
+they require &#34;.vN&#34; instead of &#34;/vN&#34;, and for all N, not just N &gt;= 2.
+SplitPathVersion returns with ok = false when presented with
+a path whose last path element does not satisfy the constraints
+applied by CheckPath, such as &#34;example.com/pkg/v1&#34; or &#34;example.com/pkg/v1.2&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnescapePath">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=22590:22648#L649">UnescapePath</a>
+				<a class="permalink" href="godoc.267.html#UnescapePath">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnescapePath(escaped <a href="godoc.26.html#string">string</a>) (path <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+UnescapePath returns the module path for the given escaped path.
+It fails if the escaped path is invalid or describes an invalid path.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnescapeVersion">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=23178:23236#L664">UnescapeVersion</a>
+				<a class="permalink" href="godoc.267.html#UnescapeVersion">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnescapeVersion(escaped <a href="godoc.26.html#string">string</a>) (v <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+UnescapeVersion returns the version string for the given escaped version.
+It fails if the escaped form is invalid or describes an invalid version.
+Versions are allowed to be in non-semver form but must be valid file names
+and not contain exclamation marks.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="VersionError">func <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=5716:5761#L130">VersionError</a>
+				<a class="permalink" href="godoc.267.html#VersionError">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func VersionError(v <a href="godoc.267.html#Version">Version</a>, err <a href="godoc.26.html#error">error</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+VersionError returns a ModuleError derived from a Version and error,
+or err itself if it is already such an error.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="InvalidVersionError">type <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=6572:6652#L159">InvalidVersionError</a>
+				<a class="permalink" href="godoc.267.html#InvalidVersionError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An InvalidVersionError indicates an error specific to a version, with the
+module path unknown or specified externally.
+</p>
+<p>
+A ModuleError may wrap an InvalidVersionError, but an InvalidVersionError
+must not wrap a ModuleError.
+</p>
+
+			<pre>type InvalidVersionError struct {
+<span id="InvalidVersionError.Version"></span>    Version <a href="godoc.26.html#string">string</a>
+<span id="InvalidVersionError.Pseudo"></span>    Pseudo  <a href="godoc.26.html#bool">bool</a>
+<span id="InvalidVersionError.Err"></span>    Err     <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="InvalidVersionError.Error">func (*InvalidVersionError) <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=6874:6918#L174">Error</a>
+					<a class="permalink" href="godoc.267.html#InvalidVersionError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.267.html#InvalidVersionError">InvalidVersionError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="InvalidVersionError.Unwrap">func (*InvalidVersionError) <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=6993:7037#L178">Unwrap</a>
+					<a class="permalink" href="godoc.267.html#InvalidVersionError.Unwrap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.267.html#InvalidVersionError">InvalidVersionError</a>) Unwrap() <a href="godoc.26.html#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ModuleError">type <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=5519:5593#L122">ModuleError</a>
+				<a class="permalink" href="godoc.267.html#ModuleError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A ModuleError indicates an error specific to a module.
+</p>
+
+			<pre>type ModuleError struct {
+<span id="ModuleError.Path"></span>    Path    <a href="godoc.26.html#string">string</a>
+<span id="ModuleError.Version"></span>    Version <a href="godoc.26.html#string">string</a>
+<span id="ModuleError.Err"></span>    Err     <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ModuleError.Error">func (*ModuleError) <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=5968:6004#L142">Error</a>
+					<a class="permalink" href="godoc.267.html#ModuleError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.267.html#ModuleError">ModuleError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ModuleError.Unwrap">func (*ModuleError) <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=6280:6316#L152">Unwrap</a>
+					<a class="permalink" href="godoc.267.html#ModuleError.Unwrap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.267.html#ModuleError">ModuleError</a>) Unwrap() <a href="godoc.26.html#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Version">type <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=4733:5330#L101">Version</a>
+				<a class="permalink" href="godoc.267.html#Version">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Version (for clients, a module.Version) is defined by a module path and version pair.
+These are stored in their plain (unescaped) form.
+</p>
+
+			<pre>type Version struct {
+<span id="Version.Path"></span>    <span class="comment">// Path is a module path, like &#34;golang.org/x/text&#34; or &#34;rsc.io/quote/v2&#34;.</span>
+    Path <a href="godoc.26.html#string">string</a>
+
+<span id="Version.Version"></span>    <span class="comment">// Version is usually a semantic version in canonical form.</span>
+    <span class="comment">// There are three exceptions to this general rule.</span>
+    <span class="comment">// First, the top-level target of a build has no specific version</span>
+    <span class="comment">// and uses Version = &#34;&#34;.</span>
+    <span class="comment">// Second, during MVS calculations the version &#34;none&#34; is used</span>
+    <span class="comment">// to represent the decision to take no version of a given module.</span>
+    <span class="comment">// Third, filesystem paths found in &#34;replace&#34; directives are</span>
+    <span class="comment">// represented by a path with an empty version.</span>
+    Version <a href="godoc.26.html#string">string</a> `json:&#34;,omitempty&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Version.String">func (Version) <a href="http://localhost:6161/src/golang.org/x/mod/module/module.go?s=5390:5422#L117">String</a>
+					<a class="permalink" href="godoc.267.html#Version.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (m <a href="godoc.267.html#Version">Version</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String returns the module version syntax Path@Version.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

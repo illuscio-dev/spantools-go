@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>options - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.204.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package options
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.204.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.204.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.204.html#AwsKmsProviderOptions">type AwsKmsProviderOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#AwsKmsProvider">func AwsKmsProvider() *AwsKmsProviderOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#AwsKmsProviderOptions.SetAccessKeyID">func (akpo *AwsKmsProviderOptions) SetAccessKeyID(accessKeyID string) *AwsKmsProviderOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#AwsKmsProviderOptions.SetSecretAccessKey">func (akpo *AwsKmsProviderOptions) SetSecretAccessKey(secretAccessKey string) *AwsKmsProviderOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.204.html#DataKeyOptions">type DataKeyOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#DataKey">func DataKey() *DataKeyOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#DataKeyOptions.SetKeyAltNames">func (dko *DataKeyOptions) SetKeyAltNames(names []string) *DataKeyOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#DataKeyOptions.SetMasterKey">func (dko *DataKeyOptions) SetMasterKey(key bsoncore.Document) *DataKeyOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.204.html#ExplicitEncryptionOptions">type ExplicitEncryptionOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#ExplicitEncryption">func ExplicitEncryption() *ExplicitEncryptionOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#ExplicitEncryptionOptions.SetAlgorithm">func (eeo *ExplicitEncryptionOptions) SetAlgorithm(algorithm string) *ExplicitEncryptionOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#ExplicitEncryptionOptions.SetKeyAltName">func (eeo *ExplicitEncryptionOptions) SetKeyAltName(keyAltName string) *ExplicitEncryptionOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#ExplicitEncryptionOptions.SetKeyID">func (eeo *ExplicitEncryptionOptions) SetKeyID(keyID primitive.Binary) *ExplicitEncryptionOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.204.html#LocalKmsProviderOptions">type LocalKmsProviderOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#LocalKmsProvider">func LocalKmsProvider() *LocalKmsProviderOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#LocalKmsProviderOptions.SetMasterKey">func (lkpo *LocalKmsProviderOptions) SetMasterKey(key []byte) *LocalKmsProviderOptions</a></dd>
+				
+			
+				
+				<dd><a href="godoc.204.html#MongoCryptOptions">type MongoCryptOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#MongoCrypt">func MongoCrypt() *MongoCryptOptions</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#MongoCryptOptions.SetAwsProviderOptions">func (mo *MongoCryptOptions) SetAwsProviderOptions(awsOpts *AwsKmsProviderOptions) *MongoCryptOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#MongoCryptOptions.SetLocalProviderOptions">func (mo *MongoCryptOptions) SetLocalProviderOptions(localOpts *LocalKmsProviderOptions) *MongoCryptOptions</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.204.html#MongoCryptOptions.SetLocalSchemaMap">func (mo *MongoCryptOptions) SetLocalSchemaMap(localSchemaMap map[string]bsoncore.Document) *MongoCryptOptions</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go">mongocrypt_context_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_options.go">mongocrypt_options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go">provider_options.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="AwsKmsProviderOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=368:453#L1">AwsKmsProviderOptions</a>
+				<a class="permalink" href="godoc.204.html#AwsKmsProviderOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+AwsKmsProviderOptions specifies options for configuring the AWS KMS provider.
+</p>
+
+			<pre>type AwsKmsProviderOptions struct {
+<span id="AwsKmsProviderOptions.AccessKeyID"></span>    AccessKeyID     <a href="godoc.26.html#string">string</a>
+<span id="AwsKmsProviderOptions.SecretAccessKey"></span>    SecretAccessKey <a href="godoc.26.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="AwsKmsProvider">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=519:563#L6">AwsKmsProvider</a>
+					<a class="permalink" href="godoc.204.html#AwsKmsProvider">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func AwsKmsProvider() *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a></pre>
+				<p>
+AwsKmsProvider creates a new AwsKmsProviderOptions instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="AwsKmsProviderOptions.SetAccessKeyID">func (*AwsKmsProviderOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=653:745#L11">SetAccessKeyID</a>
+					<a class="permalink" href="godoc.204.html#AwsKmsProviderOptions.SetAccessKeyID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (akpo *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a>) SetAccessKeyID(accessKeyID <a href="godoc.26.html#string">string</a>) *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a></pre>
+				<p>
+SetAccessKeyID specifies the AWS access key ID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="AwsKmsProviderOptions.SetSecretAccessKey">func (*AwsKmsProviderOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=855:955#L17">SetSecretAccessKey</a>
+					<a class="permalink" href="godoc.204.html#AwsKmsProviderOptions.SetSecretAccessKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (akpo *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a>) SetSecretAccessKey(secretAccessKey <a href="godoc.26.html#string">string</a>) *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a></pre>
+				<p>
+SetSecretAccessKey specifies the AWS secret access key.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DataKeyOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=458:541#L5">DataKeyOptions</a>
+				<a class="permalink" href="godoc.204.html#DataKeyOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DataKeyOptions specifies options for creating a new data key.
+</p>
+
+			<pre>type DataKeyOptions struct {
+<span id="DataKeyOptions.KeyAltNames"></span>    KeyAltNames []<a href="godoc.26.html#string">string</a>
+<span id="DataKeyOptions.MasterKey"></span>    MasterKey   <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="DataKey">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=593:623#L11">DataKey</a>
+					<a class="permalink" href="godoc.204.html#DataKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func DataKey() *<a href="godoc.204.html#DataKeyOptions">DataKeyOptions</a></pre>
+				<p>
+DataKey creates a new DataKeyOptions instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="DataKeyOptions.SetKeyAltNames">func (*DataKeyOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=704:777#L16">SetKeyAltNames</a>
+					<a class="permalink" href="godoc.204.html#DataKeyOptions.SetKeyAltNames">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dko *<a href="godoc.204.html#DataKeyOptions">DataKeyOptions</a>) SetKeyAltNames(names []<a href="godoc.26.html#string">string</a>) *<a href="godoc.204.html#DataKeyOptions">DataKeyOptions</a></pre>
+				<p>
+SetKeyAltNames specifies alternate key names.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DataKeyOptions.SetMasterKey">func (*DataKeyOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=862:940#L22">SetMasterKey</a>
+					<a class="permalink" href="godoc.204.html#DataKeyOptions.SetMasterKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dko *<a href="godoc.204.html#DataKeyOptions">DataKeyOptions</a>) SetMasterKey(key <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) *<a href="godoc.204.html#DataKeyOptions">DataKeyOptions</a></pre>
+				<p>
+SetMasterKey specifies the master key.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ExplicitEncryptionOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=1074:1184#L28">ExplicitEncryptionOptions</a>
+				<a class="permalink" href="godoc.204.html#ExplicitEncryptionOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ExplicitEncryptionOptions specifies options for configuring an explicit encryption context.
+</p>
+
+			<pre>type ExplicitEncryptionOptions struct {
+<span id="ExplicitEncryptionOptions.KeyID"></span>    KeyID      *<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Binary">Binary</a>
+<span id="ExplicitEncryptionOptions.KeyAltName"></span>    KeyAltName *<a href="godoc.26.html#string">string</a>
+<span id="ExplicitEncryptionOptions.Algorithm"></span>    Algorithm  <a href="godoc.26.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ExplicitEncryption">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=1258:1310#L35">ExplicitEncryption</a>
+					<a class="permalink" href="godoc.204.html#ExplicitEncryption">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ExplicitEncryption() *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a></pre>
+				<p>
+ExplicitEncryption creates a new ExplicitEncryptionOptions instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ExplicitEncryptionOptions.SetAlgorithm">func (*ExplicitEncryptionOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=1769:1864#L52">SetAlgorithm</a>
+					<a class="permalink" href="godoc.204.html#ExplicitEncryptionOptions.SetAlgorithm">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (eeo *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a>) SetAlgorithm(algorithm <a href="godoc.26.html#string">string</a>) *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a></pre>
+				<p>
+SetAlgorithm specifies an encryption algorithm.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ExplicitEncryptionOptions.SetKeyAltName">func (*ExplicitEncryptionOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=1573:1670#L46">SetKeyAltName</a>
+					<a class="permalink" href="godoc.204.html#ExplicitEncryptionOptions.SetKeyAltName">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (eeo *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a>) SetKeyAltName(keyAltName <a href="godoc.26.html#string">string</a>) *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a></pre>
+				<p>
+SetKeyAltName sets the key alternative name.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ExplicitEncryptionOptions.SetKeyID">func (*ExplicitEncryptionOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_context_options.go?s=1390:1487#L40">SetKeyID</a>
+					<a class="permalink" href="godoc.204.html#ExplicitEncryptionOptions.SetKeyID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (eeo *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a>) SetKeyID(keyID <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Binary">Binary</a>) *<a href="godoc.204.html#ExplicitEncryptionOptions">ExplicitEncryptionOptions</a></pre>
+				<p>
+SetKeyID sets the key identifier.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LocalKmsProviderOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=1097:1154#L23">LocalKmsProviderOptions</a>
+				<a class="permalink" href="godoc.204.html#LocalKmsProviderOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+LocalKmsProviderOptions specifies options for configuring a local KMS provider.
+</p>
+
+			<pre>type LocalKmsProviderOptions struct {
+<span id="LocalKmsProviderOptions.MasterKey"></span>    MasterKey []<a href="godoc.26.html#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="LocalKmsProvider">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=1224:1272#L28">LocalKmsProvider</a>
+					<a class="permalink" href="godoc.204.html#LocalKmsProvider">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func LocalKmsProvider() *<a href="godoc.204.html#LocalKmsProviderOptions">LocalKmsProviderOptions</a></pre>
+				<p>
+LocalKmsProvider creates a new LocalKmsProviderOptions instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="LocalKmsProviderOptions.SetMasterKey">func (*LocalKmsProviderOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/provider_options.go?s=1361:1447#L33">SetMasterKey</a>
+					<a class="permalink" href="godoc.204.html#LocalKmsProviderOptions.SetMasterKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (lkpo *<a href="godoc.204.html#LocalKmsProviderOptions">LocalKmsProviderOptions</a>) SetMasterKey(key []<a href="godoc.26.html#byte">byte</a>) *<a href="godoc.204.html#LocalKmsProviderOptions">LocalKmsProviderOptions</a></pre>
+				<p>
+SetMasterKey specifies the local master key.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MongoCryptOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_options.go?s=422:589#L4">MongoCryptOptions</a>
+				<a class="permalink" href="godoc.204.html#MongoCryptOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MongoCryptOptions specifies options to configure a MongoCrypt instance.
+</p>
+
+			<pre>type MongoCryptOptions struct {
+<span id="MongoCryptOptions.AwsProviderOpts"></span>    AwsProviderOpts   *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a>
+<span id="MongoCryptOptions.LocalProviderOpts"></span>    LocalProviderOpts *<a href="godoc.204.html#LocalKmsProviderOptions">LocalKmsProviderOptions</a>
+<span id="MongoCryptOptions.LocalSchemaMap"></span>    LocalSchemaMap    map[<a href="godoc.26.html#string">string</a>]<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="MongoCrypt">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_options.go?s=647:683#L11">MongoCrypt</a>
+					<a class="permalink" href="godoc.204.html#MongoCrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MongoCrypt() *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a></pre>
+				<p>
+MongoCrypt creates a new MongoCryptOptions instance.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MongoCryptOptions.SetAwsProviderOptions">func (*MongoCryptOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_options.go?s=779:880#L16">SetAwsProviderOptions</a>
+					<a class="permalink" href="godoc.204.html#MongoCryptOptions.SetAwsProviderOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mo *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a>) SetAwsProviderOptions(awsOpts *<a href="godoc.204.html#AwsKmsProviderOptions">AwsKmsProviderOptions</a>) *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a></pre>
+				<p>
+SetAwsProviderOptions specifies AWS KMS provider options.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MongoCryptOptions.SetLocalProviderOptions">func (*MongoCryptOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_options.go?s=992:1099#L22">SetLocalProviderOptions</a>
+					<a class="permalink" href="godoc.204.html#MongoCryptOptions.SetLocalProviderOptions">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mo *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a>) SetLocalProviderOptions(localOpts *<a href="godoc.204.html#LocalKmsProviderOptions">LocalKmsProviderOptions</a>) *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a></pre>
+				<p>
+SetLocalProviderOptions specifies local KMS provider options.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MongoCryptOptions.SetLocalSchemaMap">func (*MongoCryptOptions) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options/mongocrypt_options.go?s=1203:1313#L28">SetLocalSchemaMap</a>
+					<a class="permalink" href="godoc.204.html#MongoCryptOptions.SetLocalSchemaMap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mo *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a>) SetLocalSchemaMap(localSchemaMap map[<a href="godoc.26.html#string">string</a>]<a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) *<a href="godoc.204.html#MongoCryptOptions">MongoCryptOptions</a></pre>
+				<p>
+SetLocalSchemaMap specifies the local schema map.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

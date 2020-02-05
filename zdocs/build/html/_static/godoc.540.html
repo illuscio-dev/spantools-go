@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>format - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.540.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package format
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/text/internal/format"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.540.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.540.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package format contains types for defining language-specific formatting of
+values.
+</p>
+<p>
+This package is internal now, but will eventually be exposed after the API
+settles.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.540.html#Formatter">type Formatter</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.540.html#Parser">type Parser</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.540.html#Parser.ClearFlags">func (p *Parser) ClearFlags()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.540.html#Parser.Reset">func (p *Parser) Reset(args []interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.540.html#Parser.Scan">func (p *Parser) Scan() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.540.html#Parser.SetFormat">func (p *Parser) SetFormat(format string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.540.html#Parser.Text">func (p *Parser) Text() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.540.html#State">type State</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.540.html#Status">type Status</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/format/format.go">format.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go">parser.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Formatter">type <a href="http://localhost:6161/src/golang.org/x/text/internal/format/format.go?s=1146:1206#L29">Formatter</a>
+				<a class="permalink" href="godoc.540.html#Formatter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Formatter is analogous to fmt.Formatter.
+</p>
+
+			<pre>type Formatter interface {
+    Format(state <a href="godoc.540.html#State">State</a>, verb <a href="godoc.26.html#rune">rune</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Parser">type <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=310:1120#L4">Parser</a>
+				<a class="permalink" href="godoc.540.html#Parser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Parser parses a format string. The result from the parse are set in the
+struct fields.
+</p>
+
+			<pre>type Parser struct {
+<span id="Parser.Verb"></span>    Verb <a href="godoc.26.html#rune">rune</a>
+
+<span id="Parser.WidthPresent"></span>    WidthPresent <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.PrecPresent"></span>    PrecPresent  <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.Minus"></span>    Minus        <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.Plus"></span>    Plus         <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.Sharp"></span>    Sharp        <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.Space"></span>    Space        <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.Zero"></span>    Zero         <a href="godoc.26.html#bool">bool</a>
+
+    <span class="comment">// For the formats %+v %#v, we set the plusV/sharpV flags</span>
+    <span class="comment">// and clear the plus/sharp flags since %+v and %#v are in effect</span>
+    <span class="comment">// different, flagless formats set at the top level.</span>
+<span id="Parser.PlusV"></span>    PlusV  <a href="godoc.26.html#bool">bool</a>
+<span id="Parser.SharpV"></span>    SharpV <a href="godoc.26.html#bool">bool</a>
+
+<span id="Parser.HasIndex"></span>    HasIndex <a href="godoc.26.html#bool">bool</a>
+
+<span id="Parser.Width"></span>    Width <a href="godoc.26.html#int">int</a>
+<span id="Parser.Prec"></span>    Prec  <a href="godoc.26.html#int">int</a> <span class="comment">// precision</span>
+
+    <span class="comment">// retain arguments across calls.</span>
+<span id="Parser.Args"></span>    Args []interface{}
+    <span class="comment">// retain current argument number across calls</span>
+<span id="Parser.ArgNum"></span>    ArgNum <a href="godoc.26.html#int">int</a>
+
+    <span class="comment">// reordered records whether the format string used argument reordering.</span>
+<span id="Parser.Reordered"></span>    Reordered <a href="godoc.26.html#bool">bool</a>
+
+<span id="Parser.Status"></span>    Status <a href="godoc.540.html#Status">Status</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Parser.ClearFlags">func (*Parser) <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=2033:2062#L78">ClearFlags</a>
+					<a class="permalink" href="godoc.540.html#Parser.ClearFlags">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.540.html#Parser">Parser</a>) ClearFlags()</pre>
+				<p>
+ClearFlags reset the parser to default behavior.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.Reset">func (*Parser) <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=1195:1237#L44">Reset</a>
+					<a class="permalink" href="godoc.540.html#Parser.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.540.html#Parser">Parser</a>) Reset(args []interface{})</pre>
+				<p>
+Reset initializes a parser to scan format strings for the given args.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.Scan">func (*Parser) <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=2399:2427#L95">Scan</a>
+					<a class="permalink" href="godoc.540.html#Parser.Scan">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.540.html#Parser">Parser</a>) Scan() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Scan scans the next part of the format string and sets the status to
+indicate whether it scanned a string literal, substitution or error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.SetFormat">func (*Parser) <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=1652:1693#L58">SetFormat</a>
+					<a class="permalink" href="godoc.540.html#Parser.SetFormat">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.540.html#Parser">Parser</a>) SetFormat(format <a href="godoc.26.html#string">string</a>)</pre>
+				<p>
+SetFormat sets a new format string to parse. It does not reset the argument
+count.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Parser.Text">func (*Parser) <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=1490:1520#L54">Text</a>
+					<a class="permalink" href="godoc.540.html#Parser.Text">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.540.html#Parser">Parser</a>) Text() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Text returns the part of the format string that was parsed by the last call
+to Scan. It returns the original substitution clause if the current scan
+parsed a substitution.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="State">type <a href="http://localhost:6161/src/golang.org/x/text/internal/format/format.go?s=620:1100#L11">State</a>
+				<a class="permalink" href="godoc.540.html#State">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+State represents the printer state passed to custom formatters. It provides
+access to the fmt.State interface and the sentence and language-related
+context.
+</p>
+
+			<pre>type State interface {
+    <a href="godoc.558.html">fmt</a>.<a href="godoc.558.html#State">State</a>
+
+    <span class="comment">// Language reports the requested language in which to render a message.</span>
+    Language() <a href="godoc.360.html">language</a>.<a href="godoc.360.html#Tag">Tag</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Status">type <a href="http://localhost:6161/src/golang.org/x/text/internal/format/parser.go?s=1803:1818#L65">Status</a>
+				<a class="permalink" href="godoc.540.html#Status">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Status indicates the result type of a call to Scan.
+</p>
+
+			<pre>type Status <a href="godoc.26.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="StatusText">StatusText</span> <a href="godoc.540.html#Status">Status</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="StatusSubstitution">StatusSubstitution</span>
+    <span id="StatusBadWidthSubstitution">StatusBadWidthSubstitution</span>
+    <span id="StatusBadPrecSubstitution">StatusBadPrecSubstitution</span>
+    <span id="StatusNoVerb">StatusNoVerb</span>
+    <span id="StatusBadArgNum">StatusBadArgNum</span>
+    <span id="StatusMissingArg">StatusMissingArg</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

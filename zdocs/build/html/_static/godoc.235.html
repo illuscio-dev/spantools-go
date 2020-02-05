@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>ocsp - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.235.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package ocsp
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/ocsp"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.235.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.235.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package ocsp parses OCSP responses as specified in RFC 2560. OCSP responses
+are signed messages attesting to the validity of a certificate for a small
+period of time. This is used to manage revocation for X.509 certificates.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.235.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.235.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.235.html#CreateRequest">func CreateRequest(cert, issuer *x509.Certificate, opts *RequestOptions) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.235.html#CreateResponse">func CreateResponse(issuer, responderCert *x509.Certificate, template Response, priv crypto.Signer) ([]byte, error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.235.html#ParseError">type ParseError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#ParseError.Error">func (p ParseError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.235.html#Request">type Request</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#ParseRequest">func ParseRequest(bytes []byte) (*Request, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#Request.Marshal">func (req *Request) Marshal() ([]byte, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.235.html#RequestOptions">type RequestOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.235.html#Response">type Response</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#ParseResponse">func ParseResponse(bytes []byte, issuer *x509.Certificate) (*Response, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#ParseResponseForCert">func ParseResponseForCert(bytes []byte, cert, issuer *x509.Certificate) (*Response, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#Response.CheckSignatureFrom">func (resp *Response) CheckSignatureFrom(issuer *x509.Certificate) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.235.html#ResponseError">type ResponseError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#ResponseError.Error">func (r ResponseError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.235.html#ResponseStatus">type ResponseStatus</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.235.html#ResponseStatus.String">func (r ResponseStatus) String() string</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go">ocsp.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+The status values that can be expressed in OCSP.  See RFC 6960.
+</p>
+
+				<pre>const (
+    <span class="comment">// Good means that the certificate is valid.</span>
+    <span id="Good">Good</span> = <a href="godoc.26.html#iota">iota</a>
+    <span class="comment">// Revoked means that the certificate has been deliberately revoked.</span>
+    <span id="Revoked">Revoked</span>
+    <span class="comment">// Unknown means that the OCSP responder doesn&#39;t know about the certificate.</span>
+    <span id="Unknown">Unknown</span>
+    <span class="comment">// ServerFailed is unused and was never used (see</span>
+    <span class="comment">// https://go-review.googlesource.com/#/c/18944). ParseResponse will</span>
+    <span class="comment">// return a ResponseError when an error response is parsed.</span>
+    <span id="ServerFailed">ServerFailed</span>
+)</pre>
+			
+				<p>
+The enumerated reasons for revoking a certificate.  See RFC 5280.
+</p>
+
+				<pre>const (
+    <span id="Unspecified">Unspecified</span>          = 0
+    <span id="KeyCompromise">KeyCompromise</span>        = 1
+    <span id="CACompromise">CACompromise</span>         = 2
+    <span id="AffiliationChanged">AffiliationChanged</span>   = 3
+    <span id="Superseded">Superseded</span>           = 4
+    <span id="CessationOfOperation">CessationOfOperation</span> = 5
+    <span id="CertificateHold">CertificateHold</span>      = 6
+
+    <span id="RemoveFromCRL">RemoveFromCRL</span>      = 8
+    <span id="PrivilegeWithdrawn">PrivilegeWithdrawn</span> = 9
+    <span id="AACompromise">AACompromise</span>       = 10
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+These are pre-serialized error responses for the various non-success codes
+defined by OCSP. The Unauthorized code in particular can be used by an OCSP
+responder that supports only pre-signed responses as a response to requests
+for certificates with unknown status. See RFC 5019.
+</p>
+
+				<pre>var (
+    <span id="MalformedRequestErrorResponse">MalformedRequestErrorResponse</span> = []<a href="godoc.26.html#byte">byte</a>{0x30, 0x03, 0x0A, 0x01, 0x01}
+    <span id="InternalErrorErrorResponse">InternalErrorErrorResponse</span>    = []<a href="godoc.26.html#byte">byte</a>{0x30, 0x03, 0x0A, 0x01, 0x02}
+    <span id="TryLaterErrorResponse">TryLaterErrorResponse</span>         = []<a href="godoc.26.html#byte">byte</a>{0x30, 0x03, 0x0A, 0x01, 0x03}
+    <span id="SigRequredErrorResponse">SigRequredErrorResponse</span>       = []<a href="godoc.26.html#byte">byte</a>{0x30, 0x03, 0x0A, 0x01, 0x05}
+    <span id="UnauthorizedErrorResponse">UnauthorizedErrorResponse</span>     = []<a href="godoc.26.html#byte">byte</a>{0x30, 0x03, 0x0A, 0x01, 0x06}
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="CreateRequest">func <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=20402:20490#L610">CreateRequest</a>
+				<a class="permalink" href="godoc.235.html#CreateRequest">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CreateRequest(cert, issuer *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>, opts *<a href="godoc.235.html#RequestOptions">RequestOptions</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+CreateRequest returns a DER-encoded, OCSP request for the status of cert. If
+opts is nil then sensible defaults are used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateResponse">func <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=22066:22181#L664">CreateResponse</a>
+				<a class="permalink" href="godoc.235.html#CreateResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CreateResponse(issuer, responderCert *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>, template <a href="godoc.235.html#Response">Response</a>, priv <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Signer">Signer</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+CreateResponse returns a DER-encoded OCSP response with the specified contents.
+The fields in the response are populated as follows:
+</p>
+<p>
+The responder cert is used to populate the responder&#39;s name field, and the
+certificate itself is provided alongside the OCSP response signature.
+</p>
+<p>
+The issuer cert is used to puplate the IssuerNameHash and IssuerKeyHash fields.
+</p>
+<p>
+The template is used to populate the SerialNumber, Status, RevokedAt,
+RevocationReason, ThisUpdate, and NextUpdate fields.
+</p>
+<p>
+If template.IssuerHash is not set, SHA1 will be used.
+</p>
+<p>
+The ProducedAt date is automatically set to the current date, to the nearest minute.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ParseError">type <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=13572:13594#L401">ParseError</a>
+				<a class="permalink" href="godoc.235.html#ParseError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ParseError results from an invalid OCSP response.
+</p>
+
+			<pre>type ParseError <a href="godoc.26.html#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ParseError.Error">func (ParseError) <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=13596:13630#L403">Error</a>
+					<a class="permalink" href="godoc.235.html#ParseError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p <a href="godoc.235.html#ParseError">ParseError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Request">type <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=9657:9779#L302">Request</a>
+				<a class="permalink" href="godoc.235.html#Request">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Request represents an OCSP request. See RFC 6960.
+</p>
+
+			<pre>type Request struct {
+<span id="Request.HashAlgorithm"></span>    HashAlgorithm  <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Hash">Hash</a>
+<span id="Request.IssuerNameHash"></span>    IssuerNameHash []<a href="godoc.26.html#byte">byte</a>
+<span id="Request.IssuerKeyHash"></span>    IssuerKeyHash  []<a href="godoc.26.html#byte">byte</a>
+<span id="Request.SerialNumber"></span>    SerialNumber   *<a href="godoc.9.html">big</a>.<a href="godoc.9.html#Int">Int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseRequest">func <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=13866:13915#L410">ParseRequest</a>
+					<a class="permalink" href="godoc.235.html#ParseRequest">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseRequest(bytes []<a href="godoc.26.html#byte">byte</a>) (*<a href="godoc.235.html#Request">Request</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ParseRequest parses an OCSP request in DER form. It only supports
+requests for a single certificate. Signed requests are not supported.
+If a request includes a signature, it will result in a ParseError.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Request.Marshal">func (*Request) <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=9845:9890#L310">Marshal</a>
+					<a class="permalink" href="godoc.235.html#Request.Marshal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (req *<a href="godoc.235.html#Request">Request</a>) Marshal() ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Marshal marshals the OCSP request to ASN.1 DER encoded form.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RequestOptions">type <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=19922:20095#L594">RequestOptions</a>
+				<a class="permalink" href="godoc.235.html#RequestOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RequestOptions contains options for constructing OCSP requests.
+</p>
+
+			<pre>type RequestOptions struct {
+<span id="RequestOptions.Hash"></span>    <span class="comment">// Hash contains the hash function that should be used when</span>
+    <span class="comment">// constructing the OCSP request. If zero, SHA-1 will be used.</span>
+    Hash <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Hash">Hash</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Response">type <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=10467:12352#L337">Response</a>
+				<a class="permalink" href="godoc.235.html#Response">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Response represents an OCSP response containing a single SingleResponse. See
+RFC 6960.
+</p>
+
+			<pre>type Response struct {
+<span id="Response.Status"></span>    <span class="comment">// Status is one of {Good, Revoked, Unknown}</span>
+    Status                                        <a href="godoc.26.html#int">int</a>
+<span id="Response.SerialNumber"></span>    SerialNumber                                  *<a href="godoc.9.html">big</a>.<a href="godoc.9.html#Int">Int</a>
+<span id="Response.ProducedAt"></span>    ProducedAt, ThisUpdate, NextUpdate, RevokedAt <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+<span id="Response.RevocationReason"></span>    RevocationReason                              <a href="godoc.26.html#int">int</a>
+<span id="Response.Certificate"></span>    Certificate                                   *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>
+<span id="Response.TBSResponseData"></span>    <span class="comment">// TBSResponseData contains the raw bytes of the signed response. If</span>
+    <span class="comment">// Certificate is nil then this can be used to verify Signature.</span>
+    TBSResponseData    []<a href="godoc.26.html#byte">byte</a>
+<span id="Response.Signature"></span>    Signature          []<a href="godoc.26.html#byte">byte</a>
+<span id="Response.SignatureAlgorithm"></span>    SignatureAlgorithm <a href="godoc.370.html">x509</a>.<a href="godoc.370.html#SignatureAlgorithm">SignatureAlgorithm</a>
+
+<span id="Response.IssuerHash"></span>    <span class="comment">// IssuerHash is the hash used to compute the IssuerNameHash and IssuerKeyHash.</span>
+    <span class="comment">// Valid values are crypto.SHA1, crypto.SHA256, crypto.SHA384, and crypto.SHA512.</span>
+    <span class="comment">// If zero, the default is crypto.SHA1.</span>
+    IssuerHash <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Hash">Hash</a>
+
+<span id="Response.RawResponderName"></span>    <span class="comment">// RawResponderName optionally contains the DER-encoded subject of the</span>
+    <span class="comment">// responder certificate. Exactly one of RawResponderName and</span>
+<span id="Response.ResponderKeyHash"></span>    <span class="comment">// ResponderKeyHash is set.</span>
+    RawResponderName []<a href="godoc.26.html#byte">byte</a>
+    <span class="comment">// ResponderKeyHash optionally contains the SHA-1 hash of the</span>
+    <span class="comment">// responder&#39;s public key. Exactly one of RawResponderName and</span>
+    <span class="comment">// ResponderKeyHash is set.</span>
+    ResponderKeyHash []<a href="godoc.26.html#byte">byte</a>
+
+<span id="Response.Extensions"></span>    <span class="comment">// Extensions contains raw X.509 extensions from the singleExtensions field</span>
+    <span class="comment">// of the OCSP response. When parsing certificates, this can be used to</span>
+    <span class="comment">// extract non-critical extensions that are not parsed by this package. When</span>
+    <span class="comment">// marshaling OCSP responses, the Extensions field is ignored, see</span>
+<span id="Response.ExtraExtensions"></span>    <span class="comment">// ExtraExtensions.</span>
+    Extensions []<a href="godoc.381.html">pkix</a>.<a href="godoc.381.html#Extension">Extension</a>
+
+    <span class="comment">// ExtraExtensions contains extensions to be copied, raw, into any marshaled</span>
+    <span class="comment">// OCSP response (in the singleExtensions field). Values override any</span>
+    <span class="comment">// extensions that would otherwise be produced based on the other fields. The</span>
+    <span class="comment">// ExtraExtensions field is not populated when parsing certificates, see</span>
+    <span class="comment">// Extensions.</span>
+    ExtraExtensions []<a href="godoc.381.html">pkix</a>.<a href="godoc.381.html#Extension">Extension</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ParseResponse">func <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=15070:15147#L445">ParseResponse</a>
+					<a class="permalink" href="godoc.235.html#ParseResponse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseResponse(bytes []<a href="godoc.26.html#byte">byte</a>, issuer *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>) (*<a href="godoc.235.html#Response">Response</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ParseResponse parses an OCSP response in DER form. It only supports
+responses for a single certificate. If the response contains a certificate
+then the signature over the response is checked. If issuer is not nil then
+it will be used to validate the signature or embedded certificate.
+</p>
+<p>
+Invalid responses and parse failures will result in a ParseError.
+Error responses will result in a ResponseError.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ParseResponseForCert">func <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=15658:15748#L457">ParseResponseForCert</a>
+					<a class="permalink" href="godoc.235.html#ParseResponseForCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ParseResponseForCert(bytes []<a href="godoc.26.html#byte">byte</a>, cert, issuer *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>) (*<a href="godoc.235.html#Response">Response</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ParseResponseForCert parses an OCSP response in DER form and searches for a
+Response relating to cert. If such a Response is found and the OCSP response
+contains a certificate then the signature over the response is checked. If
+issuer is not nil then it will be used to validate the signature or embedded
+certificate.
+</p>
+<p>
+Invalid responses and parse failures will result in a ParseError.
+Error responses will result in a ResponseError.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Response.CheckSignatureFrom">func (*Response) <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=13348:13420#L396">CheckSignatureFrom</a>
+					<a class="permalink" href="godoc.235.html#Response.CheckSignatureFrom">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (resp *<a href="godoc.235.html#Response">Response</a>) CheckSignatureFrom(issuer *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CheckSignatureFrom checks that the signature in resp is a valid signature
+from issuer. This should only be used if resp.Certificate is nil. Otherwise,
+the OCSP response contained an intermediate certificate that created the
+signature. That signature is checked by ParseResponse and only
+resp.Certificate remains to be validated.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ResponseError">type <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=1807:1859#L58">ResponseError</a>
+				<a class="permalink" href="godoc.235.html#ResponseError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ResponseError is an error that may be returned by ParseResponse to indicate
+that the response itself is an error, not just that it&#39;s indicating that a
+certificate is revoked, unknown, etc.
+</p>
+
+			<pre>type ResponseError struct {
+<span id="ResponseError.Status"></span>    Status <a href="godoc.235.html#ResponseStatus">ResponseStatus</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ResponseError.Error">func (ResponseError) <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=1861:1898#L62">Error</a>
+					<a class="permalink" href="godoc.235.html#ResponseError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.235.html#ResponseError">ResponseError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ResponseStatus">type <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=882:905#L23">ResponseStatus</a>
+				<a class="permalink" href="godoc.235.html#ResponseStatus">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ResponseStatus contains the result of an OCSP request. See
+<a href="https://tools.ietf.org/html/rfc6960#section-2.3">https://tools.ietf.org/html/rfc6960#section-2.3</a>
+</p>
+
+			<pre>type ResponseStatus <a href="godoc.26.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="Success">Success</span>       <a href="godoc.235.html#ResponseStatus">ResponseStatus</a> = 0
+    <span id="Malformed">Malformed</span>     <a href="godoc.235.html#ResponseStatus">ResponseStatus</a> = 1
+    <span id="InternalError">InternalError</span> <a href="godoc.235.html#ResponseStatus">ResponseStatus</a> = 2
+    <span id="TryLater">TryLater</span>      <a href="godoc.235.html#ResponseStatus">ResponseStatus</a> = 3
+    <span class="comment">// Status code four is unused in OCSP. See</span>
+    <span class="comment">// https://tools.ietf.org/html/rfc6960#section-4.2.1</span>
+    <span id="SignatureRequired">SignatureRequired</span> <a href="godoc.235.html#ResponseStatus">ResponseStatus</a> = 5
+    <span id="Unauthorized">Unauthorized</span>      <a href="godoc.235.html#ResponseStatus">ResponseStatus</a> = 6
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ResponseStatus.String">func (ResponseStatus) <a href="http://localhost:6161/src/golang.org/x/crypto/ocsp/ocsp.go?s=1228:1267#L36">String</a>
+					<a class="permalink" href="godoc.235.html#ResponseStatus.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.235.html#ResponseStatus">ResponseStatus</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

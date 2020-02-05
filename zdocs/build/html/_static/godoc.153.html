@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>benchmark - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.153.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package benchmark
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/benchmark"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.153.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.153.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.153.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.153.html#BSONDeepDocumentDecoding">func BSONDeepDocumentDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONDeepDocumentDecodingLazy">func BSONDeepDocumentDecodingLazy(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONDeepDocumentEncoding">func BSONDeepDocumentEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONDeepMapDecoding">func BSONDeepMapDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONDeepMapEncoding">func BSONDeepMapEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatDocumentDecoding">func BSONFlatDocumentDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatDocumentDecodingLazy">func BSONFlatDocumentDecodingLazy(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatDocumentEncoding">func BSONFlatDocumentEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatMapDecoding">func BSONFlatMapDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatMapEncoding">func BSONFlatMapEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatStructDecoding">func BSONFlatStructDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatStructEncoding">func BSONFlatStructEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatStructTagsDecoding">func BSONFlatStructTagsDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFlatStructTagsEncoding">func BSONFlatStructTagsEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFullDocumentDecoding">func BSONFullDocumentDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFullDocumentDecodingLazy">func BSONFullDocumentDecodingLazy(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFullDocumentEncoding">func BSONFullDocumentEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFullMapDecoding">func BSONFullMapDecoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#BSONFullMapEncoding">func BSONFullMapEncoding(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#CanaryIncCase">func CanaryIncCase(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#DriverBenchmarkMain">func DriverBenchmarkMain() int</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#GlobalCanaryIncCase">func GlobalCanaryIncCase(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#MultiFindMany">func MultiFindMany(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#MultiInsertLargeDocument">func MultiInsertLargeDocument(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#MultiInsertSmallDocument">func MultiInsertSmallDocument(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#SingleFindOneByID">func SingleFindOneByID(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#SingleInsertLargeDocument">func SingleInsertLargeDocument(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#SingleInsertSmallDocument">func SingleInsertSmallDocument(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+				
+				<dd><a href="godoc.153.html#SingleRunCommand">func SingleRunCommand(ctx context.Context, tm TimerManager, iters int) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.153.html#BenchCase">type BenchCase</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.153.html#BenchFunction">type BenchFunction</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#WrapCase">func WrapCase(bench BenchCase) BenchFunction</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.153.html#BenchResult">type BenchResult</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#BenchResult.EvergreenPerfFormat">func (r *BenchResult) EvergreenPerfFormat() ([]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#BenchResult.HasErrors">func (r *BenchResult) HasErrors() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#BenchResult.String">func (r *BenchResult) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.153.html#CaseDefinition">type CaseDefinition</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#CaseDefinition.Name">func (c *CaseDefinition) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#CaseDefinition.ResetTimer">func (c *CaseDefinition) ResetTimer()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#CaseDefinition.Run">func (c *CaseDefinition) Run(ctx context.Context) *BenchResult</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#CaseDefinition.StartTimer">func (c *CaseDefinition) StartTimer()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#CaseDefinition.StopTimer">func (c *CaseDefinition) StopTimer()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.153.html#CaseDefinition.String">func (c *CaseDefinition) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.153.html#Result">type Result</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.153.html#TimerManager">type TimerManager</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson.go">bson.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go">bson_document.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go">bson_map.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_struct.go">bson_struct.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_types.go">bson_types.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/canary.go">canary.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness.go">harness.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go">harness_case.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_main.go">harness_main.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_results.go">harness_results.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/multi.go">multi.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/single.go">single.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="ExecutionTimeout">ExecutionTimeout</span> = five * <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Minute">Minute</a>
+    <span id="StandardRuntime">StandardRuntime</span>  = <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Minute">Minute</a>
+    <span id="MinimumRuntime">MinimumRuntime</span>   = five * <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Second">Second</a>
+    <span id="MinIterations">MinIterations</span>    = hundred
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="BSONDeepDocumentDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2536:2620#L99">BSONDeepDocumentDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONDeepDocumentDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONDeepDocumentDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONDeepDocumentDecodingLazy">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2379:2467#L95">BSONDeepDocumentDecodingLazy</a>
+				<a class="permalink" href="godoc.153.html#BSONDeepDocumentDecodingLazy">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONDeepDocumentDecodingLazy(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONDeepDocumentEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2230:2314#L91">BSONDeepDocumentEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONDeepDocumentEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONDeepDocumentEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONDeepMapDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go?s=1626:1705#L64">BSONDeepMapDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONDeepMapDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONDeepMapDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONDeepMapEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go?s=1765:1844#L68">BSONDeepMapEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONDeepMapEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONDeepMapEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatDocumentDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2076:2160#L87">BSONFlatDocumentDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatDocumentDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatDocumentDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatDocumentDecodingLazy">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=1919:2007#L83">BSONFlatDocumentDecodingLazy</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatDocumentDecodingLazy">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatDocumentDecodingLazy(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatDocumentEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=1770:1854#L79">BSONFlatDocumentEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatDocumentEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatDocumentEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatMapDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go?s=1348:1427#L56">BSONFlatMapDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatMapDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatMapDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatMapEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go?s=1487:1566#L60">BSONFlatMapEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatMapEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatMapEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatStructDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_struct.go?s=359:441#L6">BSONFlatStructDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatStructDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatStructDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatStructEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_struct.go?s=716:798#L24">BSONFlatStructEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatStructEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatStructEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatStructTagsDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_struct.go?s=1739:1825#L78">BSONFlatStructTagsDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatStructTagsDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatStructTagsDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFlatStructTagsEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_struct.go?s=1216:1302#L51">BSONFlatStructTagsEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFlatStructTagsEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFlatStructTagsEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFullDocumentDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2996:3080#L111">BSONFullDocumentDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFullDocumentDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFullDocumentDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFullDocumentDecodingLazy">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2839:2927#L107">BSONFullDocumentDecodingLazy</a>
+				<a class="permalink" href="godoc.153.html#BSONFullDocumentDecodingLazy">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFullDocumentDecodingLazy(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFullDocumentEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_document.go?s=2690:2774#L103">BSONFullDocumentEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFullDocumentEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFullDocumentEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFullMapDecoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go?s=1904:1983#L72">BSONFullMapDecoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFullMapDecoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFullMapDecoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="BSONFullMapEncoding">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/bson_map.go?s=2043:2122#L76">BSONFullMapEncoding</a>
+				<a class="permalink" href="godoc.153.html#BSONFullMapEncoding">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func BSONFullMapEncoding(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="CanaryIncCase">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/canary.go?s=312:385#L3">CanaryIncCase</a>
+				<a class="permalink" href="godoc.153.html#CanaryIncCase">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CanaryIncCase(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="DriverBenchmarkMain">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_main.go?s=363:393#L8">DriverBenchmarkMain</a>
+				<a class="permalink" href="godoc.153.html#DriverBenchmarkMain">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func DriverBenchmarkMain() <a href="godoc.26.html#int">int</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GlobalCanaryIncCase">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/canary.go?s=500:579#L13">GlobalCanaryIncCase</a>
+				<a class="permalink" href="godoc.153.html#GlobalCanaryIncCase">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GlobalCanaryIncCase(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="MultiFindMany">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/multi.go?s=362:435#L6">MultiFindMany</a>
+				<a class="permalink" href="godoc.153.html#MultiFindMany">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MultiFindMany(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="MultiInsertLargeDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/multi.go?s=2677:2761#L130">MultiInsertLargeDocument</a>
+				<a class="permalink" href="godoc.153.html#MultiInsertLargeDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MultiInsertLargeDocument(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="MultiInsertSmallDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/multi.go?s=2536:2620#L126">MultiInsertSmallDocument</a>
+				<a class="permalink" href="godoc.153.html#MultiInsertSmallDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MultiInsertSmallDocument(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SingleFindOneByID">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/single.go?s=1699:1776#L63">SingleFindOneByID</a>
+				<a class="permalink" href="godoc.153.html#SingleFindOneByID">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SingleFindOneByID(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SingleInsertLargeDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/single.go?s=3716:3801#L162">SingleInsertLargeDocument</a>
+				<a class="permalink" href="godoc.153.html#SingleInsertLargeDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SingleInsertLargeDocument(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SingleInsertSmallDocument">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/single.go?s=3573:3658#L158">SingleInsertSmallDocument</a>
+				<a class="permalink" href="godoc.153.html#SingleInsertSmallDocument">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SingleInsertSmallDocument(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="SingleRunCommand">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/single.go?s=1061:1137#L33">SingleRunCommand</a>
+				<a class="permalink" href="godoc.153.html#SingleRunCommand">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func SingleRunCommand(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, tm <a href="godoc.153.html#TimerManager">TimerManager</a>, iters <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BenchCase">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness.go?s=841:902#L23">BenchCase</a>
+				<a class="permalink" href="godoc.153.html#BenchCase">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type BenchCase func(<a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, <a href="godoc.153.html#TimerManager">TimerManager</a>, <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="BenchFunction">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness.go?s=903:938#L24">BenchFunction</a>
+				<a class="permalink" href="godoc.153.html#BenchFunction">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type BenchFunction func(*<a href="godoc.60.html">testing</a>.<a href="godoc.60.html#B">B</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WrapCase">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness.go?s=940:984#L26">WrapCase</a>
+					<a class="permalink" href="godoc.153.html#WrapCase">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WrapCase(bench <a href="godoc.153.html#BenchCase">BenchCase</a>) <a href="godoc.153.html#BenchFunction">BenchFunction</a></pre>
+				
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="BenchResult">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_results.go?s=350:509#L6">BenchResult</a>
+				<a class="permalink" href="godoc.153.html#BenchResult">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type BenchResult struct {
+<span id="BenchResult.Name"></span>    Name       <a href="godoc.26.html#string">string</a>
+<span id="BenchResult.Trials"></span>    Trials     <a href="godoc.26.html#int">int</a>
+<span id="BenchResult.Duration"></span>    Duration   <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+<span id="BenchResult.Raw"></span>    Raw        []<a href="godoc.153.html#Result">Result</a>
+<span id="BenchResult.DataSize"></span>    DataSize   <a href="godoc.26.html#int">int</a>
+<span id="BenchResult.Operations"></span>    Operations <a href="godoc.26.html#int">int</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="BenchResult.EvergreenPerfFormat">func (*BenchResult) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_results.go?s=511:577#L16">EvergreenPerfFormat</a>
+					<a class="permalink" href="godoc.153.html#BenchResult.EvergreenPerfFormat">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.153.html#BenchResult">BenchResult</a>) EvergreenPerfFormat() ([]interface{}, <a href="godoc.26.html#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BenchResult.HasErrors">func (*BenchResult) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_results.go?s=2389:2427#L93">HasErrors</a>
+					<a class="permalink" href="godoc.153.html#BenchResult.HasErrors">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.153.html#BenchResult">BenchResult</a>) HasErrors() <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="BenchResult.String">func (*BenchResult) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_results.go?s=2265:2302#L89">String</a>
+					<a class="permalink" href="godoc.153.html#BenchResult.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.153.html#BenchResult">BenchResult</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="CaseDefinition">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=377:663#L9">CaseDefinition</a>
+				<a class="permalink" href="godoc.153.html#CaseDefinition">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type CaseDefinition struct {
+<span id="CaseDefinition.Bench"></span>    Bench              <a href="godoc.153.html#BenchCase">BenchCase</a>
+<span id="CaseDefinition.Count"></span>    Count              <a href="godoc.26.html#int">int</a>
+<span id="CaseDefinition.Size"></span>    Size               <a href="godoc.26.html#int">int</a>
+<span id="CaseDefinition.RequiredIterations"></span>    RequiredIterations <a href="godoc.26.html#int">int</a>
+<span id="CaseDefinition.Runtime"></span>    Runtime            <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="CaseDefinition.Name">func (*CaseDefinition) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=2871:2909#L126">Name</a>
+					<a class="permalink" href="godoc.153.html#CaseDefinition.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.153.html#CaseDefinition">CaseDefinition</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CaseDefinition.ResetTimer">func (*CaseDefinition) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=820:857#L30">ResetTimer</a>
+					<a class="permalink" href="godoc.153.html#CaseDefinition.ResetTimer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.153.html#CaseDefinition">CaseDefinition</a>) ResetTimer()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CaseDefinition.Run">func (*CaseDefinition) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=1235:1297#L53">Run</a>
+					<a class="permalink" href="godoc.153.html#CaseDefinition.Run">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.153.html#CaseDefinition">CaseDefinition</a>) Run(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) *<a href="godoc.153.html#BenchResult">BenchResult</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CaseDefinition.StartTimer">func (*CaseDefinition) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=922:959#L36">StartTimer</a>
+					<a class="permalink" href="godoc.153.html#CaseDefinition.StartTimer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.153.html#CaseDefinition">CaseDefinition</a>) StartTimer()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CaseDefinition.StopTimer">func (*CaseDefinition) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=1009:1045#L41">StopTimer</a>
+					<a class="permalink" href="godoc.153.html#CaseDefinition.StopTimer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.153.html#CaseDefinition">CaseDefinition</a>) StopTimer()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="CaseDefinition.String">func (*CaseDefinition) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=2711:2751#L121">String</a>
+					<a class="permalink" href="godoc.153.html#CaseDefinition.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.153.html#CaseDefinition">CaseDefinition</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Result">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_results.go?s=2791:2873#L118">Result</a>
+				<a class="permalink" href="godoc.153.html#Result">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Result struct {
+<span id="Result.Duration"></span>    Duration   <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+<span id="Result.Iterations"></span>    Iterations <a href="godoc.26.html#int">int</a>
+<span id="Result.Error"></span>    Error      <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TimerManager">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/benchmark/harness_case.go?s=746:818#L24">TimerManager</a>
+				<a class="permalink" href="godoc.153.html#TimerManager">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TimerManager is a subset of the testing.B tool, used to manage
+setup code.
+</p>
+
+			<pre>type TimerManager interface {
+    ResetTimer()
+    StartTimer()
+    StopTimer()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

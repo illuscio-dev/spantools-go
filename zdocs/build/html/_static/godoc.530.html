@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>xerrors - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.530.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package xerrors
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/xerrors"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.530.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.530.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.530.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.530.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package xerrors implements functions to manipulate errors.
+</p>
+<p>
+This package is based on the Go 2 proposal for error values:
+</p>
+<pre><a href="https://golang.org/design/29934-error-values">https://golang.org/design/29934-error-values</a>
+</pre>
+<p>
+These functions were incorporated into the standard library&#39;s errors package
+in Go 1.13:
+- Is
+- As
+- Unwrap
+</p>
+<p>
+Also, Errorf&#39;s %w verb was incorporated into fmt.Errorf.
+</p>
+<p>
+Use this package to get equivalent behavior in all supported Go versions.
+</p>
+<p>
+No other features of this package were included in Go 1.13, and at present
+there are no plans to include any of them.
+</p>
+
+				<div id="example_" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">package xerrors_test
+
+import (
+    &#34;fmt&#34;
+    &#34;time&#34;
+)
+
+<span class="comment">// MyError is an error implementation that includes a time and message.</span>
+type MyError struct {
+    When time.Time
+    What string
+}
+
+func (e MyError) Error() string {
+    return fmt.Sprintf(&#34;%v: %v&#34;, e.When, e.What)
+}
+
+func oops() error {
+    return MyError{
+        time.Date(1989, 3, 15, 22, 30, 0, 0, time.UTC),
+        &#34;the file system has gone away&#34;,
+    }
+}
+
+func Example() {
+    if err := oops(); err != nil {
+        fmt.Println(err)
+    }
+    <span class="comment">// Output: 1989-03-15 22:30:00 +0000 UTC: the file system has gone away</span>
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.530.html#As">func As(err error, target interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.530.html#Errorf">func Errorf(format string, a ...interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.530.html#FormatError">func FormatError(f Formatter, s fmt.State, verb rune)</a></dd>
+			
+				
+				<dd><a href="godoc.530.html#Is">func Is(err, target error) bool</a></dd>
+			
+				
+				<dd><a href="godoc.530.html#New">func New(text string) error</a></dd>
+			
+				
+				<dd><a href="godoc.530.html#Opaque">func Opaque(err error) error</a></dd>
+			
+				
+				<dd><a href="godoc.530.html#Unwrap">func Unwrap(err error) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.530.html#Formatter">type Formatter</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.530.html#Frame">type Frame</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.530.html#Caller">func Caller(skip int) Frame</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.530.html#Frame.Format">func (f Frame) Format(p Printer)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.530.html#Printer">type Printer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.530.html#Wrapper">type Wrapper</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.530.html#example_">Package</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.530.html#example_As">As</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.530.html#example_FormatError">FormatError</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.530.html#example_New">New</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.530.html#example_New_errorf">New (Errorf)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/adaptor.go">adaptor.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/errors.go">errors.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/fmt.go">fmt.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/format.go">format.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/frame.go">frame.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/xerrors/wrap.go">wrap.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="As">func <a href="http://localhost:6161/src/golang.org/x/xerrors/wrap.go?s=2297:2340#L70">As</a>
+				<a class="permalink" href="godoc.530.html#As">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func As(err <a href="godoc.26.html#error">error</a>, target interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+As finds the first error in err&#39;s chain that matches the type to which target
+points, and if so, sets the target to its value and returns true. An error
+matches a type if it is assignable to the target type, or if it has a method
+As(interface{}) bool such that As(target) returns true. As will panic if target
+is not a non-nil pointer to a type which implements error or is of interface type.
+</p>
+<p>
+The As method should set the target to its value and return true if err
+matches the type to which target points.
+</p>
+
+			<div id="example_As" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">_, err := os.Open(&#34;non-existing&#34;)
+if err != nil {
+    var pathError *os.PathError
+    if xerrors.As(err, &amp;pathError) {
+        fmt.Println(&#34;Failed at path:&#34;, pathError.Path)
+    }
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">Failed at path: non-existing
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="Errorf">func <a href="http://localhost:6161/src/golang.org/x/xerrors/fmt.go?s=1260:1310#L26">Errorf</a>
+				<a class="permalink" href="godoc.530.html#Errorf">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Errorf(format <a href="godoc.26.html#string">string</a>, a ...interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Errorf formats according to a format specifier and returns the string as a
+value that satisfies error.
+</p>
+<p>
+The returned error includes the file and line number of the caller when
+formatted with additional detail enabled. If the last argument is an error
+the returned error&#39;s Format method will return it if the format string ends
+with &#34;: %s&#34;, &#34;: %v&#34;, or &#34;: %w&#34;. If the last argument is an error and the
+format string ends with &#34;: %w&#34;, the returned error implements an Unwrap
+method returning it.
+</p>
+<p>
+If the format specifier includes a %w verb with an error operand in a
+position other than at the end, the returned error will still implement an
+Unwrap method returning the operand, but the error&#39;s Format method will not
+return the wrapped error.
+</p>
+<p>
+It is invalid to include more than one %w verb or to supply it with an
+operand that does not implement the error interface. The %w verb is otherwise
+a synonym for %v.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FormatError">func <a href="http://localhost:6161/src/golang.org/x/xerrors/adaptor.go?s=372:425#L7">FormatError</a>
+				<a class="permalink" href="godoc.530.html#FormatError">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FormatError(f <a href="godoc.530.html#Formatter">Formatter</a>, s <a href="godoc.558.html">fmt</a>.<a href="godoc.558.html#State">State</a>, verb <a href="godoc.26.html#rune">rune</a>)</pre>
+			<p>
+FormatError calls the FormatError method of f with an errors.Printer
+configured according to s and verb, and writes the result to s.
+</p>
+
+			<div id="example_FormatError" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">package xerrors_test
+
+import (
+    &#34;fmt&#34;
+
+    &#34;golang.org/x/xerrors&#34;
+)
+
+type MyError2 struct {
+    Message string
+    frame   xerrors.Frame
+}
+
+func (m *MyError2) Error() string {
+    return m.Message
+}
+
+func (m *MyError2) Format(f fmt.State, c rune) { <span class="comment">// implements fmt.Formatter</span>
+    xerrors.FormatError(m, f, c)
+}
+
+func (m *MyError2) FormatError(p xerrors.Printer) error { <span class="comment">// implements xerrors.Formatter</span>
+    p.Print(m.Message)
+    if p.Detail() {
+        m.frame.Format(p)
+    }
+    return nil
+}
+
+func ExampleFormatError() {
+    err := &amp;MyError2{Message: &#34;oops&#34;, frame: xerrors.Caller(1)}
+    fmt.Printf(&#34;%v\n&#34;, err)
+    fmt.Println()
+    fmt.Printf(&#34;%+v\n&#34;, err)
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="Is">func <a href="http://localhost:6161/src/golang.org/x/xerrors/wrap.go?s=1222:1253#L40">Is</a>
+				<a class="permalink" href="godoc.530.html#Is">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Is(err, target <a href="godoc.26.html#error">error</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Is reports whether any error in err&#39;s chain matches target.
+</p>
+<p>
+An error is considered to match a target if it is equal to that target or if
+it implements a method Is(error) bool such that Is(target) returns true.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="New">func <a href="http://localhost:6161/src/golang.org/x/xerrors/errors.go?s=507:534#L9">New</a>
+				<a class="permalink" href="godoc.530.html#New">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func New(text <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+New returns an error that formats as the given text.
+</p>
+<p>
+The returned error contains a Frame set to the caller&#39;s location and
+implements Formatter to show this information when printed with details.
+</p>
+
+			<div id="example_New" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">err := xerrors.New(&#34;emit macho dwarf: elf header corrupted&#34;)
+if err != nil {
+    fmt.Print(err)
+}
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">emit macho dwarf: elf header corrupted
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_New_errorf" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Errorf)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Errorf)</span></p>
+		<p>The fmt package&#39;s Errorf function lets us use the package&#39;s formatting
+features to create descriptive error messages.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">const name, id = &#34;bimmler&#34;, 17
+err := fmt.Errorf(&#34;user %q (id %d) not found&#34;, name, id)
+if err != nil {
+    fmt.Print(err)
+}
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">user &#34;bimmler&#34; (id 17) not found
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="Opaque">func <a href="http://localhost:6161/src/golang.org/x/xerrors/wrap.go?s=522:550#L10">Opaque</a>
+				<a class="permalink" href="godoc.530.html#Opaque">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Opaque(err <a href="godoc.26.html#error">error</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Opaque returns an error with the same error formatting as err
+but that does not match err and cannot be unwrapped.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Unwrap">func <a href="http://localhost:6161/src/golang.org/x/xerrors/wrap.go?s=897:925#L28">Unwrap</a>
+				<a class="permalink" href="godoc.530.html#Unwrap">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Unwrap(err <a href="godoc.26.html#error">error</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Unwrap returns the result of calling the Unwrap method on err, if err implements
+Unwrap. Otherwise, Unwrap returns nil.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Formatter">type <a href="http://localhost:6161/src/golang.org/x/xerrors/format.go?s=216:398#L1">Formatter</a>
+				<a class="permalink" href="godoc.530.html#Formatter">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Formatter formats error messages.
+</p>
+
+			<pre>type Formatter interface {
+    <a href="godoc.26.html#error">error</a>
+
+    <span class="comment">// FormatError prints the receiver&#39;s first error and returns the next error in</span>
+    <span class="comment">// the error chain, if any.</span>
+    FormatError(p <a href="godoc.530.html#Printer">Printer</a>) (next <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Frame">type <a href="http://localhost:6161/src/golang.org/x/xerrors/frame.go?s=242:487#L2">Frame</a>
+				<a class="permalink" href="godoc.530.html#Frame">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Frame contains part of a call stack.
+</p>
+
+			<pre>type Frame struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Caller">func <a href="http://localhost:6161/src/golang.org/x/xerrors/frame.go?s=677:704#L12">Caller</a>
+					<a class="permalink" href="godoc.530.html#Caller">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Caller(skip <a href="godoc.26.html#int">int</a>) <a href="godoc.530.html#Frame">Frame</a></pre>
+				<p>
+Caller returns a Frame that describes a frame on the caller&#39;s stack.
+The argument skip is the number of frames to skip over.
+Caller(0) returns the frame for the caller of Caller.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Frame.Format">func (Frame) <a href="http://localhost:6161/src/golang.org/x/xerrors/frame.go?s=1310:1342#L36">Format</a>
+					<a class="permalink" href="godoc.530.html#Frame.Format">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.530.html#Frame">Frame</a>) Format(p <a href="godoc.530.html#Printer">Printer</a>)</pre>
+				<p>
+Format prints the stack as error detail.
+It should be called from an error&#39;s Format implementation
+after printing any other error detail.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Printer">type <a href="http://localhost:6161/src/golang.org/x/xerrors/format.go?s=658:1147#L11">Printer</a>
+				<a class="permalink" href="godoc.530.html#Printer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Printer formats error messages.
+</p>
+<p>
+The most common implementation of Printer is the one provided by package fmt
+during Printf (as of Go 1.13). Localization packages such as golang.org/x/text/message
+typically provide their own implementations.
+</p>
+
+			<pre>type Printer interface {
+    <span class="comment">// Print appends args to the message output.</span>
+    Print(args ...interface{})
+
+    <span class="comment">// Printf writes a formatted string.</span>
+    Printf(format <a href="godoc.26.html#string">string</a>, args ...interface{})
+
+    <span class="comment">// Detail reports whether error detail is requested.</span>
+    <span class="comment">// After the first call to Detail, all text written to the Printer</span>
+    <span class="comment">// is formatted as additional detail, or ignored when</span>
+    <span class="comment">// detail has not been requested.</span>
+    <span class="comment">// If Detail returns false, the caller can avoid printing the detail at all.</span>
+    Detail() <a href="godoc.26.html#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Wrapper">type <a href="http://localhost:6161/src/golang.org/x/xerrors/wrap.go?s=252:399#L2">Wrapper</a>
+				<a class="permalink" href="godoc.530.html#Wrapper">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Wrapper provides context around another error.
+</p>
+
+			<pre>type Wrapper interface {
+    <span class="comment">// Unwrap returns the next error in the error chain.</span>
+    <span class="comment">// If there is no next error, Unwrap returns nil.</span>
+    Unwrap() <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="http://localhost:6161/pkg/golang.org/x/">..</a></td>
+			</tr>
+			
+
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

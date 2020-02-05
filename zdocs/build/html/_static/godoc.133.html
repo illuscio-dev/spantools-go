@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>terst - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.133.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package terst
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/robertkrimen/godocdown/godocdown/terst"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.133.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.133.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package terst is a terse (terst = test + terse), easy-to-use testing library for Go.
+</p>
+<p>
+terst is compatible with (and works via) the standard testing package: <a href="http://golang.org/pkg/testing">http://golang.org/pkg/testing</a>
+</p>
+<pre>import (
+	&#34;testing&#34;
+	. &#34;github.com/robertkrimen/terst&#34;
+)
+
+func Test(t *testing.T) {
+	Terst(t) // Associate terst methods with t (the current testing.T)
+
+	Is(getApple(), &#34;apple&#34;) // Pass
+	Is(getOrange(), &#34;orange&#34;) // Fail: emits nice-looking diagnostic
+
+	Compare(1, &#34;&gt;&#34;, 0) // Pass
+	Compare(1, &#34;==&#34;, 1.0) // Pass
+}
+
+func getApple() string {
+	return &#34;apple&#34;
+}
+
+func getOrange() string {
+	return &#34;apple&#34; // Intentional mistake
+}
+</pre>
+<p>
+At the top of your testing function, call Terst(), passing the testing.T you receive as the first argument:
+</p>
+<pre>func TestExample(t *testing.T) {
+	Terst(t)
+	...
+}
+</pre>
+<p>
+After you initialize with the given *testing.T, you can use the following to test:
+</p>
+<pre>Is
+IsNot
+Equal
+Unequal
+IsTrue
+IsFalse
+Like
+Unlike
+Compare
+</pre>
+<p>
+Each of the methods above can take an additional (optional) argument,
+which is a string describing the test. If the test fails, this
+description will be included with the test output For example:
+</p>
+<pre>Is(2 + 2, float32(5), &#34;This result is Doubleplusgood&#34;)
+
+--- FAIL: Test (0.00 seconds)
+	test.go:17: This result is Doubleplusgood
+		Failed test (Is)
+		     got: 4 (int)
+		expected: 5 (float32)
+</pre>
+<p>
+Future
+</p>
+<pre>- Add Catch() for testing panic()
+- Add Same() for testing via .DeepEqual &amp;&amp; == (without panicking?)
+- Add StrictCompare to use {}= scoping
+- Add BigCompare for easier math/big.Int testing?
+- Support the complex type in Compare()
+- Equality test for NaN?
+- Better syntax for At*
+- Need IsType/TypeIs
+</pre>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.133.html#Compare">func Compare(have interface{}, operator string, want interface{}, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#Equal">func Equal(have, want interface{}, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#Fail">func Fail(description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#FailNow">func FailNow(description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#Is">func Is(have, want interface{}, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#IsFalse">func IsFalse(have bool, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#IsNot">func IsNot(have, want interface{}, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#IsTrue">func IsTrue(have bool, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#Like">func Like(have, want interface{}, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#Unequal">func Unequal(have, want interface{}, description ...interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.133.html#Unlike">func Unlike(have, want interface{}, description ...interface{}) bool</a></dd>
+			
+			
+				
+				<dd><a href="godoc.133.html#Tester">type Tester</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Terst">func Terst(terst ...interface{}) *Tester</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Compare">func (self *Tester) Compare(have interface{}, operator string, want interface{}, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Equal">func (self *Tester) Equal(have, want interface{}, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Fail">func (self *Tester) Fail(description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.FailNow">func (self *Tester) FailNow(description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Focus">func (self *Tester) Focus()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Is">func (self *Tester) Is(have, want interface{}, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.IsFalse">func (self *Tester) IsFalse(have bool, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.IsNot">func (self *Tester) IsNot(have, want interface{}, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.IsTrue">func (self *Tester) IsTrue(have bool, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Like">func (self *Tester) Like(have, want interface{}, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Log">func (self *Tester) Log(output string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Unequal">func (self *Tester) Unequal(have, want interface{}, description ...interface{}) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.133.html#Tester.Unlike">func (self *Tester) Unlike(have, want interface{}, description ...interface{}) bool</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go">terst.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Compare">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=11277:11375#L394">Compare</a>
+				<a class="permalink" href="godoc.133.html#Compare">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Compare(have interface{}, operator <a href="godoc.26.html#string">string</a>, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Compare will compare &lt;have&gt; to &lt;want&gt; with the given operator. The operator can be one of the following:
+</p>
+<pre>==
+!=
+&lt;
+&lt;=
+&gt;
+&gt;=
+</pre>
+<p>
+Compare is not strict when comparing numeric types,
+and will make a best effort to promote &lt;have&gt; and &lt;want&gt; to the
+same type.
+</p>
+<p>
+Compare will promote int and uint to big.Int for testing
+against each other.
+</p>
+<p>
+Compare will promote int, uint, and float to float64 for
+float testing.
+</p>
+<p>
+For example:
+</p>
+<pre>Compare(float32(1.0), &#34;&lt;&#34;, int8(2)) // A valid test
+
+result := float32(1.0) &lt; int8(2) // Will not compile because of the type mismatch
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Equal">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=4902:4969#L191">Equal</a>
+				<a class="permalink" href="godoc.133.html#Equal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Equal(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Equal tests have against want via ==:
+</p>
+<pre>Equal(have, want) // Pass if have == want
+</pre>
+<p>
+No special coercion or type inspection is done.
+</p>
+<p>
+If the type is incomparable (e.g. type mismatch) this will panic.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Fail">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=3416:3458#L143">Fail</a>
+				<a class="permalink" href="godoc.133.html#Fail">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Fail(description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Fail will fail immediately, reporting a test failure with the (optional) description
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="FailNow">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=4052:4097#L162">FailNow</a>
+				<a class="permalink" href="godoc.133.html#FailNow">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FailNow(description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+FailNow will fail immediately, triggering testing.FailNow() and optionally reporting a test failure with description
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Is">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=6598:6662#L243">Is</a>
+				<a class="permalink" href="godoc.133.html#Is">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Is(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Is tests &lt;have&gt; against &lt;want&gt; in different ways, depending on the
+type of &lt;want&gt;.
+</p>
+<p>
+If &lt;want&gt; is a string, then it will first convert
+&lt;have&gt; to a string before doing the comparison:
+</p>
+<pre>Is(fmt.Sprintf(&#34;%v&#34;, have), want) // Pass if have == want
+</pre>
+<p>
+Otherwise, Is is a shortcut for:
+</p>
+<pre>Compare(have, &#34;==&#34;, want)
+</pre>
+<p>
+If &lt;want&gt; is a slice, struct, or similar, Is will perform a reflect.DeepEqual() comparison.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsFalse">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=2705:2761#L118">IsFalse</a>
+				<a class="permalink" href="godoc.133.html#IsFalse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsFalse(have <a href="godoc.26.html#bool">bool</a>, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+IsFalse is DEPRECATED by:
+</p>
+<pre>Is(..., false)
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsNot">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=7354:7421#L266">IsNot</a>
+				<a class="permalink" href="godoc.133.html#IsNot">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsNot(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+IsNot tests &lt;have&gt; against &lt;want&gt; in different ways, depending on the
+type of &lt;want&gt;.
+</p>
+<p>
+If &lt;want&gt; is a string, then it will first convert
+&lt;have&gt; to a string before doing the comparison:
+</p>
+<pre>IsNot(fmt.Sprintf(&#34;%v&#34;, have), want) // Pass if have != want
+</pre>
+<p>
+Otherwise, Is is a shortcut for:
+</p>
+<pre>Compare(have, &#34;!=&#34;, want)
+</pre>
+<p>
+If &lt;want&gt; is a slice, struct, or similar, Is will perform a reflect.DeepEqual() comparison.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IsTrue">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=2350:2405#L102">IsTrue</a>
+				<a class="permalink" href="godoc.133.html#IsTrue">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func IsTrue(have <a href="godoc.26.html#bool">bool</a>, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+IsTrue is DEPRECATED by:
+</p>
+<pre>Is(..., true)
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Like">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=8626:8692#L309">Like</a>
+				<a class="permalink" href="godoc.133.html#Like">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Like(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Like tests &lt;have&gt; against &lt;want&gt; in different ways, depending on the
+type of &lt;want&gt;.
+</p>
+<p>
+If &lt;want&gt; is a string, then it will first convert
+&lt;have&gt; to a string before doing a regular expression comparison:
+</p>
+<pre>Like(fmt.Sprintf(&#34;%v&#34;, have), want) // Pass if regexp.Match(want, have)
+</pre>
+<p>
+Otherwise, Like is a shortcut for:
+</p>
+<pre>Compare(have, &#34;{}~ ==&#34;, want)
+</pre>
+<p>
+If &lt;want&gt; is a slice, struct, or similar, Like will perform a reflect.DeepEqual() comparison.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Unequal">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=5641:5710#L214">Unequal</a>
+				<a class="permalink" href="godoc.133.html#Unequal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Unequal(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Unequal tests have against want via !=:
+</p>
+<pre>Unequal(have, want) // Pass if have != want
+</pre>
+<p>
+No special coercion or type inspection is done.
+</p>
+<p>
+If the type is incomparable (e.g. type mismatch) this will panic.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Unlike">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=9381:9449#L330">Unlike</a>
+				<a class="permalink" href="godoc.133.html#Unlike">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Unlike(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Unlike tests &lt;have&gt; against &lt;want&gt; in different ways, depending on the
+type of &lt;want&gt;.
+</p>
+<p>
+If &lt;want&gt; is a string, then it will first convert
+&lt;have&gt; to a string before doing a regular expression comparison:
+</p>
+<pre>Unlike(fmt.Sprintf(&#34;%v&#34;, have), want) // Pass if !regexp.Match(want, have)
+</pre>
+<p>
+Otherwise, Unlike is a shortcut for:
+</p>
+<pre>Compare(have, &#34;{}~ !=&#34;, want)
+</pre>
+<p>
+If &lt;want&gt; is a slice, struct, or similar, Unlike will perform a reflect.DeepEqual() comparison.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Tester">type <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=23504:23652#L879">Tester</a>
+				<a class="permalink" href="godoc.133.html#Tester">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Tester struct {
+<span id="Tester.TestingT"></span>    TestingT *<a href="godoc.60.html">testing</a>.<a href="godoc.60.html#T">T</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Terst">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=25414:25454#L956">Terst</a>
+					<a class="permalink" href="godoc.133.html#Terst">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Terst(terst ...interface{}) *<a href="godoc.133.html#Tester">Tester</a></pre>
+				<pre>Terst(*testing.T)
+</pre>
+<p>
+Create a new terst Tester and return it.  Associate calls to Is, Compare, Like, etc. with the newly created terst.
+</p>
+<pre>Terst()
+</pre>
+<p>
+Return the current Tester (if any).
+</p>
+<pre>Terst(nil)
+</pre>
+<p>
+Clear out the current Tester (if any).
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Tester.Compare">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=11449:11562#L398">Compare</a>
+					<a class="permalink" href="godoc.133.html#Tester.Compare">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Compare(have interface{}, operator <a href="godoc.26.html#string">string</a>, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Tester.Equal">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=5031:5113#L195">Equal</a>
+					<a class="permalink" href="godoc.133.html#Tester.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Equal(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Tester.Fail">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=3595:3652#L148">Fail</a>
+					<a class="permalink" href="godoc.133.html#Tester.Fail">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Fail(description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Fail will fail immediately, reporting a test failure with the (optional) description
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Tester.FailNow">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=4269:4329#L167">FailNow</a>
+					<a class="permalink" href="godoc.133.html#Tester.FailNow">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) FailNow(description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+FailNow will fail immediately, triggering testing.FailNow() and optionally reporting a test failure with description
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Tester.Focus">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=24998:25025#L937">Focus</a>
+					<a class="permalink" href="godoc.133.html#Tester.Focus">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Focus()</pre>
+				<p>
+Focus will focus the entry point of the test to the current method.
+</p>
+<p>
+This is important for test failures in getting feedback on which line was at fault.
+</p>
+<p>
+Consider the following scenario:
+</p>
+<pre>func testingMethod( ... ) {
+	Is( ..., ... )
+}
+
+func TestExample(t *testing.T) {
+	Terst(t)
+
+	testingMethod( ... )
+	testingMethod( ... ) // If something in testingMethod fails, this line number will come up
+	testingMethod( ... )
+}
+</pre>
+<p>
+By default, when a test fails, terst will report the outermost line that led to the failure.
+Usually this is what you want, but if you need to drill down, you can by inserting a special
+call at the top of your testing method:
+</p>
+<pre>func testingMethod( ... ) {
+	Terst().Focus() // Grab the global Tester and tell it to focus on this method
+	Is( ..., ... ) // Now if this test fails, this line number will come up
+}
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Tester.Is">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=6775:6854#L249">Is</a>
+					<a class="permalink" href="godoc.133.html#Tester.Is">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Is(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Tester.IsFalse">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=2877:2948#L126">IsFalse</a>
+					<a class="permalink" href="godoc.133.html#Tester.IsFalse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) IsFalse(have <a href="godoc.26.html#bool">bool</a>, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsFalse is DEPRECATED by:
+</p>
+<pre>Is(..., false)
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Tester.IsNot">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=7537:7619#L272">IsNot</a>
+					<a class="permalink" href="godoc.133.html#Tester.IsNot">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) IsNot(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Tester.IsTrue">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=2518:2588#L110">IsTrue</a>
+					<a class="permalink" href="godoc.133.html#Tester.IsTrue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) IsTrue(have <a href="godoc.26.html#bool">bool</a>, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsTrue is DEPRECATED by:
+</p>
+<pre>Is(..., true)
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Tester.Like">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=8753:8834#L313">Like</a>
+					<a class="permalink" href="godoc.133.html#Tester.Like">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Like(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Tester.Log">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=26316:26354#L993">Log</a>
+					<a class="permalink" href="godoc.133.html#Tester.Log">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Log(output <a href="godoc.26.html#string">string</a>)</pre>
+				<p>
+Log is a utility method that will append the given output to the normal output stream.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Tester.Unequal">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=5774:5858#L218">Unequal</a>
+					<a class="permalink" href="godoc.133.html#Tester.Unequal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Unequal(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Tester.Unlike">func (*Tester) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/terst/terst.go?s=9512:9595#L334">Unlike</a>
+					<a class="permalink" href="godoc.133.html#Tester.Unlike">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.133.html#Tester">Tester</a>) Unlike(have, want interface{}, description ...interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>bytebufferpool - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.149.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package bytebufferpool
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/valyala/bytebufferpool"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.149.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.149.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.149.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package bytebufferpool implements a pool of byte buffers
+with anti-fragmentation protection.
+</p>
+<p>
+The pool may waste limited amount of memory due to fragmentation.
+This amount equals to the maximum total size of the byte buffers
+in concurrent use.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.149.html#Put">func Put(b *ByteBuffer)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.149.html#ByteBuffer">type ByteBuffer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#Get">func Get() *ByteBuffer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.Bytes">func (b *ByteBuffer) Bytes() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.Len">func (b *ByteBuffer) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.ReadFrom">func (b *ByteBuffer) ReadFrom(r io.Reader) (int64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.Reset">func (b *ByteBuffer) Reset()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.Set">func (b *ByteBuffer) Set(p []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.SetString">func (b *ByteBuffer) SetString(s string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.String">func (b *ByteBuffer) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.Write">func (b *ByteBuffer) Write(p []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.WriteByte">func (b *ByteBuffer) WriteByte(c byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.WriteString">func (b *ByteBuffer) WriteString(s string) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#ByteBuffer.WriteTo">func (b *ByteBuffer) WriteTo(w io.Writer) (int64, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.149.html#Pool">type Pool</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#Pool.Get">func (p *Pool) Get() *ByteBuffer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.149.html#Pool.Put">func (p *Pool) Put(b *ByteBuffer)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.149.html#example_ByteBuffer">ByteBuffer</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go">bytebuffer.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/pool.go">pool.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Put">func <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/pool.go?s=1376:1399#L52">Put</a>
+				<a class="permalink" href="godoc.149.html#Put">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Put(b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>)</pre>
+			<p>
+Put returns byte buffer to the pool.
+</p>
+<p>
+ByteBuffer.B mustn&#39;t be touched after returning it to the pool.
+Otherwise data races will occur.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ByteBuffer">type <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=298:425#L2">ByteBuffer</a>
+				<a class="permalink" href="godoc.149.html#ByteBuffer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ByteBuffer provides byte buffer, which can be used for minimizing
+memory allocations.
+</p>
+<p>
+ByteBuffer may be used with functions appending data to the given []byte
+slice. See example code for details.
+</p>
+<p>
+Use Get for obtaining an empty byte buffer.
+</p>
+
+			<pre>type ByteBuffer struct {
+
+<span id="ByteBuffer.B"></span>    <span class="comment">// B is a byte buffer to use in append-like workloads.</span>
+    <span class="comment">// See example code for details.</span>
+    B []<a href="godoc.26.html#byte">byte</a>
+}
+</pre>
+
+			
+
+			
+
+			<div id="example_ByteBuffer" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+bb := bytebufferpool.Get()
+
+bb.WriteString(&#34;first line\n&#34;)
+bb.Write([]byte(&#34;second line\n&#34;))
+bb.B = append(bb.B, &#34;third line\n&#34;...)
+
+fmt.Printf(&#34;bytebuffer contents=%q&#34;, bb.B)
+
+<span class="comment">// It is safe to release byte buffer now, since it is</span>
+<span class="comment">// no longer used.</span>
+bytebufferpool.Put(bb)
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+				
+				<h3 id="Get">func <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/pool.go?s=838:860#L32">Get</a>
+					<a class="permalink" href="godoc.149.html#Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Get() *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a></pre>
+				<p>
+Get returns an empty byte buffer from the pool.
+</p>
+<p>
+Got byte buffer may be returned to the pool via Put call.
+This reduces the number of memory allocations required for byte buffer
+management.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ByteBuffer.Bytes">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=1373:1408#L57">Bytes</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) Bytes() []<a href="godoc.26.html#byte">byte</a></pre>
+				<p>
+Bytes returns b.B, i.e. all the bytes accumulated in the buffer.
+</p>
+<p>
+The purpose of this function is bytes.Buffer compatibility.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.Len">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=471:501#L10">Len</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) Len() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Len returns the size of the byte buffer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.ReadFrom">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=620:677#L17">ReadFrom</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.ReadFrom">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) ReadFrom(r <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>) (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadFrom implements io.ReaderFrom.
+</p>
+<p>
+The function appends all the data read from r to b.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.Reset">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=2337:2365#L99">Reset</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) Reset()</pre>
+				<p>
+Reset makes ByteBuffer.B empty.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.Set">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=2002:2036#L84">Set</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) Set(p []<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+Set sets ByteBuffer.B to p.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.SetString">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=2108:2148#L89">SetString</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.SetString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) SetString(s <a href="godoc.26.html#string">string</a>)</pre>
+				<p>
+SetString sets ByteBuffer.B to s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.String">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=2240:2276#L94">String</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String returns string representation of ByteBuffer.B.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.Write">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=1487:1536#L62">Write</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) Write(p []<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.26.html#int">int</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Write implements io.Writer - it appends p to ByteBuffer.B
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.WriteByte">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=1739:1783#L72">WriteByte</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.WriteByte">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) WriteByte(c <a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteByte appends the byte c to the buffer.
+</p>
+<p>
+The purpose of this function is bytes.Buffer compatibility.
+</p>
+<p>
+The function always returns nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.WriteString">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=1865:1920#L78">WriteString</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.WriteString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) WriteString(s <a href="godoc.26.html#string">string</a>) (<a href="godoc.26.html#int">int</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteString appends s to ByteBuffer.B.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ByteBuffer.WriteTo">func (*ByteBuffer) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/bytebuffer.go?s=1131:1187#L49">WriteTo</a>
+					<a class="permalink" href="godoc.149.html#ByteBuffer.WriteTo">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>) WriteTo(w <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>) (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WriteTo implements io.WriterTo.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Pool">type <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/pool.go?s=485:610#L15">Pool</a>
+				<a class="permalink" href="godoc.149.html#Pool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Pool represents byte buffer pool.
+</p>
+<p>
+Distinct pools may be used for distinct types of byte buffers.
+Properly determined byte buffer types with their own pools may help reducing
+memory waste.
+</p>
+
+			<pre>type Pool struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Pool.Get">func (*Pool) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/pool.go?s=1049:1081#L38">Get</a>
+					<a class="permalink" href="godoc.149.html#Pool.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.149.html#Pool">Pool</a>) Get() *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a></pre>
+				<p>
+Get returns new byte buffer with zero length.
+</p>
+<p>
+The byte buffer may be returned to the pool via Put after the use
+in order to minimize GC overhead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Pool.Put">func (*Pool) <a href="http://localhost:6161/src/github.com/valyala/bytebufferpool/pool.go?s=1548:1581#L57">Put</a>
+					<a class="permalink" href="godoc.149.html#Pool.Put">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.149.html#Pool">Pool</a>) Put(b *<a href="godoc.149.html#ByteBuffer">ByteBuffer</a>)</pre>
+				<p>
+Put releases byte buffer obtained via Get to the pool.
+</p>
+<p>
+The buffer mustn&#39;t be accessed after returning to the pool.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

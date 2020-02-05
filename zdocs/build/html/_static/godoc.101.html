@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>cmp - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.101.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package cmp
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/google/go-cmp/cmp"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.101.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.101.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.101.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.101.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package cmp determines equality of values.
+</p>
+<p>
+This package is intended to be a more powerful and safer alternative to
+reflect.DeepEqual for comparing whether two values are semantically equal.
+</p>
+<p>
+The primary features of cmp are:
+</p>
+<p>
+• When the default behavior of equality does not suit the needs of the test,
+custom equality functions can override the equality operation.
+For example, an equality function may report floats as equal so long as they
+are within some tolerance of each other.
+</p>
+<p>
+• Types that have an Equal method may use that method to determine equality.
+This allows package authors to determine the equality operation for the types
+that they define.
+</p>
+<p>
+• If no custom equality functions are used and no Equal method is defined,
+equality is determined by recursively comparing the primitive kinds on both
+values, much like reflect.DeepEqual. Unlike reflect.DeepEqual, unexported
+fields are not compared by default; they result in panics unless suppressed
+by using an Ignore option (see cmpopts.IgnoreUnexported) or explicitly compared
+using the AllowUnexported option.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.101.html#Diff">func Diff(x, y interface{}, opts ...Option) string</a></dd>
+			
+				
+				<dd><a href="godoc.101.html#Equal">func Equal(x, y interface{}, opts ...Option) bool</a></dd>
+			
+			
+				
+				<dd><a href="godoc.101.html#Indirect">type Indirect</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Indirect.String">func (in Indirect) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Indirect.Type">func (in Indirect) Type() reflect.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Indirect.Values">func (in Indirect) Values() (vx, vy reflect.Value)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#MapIndex">type MapIndex</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#MapIndex.Key">func (mi MapIndex) Key() reflect.Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#MapIndex.String">func (mi MapIndex) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#MapIndex.Type">func (mi MapIndex) Type() reflect.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#MapIndex.Values">func (mi MapIndex) Values() (vx, vy reflect.Value)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#Option">type Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#AllowUnexported">func AllowUnexported(types ...interface{}) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Comparer">func Comparer(f interface{}) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#FilterPath">func FilterPath(f func(Path) bool, opt Option) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#FilterValues">func FilterValues(f interface{}, opt Option) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Ignore">func Ignore() Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Reporter">func Reporter(r interface {<span class="comment">// PushStep is called when a tree-traversal operation is performed.</span> <span class="comment">// The PathStep itself is only valid until the step is popped.</span> <span class="comment">// The PathStep.Values are valid for the duration of the entire traversal</span> <span class="comment">// and must not be mutated.</span> <span class="comment">//</span> <span class="comment">// Equal always calls PushStep at the start to provide an operation-less</span> <span class="comment">// PathStep used to report the root values.</span> <span class="comment">//</span> <span class="comment">// Within a slice, the exact set of inserted, removed, or modified elements</span> <span class="comment">// is unspecified and may change in future implementations.</span> <span class="comment">// The entries of a map are iterated through in an unspecified order.</span> PushStep(PathStep) <span class="comment">// Report is called exactly once on leaf nodes to report whether the</span> <span class="comment">// comparison identified the node as equal, unequal, or ignored.</span> <span class="comment">// A leaf node is one that is immediately preceded by and followed by</span> <span class="comment">// a pair of PushStep and PopStep calls.</span> Report(Result) <span class="comment">// PopStep ascends back up the value tree.</span> <span class="comment">// There is always a matching pop call for every push call.</span> PopStep()}) Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transformer">func Transformer(name string, f interface{}) Option</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.101.html#Options">type Options</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Options.String">func (opts Options) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#Path">type Path</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Path.GoString">func (pa Path) GoString() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Path.Index">func (pa Path) Index(i int) PathStep</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Path.Last">func (pa Path) Last() PathStep</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Path.String">func (pa Path) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#PathStep">type PathStep</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.101.html#Result">type Result</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Result.ByFunc">func (r Result) ByFunc() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Result.ByIgnore">func (r Result) ByIgnore() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Result.ByMethod">func (r Result) ByMethod() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Result.Equal">func (r Result) Equal() bool</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#SliceIndex">type SliceIndex</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#SliceIndex.Key">func (si SliceIndex) Key() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#SliceIndex.SplitKeys">func (si SliceIndex) SplitKeys() (ix, iy int)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#SliceIndex.String">func (si SliceIndex) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#SliceIndex.Type">func (si SliceIndex) Type() reflect.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#SliceIndex.Values">func (si SliceIndex) Values() (vx, vy reflect.Value)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#StructField">type StructField</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#StructField.Index">func (sf StructField) Index() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#StructField.Name">func (sf StructField) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#StructField.String">func (sf StructField) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#StructField.Type">func (sf StructField) Type() reflect.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#StructField.Values">func (sf StructField) Values() (vx, vy reflect.Value)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#Transform">type Transform</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transform.Func">func (tf Transform) Func() reflect.Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transform.Name">func (tf Transform) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transform.Option">func (tf Transform) Option() Option</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transform.String">func (tf Transform) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transform.Type">func (tf Transform) Type() reflect.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#Transform.Values">func (tf Transform) Values() (vx, vy reflect.Value)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.101.html#TypeAssertion">type TypeAssertion</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#TypeAssertion.String">func (ta TypeAssertion) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#TypeAssertion.Type">func (ta TypeAssertion) Type() reflect.Type</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.101.html#TypeAssertion.Values">func (ta TypeAssertion) Values() (vx, vy reflect.Value)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Diff_testing">Diff (Testing)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_approximateFloats">Option (ApproximateFloats)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_avoidEqualMethod">Option (AvoidEqualMethod)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_equalEmpty">Option (EqualEmpty)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_equalNaNs">Option (EqualNaNs)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_equalNaNsAndApproximateFloats">Option (EqualNaNsAndApproximateFloats)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_sortedSlice">Option (SortedSlice)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Option_transformComplex">Option (TransformComplex)</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.101.html#example_Reporter">Reporter</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/compare.go">compare.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/export_unsafe.go">export_unsafe.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go">options.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go">path.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/report.go">report.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/report_compare.go">report_compare.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/report_reflect.go">report_reflect.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/report_slices.go">report_slices.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/report_text.go">report_text.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/report_value.go">report_value.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="Diff">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/compare.go?s=5561:5611#L115">Diff</a>
+				<a class="permalink" href="godoc.101.html#Diff">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Diff(x, y interface{}, opts ...<a href="godoc.101.html#Option">Option</a>) <a href="godoc.26.html#string">string</a></pre>
+			<p>
+Diff returns a human-readable report of the differences between two values.
+It returns an empty string if and only if Equal returns true for the same
+input values and options.
+</p>
+<p>
+The output is displayed as a literal in pseudo-Go syntax.
+At the start of each line, a &#34;-&#34; prefix indicates an element removed from x,
+a &#34;+&#34; prefix to indicates an element added to y, and the lack of a prefix
+indicates an element common to both x and y. If possible, the output
+uses fmt.Stringer.String or error.Error methods to produce more humanly
+readable outputs. In such cases, the string is prefixed with either an
+&#39;s&#39; or &#39;e&#39; character, respectively, to indicate that the method was called.
+</p>
+<p>
+Do not depend on this output being stable. If you need the ability to
+programmatically interpret the difference, consider using a custom Reporter.
+</p>
+
+			<div id="example_Diff_testing" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Testing)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Testing)</span></p>
+		<p>Use Diff to print out a human-readable report of differences for tests
+comparing nested or structured data.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// Let got be the hypothetical value obtained from some logic under test</span>
+<span class="comment">// and want be the expected golden data.</span>
+got, want := MakeGatewayInfo()
+
+if diff := cmp.Diff(want, got); diff != &#34;&#34; {
+    t.Errorf(&#34;MakeGatewayInfo() mismatch (-want +got):\n%s&#34;, diff)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">MakeGatewayInfo() mismatch (-want +got):
+  cmp_test.Gateway{
+  	SSID:      &#34;CoffeeShopWiFi&#34;,
+- 	IPAddress: s&#34;192.168.0.2&#34;,
++ 	IPAddress: s&#34;192.168.0.1&#34;,
+  	NetMask:   net.IPMask{0xff, 0xff, 0x00, 0x00},
+  	Clients: []cmp_test.Client{
+  		... // 2 identical elements
+  		{Hostname: &#34;macchiato&#34;, IPAddress: s&#34;192.168.0.153&#34;, LastSeen: s&#34;2009-11-10 23:39:43 +0000 UTC&#34;},
+  		{Hostname: &#34;espresso&#34;, IPAddress: s&#34;192.168.0.121&#34;},
+  		{
+  			Hostname:  &#34;latte&#34;,
+- 			IPAddress: s&#34;192.168.0.221&#34;,
++ 			IPAddress: s&#34;192.168.0.219&#34;,
+  			LastSeen:  s&#34;2009-11-10 23:00:23 +0000 UTC&#34;,
+  		},
++ 		{
++ 			Hostname:  &#34;americano&#34;,
++ 			IPAddress: s&#34;192.168.0.188&#34;,
++ 			LastSeen:  s&#34;2009-11-10 23:03:05 +0000 UTC&#34;,
++ 		},
+  	},
+  }
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="Equal">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/compare.go?s=4061:4110#L73">Equal</a>
+				<a class="permalink" href="godoc.101.html#Equal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Equal(x, y interface{}, opts ...<a href="godoc.101.html#Option">Option</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Equal reports whether x and y are equal by recursively applying the
+following rules in the given order to x and y and all of their sub-values:
+</p>
+<p>
+• Let S be the set of all Ignore, Transformer, and Comparer options that
+remain after applying all path filters, value filters, and type filters.
+If at least one Ignore exists in S, then the comparison is ignored.
+If the number of Transformer and Comparer options in S is greater than one,
+then Equal panics because it is ambiguous which option to use.
+If S contains a single Transformer, then use that to transform the current
+values and recursively call Equal on the output values.
+If S contains a single Comparer, then use that to compare the current values.
+Otherwise, evaluation proceeds to the next rule.
+</p>
+<p>
+• If the values have an Equal method of the form &#34;(T) Equal(T) bool&#34; or
+&#34;(T) Equal(I) bool&#34; where T is assignable to I, then use the result of
+x.Equal(y) even if x or y is nil. Otherwise, no such method exists and
+evaluation proceeds to the next rule.
+</p>
+<p>
+• Lastly, try to compare x and y based on their basic kinds.
+Simple kinds like booleans, integers, floats, complex numbers, strings, and
+channels are compared using the equivalent of the == operator in Go.
+Functions are only equal if they are both nil, otherwise they are unequal.
+</p>
+<p>
+Structs are equal if recursively calling Equal on all fields report equal.
+If a struct contains unexported fields, Equal panics unless an Ignore option
+(e.g., cmpopts.IgnoreUnexported) ignores that field or the AllowUnexported
+option explicitly permits comparing the unexported field.
+</p>
+<p>
+Slices are equal if they are both nil or both non-nil, where recursively
+calling Equal on all non-ignored slice or array elements report equal.
+Empty non-nil slices and nil slices are not equal; to equate empty slices,
+consider using cmpopts.EquateEmpty.
+</p>
+<p>
+Maps are equal if they are both nil or both non-nil, where recursively
+calling Equal on all non-ignored map entries report equal.
+Map keys are equal according to the == operator.
+To use custom comparisons for map keys, consider using cmpopts.SortMaps.
+Empty non-nil maps and nil maps are not equal; to equate empty maps,
+consider using cmpopts.EquateEmpty.
+</p>
+<p>
+Pointers and interfaces are equal if they are both nil or both non-nil,
+where they have the same underlying concrete type and recursively
+calling Equal on the underlying values reports equal.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Indirect">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8142:8175#L254">Indirect</a>
+				<a class="permalink" href="godoc.101.html#Indirect">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Indirect represents pointer indirection on the parent type.
+</p>
+
+			<pre>type Indirect struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Indirect.String">func (Indirect) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8356:8390#L261">String</a>
+					<a class="permalink" href="godoc.101.html#Indirect.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (in <a href="godoc.101.html#Indirect">Indirect</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Indirect.Type">func (Indirect) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8212:8250#L259">Type</a>
+					<a class="permalink" href="godoc.101.html#Indirect.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (in <a href="godoc.101.html#Indirect">Indirect</a>) Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Indirect.Values">func (Indirect) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8281:8331#L260">Values</a>
+					<a class="permalink" href="godoc.101.html#Indirect.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (in <a href="godoc.101.html#Indirect">Indirect</a>) Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MapIndex">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=7660:7693#L240">MapIndex</a>
+				<a class="permalink" href="godoc.101.html#MapIndex">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MapIndex is an index operation on a map at some index Key.
+</p>
+
+			<pre>type MapIndex struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="MapIndex.Key">func (MapIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8021:8059#L251">Key</a>
+					<a class="permalink" href="godoc.101.html#MapIndex.Key">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mi <a href="godoc.101.html#MapIndex">MapIndex</a>) Key() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a></pre>
+				<p>
+Key is the value of the map key.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MapIndex.String">func (MapIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=7893:7927#L248">String</a>
+					<a class="permalink" href="godoc.101.html#MapIndex.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mi <a href="godoc.101.html#MapIndex">MapIndex</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="MapIndex.Type">func (MapIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=7749:7787#L246">Type</a>
+					<a class="permalink" href="godoc.101.html#MapIndex.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mi <a href="godoc.101.html#MapIndex">MapIndex</a>) Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="MapIndex.Values">func (MapIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=7818:7868#L247">Values</a>
+					<a class="permalink" href="godoc.101.html#MapIndex.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mi <a href="godoc.101.html#MapIndex">MapIndex</a>) Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Option">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=730:1160#L15">Option</a>
+				<a class="permalink" href="godoc.101.html#Option">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Option configures for specific behavior of Equal and Diff. In particular,
+the fundamental Option functions (Ignore, Transformer, and Comparer),
+configure how equality is determined.
+</p>
+<p>
+The fundamental options may be composed with filters (FilterPath and
+FilterValues) to control the scope over which they are applied.
+</p>
+<p>
+The cmp/cmpopts package provides helper functions for creating options that
+may be used with Equal and Diff.
+</p>
+
+			<pre>type Option interface {
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			<div id="example_Option_approximateFloats" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (ApproximateFloats)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (ApproximateFloats)</span></p>
+		<p>Approximate equality for floats can be handled by defining a custom
+comparer on floats that determines two values to be equal if they are within
+some range of each other.
+
+This example is for demonstrative purposes; use cmpopts.EquateApprox instead.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This Comparer only operates on float64.</span>
+<span class="comment">// To handle float32s, either define a similar function for that type</span>
+<span class="comment">// or use a Transformer to convert float32s into float64s.</span>
+opt := cmp.Comparer(func(x, y float64) bool {
+    delta := math.Abs(x - y)
+    mean := math.Abs(x+y) / 2.0
+    return delta/mean &lt; 0.00001
+})
+
+x := []float64{1.0, 1.1, 1.2, math.Pi}
+y := []float64{1.0, 1.1, 1.2, 3.14159265359} <span class="comment">// Accurate enough to Pi</span>
+z := []float64{1.0, 1.1, 1.2, 3.1415}        <span class="comment">// Diverges too far from Pi</span>
+
+fmt.Println(cmp.Equal(x, y, opt))
+fmt.Println(cmp.Equal(y, z, opt))
+fmt.Println(cmp.Equal(z, x, opt))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+false
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Option_avoidEqualMethod" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (AvoidEqualMethod)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (AvoidEqualMethod)</span></p>
+		<p>If the Equal method defined on a type is not suitable, the type can be be
+dynamically transformed to be stripped of the Equal method (or any method
+for that matter).
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// Suppose otherString.Equal performs a case-insensitive equality,</span>
+<span class="comment">// which is too loose for our needs.</span>
+<span class="comment">// We can avoid the methods of otherString by declaring a new type.</span>
+type myString otherString
+
+<span class="comment">// This transformer converts otherString to myString, allowing Equal to use</span>
+<span class="comment">// other Options to determine equality.</span>
+trans := cmp.Transformer(&#34;&#34;, func(in otherString) myString {
+    return myString(in)
+})
+
+x := []otherString{&#34;foo&#34;, &#34;bar&#34;, &#34;baz&#34;}
+y := []otherString{&#34;fOO&#34;, &#34;bAr&#34;, &#34;Baz&#34;} <span class="comment">// Same as before, but with different case</span>
+
+fmt.Println(cmp.Equal(x, y))        <span class="comment">// Equal because of case-insensitivity</span>
+fmt.Println(cmp.Equal(x, y, trans)) <span class="comment">// Not equal because of more exact equality</span>
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Option_equalEmpty" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (EqualEmpty)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (EqualEmpty)</span></p>
+		<p>Sometimes, an empty map or slice is considered equal to an allocated one
+of zero length.
+
+This example is for demonstrative purposes; use cmpopts.EquateEmpty instead.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">alwaysEqual := cmp.Comparer(func(_, _ interface{}) bool { return true })
+
+<span class="comment">// This option handles slices and maps of any type.</span>
+opt := cmp.FilterValues(func(x, y interface{}) bool {
+    vx, vy := reflect.ValueOf(x), reflect.ValueOf(y)
+    return (vx.IsValid() &amp;&amp; vy.IsValid() &amp;&amp; vx.Type() == vy.Type()) &amp;&amp;
+        (vx.Kind() == reflect.Slice || vx.Kind() == reflect.Map) &amp;&amp;
+        (vx.Len() == 0 &amp;&amp; vy.Len() == 0)
+}, alwaysEqual)
+
+type S struct {
+    A []int
+    B map[string]bool
+}
+x := S{nil, make(map[string]bool, 100)}
+y := S{make([]int, 0, 200), nil}
+z := S{[]int{0}, nil} <span class="comment">// []int has a single element (i.e., not empty)</span>
+
+fmt.Println(cmp.Equal(x, y, opt))
+fmt.Println(cmp.Equal(y, z, opt))
+fmt.Println(cmp.Equal(z, x, opt))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+false
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Option_equalNaNs" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (EqualNaNs)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (EqualNaNs)</span></p>
+		<p>Normal floating-point arithmetic defines == to be false when comparing
+NaN with itself. In certain cases, this is not the desired property.
+
+This example is for demonstrative purposes; use cmpopts.EquateNaNs instead.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This Comparer only operates on float64.</span>
+<span class="comment">// To handle float32s, either define a similar function for that type</span>
+<span class="comment">// or use a Transformer to convert float32s into float64s.</span>
+opt := cmp.Comparer(func(x, y float64) bool {
+    return (math.IsNaN(x) &amp;&amp; math.IsNaN(y)) || x == y
+})
+
+x := []float64{1.0, math.NaN(), math.E, -0.0, +0.0}
+y := []float64{1.0, math.NaN(), math.E, -0.0, +0.0}
+z := []float64{1.0, math.NaN(), math.Pi, -0.0, +0.0} <span class="comment">// Pi constant instead of E</span>
+
+fmt.Println(cmp.Equal(x, y, opt))
+fmt.Println(cmp.Equal(y, z, opt))
+fmt.Println(cmp.Equal(z, x, opt))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+false
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Option_equalNaNsAndApproximateFloats" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (EqualNaNsAndApproximateFloats)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (EqualNaNsAndApproximateFloats)</span></p>
+		<p>To have floating-point comparisons combine both properties of NaN being
+equal to itself and also approximate equality of values, filters are needed
+to restrict the scope of the comparison so that they are composable.
+
+This example is for demonstrative purposes;
+use cmpopts.EquateNaNs and cmpopts.EquateApprox instead.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">alwaysEqual := cmp.Comparer(func(_, _ interface{}) bool { return true })
+
+opts := cmp.Options{
+    <span class="comment">// This option declares that a float64 comparison is equal only if</span>
+    <span class="comment">// both inputs are NaN.</span>
+    cmp.FilterValues(func(x, y float64) bool {
+        return math.IsNaN(x) &amp;&amp; math.IsNaN(y)
+    }, alwaysEqual),
+
+    <span class="comment">// This option declares approximate equality on float64s only if</span>
+    <span class="comment">// both inputs are not NaN.</span>
+    cmp.FilterValues(func(x, y float64) bool {
+        return !math.IsNaN(x) &amp;&amp; !math.IsNaN(y)
+    }, cmp.Comparer(func(x, y float64) bool {
+        delta := math.Abs(x - y)
+        mean := math.Abs(x+y) / 2.0
+        return delta/mean &lt; 0.00001
+    })),
+}
+
+x := []float64{math.NaN(), 1.0, 1.1, 1.2, math.Pi}
+y := []float64{math.NaN(), 1.0, 1.1, 1.2, 3.14159265359} <span class="comment">// Accurate enough to Pi</span>
+z := []float64{math.NaN(), 1.0, 1.1, 1.2, 3.1415}        <span class="comment">// Diverges too far from Pi</span>
+
+fmt.Println(cmp.Equal(x, y, opts))
+fmt.Println(cmp.Equal(y, z, opts))
+fmt.Println(cmp.Equal(z, x, opts))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+false
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Option_sortedSlice" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (SortedSlice)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (SortedSlice)</span></p>
+		<p>Two slices may be considered equal if they have the same elements,
+regardless of the order that they appear in. Transformations can be used
+to sort the slice.
+
+This example is for demonstrative purposes; use cmpopts.SortSlices instead.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code"><span class="comment">// This Transformer sorts a []int.</span>
+trans := cmp.Transformer(&#34;Sort&#34;, func(in []int) []int {
+    out := append([]int(nil), in...) <span class="comment">// Copy input to avoid mutating it</span>
+    sort.Ints(out)
+    return out
+})
+
+x := struct{ Ints []int }{[]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}}
+y := struct{ Ints []int }{[]int{2, 8, 0, 9, 6, 1, 4, 7, 3, 5}}
+z := struct{ Ints []int }{[]int{0, 0, 1, 2, 3, 4, 5, 6, 7, 8}}
+
+fmt.Println(cmp.Equal(x, y, trans))
+fmt.Println(cmp.Equal(y, z, trans))
+fmt.Println(cmp.Equal(z, x, trans))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+false
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Option_transformComplex" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (TransformComplex)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (TransformComplex)</span></p>
+		<p>The complex numbers complex64 and complex128 can really just be decomposed
+into a pair of float32 or float64 values. It would be convenient to be able
+define only a single comparator on float64 and have float32, complex64, and
+complex128 all be able to use that comparator. Transformations can be used
+to handle this.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">opts := []cmp.Option{
+    <span class="comment">// This transformer decomposes complex128 into a pair of float64s.</span>
+    cmp.Transformer(&#34;T1&#34;, func(in complex128) (out struct{ Real, Imag float64 }) {
+        out.Real, out.Imag = real(in), imag(in)
+        return out
+    }),
+    <span class="comment">// This transformer converts complex64 to complex128 to allow the</span>
+    <span class="comment">// above transform to take effect.</span>
+    cmp.Transformer(&#34;T2&#34;, func(in complex64) complex128 {
+        return complex128(in)
+    }),
+    <span class="comment">// This transformer converts float32 to float64.</span>
+    cmp.Transformer(&#34;T3&#34;, func(in float32) float64 {
+        return float64(in)
+    }),
+    <span class="comment">// This equality function compares float64s as rounded integers.</span>
+    cmp.Comparer(func(x, y float64) bool {
+        return roundF64(x) == roundF64(y)
+    }),
+}
+
+x := []interface{}{
+    complex128(3.0), complex64(5.1 + 2.9i), float32(-1.2), float64(12.3),
+}
+y := []interface{}{
+    complex128(3.1), complex64(4.9 + 3.1i), float32(-1.3), float64(11.7),
+}
+z := []interface{}{
+    complex128(3.8), complex64(4.9 + 3.1i), float32(-1.3), float64(11.7),
+}
+
+fmt.Println(cmp.Equal(x, y, opts...))
+fmt.Println(cmp.Equal(y, z, opts...))
+fmt.Println(cmp.Equal(z, x, opts...))
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">true
+false
+false
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+				
+				<h3 id="AllowUnexported">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=13728:13777#L379">AllowUnexported</a>
+					<a class="permalink" href="godoc.101.html#AllowUnexported">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func AllowUnexported(types ...interface{}) <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+AllowUnexported returns an Option that forcibly allows operations on
+unexported fields in certain structs, which are specified by passing in a
+value of each struct type.
+</p>
+<p>
+Users of this option must understand that comparing on unexported fields
+from external packages is not safe since changes in the internal
+implementation of some external package may cause the result of Equal
+to unexpectedly change. However, it may be valid to use this option on types
+defined in an internal package where the semantic meaning of an unexported
+field is in the control of the user.
+</p>
+<p>
+In many cases, a custom Comparer should be used instead that defines
+equality as a function of the public API of a type rather than the underlying
+unexported implementation.
+</p>
+<p>
+For example, the reflect.Type documentation defines equality to be determined
+by the == operator on the interface (essentially performing a shallow pointer
+comparison) and most attempts to compare *regexp.Regexp types are interested
+in only checking that the regular expression strings are equal.
+Both of these are accomplished using Comparers:
+</p>
+<pre>Comparer(func(x, y reflect.Type) bool { return x == y })
+Comparer(func(x, y *regexp.Regexp) bool { return x.String() == y.String() })
+</pre>
+<p>
+In other cases, the cmpopts.IgnoreUnexported option can be used to ignore
+all unexported fields on specified struct types.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Comparer">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=11430:11465#L317">Comparer</a>
+					<a class="permalink" href="godoc.101.html#Comparer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Comparer(f interface{}) <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+Comparer returns an Option that determines whether two values are equal
+to each other.
+</p>
+<p>
+The comparer f must be a function &#34;func(T, T) bool&#34; and is implicitly
+filtered to input values assignable to T. If T is an interface, it is
+possible that f is called with two values of different concrete types that
+both implement T.
+</p>
+<p>
+The equality function must be:
+</p>
+<pre>• Symmetric: equal(x, y) == equal(y, x)
+• Deterministic: equal(x, y) == equal(x, y)
+• Pure: equal(x, y) does not modify x or y
+</pre>
+
+				
+				
+			
+				
+				<h3 id="FilterPath">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=3867:3920#L106">FilterPath</a>
+					<a class="permalink" href="godoc.101.html#FilterPath">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FilterPath(f func(<a href="godoc.101.html#Path">Path</a>) <a href="godoc.26.html#bool">bool</a>, opt <a href="godoc.101.html#Option">Option</a>) <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+FilterPath returns a new Option where opt is only evaluated if filter f
+returns true for the current Path in the value tree.
+</p>
+<p>
+This filter is called even if a slice element or map entry is missing and
+provides an opportunity to ignore such cases. The filter function must be
+symmetric such that the filter result is identical regardless of whether the
+missing value is from x or y.
+</p>
+<p>
+The option passed in may be an Ignore, Transformer, Comparer, Options, or
+a previously filtered Option.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FilterValues">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=5189:5240#L147">FilterValues</a>
+					<a class="permalink" href="godoc.101.html#FilterValues">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FilterValues(f interface{}, opt <a href="godoc.101.html#Option">Option</a>) <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+FilterValues returns a new Option where opt is only evaluated if filter f,
+which is a function of the form &#34;func(T, T) bool&#34;, returns true for the
+current pair of values being compared. If either value is invalid or
+the type of the values is not assignable to T, then this filter implicitly
+returns false.
+</p>
+<p>
+The filter function must be
+symmetric (i.e., agnostic to the order of the inputs) and
+deterministic (i.e., produces the same result when given the same inputs).
+If T is an interface, it is possible that f is called with two values with
+different concrete types that both implement T.
+</p>
+<p>
+The option passed in may be an Ignore, Transformer, Comparer, Options, or
+a previously filtered Option.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Ignore">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=6375:6395#L186">Ignore</a>
+					<a class="permalink" href="godoc.101.html#Ignore">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Ignore() <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+Ignore is an Option that causes all comparisons to be ignored.
+This value is intended to be combined with FilterPath or FilterValues.
+It is an error to pass an unfiltered Ignore option to Equal.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Reporter">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=15691:16704#L446">Reporter</a>
+					<a class="permalink" href="godoc.101.html#Reporter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Reporter(r interface {
+    <span class="comment">// PushStep is called when a tree-traversal operation is performed.</span>
+    <span class="comment">// The PathStep itself is only valid until the step is popped.</span>
+    <span class="comment">// The PathStep.Values are valid for the duration of the entire traversal</span>
+    <span class="comment">// and must not be mutated.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Equal always calls PushStep at the start to provide an operation-less</span>
+    <span class="comment">// PathStep used to report the root values.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Within a slice, the exact set of inserted, removed, or modified elements</span>
+    <span class="comment">// is unspecified and may change in future implementations.</span>
+    <span class="comment">// The entries of a map are iterated through in an unspecified order.</span>
+    PushStep(<a href="godoc.101.html#PathStep">PathStep</a>)
+
+    <span class="comment">// Report is called exactly once on leaf nodes to report whether the</span>
+    <span class="comment">// comparison identified the node as equal, unequal, or ignored.</span>
+    <span class="comment">// A leaf node is one that is immediately preceded by and followed by</span>
+    <span class="comment">// a pair of PushStep and PopStep calls.</span>
+    Report(<a href="godoc.101.html#Result">Result</a>)
+
+    <span class="comment">// PopStep ascends back up the value tree.</span>
+    <span class="comment">// There is always a matching pop call for every push call.</span>
+    PopStep()
+}) <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+Reporter is an Option that can be passed to Equal. When Equal traverses
+the value trees, it calls PushStep as it descends into each node in the
+tree and PopStep as it ascend out of the node. The leaves of the tree are
+either compared (determined to be equal or not equal) or ignored and reported
+as such by calling the Report method.
+</p>
+
+				<div id="example_Reporter" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">package cmp_test
+
+import (
+    &#34;fmt&#34;
+    &#34;strings&#34;
+
+    &#34;github.com/google/go-cmp/cmp&#34;
+)
+
+<span class="comment">// DiffReporter is a simple custom reporter that only records differences</span>
+<span class="comment">// detected during comparison.</span>
+type DiffReporter struct {
+    path  cmp.Path
+    diffs []string
+}
+
+func (r *DiffReporter) PushStep(ps cmp.PathStep) {
+    r.path = append(r.path, ps)
+}
+
+func (r *DiffReporter) Report(rs cmp.Result) {
+    if !rs.Equal() {
+        vx, vy := r.path.Last().Values()
+        r.diffs = append(r.diffs, fmt.Sprintf(&#34;%#v:\n\t-: %+v\n\t+: %+v\n&#34;, r.path, vx, vy))
+    }
+}
+
+func (r *DiffReporter) PopStep() {
+    r.path = r.path[:len(r.path)-1]
+}
+
+func (r *DiffReporter) String() string {
+    return strings.Join(r.diffs, &#34;\n&#34;)
+}
+
+func ExampleReporter() {
+    x, y := MakeGatewayInfo()
+
+    var r DiffReporter
+    cmp.Equal(x, y, cmp.Reporter(&amp;r))
+    fmt.Print(r.String())
+
+    <span class="comment">// Output:</span>
+    <span class="comment">// {cmp_test.Gateway}.IPAddress:</span>
+    <span class="comment">// 	-: 192.168.0.1</span>
+    <span class="comment">// 	+: 192.168.0.2</span>
+    <span class="comment">//</span>
+    <span class="comment">// {cmp_test.Gateway}.Clients[4].IPAddress:</span>
+    <span class="comment">// 	-: 192.168.0.219</span>
+    <span class="comment">// 	+: 192.168.0.221</span>
+    <span class="comment">//</span>
+    <span class="comment">// {cmp_test.Gateway}.Clients[5-&gt;?]:</span>
+    <span class="comment">// 	-: {Hostname:americano IPAddress:192.168.0.188 LastSeen:2009-11-10 23:03:05 +0000 UTC}</span>
+    <span class="comment">// 	+: &lt;invalid reflect.Value&gt;</span>
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+				
+				<h3 id="Transformer">func <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=9351:9402#L250">Transformer</a>
+					<a class="permalink" href="godoc.101.html#Transformer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Transformer(name <a href="godoc.26.html#string">string</a>, f interface{}) <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+Transformer returns an Option that applies a transformation function that
+converts values of a certain type into that of another.
+</p>
+<p>
+The transformer f must be a function &#34;func(T) R&#34; that converts values of
+type T to those of type R and is implicitly filtered to input values
+assignable to T. The transformer must not mutate T in any way.
+</p>
+<p>
+To help prevent some cases of infinite recursive cycles applying the
+same transform to the output of itself (e.g., in the case where the
+input and output types are the same), an implicit filter is added such that
+a transformer is applicable only if that exact transformer is not already
+in the tail of the Path since the last non-Transform step.
+For situations where the implicit filter is still insufficient,
+consider using cmpopts.AcyclicTransformer, which adds a filter
+to prevent the transformer from being recursively applied upon itself.
+</p>
+<p>
+The name is a user provided label that is used as the Transform.Name in the
+transformation PathStep (and eventually shown in the Diff output).
+The name must be a valid identifier or qualified identifier in Go syntax.
+If empty, an arbitrary name is used.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Options">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=2105:2126#L54">Options</a>
+				<a class="permalink" href="godoc.101.html#Options">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Options is a list of Option values that also satisfies the Option interface.
+Helper comparison packages may return an Options value when packing multiple
+Option values into a single Option. When this package processes an Options,
+it will be implicitly expanded into a flat list.
+</p>
+<p>
+Applying a filter on an Options is equivalent to applying that same filter
+on all individual options held within.
+</p>
+
+			<pre>type Options []<a href="godoc.101.html#Option">Option</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Options.String">func (Options) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=3170:3205#L88">String</a>
+					<a class="permalink" href="godoc.101.html#Options.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (opts <a href="godoc.101.html#Options">Options</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Path">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=791:811#L14">Path</a>
+				<a class="permalink" href="godoc.101.html#Path">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Path is a list of PathSteps describing the sequence of operations to get
+from some root type to the current position in the value tree.
+The first Path element is always an operation-less PathStep that exists
+simply to identify the initial type.
+</p>
+<p>
+When traversing structs with embedded structs, the embedded struct will
+always be accessed as a field before traversing the fields of the
+embedded struct themselves. That is, an exported field from the
+embedded struct will never be accessed directly from the parent struct.
+</p>
+
+			<pre>type Path []<a href="godoc.101.html#PathStep">PathStep</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Path.GoString">func (Path) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=3387:3419#L100">GoString</a>
+					<a class="permalink" href="godoc.101.html#Path.GoString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pa <a href="godoc.101.html#Path">Path</a>) GoString() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+GoString returns the path to a specific node using Go syntax.
+</p>
+<p>
+For example:
+</p>
+<pre>(*root.MyMap[&#34;key&#34;].(*mypkg.MyStruct).MySlices)[2][3].MyField
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="Path.Index">func (Path) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=2739:2775#L71">Index</a>
+					<a class="permalink" href="godoc.101.html#Path.Index">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pa <a href="godoc.101.html#Path">Path</a>) Index(i <a href="godoc.26.html#int">int</a>) <a href="godoc.101.html#PathStep">PathStep</a></pre>
+				<p>
+Index returns the ith step in the Path and supports negative indexing.
+A negative index starts counting from the tail of the Path such that -1
+refers to the last step, -2 refers to the second-to-last step, and so on.
+If index is invalid, this returns a non-nil PathStep that reports a nil Type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Path.Last">func (Path) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=2375:2405#L63">Last</a>
+					<a class="permalink" href="godoc.101.html#Path.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pa <a href="godoc.101.html#Path">Path</a>) Last() <a href="godoc.101.html#PathStep">PathStep</a></pre>
+				<p>
+Last returns the last PathStep in the Path.
+If the path is empty, this returns a non-nil PathStep that reports a nil Type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Path.String">func (Path) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=3033:3063#L86">String</a>
+					<a class="permalink" href="godoc.101.html#Path.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pa <a href="godoc.101.html#Path">Path</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String returns the simplified path to a node.
+The simplified path only contains struct field accesses.
+</p>
+<p>
+For example:
+</p>
+<pre>MyMap.MySlices.MyField
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="PathStep">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=1146:1961#L22">PathStep</a>
+				<a class="permalink" href="godoc.101.html#PathStep">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+PathStep is a union-type for specific operations to traverse
+a value&#39;s tree structure. Users of this package never need to implement
+these types as values of this type will be returned by this package.
+</p>
+<p>
+Implementations of this interface are
+StructField, SliceIndex, MapIndex, Indirect, TypeAssertion, and Transform.
+</p>
+
+			<pre>type PathStep interface {
+    String() <a href="godoc.26.html#string">string</a>
+
+    <span class="comment">// Type is the resulting type after performing the path step.</span>
+    Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+
+    <span class="comment">// Values is the resulting values after performing the path step.</span>
+    <span class="comment">// The type of each valid value is guaranteed to be identical to Type.</span>
+    <span class="comment">//</span>
+    <span class="comment">// In some cases, one or both may be invalid or have restrictions:</span>
+    <span class="comment">//	• For StructField, both are not interface-able if the current field</span>
+    <span class="comment">//	is unexported and the struct type is not explicitly permitted by</span>
+    <span class="comment">//	AllowUnexported to traverse unexported fields.</span>
+    <span class="comment">//	• For SliceIndex, one may be invalid if an element is missing from</span>
+    <span class="comment">//	either the x or y slice.</span>
+    <span class="comment">//	• For MapIndex, one may be invalid if an entry is missing from</span>
+    <span class="comment">//	either the x or y map.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The provided values must not be mutated.</span>
+    Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Result">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=14432:14518#L402">Result</a>
+				<a class="permalink" href="godoc.101.html#Result">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Result represents the comparison result for a single node and
+is provided by cmp when calling Result (see Reporter).
+</p>
+
+			<pre>type Result struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Result.ByFunc">func (Result) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=15131:15160#L425">ByFunc</a>
+					<a class="permalink" href="godoc.101.html#Result.ByFunc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.101.html#Result">Result</a>) ByFunc() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ByFunc reports whether a Comparer function determined equality.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Result.ByIgnore">func (Result) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=14852:14883#L415">ByIgnore</a>
+					<a class="permalink" href="godoc.101.html#Result.ByIgnore">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.101.html#Result">Result</a>) ByIgnore() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ByIgnore reports whether the node is equal because it was ignored.
+This never reports true if Equal reports false.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Result.ByMethod">func (Result) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=14991:15022#L420">ByMethod</a>
+					<a class="permalink" href="godoc.101.html#Result.ByMethod">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.101.html#Result">Result</a>) ByMethod() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+ByMethod reports whether the Equal method determined equality.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Result.Equal">func (Result) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/options.go?s=14647:14675#L409">Equal</a>
+					<a class="permalink" href="godoc.101.html#Result.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.101.html#Result">Result</a>) Equal() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Equal reports whether the node was determined to be equal or not.
+As a special case, ignored nodes are considered equal.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SliceIndex">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=6190:6227#L196">SliceIndex</a>
+				<a class="permalink" href="godoc.101.html#SliceIndex">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SliceIndex is an index operation on a slice or array at some index Key.
+</p>
+
+			<pre>type SliceIndex struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SliceIndex.Key">func (SliceIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=6938:6968#L221">Key</a>
+					<a class="permalink" href="godoc.101.html#SliceIndex.Key">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (si <a href="godoc.101.html#SliceIndex">SliceIndex</a>) Key() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Key is the index key; it may return -1 if in a split state
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SliceIndex.SplitKeys">func (SliceIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=7523:7568#L237">SplitKeys</a>
+					<a class="permalink" href="godoc.101.html#SliceIndex.SplitKeys">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (si <a href="godoc.101.html#SliceIndex">SliceIndex</a>) SplitKeys() (ix, iy <a href="godoc.26.html#int">int</a>)</pre>
+				<p>
+SplitKeys are the indexes for indexing into slices in the
+x and y values, respectively. These indexes may differ due to the
+insertion or removal of an element in one of the slices, causing
+all of the indexes to be shifted. If an index is -1, then that
+indicates that the element does not exist in the associated slice.
+</p>
+<p>
+Key is guaranteed to return -1 if and only if the indexes returned
+by SplitKeys are not the same. SplitKeys will never return -1 for
+both indexes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SliceIndex.String">func (SliceIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=6430:6466#L204">String</a>
+					<a class="permalink" href="godoc.101.html#SliceIndex.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (si <a href="godoc.101.html#SliceIndex">SliceIndex</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SliceIndex.Type">func (SliceIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=6282:6322#L202">Type</a>
+					<a class="permalink" href="godoc.101.html#SliceIndex.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (si <a href="godoc.101.html#SliceIndex">SliceIndex</a>) Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SliceIndex.Values">func (SliceIndex) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=6353:6405#L203">Values</a>
+					<a class="permalink" href="godoc.101.html#SliceIndex.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (si <a href="godoc.101.html#SliceIndex">SliceIndex</a>) Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StructField">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=4919:4958#L158">StructField</a>
+				<a class="permalink" href="godoc.101.html#StructField">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StructField represents a struct field access on a field called Name.
+</p>
+
+			<pre>type StructField struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StructField.Index">func (StructField) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=6062:6095#L193">Index</a>
+					<a class="permalink" href="godoc.101.html#StructField.Index">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sf <a href="godoc.101.html#StructField">StructField</a>) Index() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Index is the index of the field in the parent struct type.
+See reflect.Type.Field.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StructField.Name">func (StructField) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=5917:5952#L189">Name</a>
+					<a class="permalink" href="godoc.101.html#StructField.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sf <a href="godoc.101.html#StructField">StructField</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name is the field name.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StructField.String">func (StructField) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=5812:5849#L186">String</a>
+					<a class="permalink" href="godoc.101.html#StructField.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sf <a href="godoc.101.html#StructField">StructField</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="StructField.Type">func (StructField) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=5334:5375#L172">Type</a>
+					<a class="permalink" href="godoc.101.html#StructField.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sf <a href="godoc.101.html#StructField">StructField</a>) Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="StructField.Values">func (StructField) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=5394:5447#L173">Values</a>
+					<a class="permalink" href="godoc.101.html#StructField.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sf <a href="godoc.101.html#StructField">StructField</a>) Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Transform">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8896:8931#L274">Transform</a>
+				<a class="permalink" href="godoc.101.html#Transform">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Transform is a transformation from the parent type to the current type.
+</p>
+
+			<pre>type Transform struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Transform.Func">func (Transform) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=9395:9435#L288">Func</a>
+					<a class="permalink" href="godoc.101.html#Transform.Func">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tf <a href="godoc.101.html#Transform">Transform</a>) Func() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a></pre>
+				<p>
+Func is the function pointer to the transformer function.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Transform.Name">func (Transform) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=9274:9307#L285">Name</a>
+					<a class="permalink" href="godoc.101.html#Transform.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tf <a href="godoc.101.html#Transform">Transform</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name is the name of the Transformer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Transform.Option">func (Transform) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=9590:9625#L292">Option</a>
+					<a class="permalink" href="godoc.101.html#Transform.Option">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tf <a href="godoc.101.html#Transform">Transform</a>) Option() <a href="godoc.101.html#Option">Option</a></pre>
+				<p>
+Option returns the originally constructed Transformer option.
+The == operator can be used to detect the exact option used.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Transform.String">func (Transform) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=9135:9170#L282">String</a>
+					<a class="permalink" href="godoc.101.html#Transform.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tf <a href="godoc.101.html#Transform">Transform</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Transform.Type">func (Transform) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8989:9028#L280">Type</a>
+					<a class="permalink" href="godoc.101.html#Transform.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tf <a href="godoc.101.html#Transform">Transform</a>) Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Transform.Values">func (Transform) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=9059:9110#L281">Values</a>
+					<a class="permalink" href="godoc.101.html#Transform.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tf <a href="godoc.101.html#Transform">Transform</a>) Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TypeAssertion">type <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8485:8528#L264">TypeAssertion</a>
+				<a class="permalink" href="godoc.101.html#TypeAssertion">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TypeAssertion represents a type assertion on an interface.
+</p>
+
+			<pre>type TypeAssertion struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TypeAssertion.String">func (TypeAssertion) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8724:8763#L271">String</a>
+					<a class="permalink" href="godoc.101.html#TypeAssertion.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ta <a href="godoc.101.html#TypeAssertion">TypeAssertion</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TypeAssertion.Type">func (TypeAssertion) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8570:8613#L269">Type</a>
+					<a class="permalink" href="godoc.101.html#TypeAssertion.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ta <a href="godoc.101.html#TypeAssertion">TypeAssertion</a>) Type() <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="TypeAssertion.Values">func (TypeAssertion) <a href="http://localhost:6161/src/github.com/google/go-cmp/cmp/path.go?s=8644:8699#L270">Values</a>
+					<a class="permalink" href="godoc.101.html#TypeAssertion.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ta <a href="godoc.101.html#TypeAssertion">TypeAssertion</a>) Values() (vx, vy <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.100.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.102.html">cmpopts</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package cmpopts provides common options for the cmp package.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>debug - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.46.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package debug
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "runtime/debug"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.46.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.46.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package debug contains facilities for programs to debug themselves while
+they are running.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.46.html#FreeOSMemory">func FreeOSMemory()</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#PrintStack">func PrintStack()</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#ReadGCStats">func ReadGCStats(stats *GCStats)</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#SetGCPercent">func SetGCPercent(percent int) int</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#SetMaxStack">func SetMaxStack(bytes int) int</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#SetMaxThreads">func SetMaxThreads(threads int) int</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#SetPanicOnFault">func SetPanicOnFault(enabled bool) bool</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#SetTraceback">func SetTraceback(level string)</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#Stack">func Stack() []byte</a></dd>
+			
+				
+				<dd><a href="godoc.46.html#WriteHeapDump">func WriteHeapDump(fd uintptr)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.46.html#BuildInfo">type BuildInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.46.html#ReadBuildInfo">func ReadBuildInfo() (info *BuildInfo, ok bool)</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.46.html#GCStats">type GCStats</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.46.html#Module">type Module</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/runtime/debug/garbage.go">garbage.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/debug/mod.go">mod.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/debug/stack.go">stack.go</a>
+			
+				<a href="http://localhost:6161/src/runtime/debug/stubs.go">stubs.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="FreeOSMemory">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=3859:3878#L89">FreeOSMemory</a>
+				<a class="permalink" href="godoc.46.html#FreeOSMemory">&#xb6;</a>
+				
+				<span title="Added in Go 1.1">1.1</span>
+			</h2>
+			<pre>func FreeOSMemory()</pre>
+			<p>
+FreeOSMemory forces a garbage collection followed by an
+attempt to return as much memory to the operating system
+as possible. (Even if this is not called, the runtime gradually
+returns memory to the operating system in a background task.)
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PrintStack">func <a href="http://localhost:6161/src/runtime/debug/stack.go?s=383:400#L5">PrintStack</a>
+				<a class="permalink" href="godoc.46.html#PrintStack">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PrintStack()</pre>
+			<p>
+PrintStack prints to standard error the stack trace returned by runtime.Stack.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadGCStats">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=1206:1238#L21">ReadGCStats</a>
+				<a class="permalink" href="godoc.46.html#ReadGCStats">&#xb6;</a>
+				
+				<span title="Added in Go 1.1">1.1</span>
+			</h2>
+			<pre>func ReadGCStats(stats *<a href="godoc.46.html#GCStats">GCStats</a>)</pre>
+			<p>
+ReadGCStats reads statistics about garbage collection into stats.
+The number of entries in the pause history is system-dependent;
+stats.Pause slice will be reused if large enough, reallocated otherwise.
+ReadGCStats may use the full capacity of the stats.Pause slice.
+If stats.PauseQuantiles is non-empty, ReadGCStats fills it with quantiles
+summarizing the distribution of pause time. For example, if
+len(stats.PauseQuantiles) is 5, it will be filled with the minimum,
+25%, 50%, 75%, and maximum pause times.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SetGCPercent">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=3526:3560#L81">SetGCPercent</a>
+				<a class="permalink" href="godoc.46.html#SetGCPercent">&#xb6;</a>
+				
+				<span title="Added in Go 1.1">1.1</span>
+			</h2>
+			<pre>func SetGCPercent(percent <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+SetGCPercent sets the garbage collection target percentage:
+a collection is triggered when the ratio of freshly allocated data
+to live data remaining after the previous collection reaches this percentage.
+SetGCPercent returns the previous setting.
+The initial setting is the value of the GOGC environment variable
+at startup, or 100 if the variable is not set.
+A negative percentage disables garbage collection.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SetMaxStack">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=4361:4392#L103">SetMaxStack</a>
+				<a class="permalink" href="godoc.46.html#SetMaxStack">&#xb6;</a>
+				
+				<span title="Added in Go 1.2">1.2</span>
+			</h2>
+			<pre>func SetMaxStack(bytes <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+SetMaxStack sets the maximum amount of memory that
+can be used by a single goroutine stack.
+If any goroutine exceeds this limit while growing its stack,
+the program crashes.
+SetMaxStack returns the previous setting.
+The initial setting is 1 GB on 64-bit systems, 250 MB on 32-bit systems.
+</p>
+<p>
+SetMaxStack is useful mainly for limiting the damage done by
+goroutines that enter an infinite recursion. It only limits future
+stack growth.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SetMaxThreads">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=5205:5240#L121">SetMaxThreads</a>
+				<a class="permalink" href="godoc.46.html#SetMaxThreads">&#xb6;</a>
+				
+				<span title="Added in Go 1.2">1.2</span>
+			</h2>
+			<pre>func SetMaxThreads(threads <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+SetMaxThreads sets the maximum number of operating system
+threads that the Go program can use. If it attempts to use more than
+this many, the program crashes.
+SetMaxThreads returns the previous setting.
+The initial setting is 10,000 threads.
+</p>
+<p>
+The limit controls the number of operating system threads, not the number
+of goroutines. A Go program creates a new thread only when a goroutine
+is ready to run but all the existing threads are blocked in system calls, cgo calls,
+or are locked to other goroutines due to use of runtime.LockOSThread.
+</p>
+<p>
+SetMaxThreads is useful mainly for limiting the damage done by
+programs that create an unbounded number of threads. The idea is
+to take down the program before it takes down the operating system.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SetPanicOnFault">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=5865:5904#L134">SetPanicOnFault</a>
+				<a class="permalink" href="godoc.46.html#SetPanicOnFault">&#xb6;</a>
+				
+				<span title="Added in Go 1.3">1.3</span>
+			</h2>
+			<pre>func SetPanicOnFault(enabled <a href="godoc.26.html#bool">bool</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+SetPanicOnFault controls the runtime&#39;s behavior when a program faults
+at an unexpected (non-nil) address. Such faults are typically caused by
+bugs such as runtime memory corruption, so the default response is to crash
+the program. Programs working with memory-mapped files or unsafe
+manipulation of memory may cause faults at non-nil addresses in less
+dramatic situations; SetPanicOnFault allows such programs to request
+that the runtime trigger only a panic, not a crash.
+SetPanicOnFault applies only to the current goroutine.
+It returns the previous setting.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="SetTraceback">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=6953:6984#L158">SetTraceback</a>
+				<a class="permalink" href="godoc.46.html#SetTraceback">&#xb6;</a>
+				
+				<span title="Added in Go 1.6">1.6</span>
+			</h2>
+			<pre>func SetTraceback(level <a href="godoc.26.html#string">string</a>)</pre>
+			<p>
+SetTraceback sets the amount of detail printed by the runtime in
+the traceback it prints before exiting due to an unrecovered panic
+or an internal runtime error.
+The level argument takes the same values as the GOTRACEBACK
+environment variable. For example, SetTraceback(&#34;all&#34;) ensure
+that the program prints all goroutines when it crashes.
+See the package runtime documentation for details.
+If SetTraceback is called with a level lower than that of the
+environment variable, the call is ignored.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Stack">func <a href="http://localhost:6161/src/runtime/debug/stack.go?s=587:606#L11">Stack</a>
+				<a class="permalink" href="godoc.46.html#Stack">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Stack() []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+Stack returns a formatted stack trace of the goroutine that calls it.
+It calls runtime.Stack with a large enough buffer to capture the entire trace.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="WriteHeapDump">func <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=6398:6428#L147">WriteHeapDump</a>
+				<a class="permalink" href="godoc.46.html#WriteHeapDump">&#xb6;</a>
+				
+				<span title="Added in Go 1.3">1.3</span>
+			</h2>
+			<pre>func WriteHeapDump(fd <a href="godoc.26.html#uintptr">uintptr</a>)</pre>
+			<p>
+WriteHeapDump writes a description of the heap and the objects in
+it to the given file descriptor.
+</p>
+<p>
+WriteHeapDump suspends the execution of all goroutines until the heap
+dump is completely written.  Thus, the file descriptor must not be
+connected to a pipe or socket whose other end is in the same Go
+process; instead, use a temporary file or network socket.
+</p>
+<p>
+The heap dump format is defined at <a href="https://golang.org/s/go15heapdump">https://golang.org/s/go15heapdump</a>.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="BuildInfo">type <a href="http://localhost:6161/src/runtime/debug/mod.go?s=569:721#L13">BuildInfo</a>
+				<a class="permalink" href="godoc.46.html#BuildInfo">&#xb6;</a>
+				
+				<span title="Added in Go 1.12">1.12</span>
+			</h2>
+			<p>
+BuildInfo represents the build information read from
+the running binary.
+</p>
+
+			<pre>type BuildInfo struct {
+<span id="BuildInfo.Path"></span>    Path <a href="godoc.26.html#string">string</a>    <span class="comment">// The main package path</span>
+<span id="BuildInfo.Main"></span>    Main <a href="godoc.46.html#Module">Module</a>    <span class="comment">// The main module information</span>
+<span id="BuildInfo.Deps"></span>    Deps []*<a href="godoc.46.html#Module">Module</a> <span class="comment">// Module dependencies</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ReadBuildInfo">func <a href="http://localhost:6161/src/runtime/debug/mod.go?s=404:451#L7">ReadBuildInfo</a>
+					<a class="permalink" href="godoc.46.html#ReadBuildInfo">&#xb6;</a>
+					
+					<span title="Added in Go 1.12">1.12</span>
+				</h3>
+				<pre>func ReadBuildInfo() (info *<a href="godoc.46.html#BuildInfo">BuildInfo</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ReadBuildInfo returns the build information embedded
+in the running binary. The information is available only
+in binaries built with module support.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="GCStats">type <a href="http://localhost:6161/src/runtime/debug/garbage.go?s=279:671#L4">GCStats</a>
+				<a class="permalink" href="godoc.46.html#GCStats">&#xb6;</a>
+				
+				<span title="Added in Go 1.1">1.1</span>
+			</h2>
+			<p>
+GCStats collect information about recent garbage collections.
+</p>
+
+			<pre>type GCStats struct {
+<span id="GCStats.LastGC"></span>    LastGC         <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>       <span class="comment">// time of last collection</span>
+<span id="GCStats.NumGC"></span>    NumGC          <a href="godoc.26.html#int64">int64</a>           <span class="comment">// number of garbage collections</span>
+<span id="GCStats.PauseTotal"></span>    PauseTotal     <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>   <span class="comment">// total pause for all collections</span>
+<span id="GCStats.Pause"></span>    Pause          []<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a> <span class="comment">// pause history, most recent first</span>
+<span id="GCStats.PauseEnd"></span>    PauseEnd       []<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>     <span class="comment">// pause end times history, most recent first; added in Go 1.4</span>
+<span id="GCStats.PauseQuantiles"></span>    PauseQuantiles []<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Module">type <a href="http://localhost:6161/src/runtime/debug/mod.go?s=754:916#L20">Module</a>
+				<a class="permalink" href="godoc.46.html#Module">&#xb6;</a>
+				
+				<span title="Added in Go 1.12">1.12</span>
+			</h2>
+			<p>
+Module represents a module.
+</p>
+
+			<pre>type Module struct {
+<span id="Module.Path"></span>    Path    <a href="godoc.26.html#string">string</a>  <span class="comment">// module path</span>
+<span id="Module.Version"></span>    Version <a href="godoc.26.html#string">string</a>  <span class="comment">// module version</span>
+<span id="Module.Sum"></span>    Sum     <a href="godoc.26.html#string">string</a>  <span class="comment">// checksum</span>
+<span id="Module.Replace"></span>    Replace *<a href="godoc.46.html#Module">Module</a> <span class="comment">// replaced by this module</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>publicsuffix - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.304.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package publicsuffix
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/net/publicsuffix"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.304.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.304.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.304.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package publicsuffix provides a public suffix list based on data from
+<a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+<p>
+A public suffix is one under which Internet users can directly register
+names. It is related to, but different from, a TLD (top level domain).
+</p>
+<p>
+&#34;com&#34; is a TLD (top level domain). Top level means it has no dots.
+</p>
+<p>
+&#34;com&#34; is also a public suffix. Amazon and Google have registered different
+siblings under that domain: &#34;amazon.com&#34; and &#34;google.com&#34;.
+</p>
+<p>
+&#34;au&#34; is another TLD, again because it has no dots. But it&#39;s not &#34;amazon.au&#34;.
+Instead, it&#39;s &#34;amazon.com.au&#34;.
+</p>
+<p>
+&#34;com.au&#34; isn&#39;t an actual TLD, because it&#39;s not at the top level (it has
+dots). But it is an eTLD (effective TLD), because that&#39;s the branching point
+for domain name registrars.
+</p>
+<p>
+Another name for &#34;an eTLD&#34; is &#34;a public suffix&#34;. Often, what&#39;s more of
+interest is the eTLD+1, or one more label than the public suffix. For
+example, browsers partition read/write access to HTTP cookies according to
+the eTLD+1. Web pages served from &#34;amazon.com.au&#34; can&#39;t read cookies from
+&#34;google.com.au&#34;, but web pages served from &#34;maps.google.com&#34; can share
+cookies from &#34;www.google.com&#34;, so you don&#39;t have to sign into Google Maps
+separately from signing into Google Web Search. Note that all four of those
+domains have 3 labels and 2 dots. The first two domains are each an eTLD+1,
+the last two are not (but share the same eTLD+1: &#34;google.com&#34;).
+</p>
+<p>
+All of these domains have the same eTLD+1:
+</p>
+<pre>- &#34;www.books.amazon.co.uk&#34;
+- &#34;books.amazon.co.uk&#34;
+- &#34;amazon.co.uk&#34;
+</pre>
+<p>
+Specifically, the eTLD+1 is &#34;amazon.co.uk&#34;, because the eTLD is &#34;co.uk&#34;.
+</p>
+<p>
+There is no closed form algorithm to calculate the eTLD of a domain.
+Instead, the calculation is data driven. This package provides a
+pre-compiled snapshot of Mozilla&#39;s PSL (Public Suffix List) data at
+<a href="https://publicsuffix.org/">https://publicsuffix.org/</a>
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.304.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.304.html#EffectiveTLDPlusOne">func EffectiveTLDPlusOne(domain string) (string, error)</a></dd>
+			
+				
+				<dd><a href="godoc.304.html#PublicSuffix">func PublicSuffix(domain string) (publicSuffix string, icann bool)</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.304.html#example_PublicSuffix_manager">PublicSuffix (Manager)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/net/publicsuffix/list.go">list.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/net/publicsuffix/table.go">table.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+List implements the cookiejar.PublicSuffixList interface by calling the
+PublicSuffix function.
+</p>
+
+				<pre>var <span id="List">List</span> <a href="godoc.20.html">cookiejar</a>.<a href="godoc.20.html#PublicSuffixList">PublicSuffixList</a> = list{}</pre>
+			
+		
+		
+			
+			
+			<h2 id="EffectiveTLDPlusOne">func <a href="http://localhost:6161/src/golang.org/x/net/publicsuffix/list.go?s=5492:5547#L157">EffectiveTLDPlusOne</a>
+				<a class="permalink" href="godoc.304.html#EffectiveTLDPlusOne">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func EffectiveTLDPlusOne(domain <a href="godoc.26.html#string">string</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+EffectiveTLDPlusOne returns the effective top level domain plus one more
+label. For example, the eTLD+1 for &#34;foo.bar.golang.org&#34; is &#34;golang.org&#34;.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="PublicSuffix">func <a href="http://localhost:6161/src/golang.org/x/net/publicsuffix/list.go?s=3458:3524#L75">PublicSuffix</a>
+				<a class="permalink" href="godoc.304.html#PublicSuffix">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func PublicSuffix(domain <a href="godoc.26.html#string">string</a>) (publicSuffix <a href="godoc.26.html#string">string</a>, icann <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+PublicSuffix returns the public suffix of the domain using a copy of the
+publicsuffix.org database compiled into the library.
+</p>
+<p>
+icann is whether the public suffix is managed by the Internet Corporation
+for Assigned Names and Numbers. If not, the public suffix is either a
+privately managed domain (and in practice, not a top level domain) or an
+unmanaged top level domain (and not explicitly mentioned in the
+publicsuffix.org list). For example, &#34;foo.org&#34; and &#34;foo.co.uk&#34; are ICANN
+domains, &#34;foo.dyndns.org&#34; and &#34;foo.blogspot.co.uk&#34; are private domains and
+&#34;cromulent&#34; is an unmanaged top level domain.
+</p>
+<p>
+Use cases for distinguishing ICANN domains like &#34;foo.com&#34; from private
+domains like &#34;foo.appspot.com&#34; can be found at
+<a href="https://wiki.mozilla.org/Public_Suffix_List/Use_Cases">https://wiki.mozilla.org/Public_Suffix_List/Use_Cases</a>
+</p>
+
+			<div id="example_PublicSuffix_manager" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Manager)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Manager)</span></p>
+		<p>This example demonstrates looking up several domains&#39; eTLDs (effective Top
+Level Domains) in the PSL (Public Suffix List) snapshot. For each eTLD, the
+example also determines whether the eTLD is ICANN managed, privately
+managed, or unmanaged (not explicitly in the PSL).
+
+See https://publicsuffix.org/ for the underlying PSL data.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">domains := []string{
+    &#34;amazon.co.uk&#34;,
+    &#34;books.amazon.co.uk&#34;,
+    &#34;www.books.amazon.co.uk&#34;,
+    &#34;amazon.com&#34;,
+    &#34;&#34;,
+    &#34;example0.debian.net&#34;,
+    &#34;example1.debian.org&#34;,
+    &#34;&#34;,
+    &#34;golang.dev&#34;,
+    &#34;golang.net&#34;,
+    &#34;play.golang.org&#34;,
+    &#34;gophers.in.space.museum&#34;,
+    &#34;&#34;,
+    &#34;0emm.com&#34;,
+    &#34;a.0emm.com&#34;,
+    &#34;b.c.d.0emm.com&#34;,
+    &#34;&#34;,
+    &#34;there.is.no.such-tld&#34;,
+    &#34;&#34;,
+    <span class="comment">// Examples from the PublicSuffix function&#39;s documentation.</span>
+    &#34;foo.org&#34;,
+    &#34;foo.co.uk&#34;,
+    &#34;foo.dyndns.org&#34;,
+    &#34;foo.blogspot.co.uk&#34;,
+    &#34;cromulent&#34;,
+}
+
+for _, domain := range domains {
+    if domain == &#34;&#34; {
+        fmt.Println(&#34;&gt;&#34;)
+        continue
+    }
+    eTLD, icann := publicsuffix.PublicSuffix(domain)
+
+    <span class="comment">// Only ICANN managed domains can have a single label. Privately</span>
+    <span class="comment">// managed domains must have multiple labels.</span>
+    manager := &#34;Unmanaged&#34;
+    if icann {
+        manager = &#34;ICANN Managed&#34;
+    } else if strings.IndexByte(eTLD, &#39;.&#39;) &gt;= 0 {
+        manager = &#34;Privately Managed&#34;
+    }
+
+    fmt.Printf(&#34;&gt; %24s%16s  is  %s\n&#34;, domain, eTLD, manager)
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">&gt;             amazon.co.uk           co.uk  is  ICANN Managed
+&gt;       books.amazon.co.uk           co.uk  is  ICANN Managed
+&gt;   www.books.amazon.co.uk           co.uk  is  ICANN Managed
+&gt;               amazon.com             com  is  ICANN Managed
+&gt;
+&gt;      example0.debian.net      debian.net  is  Privately Managed
+&gt;      example1.debian.org             org  is  ICANN Managed
+&gt;
+&gt;               golang.dev             dev  is  ICANN Managed
+&gt;               golang.net             net  is  ICANN Managed
+&gt;          play.golang.org             org  is  ICANN Managed
+&gt;  gophers.in.space.museum    space.museum  is  ICANN Managed
+&gt;
+&gt;                 0emm.com             com  is  ICANN Managed
+&gt;               a.0emm.com      a.0emm.com  is  Privately Managed
+&gt;           b.c.d.0emm.com      d.0emm.com  is  Privately Managed
+&gt;
+&gt;     there.is.no.such-tld        such-tld  is  Unmanaged
+&gt;
+&gt;                  foo.org             org  is  ICANN Managed
+&gt;                foo.co.uk           co.uk  is  ICANN Managed
+&gt;           foo.dyndns.org      dyndns.org  is  Privately Managed
+&gt;       foo.blogspot.co.uk  blogspot.co.uk  is  Privately Managed
+&gt;                cromulent       cromulent  is  Unmanaged
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

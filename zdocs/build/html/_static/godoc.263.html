@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>xts - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.263.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package xts
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/xts"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.263.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.263.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package xts implements the XTS cipher mode as specified in IEEE P1619/D16.
+</p>
+<p>
+XTS mode is typically used for disk encryption, which presents a number of
+novel problems that make more common modes inapplicable. The disk is
+conceptually an array of sectors and we must be able to encrypt and decrypt
+a sector in isolation. However, an attacker must not be able to transpose
+two sectors of plaintext by transposing their ciphertext.
+</p>
+<p>
+XTS wraps a block cipher with Rogaway&#39;s XEX mode in order to build a
+tweakable block cipher. This allows each sector to have a unique tweak and
+effectively create a unique key for each sector.
+</p>
+<p>
+XTS does not provide any authentication. An attacker can manipulate the
+ciphertext and randomise a block (16 bytes) of the plaintext. This package
+does not implement ciphertext-stealing so sectors must be a multiple of 16
+bytes.
+</p>
+<p>
+Note that XTS is usually not appropriate for any use besides disk encryption.
+Most users should use an AEAD mode like GCM (from crypto/cipher.NewGCM) instead.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.263.html#Cipher">type Cipher</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.263.html#NewCipher">func NewCipher(cipherFunc func([]byte) (cipher.Block, error), key []byte) (c *Cipher, err error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.263.html#Cipher.Decrypt">func (c *Cipher) Decrypt(plaintext, ciphertext []byte, sectorNum uint64)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.263.html#Cipher.Encrypt">func (c *Cipher) Encrypt(ciphertext, plaintext []byte, sectorNum uint64)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/xts/xts.go">xts.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Cipher">type <a href="http://localhost:6161/src/golang.org/x/crypto/xts/xts.go?s=1518:1561#L27">Cipher</a>
+				<a class="permalink" href="godoc.263.html#Cipher">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Cipher contains an expanded key structure. It is safe for concurrent use if
+the underlying block cipher is safe for concurrent use.
+</p>
+
+			<pre>type Cipher struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewCipher">func <a href="http://localhost:6161/src/golang.org/x/crypto/xts/xts.go?s=1992:2088#L44">NewCipher</a>
+					<a class="permalink" href="godoc.263.html#NewCipher">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewCipher(cipherFunc func([]<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.192.html">cipher</a>.<a href="godoc.192.html#Block">Block</a>, <a href="godoc.26.html#error">error</a>), key []<a href="godoc.26.html#byte">byte</a>) (c *<a href="godoc.263.html#Cipher">Cipher</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewCipher creates a Cipher given a function for creating the underlying
+block cipher (which must have a block size of 16 bytes). The key must be
+twice the length of the underlying cipher&#39;s key.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Cipher.Decrypt">func (*Cipher) <a href="http://localhost:6161/src/golang.org/x/crypto/xts/xts.go?s=3639:3711#L100">Decrypt</a>
+					<a class="permalink" href="godoc.263.html#Cipher.Decrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.263.html#Cipher">Cipher</a>) Decrypt(plaintext, ciphertext []<a href="godoc.26.html#byte">byte</a>, sectorNum <a href="godoc.26.html#uint64">uint64</a>)</pre>
+				<p>
+Decrypt decrypts a sector of ciphertext and puts the result into plaintext.
+Plaintext and ciphertext must overlap entirely or not at all.
+Sectors must be a multiple of 16 bytes and less than 2²⁴ bytes.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cipher.Encrypt">func (*Cipher) <a href="http://localhost:6161/src/golang.org/x/crypto/xts/xts.go?s=2554:2626#L61">Encrypt</a>
+					<a class="permalink" href="godoc.263.html#Cipher.Encrypt">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.263.html#Cipher">Cipher</a>) Encrypt(ciphertext, plaintext []<a href="godoc.26.html#byte">byte</a>, sectorNum <a href="godoc.26.html#uint64">uint64</a>)</pre>
+				<p>
+Encrypt encrypts a sector of plaintext and puts the result into ciphertext.
+Plaintext and ciphertext must overlap entirely or not at all.
+Sectors must be a multiple of 16 bytes and less than 2²⁴ bytes.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

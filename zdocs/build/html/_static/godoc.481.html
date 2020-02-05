@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>pe - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.481.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package pe
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "debug/pe"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.481.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.481.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package pe implements access to PE (Microsoft Windows Portable Executable) files.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.481.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.481.html#COFFSymbol">type COFFSymbol</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#COFFSymbol.FullName">func (sym *COFFSymbol) FullName(st StringTable) (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.481.html#DataDirectory">type DataDirectory</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#File">type File</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#NewFile">func NewFile(r io.ReaderAt) (*File, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#Open">func Open(name string) (*File, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#File.Close">func (f *File) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#File.DWARF">func (f *File) DWARF() (*dwarf.Data, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#File.ImportedLibraries">func (f *File) ImportedLibraries() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#File.ImportedSymbols">func (f *File) ImportedSymbols() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#File.Section">func (f *File) Section(name string) *Section</a></dd>
+				
+			
+				
+				<dd><a href="godoc.481.html#FileHeader">type FileHeader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#FormatError">type FormatError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#FormatError.Error">func (e *FormatError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.481.html#ImportDirectory">type ImportDirectory</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#OptionalHeader32">type OptionalHeader32</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#OptionalHeader64">type OptionalHeader64</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#Reloc">type Reloc</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#Section">type Section</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#Section.Data">func (s *Section) Data() ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#Section.Open">func (s *Section) Open() io.ReadSeeker</a></dd>
+				
+			
+				
+				<dd><a href="godoc.481.html#SectionHeader">type SectionHeader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#SectionHeader32">type SectionHeader32</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.481.html#StringTable">type StringTable</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.481.html#StringTable.String">func (st StringTable) String(start uint32) (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.481.html#Symbol">type Symbol</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/debug/pe/file.go">file.go</a>
+			
+				<a href="http://localhost:6161/src/debug/pe/pe.go">pe.go</a>
+			
+				<a href="http://localhost:6161/src/debug/pe/section.go">section.go</a>
+			
+				<a href="http://localhost:6161/src/debug/pe/string.go">string.go</a>
+			
+				<a href="http://localhost:6161/src/debug/pe/symbol.go">symbol.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="IMAGE_FILE_MACHINE_UNKNOWN">IMAGE_FILE_MACHINE_UNKNOWN</span>   = 0x0
+    <span id="IMAGE_FILE_MACHINE_AM33">IMAGE_FILE_MACHINE_AM33</span>      = 0x1d3
+    <span id="IMAGE_FILE_MACHINE_AMD64">IMAGE_FILE_MACHINE_AMD64</span>     = 0x8664
+    <span id="IMAGE_FILE_MACHINE_ARM">IMAGE_FILE_MACHINE_ARM</span>       = 0x1c0
+    <span id="IMAGE_FILE_MACHINE_ARMNT">IMAGE_FILE_MACHINE_ARMNT</span>     = 0x1c4
+    <span id="IMAGE_FILE_MACHINE_ARM64">IMAGE_FILE_MACHINE_ARM64</span>     = 0xaa64
+    <span id="IMAGE_FILE_MACHINE_EBC">IMAGE_FILE_MACHINE_EBC</span>       = 0xebc
+    <span id="IMAGE_FILE_MACHINE_I386">IMAGE_FILE_MACHINE_I386</span>      = 0x14c
+    <span id="IMAGE_FILE_MACHINE_IA64">IMAGE_FILE_MACHINE_IA64</span>      = 0x200
+    <span id="IMAGE_FILE_MACHINE_M32R">IMAGE_FILE_MACHINE_M32R</span>      = 0x9041
+    <span id="IMAGE_FILE_MACHINE_MIPS16">IMAGE_FILE_MACHINE_MIPS16</span>    = 0x266
+    <span id="IMAGE_FILE_MACHINE_MIPSFPU">IMAGE_FILE_MACHINE_MIPSFPU</span>   = 0x366
+    <span id="IMAGE_FILE_MACHINE_MIPSFPU16">IMAGE_FILE_MACHINE_MIPSFPU16</span> = 0x466
+    <span id="IMAGE_FILE_MACHINE_POWERPC">IMAGE_FILE_MACHINE_POWERPC</span>   = 0x1f0
+    <span id="IMAGE_FILE_MACHINE_POWERPCFP">IMAGE_FILE_MACHINE_POWERPCFP</span> = 0x1f1
+    <span id="IMAGE_FILE_MACHINE_R4000">IMAGE_FILE_MACHINE_R4000</span>     = 0x166
+    <span id="IMAGE_FILE_MACHINE_SH3">IMAGE_FILE_MACHINE_SH3</span>       = 0x1a2
+    <span id="IMAGE_FILE_MACHINE_SH3DSP">IMAGE_FILE_MACHINE_SH3DSP</span>    = 0x1a3
+    <span id="IMAGE_FILE_MACHINE_SH4">IMAGE_FILE_MACHINE_SH4</span>       = 0x1a6
+    <span id="IMAGE_FILE_MACHINE_SH5">IMAGE_FILE_MACHINE_SH5</span>       = 0x1a8
+    <span id="IMAGE_FILE_MACHINE_THUMB">IMAGE_FILE_MACHINE_THUMB</span>     = 0x1c2
+    <span id="IMAGE_FILE_MACHINE_WCEMIPSV2">IMAGE_FILE_MACHINE_WCEMIPSV2</span> = 0x169
+)</pre>
+			
+				<p>
+IMAGE_DIRECTORY_ENTRY constants
+</p>
+
+				<pre>const (
+    <span id="IMAGE_DIRECTORY_ENTRY_EXPORT">IMAGE_DIRECTORY_ENTRY_EXPORT</span>         = 0
+    <span id="IMAGE_DIRECTORY_ENTRY_IMPORT">IMAGE_DIRECTORY_ENTRY_IMPORT</span>         = 1
+    <span id="IMAGE_DIRECTORY_ENTRY_RESOURCE">IMAGE_DIRECTORY_ENTRY_RESOURCE</span>       = 2
+    <span id="IMAGE_DIRECTORY_ENTRY_EXCEPTION">IMAGE_DIRECTORY_ENTRY_EXCEPTION</span>      = 3
+    <span id="IMAGE_DIRECTORY_ENTRY_SECURITY">IMAGE_DIRECTORY_ENTRY_SECURITY</span>       = 4
+    <span id="IMAGE_DIRECTORY_ENTRY_BASERELOC">IMAGE_DIRECTORY_ENTRY_BASERELOC</span>      = 5
+    <span id="IMAGE_DIRECTORY_ENTRY_DEBUG">IMAGE_DIRECTORY_ENTRY_DEBUG</span>          = 6
+    <span id="IMAGE_DIRECTORY_ENTRY_ARCHITECTURE">IMAGE_DIRECTORY_ENTRY_ARCHITECTURE</span>   = 7
+    <span id="IMAGE_DIRECTORY_ENTRY_GLOBALPTR">IMAGE_DIRECTORY_ENTRY_GLOBALPTR</span>      = 8
+    <span id="IMAGE_DIRECTORY_ENTRY_TLS">IMAGE_DIRECTORY_ENTRY_TLS</span>            = 9
+    <span id="IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG">IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG</span>    = 10
+    <span id="IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT">IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT</span>   = 11
+    <span id="IMAGE_DIRECTORY_ENTRY_IAT">IMAGE_DIRECTORY_ENTRY_IAT</span>            = 12
+    <span id="IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT">IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT</span>   = 13
+    <span id="IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR">IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR</span> = 14
+)</pre>
+			
+				
+				<pre>const <span id="COFFSymbolSize">COFFSymbolSize</span> = 18</pre>
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="COFFSymbol">type <a href="http://localhost:6161/src/debug/pe/symbol.go?s=301:488#L6">COFFSymbol</a>
+				<a class="permalink" href="godoc.481.html#COFFSymbol">&#xb6;</a>
+				
+				<span title="Added in Go 1.1">1.1</span>
+			</h2>
+			<p>
+COFFSymbol represents single COFF symbol table record.
+</p>
+
+			<pre>type COFFSymbol struct {
+<span id="COFFSymbol.Name"></span>    Name               [8]<a href="godoc.26.html#uint8">uint8</a>
+<span id="COFFSymbol.Value"></span>    Value              <a href="godoc.26.html#uint32">uint32</a>
+<span id="COFFSymbol.SectionNumber"></span>    SectionNumber      <a href="godoc.26.html#int16">int16</a>
+<span id="COFFSymbol.Type"></span>    Type               <a href="godoc.26.html#uint16">uint16</a>
+<span id="COFFSymbol.StorageClass"></span>    StorageClass       <a href="godoc.26.html#uint8">uint8</a>
+<span id="COFFSymbol.NumberOfAuxSymbols"></span>    NumberOfAuxSymbols <a href="godoc.26.html#uint8">uint8</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="COFFSymbol.FullName">func (*COFFSymbol) <a href="http://localhost:6161/src/debug/pe/symbol.go?s=1472:1535#L45">FullName</a>
+					<a class="permalink" href="godoc.481.html#COFFSymbol.FullName">&#xb6;</a>
+					
+					<span title="Added in Go 1.8">1.8</span>
+				</h3>
+				<pre>func (sym *<a href="godoc.481.html#COFFSymbol">COFFSymbol</a>) FullName(st <a href="godoc.481.html#StringTable">StringTable</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+FullName finds real name of symbol sym. Normally name is stored
+in sym.Name, but if it is longer then 8 characters, it is stored
+in COFF string table st instead.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DataDirectory">type <a href="http://localhost:6161/src/debug/pe/pe.go?s=403:478#L7">DataDirectory</a>
+				<a class="permalink" href="godoc.481.html#DataDirectory">&#xb6;</a>
+				
+				<span title="Added in Go 1.3">1.3</span>
+			</h2>
+			
+			<pre>type DataDirectory struct {
+<span id="DataDirectory.VirtualAddress"></span>    VirtualAddress <a href="godoc.26.html#uint32">uint32</a>
+<span id="DataDirectory.Size"></span>    Size           <a href="godoc.26.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:6161/src/debug/pe/file.go?s=497:850#L13">File</a>
+				<a class="permalink" href="godoc.481.html#File">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A File represents an open PE file.
+</p>
+
+			<pre>type File struct {
+    <a href="godoc.481.html#FileHeader">FileHeader</a>
+<span id="File.OptionalHeader"></span>    OptionalHeader interface{} <span class="comment">// of type *OptionalHeader32 or *OptionalHeader64; added in Go 1.3</span>
+<span id="File.Sections"></span>    Sections       []*<a href="godoc.481.html#Section">Section</a>
+<span id="File.Symbols"></span>    Symbols        []*<a href="godoc.481.html#Symbol">Symbol</a>    <span class="comment">// COFF symbols with auxiliary symbol records removed; added in Go 1.1</span>
+<span id="File.COFFSymbols"></span>    COFFSymbols    []<a href="godoc.481.html#COFFSymbol">COFFSymbol</a> <span class="comment">// all COFF symbols (including auxiliary symbol records); added in Go 1.8</span>
+<span id="File.StringTable"></span>    StringTable    <a href="godoc.481.html#StringTable">StringTable</a> <span class="comment">// Go 1.8</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFile">func <a href="http://localhost:6161/src/debug/pe/file.go?s=1735:1777#L59">NewFile</a>
+					<a class="permalink" href="godoc.481.html#NewFile">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFile(r <a href="godoc.589.html">io</a>.<a href="godoc.589.html#ReaderAt">ReaderAt</a>) (*<a href="godoc.481.html#File">File</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewFile creates a new File for accessing a PE binary in an underlying reader.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Open">func <a href="http://localhost:6161/src/debug/pe/file.go?s=935:972#L25">Open</a>
+					<a class="permalink" href="godoc.481.html#Open">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Open(name <a href="godoc.26.html#string">string</a>) (*<a href="godoc.481.html#File">File</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Open opens the named file using os.Open and prepares it for use as a PE binary.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="File.Close">func (*File) <a href="http://localhost:6161/src/debug/pe/file.go?s=1262:1290#L42">Close</a>
+					<a class="permalink" href="godoc.481.html#File.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.481.html#File">File</a>) Close() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Close closes the File.
+If the File was created using NewFile directly instead of Open,
+Close has no effect.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.DWARF">func (*File) <a href="http://localhost:6161/src/debug/pe/file.go?s=5927:5970#L212">DWARF</a>
+					<a class="permalink" href="godoc.481.html#File.DWARF">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.481.html#File">File</a>) DWARF() (*<a href="godoc.436.html">dwarf</a>.<a href="godoc.436.html#Data">Data</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="File.ImportedLibraries">func (*File) <a href="http://localhost:6161/src/debug/pe/file.go?s=11647:11699#L432">ImportedLibraries</a>
+					<a class="permalink" href="godoc.481.html#File.ImportedLibraries">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.481.html#File">File</a>) ImportedLibraries() ([]<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ImportedLibraries returns the names of all libraries
+referred to by the binary f that are expected to be
+linked with the binary at dynamic link time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.ImportedSymbols">func (*File) <a href="http://localhost:6161/src/debug/pe/file.go?s=8253:8303#L316">ImportedSymbols</a>
+					<a class="permalink" href="godoc.481.html#File.ImportedSymbols">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.481.html#File">File</a>) ImportedSymbols() ([]<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ImportedSymbols returns the names of all symbols
+referred to by the binary f that are expected to be
+satisfied by other libraries at dynamic load time.
+It does not return weak symbols.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Section">func (*File) <a href="http://localhost:6161/src/debug/pe/file.go?s=5792:5836#L203">Section</a>
+					<a class="permalink" href="godoc.481.html#File.Section">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.481.html#File">File</a>) Section(name <a href="godoc.26.html#string">string</a>) *<a href="godoc.481.html#Section">Section</a></pre>
+				<p>
+Section returns the first section with the given name, or nil if no such
+section exists.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="FileHeader">type <a href="http://localhost:6161/src/debug/pe/pe.go?s=172:401#L1">FileHeader</a>
+				<a class="permalink" href="godoc.481.html#FileHeader">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type FileHeader struct {
+<span id="FileHeader.Machine"></span>    Machine              <a href="godoc.26.html#uint16">uint16</a>
+<span id="FileHeader.NumberOfSections"></span>    NumberOfSections     <a href="godoc.26.html#uint16">uint16</a>
+<span id="FileHeader.TimeDateStamp"></span>    TimeDateStamp        <a href="godoc.26.html#uint32">uint32</a>
+<span id="FileHeader.PointerToSymbolTable"></span>    PointerToSymbolTable <a href="godoc.26.html#uint32">uint32</a>
+<span id="FileHeader.NumberOfSymbols"></span>    NumberOfSymbols      <a href="godoc.26.html#uint32">uint32</a>
+<span id="FileHeader.SizeOfOptionalHeader"></span>    SizeOfOptionalHeader <a href="godoc.26.html#uint16">uint16</a>
+<span id="FileHeader.Characteristics"></span>    Characteristics      <a href="godoc.26.html#uint16">uint16</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FormatError">type <a href="http://localhost:6161/src/debug/pe/file.go?s=11866:11893#L440">FormatError</a>
+				<a class="permalink" href="godoc.481.html#FormatError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+FormatError is unused.
+The type is retained for compatibility.
+</p>
+
+			<pre>type FormatError struct {
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="FormatError.Error">func (*FormatError) <a href="http://localhost:6161/src/debug/pe/file.go?s=11895:11931#L443">Error</a>
+					<a class="permalink" href="godoc.481.html#FormatError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.481.html#FormatError">FormatError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ImportDirectory">type <a href="http://localhost:6161/src/debug/pe/file.go?s=7875:8054#L302">ImportDirectory</a>
+				<a class="permalink" href="godoc.481.html#ImportDirectory">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ImportDirectory struct {
+<span id="ImportDirectory.OriginalFirstThunk"></span>    OriginalFirstThunk <a href="godoc.26.html#uint32">uint32</a>
+<span id="ImportDirectory.TimeDateStamp"></span>    TimeDateStamp      <a href="godoc.26.html#uint32">uint32</a>
+<span id="ImportDirectory.ForwarderChain"></span>    ForwarderChain     <a href="godoc.26.html#uint32">uint32</a>
+<span id="ImportDirectory.Name"></span>    Name               <a href="godoc.26.html#uint32">uint32</a>
+<span id="ImportDirectory.FirstThunk"></span>    FirstThunk         <a href="godoc.26.html#uint32">uint32</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OptionalHeader32">type <a href="http://localhost:6161/src/debug/pe/pe.go?s=480:1637#L12">OptionalHeader32</a>
+				<a class="permalink" href="godoc.481.html#OptionalHeader32">&#xb6;</a>
+				
+				<span title="Added in Go 1.3">1.3</span>
+			</h2>
+			
+			<pre>type OptionalHeader32 struct {
+<span id="OptionalHeader32.Magic"></span>    Magic                       <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.MajorLinkerVersion"></span>    MajorLinkerVersion          <a href="godoc.26.html#uint8">uint8</a>
+<span id="OptionalHeader32.MinorLinkerVersion"></span>    MinorLinkerVersion          <a href="godoc.26.html#uint8">uint8</a>
+<span id="OptionalHeader32.SizeOfCode"></span>    SizeOfCode                  <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfInitializedData"></span>    SizeOfInitializedData       <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfUninitializedData"></span>    SizeOfUninitializedData     <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.AddressOfEntryPoint"></span>    AddressOfEntryPoint         <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.BaseOfCode"></span>    BaseOfCode                  <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.BaseOfData"></span>    BaseOfData                  <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.ImageBase"></span>    ImageBase                   <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SectionAlignment"></span>    SectionAlignment            <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.FileAlignment"></span>    FileAlignment               <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.MajorOperatingSystemVersion"></span>    MajorOperatingSystemVersion <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.MinorOperatingSystemVersion"></span>    MinorOperatingSystemVersion <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.MajorImageVersion"></span>    MajorImageVersion           <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.MinorImageVersion"></span>    MinorImageVersion           <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.MajorSubsystemVersion"></span>    MajorSubsystemVersion       <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.MinorSubsystemVersion"></span>    MinorSubsystemVersion       <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.Win32VersionValue"></span>    Win32VersionValue           <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfImage"></span>    SizeOfImage                 <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfHeaders"></span>    SizeOfHeaders               <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.CheckSum"></span>    CheckSum                    <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.Subsystem"></span>    Subsystem                   <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.DllCharacteristics"></span>    DllCharacteristics          <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader32.SizeOfStackReserve"></span>    SizeOfStackReserve          <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfStackCommit"></span>    SizeOfStackCommit           <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfHeapReserve"></span>    SizeOfHeapReserve           <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.SizeOfHeapCommit"></span>    SizeOfHeapCommit            <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.LoaderFlags"></span>    LoaderFlags                 <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.NumberOfRvaAndSizes"></span>    NumberOfRvaAndSizes         <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader32.DataDirectory"></span>    DataDirectory               [16]<a href="godoc.481.html#DataDirectory">DataDirectory</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OptionalHeader64">type <a href="http://localhost:6161/src/debug/pe/pe.go?s=1639:2760#L46">OptionalHeader64</a>
+				<a class="permalink" href="godoc.481.html#OptionalHeader64">&#xb6;</a>
+				
+				<span title="Added in Go 1.3">1.3</span>
+			</h2>
+			
+			<pre>type OptionalHeader64 struct {
+<span id="OptionalHeader64.Magic"></span>    Magic                       <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.MajorLinkerVersion"></span>    MajorLinkerVersion          <a href="godoc.26.html#uint8">uint8</a>
+<span id="OptionalHeader64.MinorLinkerVersion"></span>    MinorLinkerVersion          <a href="godoc.26.html#uint8">uint8</a>
+<span id="OptionalHeader64.SizeOfCode"></span>    SizeOfCode                  <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.SizeOfInitializedData"></span>    SizeOfInitializedData       <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.SizeOfUninitializedData"></span>    SizeOfUninitializedData     <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.AddressOfEntryPoint"></span>    AddressOfEntryPoint         <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.BaseOfCode"></span>    BaseOfCode                  <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.ImageBase"></span>    ImageBase                   <a href="godoc.26.html#uint64">uint64</a>
+<span id="OptionalHeader64.SectionAlignment"></span>    SectionAlignment            <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.FileAlignment"></span>    FileAlignment               <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.MajorOperatingSystemVersion"></span>    MajorOperatingSystemVersion <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.MinorOperatingSystemVersion"></span>    MinorOperatingSystemVersion <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.MajorImageVersion"></span>    MajorImageVersion           <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.MinorImageVersion"></span>    MinorImageVersion           <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.MajorSubsystemVersion"></span>    MajorSubsystemVersion       <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.MinorSubsystemVersion"></span>    MinorSubsystemVersion       <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.Win32VersionValue"></span>    Win32VersionValue           <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.SizeOfImage"></span>    SizeOfImage                 <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.SizeOfHeaders"></span>    SizeOfHeaders               <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.CheckSum"></span>    CheckSum                    <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.Subsystem"></span>    Subsystem                   <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.DllCharacteristics"></span>    DllCharacteristics          <a href="godoc.26.html#uint16">uint16</a>
+<span id="OptionalHeader64.SizeOfStackReserve"></span>    SizeOfStackReserve          <a href="godoc.26.html#uint64">uint64</a>
+<span id="OptionalHeader64.SizeOfStackCommit"></span>    SizeOfStackCommit           <a href="godoc.26.html#uint64">uint64</a>
+<span id="OptionalHeader64.SizeOfHeapReserve"></span>    SizeOfHeapReserve           <a href="godoc.26.html#uint64">uint64</a>
+<span id="OptionalHeader64.SizeOfHeapCommit"></span>    SizeOfHeapCommit            <a href="godoc.26.html#uint64">uint64</a>
+<span id="OptionalHeader64.LoaderFlags"></span>    LoaderFlags                 <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.NumberOfRvaAndSizes"></span>    NumberOfRvaAndSizes         <a href="godoc.26.html#uint32">uint32</a>
+<span id="OptionalHeader64.DataDirectory"></span>    DataDirectory               [16]<a href="godoc.481.html#DataDirectory">DataDirectory</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Reloc">type <a href="http://localhost:6161/src/debug/pe/section.go?s=1185:1281#L36">Reloc</a>
+				<a class="permalink" href="godoc.481.html#Reloc">&#xb6;</a>
+				
+				<span title="Added in Go 1.8">1.8</span>
+			</h2>
+			<p>
+Reloc represents a PE COFF relocation.
+Each section contains its own relocation list.
+</p>
+
+			<pre>type Reloc struct {
+<span id="Reloc.VirtualAddress"></span>    VirtualAddress   <a href="godoc.26.html#uint32">uint32</a>
+<span id="Reloc.SymbolTableIndex"></span>    SymbolTableIndex <a href="godoc.26.html#uint32">uint32</a>
+<span id="Reloc.Type"></span>    Type             <a href="godoc.26.html#uint16">uint16</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Section">type <a href="http://localhost:6161/src/debug/pe/section.go?s=2245:2570#L74">Section</a>
+				<a class="permalink" href="godoc.481.html#Section">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Section provides access to PE COFF section.
+</p>
+
+			<pre>type Section struct {
+    <a href="godoc.481.html#SectionHeader">SectionHeader</a>
+<span id="Section.Relocs"></span>    Relocs []<a href="godoc.481.html#Reloc">Reloc</a> <span class="comment">// Go 1.8</span>
+
+    <span class="comment">// Embed ReaderAt for ReadAt method.</span>
+    <span class="comment">// Do not embed SectionReader directly</span>
+    <span class="comment">// to avoid having Read and Seek.</span>
+    <span class="comment">// If a client wants Read and Seek it must use</span>
+    <span class="comment">// Open() to avoid fighting over the seek offset</span>
+    <span class="comment">// with other clients.</span>
+    <a href="godoc.589.html">io</a>.<a href="godoc.589.html#ReaderAt">ReaderAt</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Section.Data">func (*Section) <a href="http://localhost:6161/src/debug/pe/section.go?s=2632:2672#L89">Data</a>
+					<a class="permalink" href="godoc.481.html#Section.Data">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.481.html#Section">Section</a>) Data() ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Data reads and returns the contents of the PE section s.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Section.Open">func (*Section) <a href="http://localhost:6161/src/debug/pe/section.go?s=2859:2897#L99">Open</a>
+					<a class="permalink" href="godoc.481.html#Section.Open">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (s *<a href="godoc.481.html#Section">Section</a>) Open() <a href="godoc.589.html">io</a>.<a href="godoc.589.html#ReadSeeker">ReadSeeker</a></pre>
+				<p>
+Open returns a new ReadSeeker reading the PE section s.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SectionHeader">type <a href="http://localhost:6161/src/debug/pe/section.go?s=1877:2196#L60">SectionHeader</a>
+				<a class="permalink" href="godoc.481.html#SectionHeader">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SectionHeader is similar to SectionHeader32 with Name
+field replaced by Go string.
+</p>
+
+			<pre>type SectionHeader struct {
+<span id="SectionHeader.Name"></span>    Name                 <a href="godoc.26.html#string">string</a>
+<span id="SectionHeader.VirtualSize"></span>    VirtualSize          <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader.VirtualAddress"></span>    VirtualAddress       <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader.Size"></span>    Size                 <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader.Offset"></span>    Offset               <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader.PointerToRelocations"></span>    PointerToRelocations <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader.PointerToLineNumbers"></span>    PointerToLineNumbers <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader.NumberOfRelocations"></span>    NumberOfRelocations  <a href="godoc.26.html#uint16">uint16</a>
+<span id="SectionHeader.NumberOfLineNumbers"></span>    NumberOfLineNumbers  <a href="godoc.26.html#uint16">uint16</a>
+<span id="SectionHeader.Characteristics"></span>    Characteristics      <a href="godoc.26.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SectionHeader32">type <a href="http://localhost:6161/src/debug/pe/section.go?s=286:609#L5">SectionHeader32</a>
+				<a class="permalink" href="godoc.481.html#SectionHeader32">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SectionHeader32 represents real PE COFF section header.
+</p>
+
+			<pre>type SectionHeader32 struct {
+<span id="SectionHeader32.Name"></span>    Name                 [8]<a href="godoc.26.html#uint8">uint8</a>
+<span id="SectionHeader32.VirtualSize"></span>    VirtualSize          <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader32.VirtualAddress"></span>    VirtualAddress       <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader32.SizeOfRawData"></span>    SizeOfRawData        <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader32.PointerToRawData"></span>    PointerToRawData     <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader32.PointerToRelocations"></span>    PointerToRelocations <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader32.PointerToLineNumbers"></span>    PointerToLineNumbers <a href="godoc.26.html#uint32">uint32</a>
+<span id="SectionHeader32.NumberOfRelocations"></span>    NumberOfRelocations  <a href="godoc.26.html#uint16">uint16</a>
+<span id="SectionHeader32.NumberOfLineNumbers"></span>    NumberOfLineNumbers  <a href="godoc.26.html#uint16">uint16</a>
+<span id="SectionHeader32.Characteristics"></span>    Characteristics      <a href="godoc.26.html#uint32">uint32</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StringTable">type <a href="http://localhost:6161/src/debug/pe/string.go?s=481:504#L15">StringTable</a>
+				<a class="permalink" href="godoc.481.html#StringTable">&#xb6;</a>
+				
+				<span title="Added in Go 1.8">1.8</span>
+			</h2>
+			<p>
+StringTable is a COFF string table.
+</p>
+
+			<pre>type StringTable []<a href="godoc.26.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StringTable.String">func (StringTable) <a href="http://localhost:6161/src/debug/pe/string.go?s=1454:1512#L48">String</a>
+					<a class="permalink" href="godoc.481.html#StringTable.String">&#xb6;</a>
+					
+					<span title="Added in Go 1.8">1.8</span>
+				</h3>
+				<pre>func (st <a href="godoc.481.html#StringTable">StringTable</a>) String(start <a href="godoc.26.html#uint32">uint32</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+String extracts string from COFF string table st at offset start.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Symbol">type <a href="http://localhost:6161/src/debug/pe/symbol.go?s=2347:2477#L82">Symbol</a>
+				<a class="permalink" href="godoc.481.html#Symbol">&#xb6;</a>
+				
+				<span title="Added in Go 1.1">1.1</span>
+			</h2>
+			<p>
+Symbol is similar to COFFSymbol with Name field replaced
+by Go string. Symbol also does not have NumberOfAuxSymbols.
+</p>
+
+			<pre>type Symbol struct {
+<span id="Symbol.Name"></span>    Name          <a href="godoc.26.html#string">string</a>
+<span id="Symbol.Value"></span>    Value         <a href="godoc.26.html#uint32">uint32</a>
+<span id="Symbol.SectionNumber"></span>    SectionNumber <a href="godoc.26.html#int16">int16</a>
+<span id="Symbol.Type"></span>    Type          <a href="godoc.26.html#uint16">uint16</a>
+<span id="Symbol.StorageClass"></span>    StorageClass  <a href="godoc.26.html#uint8">uint8</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

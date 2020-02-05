@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>s2k - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.243.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package s2k
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/openpgp/s2k"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.243.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.243.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package s2k implements the various OpenPGP string-to-key transforms as
+specified in RFC 4800 section 3.7.1.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.243.html#HashIdToHash">func HashIdToHash(id byte) (h crypto.Hash, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#HashIdToString">func HashIdToString(id byte) (name string, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#HashToHashId">func HashToHashId(h crypto.Hash) (id byte, ok bool)</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#Iterated">func Iterated(out []byte, h hash.Hash, in []byte, salt []byte, count int)</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#Parse">func Parse(r io.Reader) (f func(out, in []byte), err error)</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#Salted">func Salted(out []byte, h hash.Hash, in []byte, salt []byte)</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#Serialize">func Serialize(w io.Writer, key []byte, rand io.Reader, passphrase []byte, c *Config) error</a></dd>
+			
+				
+				<dd><a href="godoc.243.html#Simple">func Simple(out []byte, h hash.Hash, in []byte)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.243.html#Config">type Config</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go">s2k.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="HashIdToHash">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=6494:6545#L234">HashIdToHash</a>
+				<a class="permalink" href="godoc.243.html#HashIdToHash">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HashIdToHash(id <a href="godoc.26.html#byte">byte</a>) (h <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Hash">Hash</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+HashIdToHash returns a crypto.Hash which corresponds to the given OpenPGP
+hash id.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="HashIdToString">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=6760:6811#L245">HashIdToString</a>
+				<a class="permalink" href="godoc.243.html#HashIdToString">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HashIdToString(id <a href="godoc.26.html#byte">byte</a>) (name <a href="godoc.26.html#string">string</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+HashIdToString returns the name of the hash function corresponding to the
+given OpenPGP hash id.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="HashToHashId">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=7002:7053#L256">HashToHashId</a>
+				<a class="permalink" href="godoc.243.html#HashToHashId">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HashToHashId(h <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Hash">Hash</a>) (id <a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+HashIdToHash returns an OpenPGP hash id which corresponds the given Hash.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Iterated">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=3489:3562#L111">Iterated</a>
+				<a class="permalink" href="godoc.243.html#Iterated">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Iterated(out []<a href="godoc.26.html#byte">byte</a>, h <a href="godoc.572.html">hash</a>.<a href="godoc.572.html#Hash">Hash</a>, in []<a href="godoc.26.html#byte">byte</a>, salt []<a href="godoc.26.html#byte">byte</a>, count <a href="godoc.26.html#int">int</a>)</pre>
+			<p>
+Iterated writes to out the result of computing the Iterated and Salted S2K
+function (RFC 4880, section 3.7.1.3) using the given hash, input passphrase,
+salt and iteration count.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Parse">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=4292:4351#L146">Parse</a>
+				<a class="permalink" href="godoc.243.html#Parse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Parse(r <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>) (f func(out, in []<a href="godoc.26.html#byte">byte</a>), err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+Parse reads a binary specification for a string-to-key transformation from r
+and returns a function which performs that transform.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Salted">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=3000:3060#L91">Salted</a>
+				<a class="permalink" href="godoc.243.html#Salted">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Salted(out []<a href="godoc.26.html#byte">byte</a>, h <a href="godoc.572.html">hash</a>.<a href="godoc.572.html#Hash">Hash</a>, in []<a href="godoc.26.html#byte">byte</a>, salt []<a href="godoc.26.html#byte">byte</a>)</pre>
+			<p>
+Salted writes to out the result of computing the Salted S2K function (RFC
+4880, section 3.7.1.2) using the given hash, input passphrase and salt.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Serialize">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=5475:5566#L197">Serialize</a>
+				<a class="permalink" href="godoc.243.html#Serialize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Serialize(w <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>, key []<a href="godoc.26.html#byte">byte</a>, rand <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>, passphrase []<a href="godoc.26.html#byte">byte</a>, c *<a href="godoc.243.html#Config">Config</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Serialize salts and stretches the given passphrase and writes the
+resulting key into key. It also serializes an S2K descriptor to
+w. The key stretching can be configured with c, which may be
+nil. In that case, sensible defaults will be used.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Simple">func <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=2752:2799#L83">Simple</a>
+				<a class="permalink" href="godoc.243.html#Simple">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Simple(out []<a href="godoc.26.html#byte">byte</a>, h <a href="godoc.572.html">hash</a>.<a href="godoc.572.html#Hash">Hash</a>, in []<a href="godoc.26.html#byte">byte</a>)</pre>
+			<p>
+Simple writes to out the result of computing the Simple S2K function (RFC
+4880, section 3.7.1.1) using the given hash and input passphrase.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Config">type <a href="http://localhost:6161/src/golang.org/x/crypto/openpgp/s2k/s2k.go?s=642:1336#L12">Config</a>
+				<a class="permalink" href="godoc.243.html#Config">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Config collects configuration parameters for s2k key-stretching
+transformatioms. A nil *Config is valid and results in all default
+values. Currently, Config is used only by the Serialize function in
+this package.
+</p>
+
+			<pre>type Config struct {
+<span id="Config.Hash"></span>    <span class="comment">// Hash is the default hash function to be used. If</span>
+    <span class="comment">// nil, SHA1 is used.</span>
+    Hash <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Hash">Hash</a>
+<span id="Config.S2KCount"></span>    <span class="comment">// S2KCount is only used for symmetric encryption. It</span>
+    <span class="comment">// determines the strength of the passphrase stretching when</span>
+    <span class="comment">// the said passphrase is hashed to produce a key. S2KCount</span>
+    <span class="comment">// should be between 1024 and 65011712, inclusive. If Config</span>
+    <span class="comment">// is nil or S2KCount is 0, the value 65536 used. Not all</span>
+    <span class="comment">// values in the above range can be represented. S2KCount will</span>
+    <span class="comment">// be rounded up to the next representable value if it cannot</span>
+    <span class="comment">// be encoded exactly. When set, it is strongly encrouraged to</span>
+    <span class="comment">// use a value that is at least 65536. See RFC 4880 Section</span>
+    <span class="comment">// 3.7.1.3.</span>
+    S2KCount <a href="godoc.26.html#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

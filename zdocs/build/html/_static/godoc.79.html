@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>rice - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.79.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package rice
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/GeertJohan/go.rice"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.79.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.79.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.79.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.79.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.79.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.79.html#Box">type Box</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#FindBox">func FindBox(name string) (*Box, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#MustFindBox">func MustFindBox(name string) *Box</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.Bytes">func (b *Box) Bytes(name string) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.HTTPBox">func (b *Box) HTTPBox() *HTTPBox</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.IsAppended">func (b *Box) IsAppended() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.IsEmbedded">func (b *Box) IsEmbedded() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.MustBytes">func (b *Box) MustBytes(name string) []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.MustString">func (b *Box) MustString(name string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.Name">func (b *Box) Name() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.Open">func (b *Box) Open(name string) (*File, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.String">func (b *Box) String(name string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.Time">func (b *Box) Time() time.Time</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Box.Walk">func (b *Box) Walk(path string, walkFn filepath.WalkFunc) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.79.html#Config">type Config</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Config.FindBox">func (c *Config) FindBox(boxName string) (*Box, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#Config.MustFindBox">func (c *Config) MustFindBox(boxName string) *Box</a></dd>
+				
+			
+				
+				<dd><a href="godoc.79.html#File">type File</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#File.Close">func (f *File) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#File.Read">func (f *File) Read(bts []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#File.Readdir">func (f *File) Readdir(count int) ([]os.FileInfo, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#File.Readdirnames">func (f *File) Readdirnames(count int) ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#File.Seek">func (f *File) Seek(offset int64, whence int) (int64, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#File.Stat">func (f *File) Stat() (os.FileInfo, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.79.html#HTTPBox">type HTTPBox</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#HTTPBox.Open">func (hb *HTTPBox) Open(name string) (http.File, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.79.html#LocateMethod">type LocateMethod</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.79.html#SortByModified">type SortByModified</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#SortByModified.Len">func (f SortByModified) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#SortByModified.Less">func (f SortByModified) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#SortByModified.Swap">func (f SortByModified) Swap(i, j int)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.79.html#SortByName">type SortByName</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#SortByName.Len">func (f SortByName) Len() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#SortByName.Less">func (f SortByName) Less(i, j int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.79.html#SortByName.Swap">func (f SortByName) Swap(i, j int)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/appended.go">appended.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go">box.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/config.go">config.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/debug.go">debug.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/embedded.go">embedded.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go">file.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/http.go">http.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go">sort.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/virtual.go">virtual.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/walk.go">walk.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="LocateFS">LocateFS</span>               = <a href="godoc.79.html#LocateMethod">LocateMethod</a>(<a href="godoc.26.html#iota">iota</a>) <span class="comment">// Locate on the filesystem according to package path.</span>
+    <span id="LocateAppended">LocateAppended</span>                              <span class="comment">// Locate boxes appended to the executable.</span>
+    <span id="LocateEmbedded">LocateEmbedded</span>                              <span class="comment">// Locate embedded boxes.</span>
+    <span id="LocateWorkingDirectory">LocateWorkingDirectory</span>                      <span class="comment">// Locate on the binary working directory</span>
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+Debug can be set to true to enable debugging.
+</p>
+
+				<pre>var <span id="Debug">Debug</span> = <a href="godoc.26.html#false">false</a></pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Box">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=303:427#L9">Box</a>
+				<a class="permalink" href="godoc.79.html#Box">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Box abstracts a directory for resources/files.
+It can either load files from disk, or from embedded code (when `rice --embed` was ran).
+</p>
+
+			<pre>type Box struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FindBox">func <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=2555:2594#L91">FindBox</a>
+					<a class="permalink" href="godoc.79.html#FindBox">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FindBox(name <a href="godoc.26.html#string">string</a>) (*<a href="godoc.79.html#Box">Box</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+FindBox returns a Box instance for given name.
+When the given name is a relative path, it&#39;s base path will be the calling pkg/cmd&#39;s source root.
+When the given name is absolute, it&#39;s absolute. derp.
+Make sure the path doesn&#39;t contain any sensitive information as it might be placed into generated go source (embedded).
+</p>
+
+				
+				
+			
+				
+				<h3 id="MustFindBox">func <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=2787:2821#L97">MustFindBox</a>
+					<a class="permalink" href="godoc.79.html#MustFindBox">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func MustFindBox(name <a href="godoc.26.html#string">string</a>) *<a href="godoc.79.html#Box">Box</a></pre>
+				<p>
+MustFindBox returns a Box instance for given name, like FindBox does.
+It does not return an error, instead it panics when an error occurs.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Box.Bytes">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=6840:6888#L269">Bytes</a>
+					<a class="permalink" href="godoc.79.html#Box.Bytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) Bytes(name <a href="godoc.26.html#string">string</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Bytes returns the content of the file with given name as []byte.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.HTTPBox">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/http.go?s=300:332#L4">HTTPBox</a>
+					<a class="permalink" href="godoc.79.html#Box.HTTPBox">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) HTTPBox() *<a href="godoc.79.html#HTTPBox">HTTPBox</a></pre>
+				<p>
+HTTPBox creates a new HTTPBox from an existing Box
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.IsAppended">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=4245:4276#L151">IsAppended</a>
+					<a class="permalink" href="godoc.79.html#Box.IsAppended">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) IsAppended() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsAppended indicates wether this box was appended to the application
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.IsEmbedded">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=4113:4144#L146">IsEmbedded</a>
+					<a class="permalink" href="godoc.79.html#Box.IsEmbedded">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) IsEmbedded() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsEmbedded indicates wether this box was embedded into the application
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.MustBytes">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=7171:7214#L286">MustBytes</a>
+					<a class="permalink" href="godoc.79.html#Box.MustBytes">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) MustBytes(name <a href="godoc.26.html#string">string</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+				<p>
+MustBytes returns the content of the file with given name as []byte.
+panic&#39;s on error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.MustString">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=7823:7867#L316">MustString</a>
+					<a class="permalink" href="godoc.79.html#Box.MustString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) MustString(name <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#string">string</a></pre>
+				<p>
+MustString returns the content of the file with given name as string.
+panic&#39;s on error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.Name">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=7982:8009#L325">Name</a>
+					<a class="permalink" href="godoc.79.html#Box.Name">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) Name() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Name returns the name of the box
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.Open">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=4712:4758#L170">Open</a>
+					<a class="permalink" href="godoc.79.html#Box.Open">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) Open(name <a href="godoc.26.html#string">string</a>) (*<a href="godoc.79.html#File">File</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Open opens a File from the box
+If there is an error, it will be of type *os.PathError.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.String">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=7361:7410#L295">String</a>
+					<a class="permalink" href="godoc.79.html#Box.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) String(name <a href="godoc.26.html#string">string</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+String returns the content of the file with given name as string.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.Time">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/box.go?s=4475:4505#L158">Time</a>
+					<a class="permalink" href="godoc.79.html#Box.Time">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) Time() <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a></pre>
+				<p>
+Time returns how actual the box is.
+When the box is embedded, it&#39;s value is saved in the embedding code.
+When the box is live, this methods returns time.Now()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Box.Walk">func (*Box) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/walk.go?s=172:235#L2">Walk</a>
+					<a class="permalink" href="godoc.79.html#Box.Walk">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (b *<a href="godoc.79.html#Box">Box</a>) Walk(path <a href="godoc.26.html#string">string</a>, walkFn <a href="godoc.39.html">filepath</a>.<a href="godoc.39.html#WalkFunc">WalkFunc</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Walk is like filepath.Walk()
+Visit <a href="http://golang.org/pkg/path/filepath/#Walk">http://golang.org/pkg/path/filepath/#Walk</a> for more information
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Config">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/config.go?s=495:1024#L4">Config</a>
+				<a class="permalink" href="godoc.79.html#Config">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Config allows customizing the box lookup behavior.
+</p>
+
+			<pre>type Config struct {
+<span id="Config.LocateOrder"></span>    <span class="comment">// LocateOrder defines the priority order that boxes are searched for. By</span>
+    <span class="comment">// default, the package global FindBox searches for embedded boxes first,</span>
+    <span class="comment">// then appended boxes, and then finally boxes on the filesystem.  That</span>
+    <span class="comment">// search order may be customized by provided the ordered list here. Leaving</span>
+    <span class="comment">// out a particular method will omit that from the search space. For</span>
+    <span class="comment">// example, []LocateMethod{LocateEmbedded, LocateAppended} will never search</span>
+    <span class="comment">// the filesystem for boxes.</span>
+    LocateOrder []<a href="godoc.79.html#LocateMethod">LocateMethod</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Config.FindBox">func (*Config) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/config.go?s=1093:1147#L16">FindBox</a>
+					<a class="permalink" href="godoc.79.html#Config.FindBox">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.79.html#Config">Config</a>) FindBox(boxName <a href="godoc.26.html#string">string</a>) (*<a href="godoc.79.html#Box">Box</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+FindBox searches for boxes using the LocateOrder of the config.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Config.MustFindBox">func (*Config) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/config.go?s=1359:1408#L23">MustFindBox</a>
+					<a class="permalink" href="godoc.79.html#Config.MustFindBox">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.79.html#Config">Config</a>) MustFindBox(boxName <a href="godoc.26.html#string">string</a>) *<a href="godoc.79.html#Box">Box</a></pre>
+				<p>
+MustFindBox searches for boxes using the LocateOrder of the config, like
+FindBox does.  It does not return an error, instead it panics when an error
+occurs.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=148:687#L1">File</a>
+				<a class="permalink" href="godoc.79.html#File">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+File implements the io.Reader, io.Seeker, io.Closer and http.File interfaces
+</p>
+
+			<pre>type File struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="File.Close">func (*File) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=792:820#L20">Close</a>
+					<a class="permalink" href="godoc.79.html#File.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.79.html#File">File</a>) Close() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Close is like (*os.File).Close()
+Visit <a href="http://golang.org/pkg/os/#File.Close">http://golang.org/pkg/os/#File.Close</a> for more information
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Read">func (*File) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=3345:3389#L114">Read</a>
+					<a class="permalink" href="godoc.79.html#File.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.79.html#File">File</a>) Read(bts []<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.26.html#int">int</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Read is like (*os.File).Read()
+Visit <a href="http://golang.org/pkg/os/#File.Read">http://golang.org/pkg/os/#File.Read</a> for more information
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Readdir">func (*File) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=1714:1770#L60">Readdir</a>
+					<a class="permalink" href="godoc.79.html#File.Readdir">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.79.html#File">File</a>) Readdir(count <a href="godoc.26.html#int">int</a>) ([]<a href="godoc.33.html">os</a>.<a href="godoc.33.html#FileInfo">FileInfo</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Readdir is like (*os.File).Readdir()
+Visit <a href="http://golang.org/pkg/os/#File.Readdir">http://golang.org/pkg/os/#File.Readdir</a> for more information
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Readdirnames">func (*File) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=2506:2562#L87">Readdirnames</a>
+					<a class="permalink" href="godoc.79.html#File.Readdirnames">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.79.html#File">File</a>) Readdirnames(count <a href="godoc.26.html#int">int</a>) ([]<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Readdirnames is like (*os.File).Readdirnames()
+Visit <a href="http://golang.org/pkg/os/#File.Readdirnames">http://golang.org/pkg/os/#File.Readdirnames</a> for more information
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Seek">func (*File) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=4053:4113#L143">Seek</a>
+					<a class="permalink" href="godoc.79.html#File.Seek">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.79.html#File">File</a>) Seek(offset <a href="godoc.26.html#int64">int64</a>, whence <a href="godoc.26.html#int">int</a>) (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Seek is like (*os.File).Seek()
+Visit <a href="http://golang.org/pkg/os/#File.Seek">http://golang.org/pkg/os/#File.Seek</a> for more information
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="File.Stat">func (*File) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/file.go?s=1208:1250#L39">Stat</a>
+					<a class="permalink" href="godoc.79.html#File.Stat">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f *<a href="godoc.79.html#File">File</a>) Stat() (<a href="godoc.33.html">os</a>.<a href="godoc.33.html#FileInfo">FileInfo</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Stat is like (*os.File).Stat()
+Visit <a href="http://golang.org/pkg/os/#File.Stat">http://golang.org/pkg/os/#File.Stat</a> for more information
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="HTTPBox">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/http.go?s=215:244#L1">HTTPBox</a>
+				<a class="permalink" href="godoc.79.html#HTTPBox">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+HTTPBox implements http.FileSystem which allows the use of Box with a http.FileServer.
+</p>
+<pre>e.g.: http.Handle(&#34;/&#34;, http.FileServer(rice.MustFindBox(&#34;http-files&#34;).HTTPBox()))
+</pre>
+
+			<pre>type HTTPBox struct {
+    *<a href="godoc.79.html#Box">Box</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="HTTPBox.Open">func (*HTTPBox) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/http.go?s=411:466#L9">Open</a>
+					<a class="permalink" href="godoc.79.html#HTTPBox.Open">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (hb *<a href="godoc.79.html#HTTPBox">HTTPBox</a>) Open(name <a href="godoc.26.html#string">string</a>) (<a href="godoc.18.html">http</a>.<a href="godoc.18.html#File">File</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Open returns a File using the http.File interface
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="LocateMethod">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/config.go?s=60:81#L1">LocateMethod</a>
+				<a class="permalink" href="godoc.79.html#LocateMethod">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+LocateMethod defines how a box is located.
+</p>
+
+			<pre>type LocateMethod <a href="godoc.26.html#int">int</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="SortByModified">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=521:554#L5">SortByModified</a>
+				<a class="permalink" href="godoc.79.html#SortByModified">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SortByModified allows an array of os.FileInfo objects
+to be easily sorted by modified date using sort.Sort(SortByModified(array))
+</p>
+
+			<pre>type SortByModified []<a href="godoc.33.html">os</a>.<a href="godoc.33.html#FileInfo">FileInfo</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SortByModified.Len">func (SortByModified) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=556:589#L7">Len</a>
+					<a class="permalink" href="godoc.79.html#SortByModified.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.79.html#SortByModified">SortByModified</a>) Len() <a href="godoc.26.html#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SortByModified.Less">func (SortByModified) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=618:661#L8">Less</a>
+					<a class="permalink" href="godoc.79.html#SortByModified.Less">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.79.html#SortByModified">SortByModified</a>) Less(i, j <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SortByModified.Swap">func (SortByModified) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=719:757#L9">Swap</a>
+					<a class="permalink" href="godoc.79.html#SortByModified.Swap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.79.html#SortByModified">SortByModified</a>) Swap(i, j <a href="godoc.26.html#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SortByName">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=150:179#L1">SortByName</a>
+				<a class="permalink" href="godoc.79.html#SortByName">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+SortByName allows an array of os.FileInfo objects
+to be easily sorted by filename using sort.Sort(SortByName(array))
+</p>
+
+			<pre>type SortByName []<a href="godoc.33.html">os</a>.<a href="godoc.33.html#FileInfo">FileInfo</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SortByName.Len">func (SortByName) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=181:210#L1">Len</a>
+					<a class="permalink" href="godoc.79.html#SortByName.Len">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.79.html#SortByName">SortByName</a>) Len() <a href="godoc.26.html#int">int</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SortByName.Less">func (SortByName) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=239:278#L1">Less</a>
+					<a class="permalink" href="godoc.79.html#SortByName.Less">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.79.html#SortByName">SortByName</a>) Less(i, j <a href="godoc.26.html#int">int</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SortByName.Swap">func (SortByName) <a href="http://localhost:6161/src/github.com/GeertJohan/go.rice/sort.go?s=316:350#L1">Swap</a>
+					<a class="permalink" href="godoc.79.html#SortByName.Swap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (f <a href="godoc.79.html#SortByName">SortByName</a>) Swap(i, j <a href="godoc.26.html#int">int</a>)</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="http://localhost:6161/pkg/github.com/GeertJohan/">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.80.html">embedded</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package embedded defines embedded data types that are shared between the go.rice package and generated code.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.82.html">example</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.83.html">rice</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

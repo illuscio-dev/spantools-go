@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>acme - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.211.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package acme
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/crypto/acme"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.211.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.211.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.211.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package acme provides an implementation of the
+Automatic Certificate Management Environment (ACME) spec.
+The intial implementation was based on ACME draft-02 and
+is now being extended to comply with RFC 8555.
+See <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-02">https://tools.ietf.org/html/draft-ietf-acme-acme-02</a>
+and <a href="https://tools.ietf.org/html/rfc8555">https://tools.ietf.org/html/rfc8555</a> for details.
+</p>
+<p>
+Most common scenarios will want to use autocert subdirectory instead,
+which provides automatic access to certificates from Let&#39;s Encrypt
+and any other ACME-based CA.
+</p>
+<p>
+This package is a work in progress and makes no API stability promises.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.211.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.211.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.211.html#AcceptTOS">func AcceptTOS(tosURL string) bool</a></dd>
+			
+				
+				<dd><a href="godoc.211.html#JWKThumbprint">func JWKThumbprint(pub crypto.PublicKey) (string, error)</a></dd>
+			
+				
+				<dd><a href="godoc.211.html#RateLimit">func RateLimit(err error) (time.Duration, bool)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.211.html#Account">type Account</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#Authorization">type Authorization</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#AuthorizationError">type AuthorizationError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#AuthorizationError.Error">func (a *AuthorizationError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.211.html#AuthzID">type AuthzID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#DomainIDs">func DomainIDs(names ...string) []AuthzID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#IPIDs">func IPIDs(addr ...string) []AuthzID</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#CRLReasonCode">type CRLReasonCode</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#CertOption">type CertOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#WithKey">func WithKey(key crypto.Signer) CertOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#WithTemplate">func WithTemplate(t *x509.Certificate) CertOption</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#Challenge">type Challenge</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#Client">type Client</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.Accept">func (c *Client) Accept(ctx context.Context, chal *Challenge) (*Challenge, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.Authorize">func (c *Client) Authorize(ctx context.Context, domain string) (*Authorization, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.AuthorizeIP">func (c *Client) AuthorizeIP(ctx context.Context, ipaddr string) (*Authorization, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.AuthorizeOrder">func (c *Client) AuthorizeOrder(ctx context.Context, id []AuthzID, opt ...OrderOption) (*Order, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.CreateCert">func (c *Client) CreateCert(ctx context.Context, csr []byte, exp time.Duration, bundle bool) (der [][]byte, certURL string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.CreateOrderCert">func (c *Client) CreateOrderCert(ctx context.Context, url string, csr []byte, bundle bool) (der [][]byte, certURL string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.DNS01ChallengeRecord">func (c *Client) DNS01ChallengeRecord(token string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.DeactivateReg">func (c *Client) DeactivateReg(ctx context.Context) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.Discover">func (c *Client) Discover(ctx context.Context) (Directory, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.FetchCert">func (c *Client) FetchCert(ctx context.Context, url string, bundle bool) ([][]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.GetAuthorization">func (c *Client) GetAuthorization(ctx context.Context, url string) (*Authorization, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.GetChallenge">func (c *Client) GetChallenge(ctx context.Context, url string) (*Challenge, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.GetOrder">func (c *Client) GetOrder(ctx context.Context, url string) (*Order, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.GetReg">func (c *Client) GetReg(ctx context.Context, url string) (*Account, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.HTTP01ChallengePath">func (c *Client) HTTP01ChallengePath(token string) string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.HTTP01ChallengeResponse">func (c *Client) HTTP01ChallengeResponse(token string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.Register">func (c *Client) Register(ctx context.Context, acct *Account, prompt func(tosURL string) bool) (*Account, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.RevokeAuthorization">func (c *Client) RevokeAuthorization(ctx context.Context, url string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.RevokeCert">func (c *Client) RevokeCert(ctx context.Context, key crypto.Signer, cert []byte, reason CRLReasonCode) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.TLSALPN01ChallengeCert">func (c *Client) TLSALPN01ChallengeCert(token, domain string, opt ...CertOption) (cert tls.Certificate, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.TLSSNI01ChallengeCert">func (c *Client) TLSSNI01ChallengeCert(token string, opt ...CertOption) (cert tls.Certificate, name string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.TLSSNI02ChallengeCert">func (c *Client) TLSSNI02ChallengeCert(token string, opt ...CertOption) (cert tls.Certificate, name string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.UpdateReg">func (c *Client) UpdateReg(ctx context.Context, acct *Account) (*Account, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.WaitAuthorization">func (c *Client) WaitAuthorization(ctx context.Context, url string) (*Authorization, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Client.WaitOrder">func (c *Client) WaitOrder(ctx context.Context, url string) (*Order, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.211.html#Directory">type Directory</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#Error.Error">func (e *Error) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.211.html#Order">type Order</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.211.html#OrderError">type OrderError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#OrderError.Error">func (oe *OrderError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.211.html#OrderOption">type OrderOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#WithOrderNotAfter">func WithOrderNotAfter(t time.Time) OrderOption</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.211.html#WithOrderNotBefore">func WithOrderNotBefore(t time.Time) OrderOption</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go">acme.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/http.go">http.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/jws.go">jws.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/rfc8555.go">rfc8555.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go">types.go</a>
+			
+				<a href="http://localhost:6161/src/golang.org/x/crypto/acme/version_go112.go">version_go112.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// LetsEncryptURL is the Directory endpoint of Let&#39;s Encrypt CA.</span>
+    <span id="LetsEncryptURL">LetsEncryptURL</span> = &#34;https://acme-v02.api.letsencrypt.org/directory&#34;
+
+    <span class="comment">// ALPNProto is the ALPN protocol name used by a CA server when validating</span>
+    <span class="comment">// tls-alpn-01 challenges.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Package users must ensure their servers can negotiate the ACME ALPN in</span>
+    <span class="comment">// order for tls-alpn-01 challenge verifications to succeed.</span>
+    <span class="comment">// See the crypto/tls package&#39;s Config.NextProtos field.</span>
+    <span id="ALPNProto">ALPNProto</span> = &#34;acme-tls/1&#34;
+)</pre>
+			
+				<p>
+ACME status values of Account, Order, Authorization and Challenge objects.
+See <a href="https://tools.ietf.org/html/rfc8555#section-7.1.6">https://tools.ietf.org/html/rfc8555#section-7.1.6</a> for details.
+</p>
+
+				<pre>const (
+    <span id="StatusDeactivated">StatusDeactivated</span> = &#34;deactivated&#34;
+    <span id="StatusExpired">StatusExpired</span>     = &#34;expired&#34;
+    <span id="StatusInvalid">StatusInvalid</span>     = &#34;invalid&#34;
+    <span id="StatusPending">StatusPending</span>     = &#34;pending&#34;
+    <span id="StatusProcessing">StatusProcessing</span>  = &#34;processing&#34;
+    <span id="StatusReady">StatusReady</span>       = &#34;ready&#34;
+    <span id="StatusRevoked">StatusRevoked</span>     = &#34;revoked&#34;
+    <span id="StatusUnknown">StatusUnknown</span>     = &#34;unknown&#34;
+    <span id="StatusValid">StatusValid</span>       = &#34;valid&#34;
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span class="comment">// ErrUnsupportedKey is returned when an unsupported key type is encountered.</span>
+    <span id="ErrUnsupportedKey">ErrUnsupportedKey</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;acme: unknown key type; only RSA and ECDSA are supported&#34;)
+
+    <span class="comment">// ErrAccountAlreadyExists indicates that the Client&#39;s key has already been registered</span>
+    <span class="comment">// with the CA. It is returned by Register method.</span>
+    <span id="ErrAccountAlreadyExists">ErrAccountAlreadyExists</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;acme: account already exists&#34;)
+
+    <span class="comment">// ErrNoAccount indicates that the Client&#39;s key has not been registered with the CA.</span>
+    <span id="ErrNoAccount">ErrNoAccount</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;acme: account does not exist&#34;)
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="AcceptTOS">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=11731:11765#L340">AcceptTOS</a>
+				<a class="permalink" href="godoc.211.html#AcceptTOS">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func AcceptTOS(tosURL <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+AcceptTOS always returns true to indicate the acceptance of a CA&#39;s Terms of Service
+during account registration. See Register method of Client for more details.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="JWKThumbprint">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/jws.go?s=5449:5505#L167">JWKThumbprint</a>
+				<a class="permalink" href="godoc.211.html#JWKThumbprint">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func JWKThumbprint(pub <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#PublicKey">PublicKey</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+JWKThumbprint creates a JWK thumbprint out of pub
+as specified in <a href="https://tools.ietf.org/html/rfc7638">https://tools.ietf.org/html/rfc7638</a>.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="RateLimit">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=4333:4380#L118">RateLimit</a>
+				<a class="permalink" href="godoc.211.html#RateLimit">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RateLimit(err <a href="godoc.26.html#error">error</a>) (<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+			<p>
+RateLimit reports whether err represents a rate limit error and
+any Retry-After duration returned by the server.
+</p>
+<p>
+See the following for more details on rate limiting:
+<a href="https://tools.ietf.org/html/draft-ietf-acme-acme-05#section-5.6">https://tools.ietf.org/html/draft-ietf-acme-acme-05#section-5.6</a>
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Account">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=4862:6730#L136">Account</a>
+				<a class="permalink" href="godoc.211.html#Account">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Account is a user account. It is associated with a private key.
+Non-RFC 8555 fields are empty when interfacing with a compliant CA.
+</p>
+
+			<pre>type Account struct {
+<span id="Account.URI"></span>    <span class="comment">// URI is the account unique ID, which is also a URL used to retrieve</span>
+    <span class="comment">// account data from the CA.</span>
+    <span class="comment">// When interfacing with RFC 8555-compliant CAs, URI is the &#34;kid&#34; field</span>
+    <span class="comment">// value in JWS signed requests.</span>
+    URI <a href="godoc.26.html#string">string</a>
+
+<span id="Account.Contact"></span>    <span class="comment">// Contact is a slice of contact info used during registration.</span>
+    <span class="comment">// See https://tools.ietf.org/html/rfc8555#section-7.3 for supported</span>
+    <span class="comment">// formats.</span>
+    Contact []<a href="godoc.26.html#string">string</a>
+
+<span id="Account.Status"></span>    <span class="comment">// Status indicates current account status as returned by the CA.</span>
+    <span class="comment">// Possible values are StatusValid, StatusDeactivated, and StatusRevoked.</span>
+    Status <a href="godoc.26.html#string">string</a>
+
+<span id="Account.OrdersURL"></span>    <span class="comment">// OrdersURL is a URL from which a list of orders submitted by this account</span>
+    <span class="comment">// can be fetched.</span>
+    OrdersURL <a href="godoc.26.html#string">string</a>
+
+    <span class="comment">// The terms user has agreed to.</span>
+    <span class="comment">// A value not matching CurrentTerms indicates that the user hasn&#39;t agreed</span>
+    <span class="comment">// to the actual Terms of Service of the CA.</span>
+    <span class="comment">//</span>
+    <span class="comment">// It is non-RFC 8555 compliant. Package users can store the ToS they agree to</span>
+    <span class="comment">// during Client&#39;s Register call in the prompt callback function.</span>
+<span id="Account.AgreedTerms"></span>    AgreedTerms <a href="godoc.26.html#string">string</a>
+
+    <span class="comment">// Actual terms of a CA.</span>
+    <span class="comment">//</span>
+    <span class="comment">// It is non-RFC 8555 compliant. Use Directory&#39;s Terms field.</span>
+    <span class="comment">// When a CA updates their terms and requires an account agreement,</span>
+    <span class="comment">// a URL at which instructions to do so is available in Error&#39;s Instance field.</span>
+<span id="Account.CurrentTerms"></span>    CurrentTerms <a href="godoc.26.html#string">string</a>
+
+<span id="Account.Authz"></span>    <span class="comment">// Authz is the authorization URL used to initiate a new authz flow.</span>
+    <span class="comment">//</span>
+    <span class="comment">// It is non-RFC 8555 compliant. Use Directory&#39;s AuthzURL or OrderURL.</span>
+    Authz <a href="godoc.26.html#string">string</a>
+
+<span id="Account.Authorizations"></span>    <span class="comment">// Authorizations is a URI from which a list of authorizations</span>
+    <span class="comment">// granted to this account can be fetched via a GET request.</span>
+    <span class="comment">//</span>
+    <span class="comment">// It is non-RFC 8555 compliant and is obsoleted by OrdersURL.</span>
+    Authorizations <a href="godoc.26.html#string">string</a>
+
+<span id="Account.Certificates"></span>    <span class="comment">// Certificates is a URI from which a list of certificates</span>
+    <span class="comment">// issued for this account can be fetched via a GET request.</span>
+    <span class="comment">//</span>
+    <span class="comment">// It is non-RFC 8555 compliant and is obsoleted by OrdersURL.</span>
+    Certificates <a href="godoc.26.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Authorization">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=11588:12913#L324">Authorization</a>
+				<a class="permalink" href="godoc.211.html#Authorization">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Authorization encodes an authorization response.
+</p>
+
+			<pre>type Authorization struct {
+<span id="Authorization.URI"></span>    <span class="comment">// URI uniquely identifies a authorization.</span>
+    URI <a href="godoc.26.html#string">string</a>
+
+<span id="Authorization.Status"></span>    <span class="comment">// Status is the current status of an authorization.</span>
+    <span class="comment">// Possible values are StatusPending, StatusValid, StatusInvalid, StatusDeactivated,</span>
+    <span class="comment">// StatusExpired and StatusRevoked.</span>
+    Status <a href="godoc.26.html#string">string</a>
+
+<span id="Authorization.Identifier"></span>    <span class="comment">// Identifier is what the account is authorized to represent.</span>
+    Identifier <a href="godoc.211.html#AuthzID">AuthzID</a>
+
+    <span class="comment">// The timestamp after which the CA considers the authorization invalid.</span>
+<span id="Authorization.Expires"></span>    Expires <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+
+<span id="Authorization.Wildcard"></span>    <span class="comment">// Wildcard is true for authorizations of a wildcard domain name.</span>
+    Wildcard <a href="godoc.26.html#bool">bool</a>
+
+<span id="Authorization.Challenges"></span>    <span class="comment">// Challenges that the client needs to fulfill in order to prove possession</span>
+    <span class="comment">// of the identifier (for pending authorizations).</span>
+    <span class="comment">// For valid authorizations, the challenge that was validated.</span>
+    <span class="comment">// For invalid authorizations, the challenge that was attempted and failed.</span>
+    <span class="comment">//</span>
+    <span class="comment">// RFC 8555 compatible CAs require users to fuflfill only one of the challenges.</span>
+    Challenges []*<a href="godoc.211.html#Challenge">Challenge</a>
+
+    <span class="comment">// A collection of sets of challenges, each of which would be sufficient</span>
+    <span class="comment">// to prove possession of the identifier.</span>
+    <span class="comment">// Clients must complete a set of challenges that covers at least one set.</span>
+    <span class="comment">// Challenges are identified by their indices in the challenges array.</span>
+    <span class="comment">// If this field is empty, the client needs to complete all challenges.</span>
+    <span class="comment">//</span>
+    <span class="comment">// This field is unused in RFC 8555.</span>
+<span id="Authorization.Combinations"></span>    Combinations [][]<a href="godoc.26.html#int">int</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="AuthorizationError">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=3109:3413#L78">AuthorizationError</a>
+				<a class="permalink" href="godoc.211.html#AuthorizationError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+AuthorizationError indicates that an authorization for an identifier
+did not succeed.
+It contains all errors from Challenge items of the failed Authorization.
+</p>
+
+			<pre>type AuthorizationError struct {
+<span id="AuthorizationError.URI"></span>    <span class="comment">// URI uniquely identifies the failed Authorization.</span>
+    URI <a href="godoc.26.html#string">string</a>
+
+<span id="AuthorizationError.Identifier"></span>    <span class="comment">// Identifier is an AuthzID.Value of the failed Authorization.</span>
+    Identifier <a href="godoc.26.html#string">string</a>
+
+<span id="AuthorizationError.Errors"></span>    <span class="comment">// Errors is a collection of non-nil error values of Challenge items</span>
+    <span class="comment">// of the failed Authorization.</span>
+    Errors []<a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="AuthorizationError.Error">func (*AuthorizationError) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=3415:3458#L90">Error</a>
+					<a class="permalink" href="godoc.211.html#AuthorizationError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="godoc.211.html#AuthorizationError">AuthorizationError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="AuthzID">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=12987:13126#L361">AuthzID</a>
+				<a class="permalink" href="godoc.211.html#AuthzID">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+AuthzID is an identifier that an account is authorized to represent.
+</p>
+
+			<pre>type AuthzID struct {
+<span id="AuthzID.Type"></span>    Type  <a href="godoc.26.html#string">string</a> <span class="comment">// The type of identifier, &#34;dns&#34; or &#34;ip&#34;.</span>
+<span id="AuthzID.Value"></span>    Value <a href="godoc.26.html#string">string</a> <span class="comment">// The identifier itself, e.g. &#34;example.org&#34;.</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="DomainIDs">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=13196:13237#L367">DomainIDs</a>
+					<a class="permalink" href="godoc.211.html#DomainIDs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func DomainIDs(names ...<a href="godoc.26.html#string">string</a>) []<a href="godoc.211.html#AuthzID">AuthzID</a></pre>
+				<p>
+DomainIDs creates a slice of AuthzID with &#34;dns&#34; identifier type.
+</p>
+
+				
+				
+			
+				
+				<h3 id="IPIDs">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=13555:13591#L378">IPIDs</a>
+					<a class="permalink" href="godoc.211.html#IPIDs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func IPIDs(addr ...<a href="godoc.26.html#string">string</a>) []<a href="godoc.211.html#AuthzID">AuthzID</a></pre>
+				<p>
+IPIDs creates a slice of AuthzID with &#34;ip&#34; identifier type.
+Each element of addr is textual form of an address as defined
+in RFC1123 Section 2.1 for IPv4 and in RFC5952 Section 4 for IPv6.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="CRLReasonCode">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=769:791#L22">CRLReasonCode</a>
+				<a class="permalink" href="godoc.211.html#CRLReasonCode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CRLReasonCode identifies the reason for a certificate revocation.
+</p>
+
+			<pre>type CRLReasonCode <a href="godoc.26.html#int">int</a></pre>
+
+			
+				<p>
+CRL reason codes as defined in RFC 5280.
+</p>
+
+				<pre>const (
+    <span id="CRLReasonUnspecified">CRLReasonUnspecified</span>          <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 0
+    <span id="CRLReasonKeyCompromise">CRLReasonKeyCompromise</span>        <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 1
+    <span id="CRLReasonCACompromise">CRLReasonCACompromise</span>         <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 2
+    <span id="CRLReasonAffiliationChanged">CRLReasonAffiliationChanged</span>   <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 3
+    <span id="CRLReasonSuperseded">CRLReasonSuperseded</span>           <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 4
+    <span id="CRLReasonCessationOfOperation">CRLReasonCessationOfOperation</span> <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 5
+    <span id="CRLReasonCertificateHold">CRLReasonCertificateHold</span>      <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 6
+    <span id="CRLReasonRemoveFromCRL">CRLReasonRemoveFromCRL</span>        <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 8
+    <span id="CRLReasonPrivilegeWithdrawn">CRLReasonPrivilegeWithdrawn</span>   <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 9
+    <span id="CRLReasonAACompromise">CRLReasonAACompromise</span>         <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a> = 10
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="CertOption">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=16871:16918#L510">CertOption</a>
+				<a class="permalink" href="godoc.211.html#CertOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CertOption is an optional argument type for the TLS ChallengeCert methods for
+customizing a temporary certificate for TLS-based challenges.
+</p>
+
+			<pre>type CertOption interface {
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithKey">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=17068:17110#L516">WithKey</a>
+					<a class="permalink" href="godoc.211.html#WithKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithKey(key <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Signer">Signer</a>) <a href="godoc.211.html#CertOption">CertOption</a></pre>
+				<p>
+WithKey creates an option holding a private/public key pair.
+The private part signs a certificate, and the public part represents the signee.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithTemplate">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=17553:17602#L532">WithTemplate</a>
+					<a class="permalink" href="godoc.211.html#WithTemplate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithTemplate(t *<a href="godoc.370.html">x509</a>.<a href="godoc.370.html#Certificate">Certificate</a>) <a href="godoc.211.html#CertOption">CertOption</a></pre>
+				<p>
+WithTemplate creates an option for specifying a certificate template.
+See x509.CreateCertificate for template usage details.
+</p>
+<p>
+In TLS ChallengeCert methods, the template is also used as parent,
+resulting in a self-signed certificate.
+The DNSNames field of t is always overwritten for tls-sni challenge certs.
+</p>
+
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Challenge">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=14996:15713#L434">Challenge</a>
+				<a class="permalink" href="godoc.211.html#Challenge">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Challenge encodes a returned CA challenge.
+Its Error field may be non-nil if the challenge is part of an Authorization
+with StatusInvalid.
+</p>
+
+			<pre>type Challenge struct {
+<span id="Challenge.Type"></span>    <span class="comment">// Type is the challenge type, e.g. &#34;http-01&#34;, &#34;tls-alpn-01&#34;, &#34;dns-01&#34;.</span>
+    Type <a href="godoc.26.html#string">string</a>
+
+<span id="Challenge.URI"></span>    <span class="comment">// URI is where a challenge response can be posted to.</span>
+    URI <a href="godoc.26.html#string">string</a>
+
+<span id="Challenge.Token"></span>    <span class="comment">// Token is a random value that uniquely identifies the challenge.</span>
+    Token <a href="godoc.26.html#string">string</a>
+
+<span id="Challenge.Status"></span>    <span class="comment">// Status identifies the status of this challenge.</span>
+    <span class="comment">// In RFC 8555, possible values are StatusPending, StatusProcessing, StatusValid,</span>
+    <span class="comment">// and StatusInvalid.</span>
+    Status <a href="godoc.26.html#string">string</a>
+
+<span id="Challenge.Validated"></span>    <span class="comment">// Validated is the time at which the CA validated this challenge.</span>
+    <span class="comment">// Always zero value in pre-RFC 8555.</span>
+    Validated <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+
+<span id="Challenge.Error"></span>    <span class="comment">// Error indicates the reason for an authorization failure</span>
+    <span class="comment">// when this challenge was used.</span>
+    <span class="comment">// The type of a non-nil value is *Error.</span>
+    Error <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Client">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=2399:4573#L73">Client</a>
+				<a class="permalink" href="godoc.211.html#Client">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Client is an ACME client.
+The only required field is Key. An example of creating a client with a new key
+is as follows:
+</p>
+<pre>key, err := rsa.GenerateKey(rand.Reader, 2048)
+if err != nil {
+	log.Fatal(err)
+}
+client := &amp;Client{Key: key}
+</pre>
+
+			<pre>type Client struct {
+<span id="Client.Key"></span>    <span class="comment">// Key is the account key used to register with a CA and sign requests.</span>
+    <span class="comment">// Key.Public() must return a *rsa.PublicKey or *ecdsa.PublicKey.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The following algorithms are supported:</span>
+    <span class="comment">// RS256, ES256, ES384 and ES512.</span>
+    <span class="comment">// See RFC7518 for more details about the algorithms.</span>
+    Key <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Signer">Signer</a>
+
+<span id="Client.HTTPClient"></span>    <span class="comment">// HTTPClient optionally specifies an HTTP client to use</span>
+    <span class="comment">// instead of http.DefaultClient.</span>
+    HTTPClient *<a href="godoc.18.html">http</a>.<a href="godoc.18.html#Client">Client</a>
+
+<span id="Client.DirectoryURL"></span>    <span class="comment">// DirectoryURL points to the CA directory endpoint.</span>
+    <span class="comment">// If empty, LetsEncryptURL is used.</span>
+    <span class="comment">// Mutating this value after a successful call of Client&#39;s Discover method</span>
+    <span class="comment">// will have no effect.</span>
+    DirectoryURL <a href="godoc.26.html#string">string</a>
+
+<span id="Client.RetryBackoff"></span>    <span class="comment">// RetryBackoff computes the duration after which the nth retry of a failed request</span>
+    <span class="comment">// should occur. The value of n for the first call on failure is 1.</span>
+    <span class="comment">// The values of r and resp are the request and response of the last failed attempt.</span>
+    <span class="comment">// If the returned value is negative or zero, no more retries are done and an error</span>
+    <span class="comment">// is returned to the caller of the original method.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Requests which result in a 4xx client error are not retried,</span>
+    <span class="comment">// except for 400 Bad Request due to &#34;bad nonce&#34; errors and 429 Too Many Requests.</span>
+    <span class="comment">//</span>
+    <span class="comment">// If RetryBackoff is nil, a truncated exponential backoff algorithm</span>
+    <span class="comment">// with the ceiling of 10 seconds is used, where each subsequent retry n</span>
+    <span class="comment">// is done after either (&#34;Retry-After&#34; + jitter) or (2^n seconds + jitter),</span>
+    <span class="comment">// preferring the former if &#34;Retry-After&#34; header is found in the resp.</span>
+    <span class="comment">// The jitter is a random value up to 1 second.</span>
+    RetryBackoff func(n <a href="godoc.26.html#int">int</a>, r *<a href="godoc.18.html">http</a>.<a href="godoc.18.html#Request">Request</a>, resp *<a href="godoc.18.html">http</a>.<a href="godoc.18.html#Response">Response</a>) <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+
+<span id="Client.UserAgent"></span>    <span class="comment">// UserAgent is prepended to the User-Agent header sent to the ACME server,</span>
+    <span class="comment">// which by default is this package&#39;s name and version.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Reusable libraries and tools in particular should set this value to be</span>
+    <span class="comment">// identifiable by the server, in case they are causing issues.</span>
+    UserAgent <a href="godoc.26.html#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Client.Accept">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=20866:20947#L634">Accept</a>
+					<a class="permalink" href="godoc.211.html#Client.Accept">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) Accept(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, chal *<a href="godoc.211.html#Challenge">Challenge</a>) (*<a href="godoc.211.html#Challenge">Challenge</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Accept informs the server that the client accepts one of its challenges
+previously obtained with c.Authorize.
+</p>
+<p>
+The server will then perform the validation asynchronously.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.Authorize">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=15036:15122#L440">Authorize</a>
+					<a class="permalink" href="godoc.211.html#Client.Authorize">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) Authorize(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, domain <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Authorization">Authorization</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Authorize performs the initial step in the pre-authorization flow,
+as opposed to order-based flow.
+The caller will then need to choose from and perform a set of returned
+challenges using c.Accept in order to successfully complete authorization.
+</p>
+<p>
+Once complete, the caller can use AuthorizeOrder which the CA
+should provision with the already satisfied authorization.
+For pre-RFC CAs, the caller can proceed directly to requesting a certificate
+using CreateCert method.
+</p>
+<p>
+If an authorization has been previously granted, the CA may return
+a valid authorization which has its Status field set to StatusValid.
+</p>
+<p>
+More about pre-authorization can be found at
+<a href="https://tools.ietf.org/html/rfc8555#section-7.4.1">https://tools.ietf.org/html/rfc8555#section-7.4.1</a>.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.AuthorizeIP">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=15491:15579#L450">AuthorizeIP</a>
+					<a class="permalink" href="godoc.211.html#Client.AuthorizeIP">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) AuthorizeIP(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, ipaddr <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Authorization">Authorization</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AuthorizeIP is the same as Authorize but requests IP address authorization.
+Clients which successfully obtain such authorization may request to issue
+a certificate for IP addresses.
+</p>
+<p>
+See the ACME spec extension for more details about IP address identifiers:
+<a href="https://tools.ietf.org/html/draft-ietf-acme-ip">https://tools.ietf.org/html/draft-ietf-acme-ip</a>.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.AuthorizeOrder">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/rfc8555.go?s=4177:4279#L130">AuthorizeOrder</a>
+					<a class="permalink" href="godoc.211.html#Client.AuthorizeOrder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) AuthorizeOrder(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, id []<a href="godoc.211.html#AuthzID">AuthzID</a>, opt ...<a href="godoc.211.html#OrderOption">OrderOption</a>) (*<a href="godoc.211.html#Order">Order</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+AuthorizeOrder initiates the order-based application for certificate issuance,
+as opposed to pre-authorization in Authorize.
+It is only supported by CAs implementing RFC 8555.
+</p>
+<p>
+The caller then needs to fetch each authorization with GetAuthorization,
+identify those with StatusPending status and fulfill a challenge using Accept.
+Once all authorizations are satisfied, the caller will typically want to poll
+order status using WaitOrder until it&#39;s in StatusReady state.
+To finalize the order and obtain a certificate, the caller submits a CSR with CreateOrderCert.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.CreateCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=8513:8647#L241">CreateCert</a>
+					<a class="permalink" href="godoc.211.html#Client.CreateCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) CreateCert(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, csr []<a href="godoc.26.html#byte">byte</a>, exp <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>, bundle <a href="godoc.26.html#bool">bool</a>) (der [][]<a href="godoc.26.html#byte">byte</a>, certURL <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+CreateCert requests a new certificate using the Certificate Signing Request csr encoded in DER format.
+It is incompatible with RFC 8555. Callers should use CreateOrderCert when interfacing
+with an RFC-compliant CA.
+</p>
+<p>
+The exp argument indicates the desired certificate validity duration. CA may issue a certificate
+with a different duration.
+If the bundle argument is true, the returned value will also contain the CA (issuer) certificate chain.
+</p>
+<p>
+In the case where CA server does not provide the issued certificate in the response,
+CreateCert will poll certURL using c.FetchCert, which will result in additional round-trips.
+In such a scenario, the caller can cancel the polling with ctx.
+</p>
+<p>
+CreateCert returns an error if the CA&#39;s response or chain was unreasonably large.
+Callers are encouraged to parse the returned value to ensure the certificate is valid and has the expected features.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.CreateOrderCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/rfc8555.go?s=8536:8668#L274">CreateOrderCert</a>
+					<a class="permalink" href="godoc.211.html#Client.CreateOrderCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) CreateOrderCert(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>, csr []<a href="godoc.26.html#byte">byte</a>, bundle <a href="godoc.26.html#bool">bool</a>) (der [][]<a href="godoc.26.html#byte">byte</a>, certURL <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+CreateOrderCert submits the CSR (Certificate Signing Request) to a CA at the specified URL.
+The URL is the FinalizeURL field of an Order created with AuthorizeOrder.
+</p>
+<p>
+If the bundle argument is true, the returned value also contain the CA (issuer)
+certificate chain. Otherwise, only a leaf certificate is returned.
+The returned URL can be used to re-fetch the certificate using FetchCert.
+</p>
+<p>
+This method is only supported by CAs implementing RFC 8555. See CreateCert for pre-RFC CAs.
+</p>
+<p>
+CreateOrderCert returns an error if the CA&#39;s response is unreasonably large.
+Callers are encouraged to parse the returned value to ensure the certificate is valid and has the expected features.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.DNS01ChallengeRecord">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=22167:22234#L678">DNS01ChallengeRecord</a>
+					<a class="permalink" href="godoc.211.html#Client.DNS01ChallengeRecord">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) DNS01ChallengeRecord(token <a href="godoc.26.html#string">string</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+DNS01ChallengeRecord returns a DNS record value for a dns-01 challenge response.
+A TXT record containing the returned value must be provisioned under
+&#34;_acme-challenge&#34; name of the domain being validated.
+</p>
+<p>
+The token argument is a Challenge.Token value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.DeactivateReg">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/rfc8555.go?s=597:654#L16">DeactivateReg</a>
+					<a class="permalink" href="godoc.211.html#Client.DeactivateReg">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) DeactivateReg(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DeactivateReg permanently disables an existing account associated with c.Key.
+A deactivated account can no longer request certificate issuance or access
+resources related to the account, such as orders or authorizations.
+</p>
+<p>
+It only works with CAs implementing RFC 8555.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.Discover">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=5509:5574#L154">Discover</a>
+					<a class="permalink" href="godoc.211.html#Client.Discover">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) Discover(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>) (<a href="godoc.211.html#Directory">Directory</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Discover performs ACME server discovery using c.DirectoryURL.
+</p>
+<p>
+It caches successful result. So, subsequent calls will not result in
+a network round-trip. This also means mutating c.DirectoryURL after successful call
+of this method will have no effect.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.FetchCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=10143:10233#L288">FetchCert</a>
+					<a class="permalink" href="godoc.211.html#Client.FetchCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) FetchCert(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>, bundle <a href="godoc.26.html#bool">bool</a>) ([][]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+FetchCert retrieves already issued certificate from the given url, in DER format.
+It retries the request until the certificate is successfully retrieved,
+context is cancelled by the caller or an error response is received.
+</p>
+<p>
+If the bundle argument is true, the returned value also contains the CA (issuer)
+certificate chain.
+</p>
+<p>
+FetchCert returns an error if the CA&#39;s response or chain was unreasonably large.
+Callers are encouraged to parse the returned value to ensure the certificate is valid
+and has expected features.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.GetAuthorization">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=16708:16798#L490">GetAuthorization</a>
+					<a class="permalink" href="godoc.211.html#Client.GetAuthorization">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) GetAuthorization(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Authorization">Authorization</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+GetAuthorization retrieves an authorization identified by the given URL.
+</p>
+<p>
+If a caller needs to poll an authorization until its status is final,
+see the WaitAuthorization method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.GetChallenge">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=20089:20171#L606">GetChallenge</a>
+					<a class="permalink" href="godoc.211.html#Client.GetChallenge">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) GetChallenge(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Challenge">Challenge</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+GetChallenge retrieves the current status of an challenge.
+</p>
+<p>
+A client typically polls a challenge status using this method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.GetOrder">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/rfc8555.go?s=5391:5465#L172">GetOrder</a>
+					<a class="permalink" href="godoc.211.html#Client.GetOrder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) GetOrder(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Order">Order</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+GetOrder retrives an order identified by the given URL.
+For orders created with AuthorizeOrder, the url value is Order.URI.
+</p>
+<p>
+If a caller needs to poll an order until its status is final,
+see the WaitOrder method.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.GetReg">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=13360:13434#L383">GetReg</a>
+					<a class="permalink" href="godoc.211.html#Client.GetReg">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) GetReg(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Account">Account</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+GetReg retrieves an existing account associated with c.Key.
+</p>
+<p>
+The url argument is an Account URI used with pre-RFC 8555 CAs.
+It is ignored when interfacing with an RFC-compliant CA.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.HTTP01ChallengePath">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=23076:23133#L702">HTTP01ChallengePath</a>
+					<a class="permalink" href="godoc.211.html#Client.HTTP01ChallengePath">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) HTTP01ChallengePath(token <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#string">string</a></pre>
+				<p>
+HTTP01ChallengePath returns the URL path at which the response for an http-01 challenge
+should be provided by the servers.
+The response value can be obtained with HTTP01ChallengeResponse.
+</p>
+<p>
+The token argument is a Challenge.Token value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.HTTP01ChallengeResponse">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=22711:22781#L693">HTTP01ChallengeResponse</a>
+					<a class="permalink" href="godoc.211.html#Client.HTTP01ChallengeResponse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) HTTP01ChallengeResponse(token <a href="godoc.26.html#string">string</a>) (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+HTTP01ChallengeResponse returns the response for an http-01 challenge.
+Servers should respond with the value to HTTP requests at the URL path
+provided by HTTP01ChallengePath to validate the challenge and prove control
+over a domain name.
+</p>
+<p>
+The token argument is a Challenge.Token value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.Register">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=12569:12681#L354">Register</a>
+					<a class="permalink" href="godoc.211.html#Client.Register">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) Register(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, acct *<a href="godoc.211.html#Account">Account</a>, prompt func(tosURL <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#bool">bool</a>) (*<a href="godoc.211.html#Account">Account</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Register creates a new account with the CA using c.Key.
+It returns the registered account. The account acct is not modified.
+</p>
+<p>
+The registration may require the caller to agree to the CA&#39;s Terms of Service (TOS).
+If so, and the account has not indicated the acceptance of the terms (see Account for details),
+Register calls prompt with a TOS URL provided by the CA. Prompt should report
+whether the caller agrees to the terms. To always accept the terms, the caller can use AcceptTOS.
+</p>
+<p>
+When interfacing with an RFC-compliant CA, non-RFC 8555 fields of acct are ignored
+and prompt is called if Directory&#39;s Terms field is non-zero.
+Also see Error&#39;s Instance field for when a CA requires already registered accounts to agree
+to an updated Terms of Service.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.RevokeAuthorization">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=17732:17807#L522">RevokeAuthorization</a>
+					<a class="permalink" href="godoc.211.html#Client.RevokeAuthorization">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) RevokeAuthorization(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RevokeAuthorization relinquishes an existing authorization identified
+by the given URL.
+The url argument is an Authorization.URI value.
+</p>
+<p>
+If successful, the caller will be required to obtain a new authorization
+using the Authorize or AuthorizeOrder methods before being able to request
+a new certificate for the domain associated with the authorization.
+</p>
+<p>
+It does not revoke existing certificates.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.RevokeCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=10905:11013#L311">RevokeCert</a>
+					<a class="permalink" href="godoc.211.html#Client.RevokeCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) RevokeCert(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, key <a href="godoc.170.html">crypto</a>.<a href="godoc.170.html#Signer">Signer</a>, cert []<a href="godoc.26.html#byte">byte</a>, reason <a href="godoc.211.html#CRLReasonCode">CRLReasonCode</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RevokeCert revokes a previously issued certificate cert, provided in DER format.
+</p>
+<p>
+The key argument, used to sign the request, must be authorized
+to revoke the certificate. It&#39;s up to the CA to decide which keys are authorized.
+For instance, the key pair of the certificate may be authorized.
+If the key is nil, c.Key is used instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TLSALPN01ChallengeCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=25423:25537#L760">TLSALPN01ChallengeCert</a>
+					<a class="permalink" href="godoc.211.html#Client.TLSALPN01ChallengeCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) TLSALPN01ChallengeCert(token, domain <a href="godoc.26.html#string">string</a>, opt ...<a href="godoc.211.html#CertOption">CertOption</a>) (cert <a href="godoc.359.html">tls</a>.<a href="godoc.359.html#Certificate">Certificate</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+TLSALPN01ChallengeCert creates a certificate for TLS-ALPN-01 challenge response.
+Servers can present the certificate to validate the challenge and prove control
+over a domain name. For more details on TLS-ALPN-01 see
+<a href="https://tools.ietf.org/html/draft-shoemaker-acme-tls-alpn-00#section-3">https://tools.ietf.org/html/draft-shoemaker-acme-tls-alpn-00#section-3</a>
+</p>
+<p>
+The token argument is a Challenge.Token value.
+If a WithKey option is provided, its private part signs the returned cert,
+and the public part is used to specify the signee.
+If no WithKey option is provided, a new ECDSA key is generated using P-256 curve.
+</p>
+<p>
+The returned certificate is valid for the next 24 hours and must be presented only when
+the server name in the TLS ClientHello matches the domain, and the special acme-tls/1 ALPN protocol
+has been specified.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TLSSNI01ChallengeCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=23364:23482#L709">TLSSNI01ChallengeCert</a>
+					<a class="permalink" href="godoc.211.html#Client.TLSSNI01ChallengeCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) TLSSNI01ChallengeCert(token <a href="godoc.26.html#string">string</a>, opt ...<a href="godoc.211.html#CertOption">CertOption</a>) (cert <a href="godoc.359.html">tls</a>.<a href="godoc.359.html#Certificate">Certificate</a>, name <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+TLSSNI01ChallengeCert creates a certificate for TLS-SNI-01 challenge response.
+</p>
+<p>
+Deprecated: This challenge type is unused in both draft-02 and RFC versions of ACME spec.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TLSSNI02ChallengeCert">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=24017:24135#L727">TLSSNI02ChallengeCert</a>
+					<a class="permalink" href="godoc.211.html#Client.TLSSNI02ChallengeCert">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) TLSSNI02ChallengeCert(token <a href="godoc.26.html#string">string</a>, opt ...<a href="godoc.211.html#CertOption">CertOption</a>) (cert <a href="godoc.359.html">tls</a>.<a href="godoc.359.html#Certificate">Certificate</a>, name <a href="godoc.26.html#string">string</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+TLSSNI02ChallengeCert creates a certificate for TLS-SNI-02 challenge response.
+</p>
+<p>
+Deprecated: This challenge type is unused in both draft-02 and RFC versions of ACME spec.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.UpdateReg">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=13934:14014#L406">UpdateReg</a>
+					<a class="permalink" href="godoc.211.html#Client.UpdateReg">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) UpdateReg(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, acct *<a href="godoc.211.html#Account">Account</a>) (*<a href="godoc.211.html#Account">Account</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+UpdateReg updates an existing registration.
+It returns an updated account copy. The provided account is not modified.
+</p>
+<p>
+When interfacing with RFC-compliant CAs, a.URI is ignored and the account URL
+associated with c.Key is used instead.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.WaitAuthorization">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/acme.go?s=18680:18771#L552">WaitAuthorization</a>
+					<a class="permalink" href="godoc.211.html#Client.WaitAuthorization">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) WaitAuthorization(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Authorization">Authorization</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WaitAuthorization polls an authorization at the given URL
+until it is in one of the final states, StatusValid or StatusInvalid,
+the ACME CA responded with a 4xx error code, or the context is done.
+</p>
+<p>
+It returns a non-nil Authorization only if its Status is StatusValid.
+In all other cases WaitAuthorization returns an error.
+If the Status is StatusInvalid, the returned error is of type *AuthorizationError.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.WaitOrder">func (*Client) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/rfc8555.go?s=6103:6178#L192">WaitOrder</a>
+					<a class="permalink" href="godoc.211.html#Client.WaitOrder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.211.html#Client">Client</a>) WaitOrder(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, url <a href="godoc.26.html#string">string</a>) (*<a href="godoc.211.html#Order">Order</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+WaitOrder polls an order from the given URL until it is in one of the final states,
+StatusReady, StatusValid or StatusInvalid, the CA responded with a non-retryable error
+or the context is done.
+</p>
+<p>
+It returns a non-nil Order only if its Status is StatusReady or StatusValid.
+In all other cases WaitOrder returns an error.
+If the Status is StatusInvalid, the returned error is of type *OrderError.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Directory">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=6851:8265#L191">Directory</a>
+				<a class="permalink" href="godoc.211.html#Directory">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Directory is ACME server discovery data.
+See <a href="https://tools.ietf.org/html/rfc8555#section-7.1.1">https://tools.ietf.org/html/rfc8555#section-7.1.1</a> for more details.
+</p>
+
+			<pre>type Directory struct {
+<span id="Directory.NonceURL"></span>    <span class="comment">// NonceURL indicates an endpoint where to fetch fresh nonce values from.</span>
+    NonceURL <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.RegURL"></span>    <span class="comment">// RegURL is an account endpoint URL, allowing for creating new accounts.</span>
+    <span class="comment">// Pre-RFC 8555 CAs also allow modifying existing accounts at this URL.</span>
+    RegURL <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.OrderURL"></span>    <span class="comment">// OrderURL is used to initiate the certificate issuance flow</span>
+    <span class="comment">// as described in RFC 8555.</span>
+    OrderURL <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.AuthzURL"></span>    <span class="comment">// AuthzURL is used to initiate identifier pre-authorization flow.</span>
+    <span class="comment">// Empty string indicates the flow is unsupported by the CA.</span>
+    AuthzURL <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.CertURL"></span>    <span class="comment">// CertURL is a new certificate issuance endpoint URL.</span>
+    <span class="comment">// It is non-RFC 8555 compliant and is obsoleted by OrderURL.</span>
+    CertURL <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.RevokeURL"></span>    <span class="comment">// RevokeURL is used to initiate a certificate revocation flow.</span>
+    RevokeURL <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.KeyChangeURL"></span>    <span class="comment">// KeyChangeURL allows to perform account key rollover flow.</span>
+    KeyChangeURL <a href="godoc.26.html#string">string</a>
+
+    <span class="comment">// Term is a URI identifying the current terms of service.</span>
+<span id="Directory.Terms"></span>    Terms <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.Website"></span>    <span class="comment">// Website is an HTTP or HTTPS URL locating a website</span>
+    <span class="comment">// providing more information about the ACME server.</span>
+    Website <a href="godoc.26.html#string">string</a>
+
+<span id="Directory.CAA"></span>    <span class="comment">// CAA consists of lowercase hostname elements, which the ACME server</span>
+    <span class="comment">// recognises as referring to itself for the purposes of CAA record validation</span>
+    <span class="comment">// as defined in RFC6844.</span>
+    CAA []<a href="godoc.26.html#string">string</a>
+
+<span id="Directory.ExternalAccountRequired"></span>    <span class="comment">// ExternalAccountRequired indicates that the CA requires for all account-related</span>
+    <span class="comment">// requests to include external account binding information.</span>
+    ExternalAccountRequired <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=2011:2831#L52">Error</a>
+				<a class="permalink" href="godoc.211.html#Error">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Error is an ACME error, defined in Problem Details for HTTP APIs doc
+<a href="http://tools.ietf.org/html/draft-ietf-appsawg-http-problem">http://tools.ietf.org/html/draft-ietf-appsawg-http-problem</a>.
+</p>
+
+			<pre>type Error struct {
+<span id="Error.StatusCode"></span>    <span class="comment">// StatusCode is The HTTP status code generated by the origin server.</span>
+    StatusCode <a href="godoc.26.html#int">int</a>
+<span id="Error.ProblemType"></span>    <span class="comment">// ProblemType is a URI reference that identifies the problem type,</span>
+    <span class="comment">// typically in a &#34;urn:acme:error:xxx&#34; form.</span>
+    ProblemType <a href="godoc.26.html#string">string</a>
+<span id="Error.Detail"></span>    <span class="comment">// Detail is a human-readable explanation specific to this occurrence of the problem.</span>
+    Detail <a href="godoc.26.html#string">string</a>
+<span id="Error.Instance"></span>    <span class="comment">// Instance indicates a URL that the client should direct a human user to visit</span>
+    <span class="comment">// in order for instructions on how to agree to the updated Terms of Service.</span>
+    <span class="comment">// In such an event CA sets StatusCode to 403, ProblemType to</span>
+    <span class="comment">// &#34;urn:ietf:params:acme:error:userActionRequired&#34; and a Link header with relation</span>
+    <span class="comment">// &#34;terms-of-service&#34; containing the latest TOS URL.</span>
+    Instance <a href="godoc.26.html#string">string</a>
+<span id="Error.Header"></span>    <span class="comment">// Header is the original server error response headers.</span>
+    <span class="comment">// It may be nil.</span>
+    Header <a href="godoc.18.html">http</a>.<a href="godoc.18.html#Header">Header</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (*Error) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=2833:2863#L71">Error</a>
+					<a class="permalink" href="godoc.211.html#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.211.html#Error">Error</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Order">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=8706:10995#L244">Order</a>
+				<a class="permalink" href="godoc.211.html#Order">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Order represents a client&#39;s request for a certificate.
+It tracks the request flow progress through to issuance.
+</p>
+
+			<pre>type Order struct {
+<span id="Order.URI"></span>    <span class="comment">// URI uniquely identifies an order.</span>
+    URI <a href="godoc.26.html#string">string</a>
+
+<span id="Order.Status"></span>    <span class="comment">// Status represents the current status of the order.</span>
+    <span class="comment">// It indicates which action the client should take.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Possible values are StatusPending, StatusReady, StatusProcessing, StatusValid and StatusInvalid.</span>
+    <span class="comment">// Pending means the CA does not believe that the client has fulfilled the requirements.</span>
+    <span class="comment">// Ready indicates that the client has fulfilled all the requirements and can submit a CSR</span>
+    <span class="comment">// to obtain a certificate. This is done with Client&#39;s CreateOrderCert.</span>
+    <span class="comment">// Processing means the certificate is being issued.</span>
+    <span class="comment">// Valid indicates the CA has issued the certificate. It can be downloaded</span>
+    <span class="comment">// from the Order&#39;s CertURL. This is done with Client&#39;s FetchCert.</span>
+    <span class="comment">// Invalid means the certificate will not be issued. Users should consider this order</span>
+    <span class="comment">// abandoned.</span>
+    Status <a href="godoc.26.html#string">string</a>
+
+<span id="Order.Expires"></span>    <span class="comment">// Expires is the timestamp after which CA considers this order invalid.</span>
+    Expires <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+
+<span id="Order.Identifiers"></span>    <span class="comment">// Identifiers contains all identifier objects which the order pertains to.</span>
+    Identifiers []<a href="godoc.211.html#AuthzID">AuthzID</a>
+
+<span id="Order.NotBefore"></span>    <span class="comment">// NotBefore is the requested value of the notBefore field in the certificate.</span>
+    NotBefore <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+
+<span id="Order.NotAfter"></span>    <span class="comment">// NotAfter is the requested value of the notAfter field in the certificate.</span>
+    NotAfter <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+
+<span id="Order.AuthzURLs"></span>    <span class="comment">// AuthzURLs represents authorizations to complete before a certificate</span>
+    <span class="comment">// for identifiers specified in the order can be issued.</span>
+    <span class="comment">// It also contains unexpired authorizations that the client has completed</span>
+    <span class="comment">// in the past.</span>
+    <span class="comment">//</span>
+    <span class="comment">// Authorization objects can be fetched using Client&#39;s GetAuthorization method.</span>
+    <span class="comment">//</span>
+    <span class="comment">// The required authorizations are dictated by CA policies.</span>
+    <span class="comment">// There may not be a 1:1 relationship between the identifiers and required authorizations.</span>
+    <span class="comment">// Required authorizations can be identified by their StatusPending status.</span>
+    <span class="comment">//</span>
+    <span class="comment">// For orders in the StatusValid or StatusInvalid state these are the authorizations</span>
+    <span class="comment">// which were completed.</span>
+    AuthzURLs []<a href="godoc.26.html#string">string</a>
+
+<span id="Order.FinalizeURL"></span>    <span class="comment">// FinalizeURL is the endpoint at which a CSR is submitted to obtain a certificate</span>
+    <span class="comment">// once all the authorizations are satisfied.</span>
+    FinalizeURL <a href="godoc.26.html#string">string</a>
+
+<span id="Order.CertURL"></span>    <span class="comment">// CertURL points to the certificate that has been issued in response to this order.</span>
+    CertURL <a href="godoc.26.html#string">string</a>
+
+    <span class="comment">// The error that occurred while processing the order as received from a CA, if any.</span>
+<span id="Order.Error"></span>    Error *<a href="godoc.211.html#Error">Error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OrderError">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=3911:3971#L104">OrderError</a>
+				<a class="permalink" href="godoc.211.html#OrderError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+OrderError is returned from Client&#39;s order related methods.
+It indicates the order is unusable and the clients should start over with
+AuthorizeOrder.
+</p>
+<p>
+The clients can still fetch the order object from CA using GetOrder
+to inspect its state.
+</p>
+
+			<pre>type OrderError struct {
+<span id="OrderError.OrderURL"></span>    OrderURL <a href="godoc.26.html#string">string</a>
+<span id="OrderError.Status"></span>    Status   <a href="godoc.26.html#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="OrderError.Error">func (*OrderError) <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=3973:4009#L109">Error</a>
+					<a class="permalink" href="godoc.211.html#OrderError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (oe *<a href="godoc.211.html#OrderError">OrderError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="OrderOption">type <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=11059:11108#L301">OrderOption</a>
+				<a class="permalink" href="godoc.211.html#OrderOption">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+OrderOption allows customizing Client.AuthorizeOrder call.
+</p>
+
+			<pre>type OrderOption interface {
+    <span class="comment">// contains filtered or unexported methods</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="WithOrderNotAfter">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=11295:11342#L311">WithOrderNotAfter</a>
+					<a class="permalink" href="godoc.211.html#WithOrderNotAfter">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithOrderNotAfter(t <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>) <a href="godoc.211.html#OrderOption">OrderOption</a></pre>
+				<p>
+WithOrderNotAfter sets order&#39;s NotAfter field.
+</p>
+
+				
+				
+			
+				
+				<h3 id="WithOrderNotBefore">func <a href="http://localhost:6161/src/golang.org/x/crypto/acme/types.go?s=11162:11210#L306">WithOrderNotBefore</a>
+					<a class="permalink" href="godoc.211.html#WithOrderNotBefore">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func WithOrderNotBefore(t <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>) <a href="godoc.211.html#OrderOption">OrderOption</a></pre>
+				<p>
+WithOrderNotBefore sets order&#39;s NotBefore field.
+</p>
+
+				
+				
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.210.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.212.html">autocert</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package autocert provides automatic access to certificates from Let&#39;s Encrypt and any other ACME-based CA.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

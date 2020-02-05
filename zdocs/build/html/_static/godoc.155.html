@@ -1,0 +1,3305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>bsoncodec - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.155.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package bsoncodec
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/bson/bsoncodec"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.155.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.155.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.155.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package bsoncodec provides a system for encoding values to BSON representations and decoding
+values from BSON representations. This package considers both binary BSON and ExtendedJSON as
+BSON representations. The types in this package enable a flexible system for handling this
+encoding and decoding.
+</p>
+<p>
+The codec system is composed of two parts:
+</p>
+<p>
+1) ValueEncoders and ValueDecoders that handle encoding and decoding Go values to and from BSON
+representations.
+</p>
+<p>
+2) A Registry that holds these ValueEncoders and ValueDecoders and provides methods for
+retrieving them.
+</p>
+<h3 id="hdr-ValueEncoders_and_ValueDecoders">ValueEncoders and ValueDecoders</h3>
+<p>
+The ValueEncoder interface is implemented by types that can encode a provided Go type to BSON.
+The value to encode is provided as a reflect.Value and a bsonrw.ValueWriter is used within the
+EncodeValue method to actually create the BSON representation. For convenience, ValueEncoderFunc
+is provided to allow use of a function with the correct signature as a ValueEncoder. An
+EncodeContext instance is provided to allow implementations to lookup further ValueEncoders and
+to provide configuration information.
+</p>
+<p>
+The ValueDecoder interface is the inverse of the ValueEncoder. Implementations should ensure that
+the value they receive is settable. Similar to ValueEncoderFunc, ValueDecoderFunc is provided to
+allow the use of a function with the correct signature as a ValueDecoder. A DecodeContext
+instance is provided and serves similar functionality to the EncodeContext.
+</p>
+<h3 id="hdr-Registry_and_RegistryBuilder">Registry and RegistryBuilder</h3>
+<p>
+A Registry is an immutable store for ValueEncoders, ValueDecoders, and a type map. For looking up
+ValueEncoders and Decoders the Registry first attempts to find a ValueEncoder or ValueDecoder for
+the type provided; if one cannot be found it then checks to see if a registered ValueEncoder or
+ValueDecoder exists for an interface the type implements. Finally, the reflect.Kind of the type
+is used to lookup a default ValueEncoder or ValueDecoder for that kind. If no ValueEncoder or
+ValueDecoder can be found, an error is returned.
+</p>
+<p>
+The Registry also holds a type map. This allows users to retrieve the Go type that should be used
+when decoding a BSON value into an empty interface. This is primarily only used for the empty
+interface ValueDecoder.
+</p>
+<p>
+A RegistryBuilder is used to construct a Registry. The Register methods are used to associate
+either a reflect.Type or a reflect.Kind with a ValueEncoder or ValueDecoder. A RegistryBuilder
+returned from NewRegistryBuilder contains no registered ValueEncoders nor ValueDecoders and
+contains an empty type map.
+</p>
+<p>
+The RegisterTypeMapEntry method handles associating a BSON type with a Go type. For example, if
+you want to decode BSON int64 and int32 values into Go int instances, you would do the following:
+</p>
+<pre>var regbuilder *RegistryBuilder = ... intType := reflect.TypeOf(int(0))
+regbuilder.RegisterTypeMapEntry(bsontype.Int64, intType).RegisterTypeMapEntry(bsontype.Int32,
+intType)
+</pre>
+<h3 id="hdr-DefaultValueEncoders_and_DefaultValueDecoders">DefaultValueEncoders and DefaultValueDecoders</h3>
+<p>
+The DefaultValueEncoders and DefaultValueDecoders types provide a full set of ValueEncoders and
+ValueDecoders for handling a wide range of Go types, including all of the types within the
+primitive package. To make registering these codecs easier, a helper method on each type is
+provided. For the DefaultValueEncoders type the method is called RegisterDefaultEncoders and for
+the DefaultValueDecoders type the method is called RegisterDefaultDecoders, this method also
+handles registering type map entries for each BSON type.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.155.html#pkg-variables">Variables</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.155.html#CodecZeroer">type CodecZeroer</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#DecodeContext">type DecodeContext</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#DefaultValueDecoders">type DefaultValueDecoders</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.ArrayDecodeValue">func (dvd DefaultValueDecoders) ArrayDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.BinaryDecodeValue">func (DefaultValueDecoders) BinaryDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.BooleanDecodeValue">func (dvd DefaultValueDecoders) BooleanDecodeValue(dctx DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.ByteSliceDecodeValue">func (dvd DefaultValueDecoders) ByteSliceDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.CodeWithScopeDecodeValue">func (dvd DefaultValueDecoders) CodeWithScopeDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.CoreDocumentDecodeValue">func (DefaultValueDecoders) CoreDocumentDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.DBPointerDecodeValue">func (DefaultValueDecoders) DBPointerDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.DateTimeDecodeValue">func (DefaultValueDecoders) DateTimeDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.Decimal128DecodeValue">func (dvd DefaultValueDecoders) Decimal128DecodeValue(dctx DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.EmptyInterfaceDecodeValue">func (dvd DefaultValueDecoders) EmptyInterfaceDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.FloatDecodeValue">func (dvd DefaultValueDecoders) FloatDecodeValue(ec DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.IntDecodeValue">func (dvd DefaultValueDecoders) IntDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.JSONNumberDecodeValue">func (dvd DefaultValueDecoders) JSONNumberDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.JavaScriptDecodeValue">func (DefaultValueDecoders) JavaScriptDecodeValue(dctx DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.MapDecodeValue">func (dvd DefaultValueDecoders) MapDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.MaxKeyDecodeValue">func (DefaultValueDecoders) MaxKeyDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.MinKeyDecodeValue">func (DefaultValueDecoders) MinKeyDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.NullDecodeValue">func (DefaultValueDecoders) NullDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.ObjectIDDecodeValue">func (dvd DefaultValueDecoders) ObjectIDDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.RegexDecodeValue">func (DefaultValueDecoders) RegexDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.RegisterDefaultDecoders">func (dvd DefaultValueDecoders) RegisterDefaultDecoders(rb *RegistryBuilder)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.SliceDecodeValue">func (dvd DefaultValueDecoders) SliceDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.StringDecodeValue">func (dvd DefaultValueDecoders) StringDecodeValue(dctx DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.SymbolDecodeValue">func (DefaultValueDecoders) SymbolDecodeValue(dctx DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.TimeDecodeValue">func (dvd DefaultValueDecoders) TimeDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.TimestampDecodeValue">func (DefaultValueDecoders) TimestampDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.URLDecodeValue">func (dvd DefaultValueDecoders) URLDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.UintDecodeValue">func (dvd DefaultValueDecoders) UintDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.UndefinedDecodeValue">func (DefaultValueDecoders) UndefinedDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.UnmarshalerDecodeValue">func (dvd DefaultValueDecoders) UnmarshalerDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueDecoders.ValueUnmarshalerDecodeValue">func (dvd DefaultValueDecoders) ValueUnmarshalerDecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#DefaultValueEncoders">type DefaultValueEncoders</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.ArrayEncodeValue">func (dve DefaultValueEncoders) ArrayEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.BinaryEncodeValue">func (DefaultValueEncoders) BinaryEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.BooleanEncodeValue">func (dve DefaultValueEncoders) BooleanEncodeValue(ectx EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.ByteSliceEncodeValue">func (dve DefaultValueEncoders) ByteSliceEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.CodeWithScopeEncodeValue">func (dve DefaultValueEncoders) CodeWithScopeEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.CoreDocumentEncodeValue">func (DefaultValueEncoders) CoreDocumentEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.DBPointerEncodeValue">func (DefaultValueEncoders) DBPointerEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.DateTimeEncodeValue">func (DefaultValueEncoders) DateTimeEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.Decimal128EncodeValue">func (dve DefaultValueEncoders) Decimal128EncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.EmptyInterfaceEncodeValue">func (dve DefaultValueEncoders) EmptyInterfaceEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.FloatEncodeValue">func (dve DefaultValueEncoders) FloatEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.IntEncodeValue">func (dve DefaultValueEncoders) IntEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.JSONNumberEncodeValue">func (dve DefaultValueEncoders) JSONNumberEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.JavaScriptEncodeValue">func (DefaultValueEncoders) JavaScriptEncodeValue(ectx EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.MapEncodeValue">func (dve DefaultValueEncoders) MapEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.MarshalerEncodeValue">func (dve DefaultValueEncoders) MarshalerEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.MaxKeyEncodeValue">func (DefaultValueEncoders) MaxKeyEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.MinKeyEncodeValue">func (DefaultValueEncoders) MinKeyEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.NullEncodeValue">func (DefaultValueEncoders) NullEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.ObjectIDEncodeValue">func (dve DefaultValueEncoders) ObjectIDEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.ProxyEncodeValue">func (dve DefaultValueEncoders) ProxyEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.RegexEncodeValue">func (DefaultValueEncoders) RegexEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.RegisterDefaultEncoders">func (dve DefaultValueEncoders) RegisterDefaultEncoders(rb *RegistryBuilder)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.SliceEncodeValue">func (dve DefaultValueEncoders) SliceEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.StringEncodeValue">func (dve DefaultValueEncoders) StringEncodeValue(ectx EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.SymbolEncodeValue">func (DefaultValueEncoders) SymbolEncodeValue(ectx EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.TimeEncodeValue">func (dve DefaultValueEncoders) TimeEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.TimestampEncodeValue">func (DefaultValueEncoders) TimestampEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.URLEncodeValue">func (dve DefaultValueEncoders) URLEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.UintEncodeValue">func (dve DefaultValueEncoders) UintEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.UndefinedEncodeValue">func (DefaultValueEncoders) UndefinedEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#DefaultValueEncoders.ValueMarshalerEncodeValue">func (dve DefaultValueEncoders) ValueMarshalerEncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#EncodeContext">type EncodeContext</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ErrNoDecoder">type ErrNoDecoder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ErrNoDecoder.Error">func (end ErrNoDecoder) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ErrNoEncoder">type ErrNoEncoder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ErrNoEncoder.Error">func (ene ErrNoEncoder) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ErrNoTypeMapEntry">type ErrNoTypeMapEntry</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ErrNoTypeMapEntry.Error">func (entme ErrNoTypeMapEntry) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#MapCodec">type MapCodec</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewMapCodec">func NewMapCodec(opts ...*bsonoptions.MapCodecOptions) *MapCodec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#MapCodec.DecodeValue">func (mc *MapCodec) DecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#MapCodec.EncodeValue">func (mc *MapCodec) EncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#Marshaler">type Marshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#PointerCodec">type PointerCodec</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewPointerCodec">func NewPointerCodec() *PointerCodec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#PointerCodec.DecodeValue">func (pc *PointerCodec) DecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#PointerCodec.EncodeValue">func (pc *PointerCodec) EncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#Proxy">type Proxy</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#Registry">type Registry</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Registry.LookupDecoder">func (r *Registry) LookupDecoder(t reflect.Type) (ValueDecoder, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Registry.LookupEncoder">func (r *Registry) LookupEncoder(t reflect.Type) (ValueEncoder, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#Registry.LookupTypeMapEntry">func (r *Registry) LookupTypeMapEntry(bt bsontype.Type) (reflect.Type, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#RegistryBuilder">type RegistryBuilder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewRegistryBuilder">func NewRegistryBuilder() *RegistryBuilder</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.Build">func (rb *RegistryBuilder) Build() *Registry</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.RegisterCodec">func (rb *RegistryBuilder) RegisterCodec(t reflect.Type, codec ValueCodec) *RegistryBuilder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.RegisterDecoder">func (rb *RegistryBuilder) RegisterDecoder(t reflect.Type, dec ValueDecoder) *RegistryBuilder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.RegisterDefaultDecoder">func (rb *RegistryBuilder) RegisterDefaultDecoder(kind reflect.Kind, dec ValueDecoder) *RegistryBuilder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.RegisterDefaultEncoder">func (rb *RegistryBuilder) RegisterDefaultEncoder(kind reflect.Kind, enc ValueEncoder) *RegistryBuilder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.RegisterEncoder">func (rb *RegistryBuilder) RegisterEncoder(t reflect.Type, enc ValueEncoder) *RegistryBuilder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#RegistryBuilder.RegisterTypeMapEntry">func (rb *RegistryBuilder) RegisterTypeMapEntry(bt bsontype.Type, rt reflect.Type) *RegistryBuilder</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#StringCodec">type StringCodec</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewStringCodec">func NewStringCodec(opts ...*bsonoptions.StringCodecOptions) *StringCodec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#StringCodec.DecodeValue">func (sc *StringCodec) DecodeValue(dctx DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#StringCodec.EncodeValue">func (sc *StringCodec) EncodeValue(ectx EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#StructCodec">type StructCodec</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewStructCodec">func NewStructCodec(p StructTagParser, opts ...*bsonoptions.StructCodecOptions) (*StructCodec, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#StructCodec.DecodeValue">func (sc *StructCodec) DecodeValue(r DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#StructCodec.EncodeValue">func (sc *StructCodec) EncodeValue(r EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#StructTagParser">type StructTagParser</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#StructTagParserFunc">type StructTagParserFunc</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#StructTagParserFunc.ParseStructTags">func (stpf StructTagParserFunc) ParseStructTags(sf reflect.StructField) (StructTags, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#StructTags">type StructTags</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#TimeCodec">type TimeCodec</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#NewTimeCodec">func NewTimeCodec(opts ...*bsonoptions.TimeCodecOptions) *TimeCodec</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#TimeCodec.DecodeValue">func (tc *TimeCodec) DecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#TimeCodec.EncodeValue">func (tc *TimeCodec) EncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#TransitionError">type TransitionError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#TransitionError.Error">func (te TransitionError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#Unmarshaler">type Unmarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueCodec">type ValueCodec</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueDecoder">type ValueDecoder</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueDecoderError">type ValueDecoderError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ValueDecoderError.Error">func (vde ValueDecoderError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueDecoderFunc">type ValueDecoderFunc</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ValueDecoderFunc.DecodeValue">func (fn ValueDecoderFunc) DecodeValue(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueEncoder">type ValueEncoder</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueEncoderError">type ValueEncoderError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ValueEncoderError.Error">func (vee ValueEncoderError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueEncoderFunc">type ValueEncoderFunc</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.155.html#ValueEncoderFunc.EncodeValue">func (fn ValueEncoderFunc) EncodeValue(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueMarshaler">type ValueMarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#ValueUnmarshaler">type ValueUnmarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.155.html#Zeroer">type Zeroer</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.155.html#example_ValueDecoder">ValueDecoder</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.155.html#example_ValueEncoder">ValueEncoder</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go">bsoncodec.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go">default_value_decoders.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go">default_value_encoders.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/map_codec.go">map_codec.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/mode.go">mode.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/pointer_codec.go">pointer_codec.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/proxy.go">proxy.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go">registry.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/string_codec.go">string_codec.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_codec.go">struct_codec.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_tag_parser.go">struct_tag_parser.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/time_codec.go">time_codec.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/types.go">types.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrNilType is returned when nil is passed to either LookupEncoder or LookupDecoder.
+</p>
+
+				<pre>var <span id="ErrNilType">ErrNilType</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;cannot perform a decoder lookup on &lt;nil&gt;&#34;)</pre>
+			
+				<p>
+ErrNotInterface is returned when the provided type is not an interface.
+</p>
+
+				<pre>var <span id="ErrNotInterface">ErrNotInterface</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;The provided type is not an interface&#34;)</pre>
+			
+				<p>
+ErrNotPointer is returned when a non-pointer type is provided to LookupDecoder.
+</p>
+
+				<pre>var <span id="ErrNotPointer">ErrNotPointer</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;non-pointer provided to LookupDecoder&#34;)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="CodecZeroer">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=5543:5603#L151">CodecZeroer</a>
+				<a class="permalink" href="godoc.155.html#CodecZeroer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+CodecZeroer is the interface implemented by Codecs that can also determine if
+a value of the type that would be encoded is zero.
+</p>
+
+			<pre>type CodecZeroer interface {
+    IsTypeZero(interface{}) <a href="godoc.26.html#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DecodeContext">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=3674:4070#L104">DecodeContext</a>
+				<a class="permalink" href="godoc.155.html#DecodeContext">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DecodeContext is the contextual information required for a Codec to decode a
+value.
+</p>
+
+			<pre>type DecodeContext struct {
+    *<a href="godoc.155.html#Registry">Registry</a>
+<span id="DecodeContext.Truncate"></span>    Truncate <a href="godoc.26.html#bool">bool</a>
+<span id="DecodeContext.Ancestor"></span>    <span class="comment">// Ancestor is the type of a containing document. This is mainly used to determine what type</span>
+    <span class="comment">// should be used when decoding an embedded document into an empty interface. For example, if</span>
+    <span class="comment">// Ancestor is a bson.M, BSON embedded document values being decoded into an empty interface</span>
+    <span class="comment">// will be decoded into a bson.M.</span>
+    Ancestor <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="DefaultValueDecoders">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=722:756#L19">DefaultValueDecoders</a>
+				<a class="permalink" href="godoc.155.html#DefaultValueDecoders">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DefaultValueDecoders is a namespace type for the default ValueDecoders used
+when creating a registry.
+</p>
+
+			<pre>type DefaultValueDecoders struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DefaultValueDecoders.ArrayDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=23669:23783#L744">ArrayDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.ArrayDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) ArrayDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ArrayDecodeValue is the ValueDecoderFunc for array types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.BinaryDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=13427:13538#L407">BinaryDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.BinaryDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) BinaryDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+BinaryDecodeValue is the ValueDecoderFunc for Binary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.BooleanDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=5430:5548#L97">BooleanDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.BooleanDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) BooleanDecodeValue(dctx <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+BooleanDecodeValue is the ValueDecoderFunc for bool types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.ByteSliceDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=21582:21700#L661">ByteSliceDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.ByteSliceDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) ByteSliceDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ByteSliceDecodeValue is the ValueDecoderFunc for []byte.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.CodeWithScopeDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=30574:30696#L984">CodeWithScopeDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.CodeWithScopeDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) CodeWithScopeDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CodeWithScopeDecodeValue is the ValueDecoderFunc for CodeWithScope.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.CoreDocumentDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=29354:29471#L931">CoreDocumentDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.CoreDocumentDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) CoreDocumentDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CoreDocumentDecodeValue is the ValueDecoderFunc for bsoncore.Document.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.DBPointerDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=16705:16819#L506">DBPointerDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.DBPointerDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) DBPointerDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DBPointerDecodeValue is the ValueDecoderFunc for DBPointer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.DateTimeDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=15069:15182#L454">DateTimeDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.DateTimeDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) DateTimeDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DateTimeDecodeValue is the ValueDecoderFunc for DateTime.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.Decimal128DecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=18920:19041#L572">Decimal128DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.Decimal128DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) Decimal128DecodeValue(dctx <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Decimal128DecodeValue is the ValueDecoderFunc for primitive.Decimal128.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.EmptyInterfaceDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=28467:28590#L893">EmptyInterfaceDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.EmptyInterfaceDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) EmptyInterfaceDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EmptyInterfaceDecodeValue is the ValueDecoderFunc for interface{}.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.FloatDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=10325:10439#L295">FloatDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.FloatDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) FloatDecodeValue(ec <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+FloatDecodeValue is the ValueDecoderFunc for float types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.IntDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=6346:6458#L136">IntDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.IntDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) IntDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+IntDecodeValue is the ValueDecoderFunc for int types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.JSONNumberDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=19468:19587#L586">JSONNumberDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.JSONNumberDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) JSONNumberDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+JSONNumberDecodeValue is the ValueDecoderFunc for json.Number.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.JavaScriptDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=12306:12423#L369">JavaScriptDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.JavaScriptDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) JavaScriptDecodeValue(dctx <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+JavaScriptDecodeValue is the ValueDecoderFunc for the primitive.JavaScript type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.MapDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=22428:22540#L688">MapDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.MapDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) MapDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MapDecodeValue is the ValueDecoderFunc for map[string]* types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.MaxKeyDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=18404:18515#L558">MaxKeyDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.MaxKeyDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) MaxKeyDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MaxKeyDecodeValue is the ValueDecoderFunc for MaxKey.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.MinKeyDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=17906:18017#L544">MinKeyDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.MinKeyDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) MinKeyDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MinKeyDecodeValue is the ValueDecoderFunc for MinKey.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.NullDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=15631:15740#L473">NullDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.NullDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) NullDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+NullDecodeValue is the ValueDecoderFunc for Null.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.ObjectIDDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=14557:14674#L440">ObjectIDDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.ObjectIDDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) ObjectIDDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ObjectIDDecodeValue is the ValueDecoderFunc for primitive.ObjectID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.RegexDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=16111:16221#L487">RegexDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.RegexDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) RegexDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RegexDecodeValue is the ValueDecoderFunc for Regex.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.RegisterDefaultDecoders">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=1121:1197#L27">RegisterDefaultDecoders</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.RegisterDefaultDecoders">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) RegisterDefaultDecoders(rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>)</pre>
+				<p>
+RegisterDefaultDecoders will register the decoder methods attached to DefaultValueDecoders with
+the provided RegistryBuilder.
+</p>
+<p>
+There is no support for decoding map[string]interface{} becuase there is no decoder for
+interface{}, so users must either register this decoder themselves or use the
+EmptyInterfaceDecoder avaialble in the bson package.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.SliceDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=24761:24875#L784">SliceDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.SliceDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) SliceDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SliceDecodeValue is the ValueDecoderFunc for slice types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.StringDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=11603:11720#L347">StringDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.StringDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) StringDecodeValue(dctx <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+StringDecodeValue is the ValueDecoderFunc for string types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.SymbolDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=12886:12999#L388">SymbolDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.SymbolDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) SymbolDecodeValue(dctx <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SymbolDecodeValue is the ValueDecoderFunc for the primitive.Symbol type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.TimeDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=21005:21118#L642">TimeDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.TimeDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) TimeDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+TimeDecodeValue is the ValueDecoderFunc for time.Time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.TimestampDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=17316:17430#L525">TimestampDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.TimestampDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) TimestampDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+TimestampDecodeValue is the ValueDecoderFunc for Timestamp.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.URLDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=20411:20523#L618">URLDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.URLDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) URLDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+URLDecodeValue is the ValueDecoderFunc for url.URL.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.UintDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=8294:8407#L214">UintDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.UintDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) UintDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UintDecodeValue is the ValueDecoderFunc for uint types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.UndefinedDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=14020:14134#L426">UndefinedDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.UndefinedDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) UndefinedDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UndefinedDecodeValue is the ValueDecoderFunc for Undefined.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.UnmarshalerDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=27249:27369#L860">UnmarshalerDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.UnmarshalerDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) UnmarshalerDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UnmarshalerDecodeValue is the ValueDecoderFunc for Unmarshaler implementations.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueDecoders.ValueUnmarshalerDecodeValue">func (DefaultValueDecoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_decoders.go?s=25938:26063#L827">ValueUnmarshalerDecodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueDecoders.ValueUnmarshalerDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dvd <a href="godoc.155.html#DefaultValueDecoders">DefaultValueDecoders</a>) ValueUnmarshalerDecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ValueUnmarshalerDecodeValue is the ValueDecoderFunc for ValueUnmarshaler implementations.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="DefaultValueEncoders">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=1365:1399#L51">DefaultValueEncoders</a>
+				<a class="permalink" href="godoc.155.html#DefaultValueEncoders">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+DefaultValueEncoders is a namespace type for the default ValueEncoders used
+when creating a registry.
+</p>
+
+			<pre>type DefaultValueEncoders struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="DefaultValueEncoders.ArrayEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=12663:12777#L331">ArrayEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.ArrayEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) ArrayEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ArrayEncodeValue is the ValueEncoderFunc for array types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.BinaryEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=19520:19631#L563">BinaryEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.BinaryEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) BinaryEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+BinaryEncodeValue is the ValueEncoderFunc for Binary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.BooleanEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=4868:4986#L105">BooleanEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.BooleanEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) BooleanEncodeValue(ectx <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+BooleanEncodeValue is the ValueEncoderFunc for bool types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.ByteSliceEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=9903:10021#L243">ByteSliceEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.ByteSliceEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) ByteSliceEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ByteSliceEncodeValue is the ValueEncoderFunc for []byte.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.CodeWithScopeEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=23481:23603#L662">CodeWithScopeEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.CodeWithScopeEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) CodeWithScopeEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CodeWithScopeEncodeValue is the ValueEncoderFunc for CodeWithScope.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.CoreDocumentEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=23016:23133#L651">CoreDocumentEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.CoreDocumentEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) CoreDocumentEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CoreDocumentEncodeValue is the ValueEncoderFunc for bsoncore.Document.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.DBPointerEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=21441:21555#L611">DBPointerEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.DBPointerEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) DBPointerEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DBPointerEncodeValue is the ValueEncoderFunc for DBPointer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.DateTimeEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=20314:20427#L582">DateTimeEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.DateTimeEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) DateTimeEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DateTimeEncodeValue is the ValueEncoderFunc for DateTime.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.Decimal128EncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=8030:8149#L197">Decimal128EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.Decimal128EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) Decimal128EncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Decimal128EncodeValue is the ValueEncoderFunc for primitive.Decimal128.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.EmptyInterfaceEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=16077:16200#L473">EmptyInterfaceEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.EmptyInterfaceEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) EmptyInterfaceEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EmptyInterfaceEncodeValue is the ValueEncoderFunc for interface{}.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.FloatEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=6815:6929#L166">FloatEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.FloatEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) FloatEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+FloatEncodeValue is the ValueEncoderFunc for float types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.IntEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=5332:5444#L117">IntEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.IntEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) IntEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+IntEncodeValue is the ValueEncoderFunc for int types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.JSONNumberEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=8444:8563#L205">JSONNumberEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.JSONNumberEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) JSONNumberEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+JSONNumberEncodeValue is the ValueEncoderFunc for json.Number.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.JavaScriptEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=18753:18870#L545">JavaScriptEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.JavaScriptEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) JavaScriptEncodeValue(ectx <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+JavaScriptEncodeValue is the ValueEncoderFunc for the primitive.JavaScript type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.MapEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=10346:10458#L254">MapEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.MapEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) MapEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MapEncodeValue is the ValueEncoderFunc for map[string]* types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.MarshalerEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=17328:17446#L505">MarshalerEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.MarshalerEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) MarshalerEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MarshalerEncodeValue is the ValueEncoderFunc for Marshaler implementations.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.MaxKeyEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=22649:22760#L642">MaxKeyEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.MaxKeyEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) MaxKeyEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MaxKeyEncodeValue is the ValueEncoderFunc for MaxKey.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.MinKeyEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=22299:22410#L633">MinKeyEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.MinKeyEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) MinKeyEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+MinKeyEncodeValue is the ValueEncoderFunc for MinKey.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.NullEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=20679:20788#L591">NullEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.NullEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) NullEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+NullEncodeValue is the ValueEncoderFunc for Null.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.ObjectIDEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=7623:7740#L189">ObjectIDEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.ObjectIDEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) ObjectIDEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ObjectIDEncodeValue is the ValueEncoderFunc for primitive.ObjectID.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.ProxyEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=17967:18081#L520">ProxyEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.ProxyEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) ProxyEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ProxyEncodeValue is the ValueEncoderFunc for Proxy implementations.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.RegexEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=21017:21127#L600">RegexEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.RegexEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) RegexEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RegexEncodeValue is the ValueEncoderFunc for Regex.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.RegisterDefaultEncoders">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=1533:1609#L55">RegisterDefaultEncoders</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.RegisterDefaultEncoders">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) RegisterDefaultEncoders(rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>)</pre>
+				<p>
+RegisterDefaultEncoders will register the encoder methods attached to DefaultValueEncoders with
+the provided RegistryBuilder.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.SliceEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=14124:14238#L393">SliceEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.SliceEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) SliceEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SliceEncodeValue is the ValueEncoderFunc for slice types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.StringEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=7224:7341#L176">StringEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.StringEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) StringEncodeValue(ectx <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+StringEncodeValue is the ValueEncoderFunc for string types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.SymbolEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=19156:19269#L554">SymbolEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.SymbolEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) SymbolEncodeValue(ectx <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SymbolEncodeValue is the ValueEncoderFunc for the primitive.Symbol type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.TimeEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=9475:9588#L234">TimeEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.TimeEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) TimeEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+TimeEncodeValue is the ValueEncoderFunc for time.TIme.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.TimestampEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=21878:21992#L622">TimestampEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.TimestampEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) TimestampEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+TimestampEncodeValue is the ValueEncoderFunc for Timestamp.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.URLEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=9091:9203#L225">URLEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.URLEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) URLEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+URLEncodeValue is the ValueEncoderFunc for url.URL.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.UintEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=6080:6193#L143">UintEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.UintEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) UintEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UintEncodeValue is the ValueEncoderFunc for uint types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.UndefinedEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=19945:20059#L573">UndefinedEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.UndefinedEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) UndefinedEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UndefinedEncodeValue is the ValueEncoderFunc for Undefined.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="DefaultValueEncoders.ValueMarshalerEncodeValue">func (DefaultValueEncoders) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/default_value_encoders.go?s=16632:16755#L490">ValueMarshalerEncodeValue</a>
+					<a class="permalink" href="godoc.155.html#DefaultValueEncoders.ValueMarshalerEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (dve <a href="godoc.155.html#DefaultValueEncoders">DefaultValueEncoders</a>) ValueMarshalerEncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+ValueMarshalerEncodeValue is the ValueEncoderFunc for ValueMarshaler implementations.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="EncodeContext">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=3528:3582#L97">EncodeContext</a>
+				<a class="permalink" href="godoc.155.html#EncodeContext">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+EncodeContext is the contextual information required for a Codec to encode a
+value.
+</p>
+
+			<pre>type EncodeContext struct {
+    *<a href="godoc.155.html#Registry">Registry</a>
+<span id="EncodeContext.MinSize"></span>    MinSize <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ErrNoDecoder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=1057:1104#L26">ErrNoDecoder</a>
+				<a class="permalink" href="godoc.155.html#ErrNoDecoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ErrNoDecoder is returned when there wasn&#39;t a decoder available for a type.
+</p>
+
+			<pre>type ErrNoDecoder struct {
+<span id="ErrNoDecoder.Type"></span>    Type <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrNoDecoder.Error">func (ErrNoDecoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=1106:1144#L30">Error</a>
+					<a class="permalink" href="godoc.155.html#ErrNoDecoder.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (end <a href="godoc.155.html#ErrNoDecoder">ErrNoDecoder</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrNoEncoder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=771:818#L14">ErrNoEncoder</a>
+				<a class="permalink" href="godoc.155.html#ErrNoEncoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ErrNoEncoder is returned when there wasn&#39;t an encoder available for a type.
+</p>
+
+			<pre>type ErrNoEncoder struct {
+<span id="ErrNoEncoder.Type"></span>    Type <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrNoEncoder.Error">func (ErrNoEncoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=820:858#L18">Error</a>
+					<a class="permalink" href="godoc.155.html#ErrNoEncoder.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ene <a href="godoc.155.html#ErrNoEncoder">ErrNoEncoder</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ErrNoTypeMapEntry">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=1298:1351#L35">ErrNoTypeMapEntry</a>
+				<a class="permalink" href="godoc.155.html#ErrNoTypeMapEntry">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ErrNoTypeMapEntry is returned when there wasn&#39;t a type available for the provided BSON type.
+</p>
+
+			<pre>type ErrNoTypeMapEntry struct {
+<span id="ErrNoTypeMapEntry.Type"></span>    Type <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ErrNoTypeMapEntry.Error">func (ErrNoTypeMapEntry) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=1353:1398#L39">Error</a>
+					<a class="permalink" href="godoc.155.html#ErrNoTypeMapEntry.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (entme <a href="godoc.155.html#ErrNoTypeMapEntry">ErrNoTypeMapEntry</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="MapCodec">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/map_codec.go?s=550:595#L12">MapCodec</a>
+				<a class="permalink" href="godoc.155.html#MapCodec">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+MapCodec is the Codec used for map values.
+</p>
+
+			<pre>type MapCodec struct {
+<span id="MapCodec.DecodeZerosMap"></span>    DecodeZerosMap <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewMapCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/map_codec.go?s=682:746#L19">NewMapCodec</a>
+					<a class="permalink" href="godoc.155.html#NewMapCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewMapCodec(opts ...*<a href="godoc.156.html">bsonoptions</a>.<a href="godoc.156.html#MapCodecOptions">MapCodecOptions</a>) *<a href="godoc.155.html#MapCodec">MapCodec</a></pre>
+				<p>
+NewMapCodec returns a MapCodec with options opts.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MapCodec.DecodeValue">func (*MapCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/map_codec.go?s=3264:3361#L108">DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#MapCodec.DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mc *<a href="godoc.155.html#MapCodec">MapCodec</a>) DecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DecodeValue is the ValueDecoder for map[string/decimal]* types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MapCodec.EncodeValue">func (*MapCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/map_codec.go?s=982:1079#L30">EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#MapCodec.EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (mc *<a href="godoc.155.html#MapCodec">MapCodec</a>) EncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EncodeValue is the ValueEncoder for map[*]* types.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Marshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=671:730#L11">Marshaler</a>
+				<a class="permalink" href="godoc.155.html#Marshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Marshaler is an interface implemented by types that can marshal themselves
+into a BSON document represented as bytes. The bytes returned must be a valid
+BSON document if the error is nil.
+</p>
+
+			<pre>type Marshaler interface {
+    MarshalBSON() ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="PointerCodec">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/pointer_codec.go?s=668:793#L16">PointerCodec</a>
+				<a class="permalink" href="godoc.155.html#PointerCodec">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+PointerCodec is the Codec used for pointers.
+</p>
+
+			<pre>type PointerCodec struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewPointerCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/pointer_codec.go?s=864:900#L23">NewPointerCodec</a>
+					<a class="permalink" href="godoc.155.html#NewPointerCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewPointerCodec() *<a href="godoc.155.html#PointerCodec">PointerCodec</a></pre>
+				<p>
+NewPointerCodec returns a PointerCodec that has been initialized.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="PointerCodec.DecodeValue">func (*PointerCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/pointer_codec.go?s=2108:2209#L67">DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#PointerCodec.DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pc *<a href="godoc.155.html#PointerCodec">PointerCodec</a>) DecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DecodeValue handles decoding a pointer by looking up a decoder for the type it points to and
+using that to decode. If the BSON value is Null, this method will set the pointer to nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PointerCodec.EncodeValue">func (*PointerCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/pointer_codec.go?s=1198:1299#L32">EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#PointerCodec.EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pc *<a href="godoc.155.html#PointerCodec">PointerCodec</a>) EncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EncodeValue handles encoding a pointer by either encoding it to BSON Null if the pointer is nil
+or looking up an encoder for the type of value the pointer points to.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Proxy">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/proxy.go?s=537:595#L2">Proxy</a>
+				<a class="permalink" href="godoc.155.html#Proxy">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Proxy is an interface implemented by types that cannot themselves be directly encoded. Types
+that implement this interface with have ProxyBSON called during the encoding process and that
+value will be encoded in place for the implementer.
+</p>
+
+			<pre>type Proxy interface {
+    ProxyBSON() (interface{}, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Registry">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=2321:2668#L68">Registry</a>
+				<a class="permalink" href="godoc.155.html#Registry">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Registry is used to store and retrieve codecs for types and interfaces. This type is the main
+typed passed around and Encoders and Decoders are constructed from it.
+</p>
+
+			<pre>type Registry struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Registry.LookupDecoder">func (*Registry) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=9329:9399#L303">LookupDecoder</a>
+					<a class="permalink" href="godoc.155.html#Registry.LookupDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.155.html#Registry">Registry</a>) LookupDecoder(t <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (<a href="godoc.155.html#ValueDecoder">ValueDecoder</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+LookupDecoder will inspect the registry for a decoder that satisfies the
+type provided. A decoder registered for a specific type will take
+precedence over a decoder registered for an interface the type satisfies,
+which takes precedence over a decoder for the reflect.Kind of the value. If
+no decoder can be found, an error is returned.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Registry.LookupEncoder">func (*Registry) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=7877:7947#L238">LookupEncoder</a>
+					<a class="permalink" href="godoc.155.html#Registry.LookupEncoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.155.html#Registry">Registry</a>) LookupEncoder(t <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) (<a href="godoc.155.html#ValueEncoder">ValueEncoder</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+LookupEncoder will inspect the registry for an encoder that satisfies the
+type provided. An encoder registered for a specific type will take
+precedence over an encoder registered for an interface the type satisfies,
+which takes precedence over an encoder for the reflect.Kind of the value. If
+no encoder can be found, an error is returned.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Registry.LookupTypeMapEntry">func (*Registry) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=10532:10609#L358">LookupTypeMapEntry</a>
+					<a class="permalink" href="godoc.155.html#Registry.LookupTypeMapEntry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.155.html#Registry">Registry</a>) LookupTypeMapEntry(bt <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>) (<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+LookupTypeMapEntry inspects the registry&#39;s type map for a Go type for the corresponding BSON
+type. If no type is found, ErrNoTypeMapEntry is returned.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RegistryBuilder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=1791:2146#L54">RegistryBuilder</a>
+				<a class="permalink" href="godoc.155.html#RegistryBuilder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A RegistryBuilder is used to build a Registry. This type is not goroutine
+safe.
+</p>
+
+			<pre>type RegistryBuilder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewRegistryBuilder">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=2729:2771#L84">NewRegistryBuilder</a>
+					<a class="permalink" href="godoc.155.html#NewRegistryBuilder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewRegistryBuilder() *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+NewRegistryBuilder creates a new empty RegistryBuilder.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="RegistryBuilder.Build">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=6456:6500#L196">Build</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.Build">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) Build() *<a href="godoc.155.html#Registry">Registry</a></pre>
+				<p>
+Build creates a Registry from the current state of this RegistryBuilder.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RegistryBuilder.RegisterCodec">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=3448:3539#L107">RegisterCodec</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.RegisterCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) RegisterCodec(t <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, codec <a href="godoc.155.html#ValueCodec">ValueCodec</a>) *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+RegisterCodec will register the provided ValueCodec for the provided type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RegistryBuilder.RegisterDecoder">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=4580:4673#L142">RegisterDecoder</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.RegisterDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) RegisterDecoder(t <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, dec <a href="godoc.155.html#ValueDecoder">ValueDecoder</a>) *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+RegisterDecoder will register the provided ValueDecoder to the provided type.
+</p>
+<p>
+The type registered will be used directly, so a decoder can be registered for a type and a
+different decoder can be registered for a pointer to that type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RegistryBuilder.RegisterDefaultDecoder">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=5442:5545#L176">RegisterDefaultDecoder</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.RegisterDefaultDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) RegisterDefaultDecoder(kind <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Kind">Kind</a>, dec <a href="godoc.155.html#ValueDecoder">ValueDecoder</a>) *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+RegisterDefaultDecoder will register the provided ValueDecoder to the
+provided kind.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RegistryBuilder.RegisterDefaultEncoder">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=5202:5305#L169">RegisterDefaultEncoder</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.RegisterDefaultEncoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) RegisterDefaultEncoder(kind <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Kind">Kind</a>, enc <a href="godoc.155.html#ValueEncoder">ValueEncoder</a>) *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+RegisterDefaultEncoder will registr the provided ValueEncoder to the provided
+kind.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RegistryBuilder.RegisterEncoder">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=3862:3955#L117">RegisterEncoder</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.RegisterEncoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) RegisterEncoder(t <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>, enc <a href="godoc.155.html#ValueEncoder">ValueEncoder</a>) *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+RegisterEncoder will register the provided ValueEncoder to the provided type.
+</p>
+<p>
+The type registered will be used directly, so an encoder can be registered for a type and a
+different encoder can be registered for a pointer to that type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RegistryBuilder.RegisterTypeMapEntry">func (*RegistryBuilder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/registry.go?s=6243:6342#L190">RegisterTypeMapEntry</a>
+					<a class="permalink" href="godoc.155.html#RegistryBuilder.RegisterTypeMapEntry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rb *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>) RegisterTypeMapEntry(bt <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, rt <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>) *<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+				<p>
+RegisterTypeMapEntry will register the provided type to the BSON type. The primary usage for this
+mapping is decoding situations where an empty interface is used and a default type needs to be
+created and decoded into.
+</p>
+<p>
+NOTE: It is unlikely that registering a type for BSON Embedded Document is actually desired. By
+registering a type map entry for BSON Embedded Document the type registered will be used in any
+case where a BSON Embedded Document will be decoded into an empty interface. For example, if you
+register primitive.M, the EmptyInterface decoder will always use primitive.M, even if an ancestor
+was a primitive.D.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StringCodec">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/string_codec.go?s=551:604#L11">StringCodec</a>
+				<a class="permalink" href="godoc.155.html#StringCodec">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StringCodec is the Codec used for struct values.
+</p>
+
+			<pre>type StringCodec struct {
+<span id="StringCodec.DecodeObjectIDAsHex"></span>    DecodeObjectIDAsHex <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewStringCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/string_codec.go?s=700:773#L18">NewStringCodec</a>
+					<a class="permalink" href="godoc.155.html#NewStringCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewStringCodec(opts ...*<a href="godoc.156.html">bsonoptions</a>.<a href="godoc.156.html#StringCodecOptions">StringCodecOptions</a>) *<a href="godoc.155.html#StringCodec">StringCodec</a></pre>
+				<p>
+NewStringCodec returns a StringCodec with options opts.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="StringCodec.DecodeValue">func (*StringCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/string_codec.go?s=1310:1412#L37">DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#StringCodec.DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.155.html#StringCodec">StringCodec</a>) DecodeValue(dctx <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DecodeValue is the ValueDecoder for string types.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StringCodec.EncodeValue">func (*StringCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/string_codec.go?s=944:1046#L24">EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#StringCodec.EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.155.html#StringCodec">StringCodec</a>) EncodeValue(ectx <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EncodeValue is the ValueEncoder for string types.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StructCodec">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_codec.go?s=900:1187#L25">StructCodec</a>
+				<a class="permalink" href="godoc.155.html#StructCodec">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StructCodec is the Codec used for struct values.
+</p>
+
+			<pre>type StructCodec struct {
+<span id="StructCodec.DecodeZeroStruct"></span>    DecodeZeroStruct        <a href="godoc.26.html#bool">bool</a>
+<span id="StructCodec.DecodeDeepZeroInline"></span>    DecodeDeepZeroInline    <a href="godoc.26.html#bool">bool</a>
+<span id="StructCodec.EncodeOmitDefaultStruct"></span>    EncodeOmitDefaultStruct <a href="godoc.26.html#bool">bool</a>
+<span id="StructCodec.AllowUnexportedFields"></span>    AllowUnexportedFields   <a href="godoc.26.html#bool">bool</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewStructCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_codec.go?s=1338:1439#L39">NewStructCodec</a>
+					<a class="permalink" href="godoc.155.html#NewStructCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewStructCodec(p <a href="godoc.155.html#StructTagParser">StructTagParser</a>, opts ...*<a href="godoc.156.html">bsonoptions</a>.<a href="godoc.156.html#StructCodecOptions">StructCodecOptions</a>) (*<a href="godoc.155.html#StructCodec">StructCodec</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewStructCodec returns a StructCodec that uses p for struct tag parsing.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="StructCodec.DecodeValue">func (*StructCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_codec.go?s=4561:4660#L162">DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#StructCodec.DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.155.html#StructCodec">StructCodec</a>) DecodeValue(r <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DecodeValue implements the Codec interface.
+By default, map types in val will not be cleared. If a map has existing key/value pairs, it will be extended with the new ones from vr.
+For slices, the decoder will set the length of the slice to zero and append all elements. The underlying array will not be cleared.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="StructCodec.EncodeValue">func (*StructCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_codec.go?s=2213:2312#L68">EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#StructCodec.EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (sc *<a href="godoc.155.html#StructCodec">StructCodec</a>) EncodeValue(r <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EncodeValue handles encoding generic struct types.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StructTagParser">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_tag_parser.go?s=392:484#L5">StructTagParser</a>
+				<a class="permalink" href="godoc.155.html#StructTagParser">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StructTagParser returns the struct tags for a given struct field.
+</p>
+
+			<pre>type StructTagParser interface {
+    ParseStructTags(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#StructField">StructField</a>) (<a href="godoc.155.html#StructTags">StructTags</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="StructTagParserFunc">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_tag_parser.go?s=590:660#L11">StructTagParserFunc</a>
+				<a class="permalink" href="godoc.155.html#StructTagParserFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StructTagParserFunc is an adapter that allows a generic function to be used
+as a StructTagParser.
+</p>
+
+			<pre>type StructTagParserFunc func(<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#StructField">StructField</a>) (<a href="godoc.155.html#StructTags">StructTags</a>, <a href="godoc.26.html#error">error</a>)</pre>
+
+			
+
+			
+				<p>
+DefaultStructTagParser is the StructTagParser used by the StructCodec by default.
+It will handle the bson struct tag. See the documentation for StructTags to see
+what each of the returned fields means.
+</p>
+<p>
+If there is no name in the struct tag fields, the struct field name is lowercased.
+The tag formats accepted are:
+</p>
+<pre>&#34;[&lt;key&gt;][,&lt;flag1&gt;[,&lt;flag2&gt;]]&#34;
+
+`(...) bson:&#34;[&lt;key&gt;][,&lt;flag1&gt;[,&lt;flag2&gt;]]&#34; (...)`
+</pre>
+<p>
+An example:
+</p>
+<pre>type T struct {
+    A bool
+    B int    &#34;myb&#34;
+    C string &#34;myc,omitempty&#34;
+    D string `bson:&#34;,omitempty&#34; json:&#34;jsonkey&#34;`
+    E int64  &#34;,minsize&#34;
+    F int64  &#34;myf,omitempty,minsize&#34;
+}
+</pre>
+<p>
+A struct tag either consisting entirely of &#39;-&#39; or with a bson key with a
+value consisting entirely of &#39;-&#39; will return a StructTags with Skip true and
+the remaining fields will be their default values.
+</p>
+
+				<pre>var <span id="DefaultStructTagParser">DefaultStructTagParser</span> <a href="godoc.155.html#StructTagParserFunc">StructTagParserFunc</a> = func(sf <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#StructField">StructField</a>) (<a href="godoc.155.html#StructTags">StructTags</a>, <a href="godoc.26.html#error">error</a>) {
+    key := <a href="godoc.54.html">strings</a>.<a href="godoc.54.html#ToLower">ToLower</a>(sf.<a href="godoc.155.html#Name">Name</a>)
+    tag, ok := sf.<a href="godoc.155.html#Tag">Tag</a>.<a href="godoc.155.html#Lookup">Lookup</a>(&#34;bson&#34;)
+    if !ok &amp;&amp; !<a href="godoc.54.html">strings</a>.<a href="godoc.54.html#Contains">Contains</a>(<a href="godoc.26.html#string">string</a>(sf.<a href="godoc.155.html#Tag">Tag</a>), &#34;:&#34;) &amp;&amp; <a href="godoc.26.html#len">len</a>(sf.<a href="godoc.155.html#Tag">Tag</a>) &gt; 0 {
+        tag = <a href="godoc.26.html#string">string</a>(sf.<a href="godoc.155.html#Tag">Tag</a>)
+    }
+    var <span id="st">st</span> <a href="godoc.155.html#StructTags">StructTags</a>
+    if tag == &#34;-&#34; {
+        st.<a href="godoc.155.html#Skip">Skip</a> = <a href="godoc.26.html#true">true</a>
+        return st, <a href="godoc.26.html#nil">nil</a>
+    }
+
+    for idx, str := range <a href="godoc.54.html">strings</a>.<a href="godoc.54.html#Split">Split</a>(tag, &#34;,&#34;) {
+        if idx == 0 &amp;&amp; str != &#34;&#34; {
+            key = str
+        }
+        switch str {
+        case &#34;omitempty&#34;:
+            st.<a href="godoc.155.html#OmitEmpty">OmitEmpty</a> = <a href="godoc.26.html#true">true</a>
+        case &#34;minsize&#34;:
+            st.<a href="godoc.155.html#MinSize">MinSize</a> = <a href="godoc.26.html#true">true</a>
+        case &#34;truncate&#34;:
+            st.<a href="godoc.155.html#Truncate">Truncate</a> = <a href="godoc.26.html#true">true</a>
+        case &#34;inline&#34;:
+            st.<a href="godoc.155.html#Inline">Inline</a> = <a href="godoc.26.html#true">true</a>
+        }
+    }
+
+    st.<a href="godoc.155.html#Name">Name</a> = key
+
+    return st, <a href="godoc.26.html#nil">nil</a>
+}</pre>
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="StructTagParserFunc.ParseStructTags">func (StructTagParserFunc) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_tag_parser.go?s=723:814#L14">ParseStructTags</a>
+					<a class="permalink" href="godoc.155.html#StructTagParserFunc.ParseStructTags">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (stpf <a href="godoc.155.html#StructTagParserFunc">StructTagParserFunc</a>) ParseStructTags(sf <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#StructField">StructField</a>) (<a href="godoc.155.html#StructTags">StructTags</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ParseStructTags implements the StructTagParser interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StructTags">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_tag_parser.go?s=2146:2270#L44">StructTags</a>
+				<a class="permalink" href="godoc.155.html#StructTags">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+StructTags represents the struct tag fields that the StructCodec uses during
+the encoding and decoding process.
+</p>
+<p>
+In the case of a struct, the lowercased field name is used as the key for each exported
+field but this behavior may be changed using a struct tag. The tag may also contain flags to
+adjust the marshalling behavior for the field.
+</p>
+<p>
+The properties are defined below:
+</p>
+<pre>OmitEmpty  Only include the field if it&#39;s not set to the zero value for the type or to
+           empty slices or maps.
+
+MinSize    Marshal an integer of a type larger than 32 bits value as an int32, if that&#39;s
+           feasible while preserving the numeric value.
+
+Truncate   When unmarshaling a BSON double, it is permitted to lose precision to fit within
+           a float32.
+
+Inline     Inline the field, which must be a struct or a map, causing all of its fields
+           or keys to be processed as if they were part of the outer struct. For maps,
+           keys must not conflict with the bson keys of other struct fields.
+
+Skip       This struct field should be skipped. This is usually denoted by parsing a &#34;-&#34;
+           for the name.
+</pre>
+<p>
+TODO(skriptble): Add tags for undefined as nil and for null as nil.
+</p>
+
+			<pre>type StructTags struct {
+<span id="StructTags.Name"></span>    Name      <a href="godoc.26.html#string">string</a>
+<span id="StructTags.OmitEmpty"></span>    OmitEmpty <a href="godoc.26.html#bool">bool</a>
+<span id="StructTags.MinSize"></span>    MinSize   <a href="godoc.26.html#bool">bool</a>
+<span id="StructTags.Truncate"></span>    Truncate  <a href="godoc.26.html#bool">bool</a>
+<span id="StructTags.Inline"></span>    Inline    <a href="godoc.26.html#bool">bool</a>
+<span id="StructTags.Skip"></span>    Skip      <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TimeCodec">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/time_codec.go?s=619:667#L16">TimeCodec</a>
+				<a class="permalink" href="godoc.155.html#TimeCodec">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TimeCodec is the Codec used for time.Time values.
+</p>
+
+			<pre>type TimeCodec struct {
+<span id="TimeCodec.UseLocalTimeZone"></span>    UseLocalTimeZone <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewTimeCodec">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/time_codec.go?s=757:824#L23">NewTimeCodec</a>
+					<a class="permalink" href="godoc.155.html#NewTimeCodec">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewTimeCodec(opts ...*<a href="godoc.156.html">bsonoptions</a>.<a href="godoc.156.html#TimeCodecOptions">TimeCodecOptions</a>) *<a href="godoc.155.html#TimeCodec">TimeCodec</a></pre>
+				<p>
+NewTimeCodec returns a TimeCodec with options opts.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="TimeCodec.DecodeValue">func (*TimeCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/time_codec.go?s=1071:1169#L34">DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#TimeCodec.DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tc *<a href="godoc.155.html#TimeCodec">TimeCodec</a>) DecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DecodeValue is the ValueDecoderFunc for time.Time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="TimeCodec.EncodeValue">func (*TimeCodec) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/time_codec.go?s=2262:2360#L82">EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#TimeCodec.EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (tc *<a href="godoc.155.html#TimeCodec">TimeCodec</a>) EncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EncodeValue is the ValueEncoderFunc for time.TIme.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TransitionError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/mode.go?s=933:1018#L41">TransitionError</a>
+				<a class="permalink" href="godoc.155.html#TransitionError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TransitionError is an error returned when an invalid progressing a
+ValueReader or ValueWriter state machine occurs.
+</p>
+
+			<pre>type TransitionError struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="TransitionError.Error">func (TransitionError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/mode.go?s=1020:1060#L47">Error</a>
+					<a class="permalink" href="godoc.155.html#TransitionError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (te <a href="godoc.155.html#TransitionError">TransitionError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Unmarshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=1319:1378#L27">Unmarshaler</a>
+				<a class="permalink" href="godoc.155.html#Unmarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Unmarshaler is an interface implemented by types that can unmarshal a BSON
+document representation of themselves. The BSON bytes can be assumed to be
+valid. UnmarshalBSON must copy the BSON bytes if it wishes to retain the data
+after returning.
+</p>
+
+			<pre>type Unmarshaler interface {
+    UnmarshalBSON([]<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueCodec">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=4159:4216#L116">ValueCodec</a>
+				<a class="permalink" href="godoc.155.html#ValueCodec">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueCodec is the interface that groups the methods to encode and decode
+values.
+</p>
+
+			<pre>type ValueCodec interface {
+    <a href="godoc.155.html#ValueEncoder">ValueEncoder</a>
+    <a href="godoc.155.html#ValueDecoder">ValueDecoder</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueDecoder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=4908:5008#L136">ValueDecoder</a>
+				<a class="permalink" href="godoc.155.html#ValueDecoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueDecoder is the interface implemented by types that can handle the decoding of a value.
+</p>
+
+			<pre>type ValueDecoder interface {
+    DecodeValue(<a href="godoc.155.html#DecodeContext">DecodeContext</a>, <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			<div id="example_ValueDecoder" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+var _ ValueDecoderFunc = func(dc DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error {
+    if !val.CanSet() || val.Kind() != reflect.String {
+        return ValueDecoderError{Name: &#34;StringDecodeValue&#34;, Kinds: []reflect.Kind{reflect.String}, Received: val}
+    }
+
+    if vr.Type() != bsontype.String {
+        return fmt.Errorf(&#34;cannot decode %v into a string type&#34;, vr.Type())
+    }
+
+    str, err := vr.ReadString()
+    if err != nil {
+        return err
+    }
+    val.SetString(str)
+    return nil
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueDecoderError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=2712:2836#L69">ValueDecoderError</a>
+				<a class="permalink" href="godoc.155.html#ValueDecoderError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueDecoderError is an error returned from a ValueDecoder when the provided value can&#39;t be
+decoded by the ValueDecoder.
+</p>
+
+			<pre>type ValueDecoderError struct {
+<span id="ValueDecoderError.Name"></span>    Name     <a href="godoc.26.html#string">string</a>
+<span id="ValueDecoderError.Types"></span>    Types    []<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+<span id="ValueDecoderError.Kinds"></span>    Kinds    []<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Kind">Kind</a>
+<span id="ValueDecoderError.Received"></span>    Received <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueDecoderError.Error">func (ValueDecoderError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=2838:2881#L76">Error</a>
+					<a class="permalink" href="godoc.155.html#ValueDecoderError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (vde <a href="godoc.155.html#ValueDecoderError">ValueDecoderError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueDecoderFunc">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=5136:5218#L142">ValueDecoderFunc</a>
+				<a class="permalink" href="godoc.155.html#ValueDecoderFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueDecoderFunc is an adapter function that allows a function with the correct signature to be
+used as a ValueDecoder.
+</p>
+
+			<pre>type ValueDecoderFunc func(<a href="godoc.155.html#DecodeContext">DecodeContext</a>, <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueDecoderFunc.DecodeValue">func (ValueDecoderFunc) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=5274:5378#L145">DecodeValue</a>
+					<a class="permalink" href="godoc.155.html#ValueDecoderFunc.DecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (fn <a href="godoc.155.html#ValueDecoderFunc">ValueDecoderFunc</a>) DecodeValue(dc <a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+DecodeValue implements the ValueDecoder interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueEncoder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=4313:4413#L122">ValueEncoder</a>
+				<a class="permalink" href="godoc.155.html#ValueEncoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueEncoder is the interface implemented by types that can handle the encoding of a value.
+</p>
+
+			<pre>type ValueEncoder interface {
+    EncodeValue(<a href="godoc.155.html#EncodeContext">EncodeContext</a>, <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			<div id="example_ValueEncoder" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+var _ ValueEncoderFunc = func(ec EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error {
+    if val.Kind() != reflect.String {
+        return ValueEncoderError{Name: &#34;StringEncodeValue&#34;, Kinds: []reflect.Kind{reflect.String}, Received: val}
+    }
+
+    return vw.WriteString(val.String())
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueEncoderError">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=1872:1996#L41">ValueEncoderError</a>
+				<a class="permalink" href="godoc.155.html#ValueEncoderError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueEncoderError is an error returned from a ValueEncoder when the provided value can&#39;t be
+encoded by the ValueEncoder.
+</p>
+
+			<pre>type ValueEncoderError struct {
+<span id="ValueEncoderError.Name"></span>    Name     <a href="godoc.26.html#string">string</a>
+<span id="ValueEncoderError.Types"></span>    Types    []<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Type">Type</a>
+<span id="ValueEncoderError.Kinds"></span>    Kinds    []<a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Kind">Kind</a>
+<span id="ValueEncoderError.Received"></span>    Received <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueEncoderError.Error">func (ValueEncoderError) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=1998:2041#L48">Error</a>
+					<a class="permalink" href="godoc.155.html#ValueEncoderError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (vee <a href="godoc.155.html#ValueEncoderError">ValueEncoderError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueEncoderFunc">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=4541:4623#L128">ValueEncoderFunc</a>
+				<a class="permalink" href="godoc.155.html#ValueEncoderFunc">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueEncoderFunc is an adapter function that allows a function with the correct signature to be
+used as a ValueEncoder.
+</p>
+
+			<pre>type ValueEncoderFunc func(<a href="godoc.155.html#EncodeContext">EncodeContext</a>, <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueEncoderFunc.EncodeValue">func (ValueEncoderFunc) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=4679:4783#L131">EncodeValue</a>
+					<a class="permalink" href="godoc.155.html#ValueEncoderFunc.EncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (fn <a href="godoc.155.html#ValueEncoderFunc">ValueEncoderFunc</a>) EncodeValue(ec <a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+EncodeValue implements the ValueEncoder interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueMarshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=976:1060#L19">ValueMarshaler</a>
+				<a class="permalink" href="godoc.155.html#ValueMarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueMarshaler is an interface implemented by types that can marshal
+themselves into a BSON value as bytes. The type must be the valid type for
+the bytes returned. The bytes and byte type together must be valid if the
+error is nil.
+</p>
+
+			<pre>type ValueMarshaler interface {
+    MarshalBSONValue() (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueUnmarshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/bsoncodec.go?s=1659:1743#L35">ValueUnmarshaler</a>
+				<a class="permalink" href="godoc.155.html#ValueUnmarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueUnmarshaler is an interface implemented by types that can unmarshal a
+BSON value representaiton of themselves. The BSON bytes and type can be
+assumed to be valid. UnmarshalBSONValue must copy the BSON value bytes if it
+wishes to retain the data after returning.
+</p>
+
+			<pre>type ValueUnmarshaler interface {
+    UnmarshalBSONValue(<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Zeroer">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bsoncodec/struct_codec.go?s=806:846#L20">Zeroer</a>
+				<a class="permalink" href="godoc.155.html#Zeroer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Zeroer allows custom struct types to implement a report of zero
+state. All struct types that don&#39;t implement Zeroer or where IsZero
+returns false are considered to be not zero.
+</p>
+
+			<pre>type Zeroer interface {
+    IsZero() <a href="godoc.26.html#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

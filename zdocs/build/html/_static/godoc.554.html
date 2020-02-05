@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>errors - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.554.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package errors
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "errors"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.554.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.554.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.554.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package errors implements functions to manipulate errors.
+</p>
+<p>
+The New function creates errors whose only content is a text message.
+</p>
+<p>
+The Unwrap, Is and As functions work on errors that may wrap other errors.
+An error wraps another error if its type has the method
+</p>
+<pre>Unwrap() error
+</pre>
+<p>
+If e.Unwrap() returns a non-nil error w, then we say that e wraps w.
+</p>
+<p>
+Unwrap unpacks wrapped errors. If its argument&#39;s type has an
+Unwrap method, it calls the method once. Otherwise, it returns nil.
+</p>
+<p>
+A simple way to create wrapped errors is to call fmt.Errorf and apply the %w verb
+to the error argument:
+</p>
+<pre>errors.Unwrap(fmt.Errorf(&#34;... %w ...&#34;, ..., err, ...))
+</pre>
+<p>
+returns err.
+</p>
+<p>
+Is unwraps its first argument sequentially looking for an error that matches the
+second. It reports whether it finds a match. It should be used in preference to
+simple equality checks:
+</p>
+<pre>if errors.Is(err, os.ErrExist)
+</pre>
+<p>
+is preferable to
+</p>
+<pre>if err == os.ErrExist
+</pre>
+<p>
+because the former will succeed if err wraps os.ErrExist.
+</p>
+<p>
+As unwraps its first argument sequentially looking for an error that can be
+assigned to its second argument, which must be a pointer. If it succeeds, it
+performs the assignment and returns true. Otherwise, it returns false. The form
+</p>
+<pre>var perr *os.PathError
+if errors.As(err, &amp;perr) {
+	fmt.Println(perr.Path)
+}
+</pre>
+<p>
+is preferable to
+</p>
+<pre>if perr, ok := err.(*os.PathError); ok {
+	fmt.Println(perr.Path)
+}
+</pre>
+<p>
+because the former will succeed if err wraps an *os.PathError.
+</p>
+
+				<div id="example_" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">package errors_test
+
+import (
+    &#34;fmt&#34;
+    &#34;time&#34;
+)
+
+<span class="comment">// MyError is an error implementation that includes a time and message.</span>
+type MyError struct {
+    When time.Time
+    What string
+}
+
+func (e MyError) Error() string {
+    return fmt.Sprintf(&#34;%v: %v&#34;, e.When, e.What)
+}
+
+func oops() error {
+    return MyError{
+        time.Date(1989, 3, 15, 22, 30, 0, 0, time.UTC),
+        &#34;the file system has gone away&#34;,
+    }
+}
+
+func Example() {
+    if err := oops(); err != nil {
+        fmt.Println(err)
+    }
+    <span class="comment">// Output: 1989-03-15 22:30:00 +0000 UTC: the file system has gone away</span>
+}
+</pre>
+			
+		
+	</div>
+</div>
+
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.554.html#As">func As(err error, target interface{}) bool</a></dd>
+			
+				
+				<dd><a href="godoc.554.html#Is">func Is(err, target error) bool</a></dd>
+			
+				
+				<dd><a href="godoc.554.html#New">func New(text string) error</a></dd>
+			
+				
+				<dd><a href="godoc.554.html#Unwrap">func Unwrap(err error) error</a></dd>
+			
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.554.html#example_">Package</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.554.html#example_As">As</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.554.html#example_New">New</a></dd>
+			
+			<dd><a class="exampleLink" href="godoc.554.html#example_New_errorf">New (Errorf)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/errors/errors.go">errors.go</a>
+			
+				<a href="http://localhost:6161/src/errors/wrap.go">wrap.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="As">func <a href="http://localhost:6161/src/errors/wrap.go?s=2058:2101#L56">As</a>
+				<a class="permalink" href="godoc.554.html#As">&#xb6;</a>
+				
+				<span title="Added in Go 1.13">1.13</span>
+			</h2>
+			<pre>func As(err <a href="godoc.26.html#error">error</a>, target interface{}) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+As finds the first error in err&#39;s chain that matches target, and if so, sets
+target to that error value and returns true.
+</p>
+<p>
+The chain consists of err itself followed by the sequence of errors obtained by
+repeatedly calling Unwrap.
+</p>
+<p>
+An error matches target if the error&#39;s concrete value is assignable to the value
+pointed to by target, or if the error has a method As(interface{}) bool such that
+As(target) returns true. In the latter case, the As method is responsible for
+setting target.
+</p>
+<p>
+As will panic if target is not a non-nil pointer to either a type that implements
+error, or to any interface type. As returns false if err is nil.
+</p>
+
+			<div id="example_As" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">if _, err := os.Open(&#34;non-existing&#34;); err != nil {
+    var pathError *os.PathError
+    if errors.As(err, &amp;pathError) {
+        fmt.Println(&#34;Failed at path:&#34;, pathError.Path)
+    } else {
+        fmt.Println(err)
+    }
+}
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">Failed at path: non-existing
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="Is">func <a href="http://localhost:6161/src/errors/wrap.go?s=837:868#L21">Is</a>
+				<a class="permalink" href="godoc.554.html#Is">&#xb6;</a>
+				
+				<span title="Added in Go 1.13">1.13</span>
+			</h2>
+			<pre>func Is(err, target <a href="godoc.26.html#error">error</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			<p>
+Is reports whether any error in err&#39;s chain matches target.
+</p>
+<p>
+The chain consists of err itself followed by the sequence of errors obtained by
+repeatedly calling Unwrap.
+</p>
+<p>
+An error is considered to match a target if it is equal to that target or if
+it implements a method Is(error) bool such that Is(target) returns true.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="New">func <a href="http://localhost:6161/src/errors/errors.go?s=1875:1902#L48">New</a>
+				<a class="permalink" href="godoc.554.html#New">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func New(text <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+New returns an error that formats as the given text.
+Each call to New returns a distinct error value even if the text is identical.
+</p>
+
+			<div id="example_New" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">err := errors.New(&#34;emit macho dwarf: elf header corrupted&#34;)
+if err != nil {
+    fmt.Print(err)
+}
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">emit macho dwarf: elf header corrupted
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_New_errorf" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (Errorf)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (Errorf)</span></p>
+		<p>The fmt package&#39;s Errorf function lets us use the package&#39;s formatting
+features to create descriptive error messages.
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">const name, id = &#34;bimmler&#34;, 17
+err := fmt.Errorf(&#34;user %q (id %d) not found&#34;, name, id)
+if err != nil {
+    fmt.Print(err)
+}
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">user &#34;bimmler&#34; (id 17) not found
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+
+		
+			
+			
+			<h2 id="Unwrap">func <a href="http://localhost:6161/src/errors/wrap.go?s=372:400#L4">Unwrap</a>
+				<a class="permalink" href="godoc.554.html#Unwrap">&#xb6;</a>
+				
+				<span title="Added in Go 1.13">1.13</span>
+			</h2>
+			<pre>func Unwrap(err <a href="godoc.26.html#error">error</a>) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Unwrap returns the result of calling the Unwrap method on err, if err&#39;s
+type contains an Unwrap method returning error.
+Otherwise, Unwrap returns nil.
+</p>
+
+			
+			
+
+		
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

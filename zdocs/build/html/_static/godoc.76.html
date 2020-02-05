@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>incremental - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.76.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package incremental
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/GeertJohan/go.incremental"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.76.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.76.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+				<dd><a href="godoc.76.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+package incremental provides concurency-safe incremental numbers.
+</p>
+<p>
+This package was created by a simple piece of code located in the gen subdirectory. Please modify that command if you want to modify this package.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+			
+				
+				<dd><a href="godoc.76.html#Int">type Int</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int.Last">func (i *Int) Last() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int.Next">func (i *Int) Next() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int.Set">func (i *Int) Set(value int)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Int16">type Int16</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int16.Last">func (i *Int16) Last() int16</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int16.Next">func (i *Int16) Next() int16</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int16.Set">func (i *Int16) Set(value int16)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Int32">type Int32</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int32.Last">func (i *Int32) Last() int32</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int32.Next">func (i *Int32) Next() int32</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int32.Set">func (i *Int32) Set(value int32)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Int64">type Int64</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int64.Last">func (i *Int64) Last() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int64.Next">func (i *Int64) Next() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int64.Set">func (i *Int64) Set(value int64)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Int8">type Int8</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int8.Last">func (i *Int8) Last() int8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int8.Next">func (i *Int8) Next() int8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Int8.Set">func (i *Int8) Set(value int8)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Uint">type Uint</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint.Last">func (i *Uint) Last() uint</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint.Next">func (i *Uint) Next() uint</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint.Set">func (i *Uint) Set(value uint)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Uint16">type Uint16</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint16.Last">func (i *Uint16) Last() uint16</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint16.Next">func (i *Uint16) Next() uint16</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint16.Set">func (i *Uint16) Set(value uint16)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Uint32">type Uint32</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint32.Last">func (i *Uint32) Last() uint32</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint32.Next">func (i *Uint32) Next() uint32</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint32.Set">func (i *Uint32) Set(value uint32)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Uint64">type Uint64</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint64.Last">func (i *Uint64) Last() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint64.Next">func (i *Uint64) Next() uint64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint64.Set">func (i *Uint64) Set(value uint64)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.76.html#Uint8">type Uint8</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint8.Last">func (i *Uint8) Last() uint8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint8.Next">func (i *Uint8) Next() uint8</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.76.html#Uint8.Set">func (i *Uint8) Set(value uint8)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int.go">int.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int16.go">int16.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int32.go">int32.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int64.go">int64.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int8.go">int8.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint.go">uint.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint16.go">uint16.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint32.go">uint32.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint64.go">uint64.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint8.go">uint8.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+		
+			
+			
+			<h2 id="Int">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int.go?s=41:97#L1">Int</a>
+				<a class="permalink" href="godoc.76.html#Int">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Int struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Int.Last">func (*Int) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int.go?s=406:430#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Int.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int">Int</a>) Last() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Last returns the number (int) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int.Next">func (*Int) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int.go?s=202:226#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Int.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int">Int</a>) Next() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Int
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int.Set">func (*Int) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int.go?s=561:589#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Int.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int">Int</a>) Set(value <a href="godoc.26.html#int">int</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Int16">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int16.go?s=41:101#L1">Int16</a>
+				<a class="permalink" href="godoc.76.html#Int16">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Int16 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Int16.Last">func (*Int16) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int16.go?s=418:446#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Int16.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int16">Int16</a>) Last() <a href="godoc.26.html#int16">int16</a></pre>
+				<p>
+Last returns the number (int16) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int16.Next">func (*Int16) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int16.go?s=208:236#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Int16.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int16">Int16</a>) Next() <a href="godoc.26.html#int16">int16</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Int16
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int16.Set">func (*Int16) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int16.go?s=577:609#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Int16.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int16">Int16</a>) Set(value <a href="godoc.26.html#int16">int16</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Int32">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int32.go?s=41:101#L1">Int32</a>
+				<a class="permalink" href="godoc.76.html#Int32">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Int32 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Int32.Last">func (*Int32) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int32.go?s=418:446#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Int32.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int32">Int32</a>) Last() <a href="godoc.26.html#int32">int32</a></pre>
+				<p>
+Last returns the number (int32) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int32.Next">func (*Int32) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int32.go?s=208:236#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Int32.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int32">Int32</a>) Next() <a href="godoc.26.html#int32">int32</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Int32
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int32.Set">func (*Int32) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int32.go?s=577:609#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Int32.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int32">Int32</a>) Set(value <a href="godoc.26.html#int32">int32</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Int64">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int64.go?s=41:101#L1">Int64</a>
+				<a class="permalink" href="godoc.76.html#Int64">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Int64 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Int64.Last">func (*Int64) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int64.go?s=418:446#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Int64.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int64">Int64</a>) Last() <a href="godoc.26.html#int64">int64</a></pre>
+				<p>
+Last returns the number (int64) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int64.Next">func (*Int64) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int64.go?s=208:236#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Int64.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int64">Int64</a>) Next() <a href="godoc.26.html#int64">int64</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Int64
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int64.Set">func (*Int64) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int64.go?s=577:609#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Int64.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int64">Int64</a>) Set(value <a href="godoc.26.html#int64">int64</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Int8">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int8.go?s=41:99#L1">Int8</a>
+				<a class="permalink" href="godoc.76.html#Int8">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Int8 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Int8.Last">func (*Int8) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int8.go?s=412:438#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Int8.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int8">Int8</a>) Last() <a href="godoc.26.html#int8">int8</a></pre>
+				<p>
+Last returns the number (int8) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int8.Next">func (*Int8) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int8.go?s=205:231#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Int8.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int8">Int8</a>) Next() <a href="godoc.26.html#int8">int8</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Int8
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Int8.Set">func (*Int8) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/int8.go?s=569:599#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Int8.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Int8">Int8</a>) Set(value <a href="godoc.26.html#int8">int8</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Uint">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint.go?s=41:99#L1">Uint</a>
+				<a class="permalink" href="godoc.76.html#Uint">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Uint struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Uint.Last">func (*Uint) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint.go?s=412:438#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Uint.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint">Uint</a>) Last() <a href="godoc.26.html#uint">uint</a></pre>
+				<p>
+Last returns the number (uint) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint.Next">func (*Uint) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint.go?s=205:231#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Uint.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint">Uint</a>) Next() <a href="godoc.26.html#uint">uint</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Uint
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint.Set">func (*Uint) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint.go?s=569:599#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Uint.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint">Uint</a>) Set(value <a href="godoc.26.html#uint">uint</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Uint16">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint16.go?s=41:103#L1">Uint16</a>
+				<a class="permalink" href="godoc.76.html#Uint16">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Uint16 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Uint16.Last">func (*Uint16) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint16.go?s=424:454#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Uint16.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint16">Uint16</a>) Last() <a href="godoc.26.html#uint16">uint16</a></pre>
+				<p>
+Last returns the number (uint16) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint16.Next">func (*Uint16) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint16.go?s=211:241#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Uint16.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint16">Uint16</a>) Next() <a href="godoc.26.html#uint16">uint16</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Uint16
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint16.Set">func (*Uint16) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint16.go?s=585:619#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Uint16.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint16">Uint16</a>) Set(value <a href="godoc.26.html#uint16">uint16</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Uint32">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint32.go?s=41:103#L1">Uint32</a>
+				<a class="permalink" href="godoc.76.html#Uint32">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Uint32 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Uint32.Last">func (*Uint32) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint32.go?s=424:454#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Uint32.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint32">Uint32</a>) Last() <a href="godoc.26.html#uint32">uint32</a></pre>
+				<p>
+Last returns the number (uint32) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint32.Next">func (*Uint32) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint32.go?s=211:241#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Uint32.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint32">Uint32</a>) Next() <a href="godoc.26.html#uint32">uint32</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Uint32
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint32.Set">func (*Uint32) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint32.go?s=585:619#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Uint32.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint32">Uint32</a>) Set(value <a href="godoc.26.html#uint32">uint32</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Uint64">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint64.go?s=41:103#L1">Uint64</a>
+				<a class="permalink" href="godoc.76.html#Uint64">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Uint64 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Uint64.Last">func (*Uint64) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint64.go?s=424:454#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Uint64.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint64">Uint64</a>) Last() <a href="godoc.26.html#uint64">uint64</a></pre>
+				<p>
+Last returns the number (uint64) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint64.Next">func (*Uint64) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint64.go?s=211:241#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Uint64.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint64">Uint64</a>) Next() <a href="godoc.26.html#uint64">uint64</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Uint64
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint64.Set">func (*Uint64) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint64.go?s=585:619#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Uint64.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint64">Uint64</a>) Set(value <a href="godoc.26.html#uint64">uint64</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Uint8">type <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint8.go?s=41:101#L1">Uint8</a>
+				<a class="permalink" href="godoc.76.html#Uint8">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Uint8 struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Uint8.Last">func (*Uint8) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint8.go?s=418:446#L11">Last</a>
+					<a class="permalink" href="godoc.76.html#Uint8.Last">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint8">Uint8</a>) Last() <a href="godoc.26.html#uint8">uint8</a></pre>
+				<p>
+Last returns the number (uint8) that was returned by the most recent call to this instance&#39;s Next()
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint8.Next">func (*Uint8) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint8.go?s=208:236#L3">Next</a>
+					<a class="permalink" href="godoc.76.html#Uint8.Next">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint8">Uint8</a>) Next() <a href="godoc.26.html#uint8">uint8</a></pre>
+				<p>
+Next returns with an integer that is exactly one higher as the previous call to Next() for this Uint8
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Uint8.Set">func (*Uint8) <a href="http://localhost:6161/src/github.com/GeertJohan/go.incremental/uint8.go?s=577:609#L16">Set</a>
+					<a class="permalink" href="godoc.76.html#Uint8.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (i *<a href="godoc.76.html#Uint8">Uint8</a>) Set(value <a href="godoc.26.html#uint8">uint8</a>)</pre>
+				<p>
+Set changes the increment to given value, the succeeding call to Next() will return the given value+1
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="http://localhost:6161/pkg/github.com/GeertJohan/">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.77.html">example</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.78.html">gen</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

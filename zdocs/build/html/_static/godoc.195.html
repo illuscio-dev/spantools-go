@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>drivertest - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.195.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package drivertest
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/drivertest"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.195.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.195.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.195.html#MakeReply">func MakeReply(doc bsoncore.Document) []byte</a></dd>
+			
+			
+				
+				<dd><a href="godoc.195.html#ChannelConn">type ChannelConn</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelConn.Address">func (c *ChannelConn) Address() address.Address</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelConn.Close">func (c *ChannelConn) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelConn.Description">func (c *ChannelConn) Description() description.Server</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelConn.ID">func (c *ChannelConn) ID() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelConn.ReadWireMessage">func (c *ChannelConn) ReadWireMessage(ctx context.Context, dst []byte) ([]byte, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelConn.WriteWireMessage">func (c *ChannelConn) WriteWireMessage(ctx context.Context, wm []byte) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.195.html#ChannelNetConn">type ChannelNetConn</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.AddResponse">func (c *ChannelNetConn) AddResponse(resp []byte) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.Close">func (c *ChannelNetConn) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.GetWrittenMessage">func (c *ChannelNetConn) GetWrittenMessage() []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.LocalAddr">func (c *ChannelNetConn) LocalAddr() net.Addr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.Read">func (c *ChannelNetConn) Read(b []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.RemoteAddr">func (c *ChannelNetConn) RemoteAddr() net.Addr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.SetDeadline">func (c *ChannelNetConn) SetDeadline(_ time.Time) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.SetReadDeadline">func (c *ChannelNetConn) SetReadDeadline(_ time.Time) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.SetWriteDeadline">func (c *ChannelNetConn) SetWriteDeadline(_ time.Time) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.195.html#ChannelNetConn.Write">func (c *ChannelNetConn) Write(b []byte) (int, error)</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go">channel_conn.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go">channel_netconn.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="MakeReply">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=1915:1959#L58">MakeReply</a>
+				<a class="permalink" href="godoc.195.html#MakeReply">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MakeReply(doc <a href="godoc.185.html">bsoncore</a>.<a href="godoc.185.html#Document">Document</a>) []<a href="godoc.26.html#byte">byte</a></pre>
+			<p>
+MakeReply creates an OP_REPLY wiremessage from a BSON document
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ChannelConn">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=653:790#L11">ChannelConn</a>
+				<a class="permalink" href="godoc.195.html#ChannelConn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ChannelConn implements the driver.Connection interface by reading and writing wire messages
+to a channel
+</p>
+
+			<pre>type ChannelConn struct {
+<span id="ChannelConn.WriteErr"></span>    WriteErr <a href="godoc.26.html#error">error</a>
+<span id="ChannelConn.Written"></span>    Written  chan []<a href="godoc.26.html#byte">byte</a>
+<span id="ChannelConn.ReadResp"></span>    ReadResp chan []<a href="godoc.26.html#byte">byte</a>
+<span id="ChannelConn.ReadErr"></span>    ReadErr  chan <a href="godoc.26.html#error">error</a>
+<span id="ChannelConn.Desc"></span>    Desc     <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ChannelConn.Address">func (*ChannelConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=1762:1809#L55">Address</a>
+					<a class="permalink" href="godoc.195.html#ChannelConn.Address">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelConn">ChannelConn</a>) Address() <a href="godoc.188.html">address</a>.<a href="godoc.188.html#Address">Address</a></pre>
+				<p>
+Address implements the driver.Connection interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelConn.Close">func (*ChannelConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=1549:1584#L45">Close</a>
+					<a class="permalink" href="godoc.195.html#ChannelConn.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelConn">ChannelConn</a>) Close() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Close implements the driver.Connection interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelConn.Description">func (*ChannelConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=1422:1476#L42">Description</a>
+					<a class="permalink" href="godoc.195.html#ChannelConn.Description">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelConn">ChannelConn</a>) Description() <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a></pre>
+				<p>
+Description implements the driver.Connection interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelConn.ID">func (*ChannelConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=1652:1685#L50">ID</a>
+					<a class="permalink" href="godoc.195.html#ChannelConn.ID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelConn">ChannelConn</a>) ID() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+ID implements the driver.Connection interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelConn.ReadWireMessage">func (*ChannelConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=1142:1228#L30">ReadWireMessage</a>
+					<a class="permalink" href="godoc.195.html#ChannelConn.ReadWireMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelConn">ChannelConn</a>) ReadWireMessage(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, dst []<a href="godoc.26.html#byte">byte</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ReadWireMessage implements the driver.Connection interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelConn.WriteWireMessage">func (*ChannelConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_conn.go?s=856:932#L20">WriteWireMessage</a>
+					<a class="permalink" href="godoc.195.html#ChannelConn.WriteWireMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelConn">ChannelConn</a>) WriteWireMessage(ctx <a href="godoc.159.html">context</a>.<a href="godoc.159.html#Context">Context</a>, wm []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+WriteWireMessage implements the driver.Connection interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ChannelNetConn">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=430:541#L6">ChannelNetConn</a>
+				<a class="permalink" href="godoc.195.html#ChannelNetConn">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ChannelNetConn implements the net.Conn interface by reading and writing wire messages to a channel.
+</p>
+
+			<pre>type ChannelNetConn struct {
+<span id="ChannelNetConn.WriteErr"></span>    WriteErr <a href="godoc.26.html#error">error</a>
+<span id="ChannelNetConn.Written"></span>    Written  chan []<a href="godoc.26.html#byte">byte</a>
+<span id="ChannelNetConn.ReadResp"></span>    ReadResp chan []<a href="godoc.26.html#byte">byte</a>
+<span id="ChannelNetConn.ReadErr"></span>    ReadErr  chan <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ChannelNetConn.AddResponse">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=2091:2146#L77">AddResponse</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.AddResponse">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) AddResponse(resp []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+AddResponse adds a response to the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.Close">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1086:1124#L38">Close</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) Close() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Close closes the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.GetWrittenMessage">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1921:1972#L68">GetWrittenMessage</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.GetWrittenMessage">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) GetWrittenMessage() []<a href="godoc.26.html#byte">byte</a></pre>
+				<p>
+GetWrittenMessage gets the last wire message written to the connection
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.LocalAddr">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1190:1235#L43">LocalAddr</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.LocalAddr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) LocalAddr() <a href="godoc.17.html">net</a>.<a href="godoc.17.html#Addr">Addr</a></pre>
+				<p>
+LocalAddr returns the local network address.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.Read">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=582:634#L14">Read</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) Read(b []<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.26.html#int">int</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Read reads data from the connection
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.RemoteAddr">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1303:1349#L48">RemoteAddr</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.RemoteAddr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) RemoteAddr() <a href="godoc.17.html">net</a>.<a href="godoc.17.html#Addr">Addr</a></pre>
+				<p>
+RemoteAddr returns the remote network address.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.SetDeadline">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1448:1503#L53">SetDeadline</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) SetDeadline(_ <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetDeadline sets the read and write deadlines associated with the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.SetReadDeadline">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1606:1665#L58">SetReadDeadline</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.SetReadDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) SetReadDeadline(_ <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetReadDeadline sets the read and write deadlines associated with the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.SetWriteDeadline">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=1769:1829#L63">SetWriteDeadline</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.SetWriteDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) SetWriteDeadline(_ <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetWriteDeadline sets the read and write deadlines associated with the connection.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ChannelNetConn.Write">func (*ChannelNetConn) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/drivertest/channel_netconn.go?s=798:851#L25">Write</a>
+					<a class="permalink" href="godoc.195.html#ChannelNetConn.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.195.html#ChannelNetConn">ChannelNetConn</a>) Write(b []<a href="godoc.26.html#byte">byte</a>) (<a href="godoc.26.html#int">int</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Write writes data to the connection.
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

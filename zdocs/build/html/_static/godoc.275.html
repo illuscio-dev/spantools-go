@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>zip - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.275.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package zip
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "golang.org/x/mod/zip"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.275.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.275.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package zip provides functions for creating and extracting module zip files.
+</p>
+<p>
+Module zip files have several restrictions listed below. These are necessary
+to ensure that module zip files can be extracted consistently on supported
+platforms and file systems.
+</p>
+<p>
+• All file paths within a zip file must start with &#34;&lt;module&gt;@&lt;version&gt;/&#34;,
+where &#34;&lt;module&gt;&#34; is the module path and &#34;&lt;version&gt;&#34; is the version.
+The module path must be valid (see golang.org/x/mod/module.CheckPath).
+The version must be valid and canonical (see
+golang.org/x/mod/module.CanonicalVersion). The path must have a major
+version suffix consistent with the version (see
+golang.org/x/mod/module.Check). The part of the file path after the
+&#34;&lt;module&gt;@&lt;version&gt;/&#34; prefix must be valid (see
+golang.org/x/mod/module.CheckFilePath).
+</p>
+<p>
+• No two file paths may be equal under Unicode case-folding (see
+strings.EqualFold).
+</p>
+<p>
+• A go.mod file may or may not appear in the top-level directory. If present,
+it must be named &#34;go.mod&#34;, not any other case. Files named &#34;go.mod&#34;
+are not allowed in any other directory.
+</p>
+<p>
+• The total size in bytes of a module zip file may be at most MaxZipFile
+bytes (500 MiB). The total uncompressed size of the files within the
+zip may also be at most MaxZipFile bytes.
+</p>
+<p>
+• Each file&#39;s uncompressed size must match its declared 64-bit uncompressed
+size in the zip file header.
+</p>
+<p>
+• If the zip contains files named &#34;&lt;module&gt;@&lt;version&gt;/go.mod&#34; or
+&#34;&lt;module&gt;@&lt;version&gt;/LICENSE&#34;, their sizes in bytes may be at most
+MaxGoMod or MaxLICENSE, respectively (both are 16 MiB).
+</p>
+<p>
+• Empty directories are ignored. File permissions and timestamps are also
+ignored.
+</p>
+<p>
+• Symbolic links and other irregular files are not allowed.
+</p>
+<p>
+Note that this package does not provide hashing functionality. See
+golang.org/x/mod/sumdb/dirhash.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.275.html#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="godoc.275.html#Create">func Create(w io.Writer, m module.Version, files []File) (err error)</a></dd>
+			
+				
+				<dd><a href="godoc.275.html#CreateFromDir">func CreateFromDir(w io.Writer, m module.Version, dir string) (err error)</a></dd>
+			
+				
+				<dd><a href="godoc.275.html#Unzip">func Unzip(dir string, m module.Version, zipFile string) (err error)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.275.html#File">type File</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/golang.org/x/mod/zip/zip.go">zip.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span class="comment">// MaxZipFile is the maximum size in bytes of a module zip file. The</span>
+    <span class="comment">// go command will report an error if either the zip file or its extracted</span>
+    <span class="comment">// content is larger than this.</span>
+    <span id="MaxZipFile">MaxZipFile</span> = 500 &lt;&lt; 20
+
+    <span class="comment">// MaxGoMod is the maximum size in bytes of a go.mod file within a</span>
+    <span class="comment">// module zip file.</span>
+    <span id="MaxGoMod">MaxGoMod</span> = 16 &lt;&lt; 20
+
+    <span class="comment">// MaxLICENSE is the maximum size in bytes of a LICENSE file within a</span>
+    <span class="comment">// module zip file.</span>
+    <span id="MaxLICENSE">MaxLICENSE</span> = 16 &lt;&lt; 20
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="Create">func <a href="http://localhost:6161/src/golang.org/x/mod/zip/zip.go?s=3820:3888#L94">Create</a>
+				<a class="permalink" href="godoc.275.html#Create">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Create(w <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>, m <a href="godoc.267.html">module</a>.<a href="godoc.267.html#Version">Version</a>, files []<a href="godoc.275.html#File">File</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+Create builds a zip archive for module m from an abstract list of files
+and writes it to w.
+</p>
+<p>
+Create verifies the restrictions described in the package documentation
+and should not produce an archive that Unzip cannot extract. Create does not
+include files in the output archive if they don&#39;t belong in the module zip.
+In particular, Create will not include files in modules found in
+subdirectories, most files in vendor directories, or irregular files (such
+as symbolic links) in the output archive.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateFromDir">func <a href="http://localhost:6161/src/golang.org/x/mod/zip/zip.go?s=7480:7553#L227">CreateFromDir</a>
+				<a class="permalink" href="godoc.275.html#CreateFromDir">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CreateFromDir(w <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>, m <a href="godoc.267.html">module</a>.<a href="godoc.267.html#Version">Version</a>, dir <a href="godoc.26.html#string">string</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+CreateFromDir creates a module zip file for module m from the contents of
+a directory, dir. The zip content is written to w.
+</p>
+<p>
+CreateFromDir verifies the restrictions described in the package
+documentation and should not produce an archive that Unzip cannot extract.
+CreateFromDir does not include files in the output archive if they don&#39;t
+belong in the module zip. In particular, CreateFromDir will not include
+files in modules found in subdirectories, most files in vendor directories,
+or irregular files (such as symbolic links) in the output archive.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Unzip">func <a href="http://localhost:6161/src/golang.org/x/mod/zip/zip.go?s=10608:10676#L330">Unzip</a>
+				<a class="permalink" href="godoc.275.html#Unzip">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Unzip(dir <a href="godoc.26.html#string">string</a>, m <a href="godoc.267.html">module</a>.<a href="godoc.267.html#Version">Version</a>, zipFile <a href="godoc.26.html#string">string</a>) (err <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+Unzip extracts the contents of a module zip file to a directory.
+</p>
+<p>
+Unzip checks all restrictions listed in the package documentation and returns
+an error if the zip archive is not valid. In some cases, files may be written
+to dir before an error is returned (for example, if a file&#39;s uncompressed
+size does not match its declared size).
+</p>
+<p>
+dir may or may not exist: Unzip will create it and any missing parent
+directories if it doesn&#39;t exist. If dir exists, it must be empty.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="File">type <a href="http://localhost:6161/src/golang.org/x/mod/zip/zip.go?s=2798:3292#L71">File</a>
+				<a class="permalink" href="godoc.275.html#File">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+File provides an abstraction for a file in a directory, zip, or anything
+else that looks like a file.
+</p>
+
+			<pre>type File interface {
+    <span class="comment">// Path returns a clean slash-separated relative path from the module root</span>
+    <span class="comment">// directory to the file.</span>
+    Path() <a href="godoc.26.html#string">string</a>
+
+    <span class="comment">// Lstat returns information about the file. If the file is a symbolic link,</span>
+    <span class="comment">// Lstat returns information about the link itself, not the file it points to.</span>
+    Lstat() (<a href="godoc.33.html">os</a>.<a href="godoc.33.html#FileInfo">FileInfo</a>, <a href="godoc.26.html#error">error</a>)
+
+    <span class="comment">// Open provides access to the data within a regular file. Open may return</span>
+    <span class="comment">// an error if called on a directory or symbolic link.</span>
+    Open() (<a href="godoc.589.html">io</a>.<a href="godoc.589.html#ReadCloser">ReadCloser</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

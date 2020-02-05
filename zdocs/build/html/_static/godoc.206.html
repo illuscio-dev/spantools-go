@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>session - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.206.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package session
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/x/mongo/driver/session"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.206.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.206.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.206.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.206.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.206.html#MaxClusterTime">func MaxClusterTime(ct1, ct2 bson.Raw) bson.Raw</a></dd>
+			
+			
+				
+				<dd><a href="godoc.206.html#Client">type Client</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#NewClientSession">func NewClientSession(pool *Pool, clientID uuid.UUID, sessionType Type, opts ...*ClientOptions) (*Client, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.AbortTransaction">func (c *Client) AbortTransaction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.AdvanceClusterTime">func (c *Client) AdvanceClusterTime(clusterTime bson.Raw) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.AdvanceOperationTime">func (c *Client) AdvanceOperationTime(opTime *primitive.Timestamp) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.ApplyCommand">func (c *Client) ApplyCommand(desc description.Server)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.CheckAbortTransaction">func (c *Client) CheckAbortTransaction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.CheckCommitTransaction">func (c *Client) CheckCommitTransaction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.CheckStartTransaction">func (c *Client) CheckStartTransaction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.ClearPinnedServer">func (c *Client) ClearPinnedServer()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.CommitTransaction">func (c *Client) CommitTransaction() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.EndSession">func (c *Client) EndSession()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.StartTransaction">func (c *Client) StartTransaction(opts *TransactionOptions) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.TransactionCommitted">func (c *Client) TransactionCommitted() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.TransactionInProgress">func (c *Client) TransactionInProgress() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.TransactionRunning">func (c *Client) TransactionRunning() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.TransactionStarting">func (c *Client) TransactionStarting() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.UpdateCommitTransactionWriteConcern">func (c *Client) UpdateCommitTransactionWriteConcern()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.UpdateRecoveryToken">func (c *Client) UpdateRecoveryToken(response bson.Raw)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Client.UpdateUseTime">func (c *Client) UpdateUseTime() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.206.html#ClientOptions">type ClientOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.206.html#ClusterClock">type ClusterClock</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#ClusterClock.AdvanceClusterTime">func (cc *ClusterClock) AdvanceClusterTime(clusterTime bson.Raw)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#ClusterClock.GetClusterTime">func (cc *ClusterClock) GetClusterTime() bson.Raw</a></dd>
+				
+			
+				
+				<dd><a href="godoc.206.html#Node">type Node</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.206.html#Pool">type Pool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#NewPool">func NewPool(descChan &lt;-chan description.Topology) *Pool</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Pool.CheckedOut">func (p *Pool) CheckedOut() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Pool.GetSession">func (p *Pool) GetSession() (*Server, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Pool.IDSlice">func (p *Pool) IDSlice() []bsonx.Doc</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Pool.ReturnSession">func (p *Pool) ReturnSession(ss *Server)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Pool.String">func (p *Pool) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.206.html#Server">type Server</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Server.IncrementTxnNumber">func (ss *Server) IncrementTxnNumber()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.206.html#Server.MarkDirty">func (ss *Server) MarkDirty()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.206.html#TransactionOptions">type TransactionOptions</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.206.html#Type">type Type</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go">client_session.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/cluster_clock.go">cluster_clock.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/options.go">options.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/server_session.go">server_session.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go">session_pool.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+Client Session states
+</p>
+
+				<pre>const (
+    <span id="None">None</span> state = <a href="godoc.26.html#iota">iota</a>
+    <span id="Starting">Starting</span>
+    <span id="InProgress">InProgress</span>
+    <span id="Committed">Committed</span>
+    <span id="Aborted">Aborted</span>
+)</pre>
+			
+				<p>
+UUIDSubtype is the BSON binary subtype that a UUID should be encoded as
+</p>
+
+				<pre>const <span id="UUIDSubtype">UUIDSubtype</span> <a href="godoc.26.html#byte">byte</a> = 4</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+ErrAbortAfterCommit is returned when abort is called after a commit.
+</p>
+
+				<pre>var <span id="ErrAbortAfterCommit">ErrAbortAfterCommit</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;cannot call abortTransaction after calling commitTransaction&#34;)</pre>
+			
+				<p>
+ErrAbortTwice is returned if abort is called after transaction is already aborted.
+</p>
+
+				<pre>var <span id="ErrAbortTwice">ErrAbortTwice</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;cannot call abortTransaction twice&#34;)</pre>
+			
+				<p>
+ErrCommitAfterAbort is returned if commit is called after an abort.
+</p>
+
+				<pre>var <span id="ErrCommitAfterAbort">ErrCommitAfterAbort</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;cannot call commitTransaction after calling abortTransaction&#34;)</pre>
+			
+				<p>
+ErrNoTransactStarted is returned if a transaction operation is called when no transaction has started.
+</p>
+
+				<pre>var <span id="ErrNoTransactStarted">ErrNoTransactStarted</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;no transaction started&#34;)</pre>
+			
+				<p>
+ErrSessionEnded is returned when a client session is used after a call to endSession().
+</p>
+
+				<pre>var <span id="ErrSessionEnded">ErrSessionEnded</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;ended session was used&#34;)</pre>
+			
+				<p>
+ErrTransactInProgress is returned if startTransaction() is called when a transaction is in progress.
+</p>
+
+				<pre>var <span id="ErrTransactInProgress">ErrTransactInProgress</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;transaction already in progress&#34;)</pre>
+			
+				<p>
+ErrUnackWCUnsupported is returned if an unacknowledged write concern is supported for a transaciton.
+</p>
+
+				<pre>var <span id="ErrUnackWCUnsupported">ErrUnackWCUnsupported</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;transactions do not support unacknowledged write concerns&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="MaxClusterTime">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=3613:3660#L107">MaxClusterTime</a>
+				<a class="permalink" href="godoc.206.html#MaxClusterTime">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MaxClusterTime(ct1, ct2 <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a>) <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a></pre>
+			<p>
+MaxClusterTime compares 2 clusterTime documents and returns the document representing the highest cluster time.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Client">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=2297:3146#L55">Client</a>
+				<a class="permalink" href="godoc.206.html#Client">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Client is a session for clients to run commands.
+</p>
+
+			<pre>type Client struct {
+    *<a href="godoc.206.html#Server">Server</a>
+<span id="Client.ClientID"></span>    ClientID       <a href="godoc.208.html">uuid</a>.<a href="godoc.208.html#UUID">UUID</a>
+<span id="Client.ClusterTime"></span>    ClusterTime    <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a>
+<span id="Client.Consistent"></span>    Consistent     <a href="godoc.26.html#bool">bool</a> <span class="comment">// causal consistency</span>
+<span id="Client.OperationTime"></span>    OperationTime  *<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Timestamp">Timestamp</a>
+<span id="Client.SessionType"></span>    SessionType    <a href="godoc.206.html#Type">Type</a>
+<span id="Client.Terminated"></span>    Terminated     <a href="godoc.26.html#bool">bool</a>
+<span id="Client.RetryingCommit"></span>    RetryingCommit <a href="godoc.26.html#bool">bool</a>
+<span id="Client.Committing"></span>    Committing     <a href="godoc.26.html#bool">bool</a>
+<span id="Client.Aborting"></span>    Aborting       <a href="godoc.26.html#bool">bool</a>
+<span id="Client.RetryWrite"></span>    RetryWrite     <a href="godoc.26.html#bool">bool</a>
+<span id="Client.RetryRead"></span>    RetryRead      <a href="godoc.26.html#bool">bool</a>
+
+    <span class="comment">// options for the current transaction</span>
+    <span class="comment">// most recently set by transactionopt</span>
+<span id="Client.CurrentRc"></span>    CurrentRc  *<a href="godoc.176.html">readconcern</a>.<a href="godoc.176.html#ReadConcern">ReadConcern</a>
+<span id="Client.CurrentRp"></span>    CurrentRp  *<a href="godoc.177.html">readpref</a>.<a href="godoc.177.html#ReadPref">ReadPref</a>
+<span id="Client.CurrentWc"></span>    CurrentWc  *<a href="godoc.179.html">writeconcern</a>.<a href="godoc.179.html#WriteConcern">WriteConcern</a>
+<span id="Client.CurrentMct"></span>    CurrentMct *<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+
+<span id="Client.PinnedServer"></span>    PinnedServer  *<a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>
+<span id="Client.RecoveryToken"></span>    RecoveryToken <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewClientSession">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=3948:4060#L125">NewClientSession</a>
+					<a class="permalink" href="godoc.206.html#NewClientSession">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewClientSession(pool *<a href="godoc.206.html#Pool">Pool</a>, clientID <a href="godoc.208.html">uuid</a>.<a href="godoc.208.html#UUID">UUID</a>, sessionType <a href="godoc.206.html#Type">Type</a>, opts ...*<a href="godoc.206.html#ClientOptions">ClientOptions</a>) (*<a href="godoc.206.html#Client">Client</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewClientSession creates a Client.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Client.AbortTransaction">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=9961:10002#L355">AbortTransaction</a>
+					<a class="permalink" href="godoc.206.html#Client.AbortTransaction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) AbortTransaction() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+AbortTransaction updates the state for a successfully aborted transaction and returns
+an error if not permissible.  It does not actually perform the abort.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.AdvanceClusterTime">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=4908:4971#L161">AdvanceClusterTime</a>
+					<a class="permalink" href="godoc.206.html#Client.AdvanceClusterTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) AdvanceClusterTime(clusterTime <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+AdvanceClusterTime updates the session&#39;s cluster time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.AdvanceOperationTime">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=5158:5230#L170">AdvanceOperationTime</a>
+					<a class="permalink" href="godoc.206.html#Client.AdvanceOperationTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) AdvanceOperationTime(opTime *<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Timestamp">Timestamp</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+AdvanceOperationTime updates the session&#39;s operation time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.ApplyCommand">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=10199:10253#L366">ApplyCommand</a>
+					<a class="permalink" href="godoc.206.html#Client.ApplyCommand">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) ApplyCommand(desc <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Server">Server</a>)</pre>
+				<p>
+ApplyCommand advances the state machine upon command execution.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.CheckAbortTransaction">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=9562:9608#L342">CheckAbortTransaction</a>
+					<a class="permalink" href="godoc.206.html#Client.CheckAbortTransaction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) CheckAbortTransaction() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CheckAbortTransaction checks to see if allowed to abort transaction and returns
+an error if not allowed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.CheckCommitTransaction">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=8414:8461#L308">CheckCommitTransaction</a>
+					<a class="permalink" href="godoc.206.html#Client.CheckCommitTransaction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) CheckCommitTransaction() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CheckCommitTransaction checks to see if allowed to commit transaction and returns
+an error if not allowed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.CheckStartTransaction">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=7238:7284#L255">CheckStartTransaction</a>
+					<a class="permalink" href="godoc.206.html#Client.CheckStartTransaction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) CheckStartTransaction() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CheckStartTransaction checks to see if allowed to start transaction and returns
+an error if not allowed
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.ClearPinnedServer">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=6141:6177#L214">ClearPinnedServer</a>
+					<a class="permalink" href="godoc.206.html#Client.ClearPinnedServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) ClearPinnedServer()</pre>
+				<p>
+ClearPinnedServer sets the PinnedServer to nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.CommitTransaction">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=8761:8803#L319">CommitTransaction</a>
+					<a class="permalink" href="godoc.206.html#Client.CommitTransaction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) CommitTransaction() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+CommitTransaction updates the state for a successfully committed transaction and returns
+an error if not permissible.  It does not actually perform the commit.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.EndSession">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=6256:6285#L221">EndSession</a>
+					<a class="permalink" href="godoc.206.html#Client.EndSession">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) EndSession()</pre>
+				<p>
+EndSession ends the session.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.StartTransaction">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=7535:7600#L264">StartTransaction</a>
+					<a class="permalink" href="godoc.206.html#Client.StartTransaction">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) StartTransaction(opts *<a href="godoc.206.html#TransactionOptions">TransactionOptions</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+StartTransaction initializes the transaction options and advances the state machine.
+It does not contact the server to start the transaction.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TransactionCommitted">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=7049:7093#L249">TransactionCommitted</a>
+					<a class="permalink" href="godoc.206.html#Client.TransactionCommitted">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) TransactionCommitted() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+TransactionCommitted returns true of the client session just committed a transaciton.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TransactionInProgress">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=6474:6519#L233">TransactionInProgress</a>
+					<a class="permalink" href="godoc.206.html#Client.TransactionInProgress">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) TransactionInProgress() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+TransactionInProgress returns true if the client session is in an active transaction.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TransactionRunning">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=6845:6887#L244">TransactionRunning</a>
+					<a class="permalink" href="godoc.206.html#Client.TransactionRunning">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) TransactionRunning() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+TransactionRunning returns true if the client session has started the transaction
+and it hasn&#39;t been committed or aborted
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.TransactionStarting">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=6640:6683#L238">TransactionStarting</a>
+					<a class="permalink" href="godoc.206.html#Client.TransactionStarting">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) TransactionStarting() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+TransactionStarting returns true if the client session is starting a transaction.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.UpdateCommitTransactionWriteConcern">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=9182:9236#L331">UpdateCommitTransactionWriteConcern</a>
+					<a class="permalink" href="godoc.206.html#Client.UpdateCommitTransactionWriteConcern">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) UpdateCommitTransactionWriteConcern()</pre>
+				<p>
+UpdateCommitTransactionWriteConcern will set the write concern to majority and potentially set  a
+w timeout of 10 seconds. This should be called after a commit transaction operation fails with a
+retryable error or after a successful commit transaction operation.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.UpdateRecoveryToken">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=5884:5939#L200">UpdateRecoveryToken</a>
+					<a class="permalink" href="godoc.206.html#Client.UpdateRecoveryToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) UpdateRecoveryToken(response <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a>)</pre>
+				<p>
+UpdateRecoveryToken updates the session&#39;s recovery token from the server response.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Client.UpdateUseTime">func (*Client) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=5676:5714#L191">UpdateUseTime</a>
+					<a class="permalink" href="godoc.206.html#Client.UpdateUseTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="godoc.206.html#Client">Client</a>) UpdateUseTime() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UpdateUseTime updates the session&#39;s last used time.
+Must be called whenver this session is used to send a command to the server.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ClientOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/options.go?s=533:769#L8">ClientOptions</a>
+				<a class="permalink" href="godoc.206.html#ClientOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ClientOptions represents all possible options for creating a client session.
+</p>
+
+			<pre>type ClientOptions struct {
+<span id="ClientOptions.CausalConsistency"></span>    CausalConsistency     *<a href="godoc.26.html#bool">bool</a>
+<span id="ClientOptions.DefaultReadConcern"></span>    DefaultReadConcern    *<a href="godoc.176.html">readconcern</a>.<a href="godoc.176.html#ReadConcern">ReadConcern</a>
+<span id="ClientOptions.DefaultWriteConcern"></span>    DefaultWriteConcern   *<a href="godoc.179.html">writeconcern</a>.<a href="godoc.179.html#WriteConcern">WriteConcern</a>
+<span id="ClientOptions.DefaultReadPreference"></span>    DefaultReadPreference *<a href="godoc.177.html">readpref</a>.<a href="godoc.177.html#ReadPref">ReadPref</a>
+<span id="ClientOptions.DefaultMaxCommitTime"></span>    DefaultMaxCommitTime  *<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ClusterClock">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/cluster_clock.go?s=422:496#L6">ClusterClock</a>
+				<a class="permalink" href="godoc.206.html#ClusterClock">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ClusterClock represents a logical clock for keeping track of cluster time.
+</p>
+
+			<pre>type ClusterClock struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ClusterClock.AdvanceClusterTime">func (*ClusterClock) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/cluster_clock.go?s=749:813#L22">AdvanceClusterTime</a>
+					<a class="permalink" href="godoc.206.html#ClusterClock.AdvanceClusterTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.206.html#ClusterClock">ClusterClock</a>) AdvanceClusterTime(clusterTime <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a>)</pre>
+				<p>
+AdvanceClusterTime updates the cluster&#39;s current time.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClusterClock.GetClusterTime">func (*ClusterClock) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/cluster_clock.go?s=552:601#L12">GetClusterTime</a>
+					<a class="permalink" href="godoc.206.html#ClusterClock.GetClusterTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (cc *<a href="godoc.206.html#ClusterClock">ClusterClock</a>) GetClusterTime() <a href="godoc.154.html">bson</a>.<a href="godoc.154.html#Raw">Raw</a></pre>
+				<p>
+GetClusterTime returns the cluster&#39;s current time.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Node">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=458:511#L7">Node</a>
+				<a class="permalink" href="godoc.206.html#Node">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Node represents a server session in a linked list
+</p>
+
+			<pre>type Node struct {
+    *<a href="godoc.206.html#Server">Server</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Pool">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=570:801#L14">Pool</a>
+				<a class="permalink" href="godoc.206.html#Pool">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Pool is a pool of server sessions that can be reused.
+</p>
+
+			<pre>type Pool struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewPool">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=1007:1063#L35">NewPool</a>
+					<a class="permalink" href="godoc.206.html#NewPool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewPool(descChan &lt;-chan <a href="godoc.191.html">description</a>.<a href="godoc.191.html#Topology">Topology</a>) *<a href="godoc.206.html#Pool">Pool</a></pre>
+				<p>
+NewPool creates a new server session pool
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Pool.CheckedOut">func (*Pool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=3589:3620#L168">CheckedOut</a>
+					<a class="permalink" href="godoc.206.html#Pool.CheckedOut">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.206.html#Pool">Pool</a>) CheckedOut() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+CheckedOut returns number of sessions checked out from pool.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Pool.GetSession">func (*Pool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=1392:1436#L54">GetSession</a>
+					<a class="permalink" href="godoc.206.html#Pool.GetSession">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.206.html#Pool">Pool</a>) GetSession() (*<a href="godoc.206.html#Server">Server</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+GetSession retrieves an unexpired session from the pool.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Pool.IDSlice">func (*Pool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=3080:3116#L142">IDSlice</a>
+					<a class="permalink" href="godoc.206.html#Pool.IDSlice">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.206.html#Pool">Pool</a>) IDSlice() []<a href="godoc.184.html">bsonx</a>.<a href="godoc.184.html#Doc">Doc</a></pre>
+				<p>
+IDSlice returns a slice of session IDs for each session in the pool
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Pool.ReturnSession">func (*Pool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=2258:2298#L93">ReturnSession</a>
+					<a class="permalink" href="godoc.206.html#Pool.ReturnSession">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.206.html#Pool">Pool</a>) ReturnSession(ss *<a href="godoc.206.html#Server">Server</a>)</pre>
+				<p>
+ReturnSession returns a session to the pool if it has not expired.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Pool.String">func (*Pool) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/session_pool.go?s=3334:3364#L155">String</a>
+					<a class="permalink" href="godoc.206.html#Pool.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (p *<a href="godoc.206.html#Pool">Pool</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the Stringer interface
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Server">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/server_session.go?s=486:583#L11">Server</a>
+				<a class="permalink" href="godoc.206.html#Server">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Server is an open session with the server.
+</p>
+
+			<pre>type Server struct {
+<span id="Server.SessionID"></span>    SessionID <a href="godoc.184.html">bsonx</a>.<a href="godoc.184.html#Doc">Doc</a>
+<span id="Server.TxnNumber"></span>    TxnNumber <a href="godoc.26.html#int64">int64</a>
+<span id="Server.LastUsed"></span>    LastUsed  <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>
+<span id="Server.Dirty"></span>    Dirty     <a href="godoc.26.html#bool">bool</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Server.IncrementTxnNumber">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/server_session.go?s=1447:1485#L49">IncrementTxnNumber</a>
+					<a class="permalink" href="godoc.206.html#Server.IncrementTxnNumber">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ss *<a href="godoc.206.html#Server">Server</a>) IncrementTxnNumber()</pre>
+				<p>
+IncrementTxnNumber increments the transaction number.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Server.MarkDirty">func (*Server) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/server_session.go?s=1548:1577#L54">MarkDirty</a>
+					<a class="permalink" href="godoc.206.html#Server.MarkDirty">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (ss *<a href="godoc.206.html#Server">Server</a>) MarkDirty()</pre>
+				<p>
+MarkDirty marks the session as dirty.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="TransactionOptions">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/options.go?s=866:1050#L17">TransactionOptions</a>
+				<a class="permalink" href="godoc.206.html#TransactionOptions">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+TransactionOptions represents all possible options for starting a transaction in a session.
+</p>
+
+			<pre>type TransactionOptions struct {
+<span id="TransactionOptions.ReadConcern"></span>    ReadConcern    *<a href="godoc.176.html">readconcern</a>.<a href="godoc.176.html#ReadConcern">ReadConcern</a>
+<span id="TransactionOptions.WriteConcern"></span>    WriteConcern   *<a href="godoc.179.html">writeconcern</a>.<a href="godoc.179.html#WriteConcern">WriteConcern</a>
+<span id="TransactionOptions.ReadPreference"></span>    ReadPreference *<a href="godoc.177.html">readpref</a>.<a href="godoc.177.html#ReadPref">ReadPref</a>
+<span id="TransactionOptions.MaxCommitTime"></span>    MaxCommitTime  *<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Duration">Duration</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Type">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/x/mongo/driver/session/client_session.go?s=1968:1983#L34">Type</a>
+				<a class="permalink" href="godoc.206.html#Type">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Type describes the type of the session
+</p>
+
+			<pre>type Type <a href="godoc.26.html#uint8">uint8</a></pre>
+
+			
+				<p>
+These constants are the valid types for a client session.
+</p>
+
+				<pre>const (
+    <span id="Explicit">Explicit</span> <a href="godoc.206.html#Type">Type</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="Implicit">Implicit</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

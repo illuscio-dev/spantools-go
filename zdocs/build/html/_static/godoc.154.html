@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>bson - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.154.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package bson
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "go.mongodb.org/mongo-driver/bson"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.154.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.154.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.154.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+				<dd><a href="godoc.154.html#pkg-subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package bson is a library for reading, writing, and manipulating BSON. BSON is a binary serialization format used to
+store documents and make remote procedure calls in MongoDB. The BSON specification is located at <a href="https://bsonspec.org.">https://bsonspec.org.</a>
+</p>
+<h3 id="hdr-Raw_BSON">Raw BSON</h3>
+<p>
+The Raw family of types is used to validate and retrieve elements from a slice of bytes. This
+type is most useful when you want do lookups on BSON bytes without unmarshaling it into another
+type.
+</p>
+<p>
+Example:
+</p>
+<pre>var raw bson.Raw = ... // bytes from somewhere
+err := raw.Validate()
+if err != nil { return err }
+val := raw.Lookup(&#34;foo&#34;)
+i32, ok := val.Int32OK()
+// do something with i32...
+</pre>
+<h3 id="hdr-Native_Go_Types">Native Go Types</h3>
+<p>
+The D and M types defined in this package can be used to build representations of BSON using native Go types. D is a
+slice and M is a map. For more information about the use cases for these types, see the documentation on the type
+definitions.
+</p>
+<p>
+Example:
+</p>
+<pre>bson.D{{&#34;foo&#34;, &#34;bar&#34;}, {&#34;hello&#34;, &#34;world&#34;}, {&#34;pi&#34;, 3.14159}}
+bson.M{&#34;foo&#34;: &#34;bar&#34;, &#34;hello&#34;: &#34;world&#34;, &#34;pi&#34;: 3.14159}
+</pre>
+<p>
+When decoding BSON to a D or M, the following type mappings apply when unmarshalling:
+</p>
+<pre>1. BSON int32 unmarshals to an int32.
+2. BSON int64 unmarshals to an int64.
+3. BSON double unmarshals to a float64.
+4. BSON string unmarshals to a string.
+5. BSON boolean unmarshals to a bool.
+6. BSON embedded document unmarshals to the parent type (i.e. D for a D, M for an M).
+7. BSON array unmarshals to a bson.A.
+8. BSON ObjectId unmarshals to a primitive.ObjectID.
+9. BSON datetime unmarshals to a primitive.Datetime.
+10. BSON binary unmarshals to a primitive.Binary.
+11. BSON regular expression unmarshals to a primitive.Regex.
+12. BSON JavaScript unmarshals to a primitive.JavaScript.
+13. BSON code with scope unmarshals to a primitive.CodeWithScope.
+14. BSON timestamp unmarshals to an primitive.Timestamp.
+15. BSON 128-bit decimal unmarshals to an primitive.Decimal128.
+16. BSON min key unmarshals to an primitive.MinKey.
+17. BSON max key unmarshals to an primitive.MaxKey.
+18. BSON undefined unmarshals to a primitive.Undefined.
+19. BSON null unmarshals to a primitive.Null.
+20. BSON DBPointer unmarshals to a primitive.DBPointer.
+21. BSON symbol unmarshals to a primitive.Symbol.
+</pre>
+<p>
+The above mappings also apply when marshalling a D or M to BSON. Some other useful marshalling mappings are:
+</p>
+<pre>1. time.Time marshals to a BSON datetime.
+2. int8, int16, and int32 marshal to a BSON int32.
+3. int marshals to a BSON int32 if the value is between math.MinInt32 and math.MaxInt32, inclusive, and a BSON int64
+otherwise.
+4. int64 marshals to BSON int64.
+5. uint8 and uint16 marshal to a BSON int32.
+6. uint, uint32, and uint64 marshal to a BSON int32 if the value is between math.MinInt32 and math.MaxInt32,
+inclusive, and BSON int64 otherwise.
+</pre>
+<h3 id="hdr-Structs">Structs</h3>
+<p>
+Structs can be marshalled/unmarshalled to/from BSON. When transforming structs to/from BSON, the following rules
+apply:
+</p>
+<pre>1. Only exported fields in structs will be marshalled or unmarshalled.
+
+2. When marshalling a struct, each field will be lowercased to generate the key for the corresponding BSON element.
+For example, a struct field named &#34;Foo&#34; will generate key &#34;foo&#34;. This can be overriden via a struct tag (e.g.
+`bson:&#34;fooField&#34;` to generate key &#34;fooField&#34; instead).
+
+3. An embedded struct field is marshalled as a subdocument. The key will be the lowercased name of the field&#39;s type.
+
+4. A pointer field is marshalled as the underlying type if the pointer is non-nil. If the pointer is nil, it is
+marshalled as a BSON null value.
+
+5. When unmarshalling, a field of type interface{} will follow the D/M type mappings listed above. BSON documents
+unmarshalled into an interface{} field will be unmarshalled as a D.
+</pre>
+<p>
+The following struct tags can be used to configure behavior:
+</p>
+<pre>1. omitempty: If the omitempty struct tag is specified on a field, the field will not be marshalled if it is set to
+the zero value. By default, a struct field is only considered empty if the field&#39;s type implements the Zeroer
+interface and the IsZero method returns true. Struct fields of types that do not implement Zeroer are always
+marshalled as embedded documents.
+
+2. minsize: If the minsize struct tag is specified on a field of type int64, uint, uint32, or uint64 and the value of
+the field can fit in a signed int32, the field will be serialized as a BSON int32 rather than a BSON int64. For other
+types, this tag is ignored.
+
+3. truncate: If the truncate struct tag is specified on a field with a non-float numeric type, BSON doubles unmarshalled
+into that field will be trucated at the decimal point. For example, if 3.14 is unmarshalled into a field of type int,
+it will be unmarshalled as 3. If this tag is not specified, the decoder will throw an error if the value cannot be
+decoded without losing precision. For float64 or non-numeric types, this tag is ignored.
+
+4. inline: If the inline struct tag is specified for a struct or map field, the field will be &#34;flattened&#34; when
+marshalling and &#34;un-flattened&#34; when unmarshalling. This means that all of the fields in that struct/map will be
+pulled up one level and will become top-level fields rather than being fields in a nested document. For example, if a
+map field named &#34;Map&#34; with value map[string]interface{}{&#34;foo&#34;: &#34;bar&#34;} is inlined, the resulting document will be
+{&#34;foo&#34;: &#34;bar&#34;} instead of {&#34;map&#34;: {&#34;foo&#34;: &#34;bar&#34;}}. There can only be one inlined map field in a struct. If there are
+duplicated fields in the resulting document when an inlined field is marshalled, an error will be returned. This tag
+can be used with fields that are pointers to structs. If an inlined pointer field is nil, it will not be marshalled.
+For fields that are not maps or structs, this tag is ignored.
+</pre>
+<h3 id="hdr-Marshalling_and_Unmarshalling">Marshalling and Unmarshalling</h3>
+<p>
+Manually marshalling and unmarshalling can be done with the Marshal and Unmarshal family of functions.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="godoc.154.html#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="godoc.154.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.154.html#Marshal">func Marshal(val interface{}) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalAppend">func MarshalAppend(dst []byte, val interface{}) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalAppendWithContext">func MarshalAppendWithContext(ec bsoncodec.EncodeContext, dst []byte, val interface{}) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalAppendWithRegistry">func MarshalAppendWithRegistry(r *bsoncodec.Registry, dst []byte, val interface{}) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalExtJSON">func MarshalExtJSON(val interface{}, canonical, escapeHTML bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalExtJSONAppend">func MarshalExtJSONAppend(dst []byte, val interface{}, canonical, escapeHTML bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalExtJSONAppendWithContext">func MarshalExtJSONAppendWithContext(ec bsoncodec.EncodeContext, dst []byte, val interface{}, canonical, escapeHTML bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalExtJSONAppendWithRegistry">func MarshalExtJSONAppendWithRegistry(r *bsoncodec.Registry, dst []byte, val interface{}, canonical, escapeHTML bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalExtJSONWithContext">func MarshalExtJSONWithContext(ec bsoncodec.EncodeContext, val interface{}, canonical, escapeHTML bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalExtJSONWithRegistry">func MarshalExtJSONWithRegistry(r *bsoncodec.Registry, val interface{}, canonical, escapeHTML bool) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalValue">func MarshalValue(val interface{}) (bsontype.Type, []byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalValueAppend">func MarshalValueAppend(dst []byte, val interface{}) (bsontype.Type, []byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalValueAppendWithContext">func MarshalValueAppendWithContext(ec bsoncodec.EncodeContext, dst []byte, val interface{}) (bsontype.Type, []byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalValueAppendWithRegistry">func MarshalValueAppendWithRegistry(r *bsoncodec.Registry, dst []byte, val interface{}) (bsontype.Type, []byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalValueWithContext">func MarshalValueWithContext(ec bsoncodec.EncodeContext, val interface{}) (bsontype.Type, []byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalValueWithRegistry">func MarshalValueWithRegistry(r *bsoncodec.Registry, val interface{}) (bsontype.Type, []byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalWithContext">func MarshalWithContext(ec bsoncodec.EncodeContext, val interface{}) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#MarshalWithRegistry">func MarshalWithRegistry(r *bsoncodec.Registry, val interface{}) ([]byte, error)</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#NewRegistryBuilder">func NewRegistryBuilder() *bsoncodec.RegistryBuilder</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#Unmarshal">func Unmarshal(data []byte, val interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#UnmarshalExtJSON">func UnmarshalExtJSON(data []byte, canonical bool, val interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#UnmarshalExtJSONWithContext">func UnmarshalExtJSONWithContext(dc bsoncodec.DecodeContext, data []byte, canonical bool, val interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#UnmarshalExtJSONWithRegistry">func UnmarshalExtJSONWithRegistry(r *bsoncodec.Registry, data []byte, canonical bool, val interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#UnmarshalWithContext">func UnmarshalWithContext(dc bsoncodec.DecodeContext, data []byte, val interface{}) error</a></dd>
+			
+				
+				<dd><a href="godoc.154.html#UnmarshalWithRegistry">func UnmarshalWithRegistry(r *bsoncodec.Registry, data []byte, val interface{}) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.154.html#A">type A</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#D">type D</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#Decoder">type Decoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#NewDecoder">func NewDecoder(vr bsonrw.ValueReader) (*Decoder, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#NewDecoderWithContext">func NewDecoderWithContext(dc bsoncodec.DecodeContext, vr bsonrw.ValueReader) (*Decoder, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Decoder.Decode">func (d *Decoder) Decode(val interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Decoder.Reset">func (d *Decoder) Reset(vr bsonrw.ValueReader) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Decoder.SetContext">func (d *Decoder) SetContext(dc bsoncodec.DecodeContext) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Decoder.SetRegistry">func (d *Decoder) SetRegistry(r *bsoncodec.Registry) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#E">type E</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#Encoder">type Encoder</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#NewEncoder">func NewEncoder(vw bsonrw.ValueWriter) (*Encoder, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#NewEncoderWithContext">func NewEncoderWithContext(ec bsoncodec.EncodeContext, vw bsonrw.ValueWriter) (*Encoder, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Encoder.Encode">func (e *Encoder) Encode(val interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Encoder.Reset">func (e *Encoder) Reset(vw bsonrw.ValueWriter) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Encoder.SetContext">func (e *Encoder) SetContext(ec bsoncodec.EncodeContext) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Encoder.SetRegistry">func (e *Encoder) SetRegistry(r *bsoncodec.Registry) error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#M">type M</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#Marshaler">type Marshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#PrimitiveCodecs">type PrimitiveCodecs</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#PrimitiveCodecs.RawDecodeValue">func (PrimitiveCodecs) RawDecodeValue(dc bsoncodec.DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#PrimitiveCodecs.RawEncodeValue">func (PrimitiveCodecs) RawEncodeValue(ec bsoncodec.EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#PrimitiveCodecs.RawValueDecodeValue">func (PrimitiveCodecs) RawValueDecodeValue(dc bsoncodec.DecodeContext, vr bsonrw.ValueReader, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#PrimitiveCodecs.RawValueEncodeValue">func (PrimitiveCodecs) RawValueEncodeValue(ec bsoncodec.EncodeContext, vw bsonrw.ValueWriter, val reflect.Value) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#PrimitiveCodecs.RegisterPrimitiveCodecs">func (pc PrimitiveCodecs) RegisterPrimitiveCodecs(rb *bsoncodec.RegistryBuilder)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#Raw">type Raw</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#NewFromIOReader">func NewFromIOReader(r io.Reader) (Raw, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.Elements">func (r Raw) Elements() ([]RawElement, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.Index">func (r Raw) Index(index uint) RawElement</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.IndexErr">func (r Raw) IndexErr(index uint) (RawElement, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.Lookup">func (r Raw) Lookup(key ...string) RawValue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.LookupErr">func (r Raw) LookupErr(key ...string) (RawValue, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.String">func (r Raw) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.Validate">func (r Raw) Validate() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#Raw.Values">func (r Raw) Values() ([]RawValue, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#RawElement">type RawElement</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.DebugString">func (re RawElement) DebugString() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.Key">func (re RawElement) Key() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.KeyErr">func (re RawElement) KeyErr() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.String">func (re RawElement) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.Validate">func (re RawElement) Validate() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.Value">func (re RawElement) Value() RawValue</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawElement.ValueErr">func (re RawElement) ValueErr() (RawValue, error)</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#RawValue">type RawValue</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Array">func (rv RawValue) Array() Raw</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.ArrayOK">func (rv RawValue) ArrayOK() (Raw, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Binary">func (rv RawValue) Binary() (subtype byte, data []byte)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.BinaryOK">func (rv RawValue) BinaryOK() (subtype byte, data []byte, ok bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Boolean">func (rv RawValue) Boolean() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.BooleanOK">func (rv RawValue) BooleanOK() (bool, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.CodeWithScope">func (rv RawValue) CodeWithScope() (string, Raw)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.CodeWithScopeOK">func (rv RawValue) CodeWithScopeOK() (string, Raw, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DBPointer">func (rv RawValue) DBPointer() (string, primitive.ObjectID)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DBPointerOK">func (rv RawValue) DBPointerOK() (string, primitive.ObjectID, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DateTime">func (rv RawValue) DateTime() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DateTimeOK">func (rv RawValue) DateTimeOK() (int64, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DebugString">func (rv RawValue) DebugString() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Decimal128">func (rv RawValue) Decimal128() primitive.Decimal128</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Decimal128OK">func (rv RawValue) Decimal128OK() (primitive.Decimal128, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Document">func (rv RawValue) Document() Raw</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DocumentOK">func (rv RawValue) DocumentOK() (Raw, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Double">func (rv RawValue) Double() float64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.DoubleOK">func (rv RawValue) DoubleOK() (float64, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Equal">func (rv RawValue) Equal(rv2 RawValue) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Int32">func (rv RawValue) Int32() int32</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Int32OK">func (rv RawValue) Int32OK() (int32, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Int64">func (rv RawValue) Int64() int64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Int64OK">func (rv RawValue) Int64OK() (int64, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.IsNumber">func (rv RawValue) IsNumber() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.JavaScript">func (rv RawValue) JavaScript() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.JavaScriptOK">func (rv RawValue) JavaScriptOK() (string, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.ObjectID">func (rv RawValue) ObjectID() primitive.ObjectID</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.ObjectIDOK">func (rv RawValue) ObjectIDOK() (primitive.ObjectID, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Regex">func (rv RawValue) Regex() (pattern, options string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.RegexOK">func (rv RawValue) RegexOK() (pattern, options string, ok bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.String">func (rv RawValue) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.StringValue">func (rv RawValue) StringValue() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.StringValueOK">func (rv RawValue) StringValueOK() (string, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Symbol">func (rv RawValue) Symbol() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.SymbolOK">func (rv RawValue) SymbolOK() (string, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Time">func (rv RawValue) Time() time.Time</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.TimeOK">func (rv RawValue) TimeOK() (time.Time, bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Timestamp">func (rv RawValue) Timestamp() (t, i uint32)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.TimestampOK">func (rv RawValue) TimestampOK() (t, i uint32, ok bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Unmarshal">func (rv RawValue) Unmarshal(val interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.UnmarshalWithContext">func (rv RawValue) UnmarshalWithContext(dc *bsoncodec.DecodeContext, val interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.UnmarshalWithRegistry">func (rv RawValue) UnmarshalWithRegistry(r *bsoncodec.Registry, val interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.154.html#RawValue.Validate">func (rv RawValue) Validate() error</a></dd>
+				
+			
+				
+				<dd><a href="godoc.154.html#Unmarshaler">type Unmarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#ValueMarshaler">type ValueMarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#ValueUnmarshaler">type ValueUnmarshaler</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.154.html#Zeroer">type Zeroer</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.154.html#example_Raw_Validate">Raw.Validate</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bson.go">bson.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go">decoder.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/doc.go">doc.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go">encoder.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go">marshal.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go">primitive_codecs.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go">raw.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go">raw_element.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go">raw_value.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/registry.go">registry.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/types.go">types.go</a>
+			
+				<a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go">unmarshal.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<p>
+These constants uniquely refer to each BSON type.
+</p>
+
+				<pre>const (
+    <span id="TypeDouble">TypeDouble</span>           = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Double">Double</a>
+    <span id="TypeString">TypeString</span>           = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#String">String</a>
+    <span id="TypeEmbeddedDocument">TypeEmbeddedDocument</span> = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#EmbeddedDocument">EmbeddedDocument</a>
+    <span id="TypeArray">TypeArray</span>            = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Array">Array</a>
+    <span id="TypeBinary">TypeBinary</span>           = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Binary">Binary</a>
+    <span id="TypeUndefined">TypeUndefined</span>        = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Undefined">Undefined</a>
+    <span id="TypeObjectID">TypeObjectID</span>         = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#ObjectID">ObjectID</a>
+    <span id="TypeBoolean">TypeBoolean</span>          = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Boolean">Boolean</a>
+    <span id="TypeDateTime">TypeDateTime</span>         = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#DateTime">DateTime</a>
+    <span id="TypeNull">TypeNull</span>             = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Null">Null</a>
+    <span id="TypeRegex">TypeRegex</span>            = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Regex">Regex</a>
+    <span id="TypeDBPointer">TypeDBPointer</span>        = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#DBPointer">DBPointer</a>
+    <span id="TypeJavaScript">TypeJavaScript</span>       = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#JavaScript">JavaScript</a>
+    <span id="TypeSymbol">TypeSymbol</span>           = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Symbol">Symbol</a>
+    <span id="TypeCodeWithScope">TypeCodeWithScope</span>    = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#CodeWithScope">CodeWithScope</a>
+    <span id="TypeInt32">TypeInt32</span>            = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Int32">Int32</a>
+    <span id="TypeTimestamp">TypeTimestamp</span>        = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Timestamp">Timestamp</a>
+    <span id="TypeInt64">TypeInt64</span>            = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Int64">Int64</a>
+    <span id="TypeDecimal128">TypeDecimal128</span>       = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Decimal128">Decimal128</a>
+    <span id="TypeMinKey">TypeMinKey</span>           = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#MinKey">MinKey</a>
+    <span id="TypeMaxKey">TypeMaxKey</span>           = <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#MaxKey">MaxKey</a>
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				<p>
+DefaultRegistry is the default bsoncodec.Registry. It contains the default codecs and the
+primitive codecs.
+</p>
+
+				<pre>var <span id="DefaultRegistry">DefaultRegistry</span> = <a href="godoc.154.html#NewRegistryBuilder">NewRegistryBuilder</a>().<a href="godoc.154.html#Build">Build</a>()</pre>
+			
+				<p>
+ErrDecodeToNil is the error returned when trying to decode to a nil value
+</p>
+
+				<pre>var <span id="ErrDecodeToNil">ErrDecodeToNil</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;cannot Decode to nil value&#34;)</pre>
+			
+				<p>
+ErrNilContext is returned when the provided DecodeContext is nil.
+</p>
+
+				<pre>var <span id="ErrNilContext">ErrNilContext</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;DecodeContext cannot be nil&#34;)</pre>
+			
+				<p>
+ErrNilReader indicates that an operation was attempted on a nil bson.Reader.
+</p>
+
+				<pre>var <span id="ErrNilReader">ErrNilReader</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;nil reader&#34;)</pre>
+			
+				<p>
+ErrNilRegistry is returned when the provided registry is nil.
+</p>
+
+				<pre>var <span id="ErrNilRegistry">ErrNilRegistry</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;Registry cannot be nil&#34;)</pre>
+			
+		
+		
+			
+			
+			<h2 id="Marshal">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=1502:1547#L31">Marshal</a>
+				<a class="permalink" href="godoc.154.html#Marshal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Marshal(val interface{}) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+Marshal returns the BSON encoding of val as a BSON document. If val is not a type that can be transformed into a
+document, MarshalValue should be used instead.
+</p>
+<p>
+Marshal will use the default registry created by NewRegistry to recursively
+marshal val into a []byte. Marshal will inspect struct tags and alter the
+marshaling process accordingly.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalAppend">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=1859:1922#L38">MarshalAppend</a>
+				<a class="permalink" href="godoc.154.html#MarshalAppend">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalAppend(dst []<a href="godoc.26.html#byte">byte</a>, val interface{}) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalAppend will encode val as a BSON document and append the bytes to dst. If dst is not large enough to hold the
+bytes, it will be grown. If val is not a type that can be transformed into a document, MarshalValueAppend should be
+used instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalAppendWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=3598:3700#L66">MarshalAppendWithContext</a>
+				<a class="permalink" href="godoc.154.html#MarshalAppendWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalAppendWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, dst []<a href="godoc.26.html#byte">byte</a>, val interface{}) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalAppendWithContext will encode val as a BSON document using Registry r and EncodeContext ec and append the
+bytes to dst. If dst is not large enough to hold the bytes, it will be grown. If val is not a type that can be
+transformed into a document, MarshalValueAppendWithContext should be used instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalAppendWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=3097:3195#L59">MarshalAppendWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#MarshalAppendWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalAppendWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, dst []<a href="godoc.26.html#byte">byte</a>, val interface{}) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalAppendWithRegistry will encode val as a BSON document using Registry r and append the bytes to dst. If dst is
+not large enough to hold the bytes, it will be grown. If val is not a type that can be transformed into a document,
+MarshalValueAppendWithRegistry should be used instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalExtJSON">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=6849:6929#L156">MarshalExtJSON</a>
+				<a class="permalink" href="godoc.154.html#MarshalExtJSON">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalExtJSON(val interface{}, canonical, escapeHTML <a href="godoc.26.html#bool">bool</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalExtJSON returns the extended JSON encoding of val.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalExtJSONAppend">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=7188:7286#L163">MarshalExtJSONAppend</a>
+				<a class="permalink" href="godoc.154.html#MarshalExtJSONAppend">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalExtJSONAppend(dst []<a href="godoc.26.html#byte">byte</a>, val interface{}, canonical, escapeHTML <a href="godoc.26.html#bool">bool</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalExtJSONAppend will append the extended JSON encoding of val to dst.
+If dst is not large enough to hold the extended JSON encoding of val, dst
+will be grown.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalExtJSONAppendWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=8709:8846#L189">MarshalExtJSONAppendWithContext</a>
+				<a class="permalink" href="godoc.154.html#MarshalExtJSONAppendWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalExtJSONAppendWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, dst []<a href="godoc.26.html#byte">byte</a>, val interface{}, canonical, escapeHTML <a href="godoc.26.html#bool">bool</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalExtJSONAppendWithContext will append the extended JSON encoding of
+val to dst using Registry r. If dst is not large enough to hold the BSON
+encoding of val, dst will be grown.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalExtJSONAppendWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=8267:8400#L182">MarshalExtJSONAppendWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#MarshalExtJSONAppendWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalExtJSONAppendWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, dst []<a href="godoc.26.html#byte">byte</a>, val interface{}, canonical, escapeHTML <a href="godoc.26.html#bool">bool</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalExtJSONAppendWithRegistry will append the extended JSON encoding of
+val to dst using Registry r. If dst is not large enough to hold the BSON
+encoding of val, dst will be grown.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalExtJSONWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=7833:7952#L174">MarshalExtJSONWithContext</a>
+				<a class="permalink" href="godoc.154.html#MarshalExtJSONWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalExtJSONWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, val interface{}, canonical, escapeHTML <a href="godoc.26.html#bool">bool</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalExtJSONWithContext returns the extended JSON encoding of val using Registry r.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalExtJSONWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=7473:7588#L168">MarshalExtJSONWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#MarshalExtJSONWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalExtJSONWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, val interface{}, canonical, escapeHTML <a href="godoc.26.html#bool">bool</a>) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalExtJSONWithRegistry returns the extended JSON encoding of val using Registry r.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalValue">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=4301:4366#L96">MarshalValue</a>
+				<a class="permalink" href="godoc.154.html#MarshalValue">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalValue(val interface{}) (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalValue returns the BSON encoding of val.
+</p>
+<p>
+MarshalValue will use bson.DefaultRegistry to transform val into a BSON value. If val is a struct, this function will
+inspect struct tags and alter the marshalling process accordingly.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalValueAppend">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=4577:4660#L102">MarshalValueAppend</a>
+				<a class="permalink" href="godoc.154.html#MarshalValueAppend">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalValueAppend(dst []<a href="godoc.26.html#byte">byte</a>, val interface{}) (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalValueAppend will append the BSON encoding of val to dst. If dst is not large enough to hold the BSON encoding
+of val, dst will be grown.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalValueAppendWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=5866:5988#L126">MarshalValueAppendWithContext</a>
+				<a class="permalink" href="godoc.154.html#MarshalValueAppendWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalValueAppendWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, dst []<a href="godoc.26.html#byte">byte</a>, val interface{}) (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalValueAppendWithContext will append the BSON encoding of val to dst using EncodeContext ec. If dst is not large
+enough to hold the BSON encoding of val, dst will be grown.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalValueAppendWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=5472:5590#L120">MarshalValueAppendWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#MarshalValueAppendWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalValueAppendWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, dst []<a href="godoc.26.html#byte">byte</a>, val interface{}) (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalValueAppendWithRegistry will append the BSON encoding of val to dst using Registry r. If dst is not large
+enough to hold the BSON encoding of val, dst will be grown.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalValueWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=5092:5196#L113">MarshalValueWithContext</a>
+				<a class="permalink" href="godoc.154.html#MarshalValueWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalValueWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, val interface{}) (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalValueWithContext returns the BSON encoding of val using EncodeContext ec.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalValueWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=4811:4911#L107">MarshalValueWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#MarshalValueWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalValueWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, val interface{}) (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalValueWithRegistry returns the BSON encoding of val using Registry r.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=2593:2677#L51">MarshalWithContext</a>
+				<a class="permalink" href="godoc.154.html#MarshalWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, val interface{}) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalWithContext returns the BSON encoding of val as a BSON document using EncodeContext ec. If val is not a type
+that can be transformed into a document, MarshalValueWithContext should be used instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="MarshalWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=2179:2259#L44">MarshalWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#MarshalWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func MarshalWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, val interface{}) ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)</pre>
+			<p>
+MarshalWithRegistry returns the BSON encoding of val as a BSON document. If val is not a type that can be transformed
+into a document, MarshalValueWithRegistry should be used instead.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewRegistryBuilder">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/registry.go?s=738:790#L8">NewRegistryBuilder</a>
+				<a class="permalink" href="godoc.154.html#NewRegistryBuilder">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func NewRegistryBuilder() *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a></pre>
+			<p>
+NewRegistryBuilder creates a new RegistryBuilder configured with the default encoders and
+deocders from the bsoncodec.DefaultValueEncoders and bsoncodec.DefaultValueDecoders types and the
+PrimitiveCodecs type in this package.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Unmarshal">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=1298:1348#L26">Unmarshal</a>
+				<a class="permalink" href="godoc.154.html#Unmarshal">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Unmarshal(data []<a href="godoc.26.html#byte">byte</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+Unmarshal parses the BSON-encoded data and stores the result in the value
+pointed to by val. If val is nil or not a pointer, Unmarshal returns
+InvalidUnmarshalError.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnmarshalExtJSON">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=2426:2499#L49">UnmarshalExtJSON</a>
+				<a class="permalink" href="godoc.154.html#UnmarshalExtJSON">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnmarshalExtJSON(data []<a href="godoc.26.html#byte">byte</a>, canonical <a href="godoc.26.html#bool">bool</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+UnmarshalExtJSON parses the extended JSON-encoded data and stores the result
+in the value pointed to by val. If val is nil or not a pointer, Unmarshal
+returns InvalidUnmarshalError.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnmarshalExtJSONWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=3352:3464#L68">UnmarshalExtJSONWithContext</a>
+				<a class="permalink" href="godoc.154.html#UnmarshalExtJSONWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnmarshalExtJSONWithContext(dc <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>, data []<a href="godoc.26.html#byte">byte</a>, canonical <a href="godoc.26.html#bool">bool</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+UnmarshalExtJSONWithContext parses the extended JSON-encoded data using
+DecodeContext dc and stores the result in the value pointed to by val. If val is
+nil or not a pointer, UnmarshalWithRegistry returns InvalidUnmarshalError.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnmarshalExtJSONWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=2813:2921#L56">UnmarshalExtJSONWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#UnmarshalExtJSONWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnmarshalExtJSONWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, data []<a href="godoc.26.html#byte">byte</a>, canonical <a href="godoc.26.html#bool">bool</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+UnmarshalExtJSONWithRegistry parses the extended JSON-encoded data using
+Registry r and stores the result in the value pointed to by val. If val is
+nil or not a pointer, UnmarshalWithRegistry returns InvalidUnmarshalError.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnmarshalWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=2057:2146#L41">UnmarshalWithContext</a>
+				<a class="permalink" href="godoc.154.html#UnmarshalWithContext">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnmarshalWithContext(dc <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>, data []<a href="godoc.26.html#byte">byte</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+UnmarshalWithContext parses the BSON-encoded data using DecodeContext dc and
+stores the result in the value pointed to by val. If val is nil or not
+a pointer, UnmarshalWithRegistry returns InvalidUnmarshalError.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UnmarshalWithRegistry">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=1628:1713#L33">UnmarshalWithRegistry</a>
+				<a class="permalink" href="godoc.154.html#UnmarshalWithRegistry">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func UnmarshalWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, data []<a href="godoc.26.html#byte">byte</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+			<p>
+UnmarshalWithRegistry parses the BSON-encoded data using Registry r and
+stores the result in the value pointed to by val. If val is nil or not
+a pointer, UnmarshalWithRegistry returns InvalidUnmarshalError.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="A">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bson.go?s=1768:1788#L40">A</a>
+				<a class="permalink" href="godoc.154.html#A">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An A is an ordered representation of a BSON array.
+</p>
+<p>
+Example usage:
+</p>
+<pre>bson.A{&#34;bar&#34;, &#34;world&#34;, 3.14159, bson.D{{&#34;qux&#34;, 12345}}}
+</pre>
+
+			<pre>type A = <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#A">A</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="D">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bson.go?s=1064:1084#L21">D</a>
+				<a class="permalink" href="godoc.154.html#D">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+D is an ordered representation of a BSON document. This type should be used when the order of the elements matters,
+such as MongoDB command documents. If the order of the elements does not matter, an M should be used instead.
+</p>
+<p>
+Example usage:
+</p>
+<pre>bson.D{{&#34;foo&#34;, &#34;bar&#34;}, {&#34;hello&#34;, &#34;world&#34;}, {&#34;pi&#34;, 3.14159}}
+</pre>
+
+			<pre>type D = <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#D">D</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Decoder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=1025:1099#L23">Decoder</a>
+				<a class="permalink" href="godoc.154.html#Decoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A Decoder reads and decodes BSON documents from a stream. It reads from a bsonrw.ValueReader as
+the source of BSON data.
+</p>
+
+			<pre>type Decoder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDecoder">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=1184:1240#L29">NewDecoder</a>
+					<a class="permalink" href="godoc.154.html#NewDecoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDecoder(vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>) (*<a href="godoc.154.html#Decoder">Decoder</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewDecoder returns a new decoder that uses the DefaultRegistry to read from vr.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewDecoderWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=1530:1625#L41">NewDecoderWithContext</a>
+					<a class="permalink" href="godoc.154.html#NewDecoderWithContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDecoderWithContext(dc <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>) (*<a href="godoc.154.html#Decoder">Decoder</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewDecoderWithContext returns a new decoder that uses DecodeContext dc to read from vr.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Decoder.Decode">func (*Decoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=2032:2079#L60">Decode</a>
+					<a class="permalink" href="godoc.154.html#Decoder.Decode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.154.html#Decoder">Decoder</a>) Decode(val interface{}) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Decode reads the next BSON document from the stream and decodes it into the
+value pointed to by val.
+</p>
+<p>
+The documentation for Unmarshal contains details about of BSON into a Go
+value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.Reset">func (*Decoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=2926:2978#L93">Reset</a>
+					<a class="permalink" href="godoc.154.html#Decoder.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.154.html#Decoder">Decoder</a>) Reset(vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Reset will reset the state of the decoder, using the same *DecodeContext used in
+the original construction but using vr for reading.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.SetContext">func (*Decoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=3238:3300#L105">SetContext</a>
+					<a class="permalink" href="godoc.154.html#Decoder.SetContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.154.html#Decoder">Decoder</a>) SetContext(dc <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetContext replaces the current registry of the decoder with dc.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Decoder.SetRegistry">func (*Decoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/decoder.go?s=3075:3133#L99">SetRegistry</a>
+					<a class="permalink" href="godoc.154.html#Decoder.SetRegistry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (d *<a href="godoc.154.html#Decoder">Decoder</a>) SetRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetRegistry replaces the current registry of the decoder with r.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="E">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bson.go?s=1157:1177#L24">E</a>
+				<a class="permalink" href="godoc.154.html#E">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+E represents a BSON element for a D. It is usually used inside a D.
+</p>
+
+			<pre>type E = <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#E">E</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Encoder">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=886:960#L19">Encoder</a>
+				<a class="permalink" href="godoc.154.html#Encoder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+An Encoder writes a serialization format to an output stream. It writes to a bsonrw.ValueWriter
+as the destination of BSON data.
+</p>
+
+			<pre>type Encoder struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewEncoder">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=1044:1100#L25">NewEncoder</a>
+					<a class="permalink" href="godoc.154.html#NewEncoder">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEncoder(vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>) (*<a href="godoc.154.html#Encoder">Encoder</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewEncoder returns a new encoder that uses the DefaultRegistry to write to vw.
+</p>
+
+				
+				
+			
+				
+				<h3 id="NewEncoderWithContext">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=1389:1484#L37">NewEncoderWithContext</a>
+					<a class="permalink" href="godoc.154.html#NewEncoderWithContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewEncoderWithContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>) (*<a href="godoc.154.html#Encoder">Encoder</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewEncoderWithContext returns a new encoder that uses EncodeContext ec to write to vw.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Encoder.Encode">func (*Encoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=1877:1924#L55">Encode</a>
+					<a class="permalink" href="godoc.154.html#Encoder.Encode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.154.html#Encoder">Encoder</a>) Encode(val interface{}) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Encode writes the BSON encoding of val to the stream.
+</p>
+<p>
+The documentation for Marshal contains details about the conversion of Go
+values to BSON.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.Reset">func (*Encoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=2487:2539#L74">Reset</a>
+					<a class="permalink" href="godoc.154.html#Encoder.Reset">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.154.html#Encoder">Encoder</a>) Reset(vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Reset will reset the state of the encoder, using the same *EncodeContext used in
+the original construction but using vw.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.SetContext">func (*Encoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=2804:2866#L86">SetContext</a>
+					<a class="permalink" href="godoc.154.html#Encoder.SetContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.154.html#Encoder">Encoder</a>) SetContext(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetContext replaces the current EncodeContext of the encoder with er.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Encoder.SetRegistry">func (*Encoder) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/encoder.go?s=2636:2694#L80">SetRegistry</a>
+					<a class="permalink" href="godoc.154.html#Encoder.SetRegistry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.154.html#Encoder">Encoder</a>) SetRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+SetRegistry replaces the current registry of the encoder with r.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="M">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bson.go?s=1607:1627#L33">M</a>
+				<a class="permalink" href="godoc.154.html#M">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+M is an unordered representation of a BSON document. This type should be used when the order of the elements does not
+matter. This type is handled as a regular map[string]interface{} when encoding and decoding. Elements will be
+serialized in an undefined, random order. If the order of the elements matters, a D should be used instead.
+</p>
+<p>
+Example usage:
+</p>
+<pre>bson.M{&#34;foo&#34;: &#34;bar&#34;, &#34;hello&#34;: &#34;world&#34;, &#34;pi&#34;: 3.14159}
+</pre>
+
+			<pre>type M = <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#M">M</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Marshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=751:810#L13">Marshaler</a>
+				<a class="permalink" href="godoc.154.html#Marshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Marshaler is an interface implemented by types that can marshal themselves
+into a BSON document represented as bytes. The bytes returned must be a valid
+BSON document if the error is nil.
+</p>
+
+			<pre>type Marshaler interface {
+    MarshalBSON() ([]<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="PrimitiveCodecs">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go?s=570:599#L11">PrimitiveCodecs</a>
+				<a class="permalink" href="godoc.154.html#PrimitiveCodecs">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+PrimitiveCodecs is a namespace for all of the default bsoncodec.Codecs for the primitive types
+defined in this package.
+</p>
+
+			<pre>type PrimitiveCodecs struct{}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PrimitiveCodecs.RawDecodeValue">func (PrimitiveCodecs) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go?s=2737:2850#L65">RawDecodeValue</a>
+					<a class="permalink" href="godoc.154.html#PrimitiveCodecs.RawDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.154.html#PrimitiveCodecs">PrimitiveCodecs</a>) RawDecodeValue(dc <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RawDecodeValue is the ValueDecoderFunc for Reader.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PrimitiveCodecs.RawEncodeValue">func (PrimitiveCodecs) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go?s=2326:2439#L54">RawEncodeValue</a>
+					<a class="permalink" href="godoc.154.html#PrimitiveCodecs.RawEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.154.html#PrimitiveCodecs">PrimitiveCodecs</a>) RawEncodeValue(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RawEncodeValue is the ValueEncoderFunc for Reader.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PrimitiveCodecs.RawValueDecodeValue">func (PrimitiveCodecs) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go?s=1822:1940#L39">RawValueDecodeValue</a>
+					<a class="permalink" href="godoc.154.html#PrimitiveCodecs.RawValueDecodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.154.html#PrimitiveCodecs">PrimitiveCodecs</a>) RawValueDecodeValue(dc <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>, vr <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueReader">ValueReader</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RawValueDecodeValue is the ValueDecoderFunc for RawValue.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PrimitiveCodecs.RawValueEncodeValue">func (PrimitiveCodecs) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go?s=1351:1469#L28">RawValueEncodeValue</a>
+					<a class="permalink" href="godoc.154.html#PrimitiveCodecs.RawValueEncodeValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (<a href="godoc.154.html#PrimitiveCodecs">PrimitiveCodecs</a>) RawValueEncodeValue(ec <a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#EncodeContext">EncodeContext</a>, vw <a href="godoc.157.html">bsonrw</a>.<a href="godoc.157.html#ValueWriter">ValueWriter</a>, val <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+RawValueEncodeValue is the ValueEncoderFunc for RawValue.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PrimitiveCodecs.RegisterPrimitiveCodecs">func (PrimitiveCodecs) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/primitive_codecs.go?s=797:877#L15">RegisterPrimitiveCodecs</a>
+					<a class="permalink" href="godoc.154.html#PrimitiveCodecs.RegisterPrimitiveCodecs">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (pc <a href="godoc.154.html#PrimitiveCodecs">PrimitiveCodecs</a>) RegisterPrimitiveCodecs(rb *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#RegistryBuilder">RegistryBuilder</a>)</pre>
+				<p>
+RegisterPrimitiveCodecs will register the encode and decode methods attached to PrimitiveCodecs
+with the provided RegistryBuilder. if rb is nil, a new empty RegistryBuilder will be created.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Raw">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=792:807#L13">Raw</a>
+				<a class="permalink" href="godoc.154.html#Raw">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Raw is a wrapper around a byte slice. It will interpret the slice as a
+BSON document. This type is a wrapper around a bsoncore.Document. Errors returned from the
+methods on this type and associated types come from the bsoncore package.
+</p>
+
+			<pre>type Raw []<a href="godoc.26.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewFromIOReader">func <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=906:952#L17">NewFromIOReader</a>
+					<a class="permalink" href="godoc.154.html#NewFromIOReader">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewFromIOReader(r <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>) (<a href="godoc.154.html#Raw">Raw</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+NewFromIOReader reads in a document from the given io.Reader and constructs a Raw from
+it.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Raw.Elements">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=2214:2259#L44">Elements</a>
+					<a class="permalink" href="godoc.154.html#Raw.Elements">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) Elements() ([]<a href="godoc.154.html#RawElement">RawElement</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Elements returns this document as a slice of elements. The returned slice will contain valid
+elements. If the document is not valid, the elements up to the invalid point will be returned
+along with an error.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Raw.Index">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=3051:3092#L67">Index</a>
+					<a class="permalink" href="godoc.154.html#Raw.Index">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) Index(index <a href="godoc.26.html#uint">uint</a>) <a href="godoc.154.html#RawElement">RawElement</a></pre>
+				<p>
+Index searches for and retrieves the element at the given index. This method will panic if
+the document is invalid or if the index is out of bounds.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Raw.IndexErr">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=3222:3275#L70">IndexErr</a>
+					<a class="permalink" href="godoc.154.html#Raw.IndexErr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) IndexErr(index <a href="godoc.26.html#uint">uint</a>) (<a href="godoc.154.html#RawElement">RawElement</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+IndexErr searches for and retrieves the element at the given index.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Raw.Lookup">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=1569:1612#L30">Lookup</a>
+					<a class="permalink" href="godoc.154.html#Raw.Lookup">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) Lookup(key ...<a href="godoc.26.html#string">string</a>) <a href="godoc.154.html#RawValue">RawValue</a></pre>
+				<p>
+Lookup search the document, potentially recursively, for the given key. If
+there are multiple keys provided, this method will recurse down, as long as
+the top and intermediate nodes are either documents or arrays.If an error
+occurs or if the value doesn&#39;t exist, an empty RawValue is returned.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Raw.LookupErr">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=1845:1900#L36">LookupErr</a>
+					<a class="permalink" href="godoc.154.html#Raw.LookupErr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) LookupErr(key ...<a href="godoc.26.html#string">string</a>) (<a href="godoc.154.html#RawValue">RawValue</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+LookupErr searches the document and potentially subdocuments or arrays for the
+provided key. Each key provided to this method represents a layer of depth.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Raw.String">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=3411:3439#L76">String</a>
+					<a class="permalink" href="godoc.154.html#Raw.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the fmt.Stringer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Raw.Validate">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=1183:1218#L24">Validate</a>
+					<a class="permalink" href="godoc.154.html#Raw.Validate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) Validate() (err <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Validate validates the document. This method only validates the first document in
+the slice, to validate other documents, the slice must be resliced.
+</p>
+
+				
+				<div id="example_Raw_Validate" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">rdr := make(Raw, 500)
+rdr[250], rdr[251], rdr[252], rdr[253], rdr[254] = &#39;\x05&#39;, &#39;\x00&#39;, &#39;\x00&#39;, &#39;\x00&#39;, &#39;\x00&#39;
+err := rdr[250:].Validate()
+fmt.Println(err)
+
+<span class="comment"></pre>
+			
+			<p>Output:</p>
+			<pre class="output">&lt;nil&gt;
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+				
+				<h3 id="Raw.Values">func (Raw) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw.go?s=2663:2704#L56">Values</a>
+					<a class="permalink" href="godoc.154.html#Raw.Values">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r <a href="godoc.154.html#Raw">Raw</a>) Values() ([]<a href="godoc.154.html#RawValue">RawValue</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+Values returns this document as a slice of values. The returned slice will contain valid values.
+If the document is not valid, the values up to the invalid point will be returned along with an
+error.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RawElement">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=578:600#L7">RawElement</a>
+				<a class="permalink" href="godoc.154.html#RawElement">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RawElement represents a BSON element in byte form. This type provides a simple way to
+transform a slice of bytes into a BSON element and extract information from it.
+</p>
+<p>
+RawElement is a thin wrapper around a bsoncore.Element.
+</p>
+
+			<pre>type RawElement []<a href="godoc.26.html#byte">byte</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RawElement.DebugString">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=2124:2165#L41">DebugString</a>
+					<a class="permalink" href="godoc.154.html#RawElement.DebugString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) DebugString() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+DebugString outputs a human readable version of RawElement. It will attempt to stringify the
+valid components of the element even if the entire element is not valid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawElement.Key">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=773:806#L11">Key</a>
+					<a class="permalink" href="godoc.154.html#RawElement.Key">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) Key() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Key returns the key for this element. If the element is not valid, this method returns an empty
+string. If knowing if the element is valid is important, use KeyErr.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawElement.KeyErr">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=938:983#L14">KeyErr</a>
+					<a class="permalink" href="godoc.154.html#RawElement.KeyErr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) KeyErr() (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+KeyErr returns the key for this element, returning an error if the element is not valid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawElement.String">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=1760:1796#L30">String</a>
+					<a class="permalink" href="godoc.154.html#RawElement.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the fmt.Stringer interface. The output will be in extended JSON format.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawElement.Validate">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=1585:1622#L27">Validate</a>
+					<a class="permalink" href="godoc.154.html#RawElement.Validate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) Validate() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Validate ensures re is a valid BSON element.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawElement.Value">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=1201:1238#L18">Value</a>
+					<a class="permalink" href="godoc.154.html#RawElement.Value">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) Value() <a href="godoc.154.html#RawValue">RawValue</a></pre>
+				<p>
+Value returns the value of this element. If the element is not valid, this method returns an
+empty Value. If knowing if the element is valid is important, use ValueErr.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawElement.ValueErr">func (RawElement) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_element.go?s=1398:1447#L21">ValueErr</a>
+					<a class="permalink" href="godoc.154.html#RawElement.ValueErr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (re <a href="godoc.154.html#RawElement">RawElement</a>) ValueErr() (<a href="godoc.154.html#RawValue">RawValue</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				<p>
+ValueErr returns the value for this element, returning an error if the element is not valid.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="RawValue">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=1114:1197#L24">RawValue</a>
+				<a class="permalink" href="godoc.154.html#RawValue">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+RawValue represents a BSON value in byte form. It can be used to hold unprocessed BSON or to
+defer processing of BSON. Type is the BSON type of the value and Value are the raw bytes that
+represent the element.
+</p>
+<p>
+This type wraps bsoncore.Value for most of it&#39;s functionality.
+</p>
+
+			<pre>type RawValue struct {
+<span id="RawValue.Type"></span>    Type  <a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>
+<span id="RawValue.Value"></span>    Value []<a href="godoc.26.html#byte">byte</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="RawValue.Array">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=5710:5740#L144">Array</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Array">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Array() <a href="godoc.154.html#Raw">Raw</a></pre>
+				<p>
+Array returns the BSON array the Value represents as an Array. It panics if the
+value is a BSON type other than array.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.ArrayOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=5875:5915#L148">ArrayOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.ArrayOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) ArrayOK() (<a href="godoc.154.html#Raw">Raw</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ArrayOK is the same as Array, except it returns a boolean instead
+of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Binary">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=6109:6164#L155">Binary</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Binary">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Binary() (subtype <a href="godoc.26.html#byte">byte</a>, data []<a href="godoc.26.html#byte">byte</a>)</pre>
+				<p>
+Binary returns the BSON binary value the Value represents. It panics if the value is a BSON type
+other than binary.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.BinaryOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=6297:6363#L159">BinaryOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.BinaryOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) BinaryOK() (subtype <a href="godoc.26.html#byte">byte</a>, data []<a href="godoc.26.html#byte">byte</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+BinaryOK is the same as Binary, except it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Boolean">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=6953:6986#L173">Boolean</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Boolean">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Boolean() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Boolean returns the boolean value the Value represents. It panics if the
+value is a BSON type other than boolean.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.BooleanOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=7122:7165#L177">BooleanOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.BooleanOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) BooleanOK() (<a href="godoc.26.html#bool">bool</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+BooleanOK is the same as Boolean, except it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.CodeWithScope">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=9852:9900#L233">CodeWithScope</a>
+					<a class="permalink" href="godoc.154.html#RawValue.CodeWithScope">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) CodeWithScope() (<a href="godoc.26.html#string">string</a>, <a href="godoc.154.html#Raw">Raw</a>)</pre>
+				<p>
+CodeWithScope returns the BSON JavaScript code with scope the Value represents.
+It panics if the value is a BSON type other than JavaScript code with scope.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.CodeWithScopeOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=10093:10149#L240">CodeWithScopeOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.CodeWithScopeOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) CodeWithScopeOK() (<a href="godoc.26.html#string">string</a>, <a href="godoc.154.html#Raw">Raw</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+CodeWithScopeOK is the same as CodeWithScope, except that it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DBPointer">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=8547:8606#L207">DBPointer</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DBPointer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DBPointer() (<a href="godoc.26.html#string">string</a>, <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>)</pre>
+				<p>
+DBPointer returns the BSON dbpointer value the Value represents. It panics if the value is a BSON
+type other than DBPointer.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DBPointerOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=8753:8820#L211">DBPointerOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DBPointerOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DBPointerOK() (<a href="godoc.26.html#string">string</a>, <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+DBPointerOK is the same as DBPoitner, except that it returns a boolean
+instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DateTime">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=7361:7396#L181">DateTime</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DateTime">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DateTime() <a href="godoc.26.html#int64">int64</a></pre>
+				<p>
+DateTime returns the BSON datetime value the Value represents as a
+unix timestamp. It panics if the value is a BSON type other than datetime.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DateTimeOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=7535:7580#L185">DateTimeOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DateTimeOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DateTimeOK() (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+DateTimeOK is the same as DateTime, except it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DebugString">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=4174:4213#L111">DebugString</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DebugString">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DebugString() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+DebugString outputs a human readable version of Document. It will attempt to stringify the
+valid components of the document even if the entire document is not valid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Decimal128">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=11515:11567#L271">Decimal128</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Decimal128">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Decimal128() <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Decimal128">Decimal128</a></pre>
+				<p>
+Decimal128 returns the decimal the Value represents. It panics if the value is a BSON type other than
+decimal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Decimal128OK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=11717:11779#L275">Decimal128OK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Decimal128OK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Decimal128OK() (<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#Decimal128">Decimal128</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+Decimal128OK is the same as Decimal128, except that it returns a boolean
+instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Document">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=5290:5323#L133">Document</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Document">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Document() <a href="godoc.154.html#Raw">Raw</a></pre>
+				<p>
+Document returns the BSON document the Value represents as a Document. It panics if the
+value is a BSON type other than document.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DocumentOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=5467:5510#L137">DocumentOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DocumentOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DocumentOK() (<a href="godoc.154.html#Raw">Raw</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+DocumentOK is the same as Document, except it returns a boolean
+instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Double">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=4371:4406#L115">Double</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Double">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Double() <a href="godoc.26.html#float64">float64</a></pre>
+				<p>
+Double returns the float64 value for this element.
+It panics if e&#39;s BSON type is not bsontype.Double.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.DoubleOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=4530:4575#L118">DoubleOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.DoubleOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) DoubleOK() (<a href="godoc.26.html#float64">float64</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+DoubleOK is the same as Double, but returns a boolean instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Equal">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=1787:1830#L44">Equal</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Equal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Equal(rv2 <a href="godoc.154.html#RawValue">RawValue</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Equal compares rv and rv2 and returns true if they are equal.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Int32">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=10353:10385#L247">Int32</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Int32">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Int32() <a href="godoc.26.html#int32">int32</a></pre>
+				<p>
+Int32 returns the int32 the Value represents. It panics if the value is a BSON type other than
+int32.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Int32OK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=10520:10562#L251">Int32OK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Int32OK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Int32OK() (<a href="godoc.26.html#int32">int32</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+Int32OK is the same as Int32, except that it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Int64">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=11143:11175#L263">Int64</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Int64">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Int64() <a href="godoc.26.html#int64">int64</a></pre>
+				<p>
+Int64 returns the int64 the Value represents. It panics if the value is a BSON type other than
+int64.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Int64OK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=11310:11352#L267">Int64OK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Int64OK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Int64OK() (<a href="godoc.26.html#int64">int64</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+Int64OK is the same as Int64, except that it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.IsNumber">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=3680:3714#L103">IsNumber</a>
+					<a class="permalink" href="godoc.154.html#RawValue.IsNumber">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) IsNumber() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+IsNumber returns true if the type of v is a numeric BSON type.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.JavaScript">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=9015:9053#L217">JavaScript</a>
+					<a class="permalink" href="godoc.154.html#RawValue.JavaScript">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) JavaScript() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+JavaScript returns the BSON JavaScript code value the Value represents. It panics if the value is
+a BSON type other than JavaScript code.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.JavaScriptOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=9204:9252#L221">JavaScriptOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.JavaScriptOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) JavaScriptOK() (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+JavaScriptOK is the same as Javascript, excepti that it returns a boolean
+instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.ObjectID">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=6539:6587#L165">ObjectID</a>
+					<a class="permalink" href="godoc.154.html#RawValue.ObjectID">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) ObjectID() <a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a></pre>
+				<p>
+ObjectID returns the BSON objectid value the Value represents. It panics if the value is a BSON
+type other than objectid.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.ObjectIDOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=6726:6784#L169">ObjectIDOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.ObjectIDOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) ObjectIDOK() (<a href="godoc.162.html">primitive</a>.<a href="godoc.162.html#ObjectID">ObjectID</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+ObjectIDOK is the same as ObjectID, except it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Regex">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=8124:8176#L197">Regex</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Regex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Regex() (pattern, options <a href="godoc.26.html#string">string</a>)</pre>
+				<p>
+Regex returns the BSON regex value the Value represents. It panics if the value is a BSON
+type other than regex.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.RegexOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=8306:8369#L201">RegexOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.RegexOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) RegexOK() (pattern, options <a href="godoc.26.html#string">string</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+RegexOK is the same as Regex, except it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.String">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=3923:3957#L107">String</a>
+					<a class="permalink" href="godoc.154.html#RawValue.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String implements the fmt.String interface. This method will return values in extended JSON
+format. If the value is not valid, this returns an empty string
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.StringValue">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=4872:4911#L125">StringValue</a>
+					<a class="permalink" href="godoc.154.html#RawValue.StringValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) StringValue() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+StringValue returns the string value for this element.
+It panics if e&#39;s BSON type is not bsontype.String.
+</p>
+<p>
+NOTE: This method is called StringValue to avoid a collision with the String method which
+implements the fmt.Stringer interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.StringValueOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=5053:5102#L129">StringValueOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.StringValueOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) StringValueOK() (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+StringValueOK is the same as StringValue, but returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Symbol">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=9425:9459#L225">Symbol</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Symbol">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Symbol() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Symbol returns the BSON symbol value the Value represents. It panics if the value is a BSON
+type other than symbol.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.SymbolOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=9598:9642#L229">SymbolOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.SymbolOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) SymbolOK() (<a href="godoc.26.html#string">string</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+SymbolOK is the same as Symbol, excepti that it returns a boolean
+instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Time">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=7753:7788#L189">Time</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Time">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Time() <a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a></pre>
+				<p>
+Time returns the BSON datetime value the Value represents. It panics if the value is a BSON
+type other than datetime.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.TimeOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=7915:7960#L193">TimeOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.TimeOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) TimeOK() (<a href="godoc.68.html">time</a>.<a href="godoc.68.html#Time">Time</a>, <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+TimeOK is the same as Time, except it returns a boolean instead of
+panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Timestamp">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=10739:10783#L255">Timestamp</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Timestamp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Timestamp() (t, i <a href="godoc.26.html#uint32">uint32</a>)</pre>
+				<p>
+Timestamp returns the BSON timestamp value the Value represents. It panics if the value is a
+BSON type other than timestamp.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.TimestampOK">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=10930:10985#L259">TimestampOK</a>
+					<a class="permalink" href="godoc.154.html#RawValue.TimestampOK">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) TimestampOK() (t, i <a href="godoc.26.html#uint32">uint32</a>, ok <a href="godoc.26.html#bool">bool</a>)</pre>
+				<p>
+TimestampOK is the same as Timestamp, except that it returns a boolean
+instead of panicking.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Unmarshal">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=1565:1616#L35">Unmarshal</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Unmarshal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Unmarshal(val interface{}) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Unmarshal deserializes BSON into the provided val. If RawValue cannot be unmarshaled into val, an
+error is returned. This method will use the registry used to create the RawValue, if the RawValue
+was created from partial BSON processing, or it will use the default registry. Users wishing to
+specify the registry to use should use UnmarshalWithRegistry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.UnmarshalWithContext">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=2783:2874#L78">UnmarshalWithContext</a>
+					<a class="permalink" href="godoc.154.html#RawValue.UnmarshalWithContext">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) UnmarshalWithContext(dc *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#DecodeContext">DecodeContext</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UnmarshalWithContext performs the same unmarshalling as Unmarshal but uses the provided DecodeContext
+instead of the one attached or the default registry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.UnmarshalWithRegistry">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=2110:2196#L58">UnmarshalWithRegistry</a>
+					<a class="permalink" href="godoc.154.html#RawValue.UnmarshalWithRegistry">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) UnmarshalWithRegistry(r *<a href="godoc.155.html">bsoncodec</a>.<a href="godoc.155.html#Registry">Registry</a>, val interface{}) <a href="godoc.26.html#error">error</a></pre>
+				<p>
+UnmarshalWithRegistry performs the same unmarshalling as Unmarshal but uses the provided registry
+instead of the one attached or the default registry.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="RawValue.Validate">func (RawValue) <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/raw_value.go?s=3532:3567#L100">Validate</a>
+					<a class="permalink" href="godoc.154.html#RawValue.Validate">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (rv <a href="godoc.154.html#RawValue">RawValue</a>) Validate() <a href="godoc.26.html#error">error</a></pre>
+				<p>
+Validate ensures the value is a valid BSON value.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Unmarshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=697:756#L11">Unmarshaler</a>
+				<a class="permalink" href="godoc.154.html#Unmarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Unmarshaler is an interface implemented by types that can unmarshal a BSON
+document representation of themselves. The BSON bytes can be assumed to be
+valid. UnmarshalBSON must copy the BSON bytes if it wishes to retain the data
+after returning.
+</p>
+
+			<pre>type Unmarshaler interface {
+    UnmarshalBSON([]<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueMarshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/marshal.go?s=1056:1140#L21">ValueMarshaler</a>
+				<a class="permalink" href="godoc.154.html#ValueMarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueMarshaler is an interface implemented by types that can marshal
+themselves into a BSON value as bytes. The type must be the valid type for
+the bytes returned. The bytes and byte type together must be valid if the
+error is nil.
+</p>
+
+			<pre>type ValueMarshaler interface {
+    MarshalBSONValue() (<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>, <a href="godoc.26.html#error">error</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ValueUnmarshaler">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/unmarshal.go?s=1037:1121#L19">ValueUnmarshaler</a>
+				<a class="permalink" href="godoc.154.html#ValueUnmarshaler">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ValueUnmarshaler is an interface implemented by types that can unmarshal a
+BSON value representaiton of themselves. The BSON bytes and type can be
+assumed to be valid. UnmarshalBSONValue must copy the BSON value bytes if it
+wishes to retain the data after returning.
+</p>
+
+			<pre>type ValueUnmarshaler interface {
+    UnmarshalBSONValue(<a href="godoc.160.html">bsontype</a>.<a href="godoc.160.html#Type">Type</a>, []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Zeroer">type <a href="http://localhost:6161/src/go.mongodb.org/mongo-driver/bson/bson.go?s=701:741#L11">Zeroer</a>
+				<a class="permalink" href="godoc.154.html#Zeroer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Zeroer allows custom struct types to implement a report of zero
+state. All struct types that don&#39;t implement Zeroer or where IsZero
+returns false are considered to be not zero.
+</p>
+
+			<pre>type Zeroer interface {
+    IsZero() <a href="godoc.26.html#bool">bool</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.152.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.155.html">bsoncodec</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package bsoncodec provides a system for encoding values to BSON representations and decoding values from BSON representations.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.156.html">bsonoptions</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.157.html">bsonrw</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package bsonrw contains abstractions for reading and writing BSON and BSON like types from sources.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 20px;">
+						<a href="godoc.158.html">bsonrwtest</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.160.html">bsontype</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package bsontype is a utility package that contains types for each BSON type and the a stringifier for the Type to enable easier debugging when working with BSON.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.161.html">mgocompat</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.162.html">primitive</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package primitive contains types similar to Go primitives for BSON types can do not have direct Go primitive representations.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

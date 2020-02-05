@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>godocdown - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.130.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Command godocdown
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<p>
+Command godocdown generates Go documentation in a GitHub-friendly Markdown format.
+</p>
+<pre>$ go get github.com/robertkrimen/godocdown/godocdown                         
+                                                                             
+$ godocdown /path/to/package &gt; README.markdown                               
+                                                                             
+# Generate documentation for the package/command in the current directory    
+$ godocdown &gt; README.markdown                                                
+                                                                             
+# Generate standard Markdown                                                 
+$ godocdown -plain .                                                         
+</pre>
+<p>
+This program is targeted at providing nice-looking documentation for GitHub. With this in
+mind, it generates GitHub Flavored Markdown (<a href="http://github.github.com/github-flavored-markdown/">http://github.github.com/github-flavored-markdown/</a>) by
+default. This can be changed with the use of the &#34;plain&#34; flag to generate standard Markdown.
+</p>
+<p>
+Install
+</p>
+<pre>go get github.com/robertkrimen/godocdown/godocdown
+</pre>
+<h3 id="hdr-Example">Example</h3>
+<p>
+<a href="http://github.com/robertkrimen/godocdown/blob/master/example.markdown">http://github.com/robertkrimen/godocdown/blob/master/example.markdown</a>
+</p>
+<p>
+Usage
+</p>
+<pre>-output=&#34;&#34;                                                                       
+    Write output to a file instead of stdout                                     
+    Write to stdout with -                                                       
+                                                                                 
+-template=&#34;&#34;                                                                     
+    The template file to use                                                     
+                                                                                 
+-no-template=false                                                               
+    Disable template processing                                                  
+                                                                                 
+-plain=false                                                                     
+    Emit standard Markdown, rather than Github Flavored Markdown                 
+                                                                                 
+-heading=&#34;TitleCase1Word&#34;                                                        
+    Heading detection method: 1Word, TitleCase, Title, TitleCase1Word, &#34;&#34;        
+    For each line of the package declaration, godocdown attempts to detect if    
+    a heading is present via a pattern match. If a heading is detected,          
+    it prefixes the line with a Markdown heading indicator (typically &#34;###&#34;).    
+                                                                                 
+    1Word: Only a single word on the entire line                                 
+        [A-Za-z0-9_-]+                                                           
+                                                                                 
+    TitleCase: A line where each word has the first letter capitalized           
+        ([A-Z][A-Za-z0-9_-]\s*)+                                                 
+                                                                                 
+    Title: A line without punctuation (e.g. a period at the end)                 
+        ([A-Za-z0-9_-]\s*)+                                                      
+                                                                                 
+    TitleCase1Word: The line matches either the TitleCase or 1Word pattern       
+</pre>
+<h3 id="hdr-Templating">Templating</h3>
+<p>
+In addition to Markdown rendering, godocdown provides templating via text/template (<a href="http://golang.org/pkg/text/template/">http://golang.org/pkg/text/template/</a>)
+for further customization. By putting a file named &#34;.godocdown.template&#34; (or one from the list below) in the same directory as your
+package/command, godocdown will know to use the file as a template.
+</p>
+<pre># text/template
+.godocdown.markdown
+.godocdown.md
+.godocdown.template
+.godocdown.tmpl
+</pre>
+<p>
+A template file can also be specified with the &#34;-template&#34; parameter
+</p>
+<p>
+Along with the standard template functionality, the starting data argument has the following interface:
+</p>
+<pre>{{ .Emit }}                                                                                       
+// Emit the standard documentation (what godocdown would emit without a template)                 
+                                                                                                  
+{{ .EmitHeader }}                                                                                 
+// Emit the package name and an import line (if one is present/needed)                            
+                                                                                                  
+{{ .EmitSynopsis }}                                                                               
+// Emit the package declaration                                                                   
+                                                                                                  
+{{ .EmitUsage }}                                                                                  
+// Emit package usage, which includes a constants section, a variables section,                   
+// a functions section, and a types section. In addition, each type may have its own constant,    
+// variable, and/or function/method listing.                                                      
+                                                                                                  
+{{ if .IsCommand  }} ... {{ end }}                                                                
+// A boolean indicating whether the given package is a command or a plain package                 
+                                                                                                  
+{{ .Name }}                                                                                       
+// The name of the package/command (string)                                                       
+                                                                                                  
+{{ .ImportPath }}                                                                                 
+// The import path for the package (string)                                                       
+// (This field will be the empty string if godocdown is unable to guess it)                       
+</pre>
+
+	
+
+	
+
+
+
+
+
+	
+	
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+	
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+			
+			<tr>
+				<td colspan="2"><a href="godoc.128.html">..</a></td>
+			</tr>
+			
+
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.131.html">dbg</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package dbg is a println/printf/log-debugging utility library.
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.132.html">kilt</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						
+					</td>
+				</tr>
+			
+				<tr>
+				
+					<td class="pkg-name" style="padding-left: 0px;">
+						<a href="godoc.133.html">terst</a>
+					</td>
+				
+					<td class="pkg-synopsis">
+						Package terst is a terse (terst = test + terse), easy-to-use testing library for Go.
+					</td>
+				</tr>
+			
+		</table>
+	</div>
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

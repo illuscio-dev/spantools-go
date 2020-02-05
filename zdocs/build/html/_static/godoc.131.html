@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>dbg - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.131.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package dbg
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/robertkrimen/godocdown/godocdown/dbg"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.131.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.131.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package dbg is a println/printf/log-debugging utility library.
+</p>
+<pre>import (
+    Dbg &#34;github.com/robertkrimen/dbg&#34;
+)
+
+dbg, dbgf := Dbg.New()
+
+dbg(&#34;Emit some debug stuff&#34;, []byte{120, 121, 122, 122, 121}, math.Pi)
+# &#34;2013/01/28 16:50:03 Emit some debug stuff [120 121 122 122 121] 3.141592653589793&#34;
+
+dbgf(&#34;With a %s formatting %.2f&#34;, &#34;little&#34;, math.Pi)
+# &#34;2013/01/28 16:51:55 With a little formatting (3.14)&#34;
+
+dbgf(&#34;%/fatal//A fatal debug statement: should not be here&#34;)
+# &#34;A fatal debug statement: should not be here&#34;
+# ...and then, os.Exit(1)
+
+dbgf(&#34;%/panic//Can also panic %s&#34;, &#34;this&#34;)
+# &#34;Can also panic this&#34;
+# ...as a panic, equivalent to: panic(&#34;Can also panic this&#34;)
+
+dbgf(&#34;Any %s arguments without a corresponding %%&#34;, &#34;extra&#34;, &#34;are treated like arguments to dbg()&#34;)
+# &#34;2013/01/28 17:14:40 Any extra arguments (without a corresponding %) are treated like arguments to dbg()&#34;
+
+dbgf(&#34;%d %d&#34;, 1, 2, 3, 4, 5)
+# &#34;2013/01/28 17:16:32 Another example: 1 2 3 4 5&#34;
+
+dbgf(&#34;%@: Include the function name for a little context (via %s)&#34;, &#34;%@&#34;)
+# &#34;2013... github.com/robertkrimen/dbg.TestSynopsis: Include the function name for a little context (via %@)&#34;
+</pre>
+<p>
+By default, dbg uses log (log.Println, log.Printf, log.Panic, etc.) for output.
+However, you can also provide your own output destination by invoking dbg.New with
+a customization function:
+</p>
+<pre>import (
+    &#34;bytes&#34;
+    Dbg &#34;github.com/robertkrimen/dbg&#34;
+    &#34;os&#34;
+)
+
+# dbg to os.Stderr
+dbg, dbgf := Dbg.New(func(dbgr *Dbgr) {
+    dbgr.SetOutput(os.Stderr)
+})
+
+# A slightly contrived example:
+var buffer bytes.Buffer
+dbg, dbgf := New(func(dbgr *Dbgr) {
+    dbgr.SetOutput(&amp;buffer)
+})
+</pre>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.131.html#New">func New(options ...interface{}) (dbg DbgFunction, dbgf DbgFunction)</a></dd>
+			
+			
+				
+				<dd><a href="godoc.131.html#DbgFunction">type DbgFunction</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.131.html#Dbgr">type Dbgr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.131.html#NewDbgr">func NewDbgr() *Dbgr</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.131.html#Dbgr.Dbg">func (self Dbgr) Dbg(values ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.131.html#Dbgr.DbgDbgf">func (self Dbgr) DbgDbgf() (dbg DbgFunction, dbgf DbgFunction)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.131.html#Dbgr.Dbgf">func (self Dbgr) Dbgf(values ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.131.html#Dbgr.SetOutput">func (self *Dbgr) SetOutput(output interface{})</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go">dbg.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="New">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=3655:3723#L148">New</a>
+				<a class="permalink" href="godoc.131.html#New">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func New(options ...interface{}) (dbg <a href="godoc.131.html#DbgFunction">DbgFunction</a>, dbgf <a href="godoc.131.html#DbgFunction">DbgFunction</a>)</pre>
+			<p>
+New will create and return a pair of debugging functions. You can customize where
+they output to by passing in an (optional) customization function:
+</p>
+<pre>import (
+    Dbg &#34;github.com/robertkrimen/dbg&#34;
+    &#34;os&#34;
+)
+
+# dbg to os.Stderr
+dbg, dbgf := Dbg.New(func(dbgr *Dbgr) {
+    dbgr.SetOutput(os.Stderr)
+})
+</pre>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="DbgFunction">type <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=3213:3257#L126">DbgFunction</a>
+				<a class="permalink" href="godoc.131.html#DbgFunction">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type DbgFunction func(values ...interface{})</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Dbgr">type <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=3179:3211#L122">Dbgr</a>
+				<a class="permalink" href="godoc.131.html#Dbgr">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Dbgr struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewDbgr">func <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=3259:3279#L128">NewDbgr</a>
+					<a class="permalink" href="godoc.131.html#NewDbgr">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewDbgr() *<a href="godoc.131.html#Dbgr">Dbgr</a></pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="Dbgr.Dbg">func (Dbgr) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=3859:3902#L158">Dbg</a>
+					<a class="permalink" href="godoc.131.html#Dbgr.Dbg">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self <a href="godoc.131.html#Dbgr">Dbgr</a>) Dbg(values ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Dbgr.DbgDbgf">func (Dbgr) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=4025:4087#L166">DbgDbgf</a>
+					<a class="permalink" href="godoc.131.html#Dbgr.DbgDbgf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self <a href="godoc.131.html#Dbgr">Dbgr</a>) DbgDbgf() (dbg <a href="godoc.131.html#DbgFunction">DbgFunction</a>, dbgf <a href="godoc.131.html#DbgFunction">DbgFunction</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Dbgr.Dbgf">func (Dbgr) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=3953:3997#L162">Dbgf</a>
+					<a class="permalink" href="godoc.131.html#Dbgr.Dbgf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self <a href="godoc.131.html#Dbgr">Dbgr</a>) Dbgf(values ...interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Dbgr.SetOutput">func (*Dbgr) <a href="http://localhost:6161/src/github.com/robertkrimen/godocdown/godocdown/dbg/dbg.go?s=6685:6732#L279">SetOutput</a>
+					<a class="permalink" href="godoc.131.html#Dbgr.SetOutput">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (self *<a href="godoc.131.html#Dbgr">Dbgr</a>) SetOutput(output interface{})</pre>
+				<p>
+SetOutput will accept the following as a destination for output:
+</p>
+<pre>*log.Logger         Print*/Panic*/Fatal* of the logger
+io.Writer           -
+nil                 Reset to the default output (os.Stderr)
+&#34;log&#34;               Print*/Panic*/Fatal* via the &#34;log&#34; package
+</pre>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

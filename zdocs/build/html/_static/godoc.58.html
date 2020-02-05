@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>js - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.58.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package js
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "syscall/js"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.58.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.58.html#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="godoc.58.html#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package js gives access to the WebAssembly host environment when using the js/wasm architecture.
+Its API is based on JavaScript semantics.
+</p>
+<p>
+This package is EXPERIMENTAL. Its current scope is only to allow tests to run, but not yet to provide a
+comprehensive API for users. It is exempt from the Go compatibility promise.
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="godoc.58.html#CopyBytesToGo">func CopyBytesToGo(dst []byte, src Value) int</a></dd>
+			
+				
+				<dd><a href="godoc.58.html#CopyBytesToJS">func CopyBytesToJS(dst Value, src []byte) int</a></dd>
+			
+			
+				
+				<dd><a href="godoc.58.html#Error">type Error</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Error.Error">func (e Error) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.58.html#Func">type Func</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#FuncOf">func FuncOf(fn func(this Value, args []Value) interface{}) Func</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Func.Release">func (c Func) Release()</a></dd>
+				
+			
+				
+				<dd><a href="godoc.58.html#Type">type Type</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Type.String">func (t Type) String() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.58.html#Value">type Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Global">func Global() Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Null">func Null() Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Undefined">func Undefined() Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#ValueOf">func ValueOf(x interface{}) Value</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Bool">func (v Value) Bool() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Call">func (v Value) Call(m string, args ...interface{}) Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Float">func (v Value) Float() float64</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Get">func (v Value) Get(p string) Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Index">func (v Value) Index(i int) Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.InstanceOf">func (v Value) InstanceOf(t Value) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Int">func (v Value) Int() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Invoke">func (v Value) Invoke(args ...interface{}) Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.JSValue">func (v Value) JSValue() Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Length">func (v Value) Length() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.New">func (v Value) New(args ...interface{}) Value</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Set">func (v Value) Set(p string, x interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.SetIndex">func (v Value) SetIndex(i int, x interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.String">func (v Value) String() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Truthy">func (v Value) Truthy() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#Value.Type">func (v Value) Type() Type</a></dd>
+				
+			
+				
+				<dd><a href="godoc.58.html#ValueError">type ValueError</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.58.html#ValueError.Error">func (e *ValueError) Error() string</a></dd>
+				
+			
+				
+				<dd><a href="godoc.58.html#Wrapper">type Wrapper</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h3>Examples</h3>
+			<div class="js-expandAll expandAll collapsed">(Expand All)</div>
+			<dl>
+			
+			<dd><a class="exampleLink" href="godoc.58.html#example_FuncOf">FuncOf</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/syscall/js/func.go">func.go</a>
+			
+				<a href="http://localhost:6161/src/syscall/js/js.go">js.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="CopyBytesToGo">func <a href="http://localhost:6161/src/syscall/js/js.go?s=12861:12906#L473">CopyBytesToGo</a>
+				<a class="permalink" href="godoc.58.html#CopyBytesToGo">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CopyBytesToGo(dst []<a href="godoc.26.html#byte">byte</a>, src <a href="godoc.58.html#Value">Value</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+CopyBytesToGo copies bytes from the Uint8Array src to dst.
+It returns the number of bytes copied, which will be the minimum of the lengths of src and dst.
+CopyBytesToGo panics if src is not an Uint8Array.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CopyBytesToJS">func <a href="http://localhost:6161/src/syscall/js/js.go?s=13311:13356#L486">CopyBytesToJS</a>
+				<a class="permalink" href="godoc.58.html#CopyBytesToJS">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func CopyBytesToJS(dst <a href="godoc.58.html#Value">Value</a>, src []<a href="godoc.26.html#byte">byte</a>) <a href="godoc.26.html#int">int</a></pre>
+			<p>
+CopyBytesToJS copies bytes from src to the Uint8Array dst.
+It returns the number of bytes copied, which will be the minimum of the lengths of src and dst.
+CopyBytesToJS panics if dst is not an Uint8Array.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Error">type <a href="http://localhost:6161/src/syscall/js/js.go?s=1912:1992#L54">Error</a>
+				<a class="permalink" href="godoc.58.html#Error">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Error wraps a JavaScript error.
+</p>
+
+			<pre>type Error struct {
+    <span class="comment">// Value is the underlying JavaScript error value.</span>
+    <a href="godoc.58.html#Value">Value</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Error.Error">func (Error) <a href="http://localhost:6161/src/syscall/js/js.go?s=2035:2064#L60">Error</a>
+					<a class="permalink" href="godoc.58.html#Error.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e <a href="godoc.58.html#Error">Error</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+Error implements the error interface.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Func">type <a href="http://localhost:6161/src/syscall/js/func.go?s=448:545#L10">Func</a>
+				<a class="permalink" href="godoc.58.html#Func">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Func is a wrapped Go function to be called by JavaScript.
+</p>
+
+			<pre>type Func struct {
+    <a href="godoc.58.html#Value">Value</a> <span class="comment">// the JavaScript function that invokes the Go function</span>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="FuncOf">func <a href="http://localhost:6161/src/syscall/js/func.go?s=1420:1483#L28">FuncOf</a>
+					<a class="permalink" href="godoc.58.html#FuncOf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func FuncOf(fn func(this <a href="godoc.58.html#Value">Value</a>, args []<a href="godoc.58.html#Value">Value</a>) interface{}) <a href="godoc.58.html#Func">Func</a></pre>
+				<p>
+FuncOf returns a wrapped function.
+</p>
+<p>
+Invoking the JavaScript function will synchronously call the Go function fn with the value of JavaScript&#39;s
+&#34;this&#34; keyword and the arguments of the invocation.
+The return value of the invocation is the result of the Go function mapped back to JavaScript according to ValueOf.
+</p>
+<p>
+A wrapped function triggered during a call from Go to JavaScript gets executed on the same goroutine.
+A wrapped function triggered by JavaScript&#39;s event loop gets executed on an extra goroutine.
+Blocking operations in the wrapped function will block the event loop.
+As a consequence, if one wrapped function blocks, other wrapped funcs will not be processed.
+A blocking function should therefore explicitly start a new goroutine.
+</p>
+<p>
+Func.Release must be called to free up resources when the function will not be used any more.
+</p>
+
+				<div id="example_FuncOf" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">
+var cb js.Func
+cb = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+    fmt.Println(&#34;button clicked&#34;)
+    cb.Release() <span class="comment">// release the function if the button will not be clicked again</span>
+    return nil
+})
+js.Global().Get(&#34;document&#34;).Call(&#34;getElementById&#34;, &#34;myButton&#34;).Call(&#34;addEventListener&#34;, &#34;click&#34;, cb)
+</pre>
+			
+		
+	</div>
+</div>
+
+				
+			
+
+			
+				
+				<h3 id="Func.Release">func (Func) <a href="http://localhost:6161/src/syscall/js/func.go?s=1762:1785#L42">Release</a>
+					<a class="permalink" href="godoc.58.html#Func.Release">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c <a href="godoc.58.html#Func">Func</a>) Release()</pre>
+				<p>
+Release frees up resources allocated for the function.
+The function must not be invoked after calling Release.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Type">type <a href="http://localhost:6161/src/syscall/js/js.go?s=4831:4844#L171">Type</a>
+				<a class="permalink" href="godoc.58.html#Type">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Type represents the JavaScript type of a Value.
+</p>
+
+			<pre>type Type <a href="godoc.26.html#int">int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="TypeUndefined">TypeUndefined</span> <a href="godoc.58.html#Type">Type</a> = <a href="godoc.26.html#iota">iota</a>
+    <span id="TypeNull">TypeNull</span>
+    <span id="TypeBoolean">TypeBoolean</span>
+    <span id="TypeNumber">TypeNumber</span>
+    <span id="TypeString">TypeString</span>
+    <span id="TypeSymbol">TypeSymbol</span>
+    <span id="TypeObject">TypeObject</span>
+    <span id="TypeFunction">TypeFunction</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Type.String">func (Type) <a href="http://localhost:6161/src/syscall/js/js.go?s=4969:4998#L184">String</a>
+					<a class="permalink" href="godoc.58.html#Type.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (t <a href="godoc.58.html#Type">Type</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Value">type <a href="http://localhost:6161/src/syscall/js/js.go?s=1467:1497#L26">Value</a>
+				<a class="permalink" href="godoc.58.html#Value">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Value represents a JavaScript value. The zero value is the JavaScript value &#34;undefined&#34;.
+</p>
+
+			<pre>type Value struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Global">func <a href="http://localhost:6161/src/syscall/js/js.go?s=2805:2824#L89">Global</a>
+					<a class="permalink" href="godoc.58.html#Global">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Global() <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Global returns the JavaScript global object, usually &#34;window&#34; or &#34;global&#34;.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Null">func <a href="http://localhost:6161/src/syscall/js/js.go?s=2686:2703#L84">Null</a>
+					<a class="permalink" href="godoc.58.html#Null">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Null() <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Null returns the JavaScript value &#34;null&#34;.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Undefined">func <a href="http://localhost:6161/src/syscall/js/js.go?s=2590:2612#L79">Undefined</a>
+					<a class="permalink" href="godoc.58.html#Undefined">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Undefined() <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Undefined returns the JavaScript value &#34;undefined&#34;.
+</p>
+
+				
+				
+			
+				
+				<h3 id="ValueOf">func <a href="http://localhost:6161/src/syscall/js/js.go?s=3509:3542#L107">ValueOf</a>
+					<a class="permalink" href="godoc.58.html#ValueOf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func ValueOf(x interface{}) <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+ValueOf returns x as a JavaScript value:
+</p>
+<pre>| Go                     | JavaScript             |
+| ---------------------- | ---------------------- |
+| js.Value               | [its value]            |
+| js.Func                | function               |
+| nil                    | null                   |
+| bool                   | boolean                |
+| integers and floats    | number                 |
+| string                 | string                 |
+| []interface{}          | new array              |
+| map[string]interface{} | new object             |
+</pre>
+<p>
+Panics if x is not one of the expected types.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Value.Bool">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=10343:10369#L382">Bool</a>
+					<a class="permalink" href="godoc.58.html#Value.Bool">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Bool() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Bool returns the value v as a bool.
+It panics if v is not a JavaScript boolean.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Call">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=7901:7957#L304">Call</a>
+					<a class="permalink" href="godoc.58.html#Value.Call">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Call(m <a href="godoc.26.html#string">string</a>, args ...interface{}) <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Call does a JavaScript call to the method m of value v with the given arguments.
+It panics if v has no method m.
+The arguments get mapped to JavaScript values according to the ValueOf function.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Float">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=10032:10062#L370">Float</a>
+					<a class="permalink" href="godoc.58.html#Value.Float">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Float() <a href="godoc.26.html#float64">float64</a></pre>
+				<p>
+Float returns the value v as a float64.
+It panics if v is not a JavaScript number.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Get">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=6099:6133#L240">Get</a>
+					<a class="permalink" href="godoc.58.html#Value.Get">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Get(p <a href="godoc.26.html#string">string</a>) <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Get returns the JavaScript property p of value v.
+It panics if v is not a JavaScript object.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Index">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=6715:6748#L262">Index</a>
+					<a class="permalink" href="godoc.58.html#Value.Index">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Index(i <a href="godoc.26.html#int">int</a>) <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Index returns JavaScript index i of value v.
+It panics if v is not a JavaScript object.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.InstanceOf">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=12199:12238#L452">InstanceOf</a>
+					<a class="permalink" href="godoc.58.html#Value.InstanceOf">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) InstanceOf(t <a href="godoc.58.html#Value">Value</a>) <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+InstanceOf reports whether v is an instance of type t according to JavaScript&#39;s instanceof operator.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Int">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=10193:10217#L376">Int</a>
+					<a class="permalink" href="godoc.58.html#Value.Int">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Int() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Int returns the value v truncated to an int.
+It panics if v is not a JavaScript number.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Invoke">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=8644:8692#L323">Invoke</a>
+					<a class="permalink" href="godoc.58.html#Value.Invoke">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Invoke(args ...interface{}) <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+Invoke does a JavaScript call of the value v with the given arguments.
+It panics if v is not a JavaScript function.
+The arguments get mapped to JavaScript values according to the ValueOf function.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.JSValue">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=1540:1570#L31">JSValue</a>
+					<a class="permalink" href="godoc.58.html#Value.JSValue">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) JSValue() <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+JSValue implements Wrapper interface.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Length">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=7517:7544#L292">Length</a>
+					<a class="permalink" href="godoc.58.html#Value.Length">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Length() <a href="godoc.26.html#int">int</a></pre>
+				<p>
+Length returns the JavaScript property &#34;length&#34; of v.
+It panics if v is not a JavaScript object.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.New">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=9231:9276#L339">New</a>
+					<a class="permalink" href="godoc.58.html#Value.New">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) New(args ...interface{}) <a href="godoc.58.html#Value">Value</a></pre>
+				<p>
+New uses JavaScript&#39;s &#34;new&#34; operator with value v as constructor and the given arguments.
+It panics if v is not a JavaScript function.
+The arguments get mapped to JavaScript values according to the ValueOf function.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Set">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=6410:6453#L251">Set</a>
+					<a class="permalink" href="godoc.58.html#Value.Set">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Set(p <a href="godoc.26.html#string">string</a>, x interface{})</pre>
+				<p>
+Set sets the JavaScript property p of value v to ValueOf(x).
+It panics if v is not a JavaScript object.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.SetIndex">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=7030:7075#L273">SetIndex</a>
+					<a class="permalink" href="godoc.58.html#Value.SetIndex">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) SetIndex(i <a href="godoc.26.html#int">int</a>, x interface{})</pre>
+				<p>
+SetIndex sets the JavaScript index i of value v to ValueOf(x).
+It panics if v is not a JavaScript object.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.String">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=11417:11447#L417">String</a>
+					<a class="permalink" href="godoc.58.html#Value.String">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) String() <a href="godoc.26.html#string">string</a></pre>
+				<p>
+String returns the value v as a string.
+String is a special case because of Go&#39;s String method convention. Unlike the other getters,
+it does not panic if v&#39;s Type is not TypeString. Instead, it returns a string of the form &#34;&lt;T&gt;&#34;
+or &#34;&lt;T: V&gt;&#34; where T is v&#39;s type and V is a string representation of v&#39;s value.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Truthy">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=10751:10779#L396">Truthy</a>
+					<a class="permalink" href="godoc.58.html#Value.Truthy">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Truthy() <a href="godoc.26.html#bool">bool</a></pre>
+				<p>
+Truthy returns the JavaScript &#34;truthiness&#34; of the value v. In JavaScript,
+false, 0, &#34;&#34;, null, undefined, and NaN are &#34;falsy&#34;, and everything else is
+&#34;truthy&#34;. See <a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">https://developer.mozilla.org/en-US/docs/Glossary/Truthy</a>.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Value.Type">func (Value) <a href="http://localhost:6161/src/syscall/js/js.go?s=5591:5617#L213">Type</a>
+					<a class="permalink" href="godoc.58.html#Value.Type">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (v <a href="godoc.58.html#Value">Value</a>) Type() <a href="godoc.58.html#Type">Type</a></pre>
+				<p>
+Type returns the JavaScript type of the value v. It is similar to JavaScript&#39;s typeof operator,
+except that it returns TypeNull instead of TypeObject for null.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValueError">type <a href="http://localhost:6161/src/syscall/js/js.go?s=12481:12535#L461">ValueError</a>
+				<a class="permalink" href="godoc.58.html#ValueError">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+A ValueError occurs when a Value method is invoked on
+a Value that does not support it. Such cases are documented
+in the description of each method.
+</p>
+
+			<pre>type ValueError struct {
+<span id="ValueError.Method"></span>    Method <a href="godoc.26.html#string">string</a>
+<span id="ValueError.Type"></span>    Type   <a href="godoc.58.html#Type">Type</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValueError.Error">func (*ValueError) <a href="http://localhost:6161/src/syscall/js/js.go?s=12537:12572#L466">Error</a>
+					<a class="permalink" href="godoc.58.html#ValueError.Error">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (e *<a href="godoc.58.html#ValueError">ValueError</a>) Error() <a href="godoc.26.html#string">string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Wrapper">type <a href="http://localhost:6161/src/syscall/js/js.go?s=1264:1373#L20">Wrapper</a>
+				<a class="permalink" href="godoc.58.html#Wrapper">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Wrapper is implemented by types that are backed by a JavaScript value.
+</p>
+
+			<pre>type Wrapper interface {
+    <span class="comment">// JSValue returns a JavaScript value associated with an object.</span>
+    JSValue() <a href="godoc.58.html#Value">Value</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>

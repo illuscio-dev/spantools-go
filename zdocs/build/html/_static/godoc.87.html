@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>binutil - Go Documentation Server</title>
+
+<link type="text/css" rel="stylesheet" href="style.css">
+
+<script>window.initFuncs = [];</script>
+<script src="jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.13.5";</script>
+<script src="godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="godoc.590.html">Go Documentation Server</a></div>
+<div class="top-heading" id="heading-narrow"><a href="godoc.590.html">GoDoc</a></div>
+<a href="godoc.87.html#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="http://localhost:6161/search">
+<div id="menu">
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package binutil
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/akavel/rsrc/binutil"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="godoc.87.html#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="godoc.87.html#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="godoc.87.html#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="godoc.87.html#Plain">func Plain(kind reflect.Kind) bool</a></dd>
+			
+				
+				<dd><a href="godoc.87.html#Walk">func Walk(value interface{}, walker Walker) error</a></dd>
+			
+			
+				
+				<dd><a href="godoc.87.html#SizedFile">type SizedFile</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.87.html#SizedOpen">func SizedOpen(filename string) (*SizedFile, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.87.html#SizedFile.Close">func (r *SizedFile) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.87.html#SizedFile.Read">func (r *SizedFile) Read(p []byte) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.87.html#SizedFile.Size">func (r *SizedFile) Size() int64</a></dd>
+				
+			
+				
+				<dd><a href="godoc.87.html#SizedReader">type SizedReader</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.87.html#Walker">type Walker</a></dd>
+				
+				
+			
+				
+				<dd><a href="godoc.87.html#Writer">type Writer</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.87.html#Writer.WriteFromSized">func (w *Writer) WriteFromSized(r SizedReader)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="godoc.87.html#Writer.WriteLE">func (w *Writer) WriteLE(v interface{})</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/plain.go">plain.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go">sizedfile.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/walk.go">walk.go</a>
+			
+				<a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/writer.go">writer.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span id="WALK_SKIP">WALK_SKIP</span> = <a href="godoc.554.html">errors</a>.<a href="godoc.554.html#New">New</a>(&#34;&#34;)
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="Plain">func <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/plain.go?s=40:74#L1">Plain</a>
+				<a class="permalink" href="godoc.87.html#Plain">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Plain(kind <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Kind">Kind</a>) <a href="godoc.26.html#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="Walk">func <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/walk.go?s=156:205#L6">Walk</a>
+				<a class="permalink" href="godoc.87.html#Walk">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func Walk(value interface{}, walker <a href="godoc.87.html#Walker">Walker</a>) <a href="godoc.26.html#error">error</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="SizedFile">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go?s=98:178#L3">SizedFile</a>
+				<a class="permalink" href="godoc.87.html#SizedFile">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type SizedFile struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="SizedOpen">func <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go?s=411:462#L12">SizedOpen</a>
+					<a class="permalink" href="godoc.87.html#SizedOpen">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func SizedOpen(filename <a href="godoc.26.html#string">string</a>) (*<a href="godoc.87.html#SizedFile">SizedFile</a>, <a href="godoc.26.html#error">error</a>)</pre>
+				
+				
+				
+			
+
+			
+				
+				<h3 id="SizedFile.Close">func (*SizedFile) <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go?s=333:366#L10">Close</a>
+					<a class="permalink" href="godoc.87.html#SizedFile.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.87.html#SizedFile">SizedFile</a>) Close() <a href="godoc.26.html#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SizedFile.Read">func (*SizedFile) <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go?s=180:233#L8">Read</a>
+					<a class="permalink" href="godoc.87.html#SizedFile.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.87.html#SizedFile">SizedFile</a>) Read(p []<a href="godoc.26.html#byte">byte</a>) (n <a href="godoc.26.html#int">int</a>, err <a href="godoc.26.html#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="SizedFile.Size">func (*SizedFile) <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go?s=257:289#L9">Size</a>
+					<a class="permalink" href="godoc.87.html#SizedFile.Size">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (r *<a href="godoc.87.html#SizedFile">SizedFile</a>) Size() <a href="godoc.26.html#int64">int64</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SizedReader">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/sizedfile.go?s=41:96#L1">SizedReader</a>
+				<a class="permalink" href="godoc.87.html#SizedReader">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type SizedReader interface {
+    <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Reader">Reader</a>
+    Size() <a href="godoc.26.html#int64">int64</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Walker">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/walk.go?s=102:154#L4">Walker</a>
+				<a class="permalink" href="godoc.87.html#Walker">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Walker func(v <a href="godoc.41.html">reflect</a>.<a href="godoc.41.html#Value">Value</a>, path <a href="godoc.26.html#string">string</a>) <a href="godoc.26.html#error">error</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Writer">type <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/writer.go?s=65:150#L1">Writer</a>
+				<a class="permalink" href="godoc.87.html#Writer">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Writer struct {
+<span id="Writer.W"></span>    W      <a href="godoc.589.html">io</a>.<a href="godoc.589.html#Writer">Writer</a>
+<span id="Writer.Offset"></span>    Offset <a href="godoc.26.html#uint32">uint32</a> <span class="comment">//FIXME: int64?</span>
+<span id="Writer.Err"></span>    Err    <a href="godoc.26.html#error">error</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Writer.WriteFromSized">func (*Writer) <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/writer.go?s=356:402#L16">WriteFromSized</a>
+					<a class="permalink" href="godoc.87.html#Writer.WriteFromSized">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (w *<a href="godoc.87.html#Writer">Writer</a>) WriteFromSized(r <a href="godoc.87.html#SizedReader">SizedReader</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Writer.WriteLE">func (*Writer) <a href="http://localhost:6161/src/github.com/akavel/rsrc/binutil/writer.go?s=152:191#L5">WriteLE</a>
+					<a class="permalink" href="godoc.87.html#Writer.WriteLE">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (w *<a href="godoc.87.html#Writer">Writer</a>) WriteLE(v interface{})</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.13.5.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:6161/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:6161/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+</body>
+</html>
