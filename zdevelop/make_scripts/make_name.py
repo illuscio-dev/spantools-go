@@ -117,8 +117,8 @@ def rewrite_sphinx_conf(target_name: str) -> None:
 
     # there is template file we can perform a simple find/replace on to change the
     # name of the lib where necessary
-    template_path = pathlib.Path("./docs/source/conf-template").absolute()
-    conf_path = pathlib.Path("./docs/source/conf.py").absolute()
+    template_path = pathlib.Path("./zdocs/source/conf-template").absolute()
+    conf_path = pathlib.Path("./zdocs/source/conf.py").absolute()
 
     template_text = template_path.read_text()
     conf_text = template_text.replace("{lib-name-goes-here}", target_name)
