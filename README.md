@@ -5,12 +5,11 @@ Spantools is a shared library between the different components od the spanreed f
 reporting errors, paging models, and others.
 
 ## Getting Started
-For quickstart and API docs, [read the docs](https://illuscio-dev-spantools-go.readthedocs-hosted.com/en/latest/)
+For full documentation:
+[read the docs](https://du1ry3q3c386j.cloudfront.net/spantools-go/latest/index.html)
 
-## Development
-For installation and development guide, 
-[read the library template docs](https://illuscio-dev-islelib-go.readthedocs-hosted.com/en/latest/)
-
+For library development guide, 
+[read the docs](https://du1ry3q3c386j.cloudfront.net/islelib-go/latest/index.html)
 Islelib comes pre-built with a number of tools for formatting, linting and 
 testing.
 
