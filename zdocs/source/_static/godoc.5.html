@@ -14,7 +14,7 @@
 
 
 
-<script>var goVersion = "go1.13.5";</script>
+<script>var goVersion = "go1.13.6";</script>
 <script src="godocs.js" defer></script>
 </head>
 <body>
@@ -355,7 +355,7 @@ Used to return a specific error instance.
 				</h3>
 				<pre>func ErrorFromHeaders(
     headers headerFetcher,
-    dataEngine <a href="godoc.9.html">encoding</a>.<a href="godoc.9.html#ContentEngine">ContentEngine</a>,
+    dataEngine <a href="godoc.7.html">encoding</a>.<a href="godoc.7.html#ContentEngine">ContentEngine</a>,
     errorTypeCodeIndex map[<a href="http://localhost:6161/pkg/builtin/#int">int</a>]*<a href="godoc.5.html#SpanErrorType">SpanErrorType</a>,
 ) (spanError *<a href="godoc.5.html#SpanError">SpanError</a>, hasError <a href="http://localhost:6161/pkg/builtin/#bool">bool</a>, err <a href="http://localhost:6161/pkg/builtin/#error">error</a>)</pre>
 				<p>
@@ -431,7 +431,7 @@ it may contain sensitive information that is not desirable to return to the clie
 					
 				</h3>
 				<pre>func (spanError *<a href="godoc.5.html#SpanError">SpanError</a>) ToHeader(
-    setter headerSetter, dataEngine <a href="godoc.9.html">encoding</a>.<a href="godoc.9.html#ContentEngine">ContentEngine</a>,
+    setter headerSetter, dataEngine <a href="godoc.7.html">encoding</a>.<a href="godoc.7.html#ContentEngine">ContentEngine</a>,
 ) <a href="http://localhost:6161/pkg/builtin/#error">error</a></pre>
 				<p>
 Writes error to an object which implements a Set(key string, value string) method
@@ -648,7 +648,7 @@ Returns a copy of the error type with the given http code replaced.
 
 
 <div id="footer">
-Build version go1.13.5.<br>
+Build version go1.13.6.<br>
 Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
 the content of this page is licensed under the
 Creative Commons Attribution 3.0 License,
