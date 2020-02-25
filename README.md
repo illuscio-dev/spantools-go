@@ -6,10 +6,10 @@ reporting errors, paging models, and others.
 
 ## Getting Started
 For full documentation:
-[read the docs](https://du1ry3q3c386j.cloudfront.net/spantools-go/latest/index.html)
+[read the docs](https://illuscio-dev.github.io/spantools-go/)
 
 For library development guide, 
-[read the docs](https://du1ry3q3c386j.cloudfront.net/islelib-go/latest/index.html)
+[read the docs](https://illuscio-dev.github.io/islelib-go/)
 Islelib comes pre-built with a number of tools for formatting, linting and 
 testing.
 

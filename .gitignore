@@ -31,6 +31,7 @@ ENV/
 # Build Detritus
 bin/
 ./build/
+zdocs/build
 dist/
 lib/
 gobin/
